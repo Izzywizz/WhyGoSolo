@@ -10,6 +10,11 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *topBorderView;
+@property (weak, nonatomic) IBOutlet UIView *middleBorderView;
+@property (weak, nonatomic) IBOutlet UILabel *emailAddressLabel;
+@property (weak, nonatomic) IBOutlet UITextField *emailInputField;
+
 @end
 
 @implementation ViewController
@@ -17,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+//    _test.textColor = [UIColor redColor];
+//    _topView.backgroundColor = [UIColor redColor];
 }
 
 - (void)didReceiveMemoryWarning {
