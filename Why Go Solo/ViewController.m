@@ -24,6 +24,7 @@
     // Do any additional setup after loading the view, typically from a nib.
 //    _test.textColor = [UIColor redColor];
 //    _topView.backgroundColor = [UIColor redColor];
+    NSLog(@"Test");
 }
 
 - (void)didReceiveMemoryWarning {
