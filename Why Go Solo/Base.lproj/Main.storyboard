@@ -62,7 +62,7 @@
                                                     <constraint firstAttribute="height" constant="21" id="0Jd-Xp-sNf"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97e-b5-NAd" userLabel="Password Label">
@@ -151,7 +151,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="Forgot your password?">
                                                 <attributes>
-                                                    <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="17" name="Lato-Regular"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     <integer key="NSUnderline" value="1"/>
@@ -245,10 +245,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="ZWB-zS-1us" kind="show" identifier="GoToMap" id="Dya-pO-aS6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JR4-us-JDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2688" y="1520"/>
+            <point key="canvasLocation" x="2558" y="2262"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QWn-4F-dhp">
@@ -285,6 +288,89 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VyR-Cv-Sp9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1209" y="798"/>
+        </scene>
+        <!--Map Search-->
+        <scene sceneID="Z6u-UG-Clr">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="ZWB-zS-1us" customClass="MapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K01-P2-MwG"/>
+                        <viewControllerLayoutGuide type="bottom" id="ygo-RN-xKE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QWk-4W-aLS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ufn-zu-YfG">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ufn-zu-YfG" secondAttribute="trailing" id="0cd-IK-eZH"/>
+                            <constraint firstItem="ygo-RN-xKE" firstAttribute="top" secondItem="Ufn-zu-YfG" secondAttribute="bottom" constant="-44" id="Brn-M0-kA2"/>
+                            <constraint firstItem="Ufn-zu-YfG" firstAttribute="bottom" secondItem="ygo-RN-xKE" secondAttribute="top" id="bAj-La-Cv8"/>
+                            <constraint firstItem="Ufn-zu-YfG" firstAttribute="leading" secondItem="QWk-4W-aLS" secondAttribute="leading" id="hZ3-Pk-wOF"/>
+                            <constraint firstItem="Ufn-zu-YfG" firstAttribute="top" secondItem="K01-P2-MwG" secondAttribute="bottom" id="x3l-tL-7nu"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bAj-La-Cv8"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map Search" id="ylq-fe-Tbc"/>
+                    <connections>
+                        <outlet property="mapView" destination="Ufn-zu-YfG" id="IUZ-28-m9A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2LE-ov-y7h" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3245" y="2262"/>
+        </scene>
+        <!--Search Bar Table View Controller-->
+        <scene sceneID="IYT-Eg-tSX">
+            <objects>
+                <tableViewController storyboardIdentifier="SearchBarTableViewController" id="oum-Js-FzK" customClass="SearchBarTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="c2y-Ow-jIM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="bWG-OC-zpp" detailTextLabel="btP-JI-Jf4" style="IBUITableViewCellStyleSubtitle" id="jvT-NL-al1">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jvT-NL-al1" id="iSf-kC-ZGI">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bWG-OC-zpp">
+                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="btP-JI-Jf4">
+                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="oum-Js-FzK" id="VxX-OZ-VLZ"/>
+                            <outlet property="delegate" destination="oum-Js-FzK" id="CI7-V8-WDH"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HpG-kC-pfp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3914" y="2262"/>
         </scene>
     </scenes>
     <resources>

@@ -12,7 +12,13 @@
 #import "HeaderEventsTableViewCell.h"
 #import "FooterEventsTableViewCell.h"
 
+#import "MapViewController.h"
+#import "CurrentUserLocation.h"
+
 @interface EventTableViewController ()
+
+@property (nonatomic, strong) MapViewController *mapController;
+@property (nonatomic, strong) CurrentUserLocation *userLocation;
 
 @end
 
@@ -24,7 +30,6 @@ NSArray *sectionData;
 #pragma mark - UI View Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.allowsSelectionDuringEditing=YES;
     [self setupDummyData];
     [self setupTable];
     
@@ -33,6 +38,11 @@ NSArray *sectionData;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     //     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)viewWillAppear:(BOOL)animated  {
+    _mapController = [[MapViewController alloc] init];
+    _userLocation =[[CurrentUserLocation alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,6 +62,7 @@ NSArray *sectionData;
 }
 
 -(void) setupTable  {
+    self.tableView.allowsSelectionDuringEditing=YES;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 140;
 //    self.tableView.allowsSelection = NO;
@@ -104,7 +115,9 @@ NSArray *sectionData;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"Bring up maps!");
+    NSLog(@"Bring up maps!: row: %ld, section: %ld", (long)indexPath.row, indexPath.section);
+
+    [self performSegueWithIdentifier:@"GoToMap" sender:self];
 }
 
 

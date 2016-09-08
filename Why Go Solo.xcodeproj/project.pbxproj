@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919311D8154F400EE9220 /* CurrentUserLocation.m */; };
+		4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919351D8154F400EE9220 /* SearchBarTableViewController.m */; };
+		4309193B1D8154F400EE9220 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919371D8154F400EE9220 /* MapViewController.m */; };
+		4309193F1D81552200EE9220 /* PinLocationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4309193E1D81552200EE9220 /* PinLocationData.m */; };
+		430919421D8158A000EE9220 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 430919411D8158A000EE9220 /* car.png */; };
+		436E84B01D815FA700B23402 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 436E84AF1D815FA700B23402 /* flag.png */; };
 		438A14811D8011C2005E6AF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14801D8011C2005E6AF7 /* main.m */; };
 		438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14831D8011C2005E6AF7 /* AppDelegate.m */; };
 		438A14871D8011C2005E6AF7 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14861D8011C2005E6AF7 /* SignInViewController.m */; };
@@ -46,6 +52,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		430919301D8154F400EE9220 /* CurrentUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUserLocation.h; sourceTree = "<group>"; };
+		430919311D8154F400EE9220 /* CurrentUserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUserLocation.m; sourceTree = "<group>"; };
+		430919341D8154F400EE9220 /* SearchBarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarTableViewController.h; sourceTree = "<group>"; };
+		430919351D8154F400EE9220 /* SearchBarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarTableViewController.m; sourceTree = "<group>"; };
+		430919361D8154F400EE9220 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		430919371D8154F400EE9220 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		4309193D1D81552200EE9220 /* PinLocationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinLocationData.h; sourceTree = "<group>"; };
+		4309193E1D81552200EE9220 /* PinLocationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinLocationData.m; sourceTree = "<group>"; };
+		430919411D8158A000EE9220 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
+		436E84AF1D815FA700B23402 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		438A147C1D8011C2005E6AF7 /* Why Go Solo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Why Go Solo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		438A14801D8011C2005E6AF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		438A14821D8011C2005E6AF7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -102,11 +118,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4309193C1D8154F900EE9220 /* Map View */ = {
+			isa = PBXGroup;
+			children = (
+				430919301D8154F400EE9220 /* CurrentUserLocation.h */,
+				430919311D8154F400EE9220 /* CurrentUserLocation.m */,
+				430919341D8154F400EE9220 /* SearchBarTableViewController.h */,
+				430919351D8154F400EE9220 /* SearchBarTableViewController.m */,
+				430919361D8154F400EE9220 /* MapViewController.h */,
+				430919371D8154F400EE9220 /* MapViewController.m */,
+			);
+			name = "Map View";
+			sourceTree = "<group>";
+		};
+		430919401D81557300EE9220 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4309193D1D81552200EE9220 /* PinLocationData.h */,
+				4309193E1D81552200EE9220 /* PinLocationData.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		438A14731D8011C2005E6AF7 = {
 			isa = PBXGroup;
 			children = (
 				43A893691D805D8700BEA24B /* profile.png */,
-				43A893651D8057B200BEA24B /* Table Cells */,
+				436E84AF1D815FA700B23402 /* flag.png */,
+				430919411D8158A000EE9220 /* car.png */,
 				438A14A71D801E0F005E6AF7 /* Lato */,
 				438A147E1D8011C2005E6AF7 /* Why Go Solo */,
 				438A14981D8011C2005E6AF7 /* Why Go SoloTests */,
@@ -126,6 +165,9 @@
 		438A147E1D8011C2005E6AF7 /* Why Go Solo */ = {
 			isa = PBXGroup;
 			children = (
+				430919401D81557300EE9220 /* Model */,
+				43A893651D8057B200BEA24B /* Table Cells */,
+				4309193C1D8154F900EE9220 /* Map View */,
 				438A14821D8011C2005E6AF7 /* AppDelegate.h */,
 				438A14831D8011C2005E6AF7 /* AppDelegate.m */,
 				43A893661D8057FA00BEA24B /* EventTableViewController.h */,
@@ -190,6 +232,7 @@
 				43A8935A1D8057AE00BEA24B /* HeaderEventsTableViewCell.m */,
 			);
 			name = "Table Cells";
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,7 +316,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				438A14BD1D801E0F005E6AF7 /* OFL.txt in Resources */,
+				436E84B01D815FA700B23402 /* flag.png in Resources */,
 				43A893641D8057AE00BEA24B /* HeaderEvents.xib in Resources */,
+				430919421D8158A000EE9220 /* car.png in Resources */,
 				438A14B91D801E0F005E6AF7 /* Lato-Italic.ttf in Resources */,
 				438A14B31D801E0F005E6AF7 /* Lato-Black.ttf in Resources */,
 				438A14B51D801E0F005E6AF7 /* Lato-Bold.ttf in Resources */,
@@ -310,10 +355,14 @@
 				438A14871D8011C2005E6AF7 /* SignInViewController.m in Sources */,
 				43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */,
 				43A893621D8057AE00BEA24B /* EventsTableViewCell.m in Sources */,
+				430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */,
 				43A893601D8057AE00BEA24B /* FooterEventsTableViewCell.m in Sources */,
+				4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */,
+				4309193F1D81552200EE9220 /* PinLocationData.m in Sources */,
 				43A893681D8057FA00BEA24B /* EventTableViewController.m in Sources */,
 				438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */,
 				438A14811D8011C2005E6AF7 /* main.m in Sources */,
+				4309193B1D8154F400EE9220 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
