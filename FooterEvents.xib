@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FooterEventsCell" rowHeight="114" id="gEL-FV-23Z" userLabel="FooterEventsCell" customClass="FooterEventsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="15"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gEL-FV-23Z" id="GT6-V1-wCj">
+                <rect key="frame" x="0.0" y="0.0" width="406" height="14.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iE-Xd-Vbv" userLabel="Background Transparent View">
+                        <rect key="frame" x="0.0" y="0.0" width="406" height="15"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.98431372549999996" green="0.12549019610000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="VJT-eS-sZt"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="4iE-Xd-Vbv" firstAttribute="top" secondItem="GT6-V1-wCj" secondAttribute="top" id="6pw-ND-KIA"/>
+                    <constraint firstAttribute="trailing" secondItem="4iE-Xd-Vbv" secondAttribute="trailing" id="A0n-ew-807"/>
+                    <constraint firstItem="4iE-Xd-Vbv" firstAttribute="leading" secondItem="GT6-V1-wCj" secondAttribute="leading" id="fPO-uk-XjQ"/>
+                    <constraint firstAttribute="bottom" secondItem="4iE-Xd-Vbv" secondAttribute="bottom" id="tiJ-Zd-5RY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" red="0.98431372549999996" green="0.12549019610000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="backgroundView" destination="4iE-Xd-Vbv" id="apA-mz-Uwb"/>
+            </connections>
+            <point key="canvasLocation" x="537" y="469.5"/>
+        </tableViewCell>
+    </objects>
+</document>

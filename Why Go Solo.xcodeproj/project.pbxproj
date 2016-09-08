@@ -25,6 +25,14 @@
 		438A14BB1D801E0F005E6AF7 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 438A14B01D801E0F005E6AF7 /* Lato-LightItalic.ttf */; };
 		438A14BC1D801E0F005E6AF7 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 438A14B11D801E0F005E6AF7 /* Lato-Regular.ttf */; };
 		438A14BD1D801E0F005E6AF7 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 438A14B21D801E0F005E6AF7 /* OFL.txt */; };
+		43A8935F1D8057AE00BEA24B /* Events.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A893561D8057AE00BEA24B /* Events.xib */; };
+		43A893601D8057AE00BEA24B /* FooterEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A893581D8057AE00BEA24B /* FooterEventsTableViewCell.m */; };
+		43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A8935A1D8057AE00BEA24B /* HeaderEventsTableViewCell.m */; };
+		43A893621D8057AE00BEA24B /* EventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A8935C1D8057AE00BEA24B /* EventsTableViewCell.m */; };
+		43A893631D8057AE00BEA24B /* FooterEvents.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A8935D1D8057AE00BEA24B /* FooterEvents.xib */; };
+		43A893641D8057AE00BEA24B /* HeaderEvents.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A8935E1D8057AE00BEA24B /* HeaderEvents.xib */; };
+		43A893681D8057FA00BEA24B /* EventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A893671D8057FA00BEA24B /* EventTableViewController.m */; };
+		43A8936A1D805D8700BEA24B /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A893691D805D8700BEA24B /* profile.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +70,18 @@
 		438A14B01D801E0F005E6AF7 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		438A14B11D801E0F005E6AF7 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		438A14B21D801E0F005E6AF7 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		43A893561D8057AE00BEA24B /* Events.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Events.xib; sourceTree = "<group>"; };
+		43A893571D8057AE00BEA24B /* FooterEventsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooterEventsTableViewCell.h; sourceTree = "<group>"; };
+		43A893581D8057AE00BEA24B /* FooterEventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooterEventsTableViewCell.m; sourceTree = "<group>"; };
+		43A893591D8057AE00BEA24B /* HeaderEventsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderEventsTableViewCell.h; sourceTree = "<group>"; };
+		43A8935A1D8057AE00BEA24B /* HeaderEventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderEventsTableViewCell.m; sourceTree = "<group>"; };
+		43A8935B1D8057AE00BEA24B /* EventsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsTableViewCell.h; sourceTree = "<group>"; };
+		43A8935C1D8057AE00BEA24B /* EventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsTableViewCell.m; sourceTree = "<group>"; };
+		43A8935D1D8057AE00BEA24B /* FooterEvents.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterEvents.xib; sourceTree = "<group>"; };
+		43A8935E1D8057AE00BEA24B /* HeaderEvents.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderEvents.xib; sourceTree = "<group>"; };
+		43A893661D8057FA00BEA24B /* EventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewController.h; sourceTree = "<group>"; };
+		43A893671D8057FA00BEA24B /* EventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewController.m; sourceTree = "<group>"; };
+		43A893691D805D8700BEA24B /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile.png; path = "Why Go Solo/profile.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +105,8 @@
 		438A14731D8011C2005E6AF7 = {
 			isa = PBXGroup;
 			children = (
+				43A893691D805D8700BEA24B /* profile.png */,
+				43A893651D8057B200BEA24B /* Table Cells */,
 				438A14A71D801E0F005E6AF7 /* Lato */,
 				438A147E1D8011C2005E6AF7 /* Why Go Solo */,
 				438A14981D8011C2005E6AF7 /* Why Go SoloTests */,
@@ -106,6 +128,8 @@
 			children = (
 				438A14821D8011C2005E6AF7 /* AppDelegate.h */,
 				438A14831D8011C2005E6AF7 /* AppDelegate.m */,
+				43A893661D8057FA00BEA24B /* EventTableViewController.h */,
+				43A893671D8057FA00BEA24B /* EventTableViewController.m */,
 				438A14851D8011C2005E6AF7 /* SignInViewController.h */,
 				438A14861D8011C2005E6AF7 /* SignInViewController.m */,
 				438A14881D8011C2005E6AF7 /* Main.storyboard */,
@@ -150,6 +174,22 @@
 				438A14B21D801E0F005E6AF7 /* OFL.txt */,
 			);
 			path = Lato;
+			sourceTree = "<group>";
+		};
+		43A893651D8057B200BEA24B /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				43A893561D8057AE00BEA24B /* Events.xib */,
+				43A8935B1D8057AE00BEA24B /* EventsTableViewCell.h */,
+				43A8935C1D8057AE00BEA24B /* EventsTableViewCell.m */,
+				43A8935D1D8057AE00BEA24B /* FooterEvents.xib */,
+				43A893571D8057AE00BEA24B /* FooterEventsTableViewCell.h */,
+				43A893581D8057AE00BEA24B /* FooterEventsTableViewCell.m */,
+				43A8935E1D8057AE00BEA24B /* HeaderEvents.xib */,
+				43A893591D8057AE00BEA24B /* HeaderEventsTableViewCell.h */,
+				43A8935A1D8057AE00BEA24B /* HeaderEventsTableViewCell.m */,
+			);
+			name = "Table Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,18 +273,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				438A14BD1D801E0F005E6AF7 /* OFL.txt in Resources */,
+				43A893641D8057AE00BEA24B /* HeaderEvents.xib in Resources */,
 				438A14B91D801E0F005E6AF7 /* Lato-Italic.ttf in Resources */,
 				438A14B31D801E0F005E6AF7 /* Lato-Black.ttf in Resources */,
 				438A14B51D801E0F005E6AF7 /* Lato-Bold.ttf in Resources */,
 				438A14BA1D801E0F005E6AF7 /* Lato-Light.ttf in Resources */,
+				43A893631D8057AE00BEA24B /* FooterEvents.xib in Resources */,
 				438A148F1D8011C2005E6AF7 /* LaunchScreen.storyboard in Resources */,
 				438A14B41D801E0F005E6AF7 /* Lato-BlackItalic.ttf in Resources */,
 				438A148C1D8011C2005E6AF7 /* Assets.xcassets in Resources */,
 				438A14BB1D801E0F005E6AF7 /* Lato-LightItalic.ttf in Resources */,
 				438A14B81D801E0F005E6AF7 /* Lato-HairlineItalic.ttf in Resources */,
 				438A14B61D801E0F005E6AF7 /* Lato-BoldItalic.ttf in Resources */,
+				43A8936A1D805D8700BEA24B /* profile.png in Resources */,
 				438A14BC1D801E0F005E6AF7 /* Lato-Regular.ttf in Resources */,
 				438A14B71D801E0F005E6AF7 /* Lato-Hairline.ttf in Resources */,
+				43A8935F1D8057AE00BEA24B /* Events.xib in Resources */,
 				438A148A1D8011C2005E6AF7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +308,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				438A14871D8011C2005E6AF7 /* SignInViewController.m in Sources */,
+				43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */,
+				43A893621D8057AE00BEA24B /* EventsTableViewCell.m in Sources */,
+				43A893601D8057AE00BEA24B /* FooterEventsTableViewCell.m in Sources */,
+				43A893681D8057FA00BEA24B /* EventTableViewController.m in Sources */,
 				438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */,
 				438A14811D8011C2005E6AF7 /* main.m in Sources */,
 			);

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderEventsCell" rowHeight="56" id="1YV-rD-dDM" userLabel="HeaderEventsCell" customClass="HeaderEventsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="387" height="56"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1YV-rD-dDM" id="3mg-dJ-NE8">
+                <rect key="frame" x="0.0" y="0.0" width="387" height="55.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="6b9-R2-zqc" userLabel="Background Image">
+                        <rect key="frame" x="0.0" y="0.0" width="388" height="55.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </imageView>
+                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lK-Ly-qId">
+                        <rect key="frame" x="329" y="12.5" width="50" height="30"/>
+                        <state key="normal" backgroundImage="filter-50-29"/>
+                        <connections>
+                            <action selector="filterButtonPressed:" destination="1YV-rD-dDM" eventType="touchUpInside" id="qov-T6-pKe"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEJ-Ss-dvb" userLabel="My Events Label">
+                        <rect key="frame" x="8" y="18" width="313" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="6b9-R2-zqc" firstAttribute="leading" secondItem="3mg-dJ-NE8" secondAttribute="leading" id="1lt-61-Wd1"/>
+                    <constraint firstItem="6b9-R2-zqc" firstAttribute="top" secondItem="3mg-dJ-NE8" secondAttribute="top" id="8iZ-ck-5rU"/>
+                    <constraint firstAttribute="bottom" secondItem="6b9-R2-zqc" secondAttribute="bottom" id="Flq-uv-ssY"/>
+                    <constraint firstAttribute="trailing" secondItem="6b9-R2-zqc" secondAttribute="trailing" constant="-1" id="Lx6-jU-tnA"/>
+                    <constraint firstItem="yEJ-Ss-dvb" firstAttribute="centerY" secondItem="3mg-dJ-NE8" secondAttribute="centerY" id="NMW-Ge-Ji5"/>
+                    <constraint firstItem="yEJ-Ss-dvb" firstAttribute="top" secondItem="3mg-dJ-NE8" secondAttribute="topMargin" constant="8" id="NiD-e9-VGk"/>
+                    <constraint firstItem="1lK-Ly-qId" firstAttribute="trailing" secondItem="3mg-dJ-NE8" secondAttribute="trailingMargin" id="S6R-CP-xLQ"/>
+                    <constraint firstItem="yEJ-Ss-dvb" firstAttribute="leading" secondItem="3mg-dJ-NE8" secondAttribute="leadingMargin" id="S7g-Zg-Pys"/>
+                    <constraint firstItem="yEJ-Ss-dvb" firstAttribute="trailing" secondItem="3mg-dJ-NE8" secondAttribute="trailingMargin" constant="-58" id="Sxy-ZS-dXb"/>
+                    <constraint firstItem="1lK-Ly-qId" firstAttribute="top" secondItem="3mg-dJ-NE8" secondAttribute="topMargin" constant="5" id="Yax-73-emO"/>
+                    <constraint firstAttribute="bottom" secondItem="yEJ-Ss-dvb" secondAttribute="bottom" constant="8" id="bAs-zT-Jyn"/>
+                    <constraint firstItem="1lK-Ly-qId" firstAttribute="centerY" secondItem="3mg-dJ-NE8" secondAttribute="centerY" id="iqm-gM-24R"/>
+                    <constraint firstItem="1lK-Ly-qId" firstAttribute="leading" secondItem="yEJ-Ss-dvb" secondAttribute="trailing" constant="8" symbolic="YES" id="v4S-pn-XVp"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="NiD-e9-VGk"/>
+                        <exclude reference="bAs-zT-Jyn"/>
+                        <exclude reference="Yax-73-emO"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="MyEventsLabel" destination="yEJ-Ss-dvb" id="FgM-A7-m3J"/>
+                <outlet property="filterButton" destination="1lK-Ly-qId" id="NB2-1j-zZ7"/>
+            </connections>
+            <point key="canvasLocation" x="276.5" y="313"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="filter-50-29" width="51" height="30"/>
+        <image name="title-bg-375-40" width="376" height="41"/>
+    </resources>
+</document>
