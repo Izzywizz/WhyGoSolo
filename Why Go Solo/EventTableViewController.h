@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EventsTableViewCell.h"
+
 
 @interface EventTableViewController : UITableViewController
+
 
 
 @end

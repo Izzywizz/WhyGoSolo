@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface EventsTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
@@ -25,5 +26,7 @@ typedef enum {
     JOIN,
     PROFILE
 } EventState;
+
+
 
 @end

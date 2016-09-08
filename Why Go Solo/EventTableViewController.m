@@ -32,6 +32,9 @@ NSArray *sectionData;
     [super viewDidLoad];
     [self setupDummyData];
     [self setupTable];
+    [self ListenOutProfileBeingPressed];
+    
+
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -39,6 +42,8 @@ NSArray *sectionData;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     //     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+
 
 -(void)viewWillAppear:(BOOL)animated  {
     _mapController = [[MapViewController alloc] init];
@@ -50,8 +55,27 @@ NSArray *sectionData;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Observer Methods
+
+- (void)receivedNotification:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"Profile Found"]) {
+        [self moveToOtherUserProfile];
+    }
+}
+
+-(void) ListenOutProfileBeingPressed    {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedNotification:)
+                                                 name:@"Profile Found"
+                                               object:nil];
+}
 
 #pragma mark - Helper Functions
+
+-(void) moveToOtherUserProfile  {
+    [self performSegueWithIdentifier:@"GotToOtherUserProfile" sender:self];
+}
+
 -(void) setupDummyData  {
     //Dummy Data
     tableData = @{@"My Events" : @[@"Andy Jones"],
@@ -116,7 +140,6 @@ NSArray *sectionData;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"Bring up maps!: row: %ld, section: %ld", (long)indexPath.row, indexPath.section);
-
     [self performSegueWithIdentifier:@"GoToMap" sender:self];
 }
 
@@ -181,9 +204,12 @@ NSArray *sectionData;
 #pragma mark - Actions
 - (IBAction)peopleButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"People Button Pressed");
+
 }
 
-
+- (IBAction)testButton:(id)sender {
+    [self moveToOtherUserProfile];
+}
 
 
 @end

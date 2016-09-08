@@ -8,6 +8,7 @@
 
 #import "EventsTableViewCell.h"
 
+
 @implementation EventsTableViewCell
 
 - (void)awakeFromNib {
@@ -29,6 +30,8 @@
         case EDIT: NSLog(@"Edit Button Pressed");
             break;
         case PROFILE: NSLog(@"Profile Button Pressed");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Profile Found" object:self];
+            break;
         default:
             break;
     }
