@@ -1,37 +1,40 @@
 //
-//  PeopleTableViewController.m
+//  EditProfileTableViewController.m
 //  Why Go Solo
 //
 //  Created by Izzy on 09/09/2016.
 //  Copyright © 2016 Izzy. All rights reserved.
 //
 
-#import "ProfileTableViewController.h"
-#import <UIKit/UIKit.h>
+#import "EditProfileTableViewController.h"
 
-@interface ProfileTableViewController ()
+@interface EditProfileTableViewController ()
 
 @end
 
-@implementation ProfileTableViewController
+@implementation EditProfileTableViewController
 
-#pragma mark - UI Table Views
+#pragma mark - UI View Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"People View Loaded");
+    NSLog(@"Edit view loaded");
+    _studentAccommdationCell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"right-arrow-20-20"]];
+    _deleteButton.layer.cornerRadius = 5;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark - Table view data source
 
@@ -51,9 +54,12 @@
 }
 
 #pragma mark - Action Methods
+- (IBAction)deleteButtonPressed:(UIButton *)sender {
+    NSLog(@"Delete Account");
+}
 
-- (IBAction)editActioin:(id)sender {
-    NSLog(@"Edit Pressed");
+- (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
