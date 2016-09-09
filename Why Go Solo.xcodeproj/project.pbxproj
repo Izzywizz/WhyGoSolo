@@ -14,7 +14,6 @@
 		430919421D8158A000EE9220 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 430919411D8158A000EE9220 /* car.png */; };
 		436E84B01D815FA700B23402 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 436E84AF1D815FA700B23402 /* flag.png */; };
 		436E84B31D816D8B00B23402 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E84B21D816D8B00B23402 /* PeopleViewController.m */; };
-		436E84B61D81718900B23402 /* OtherUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E84B51D81718900B23402 /* OtherUserProfileViewController.m */; };
 		438A14811D8011C2005E6AF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14801D8011C2005E6AF7 /* main.m */; };
 		438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14831D8011C2005E6AF7 /* AppDelegate.m */; };
 		438A14871D8011C2005E6AF7 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14861D8011C2005E6AF7 /* SignInViewController.m */; };
@@ -41,7 +40,7 @@
 		43A893641D8057AE00BEA24B /* HeaderEvents.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A8935E1D8057AE00BEA24B /* HeaderEvents.xib */; };
 		43A893681D8057FA00BEA24B /* EventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A893671D8057FA00BEA24B /* EventTableViewController.m */; };
 		43A8936A1D805D8700BEA24B /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A893691D805D8700BEA24B /* profile.png */; };
-		43B23D411D81ACF9006FDD0A /* OtherProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B23D401D81ACF9006FDD0A /* OtherProfileTableViewController.m */; };
+		43BE4C361D82A26700D6B26A /* OtherUserProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C351D82A26700D6B26A /* OtherUserProfileTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +66,6 @@
 		436E84AF1D815FA700B23402 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		436E84B11D816D8B00B23402 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
 		436E84B21D816D8B00B23402 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
-		436E84B41D81718900B23402 /* OtherUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherUserProfileViewController.h; sourceTree = "<group>"; };
-		436E84B51D81718900B23402 /* OtherUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherUserProfileViewController.m; sourceTree = "<group>"; };
 		438A147C1D8011C2005E6AF7 /* Why Go Solo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Why Go Solo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		438A14801D8011C2005E6AF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		438A14821D8011C2005E6AF7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,8 +102,8 @@
 		43A893661D8057FA00BEA24B /* EventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewController.h; sourceTree = "<group>"; };
 		43A893671D8057FA00BEA24B /* EventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewController.m; sourceTree = "<group>"; };
 		43A893691D805D8700BEA24B /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile.png; path = "Why Go Solo/profile.png"; sourceTree = "<group>"; };
-		43B23D3F1D81ACF9006FDD0A /* OtherProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherProfileTableViewController.h; sourceTree = "<group>"; };
-		43B23D401D81ACF9006FDD0A /* OtherProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherProfileTableViewController.m; sourceTree = "<group>"; };
+		43BE4C341D82A26700D6B26A /* OtherUserProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherUserProfileTableViewController.h; sourceTree = "<group>"; };
+		43BE4C351D82A26700D6B26A /* OtherUserProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherUserProfileTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,10 +149,8 @@
 		436E84B71D8171AB00B23402 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				436E84B41D81718900B23402 /* OtherUserProfileViewController.h */,
-				436E84B51D81718900B23402 /* OtherUserProfileViewController.m */,
-				43B23D3F1D81ACF9006FDD0A /* OtherProfileTableViewController.h */,
-				43B23D401D81ACF9006FDD0A /* OtherProfileTableViewController.m */,
+				43BE4C341D82A26700D6B26A /* OtherUserProfileTableViewController.h */,
+				43BE4C351D82A26700D6B26A /* OtherUserProfileTableViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -375,7 +370,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43B23D411D81ACF9006FDD0A /* OtherProfileTableViewController.m in Sources */,
 				438A14871D8011C2005E6AF7 /* SignInViewController.m in Sources */,
 				43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */,
 				43A893621D8057AE00BEA24B /* EventsTableViewCell.m in Sources */,
@@ -387,8 +381,8 @@
 				438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */,
 				436E84B31D816D8B00B23402 /* PeopleViewController.m in Sources */,
 				438A14811D8011C2005E6AF7 /* main.m in Sources */,
-				436E84B61D81718900B23402 /* OtherUserProfileViewController.m in Sources */,
 				4309193B1D8154F400EE9220 /* MapViewController.m in Sources */,
+				43BE4C361D82A26700D6B26A /* OtherUserProfileTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

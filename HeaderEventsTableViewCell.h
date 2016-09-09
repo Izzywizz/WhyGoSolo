@@ -11,6 +11,7 @@
 @interface HeaderEventsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *MyEventsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *filterButton;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfEventsLabel;
 
 
 typedef enum {

@@ -73,7 +73,7 @@ NSArray *sectionData;
 #pragma mark - Helper Functions
 
 -(void) moveToOtherUserProfile  {
-    [self performSegueWithIdentifier:@"GotToOtherUserProfile" sender:self];
+    [self performSegueWithIdentifier:@"GoToOtherUserProfile" sender:self];
 }
 
 -(void) setupDummyData  {
@@ -139,7 +139,7 @@ NSArray *sectionData;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"Bring up maps!: row: %ld, section: %ld", (long)indexPath.row, indexPath.section);
+    NSLog(@"Bring up maps!: row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
     [self performSegueWithIdentifier:@"GoToMap" sender:self];
 }
 
@@ -157,6 +157,9 @@ NSArray *sectionData;
     
     if ([sectionTitle  isEqual: @"My Events"]) {
         [cell.filterButton setHidden:YES];
+        [cell.numberOfEventsLabel setHidden:YES];
+    } else {
+        [cell.numberOfEventsLabel setHidden:YES];
     }
     cell.MyEventsLabel.text = sectionTitle;
     
