@@ -117,6 +117,7 @@
     
     if ([sectionTitle  isEqual: @"My Events"]) {
         [cell.filterButton setHidden:YES];
+        cell.numberOfEventsLabel.text = @"(2)"; //Needs to be set to count with real data
     }
     cell.MyEventsLabel.text = sectionTitle;
     
@@ -140,6 +141,7 @@
     if ([sectionTitle isEqualToString:@"My Events"]) {
         [cell viewWithTag:EDIT].alpha = 0;
     }
+    
     cell.nameLabel.text = eventName;
     //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
     
@@ -173,6 +175,9 @@
     NSLog(@"Block User Pressed");
 }
 
+- (IBAction)addFriendButton:(UIBarButtonItem *)sender {
+    NSLog(@"Friend Added");
+}
 
 
 #pragma mark - Scroll locking methods

@@ -13,7 +13,6 @@
 		4309193F1D81552200EE9220 /* PinLocationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4309193E1D81552200EE9220 /* PinLocationData.m */; };
 		430919421D8158A000EE9220 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 430919411D8158A000EE9220 /* car.png */; };
 		436E84B01D815FA700B23402 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 436E84AF1D815FA700B23402 /* flag.png */; };
-		436E84B31D816D8B00B23402 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E84B21D816D8B00B23402 /* PeopleViewController.m */; };
 		438A14811D8011C2005E6AF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14801D8011C2005E6AF7 /* main.m */; };
 		438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14831D8011C2005E6AF7 /* AppDelegate.m */; };
 		438A14871D8011C2005E6AF7 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14861D8011C2005E6AF7 /* SignInViewController.m */; };
@@ -41,6 +40,7 @@
 		43A893681D8057FA00BEA24B /* EventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A893671D8057FA00BEA24B /* EventTableViewController.m */; };
 		43A8936A1D805D8700BEA24B /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A893691D805D8700BEA24B /* profile.png */; };
 		43BE4C361D82A26700D6B26A /* OtherUserProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C351D82A26700D6B26A /* OtherUserProfileTableViewController.m */; };
+		43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,8 +64,6 @@
 		4309193E1D81552200EE9220 /* PinLocationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinLocationData.m; sourceTree = "<group>"; };
 		430919411D8158A000EE9220 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
 		436E84AF1D815FA700B23402 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
-		436E84B11D816D8B00B23402 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
-		436E84B21D816D8B00B23402 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
 		438A147C1D8011C2005E6AF7 /* Why Go Solo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Why Go Solo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		438A14801D8011C2005E6AF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		438A14821D8011C2005E6AF7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -104,6 +102,8 @@
 		43A893691D805D8700BEA24B /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile.png; path = "Why Go Solo/profile.png"; sourceTree = "<group>"; };
 		43BE4C341D82A26700D6B26A /* OtherUserProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherUserProfileTableViewController.h; sourceTree = "<group>"; };
 		43BE4C351D82A26700D6B26A /* OtherUserProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherUserProfileTableViewController.m; sourceTree = "<group>"; };
+		43BE4C371D82DCDF00D6B26A /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
+		43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,11 +185,11 @@
 				43A893651D8057B200BEA24B /* Table Cells */,
 				4309193C1D8154F900EE9220 /* Map View */,
 				438A14821D8011C2005E6AF7 /* AppDelegate.h */,
+				43BE4C371D82DCDF00D6B26A /* ProfileTableViewController.h */,
+				43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */,
 				438A14831D8011C2005E6AF7 /* AppDelegate.m */,
 				43A893661D8057FA00BEA24B /* EventTableViewController.h */,
 				43A893671D8057FA00BEA24B /* EventTableViewController.m */,
-				436E84B11D816D8B00B23402 /* PeopleViewController.h */,
-				436E84B21D816D8B00B23402 /* PeopleViewController.m */,
 				438A14851D8011C2005E6AF7 /* SignInViewController.h */,
 				438A14861D8011C2005E6AF7 /* SignInViewController.m */,
 				438A14881D8011C2005E6AF7 /* Main.storyboard */,
@@ -378,8 +378,8 @@
 				4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */,
 				4309193F1D81552200EE9220 /* PinLocationData.m in Sources */,
 				43A893681D8057FA00BEA24B /* EventTableViewController.m in Sources */,
+				43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */,
 				438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */,
-				436E84B31D816D8B00B23402 /* PeopleViewController.m in Sources */,
 				438A14811D8011C2005E6AF7 /* main.m in Sources */,
 				4309193B1D8154F400EE9220 /* MapViewController.m in Sources */,
 				43BE4C361D82A26700D6B26A /* OtherUserProfileTableViewController.m in Sources */,
