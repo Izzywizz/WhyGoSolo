@@ -52,6 +52,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"Selected");
 }
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath    {
+        cell.separatorInset = UIEdgeInsetsZero;
+        cell.preservesSuperviewLayoutMargins = false;
+        cell.layoutMargins = UIEdgeInsetsZero;
+}
 
 #pragma mark - Action Methods
 - (IBAction)deleteButtonPressed:(UIButton *)sender {
