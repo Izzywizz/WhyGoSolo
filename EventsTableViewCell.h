@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventInviteeCount;
 @property (weak, nonatomic) IBOutlet UIButton *joinButton;
 @property (weak, nonatomic) IBOutlet UIView *viewLayer;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *messageImage;
+@property (weak, nonatomic) IBOutlet UIButton *editJoinButton;
 
 typedef enum {
     EDIT = 1,

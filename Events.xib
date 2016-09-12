@@ -23,8 +23,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-mv-1cn">
                         <rect key="frame" x="12" y="14" width="421" height="219.5"/>
                         <subviews>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVY-XN-eK4" userLabel="Profile Button">
-                                <rect key="frame" x="15" y="0.0" width="353" height="47"/>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVY-XN-eK4" userLabel="Profile Button">
+                                <rect key="frame" x="15" y="0.0" width="353" height="31"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="TwP-Ft-8Qn"/>
@@ -83,7 +83,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grance Central, Skelhorne St, Liverpool" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="FXw-a4-BaV" userLabel="Address">
-                                <rect key="frame" x="53" y="47" width="315" height="20.5"/>
+                                <rect key="frame" x="53" y="48" width="315" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.98431372549999996" green="0.12549019610000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -99,7 +99,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" placeholderIntrinsicWidth="391" placeholderIntrinsicHeight="78.5" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Oi-In-Wv7" userLabel="Event Text">
-                                <rect key="frame" x="15" y="77.5" width="391" height="78.5"/>
+                                <rect key="frame" x="15" y="65" width="391" height="94.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="78.5" id="Ij5-Lk-MrF"/>
@@ -118,23 +118,6 @@
                                     </mask>
                                 </variation>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat-icon-18-18" translatesAutoresizingMaskIntoConstraints="NO" id="dMr-mC-bzt" userLabel="Message Icon">
-                                <rect key="frame" x="15" y="174" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="JYT-yH-XZf"/>
-                                    <constraint firstAttribute="width" secondItem="dMr-mC-bzt" secondAttribute="height" multiplier="1:1" id="N1j-af-6bD"/>
-                                    <constraint firstAttribute="width" constant="22" id="O8U-rd-hKf"/>
-                                    <constraint firstAttribute="width" constant="20" id="i8v-bf-l4H"/>
-                                    <constraint firstAttribute="height" constant="20" id="q27-hC-XcC"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="JYT-yH-XZf"/>
-                                        <exclude reference="N1j-af-6bD"/>
-                                        <exclude reference="O8U-rd-hKf"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user-icon-18-18" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Uy-I1u" userLabel="Invitee Icon">
                                 <rect key="frame" x="75.5" y="172" width="20" height="20"/>
                                 <constraints>
@@ -186,6 +169,23 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="chat-icon-18-18" translatesAutoresizingMaskIntoConstraints="NO" id="dMr-mC-bzt" userLabel="Message Icon">
+                                <rect key="frame" x="15" y="173" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="JYT-yH-XZf"/>
+                                    <constraint firstAttribute="width" secondItem="dMr-mC-bzt" secondAttribute="height" multiplier="1:1" id="N1j-af-6bD"/>
+                                    <constraint firstAttribute="width" constant="22" id="O8U-rd-hKf"/>
+                                    <constraint firstAttribute="width" constant="20" id="i8v-bf-l4H"/>
+                                    <constraint firstAttribute="height" constant="20" id="q27-hC-XcC"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="JYT-yH-XZf"/>
+                                        <exclude reference="N1j-af-6bD"/>
+                                        <exclude reference="O8U-rd-hKf"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -198,19 +198,19 @@
                             <constraint firstAttribute="bottom" secondItem="rdB-0n-bkb" secondAttribute="bottom" constant="12.5" id="54z-qo-3sn"/>
                             <constraint firstAttribute="trailing" secondItem="3Oi-In-Wv7" secondAttribute="trailing" constant="15" id="6Sm-g8-6cl"/>
                             <constraint firstItem="dMr-mC-bzt" firstAttribute="leading" secondItem="2Pf-mv-1cn" secondAttribute="leading" constant="15" id="8sM-vZ-9Sh"/>
-                            <constraint firstItem="3Oi-In-Wv7" firstAttribute="top" secondItem="FXw-a4-BaV" secondAttribute="bottom" constant="10" id="9AW-6L-I1N"/>
+                            <constraint firstItem="3Oi-In-Wv7" firstAttribute="top" secondItem="FXw-a4-BaV" secondAttribute="bottom" constant="-3.5" id="9AW-6L-I1N"/>
                             <constraint firstItem="FXw-a4-BaV" firstAttribute="leading" secondItem="2Pf-mv-1cn" secondAttribute="leading" constant="53" id="9CC-8O-NYC"/>
                             <constraint firstItem="3Oi-In-Wv7" firstAttribute="leading" secondItem="2Pf-mv-1cn" secondAttribute="leading" constant="15" id="9Lc-lj-pM7"/>
                             <constraint firstItem="QhB-Uy-I1u" firstAttribute="leading" secondItem="H2f-bt-vGd" secondAttribute="trailing" constant="21.5" id="AHu-mi-BdM"/>
                             <constraint firstAttribute="bottom" secondItem="3Oi-In-Wv7" secondAttribute="bottom" constant="50.5" id="AL6-75-la9"/>
                             <constraint firstItem="rdB-0n-bkb" firstAttribute="leading" secondItem="QhB-Uy-I1u" secondAttribute="trailing" constant="3" id="BxB-OQ-hmx"/>
-                            <constraint firstItem="FXw-a4-BaV" firstAttribute="top" secondItem="NVY-XN-eK4" secondAttribute="bottom" id="DY0-c8-EeX"/>
+                            <constraint firstItem="FXw-a4-BaV" firstAttribute="top" secondItem="NVY-XN-eK4" secondAttribute="bottom" constant="17" id="DY0-c8-EeX"/>
                             <constraint firstItem="Hmb-ch-Tf3" firstAttribute="leading" secondItem="Cgu-GY-CmA" secondAttribute="trailing" constant="6" id="DeT-PH-Jjq"/>
                             <constraint firstAttribute="bottom" secondItem="DdD-gT-2wJ" secondAttribute="bottom" constant="21.5" id="GZO-ji-lp2"/>
                             <constraint firstItem="Hmb-ch-Tf3" firstAttribute="top" secondItem="2Pf-mv-1cn" secondAttribute="top" constant="15" id="HBp-Lr-vkz"/>
                             <constraint firstItem="dMr-mC-bzt" firstAttribute="leading" secondItem="2Pf-mv-1cn" secondAttribute="leading" constant="15" id="I0v-4C-IU8"/>
                             <constraint firstItem="3Oi-In-Wv7" firstAttribute="leading" secondItem="X31-ZH-LSy" secondAttribute="leading" id="ICH-dF-MdK"/>
-                            <constraint firstItem="FXw-a4-BaV" firstAttribute="top" secondItem="Cgu-GY-CmA" secondAttribute="bottom" constant="1" id="JIv-FK-gce"/>
+                            <constraint firstItem="FXw-a4-BaV" firstAttribute="top" secondItem="Cgu-GY-CmA" secondAttribute="bottom" constant="2" id="JIv-FK-gce"/>
                             <constraint firstItem="Cgu-GY-CmA" firstAttribute="top" secondItem="2Pf-mv-1cn" secondAttribute="top" constant="15" id="JQG-ob-Xy8"/>
                             <constraint firstAttribute="trailing" secondItem="54j-bB-pVw" secondAttribute="trailing" constant="15" id="M96-Lc-3eA"/>
                             <constraint firstItem="QhB-Uy-I1u" firstAttribute="leading" secondItem="H2f-bt-vGd" secondAttribute="trailing" constant="8" id="MEx-TP-dz3"/>
@@ -241,21 +241,22 @@
                             <constraint firstAttribute="trailing" secondItem="DdD-gT-2wJ" secondAttribute="trailing" constant="15" id="qWY-tv-UZn"/>
                             <constraint firstAttribute="bottom" secondItem="H2f-bt-vGd" secondAttribute="bottom" constant="12" id="srC-pv-zK0"/>
                             <constraint firstItem="rdB-0n-bkb" firstAttribute="centerY" secondItem="QhB-Uy-I1u" secondAttribute="centerY" id="u4g-a7-ZV8"/>
-                            <constraint firstItem="DdD-gT-2wJ" firstAttribute="top" secondItem="3Oi-In-Wv7" secondAttribute="bottom" constant="12" id="vkT-Eb-8MM"/>
+                            <constraint firstItem="DdD-gT-2wJ" firstAttribute="top" secondItem="3Oi-In-Wv7" secondAttribute="bottom" constant="8.5" id="vkT-Eb-8MM"/>
                             <constraint firstItem="X31-ZH-LSy" firstAttribute="top" secondItem="2Pf-mv-1cn" secondAttribute="top" constant="15" id="xn0-yr-M6d"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="myk-XJ-mrj"/>
                                 <exclude reference="XcL-Dr-PpZ"/>
-                                <exclude reference="1St-RD-K0H"/>
-                                <exclude reference="PLD-8q-hHP"/>
-                                <exclude reference="Tef-Rf-esx"/>
                                 <exclude reference="AL6-75-la9"/>
                                 <exclude reference="ICH-dF-MdK"/>
                                 <exclude reference="Zq6-5U-Of9"/>
                                 <exclude reference="fcn-bx-TCw"/>
                                 <exclude reference="qTZ-2S-YWT"/>
+                                <exclude reference="1St-RD-K0H"/>
+                                <exclude reference="DY0-c8-EeX"/>
+                                <exclude reference="PLD-8q-hHP"/>
+                                <exclude reference="Tef-Rf-esx"/>
                                 <exclude reference="8sM-vZ-9Sh"/>
                                 <exclude reference="RfY-lm-Vj3"/>
                                 <exclude reference="QMu-l0-ued"/>
@@ -283,14 +284,16 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="editJoinButton" destination="DdD-gT-2wJ" id="iIG-La-cph"/>
                 <outlet property="eventAddressLabel" destination="FXw-a4-BaV" id="w1h-RP-X8K"/>
                 <outlet property="eventDescriptionText" destination="3Oi-In-Wv7" id="F87-Aj-pse"/>
                 <outlet property="eventEmoticonLabel" destination="Hmb-ch-Tf3" id="VRS-MQ-s63"/>
                 <outlet property="eventInviteeCount" destination="rdB-0n-bkb" id="7WO-Yt-ywX"/>
                 <outlet property="eventMessageCount" destination="H2f-bt-vGd" id="atc-rS-4hE"/>
-                <outlet property="joinButton" destination="54j-bB-pVw" id="MTU-TF-tpU"/>
+                <outlet property="joinButton" destination="54j-bB-pVw" id="f53-eO-00H"/>
+                <outlet property="messageImage" destination="dMr-mC-bzt" id="nlr-6g-fHF"/>
                 <outlet property="nameLabel" destination="Cgu-GY-CmA" id="IF0-P9-tuP"/>
-                <outlet property="profileImage" destination="X31-ZH-LSy" id="cGR-hP-9AI"/>
+                <outlet property="profileImage" destination="QhB-Uy-I1u" id="yf8-A5-TUw"/>
                 <outlet property="viewLayer" destination="2Pf-mv-1cn" id="6JI-sU-O1X"/>
             </connections>
             <point key="canvasLocation" x="-279.5" y="254"/>

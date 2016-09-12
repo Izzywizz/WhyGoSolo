@@ -42,6 +42,7 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -298,18 +299,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="Cxb-JC-5v1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="Cxb-JC-5v1" userLabel="Colour Bar">
                                 <rect key="frame" x="0.0" y="64" width="601" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="eCn-1L-qxR"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFi-W1-AX3">
+                                <rect key="frame" x="0.0" y="67" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PI6-EC-pTv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                <state key="normal" title="FRIENDS">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="friendsButtonPressed:" destination="ixa-fr-gil" eventType="touchUpInside" id="ap9-Ql-4fr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OfZ-Wj-fZs">
+                                <rect key="frame" x="300" y="67" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="99d-dc-boR"/>
+                                </constraints>
+                                <state key="normal" title="EVERYONE">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="everyoneButtonPressed:" destination="ixa-fr-gil" eventType="touchUpInside" id="NzE-Vs-WVc"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="10" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XhN-Bu-8Si">
-                                <rect key="frame" x="1" y="177" width="600" height="423"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="1" y="117" width="600" height="439"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="peopleCell" rowHeight="35" id="Wib-Pg-yBA">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="35"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wib-Pg-yBA" id="LAI-EQ-Deb">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="34.5"/>
@@ -325,12 +351,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OfZ-Wj-fZs" secondAttribute="trailing" id="3pN-pL-zeI"/>
                             <constraint firstAttribute="trailing" secondItem="XhN-Bu-8Si" secondAttribute="trailing" constant="-1" id="746-1Y-x9u"/>
+                            <constraint firstItem="OfZ-Wj-fZs" firstAttribute="leading" secondItem="QFi-W1-AX3" secondAttribute="trailing" id="EaQ-f7-Ndq"/>
                             <constraint firstItem="Cxb-JC-5v1" firstAttribute="top" secondItem="P30-bU-4FJ" secondAttribute="bottom" id="Fo6-ig-zfo"/>
-                            <constraint firstItem="bT4-JB-QAP" firstAttribute="top" secondItem="XhN-Bu-8Si" secondAttribute="bottom" constant="-44" id="NuA-l0-d5d"/>
+                            <constraint firstItem="OfZ-Wj-fZs" firstAttribute="top" secondItem="Cxb-JC-5v1" secondAttribute="bottom" id="LL2-lu-2Ny"/>
+                            <constraint firstItem="bT4-JB-QAP" firstAttribute="top" secondItem="XhN-Bu-8Si" secondAttribute="bottom" id="NuA-l0-d5d"/>
                             <constraint firstItem="Cxb-JC-5v1" firstAttribute="leading" secondItem="wDp-rM-2Rg" secondAttribute="leading" id="OD1-GA-DhX"/>
+                            <constraint firstItem="OfZ-Wj-fZs" firstAttribute="height" secondItem="QFi-W1-AX3" secondAttribute="height" id="WmA-W3-dAl"/>
+                            <constraint firstItem="XhN-Bu-8Si" firstAttribute="top" secondItem="QFi-W1-AX3" secondAttribute="bottom" id="ZUD-fP-RqZ"/>
+                            <constraint firstItem="XhN-Bu-8Si" firstAttribute="top" secondItem="OfZ-Wj-fZs" secondAttribute="bottom" id="cm5-Xw-z2z"/>
                             <constraint firstItem="XhN-Bu-8Si" firstAttribute="leading" secondItem="wDp-rM-2Rg" secondAttribute="leading" constant="1" id="eyi-OJ-7nd"/>
-                            <constraint firstItem="XhN-Bu-8Si" firstAttribute="top" secondItem="P30-bU-4FJ" secondAttribute="bottom" constant="113" id="lTL-eX-oO5"/>
+                            <constraint firstItem="QFi-W1-AX3" firstAttribute="top" secondItem="Cxb-JC-5v1" secondAttribute="bottom" id="jcw-un-hHE"/>
+                            <constraint firstItem="QFi-W1-AX3" firstAttribute="leading" secondItem="wDp-rM-2Rg" secondAttribute="leading" id="oDD-AZ-BS0"/>
+                            <constraint firstItem="OfZ-Wj-fZs" firstAttribute="width" secondItem="QFi-W1-AX3" secondAttribute="width" id="oLZ-xI-36i"/>
                             <constraint firstAttribute="trailing" secondItem="Cxb-JC-5v1" secondAttribute="trailing" constant="-1" id="zGC-J7-p2x"/>
                         </constraints>
                     </view>
@@ -343,12 +377,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="everyoneButton" destination="OfZ-Wj-fZs" id="VX8-km-cQU"/>
+                        <outlet property="friendsButton" destination="QFi-W1-AX3" id="ECq-yn-b21"/>
                         <outlet property="tableView" destination="XhN-Bu-8Si" id="6sr-Kl-0I9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="92P-u5-lab" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2241" y="3004"/>
+            <point key="canvasLocation" x="2246" y="3041"/>
         </scene>
         <!--Profile-->
         <scene sceneID="MEV-k8-iUQ">
@@ -393,7 +429,7 @@
                                             <constraint firstAttribute="height" constant="21" id="3sn-nC-T5k"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAD-O6-ipd" userLabel="Line One">
@@ -432,7 +468,7 @@
                                             <constraint firstAttribute="width" constant="87" id="m87-n8-Y6H"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACCOMODATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRb-Ms-6WH">
@@ -442,7 +478,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="109" id="owy-Yg-MPF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -454,7 +490,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liverpool University" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sq-gI-1Oj">
                                         <rect key="frame" x="8" y="104" width="584" height="18"/>
                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agnes Jones House" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGp-2k-a0d">
@@ -463,7 +499,7 @@
                                             <constraint firstAttribute="width" constant="584" id="AnH-dT-KdE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -750,7 +786,7 @@
                                                         <constraint firstAttribute="width" constant="574" id="cbE-al-6Gx"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -802,7 +838,7 @@
                                                         <constraint firstAttribute="width" constant="574" id="lGk-Oa-RgQ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -854,7 +890,7 @@
                                                         <constraint firstAttribute="width" constant="574" id="ZXk-ye-Xyl"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -906,7 +942,7 @@
                                                         <constraint firstAttribute="width" constant="574" id="QmJ-xD-AA5"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1181,7 +1217,7 @@
                                                         <constraint firstAttribute="width" constant="574" id="n4c-Go-i7U"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1233,7 +1269,7 @@
                                                         <constraint firstAttribute="width" constant="574" id="Pyv-wn-RWT"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1286,7 +1322,7 @@
                                                         <constraint firstAttribute="width" constant="574" id="w74-br-oI3"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1338,7 +1374,7 @@
                                                         <constraint firstAttribute="width" constant="574" id="BFm-vK-5Ci"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1390,7 +1426,7 @@
                                                         <constraint firstAttribute="width" constant="574" id="maX-qc-ffU"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1442,7 +1478,7 @@
                                                         <constraint firstAttribute="width" constant="574" id="ZB1-li-bTH"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

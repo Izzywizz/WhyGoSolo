@@ -39,6 +39,8 @@
 		43A893641D8057AE00BEA24B /* HeaderEvents.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A8935E1D8057AE00BEA24B /* HeaderEvents.xib */; };
 		43A893681D8057FA00BEA24B /* EventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A893671D8057FA00BEA24B /* EventTableViewController.m */; };
 		43A8936A1D805D8700BEA24B /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A893691D805D8700BEA24B /* profile.png */; };
+		43B4009C1D86BDE70094DFB6 /* PeopleEvent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B4009B1D86BDE70094DFB6 /* PeopleEvent.xib */; };
+		43B4009F1D86C0F20094DFB6 /* PeopleEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B4009E1D86C0F20094DFB6 /* PeopleEventTableViewCell.m */; };
 		43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BD7BB21D86993B00DDA384 /* PeopleViewController.m */; };
 		43BE4C361D82A26700D6B26A /* OtherUserProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C351D82A26700D6B26A /* OtherUserProfileTableViewController.m */; };
 		43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */; };
@@ -102,6 +104,9 @@
 		43A893661D8057FA00BEA24B /* EventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewController.h; sourceTree = "<group>"; };
 		43A893671D8057FA00BEA24B /* EventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewController.m; sourceTree = "<group>"; };
 		43A893691D805D8700BEA24B /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile.png; path = "Why Go Solo/profile.png"; sourceTree = "<group>"; };
+		43B4009B1D86BDE70094DFB6 /* PeopleEvent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleEvent.xib; sourceTree = "<group>"; };
+		43B4009D1D86C0F20094DFB6 /* PeopleEventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleEventTableViewCell.h; sourceTree = "<group>"; };
+		43B4009E1D86C0F20094DFB6 /* PeopleEventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleEventTableViewCell.m; sourceTree = "<group>"; };
 		43BD7BB11D86993B00DDA384 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeopleViewController.h; path = ../PeopleViewController.h; sourceTree = "<group>"; };
 		43BD7BB21D86993B00DDA384 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeopleViewController.m; path = ../PeopleViewController.m; sourceTree = "<group>"; };
 		43BE4C341D82A26700D6B26A /* OtherUserProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherUserProfileTableViewController.h; sourceTree = "<group>"; };
@@ -252,6 +257,9 @@
 				43A893561D8057AE00BEA24B /* Events.xib */,
 				43A8935B1D8057AE00BEA24B /* EventsTableViewCell.h */,
 				43A8935C1D8057AE00BEA24B /* EventsTableViewCell.m */,
+				43B4009B1D86BDE70094DFB6 /* PeopleEvent.xib */,
+				43B4009D1D86C0F20094DFB6 /* PeopleEventTableViewCell.h */,
+				43B4009E1D86C0F20094DFB6 /* PeopleEventTableViewCell.m */,
 				43A8935D1D8057AE00BEA24B /* FooterEvents.xib */,
 				43A893571D8057AE00BEA24B /* FooterEventsTableViewCell.h */,
 				43A893581D8057AE00BEA24B /* FooterEventsTableViewCell.m */,
@@ -355,6 +363,7 @@
 				438A148F1D8011C2005E6AF7 /* LaunchScreen.storyboard in Resources */,
 				438A14B41D801E0F005E6AF7 /* Lato-BlackItalic.ttf in Resources */,
 				438A148C1D8011C2005E6AF7 /* Assets.xcassets in Resources */,
+				43B4009C1D86BDE70094DFB6 /* PeopleEvent.xib in Resources */,
 				438A14BB1D801E0F005E6AF7 /* Lato-LightItalic.ttf in Resources */,
 				438A14B81D801E0F005E6AF7 /* Lato-HairlineItalic.ttf in Resources */,
 				438A14B61D801E0F005E6AF7 /* Lato-BoldItalic.ttf in Resources */,
@@ -395,6 +404,7 @@
 				438A14811D8011C2005E6AF7 /* main.m in Sources */,
 				4309193B1D8154F400EE9220 /* MapViewController.m in Sources */,
 				43BE4C361D82A26700D6B26A /* OtherUserProfileTableViewController.m in Sources */,
+				43B4009F1D86C0F20094DFB6 /* PeopleEventTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

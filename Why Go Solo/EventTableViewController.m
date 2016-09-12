@@ -25,7 +25,6 @@
 @implementation EventTableViewController
 NSDictionary *tableData;
 NSArray *sectionTitles;
-NSArray *sectionData;
 
 #pragma mark - UI View Methods
 - (void)viewDidLoad {
@@ -33,14 +32,7 @@ NSArray *sectionData;
     [self setupDummyData];
     [self setupTable];
     [self ListenOutProfileBeingPressed];
-    
 
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    //     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 
@@ -197,6 +189,7 @@ NSArray *sectionData;
         [cell viewWithTag:EDIT].alpha = 0; // Edit is hidden
     }
     
+    cell.timeLabel.hidden = YES;
     cell.nameLabel.text = eventName;
     //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
     

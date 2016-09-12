@@ -10,5 +10,7 @@
 
 @interface PeopleViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *friendsButton;
+@property (weak, nonatomic) IBOutlet UIButton *everyoneButton;
 
 @end
