@@ -55,5 +55,8 @@
 - (IBAction)editActioin:(id)sender {
     NSLog(@"Edit Pressed");
 }
+- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

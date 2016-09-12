@@ -10,6 +10,5 @@
 
 @interface EditProfileTableViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UITableViewCell *studentAccommdationCell;
-@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @end

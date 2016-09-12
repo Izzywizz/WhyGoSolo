@@ -13,6 +13,7 @@
 		4309193F1D81552200EE9220 /* PinLocationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4309193E1D81552200EE9220 /* PinLocationData.m */; };
 		430919421D8158A000EE9220 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 430919411D8158A000EE9220 /* car.png */; };
 		436E84B01D815FA700B23402 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 436E84AF1D815FA700B23402 /* flag.png */; };
+		438188311D86EFCB009591F4 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438188301D86EFCB009591F4 /* ContainerViewController.m */; };
 		438A14811D8011C2005E6AF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14801D8011C2005E6AF7 /* main.m */; };
 		438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14831D8011C2005E6AF7 /* AppDelegate.m */; };
 		438A14871D8011C2005E6AF7 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14861D8011C2005E6AF7 /* SignInViewController.m */; };
@@ -68,6 +69,8 @@
 		4309193E1D81552200EE9220 /* PinLocationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinLocationData.m; sourceTree = "<group>"; };
 		430919411D8158A000EE9220 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
 		436E84AF1D815FA700B23402 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
+		4381882F1D86EFCB009591F4 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
+		438188301D86EFCB009591F4 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		438A147C1D8011C2005E6AF7 /* Why Go Solo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Why Go Solo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		438A14801D8011C2005E6AF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		438A14821D8011C2005E6AF7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 				43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */,
 				43BE4C3A1D82F91400D6B26A /* EditProfileTableViewController.h */,
 				43BE4C3B1D82F91400D6B26A /* EditProfileTableViewController.m */,
+				4381882F1D86EFCB009591F4 /* ContainerViewController.h */,
+				438188301D86EFCB009591F4 /* ContainerViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 				438A14871D8011C2005E6AF7 /* SignInViewController.m in Sources */,
 				43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */,
 				43A893621D8057AE00BEA24B /* EventsTableViewCell.m in Sources */,
+				438188311D86EFCB009591F4 /* ContainerViewController.m in Sources */,
 				43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */,
 				430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */,
 				43BE4C3C1D82F91400D6B26A /* EditProfileTableViewController.m in Sources */,

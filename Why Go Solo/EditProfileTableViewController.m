@@ -20,7 +20,6 @@
     [super viewDidLoad];
     NSLog(@"Edit view loaded");
     _studentAccommdationCell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"right-arrow-20-20"]];
-    _deleteButton.layer.cornerRadius = 5;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
