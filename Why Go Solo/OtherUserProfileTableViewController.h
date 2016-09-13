@@ -10,5 +10,11 @@
 
 @interface OtherUserProfileTableViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *overlayView;
+@property (weak, nonatomic) IBOutlet UIView *internalView;
+@property (weak, nonatomic) IBOutlet UILabel *reportName;
+@property (weak, nonatomic) IBOutlet UIView *userReportedView;
+@property (weak, nonatomic) IBOutlet UIButton *okReportedUserButton;
+@property (weak, nonatomic) IBOutlet UILabel *userHasBeenReportedLabel;
 
 @end

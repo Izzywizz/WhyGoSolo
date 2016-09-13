@@ -31,8 +31,16 @@
     [super viewDidLoad];
     [self setupDummyData];
     [self setupTable];
+    [self setupUserReportingName:@"Andy Jones"];
+    [self internalViewSetup];
+    
     _accomodationLabel.text = @"The Killers";
 
+}
+
+-(void) viewWillAppear:(BOOL)animated   {
+    [self reportOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,6 +49,11 @@
 }
 
 #pragma mark - Helper Functions
+
+-(void) internalViewSetup   {
+    _internalView.layer.cornerRadius = 5;
+    _userReportedView.layer.cornerRadius = 5;
+}
 
 -(void) setupDummyData  {
     //Dummy Data
@@ -51,11 +64,30 @@
     _sectionTitles = [[_tableData allKeys] sortedArrayUsingDescriptors:decendingOrder];
 }
 
+-(void) setupUserReportingName: (NSString *) name  {
+    _reportName.text = [NSString stringWithFormat:@"Are you sure report you want to report %@", name];
+    _userHasBeenReportedLabel.text = [NSString stringWithFormat:@"Are you sure report you want to report %@", name];
+}
+
 -(void) setupTable  {
     self.tableView.allowsSelectionDuringEditing=YES;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 140;
     //    self.tableView.allowsSelection = NO;
+}
+
+-(void)reportOverlayAlpha:(int)a animationDuration:(float)duration
+{
+    [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        for (id x in _overlayView.subviews)
+        {
+            if ([x class] == [UIView class])
+            {
+                [(UIView*)x setAlpha:a];
+            }
+        }
+        _overlayView.alpha = a;
+    } completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -165,11 +197,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
 - (IBAction)reportUserPressed:(UIButton *)sender {
     NSLog(@"Report User button  pressed");
+    [self reportOverlayAlpha:1 animationDuration:0.2f];
+    [_userReportedView viewWithTag:0].alpha = 0;
 }
-
 
 - (IBAction)blockUserPressed:(UIButton *)sender {
     NSLog(@"Block User Pressed");
@@ -179,10 +211,23 @@
     NSLog(@"Friend Added");
 }
 
+- (IBAction)noButtonPressed:(UIButton *)sender {
+    [self reportOverlayAlpha:0 animationDuration:0];
+}
 
+- (IBAction)yesButtonPressed:(UIButton *)sender {
+    NSLog(@"Reporting User...");
+//    [self handleUserReportedView];
+    [_userReportedView viewWithTag:0].alpha = 1;
+}
+
+- (IBAction)OkReportedButtonPressed:(UIButton *)sender {
+    NSLog(@"Ok User has been Reported");
+    [self reportOverlayAlpha:0 animationDuration:0];
+}
 #pragma mark - Scroll locking methods
 
-/** SO allows masking of the*/
+/** SO allows masking of the top of the table*/
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     for (UITableViewCell *cell in self.tableView.visibleCells) {
         CGFloat hiddenFrameHeight = scrollView.contentOffset.y + self.navigationController.navigationBar.frame.size.height + 40 - cell.frame.origin.y;

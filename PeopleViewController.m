@@ -174,7 +174,6 @@
         [_everyoneButton setBackgroundColor:[UIColor grayColor]];
         _isPeopleSelected = NO;
     }
-
 }
 
 - (IBAction)everyoneButtonPressed:(UIButton *)sender {
@@ -186,8 +185,5 @@
         _isPeopleSelected = YES;
     }
 }
-
-
-
 
 @end

@@ -23,9 +23,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-mv-1cn">
                         <rect key="frame" x="12" y="14" width="421" height="219.5"/>
                         <subviews>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVY-XN-eK4" userLabel="Profile Button">
-                                <rect key="frame" x="15" y="0.0" width="353" height="31"/>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVY-XN-eK4" userLabel="Profile Button">
+                                <rect key="frame" x="15" y="0.0" width="353" height="47"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="SSS-ln-rsa"/>
+                                </constraints>
                                 <connections>
                                     <action selector="buttonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="TwP-Ft-8Qn"/>
                                 </connections>
