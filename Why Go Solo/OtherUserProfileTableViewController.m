@@ -16,6 +16,7 @@
 @property NSDictionary *tableData;
 @property NSArray *sectionTitles;
 @property NSArray *sectionData;
+@property BOOL isUserBlocked;
 
 //TextProperties
 
@@ -35,12 +36,14 @@
     [self internalViewSetup];
     
     _accomodationLabel.text = @"The Killers";
-
 }
 
 -(void) viewWillAppear:(BOOL)animated   {
     [self reportOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
+    [_unBlockButton viewWithTag:0].alpha = 0;
+    _unBlockButton.layer.cornerRadius = 3;
     
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,6 +93,7 @@
     } completion:nil];
 }
 
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section    {
@@ -113,6 +117,7 @@
 
 /** Footer view setup */
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+
     return [self footerCellAtIndex:section];
 }
 
@@ -146,6 +151,10 @@
     HeaderEventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:resuseID];
     
     NSString *sectionTitle = [_sectionTitles objectAtIndex:section];
+
+    if (_isUserBlocked) {
+        cell.numberOfEventsLabel.text = @"(0)";
+    }
     
     if ([sectionTitle  isEqual: @"My Events"]) {
         [cell.filterButton setHidden:YES];
@@ -174,6 +183,13 @@
         [cell viewWithTag:EDIT].alpha = 0;
     }
     
+    if (_isUserBlocked) {
+        cell.hidden = YES;
+        [cell setUserInteractionEnabled:NO];
+        [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+        _tableView.scrollEnabled = NO;
+    }
+
     cell.nameLabel.text = eventName;
     //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
     
@@ -205,7 +221,19 @@
 
 - (IBAction)blockUserPressed:(UIButton *)sender {
     NSLog(@"Block User Pressed");
+    [_unBlockButton viewWithTag:0].alpha = 1;
+    _isUserBlocked = YES;
+    [_tableView reloadData];
 }
+
+- (IBAction)unblockButtonPressed:(UIButton *)sender {
+    NSLog(@"Unblock User Pressed");
+    [_unBlockButton viewWithTag:0].alpha = 0;
+    _isUserBlocked = NO;
+    _tableView.scrollEnabled = YES;
+    [_tableView reloadData];
+}
+
 
 - (IBAction)addFriendButton:(UIBarButtonItem *)sender {
     NSLog(@"Friend Added");
@@ -217,8 +245,8 @@
 
 - (IBAction)yesButtonPressed:(UIButton *)sender {
     NSLog(@"Reporting User...");
-//    [self handleUserReportedView];
-    [_userReportedView viewWithTag:0].alpha = 1;
+    NSIndexSet *headers = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.tableView numberOfSections])];
+    [self.tableView reloadSections:headers withRowAnimation:UITableViewRowAnimationAutomatic];    [_userReportedView viewWithTag:0].alpha = 1;
 }
 
 - (IBAction)OkReportedButtonPressed:(UIButton *)sender {

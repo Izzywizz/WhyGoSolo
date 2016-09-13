@@ -57,6 +57,7 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -821,7 +822,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IyE-PR-z2k">
-                                <rect key="frame" x="0.0" y="187" width="600" height="264"/>
+                                <rect key="frame" x="0.0" y="259" width="600" height="192"/>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="203" id="tzA-cb-V0d"/>
@@ -836,8 +837,8 @@
                                     <outlet property="delegate" destination="rdM-Mk-tqG" id="xtO-XY-jlC"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sYK-FF-MLJ" userLabel="Background View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="188"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sYK-FF-MLJ" userLabel="Background View">
+                                <rect key="frame" x="0.0" y="64" width="600" height="187"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="Tjl-0D-aVX" userLabel="Profile Image">
                                         <rect key="frame" x="8" y="8" width="60" height="61"/>
@@ -991,7 +992,7 @@
                                     <action selector="reportUserPressed:" destination="rdM-Mk-tqG" eventType="touchUpInside" id="PcP-Mb-NLl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1i-Du-Fry">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1i-Du-Fry">
                                 <rect key="frame" x="175" y="492" width="250" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="68C-t8-A1h"/>
@@ -999,10 +1000,26 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <state key="normal" title="Block User" backgroundImage="gradient-button-250-50">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="blockUserPressed:" destination="rdM-Mk-tqG" eventType="touchUpInside" id="QSP-VW-mno"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sb-Le-5ML" userLabel="UnBlock User">
+                                <rect key="frame" x="175" y="492" width="250" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="29A-DY-rgh"/>
+                                    <constraint firstAttribute="height" constant="50" id="jSc-c3-R0U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                <state key="normal" title="Unblock User">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="blockUserPressed:" destination="rdM-Mk-tqG" eventType="touchUpInside" id="6EV-xv-47G"/>
+                                    <action selector="unblockButtonPressed:" destination="rdM-Mk-tqG" eventType="touchUpInside" id="fQZ-co-H3n"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsI-2z-bnu" userLabel="Overlay View">
@@ -1181,7 +1198,7 @@
                         <constraints>
                             <constraint firstItem="IyE-PR-z2k" firstAttribute="leading" secondItem="sYK-FF-MLJ" secondAttribute="leading" id="0Fk-47-a4l"/>
                             <constraint firstItem="IyE-PR-z2k" firstAttribute="top" secondItem="sYK-FF-MLJ" secondAttribute="bottom" constant="6" id="2fu-47-tPQ"/>
-                            <constraint firstItem="IyE-PR-z2k" firstAttribute="top" secondItem="sYK-FF-MLJ" secondAttribute="bottom" constant="-64" id="3Ob-8L-RB0"/>
+                            <constraint firstItem="IyE-PR-z2k" firstAttribute="top" secondItem="sYK-FF-MLJ" secondAttribute="bottom" constant="8" id="3Ob-8L-RB0"/>
                             <constraint firstItem="jsI-2z-bnu" firstAttribute="top" secondItem="BSW-rL-QdN" secondAttribute="top" id="4SE-Zr-r7r"/>
                             <constraint firstAttribute="bottom" secondItem="jsI-2z-bnu" secondAttribute="bottom" id="E2q-LH-ycP"/>
                             <constraint firstItem="sYK-FF-MLJ" firstAttribute="top" secondItem="a2G-lS-k6z" secondAttribute="bottom" id="E82-ml-K66"/>
@@ -1193,6 +1210,7 @@
                             <constraint firstItem="NqC-gr-Qdh" firstAttribute="top" secondItem="A1i-Du-Fry" secondAttribute="bottom" constant="14" id="OkO-tB-TiP"/>
                             <constraint firstItem="sYK-FF-MLJ" firstAttribute="top" secondItem="IyE-PR-z2k" secondAttribute="top" id="S9L-pb-3yM"/>
                             <constraint firstItem="IyE-PR-z2k" firstAttribute="centerX" secondItem="jII-zQ-fZ3" secondAttribute="centerX" id="WGp-dX-Ugb"/>
+                            <constraint firstItem="NqC-gr-Qdh" firstAttribute="top" secondItem="5sb-Le-5ML" secondAttribute="bottom" constant="14" id="aOi-Aj-bU8"/>
                             <constraint firstItem="sYK-FF-MLJ" firstAttribute="top" secondItem="a2G-lS-k6z" secondAttribute="bottom" id="bym-Et-Wlo"/>
                             <constraint firstItem="IyE-PR-z2k" firstAttribute="centerX" secondItem="jII-zQ-fZ3" secondAttribute="centerX" id="ebG-oh-m3A"/>
                             <constraint firstItem="A1i-Du-Fry" firstAttribute="top" secondItem="jII-zQ-fZ3" secondAttribute="bottom" constant="3" id="emw-Rq-DKE"/>
@@ -1206,9 +1224,11 @@
                             <constraint firstItem="jII-zQ-fZ3" firstAttribute="centerX" secondItem="A1i-Du-Fry" secondAttribute="centerX" id="lY7-QZ-UDS"/>
                             <constraint firstItem="IyE-PR-z2k" firstAttribute="top" secondItem="sYK-FF-MLJ" secondAttribute="bottom" constant="6" id="poq-7a-rXs"/>
                             <constraint firstItem="jsI-2z-bnu" firstAttribute="leading" secondItem="BSW-rL-QdN" secondAttribute="leading" id="r3f-GI-zSp"/>
+                            <constraint firstItem="5sb-Le-5ML" firstAttribute="centerX" secondItem="BSW-rL-QdN" secondAttribute="centerX" id="sx0-Y9-mXb"/>
                             <constraint firstItem="sYK-FF-MLJ" firstAttribute="trailing" secondItem="IyE-PR-z2k" secondAttribute="trailing" id="wd8-be-3hM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jAD-O6-ipd" secondAttribute="trailing" constant="-12" id="wlK-eI-Geb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JDG-D7-CXO" secondAttribute="trailing" constant="-12" id="xlU-Hw-ZeH"/>
+                            <constraint firstItem="5sb-Le-5ML" firstAttribute="top" secondItem="jII-zQ-fZ3" secondAttribute="bottom" constant="3" id="yjS-cd-2YN"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -1251,6 +1271,7 @@
                         <outlet property="overlayView" destination="jsI-2z-bnu" id="wdr-bW-CoK"/>
                         <outlet property="reportName" destination="Cr6-j2-wiO" id="9qg-ZI-OZI"/>
                         <outlet property="tableView" destination="IyE-PR-z2k" id="i5G-s1-J4M"/>
+                        <outlet property="unBlockButton" destination="5sb-Le-5ML" id="Te6-f5-stq"/>
                         <outlet property="universityLabel" destination="2sq-gI-1Oj" id="Jks-bI-U1a"/>
                         <outlet property="userHasBeenReportedLabel" destination="96X-ok-oGA" id="kHQ-0b-Pib"/>
                         <outlet property="userReportedView" destination="M0T-82-yep" id="ow4-A1-ya1"/>
