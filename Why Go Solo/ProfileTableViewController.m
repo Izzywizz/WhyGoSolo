@@ -20,12 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"People View Loaded");
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self setNavigationButtonFontAndSize];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,11 +33,21 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath   {
     
     if (indexPath.row == 0) {
-        NSLog(@"Activate Row Zero");
         return 160;
     } else  {
         return 70;
     }
+}
+
+#pragma mark - Helper Functions
+-(void) setNavigationButtonFontAndSize  {
+    
+    NSUInteger size = 12;
+    NSString *fontName = @"Lato";
+    UIFont *font = [UIFont fontWithName:fontName size:size];
+    NSDictionary * attributes = @{NSFontAttributeName: font};
+    [_editButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    [_backButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {

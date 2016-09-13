@@ -20,13 +20,6 @@
     [super viewDidLoad];
     NSLog(@"Edit view loaded");
     _studentAccommdationCell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"right-arrow-20-20"]];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,7 +33,6 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath   {
     
     if (indexPath.row == 0) {
-        NSLog(@"Activate Row Zero");
         return 160;
     } else  {
         return 70;

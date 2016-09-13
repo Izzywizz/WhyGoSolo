@@ -14,11 +14,17 @@
 
 @implementation ContainerViewController
 
+#pragma mark - UI Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Container activated");
-    _deleteButton.layer.cornerRadius = 5;
-    // Do any additional setup after loading the view.
+    [self setNavigationButtonFontAndSize];
+    [self overlayAndDeleteButtonSetup];
+}
+
+-(void) viewWillAppear:(BOOL)animated   {
+    [self deleteOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,21 +32,58 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Helper Functions
+-(void)deleteOverlayAlpha:(int)a animationDuration:(float)duration
+{
+    [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        for (id x in _overlayView.subviews)
+        {
+            if ([x class] == [UIView class])
+            {
+                [(UIView*)x setAlpha:a];
+            }
+        }
+        _overlayView.alpha = a;
+    } completion:nil];
 }
-*/
+
+#pragma mark - Helper Functions
+-(void) setNavigationButtonFontAndSize  {
+    
+    NSUInteger size = 12;
+    NSString *fontName = @"Lato";
+    UIFont *font = [UIFont fontWithName:fontName size:size];
+    NSDictionary * attributes = @{NSFontAttributeName: font};
+    [_saveButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    [_cancelButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+}
+
+-(void)overlayAndDeleteButtonSetup  {
+    _deleteButton.layer.cornerRadius = 5;
+    self.internalView.layer.cornerRadius = 5;
+}
+
+
+#pragma mark - Action Methods
 - (IBAction)deleteButtonPressed:(UIButton *)sender {
     NSLog(@"Real delete button pressed");
+    [self deleteOverlayAlpha:1 animationDuration:0.2f];
 }
-- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+
+- (IBAction)noButtonPressed:(UIButton *)sender {
+    [self deleteOverlayAlpha:0 animationDuration:0.0f];
+}
+
+- (IBAction)yesButtonPressed:(UIButton *)sender {
+    NSLog(@"Yes button Pressed"); // Handled on the main storyboard
+}
+    
+- (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
+    NSLog(@"Save Button Pressed"); //Functionality to be added
+}
 
 @end

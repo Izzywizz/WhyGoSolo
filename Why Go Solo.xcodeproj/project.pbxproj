@@ -40,6 +40,7 @@
 		43A893641D8057AE00BEA24B /* HeaderEvents.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A8935E1D8057AE00BEA24B /* HeaderEvents.xib */; };
 		43A893681D8057FA00BEA24B /* EventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A893671D8057FA00BEA24B /* EventTableViewController.m */; };
 		43A8936A1D805D8700BEA24B /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A893691D805D8700BEA24B /* profile.png */; };
+		43ACED5B1D87EDAC008D949C /* DeleteConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43ACED5A1D87EDAC008D949C /* DeleteConfirmationViewController.m */; };
 		43B4009C1D86BDE70094DFB6 /* PeopleEvent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B4009B1D86BDE70094DFB6 /* PeopleEvent.xib */; };
 		43B4009F1D86C0F20094DFB6 /* PeopleEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B4009E1D86C0F20094DFB6 /* PeopleEventTableViewCell.m */; };
 		43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BD7BB21D86993B00DDA384 /* PeopleViewController.m */; };
@@ -107,6 +108,8 @@
 		43A893661D8057FA00BEA24B /* EventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewController.h; sourceTree = "<group>"; };
 		43A893671D8057FA00BEA24B /* EventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewController.m; sourceTree = "<group>"; };
 		43A893691D805D8700BEA24B /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile.png; path = "Why Go Solo/profile.png"; sourceTree = "<group>"; };
+		43ACED591D87EDAC008D949C /* DeleteConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteConfirmationViewController.h; sourceTree = "<group>"; };
+		43ACED5A1D87EDAC008D949C /* DeleteConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteConfirmationViewController.m; sourceTree = "<group>"; };
 		43B4009B1D86BDE70094DFB6 /* PeopleEvent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleEvent.xib; sourceTree = "<group>"; };
 		43B4009D1D86C0F20094DFB6 /* PeopleEventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleEventTableViewCell.h; sourceTree = "<group>"; };
 		43B4009E1D86C0F20094DFB6 /* PeopleEventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleEventTableViewCell.m; sourceTree = "<group>"; };
@@ -171,6 +174,8 @@
 				43BE4C3B1D82F91400D6B26A /* EditProfileTableViewController.m */,
 				4381882F1D86EFCB009591F4 /* ContainerViewController.h */,
 				438188301D86EFCB009591F4 /* ContainerViewController.m */,
+				43ACED591D87EDAC008D949C /* DeleteConfirmationViewController.h */,
+				43ACED5A1D87EDAC008D949C /* DeleteConfirmationViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 				438A14811D8011C2005E6AF7 /* main.m in Sources */,
 				4309193B1D8154F400EE9220 /* MapViewController.m in Sources */,
 				43BE4C361D82A26700D6B26A /* OtherUserProfileTableViewController.m in Sources */,
+				43ACED5B1D87EDAC008D949C /* DeleteConfirmationViewController.m in Sources */,
 				43B4009F1D86C0F20094DFB6 /* PeopleEventTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
