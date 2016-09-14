@@ -42,7 +42,6 @@
     [self reportOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
     [_unBlockButton viewWithTag:0].alpha = 0;
     _unBlockButton.layer.cornerRadius = 3;
-    
 
 }
 
