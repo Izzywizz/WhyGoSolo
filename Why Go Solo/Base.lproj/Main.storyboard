@@ -665,7 +665,7 @@
                                     <constraint firstAttribute="width" constant="440" id="1mB-b2-rUY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -822,7 +822,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IyE-PR-z2k">
-                                <rect key="frame" x="0.0" y="259" width="600" height="192"/>
+                                <rect key="frame" x="0.0" y="181" width="600" height="270"/>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="203" id="tzA-cb-V0d"/>
@@ -838,7 +838,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sYK-FF-MLJ" userLabel="Background View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="187"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="182"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="Tjl-0D-aVX" userLabel="Profile Image">
                                         <rect key="frame" x="8" y="8" width="60" height="61"/>
@@ -870,7 +870,7 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDG-D7-CXO" userLabel="Line Two">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JDG-D7-CXO" userLabel="Line Two">
                                         <rect key="frame" x="12" y="131" width="576" height="1"/>
                                         <color key="backgroundColor" red="0.83137254900000002" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -929,6 +929,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="jAD-O6-ipd" firstAttribute="trailing" secondItem="2sq-gI-1Oj" secondAttribute="trailing" id="2e2-fp-Kzo"/>
+                                    <constraint firstItem="JDG-D7-CXO" firstAttribute="leading" secondItem="jAD-O6-ipd" secondAttribute="leading" id="3Cg-nb-q2q"/>
                                     <constraint firstItem="jAD-O6-ipd" firstAttribute="leading" secondItem="vmS-xy-AAk" secondAttribute="leading" id="6Ft-RV-yf6"/>
                                     <constraint firstItem="sGp-2k-a0d" firstAttribute="leading" secondItem="sYK-FF-MLJ" secondAttribute="leading" constant="8" id="7LK-Db-OZg"/>
                                     <constraint firstItem="vmS-xy-AAk" firstAttribute="top" secondItem="sYK-FF-MLJ" secondAttribute="top" constant="86" id="7sY-gM-BJJ"/>
@@ -947,7 +948,8 @@
                                     <constraint firstItem="JDG-D7-CXO" firstAttribute="top" secondItem="2sq-gI-1Oj" secondAttribute="bottom" constant="9.5" id="abi-qu-qxk"/>
                                     <constraint firstItem="jAD-O6-ipd" firstAttribute="top" secondItem="0g1-wJ-KWC" secondAttribute="bottom" constant="28" id="boh-ku-NZe"/>
                                     <constraint firstAttribute="trailing" secondItem="jAD-O6-ipd" secondAttribute="trailing" constant="8" id="czu-mz-6zY"/>
-                                    <constraint firstAttribute="bottom" secondItem="FRb-Ms-6WH" secondAttribute="bottom" constant="31" id="gmp-a2-DM0"/>
+                                    <constraint firstItem="JDG-D7-CXO" firstAttribute="trailing" secondItem="jAD-O6-ipd" secondAttribute="trailing" id="fcC-QB-CyM"/>
+                                    <constraint firstAttribute="bottom" secondItem="FRb-Ms-6WH" secondAttribute="bottom" constant="26" id="gmp-a2-DM0"/>
                                     <constraint firstItem="jAD-O6-ipd" firstAttribute="top" secondItem="Tjl-0D-aVX" secondAttribute="bottom" constant="8" symbolic="YES" id="iVY-FH-Mre"/>
                                     <constraint firstItem="2sq-gI-1Oj" firstAttribute="centerX" secondItem="JDG-D7-CXO" secondAttribute="centerX" id="nIR-Ux-mln"/>
                                     <constraint firstItem="0g1-wJ-KWC" firstAttribute="trailing" secondItem="jAD-O6-ipd" secondAttribute="trailing" id="nLM-dg-oGl"/>
@@ -959,6 +961,7 @@
                                     <mask key="constraints">
                                         <exclude reference="Nea-E2-Ytc"/>
                                         <exclude reference="czu-mz-6zY"/>
+                                        <exclude reference="YcG-gd-W2y"/>
                                         <exclude reference="7LK-Db-OZg"/>
                                     </mask>
                                 </variation>
@@ -1198,7 +1201,7 @@
                         <constraints>
                             <constraint firstItem="IyE-PR-z2k" firstAttribute="leading" secondItem="sYK-FF-MLJ" secondAttribute="leading" id="0Fk-47-a4l"/>
                             <constraint firstItem="IyE-PR-z2k" firstAttribute="top" secondItem="sYK-FF-MLJ" secondAttribute="bottom" constant="6" id="2fu-47-tPQ"/>
-                            <constraint firstItem="IyE-PR-z2k" firstAttribute="top" secondItem="sYK-FF-MLJ" secondAttribute="bottom" constant="8" id="3Ob-8L-RB0"/>
+                            <constraint firstItem="IyE-PR-z2k" firstAttribute="top" secondItem="sYK-FF-MLJ" secondAttribute="bottom" constant="-65" id="3Ob-8L-RB0"/>
                             <constraint firstItem="jsI-2z-bnu" firstAttribute="top" secondItem="BSW-rL-QdN" secondAttribute="top" id="4SE-Zr-r7r"/>
                             <constraint firstAttribute="bottom" secondItem="jsI-2z-bnu" secondAttribute="bottom" id="E2q-LH-ycP"/>
                             <constraint firstItem="sYK-FF-MLJ" firstAttribute="top" secondItem="a2G-lS-k6z" secondAttribute="bottom" id="E82-ml-K66"/>
@@ -1212,6 +1215,7 @@
                             <constraint firstItem="IyE-PR-z2k" firstAttribute="centerX" secondItem="jII-zQ-fZ3" secondAttribute="centerX" id="WGp-dX-Ugb"/>
                             <constraint firstItem="NqC-gr-Qdh" firstAttribute="top" secondItem="5sb-Le-5ML" secondAttribute="bottom" constant="14" id="aOi-Aj-bU8"/>
                             <constraint firstItem="sYK-FF-MLJ" firstAttribute="top" secondItem="a2G-lS-k6z" secondAttribute="bottom" id="bym-Et-Wlo"/>
+                            <constraint firstItem="IyE-PR-z2k" firstAttribute="top" secondItem="sYK-FF-MLJ" secondAttribute="bottom" constant="8" id="cOQ-yY-lVG"/>
                             <constraint firstItem="IyE-PR-z2k" firstAttribute="centerX" secondItem="jII-zQ-fZ3" secondAttribute="centerX" id="ebG-oh-m3A"/>
                             <constraint firstItem="A1i-Du-Fry" firstAttribute="top" secondItem="jII-zQ-fZ3" secondAttribute="bottom" constant="3" id="emw-Rq-DKE"/>
                             <constraint firstItem="jII-zQ-fZ3" firstAttribute="top" secondItem="IyE-PR-z2k" secondAttribute="bottom" constant="8" symbolic="YES" id="fay-Aa-4Wj"/>
@@ -1238,14 +1242,15 @@
                                 <exclude reference="wd8-be-3hM"/>
                                 <exclude reference="hM2-o4-PM2"/>
                                 <exclude reference="wlK-eI-Geb"/>
+                                <exclude reference="H3u-qd-gU7"/>
+                                <exclude reference="xlU-Hw-ZeH"/>
                                 <exclude reference="2fu-47-tPQ"/>
                                 <exclude reference="Epu-UT-a8x"/>
                                 <exclude reference="Mb4-bs-BsY"/>
+                                <exclude reference="cOQ-yY-lVG"/>
                                 <exclude reference="ebG-oh-m3A"/>
                                 <exclude reference="jru-yT-AoY"/>
                                 <exclude reference="poq-7a-rXs"/>
-                                <exclude reference="H3u-qd-gU7"/>
-                                <exclude reference="xlU-Hw-ZeH"/>
                                 <exclude reference="NfH-pn-aSw"/>
                             </mask>
                         </variation>
@@ -1279,7 +1284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1O-wj-Krn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3260" y="3041"/>
+            <point key="canvasLocation" x="3267" y="3014"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QWn-4F-dhp">

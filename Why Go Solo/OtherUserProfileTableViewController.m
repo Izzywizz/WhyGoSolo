@@ -93,7 +93,6 @@
     } completion:nil];
 }
 
-
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section    {
@@ -151,14 +150,17 @@
     HeaderEventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:resuseID];
     
     NSString *sectionTitle = [_sectionTitles objectAtIndex:section];
-
-    if (_isUserBlocked) {
-        cell.numberOfEventsLabel.text = @"(0)";
-    }
     
+    if (_isUserBlocked == YES) {
+        cell.numberOfEventsLabel.text = @"(0)";
+        NSLog(@"Zero Events");
+    } else  {
+        cell.numberOfEventsLabel.text = @"(2)"; //Needs to be set to count with real data
+    }
     if ([sectionTitle  isEqual: @"My Events"]) {
         [cell.filterButton setHidden:YES];
-        cell.numberOfEventsLabel.text = @"(2)"; //Needs to be set to count with real data
+        
+
     }
     cell.MyEventsLabel.text = sectionTitle;
     
