@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430503121D89868700CA73D1 /* UniversityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430503111D89868700CA73D1 /* UniversityViewController.m */; };
+		430503151D89911600CA73D1 /* UniversityLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 430503141D89911600CA73D1 /* UniversityLocations.m */; };
 		430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919311D8154F400EE9220 /* CurrentUserLocation.m */; };
 		4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919351D8154F400EE9220 /* SearchBarTableViewController.m */; };
 		4309193B1D8154F400EE9220 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919371D8154F400EE9220 /* MapViewController.m */; };
 		4309193F1D81552200EE9220 /* PinLocationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4309193E1D81552200EE9220 /* PinLocationData.m */; };
 		430919421D8158A000EE9220 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 430919411D8158A000EE9220 /* car.png */; };
+		4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4319E7841D89582800FD5142 /* CommentTableViewController.m */; };
+		431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 431C45B81D895C6B00A05C11 /* MainViewController.m */; };
 		436E84B01D815FA700B23402 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 436E84AF1D815FA700B23402 /* flag.png */; };
 		438188311D86EFCB009591F4 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438188301D86EFCB009591F4 /* ContainerViewController.m */; };
 		438A14811D8011C2005E6AF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14801D8011C2005E6AF7 /* main.m */; };
@@ -60,6 +64,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		430503101D89868700CA73D1 /* UniversityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityViewController.h; sourceTree = "<group>"; };
+		430503111D89868700CA73D1 /* UniversityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityViewController.m; sourceTree = "<group>"; };
+		430503131D89911600CA73D1 /* UniversityLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityLocations.h; sourceTree = "<group>"; };
+		430503141D89911600CA73D1 /* UniversityLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityLocations.m; sourceTree = "<group>"; };
 		430919301D8154F400EE9220 /* CurrentUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUserLocation.h; sourceTree = "<group>"; };
 		430919311D8154F400EE9220 /* CurrentUserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUserLocation.m; sourceTree = "<group>"; };
 		430919341D8154F400EE9220 /* SearchBarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarTableViewController.h; sourceTree = "<group>"; };
@@ -69,6 +77,10 @@
 		4309193D1D81552200EE9220 /* PinLocationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinLocationData.h; sourceTree = "<group>"; };
 		4309193E1D81552200EE9220 /* PinLocationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinLocationData.m; sourceTree = "<group>"; };
 		430919411D8158A000EE9220 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
+		4319E7831D89582800FD5142 /* CommentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentTableViewController.h; path = ../CommentTableViewController.h; sourceTree = "<group>"; };
+		4319E7841D89582800FD5142 /* CommentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewController.m; path = ../CommentTableViewController.m; sourceTree = "<group>"; };
+		431C45B71D895C6B00A05C11 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		431C45B81D895C6B00A05C11 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		436E84AF1D815FA700B23402 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		4381882F1D86EFCB009591F4 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
 		438188301D86EFCB009591F4 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
@@ -159,8 +171,30 @@
 			children = (
 				4309193D1D81552200EE9220 /* PinLocationData.h */,
 				4309193E1D81552200EE9220 /* PinLocationData.m */,
+				430503131D89911600CA73D1 /* UniversityLocations.h */,
+				430503141D89911600CA73D1 /* UniversityLocations.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		431C45B61D895C4300A05C11 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				4319E7831D89582800FD5142 /* CommentTableViewController.h */,
+				4319E7841D89582800FD5142 /* CommentTableViewController.m */,
+			);
+			name = Comments;
+			sourceTree = "<group>";
+		};
+		431C45BA1D895C8500A05C11 /* Sign In Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				431C45B71D895C6B00A05C11 /* MainViewController.h */,
+				431C45B81D895C6B00A05C11 /* MainViewController.m */,
+				430503101D89868700CA73D1 /* UniversityViewController.h */,
+				430503111D89868700CA73D1 /* UniversityViewController.m */,
+			);
+			name = "Sign In Sign Up";
 			sourceTree = "<group>";
 		};
 		436E84B71D8171AB00B23402 /* Profile */ = {
@@ -205,6 +239,8 @@
 		438A147E1D8011C2005E6AF7 /* Why Go Solo */ = {
 			isa = PBXGroup;
 			children = (
+				431C45BA1D895C8500A05C11 /* Sign In Sign Up */,
+				431C45B61D895C4300A05C11 /* Comments */,
 				436E84B71D8171AB00B23402 /* Profile */,
 				430919401D81557300EE9220 /* Model */,
 				43A893651D8057B200BEA24B /* Table Cells */,
@@ -402,10 +438,12 @@
 				438A14871D8011C2005E6AF7 /* SignInViewController.m in Sources */,
 				43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */,
 				43A893621D8057AE00BEA24B /* EventsTableViewCell.m in Sources */,
+				431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */,
 				438188311D86EFCB009591F4 /* ContainerViewController.m in Sources */,
 				43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */,
 				430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */,
 				43BE4C3C1D82F91400D6B26A /* EditProfileTableViewController.m in Sources */,
+				430503151D89911600CA73D1 /* UniversityLocations.m in Sources */,
 				43A893601D8057AE00BEA24B /* FooterEventsTableViewCell.m in Sources */,
 				4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */,
 				4309193F1D81552200EE9220 /* PinLocationData.m in Sources */,
@@ -413,7 +451,9 @@
 				43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */,
 				438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */,
 				438A14811D8011C2005E6AF7 /* main.m in Sources */,
+				430503121D89868700CA73D1 /* UniversityViewController.m in Sources */,
 				4309193B1D8154F400EE9220 /* MapViewController.m in Sources */,
+				4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */,
 				43BE4C361D82A26700D6B26A /* OtherUserProfileTableViewController.m in Sources */,
 				43ACED5B1D87EDAC008D949C /* DeleteConfirmationViewController.m in Sources */,
 				43B4009F1D86C0F20094DFB6 /* PeopleEventTableViewCell.m in Sources */,
