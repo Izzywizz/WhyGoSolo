@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		430503121D89868700CA73D1 /* UniversityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430503111D89868700CA73D1 /* UniversityViewController.m */; };
 		430503151D89911600CA73D1 /* UniversityLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 430503141D89911600CA73D1 /* UniversityLocations.m */; };
+		430503181D8998F600CA73D1 /* SetupLoginDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430503171D8998F600CA73D1 /* SetupLoginDetailsViewController.m */; };
 		430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919311D8154F400EE9220 /* CurrentUserLocation.m */; };
 		4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919351D8154F400EE9220 /* SearchBarTableViewController.m */; };
 		4309193B1D8154F400EE9220 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919371D8154F400EE9220 /* MapViewController.m */; };
@@ -68,6 +69,8 @@
 		430503111D89868700CA73D1 /* UniversityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityViewController.m; sourceTree = "<group>"; };
 		430503131D89911600CA73D1 /* UniversityLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityLocations.h; sourceTree = "<group>"; };
 		430503141D89911600CA73D1 /* UniversityLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityLocations.m; sourceTree = "<group>"; };
+		430503161D8998F600CA73D1 /* SetupLoginDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupLoginDetailsViewController.h; sourceTree = "<group>"; };
+		430503171D8998F600CA73D1 /* SetupLoginDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupLoginDetailsViewController.m; sourceTree = "<group>"; };
 		430919301D8154F400EE9220 /* CurrentUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUserLocation.h; sourceTree = "<group>"; };
 		430919311D8154F400EE9220 /* CurrentUserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUserLocation.m; sourceTree = "<group>"; };
 		430919341D8154F400EE9220 /* SearchBarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarTableViewController.h; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 				431C45B81D895C6B00A05C11 /* MainViewController.m */,
 				430503101D89868700CA73D1 /* UniversityViewController.h */,
 				430503111D89868700CA73D1 /* UniversityViewController.m */,
+				430503161D8998F600CA73D1 /* SetupLoginDetailsViewController.h */,
+				430503171D8998F600CA73D1 /* SetupLoginDetailsViewController.m */,
 			);
 			name = "Sign In Sign Up";
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 				438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */,
 				438A14811D8011C2005E6AF7 /* main.m in Sources */,
 				430503121D89868700CA73D1 /* UniversityViewController.m in Sources */,
+				430503181D8998F600CA73D1 /* SetupLoginDetailsViewController.m in Sources */,
 				4309193B1D8154F400EE9220 /* MapViewController.m in Sources */,
 				4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */,
 				43BE4C361D82A26700D6B26A /* OtherUserProfileTableViewController.m in Sources */,

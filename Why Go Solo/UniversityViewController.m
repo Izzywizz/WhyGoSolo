@@ -108,10 +108,12 @@
     
     return cell;
     
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     NSLog(@"row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
+    NSLog(@"Location: %@,", [_universityList objectAtIndex:indexPath.row]);
     [tableView cellForRowAtIndexPath:indexPath].accessoryView =  [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check-button-20-20"]];
 }
 

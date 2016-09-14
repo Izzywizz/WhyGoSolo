@@ -263,7 +263,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Select Your Uni" id="n9u-6h-wmL">
                         <barButtonItem key="leftBarButtonItem" image="back-arrow-20-20" id="f45-kV-756">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="backButtonPressed:" destination="jvq-Me-sNd" id="3QF-KF-K5p"/>
                             </connections>
@@ -272,6 +272,7 @@
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="nextButtonPressed:" destination="jvq-Me-sNd" id="wMp-69-vL7"/>
+                                <segue destination="hWe-nQ-qod" kind="show" id="uzD-4D-Jbn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -289,6 +290,46 @@
                 </imageView>
             </objects>
             <point key="canvasLocation" x="4307" y="741"/>
+        </scene>
+        <!--Setup Login Details-->
+        <scene sceneID="vDG-DX-2Jx">
+            <objects>
+                <viewController id="hWe-nQ-qod" customClass="SetupLoginDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eoP-wc-ttI"/>
+                        <viewControllerLayoutGuide type="bottom" id="uZX-aR-caq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oWK-0A-Ljd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="OwS-sY-WeE" userLabel="Colour Bar">
+                                <rect key="frame" x="0.0" y="64" width="601" height="3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="4tX-u2-uew"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="3" id="6VP-pn-Bof"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OwS-sY-WeE" firstAttribute="top" secondItem="eoP-wc-ttI" secondAttribute="bottom" id="ZPD-9l-eC3"/>
+                            <constraint firstItem="OwS-sY-WeE" firstAttribute="leading" secondItem="oWK-0A-Ljd" secondAttribute="leading" id="vUX-tS-LZ8"/>
+                            <constraint firstAttribute="trailing" secondItem="OwS-sY-WeE" secondAttribute="trailing" constant="1" id="zN6-nP-l6q"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Setup Login Details" id="guJ-Zg-SyL">
+                        <barButtonItem key="leftBarButtonItem" image="back-arrow-20-20" id="Arr-Jn-1bL">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="backbuttonPressed:" destination="hWe-nQ-qod" id="CXv-mL-k58"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KUb-Qo-ttr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5041" y="741"/>
         </scene>
         <!--Sign In-->
         <scene sceneID="tne-QT-ifu">
