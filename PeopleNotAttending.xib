@@ -22,10 +22,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oox-ZV-RNz">
                         <rect key="frame" x="14" y="14" width="412" height="95"/>
                         <subviews>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vF1-BD-Fns" userLabel="Profile Button">
-                                <rect key="frame" x="15" y="0.0" width="344" height="47"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="0PV-np-Kno" userLabel="Profile Image">
                                 <rect key="frame" x="15" y="15" width="60" height="60"/>
                                 <constraints>
@@ -49,15 +45,24 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pf7-DJ-ohH">
+                                <rect key="frame" x="15" y="15" width="383" height="60"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="profileButtonPressed:" destination="5Bx-65-Akd" eventType="touchUpInside" id="WM6-fV-7dw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Pf7-DJ-ohH" firstAttribute="trailing" secondItem="hDd-Xy-aap" secondAttribute="trailing" id="HMx-0U-Q9E"/>
+                            <constraint firstItem="Pf7-DJ-ohH" firstAttribute="top" secondItem="0PV-np-Kno" secondAttribute="top" id="NDL-4S-qZL"/>
                             <constraint firstItem="hDd-Xy-aap" firstAttribute="leading" secondItem="0PV-np-Kno" secondAttribute="trailing" constant="2" id="Pft-RB-qMM"/>
                             <constraint firstItem="hDd-Xy-aap" firstAttribute="top" secondItem="Oox-ZV-RNz" secondAttribute="top" constant="29" id="bDK-LF-9IU"/>
-                            <constraint firstItem="vF1-BD-Fns" firstAttribute="top" secondItem="Oox-ZV-RNz" secondAttribute="top" id="gjL-4z-dOJ"/>
+                            <constraint firstItem="Pf7-DJ-ohH" firstAttribute="leading" secondItem="0PV-np-Kno" secondAttribute="leading" id="ibE-E9-Qai"/>
                             <constraint firstAttribute="bottom" secondItem="0PV-np-Kno" secondAttribute="bottom" constant="172.5" id="nlA-Qc-HOQ"/>
                             <constraint firstAttribute="bottom" secondItem="hDd-Xy-aap" secondAttribute="bottom" constant="173.5" id="nnu-jF-Jri"/>
-                            <constraint firstItem="vF1-BD-Fns" firstAttribute="leading" secondItem="Oox-ZV-RNz" secondAttribute="leading" constant="15" id="pvC-gn-uuJ"/>
+                            <constraint firstItem="Pf7-DJ-ohH" firstAttribute="bottom" secondItem="0PV-np-Kno" secondAttribute="bottom" id="phU-1j-hXN"/>
                             <constraint firstItem="0PV-np-Kno" firstAttribute="leading" secondItem="Oox-ZV-RNz" secondAttribute="leading" constant="15" id="sW7-yQ-ydA"/>
                             <constraint firstItem="0PV-np-Kno" firstAttribute="top" secondItem="Oox-ZV-RNz" secondAttribute="top" constant="15" id="uRC-rJ-ipt"/>
                             <constraint firstAttribute="bottom" secondItem="0PV-np-Kno" secondAttribute="bottom" constant="20" id="vGd-LW-6vr"/>
@@ -85,6 +90,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="profileButton" destination="Pf7-DJ-ohH" id="JsZ-d6-rvG"/>
                 <outlet property="profileName" destination="hDd-Xy-aap" id="w2s-Cc-HBT"/>
                 <outlet property="prolfileImage" destination="0PV-np-Kno" id="tgk-Xw-64h"/>
             </connections>

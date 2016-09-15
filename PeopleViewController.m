@@ -11,13 +11,14 @@
 #import "PeopleEventTableViewCell.h"
 #import "FooterEventsTableViewCell.h"
 #import "PeopleNotAttendingTableViewCell.h"
+#import "OtherUserProfileTableViewController.h"
 
 @interface PeopleViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property NSDictionary *tableData;
 @property NSArray *sectionTitles;
 
-@property BOOL isPeopleSelected;
+@property BOOL isFriendsSelected;
 @end
 
 @implementation PeopleViewController
@@ -30,6 +31,7 @@
     [self setupTable];
     [self setupDummyData];
     [self initialButtonSetup];
+    [self ListenOutProfileBeingPressed];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,24 +41,45 @@
 
 #pragma mark - Helper Functions
 
+- (void)receivedNotification:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"Profile Found"]) {
+        [self moveToOtherUserProfile];
+    }
+}
 
+-(void) ListenOutProfileBeingPressed    {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedNotification:)
+                                                 name:@"Profile Found"
+                                               object:nil];
+}
+
+-(void) moveToOtherUserProfile  {
+    
+    //Prevents the app from 
+    if(![self.navigationController.topViewController isKindOfClass:[OtherUserProfileTableViewController class]]) {
+        UIViewController* infoController = [self.storyboard instantiateViewControllerWithIdentifier:@"OtherUserProfileViewController"];
+        [self.navigationController pushViewController:infoController animated:YES];
+        [self.navigationController pushViewController:infoController animated:YES];
+    }
+}
 
 -(void) setupTable  {
-    self.tableView.allowsSelectionDuringEditing=YES;
+    self.tableView.allowsSelectionDuringEditing = YES;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 123;
     //    self.tableView.allowsSelection = NO;
 }
 
 -(void) initialButtonSetup  {
-    _isPeopleSelected = YES;
+    _isFriendsSelected = YES;
     [_everyoneButton setBackgroundColor:[UIColor grayColor]];
 }
 
 -(void) setupDummyData  {
     //Dummy Data
     _tableData = @{@"ATTNEDING EVENTS" : @[@"Andy Jones", @"Jennifer Cooper"],
-                  @"NOT ATTENDING EVENTS" : @[@"Nathan Barnes", @"Izzy Ali"]};
+                   @"NOT ATTENDING EVENTS" : @[@"Nathan Barnes", @"Izzy Ali"]};
     
     NSSortDescriptor *ascending = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES];
     NSArray *ascendingOrder = [NSArray arrayWithObject:ascending];
@@ -188,21 +211,21 @@
 }
 
 - (IBAction)friendsButtonPressed:(UIButton *)sender {
-    if (_isPeopleSelected) {
+    if (_isFriendsSelected) {
         NSLog(@"Friends");
         [_friendsButton setBackgroundColor:[UIColor whiteColor]];
         [_everyoneButton setBackgroundColor:[UIColor grayColor]];
-        _isPeopleSelected = NO;
+        _isFriendsSelected = NO;
     }
 }
 
 - (IBAction)everyoneButtonPressed:(UIButton *)sender {
-    _isPeopleSelected = NO;
-    if (_isPeopleSelected == NO) {
+    _isFriendsSelected = NO;
+    if (_isFriendsSelected == NO) {
         NSLog(@"Everyone");
         [_everyoneButton setBackgroundColor:[UIColor whiteColor]];
         [_friendsButton setBackgroundColor:[UIColor grayColor]];
-        _isPeopleSelected = YES;
+        _isFriendsSelected = YES;
     }
 }
 

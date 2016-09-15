@@ -7,6 +7,8 @@
 //
 
 #import "PeopleNotAttendingTableViewCell.h"
+#import "EventsTableViewCell.h"
+
 
 @implementation PeopleNotAttendingTableViewCell
 
@@ -19,6 +21,15 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+- (IBAction)profileButtonPressed:(UIButton *)sender {
+    switch (sender.tag) {
+        case PROFILE: NSLog(@"Profile Button Pressed");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Profile Found" object:self];
+            break;
+        default:
+            break;
+    }
 }
 
 @end

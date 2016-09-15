@@ -246,8 +246,8 @@
 
 - (IBAction)yesButtonPressed:(UIButton *)sender {
     NSLog(@"Reporting User...");
-    NSIndexSet *headers = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.tableView numberOfSections])];
-    [self.tableView reloadSections:headers withRowAnimation:UITableViewRowAnimationAutomatic];    [_userReportedView viewWithTag:0].alpha = 1;
+    [_tableView reloadData];
+    [_userReportedView viewWithTag:0].alpha = 1;
 }
 
 - (IBAction)OkReportedButtonPressed:(UIButton *)sender {

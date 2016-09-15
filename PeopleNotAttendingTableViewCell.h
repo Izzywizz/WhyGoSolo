@@ -11,5 +11,6 @@
 @interface PeopleNotAttendingTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *profileName;
 @property (weak, nonatomic) IBOutlet UIImageView *prolfileImage;
+@property (weak, nonatomic) IBOutlet UIButton *profileButton;
 
 @end

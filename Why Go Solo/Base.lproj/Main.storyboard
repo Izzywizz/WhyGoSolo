@@ -519,7 +519,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="NEXT" id="xR0-Qp-yMV">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="nextButtonPressed:" destination="hWe-nQ-qod" id="W32-iN-4Bt"/>
                                 <segue destination="tv0-iu-svJ" kind="show" id="Bks-lz-3e7"/>
@@ -626,8 +626,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="159.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GYT-wI-tjz">
-                                                    <rect key="frame" x="240" y="20.5" width="120" height="120"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GYT-wI-tjz">
+                                                    <rect key="frame" x="240" y="24.5" width="120" height="120"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-pic-icon-40-40" translatesAutoresizingMaskIntoConstraints="NO" id="hwn-Bg-UUu" userLabel="Photo Image">
                                                             <rect key="frame" x="40" y="40" width="40" height="40"/>
@@ -679,8 +679,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FIRST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2Y-b2-Dgk">
-                                                    <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2Y-b2-Dgk">
+                                                    <rect key="frame" x="8" y="8" width="584" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="584" id="hdx-xZ-SGk"/>
                                                     </constraints>
@@ -948,7 +948,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="ZWB-zS-1us" kind="show" identifier="GoToMap" id="Dya-pO-aS6"/>
-                        <segue destination="rdM-Mk-tqG" kind="show" identifier="GoToOtherUserProfile" id="oZo-c7-04X"/>
+                        <segue destination="rdM-Mk-tqG" kind="show" identifier="GoToOtherUserProfile" id="TjZ-bR-Fvr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JR4-us-JDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1451,7 +1451,7 @@
                                 <action selector="backButtonPressed:" destination="ixa-fr-gil" id="Zrf-Cn-J3U"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="5IG-HD-a6Q">
+                        <barButtonItem key="rightBarButtonItem" title="Profile" id="5IG-HD-a6Q">
                             <connections>
                                 <segue destination="Uty-lc-xaZ" kind="show" id="F0n-8j-vVd"/>
                             </connections>
@@ -1465,7 +1465,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="92P-u5-lab" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2491" y="3014"/>
+            <point key="canvasLocation" x="2522" y="3030"/>
         </scene>
         <!--Profile-->
         <scene sceneID="MEV-k8-iUQ">
@@ -1942,7 +1942,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1O-wj-Krn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3267" y="3014"/>
+            <point key="canvasLocation" x="3312" y="3045"/>
         </scene>
         <!--Comment Table View Controller-->
         <scene sceneID="oyq-QS-aoq">

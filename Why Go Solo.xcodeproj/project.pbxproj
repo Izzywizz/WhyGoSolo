@@ -181,7 +181,6 @@
 				430919371D8154F400EE9220 /* MapViewController.m */,
 			);
 			name = "Map View";
-			path = "Why Go Solo";
 			sourceTree = "<group>";
 		};
 		430919401D81557300EE9220 /* Model */ = {
@@ -270,6 +269,7 @@
 				436E84B71D8171AB00B23402 /* Profile */,
 				430919401D81557300EE9220 /* Model */,
 				43A893651D8057B200BEA24B /* Table Cells */,
+				4309193C1D8154F900EE9220 /* Map View */,
 				438A14821D8011C2005E6AF7 /* AppDelegate.h */,
 				438A14831D8011C2005E6AF7 /* AppDelegate.m */,
 				43BD7BB11D86993B00DDA384 /* PeopleViewController.h */,
@@ -340,7 +340,6 @@
 				43FBC2F91D8AC6C200AE4E1F /* PeopleNotAttending.xib */,
 				43FBC2F61D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.h */,
 				43FBC2F71D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m */,
-				4309193C1D8154F900EE9220 /* Map View */,
 			);
 			name = "Table Cells";
 			path = ..;
