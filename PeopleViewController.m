@@ -10,9 +10,7 @@
 #import "HeaderEventsTableViewCell.h"
 #import "PeopleEventTableViewCell.h"
 #import "FooterEventsTableViewCell.h"
-
-
-
+#import "PeopleNotAttendingTableViewCell.h"
 
 @interface PeopleViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -58,7 +56,7 @@
 -(void) setupDummyData  {
     //Dummy Data
     _tableData = @{@"ATTNEDING EVENTS" : @[@"Andy Jones", @"Jennifer Cooper"],
-                  @"NOT ATTENDING EVENTS" : @[@"Nathan Barnes"]};
+                  @"NOT ATTENDING EVENTS" : @[@"Nathan Barnes", @"Izzy Ali"]};
     
     NSSortDescriptor *ascending = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES];
     NSArray *ascendingOrder = [NSArray arrayWithObject:ascending];
@@ -103,8 +101,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath  {
     
-    return [self eventCellAtIndex:indexPath];
+    NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
+    if ([sectionTitle isEqualToString:@"NOT ATTENDING EVENTS"]) {
+        NSLog(@"Found");
+        return [self eventNotAttendingCellAtIndex: indexPath];
+    }
     
+    return [self eventCellAtIndex:indexPath];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
@@ -131,6 +134,25 @@
     return cell;
 }
 
+-(PeopleNotAttendingTableViewCell*) eventNotAttendingCellAtIndex: (NSIndexPath *) indexPath {
+    
+    NSString *reuseID = @"PeopleEventsTableViewCell";
+    NSString *nibName = @"PeopleNotAttending";
+    
+    [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
+    PeopleNotAttendingTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
+    
+    
+    //Setup cell using data pull down from the server, this is using dummy data
+    NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
+    NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
+    NSString *personName = [sectionEvents objectAtIndex:indexPath.row];
+    
+    cell.profileName.text = personName;
+    
+    return cell;
+}
+
 -(PeopleEventTableViewCell *) eventCellAtIndex: (NSIndexPath *) indexPath {
     
     NSString *reuseID = @"PeopleEventsTableViewCell";
@@ -142,11 +164,9 @@
     //Setup cell using data pull down from the server, this is using dummy data
     NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
     NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
-    NSString *eventName = [sectionEvents objectAtIndex:indexPath.row];
+    NSString *personName = [sectionEvents objectAtIndex:indexPath.row];
     
-    cell.nameLabel.text = eventName;
-//    cell.addressLabel.text = @"test address";
-    //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
+    cell.nameLabel.text = personName;
     
     return cell;
 }
