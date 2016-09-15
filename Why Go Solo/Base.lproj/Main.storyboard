@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qCS-gC-u81">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ICR-ZT-K1Y">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -17,6 +17,11 @@
             <string>Lato-Bold</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
@@ -306,7 +311,7 @@
                         <sections>
                             <tableViewSection id="NZR-Vj-JHE">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="w0M-Kl-J3h">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="w0M-Kl-J3h" userLabel="Email Cell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w0M-Kl-J3h" id="nMg-RP-CA0">
@@ -322,7 +327,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your University Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FKF-go-cWx">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your University Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FKF-go-cWx" userLabel="Email Input">
                                                     <rect key="frame" x="15" y="36" width="577" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="577" id="yTm-Bf-Dzl"/>
@@ -340,7 +345,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="3GH-pM-YAS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="3GH-pM-YAS" userLabel="Password Cell">
                                         <rect key="frame" x="0.0" y="66" width="600" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3GH-pM-YAS" id="487-tt-B9R">
@@ -356,7 +361,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KVi-iI-X0G">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KVi-iI-X0G" userLabel="Password Input">
                                                     <rect key="frame" x="15" y="36" width="577" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="577" id="ZNK-FS-G9k"/>
@@ -374,7 +379,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="dqh-X4-2cU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="dqh-X4-2cU" userLabel="Confirm Password Cell">
                                         <rect key="frame" x="0.0" y="132" width="600" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dqh-X4-2cU" id="vix-tQ-DXg">
@@ -390,7 +395,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm your Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="luQ-1H-39P">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm your Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="luQ-1H-39P" userLabel="Confirm Password Input">
                                                     <rect key="frame" x="15" y="36" width="577" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="577" id="loG-Z1-5ZA"/>
@@ -552,7 +557,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTO-jK-17y">
                                         <rect key="frame" x="8" y="8" width="544" height="510"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -608,7 +613,7 @@
             </objects>
             <point key="canvasLocation" x="5751" y="85"/>
         </scene>
-        <!--Setup Profile Table View Controller-->
+        <!--Setup Login Details-->
         <scene sceneID="eRB-kd-fGt">
             <objects>
                 <tableViewController id="tv0-iu-svJ" customClass="SetupProfileTableViewController" sceneMemberID="viewController">
@@ -619,7 +624,7 @@
                         <sections>
                             <tableViewSection id="zHc-hG-LBs">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="G1D-YE-J8H">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="G1D-YE-J8H" userLabel="Image Upload Cell">
                                         <rect key="frame" x="0.0" y="64" width="600" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G1D-YE-J8H" id="P7y-Ar-vO5">
@@ -638,7 +643,6 @@
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVc-Kh-qmJ" userLabel="Invisable upload button">
                                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                                            <state key="normal" title="Button"/>
                                                             <connections>
                                                                 <action selector="uploadPhotoButton:" destination="tv0-iu-svJ" eventType="touchUpInside" id="fep-Wd-A0G"/>
                                                             </connections>
@@ -672,28 +676,209 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="67" id="M3w-cW-D4V">
-                                        <rect key="frame" x="0.0" y="224" width="600" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="M3w-cW-D4V" userLabel="First Name Cell">
+                                        <rect key="frame" x="0.0" y="224" width="600" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M3w-cW-D4V" id="H8n-al-fw6">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2Y-b2-Dgk">
-                                                    <rect key="frame" x="8" y="8" width="584" height="18"/>
+                                                    <rect key="frame" x="20" y="8" width="572" height="16"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="584" id="hdx-xZ-SGk"/>
+                                                        <constraint firstAttribute="width" constant="572" id="HOv-Pf-cTR"/>
+                                                        <constraint firstAttribute="width" constant="572" id="hdx-xZ-SGk"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="hdx-xZ-SGk"/>
+                                                        </mask>
+                                                    </variation>
                                                 </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eHg-xc-jld" userLabel="First Name Input">
+                                                    <rect key="frame" x="20" y="25" width="572" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="572" id="QAI-mj-sub"/>
+                                                        <constraint firstAttribute="height" constant="24" id="Yli-uE-kXG"/>
+                                                        <constraint firstAttribute="width" constant="584" id="cwg-AM-CS5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="cwg-AM-CS5"/>
+                                                        </mask>
+                                                    </variation>
+                                                </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="c2Y-b2-Dgk" secondAttribute="trailing" id="EGK-i1-IHv"/>
                                                 <constraint firstItem="c2Y-b2-Dgk" firstAttribute="top" secondItem="H8n-al-fw6" secondAttribute="top" constant="8" id="Ja8-2O-C9t"/>
-                                                <constraint firstItem="c2Y-b2-Dgk" firstAttribute="leading" secondItem="H8n-al-fw6" secondAttribute="leading" constant="8" id="Rhz-9b-Ku3"/>
+                                                <constraint firstItem="eHg-xc-jld" firstAttribute="top" secondItem="c2Y-b2-Dgk" secondAttribute="bottom" constant="1" id="Jb6-Tf-SCt"/>
+                                                <constraint firstItem="c2Y-b2-Dgk" firstAttribute="leading" secondItem="H8n-al-fw6" secondAttribute="leading" constant="20" id="Rhz-9b-Ku3"/>
+                                                <constraint firstItem="eHg-xc-jld" firstAttribute="top" secondItem="c2Y-b2-Dgk" secondAttribute="bottom" constant="-2" id="bcW-5p-cGO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eHg-xc-jld" secondAttribute="trailing" id="f3g-mA-dnH"/>
+                                                <constraint firstItem="eHg-xc-jld" firstAttribute="leading" secondItem="c2Y-b2-Dgk" secondAttribute="leading" id="gq3-Tg-Tli"/>
+                                                <constraint firstItem="eHg-xc-jld" firstAttribute="leading" secondItem="c2Y-b2-Dgk" secondAttribute="leading" id="gzD-QR-fmH"/>
+                                                <constraint firstItem="eHg-xc-jld" firstAttribute="top" secondItem="c2Y-b2-Dgk" secondAttribute="bottom" constant="-2" id="v1M-ra-qcd"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="EGK-i1-IHv"/>
+                                                    <exclude reference="bcW-5p-cGO"/>
+                                                    <exclude reference="f3g-mA-dnH"/>
+                                                    <exclude reference="gzD-QR-fmH"/>
+                                                    <exclude reference="v1M-ra-qcd"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="eHg-xc-jld" secondAttribute="trailing" constant="-4" id="fsy-lT-WhK"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="fsy-lT-WhK"/>
+                                            </mask>
+                                        </variation>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="pKW-og-ZDH" userLabel="Last Name">
+                                        <rect key="frame" x="0.0" y="280" width="600" height="56"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pKW-og-ZDH" id="gSE-IN-Xzr">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="55.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeh-Al-E1B">
+                                                    <rect key="frame" x="20" y="8" width="572" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="572" id="c5A-ro-vms"/>
+                                                        <constraint firstAttribute="width" constant="572" id="pQo-W4-bfD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="c5A-ro-vms"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mSA-N2-hZf" userLabel="Last Name Input">
+                                                    <rect key="frame" x="20" y="25" width="572" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="R8S-U5-cs7"/>
+                                                        <constraint firstAttribute="width" constant="584" id="oiv-cf-vHt"/>
+                                                        <constraint firstAttribute="width" constant="572" id="uDw-xH-UMx"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="oiv-cf-vHt"/>
+                                                        </mask>
+                                                    </variation>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mSA-N2-hZf" firstAttribute="top" secondItem="aeh-Al-E1B" secondAttribute="bottom" constant="-2" id="BC5-if-ixN"/>
+                                                <constraint firstItem="mSA-N2-hZf" firstAttribute="top" secondItem="aeh-Al-E1B" secondAttribute="bottom" constant="1" id="Ma2-ii-T0t"/>
+                                                <constraint firstItem="aeh-Al-E1B" firstAttribute="leading" secondItem="gSE-IN-Xzr" secondAttribute="leading" constant="20" id="MuG-V9-WwG"/>
+                                                <constraint firstItem="mSA-N2-hZf" firstAttribute="leading" secondItem="aeh-Al-E1B" secondAttribute="leading" id="UIs-sE-1tq"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="aeh-Al-E1B" secondAttribute="trailing" id="Y4W-Jb-WE9"/>
+                                                <constraint firstItem="mSA-N2-hZf" firstAttribute="top" secondItem="aeh-Al-E1B" secondAttribute="bottom" constant="-2" id="cRB-TJ-SbF"/>
+                                                <constraint firstItem="aeh-Al-E1B" firstAttribute="top" secondItem="gSE-IN-Xzr" secondAttribute="top" constant="8" id="cdF-Zh-xb4"/>
+                                                <constraint firstItem="mSA-N2-hZf" firstAttribute="leading" secondItem="aeh-Al-E1B" secondAttribute="leading" id="oid-7Q-OwF"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mSA-N2-hZf" secondAttribute="trailing" id="yVU-Y0-bz7"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Y4W-Jb-WE9"/>
+                                                    <exclude reference="BC5-if-ixN"/>
+                                                    <exclude reference="yVU-Y0-bz7"/>
+                                                    <exclude reference="oid-7Q-OwF"/>
+                                                    <exclude reference="cRB-TJ-SbF"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="mSA-N2-hZf" secondAttribute="trailing" constant="-4" id="3BA-T9-xZV"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="3BA-T9-xZV"/>
+                                            </mask>
+                                        </variation>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="jnp-8U-8mm" userLabel="Date of Birth Cell">
+                                        <rect key="frame" x="0.0" y="336" width="600" height="56"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jnp-8U-8mm" id="82w-bK-eJs">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="55.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE OF BIRTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRA-2w-NAB">
+                                                    <rect key="frame" x="20" y="8" width="572" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="572" id="0w9-nm-Ybr"/>
+                                                        <constraint firstAttribute="width" constant="572" id="Ott-sC-o7E"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Ott-sC-o7E"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select your Date of Birth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hxr-AN-PQ5" userLabel="DoB input">
+                                                    <rect key="frame" x="20" y="25" width="572" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="572" id="Lp7-2g-fHM"/>
+                                                        <constraint firstAttribute="height" constant="24" id="kjb-Fi-9MW"/>
+                                                        <constraint firstAttribute="width" constant="584" id="rGd-qO-fwo"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="rGd-qO-fwo"/>
+                                                        </mask>
+                                                    </variation>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Hxr-AN-PQ5" firstAttribute="leading" secondItem="vRA-2w-NAB" secondAttribute="leading" id="0ht-z5-e9b"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vRA-2w-NAB" secondAttribute="trailing" id="84g-lR-HuZ"/>
+                                                <constraint firstItem="Hxr-AN-PQ5" firstAttribute="top" secondItem="vRA-2w-NAB" secondAttribute="bottom" constant="-2" id="NId-dp-CPH"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Hxr-AN-PQ5" secondAttribute="trailing" id="NN2-07-eWt"/>
+                                                <constraint firstItem="vRA-2w-NAB" firstAttribute="top" secondItem="82w-bK-eJs" secondAttribute="top" constant="8" id="Uku-BQ-qxQ"/>
+                                                <constraint firstItem="Hxr-AN-PQ5" firstAttribute="leading" secondItem="vRA-2w-NAB" secondAttribute="leading" id="Ykr-me-Sov"/>
+                                                <constraint firstItem="Hxr-AN-PQ5" firstAttribute="top" secondItem="vRA-2w-NAB" secondAttribute="bottom" constant="1" id="mca-8V-scb"/>
+                                                <constraint firstItem="Hxr-AN-PQ5" firstAttribute="top" secondItem="vRA-2w-NAB" secondAttribute="bottom" constant="-2" id="mlZ-3f-jd4"/>
+                                                <constraint firstItem="vRA-2w-NAB" firstAttribute="leading" secondItem="82w-bK-eJs" secondAttribute="leading" constant="20" id="vGj-e5-L3J"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="84g-lR-HuZ"/>
+                                                    <exclude reference="mlZ-3f-jd4"/>
+                                                    <exclude reference="NN2-07-eWt"/>
+                                                    <exclude reference="Ykr-me-Sov"/>
+                                                    <exclude reference="NId-dp-CPH"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Hxr-AN-PQ5" secondAttribute="trailing" constant="-4" id="7aQ-jz-Vvu"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="7aQ-jz-Vvu"/>
+                                            </mask>
+                                        </variation>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -703,6 +888,15 @@
                             <outlet property="delegate" destination="tv0-iu-svJ" id="Qx2-jz-bMK"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Setup Login Details" id="nft-N4-TnN">
+                        <barButtonItem key="leftBarButtonItem" image="back-arrow-20-20" id="KbK-2A-pIa">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="tv0-iu-svJ" id="mpr-cF-Oa9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="NEXT" id="Hkh-5C-GRC"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="roundImageUploadView" destination="GYT-wI-tjz" id="I2E-f2-EUt"/>
                     </connections>

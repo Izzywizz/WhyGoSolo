@@ -122,7 +122,7 @@
                                 </variation>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user-icon-18-18" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Uy-I1u" userLabel="Invitee Icon">
-                                <rect key="frame" x="75.5" y="172" width="20" height="20"/>
+                                <rect key="frame" x="75" y="172" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="4le-Z1-49W"/>
                                     <constraint firstAttribute="width" secondItem="QhB-Uy-I1u" secondAttribute="height" multiplier="1:1" id="DMy-Kb-x40"/>
@@ -172,8 +172,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="chat-icon-18-18" translatesAutoresizingMaskIntoConstraints="NO" id="dMr-mC-bzt" userLabel="Message Icon">
-                                <rect key="frame" x="15" y="173" width="20" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat-icon-18-18" translatesAutoresizingMaskIntoConstraints="NO" id="dMr-mC-bzt" userLabel="Message Icon">
+                                <rect key="frame" x="15" y="174" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="JYT-yH-XZf"/>
                                     <constraint firstAttribute="width" secondItem="dMr-mC-bzt" secondAttribute="height" multiplier="1:1" id="N1j-af-6bD"/>

@@ -19,6 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _viewLayer.layer.cornerRadius = 5;
+    [self.termsTextView setContentOffset:CGPointZero];
 }
 
 -(void)viewWillAppear:(BOOL)animated    {

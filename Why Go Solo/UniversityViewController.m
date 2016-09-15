@@ -58,7 +58,7 @@
     return liverpoolArray;
 }
 
-/** Ensures that the selection seperators are setup before the  main views are shown*/
+/** Ensures that the selection seperators are setup before the main views are shown*/
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];

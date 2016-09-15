@@ -47,7 +47,6 @@
                             </label>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pf7-DJ-ohH">
                                 <rect key="frame" x="15" y="15" width="383" height="60"/>
-                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="profileButtonPressed:" destination="5Bx-65-Akd" eventType="touchUpInside" id="WM6-fV-7dw"/>
                                 </connections>
