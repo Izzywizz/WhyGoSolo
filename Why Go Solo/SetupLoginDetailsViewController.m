@@ -18,8 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNavigationButtonFontAndSize];
     NSLog(@"Setup Login Details");
-    // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,10 +28,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Helper Functions
+-(void) setNavigationButtonFontAndSize  {
+    
+    NSUInteger size = 12;
+    NSString *fontName = @"Lato";
+    UIFont *font = [UIFont fontWithName:fontName size:size];
+    NSDictionary * attributes = @{NSFontAttributeName: font};
+    [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+}
+
 #pragma mark - Actions Methods
 - (IBAction)backbuttonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)termsAndConditionButtonPressed:(UIButton *)sender {
+    NSLog(@"Activate Terms and condtion");
+}
+
+- (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
+}
 
 @end

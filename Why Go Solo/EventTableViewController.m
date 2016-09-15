@@ -203,9 +203,6 @@ NSArray *sectionTitles;
 
 }
 
-- (IBAction)testButton:(id)sender {
-    [self moveToOtherUserProfile];
-}
 
 
 @end

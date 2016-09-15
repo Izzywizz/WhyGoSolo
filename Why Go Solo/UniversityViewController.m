@@ -58,6 +58,7 @@
     return liverpoolArray;
 }
 
+/** Ensures that the selection seperators are setup before the  main views are shown*/
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
@@ -73,6 +74,8 @@
 
 #pragma mark - Table view data source
 
+
+/** Allows the cell selection seperators (the grey line across the tableView Cell) to extend across the entire table view */
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
