@@ -21,7 +21,6 @@
 		438188311D86EFCB009591F4 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438188301D86EFCB009591F4 /* ContainerViewController.m */; };
 		438A14811D8011C2005E6AF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14801D8011C2005E6AF7 /* main.m */; };
 		438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14831D8011C2005E6AF7 /* AppDelegate.m */; };
-		438A14871D8011C2005E6AF7 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14861D8011C2005E6AF7 /* SignInViewController.m */; };
 		438A148A1D8011C2005E6AF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438A14881D8011C2005E6AF7 /* Main.storyboard */; };
 		438A148C1D8011C2005E6AF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438A148B1D8011C2005E6AF7 /* Assets.xcassets */; };
 		438A148F1D8011C2005E6AF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438A148D1D8011C2005E6AF7 /* LaunchScreen.storyboard */; };
@@ -53,6 +52,7 @@
 		43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */; };
 		43BE4C3C1D82F91400D6B26A /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C3B1D82F91400D6B26A /* EditProfileTableViewController.m */; };
 		43D17EDA1D8BD7C300451E90 /* AccommodationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */; };
+		43D17EDD1D8C1F1800451E90 /* SignInTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17EDC1D8C1F1800451E90 /* SignInTableViewController.m */; };
 		43FBC2F21D8AA49100AE4E1F /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */; };
 		43FBC2F51D8AAFBC00AE4E1F /* SetupProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F41D8AAFBC00AE4E1F /* SetupProfileTableViewController.m */; };
 		43FBC2F81D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F71D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m */; };
@@ -96,8 +96,6 @@
 		438A14801D8011C2005E6AF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		438A14821D8011C2005E6AF7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		438A14831D8011C2005E6AF7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		438A14851D8011C2005E6AF7 /* SignInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
-		438A14861D8011C2005E6AF7 /* SignInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		438A14891D8011C2005E6AF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		438A148B1D8011C2005E6AF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		438A148E1D8011C2005E6AF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -143,6 +141,8 @@
 		43BE4C3B1D82F91400D6B26A /* EditProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileTableViewController.m; sourceTree = "<group>"; };
 		43D17ED81D8BD7C300451E90 /* AccommodationMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccommodationMapViewController.h; sourceTree = "<group>"; };
 		43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccommodationMapViewController.m; sourceTree = "<group>"; };
+		43D17EDB1D8C1F1800451E90 /* SignInTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInTableViewController.h; sourceTree = "<group>"; };
+		43D17EDC1D8C1F1800451E90 /* SignInTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInTableViewController.m; sourceTree = "<group>"; };
 		43FBC2F01D8AA49100AE4E1F /* TermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsViewController.h; sourceTree = "<group>"; };
 		43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsViewController.m; sourceTree = "<group>"; };
 		43FBC2F31D8AAFBC00AE4E1F /* SetupProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupProfileTableViewController.h; sourceTree = "<group>"; };
@@ -218,6 +218,8 @@
 				43FBC2F41D8AAFBC00AE4E1F /* SetupProfileTableViewController.m */,
 				43D17ED81D8BD7C300451E90 /* AccommodationMapViewController.h */,
 				43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */,
+				43D17EDB1D8C1F1800451E90 /* SignInTableViewController.h */,
+				43D17EDC1D8C1F1800451E90 /* SignInTableViewController.m */,
 			);
 			name = "Sign In Sign Up";
 			sourceTree = "<group>";
@@ -276,8 +278,6 @@
 				43BD7BB21D86993B00DDA384 /* PeopleViewController.m */,
 				43A893661D8057FA00BEA24B /* EventTableViewController.h */,
 				43A893671D8057FA00BEA24B /* EventTableViewController.m */,
-				438A14851D8011C2005E6AF7 /* SignInViewController.h */,
-				438A14861D8011C2005E6AF7 /* SignInViewController.m */,
 				438A14881D8011C2005E6AF7 /* Main.storyboard */,
 				438A148B1D8011C2005E6AF7 /* Assets.xcassets */,
 				438A148D1D8011C2005E6AF7 /* LaunchScreen.storyboard */,
@@ -464,7 +464,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				438A14871D8011C2005E6AF7 /* SignInViewController.m in Sources */,
 				43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */,
 				43A893621D8057AE00BEA24B /* EventsTableViewCell.m in Sources */,
 				431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */,
@@ -478,6 +477,7 @@
 				43A893601D8057AE00BEA24B /* FooterEventsTableViewCell.m in Sources */,
 				4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */,
 				4309193F1D81552200EE9220 /* PinLocationData.m in Sources */,
+				43D17EDD1D8C1F1800451E90 /* SignInTableViewController.m in Sources */,
 				43A893681D8057FA00BEA24B /* EventTableViewController.m in Sources */,
 				43FBC2F51D8AAFBC00AE4E1F /* SetupProfileTableViewController.m in Sources */,
 				43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */,
