@@ -25,6 +25,7 @@
     NSLog(@"Accommodation Map View");
     [self setNavigationButtonFontAndSize];
     [self setupSearchBar];
+    _internalAccoutCreatedView.layer.cornerRadius = 5;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,6 +36,7 @@
 -(void)viewWillAppear:(BOOL)animated   {
     [self.mapView setDelegate:self];
     self.locationSearchTable.delegate = self;
+    [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
 }
 
 -(void) viewWillDisappear:(BOOL)animated    {
@@ -43,6 +45,20 @@
 
 
 #pragma mark - Helper Functions
+
+-(void)accountCreationOverlayAlpha:(int)a animationDuration:(float)duration
+{
+    [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        for (id x in _overlayView.subviews)
+        {
+            if ([x class] == [UIView class])
+            {
+                [(UIView*)x setAlpha:a];
+            }
+        }
+        _overlayView.alpha = a;
+    } completion:nil];
+}
 
 -(void) setNavigationButtonFontAndSize  {
     
@@ -64,7 +80,7 @@
     //    searchBar.barTintColor = [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1];
     searchBar.searchBarStyle = UISearchBarStyleMinimal; // allows you to create a barButton item without affecting the style of serach, without this that horrible default overlay would return
     [searchBar sizeToFit];
-    searchBar.placeholder = @"Search for places";
+    searchBar.placeholder = @"Accommodation";
 
     self.navigationItem.titleView = _resultSearchController.searchBar;
     _resultSearchController.hidesNavigationBarDuringPresentation = NO;
@@ -74,7 +90,31 @@
     self.definesPresentationContext = YES;
     _locationSearchTable.mapView = _mapView;
     _locationSearchTable.delegate = self;
+    
 
+}
+
+#pragma mark - Map Delegate Methods
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation   {
+
+    if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
+        MKAnnotationView *pin = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"myPin"];
+        
+        if (pin == nil) {
+            pin = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myPin"];
+            
+        } else {
+            pin.annotation = annotation;
+        }
+        
+        pin.canShowCallout = YES;
+        pin.draggable = YES;
+        pin.image = [UIImage imageNamed:@"map-pin-34-58.png"];
+        
+        return pin;
+    }
+    
+    return nil;
 }
 
 #pragma mark - Delegate Method
@@ -82,10 +122,11 @@
 - (void)dropPinZoomIn:(MKPlacemark *)placemark
 {
     // clear existing pins
-    //    [_mapView removeAnnotations:(_mapView.annotations)];
+    [_mapView removeAnnotations:(_mapView.annotations)];
     MKPointAnnotation *annotation = [MKPointAnnotation new];
     annotation.coordinate = placemark.coordinate;
     annotation.title = placemark.name;
+    
     annotation.subtitle = [NSString stringWithFormat:@"%@ %@",
                            (placemark.locality == nil ? @"" : placemark.locality),
                            (placemark.administrativeArea == nil ? @"" : placemark.administrativeArea)
@@ -103,7 +144,13 @@
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Done Pressed");
+    NSLog(@"accommodation: %@",_resultSearchController.searchBar.text);
+    [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay
 }
 
+- (IBAction)okButtonPressed:(UIButton *)sender {
+    NSLog(@"Ok Button Pressed");
+    [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
+}
 
 @end

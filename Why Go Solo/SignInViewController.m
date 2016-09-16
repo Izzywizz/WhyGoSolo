@@ -27,5 +27,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end
