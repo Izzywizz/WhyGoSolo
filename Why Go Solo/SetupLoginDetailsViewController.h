@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SetupLoginDetailsViewController : UIViewController
+@interface SetupLoginDetailsViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 
 @end

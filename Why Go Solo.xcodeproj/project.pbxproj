@@ -53,7 +53,6 @@
 		43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */; };
 		43BE4C3C1D82F91400D6B26A /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C3B1D82F91400D6B26A /* EditProfileTableViewController.m */; };
 		43D17EDA1D8BD7C300451E90 /* AccommodationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */; };
-		43FBC2EE1D8A8F8D00AE4E1F /* SetupContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2ED1D8A8F8D00AE4E1F /* SetupContainerViewController.m */; };
 		43FBC2F21D8AA49100AE4E1F /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */; };
 		43FBC2F51D8AAFBC00AE4E1F /* SetupProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F41D8AAFBC00AE4E1F /* SetupProfileTableViewController.m */; };
 		43FBC2F81D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F71D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m */; };
@@ -144,8 +143,6 @@
 		43BE4C3B1D82F91400D6B26A /* EditProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileTableViewController.m; sourceTree = "<group>"; };
 		43D17ED81D8BD7C300451E90 /* AccommodationMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccommodationMapViewController.h; sourceTree = "<group>"; };
 		43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccommodationMapViewController.m; sourceTree = "<group>"; };
-		43FBC2EC1D8A8F8D00AE4E1F /* SetupContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupContainerViewController.h; sourceTree = "<group>"; };
-		43FBC2ED1D8A8F8D00AE4E1F /* SetupContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupContainerViewController.m; sourceTree = "<group>"; };
 		43FBC2F01D8AA49100AE4E1F /* TermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsViewController.h; sourceTree = "<group>"; };
 		43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsViewController.m; sourceTree = "<group>"; };
 		43FBC2F31D8AAFBC00AE4E1F /* SetupProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupProfileTableViewController.h; sourceTree = "<group>"; };
@@ -215,8 +212,6 @@
 				430503111D89868700CA73D1 /* UniversityViewController.m */,
 				430503161D8998F600CA73D1 /* SetupLoginDetailsViewController.h */,
 				430503171D8998F600CA73D1 /* SetupLoginDetailsViewController.m */,
-				43FBC2EC1D8A8F8D00AE4E1F /* SetupContainerViewController.h */,
-				43FBC2ED1D8A8F8D00AE4E1F /* SetupContainerViewController.m */,
 				43FBC2F01D8AA49100AE4E1F /* TermsViewController.h */,
 				43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */,
 				43FBC2F31D8AAFBC00AE4E1F /* SetupProfileTableViewController.h */,
@@ -483,7 +478,6 @@
 				43A893601D8057AE00BEA24B /* FooterEventsTableViewCell.m in Sources */,
 				4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */,
 				4309193F1D81552200EE9220 /* PinLocationData.m in Sources */,
-				43FBC2EE1D8A8F8D00AE4E1F /* SetupContainerViewController.m in Sources */,
 				43A893681D8057FA00BEA24B /* EventTableViewController.m in Sources */,
 				43FBC2F51D8AAFBC00AE4E1F /* SetupProfileTableViewController.m in Sources */,
 				43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */,
