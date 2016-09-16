@@ -1058,7 +1058,7 @@
         <scene sceneID="nZW-Rs-DKp">
             <objects>
                 <tableViewController id="uFQ-6G-jzI" customClass="SignInTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oLa-km-7E5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oLa-km-7E5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1076,9 +1076,13 @@
                                         <rect key="frame" x="0.0" y="67" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="etQ-KG-3lx" id="WHT-by-4Ky">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70d-wN-Zn5">
+                                                    <rect key="frame" x="0.0" y="1" width="600" height="57.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hax-5V-J2S">
                                                     <rect key="frame" x="20" y="14" width="572" height="17"/>
                                                     <constraints>
@@ -1097,12 +1101,17 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="BsP-Od-Ynz" firstAttribute="leading" secondItem="WHT-by-4Ky" secondAttribute="leading" constant="20" id="3ck-zY-cZd"/>
+                                                <constraint firstAttribute="trailing" secondItem="70d-wN-Zn5" secondAttribute="trailing" id="8bd-pZ-Ypl"/>
                                                 <constraint firstItem="Hax-5V-J2S" firstAttribute="leading" secondItem="WHT-by-4Ky" secondAttribute="leading" constant="20" id="Bem-ac-FL5"/>
                                                 <constraint firstItem="BsP-Od-Ynz" firstAttribute="top" secondItem="Hax-5V-J2S" secondAttribute="bottom" constant="2" id="DQK-X7-cfV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="BsP-Od-Ynz" secondAttribute="trailing" id="EKb-CT-rNL"/>
                                                 <constraint firstItem="Hax-5V-J2S" firstAttribute="top" secondItem="WHT-by-4Ky" secondAttribute="topMargin" constant="6" id="ZL9-hF-QGQ"/>
+                                                <constraint firstItem="70d-wN-Zn5" firstAttribute="leading" secondItem="WHT-by-4Ky" secondAttribute="leading" id="bcd-57-znm"/>
+                                                <constraint firstItem="70d-wN-Zn5" firstAttribute="top" secondItem="WHT-by-4Ky" secondAttribute="top" constant="1" id="r5V-YA-EXL"/>
+                                                <constraint firstAttribute="bottom" secondItem="70d-wN-Zn5" secondAttribute="bottom" constant="1" id="vKg-6Q-Yso"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1110,7 +1119,7 @@
                                         <rect key="frame" x="0.0" y="127" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3KK-e0-QOJ" id="FqD-Qz-fc8">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLn-Jh-VdA">
@@ -1144,7 +1153,7 @@
                                         <rect key="frame" x="0.0" y="187" width="600" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NoI-vn-75K" id="J0g-Zr-dHJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="111.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISb-uy-KyI">
@@ -1173,7 +1182,7 @@
                                         <rect key="frame" x="0.0" y="299" width="600" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VsD-c7-6Ys" id="cv9-G2-xm2">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="56.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VA-oS-3Bl">
@@ -1215,6 +1224,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailContentView" destination="WHT-by-4Ky" id="ZPa-Gj-PCV"/>
                         <outlet property="emailInputField" destination="BsP-Od-Ynz" id="Agj-ef-HAq"/>
                         <outlet property="emailLabel" destination="Hax-5V-J2S" id="2mh-SK-au3"/>
                     </connections>

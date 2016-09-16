@@ -11,7 +11,12 @@
 @interface SignInTableViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailInputField;
-@property (weak, nonatomic) IBOutlet UIView *line;
+@property (weak, nonatomic) IBOutlet UIView *emailContentView;
+
+/**
+ Use the container view for each tableView cell and set the constraints of the view to 1 top/botom but 0 on the others
+ make a reference to that specifc container like emailContentView
+ */
 
 @end
 
@@ -47,8 +52,8 @@
         NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"Enter your email address" attributes:@{ NSForegroundColorAttributeName : [UIColor redColor] }];
         self.emailInputField.attributedPlaceholder = str;
         
-        [self.tableView setSeparatorColor:[UIColor redColor]];
-        _line.backgroundColor = [UIColor redColor];
+//        [self.tableView setSeparatorColor:[UIColor redColor]];
+        _emailContentView.backgroundColor = [UIColor redColor];
     }
 }
 
