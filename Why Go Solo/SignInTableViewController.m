@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailInputField;
 @property (weak, nonatomic) IBOutlet UIView *emailContentView;
+@property (weak, nonatomic) IBOutlet UIView *passwordContentView;
 
 /**
  Use the container view for each tableView cell and set the constraints of the view to 1 top/botom but 0 on the others

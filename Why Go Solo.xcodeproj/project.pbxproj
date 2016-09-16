@@ -53,6 +53,7 @@
 		43BE4C3C1D82F91400D6B26A /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C3B1D82F91400D6B26A /* EditProfileTableViewController.m */; };
 		43D17EDA1D8BD7C300451E90 /* AccommodationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */; };
 		43D17EDD1D8C1F1800451E90 /* SignInTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17EDC1D8C1F1800451E90 /* SignInTableViewController.m */; };
+		43D17EE01D8C3A1900451E90 /* ChangePasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17EDF1D8C3A1900451E90 /* ChangePasswordTableViewController.m */; };
 		43FBC2F21D8AA49100AE4E1F /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */; };
 		43FBC2F51D8AAFBC00AE4E1F /* SetupProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F41D8AAFBC00AE4E1F /* SetupProfileTableViewController.m */; };
 		43FBC2F81D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F71D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m */; };
@@ -143,6 +144,8 @@
 		43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccommodationMapViewController.m; sourceTree = "<group>"; };
 		43D17EDB1D8C1F1800451E90 /* SignInTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInTableViewController.h; sourceTree = "<group>"; };
 		43D17EDC1D8C1F1800451E90 /* SignInTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInTableViewController.m; sourceTree = "<group>"; };
+		43D17EDE1D8C3A1900451E90 /* ChangePasswordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordTableViewController.h; sourceTree = "<group>"; };
+		43D17EDF1D8C3A1900451E90 /* ChangePasswordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordTableViewController.m; sourceTree = "<group>"; };
 		43FBC2F01D8AA49100AE4E1F /* TermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsViewController.h; sourceTree = "<group>"; };
 		43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsViewController.m; sourceTree = "<group>"; };
 		43FBC2F31D8AAFBC00AE4E1F /* SetupProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupProfileTableViewController.h; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 				438188301D86EFCB009591F4 /* ContainerViewController.m */,
 				43ACED591D87EDAC008D949C /* DeleteConfirmationViewController.h */,
 				43ACED5A1D87EDAC008D949C /* DeleteConfirmationViewController.m */,
+				43D17EDE1D8C3A1900451E90 /* ChangePasswordTableViewController.h */,
+				43D17EDF1D8C3A1900451E90 /* ChangePasswordTableViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 				430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */,
 				43BE4C3C1D82F91400D6B26A /* EditProfileTableViewController.m in Sources */,
 				430503151D89911600CA73D1 /* UniversityLocations.m in Sources */,
+				43D17EE01D8C3A1900451E90 /* ChangePasswordTableViewController.m in Sources */,
 				43A893601D8057AE00BEA24B /* FooterEventsTableViewCell.m in Sources */,
 				4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */,
 				4309193F1D81552200EE9220 /* PinLocationData.m in Sources */,

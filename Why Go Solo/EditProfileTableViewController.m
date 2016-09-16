@@ -50,9 +50,11 @@
 }
 
 #pragma mark - Action Methods
-- (IBAction)deleteButtonPressed:(UIButton *)sender {
-    NSLog(@"Delete Account");
+
+- (IBAction)changePassword:(UIButton *)sender {
+    NSLog(@"Change Password");
 }
+
 
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
