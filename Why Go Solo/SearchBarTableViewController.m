@@ -8,7 +8,7 @@
 
 #import "SearchBarTableViewController.h"
 
-@interface SearchBarTableViewController ()
+@interface SearchBarTableViewController () <UISearchControllerDelegate>
 @property NSArray<MKMapItem *> *matchingItems;
 @end
 
@@ -20,11 +20,18 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    _sc.delegate = self;
     self.tableView.backgroundColor = [UIColor clearColor];
+}
+
+-(void)didPresentSearchController:(UISearchController *)searchController    {
+    searchController.searchBar.showsCancelButton = false;
+    
 }
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController;
 {
     _sc = searchController;
+    searchController.searchBar.showsCancelButton = false;
     NSString *searchBarText = searchController.searchBar.text;
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = searchBarText;

@@ -19,6 +19,7 @@
     _roundImageUploadView.layer.cornerRadius = _roundImageUploadView.bounds.size.width/2; //create circular profile view
     _roundImageUploadView.layer.masksToBounds = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // Prevents the tableView from drawing any more empty unused cells
+    [self setNavigationButtonFontAndSize];
 
 }
 
@@ -40,6 +41,15 @@
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
+}
+
+-(void) setNavigationButtonFontAndSize  {
+    
+    NSUInteger size = 12;
+    NSString *fontName = @"Lato";
+    UIFont *font = [UIFont fontWithName:fontName size:size];
+    NSDictionary * attributes = @{NSFontAttributeName: font};
+    [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
 
@@ -67,6 +77,9 @@
 
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
+    NSLog(@"Next Button Pressed");
 }
 
 @end

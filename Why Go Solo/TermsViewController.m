@@ -7,30 +7,44 @@
 //
 
 #import "TermsViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface TermsViewController ()
-@property (weak, nonatomic) IBOutlet UITextView *termsTextView;
+@property (weak, nonatomic) IBOutlet UITextView *termsText;
 
 @end
 
 @implementation TermsViewController
 
+#pragma mark - UI Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    _viewLayer.layer.cornerRadius = 5;
-    [self.termsTextView setContentOffset:CGPointZero];
+    self.termsText.layer.cornerRadius = 5;
+
 }
 
--(void)viewWillAppear:(BOOL)animated    {
-    [self.termsTextView setContentOffset:CGPointZero animated:NO];
+/** Lays out the subview which is the termsTextView, it */
+-(void) viewDidLayoutSubviews    {
+    [self.termsText setContentOffset:CGPointZero animated:NO]; //forces the scroll bar to be at the top
 }
+-(void)viewWillAppear:(BOOL)animated    {
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Helper Functions
 
+-(void) setupTermsTextBorder  {
+    [[self.termsText layer] setBorderColor:[[UIColor grayColor] CGColor]];
+    [[self.termsText layer] setBorderWidth:1.0];
+    [[self.termsText layer] setCornerRadius:5];
+}
+
+#pragma mark - Action Methods
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }

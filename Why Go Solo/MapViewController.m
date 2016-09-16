@@ -119,7 +119,6 @@ MKPlacemark *selectedPin;
     _locationSearchTable.mapView = _mapView;
     _locationSearchTable.delegate = self;
     
-
 }
 
 #pragma mark - Protocol Methods

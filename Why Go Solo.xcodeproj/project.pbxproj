@@ -52,6 +52,7 @@
 		43BE4C361D82A26700D6B26A /* OtherUserProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C351D82A26700D6B26A /* OtherUserProfileTableViewController.m */; };
 		43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */; };
 		43BE4C3C1D82F91400D6B26A /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C3B1D82F91400D6B26A /* EditProfileTableViewController.m */; };
+		43D17EDA1D8BD7C300451E90 /* AccommodationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */; };
 		43FBC2EE1D8A8F8D00AE4E1F /* SetupContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2ED1D8A8F8D00AE4E1F /* SetupContainerViewController.m */; };
 		43FBC2F21D8AA49100AE4E1F /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */; };
 		43FBC2F51D8AAFBC00AE4E1F /* SetupProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F41D8AAFBC00AE4E1F /* SetupProfileTableViewController.m */; };
@@ -141,6 +142,8 @@
 		43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
 		43BE4C3A1D82F91400D6B26A /* EditProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileTableViewController.h; sourceTree = "<group>"; };
 		43BE4C3B1D82F91400D6B26A /* EditProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileTableViewController.m; sourceTree = "<group>"; };
+		43D17ED81D8BD7C300451E90 /* AccommodationMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccommodationMapViewController.h; sourceTree = "<group>"; };
+		43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccommodationMapViewController.m; sourceTree = "<group>"; };
 		43FBC2EC1D8A8F8D00AE4E1F /* SetupContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupContainerViewController.h; sourceTree = "<group>"; };
 		43FBC2ED1D8A8F8D00AE4E1F /* SetupContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupContainerViewController.m; sourceTree = "<group>"; };
 		43FBC2F01D8AA49100AE4E1F /* TermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsViewController.h; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 				43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */,
 				43FBC2F31D8AAFBC00AE4E1F /* SetupProfileTableViewController.h */,
 				43FBC2F41D8AAFBC00AE4E1F /* SetupProfileTableViewController.m */,
+				43D17ED81D8BD7C300451E90 /* AccommodationMapViewController.h */,
+				43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */,
 			);
 			name = "Sign In Sign Up";
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 				43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */,
 				43A893621D8057AE00BEA24B /* EventsTableViewCell.m in Sources */,
 				431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */,
+				43D17EDA1D8BD7C300451E90 /* AccommodationMapViewController.m in Sources */,
 				438188311D86EFCB009591F4 /* ContainerViewController.m in Sources */,
 				43FBC2F21D8AA49100AE4E1F /* TermsViewController.m in Sources */,
 				43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */,

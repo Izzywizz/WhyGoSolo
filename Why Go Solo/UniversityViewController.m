@@ -23,14 +23,11 @@
     [super viewDidLoad];
     _locations = [[UniversityLocations alloc] init];
     [self unpackData];
-    [self setNavigationButtonFontAndSize];
     NSLog(@"University");
     _universityList = [self unpackData];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -62,6 +59,8 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    [self setNavigationButtonFontAndSize];
+
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     }
