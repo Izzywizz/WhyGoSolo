@@ -10,6 +10,7 @@
 		430503121D89868700CA73D1 /* UniversityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430503111D89868700CA73D1 /* UniversityViewController.m */; };
 		430503151D89911600CA73D1 /* UniversityLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 430503141D89911600CA73D1 /* UniversityLocations.m */; };
 		430503181D8998F600CA73D1 /* SetupLoginDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430503171D8998F600CA73D1 /* SetupLoginDetailsViewController.m */; };
+		4308DCA81D901462008CA934 /* ContainerForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4308DCA71D901462008CA934 /* ContainerForgotPasswordViewController.m */; };
 		430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919311D8154F400EE9220 /* CurrentUserLocation.m */; };
 		4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919351D8154F400EE9220 /* SearchBarTableViewController.m */; };
 		4309193B1D8154F400EE9220 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919371D8154F400EE9220 /* MapViewController.m */; };
@@ -19,6 +20,7 @@
 		431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 431C45B81D895C6B00A05C11 /* MainViewController.m */; };
 		436E84B01D815FA700B23402 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 436E84AF1D815FA700B23402 /* flag.png */; };
 		4380C59D1D8FD70000FA08C5 /* FontSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380C59C1D8FD70000FA08C5 /* FontSetup.m */; };
+		4380C5A01D8FE34E00FA08C5 /* ForgotPasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380C59F1D8FE34E00FA08C5 /* ForgotPasswordTableViewController.m */; };
 		438188311D86EFCB009591F4 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438188301D86EFCB009591F4 /* ContainerViewController.m */; };
 		438A14811D8011C2005E6AF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14801D8011C2005E6AF7 /* main.m */; };
 		438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14831D8011C2005E6AF7 /* AppDelegate.m */; };
@@ -78,6 +80,8 @@
 		430503141D89911600CA73D1 /* UniversityLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityLocations.m; sourceTree = "<group>"; };
 		430503161D8998F600CA73D1 /* SetupLoginDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupLoginDetailsViewController.h; sourceTree = "<group>"; };
 		430503171D8998F600CA73D1 /* SetupLoginDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupLoginDetailsViewController.m; sourceTree = "<group>"; };
+		4308DCA61D901462008CA934 /* ContainerForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerForgotPasswordViewController.h; sourceTree = "<group>"; };
+		4308DCA71D901462008CA934 /* ContainerForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerForgotPasswordViewController.m; sourceTree = "<group>"; };
 		430919301D8154F400EE9220 /* CurrentUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUserLocation.h; sourceTree = "<group>"; };
 		430919311D8154F400EE9220 /* CurrentUserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUserLocation.m; sourceTree = "<group>"; };
 		430919341D8154F400EE9220 /* SearchBarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarTableViewController.h; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 		436E84AF1D815FA700B23402 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		4380C59B1D8FD70000FA08C5 /* FontSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSetup.h; sourceTree = "<group>"; };
 		4380C59C1D8FD70000FA08C5 /* FontSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontSetup.m; sourceTree = "<group>"; };
+		4380C59E1D8FE34E00FA08C5 /* ForgotPasswordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordTableViewController.h; sourceTree = "<group>"; };
+		4380C59F1D8FE34E00FA08C5 /* ForgotPasswordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordTableViewController.m; sourceTree = "<group>"; };
 		4381882F1D86EFCB009591F4 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
 		438188301D86EFCB009591F4 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		438A147C1D8011C2005E6AF7 /* Why Go Solo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Why Go Solo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +232,10 @@
 				43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */,
 				43D17EDB1D8C1F1800451E90 /* SignInTableViewController.h */,
 				43D17EDC1D8C1F1800451E90 /* SignInTableViewController.m */,
+				4380C59E1D8FE34E00FA08C5 /* ForgotPasswordTableViewController.h */,
+				4380C59F1D8FE34E00FA08C5 /* ForgotPasswordTableViewController.m */,
+				4308DCA61D901462008CA934 /* ContainerForgotPasswordViewController.h */,
+				4308DCA71D901462008CA934 /* ContainerForgotPasswordViewController.m */,
 			);
 			name = "Sign In Sign Up";
 			sourceTree = "<group>";
@@ -489,8 +499,10 @@
 				43A893601D8057AE00BEA24B /* FooterEventsTableViewCell.m in Sources */,
 				4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */,
 				4309193F1D81552200EE9220 /* PinLocationData.m in Sources */,
+				4308DCA81D901462008CA934 /* ContainerForgotPasswordViewController.m in Sources */,
 				43D17EDD1D8C1F1800451E90 /* SignInTableViewController.m in Sources */,
 				43A893681D8057FA00BEA24B /* EventTableViewController.m in Sources */,
+				4380C5A01D8FE34E00FA08C5 /* ForgotPasswordTableViewController.m in Sources */,
 				43FBC2F51D8AAFBC00AE4E1F /* SetupProfileTableViewController.m in Sources */,
 				43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */,
 				438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */,

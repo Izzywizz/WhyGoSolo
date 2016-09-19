@@ -29,7 +29,7 @@
     [super viewDidLoad];
     NSLog(@"SignIn Table VC");
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // Prevents the tableView from drawing any more empty unused cell
-    self.tableView.allowsSelection = NO; //becare this may disable button interaction.
+    self.tableView.allowsSelection = NO; //becareful this may disable button interaction.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,6 +55,9 @@
         
 //        [self.tableView setSeparatorColor:[UIColor redColor]];
         _emailContentView.backgroundColor = [UIColor redColor];
+//        _passwordContentView.backgroundColor = [UIColor redColor];
+        //creates the red valdiation box when the password wrong like the ama
+
     }
 }
 
@@ -91,7 +94,7 @@
     }
 }
 
-//** Creates a empty header but of the same colour stated in th design*/
+//** Creates a empty header but of the same colour stated in the design*/
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,tableView.frame.size.width,30)];
