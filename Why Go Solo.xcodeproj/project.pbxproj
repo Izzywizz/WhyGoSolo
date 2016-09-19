@@ -18,6 +18,7 @@
 		4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4319E7841D89582800FD5142 /* CommentTableViewController.m */; };
 		431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 431C45B81D895C6B00A05C11 /* MainViewController.m */; };
 		436E84B01D815FA700B23402 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 436E84AF1D815FA700B23402 /* flag.png */; };
+		4380C59D1D8FD70000FA08C5 /* FontSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380C59C1D8FD70000FA08C5 /* FontSetup.m */; };
 		438188311D86EFCB009591F4 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438188301D86EFCB009591F4 /* ContainerViewController.m */; };
 		438A14811D8011C2005E6AF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14801D8011C2005E6AF7 /* main.m */; };
 		438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14831D8011C2005E6AF7 /* AppDelegate.m */; };
@@ -91,6 +92,8 @@
 		431C45B71D895C6B00A05C11 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		431C45B81D895C6B00A05C11 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		436E84AF1D815FA700B23402 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
+		4380C59B1D8FD70000FA08C5 /* FontSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSetup.h; sourceTree = "<group>"; };
+		4380C59C1D8FD70000FA08C5 /* FontSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontSetup.m; sourceTree = "<group>"; };
 		4381882F1D86EFCB009591F4 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
 		438188301D86EFCB009591F4 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		438A147C1D8011C2005E6AF7 /* Why Go Solo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Why Go Solo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +274,8 @@
 		438A147E1D8011C2005E6AF7 /* Why Go Solo */ = {
 			isa = PBXGroup;
 			children = (
+				4380C59B1D8FD70000FA08C5 /* FontSetup.h */,
+				4380C59C1D8FD70000FA08C5 /* FontSetup.m */,
 				431C45BA1D895C8500A05C11 /* Sign In Sign Up */,
 				431C45B61D895C4300A05C11 /* Comments */,
 				436E84B71D8171AB00B23402 /* Profile */,
@@ -475,6 +480,7 @@
 				43D17EDA1D8BD7C300451E90 /* AccommodationMapViewController.m in Sources */,
 				438188311D86EFCB009591F4 /* ContainerViewController.m in Sources */,
 				43FBC2F21D8AA49100AE4E1F /* TermsViewController.m in Sources */,
+				4380C59D1D8FD70000FA08C5 /* FontSetup.m in Sources */,
 				43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */,
 				430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */,
 				43BE4C3C1D82F91400D6B26A /* EditProfileTableViewController.m in Sources */,

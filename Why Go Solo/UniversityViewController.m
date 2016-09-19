@@ -38,10 +38,7 @@
 
 -(void) setNavigationButtonFontAndSize  {
     
-    NSUInteger size = 12;
-    NSString *fontName = @"Lato";
-    UIFont *font = [UIFont fontWithName:fontName size:size];
-    NSDictionary * attributes = @{NSFontAttributeName: font};
+    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 

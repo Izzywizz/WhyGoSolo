@@ -70,6 +70,12 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1534,7 +1540,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CiU-yM-4gz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1620" y="3066"/>
+            <point key="canvasLocation" x="3250" y="3858"/>
         </scene>
         <!--Confirm Account Deletion-->
         <scene sceneID="Jav-0E-Zbl">
@@ -1692,7 +1698,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xWo-Dq-tzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1645" y="3912"/>
+            <point key="canvasLocation" x="3250" y="4646"/>
         </scene>
         <!--People-->
         <scene sceneID="H4d-PV-hY6">
@@ -2273,7 +2279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1O-wj-Krn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3312" y="3045"/>
+            <point key="canvasLocation" x="6098" y="2771"/>
         </scene>
         <!--Comment Table View Controller-->
         <scene sceneID="oyq-QS-aoq">
@@ -2645,7 +2651,7 @@
                     </constraints>
                 </imageView>
             </objects>
-            <point key="canvasLocation" x="1620" y="2315"/>
+            <point key="canvasLocation" x="3250" y="3030"/>
         </scene>
         <!--Map Search-->
         <scene sceneID="Z6u-UG-Clr">
@@ -2748,28 +2754,106 @@
                         <sections>
                             <tableViewSection id="Wu2-lv-Q3j">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="VM2-4K-Tdo">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="57" id="VM2-4K-Tdo" userLabel="Old Password Cell">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VM2-4K-Tdo" id="vtJ-zZ-Fih">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="56.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OLD PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="iEf-aO-lO8">
+                                                    <rect key="frame" x="13" y="8" width="579" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="579" id="r42-nv-5Z6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your Old password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UZr-Jl-wLj" userLabel="Old Password Input">
+                                                    <rect key="frame" x="13" y="27" width="579" height="21.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="579" id="Gey-5J-eok"/>
+                                                        <constraint firstAttribute="height" constant="21.5" id="It0-Mr-r6e"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UZr-Jl-wLj" firstAttribute="top" secondItem="iEf-aO-lO8" secondAttribute="bottom" constant="2" id="8MW-Ia-oh8"/>
+                                                <constraint firstItem="iEf-aO-lO8" firstAttribute="leading" secondItem="vtJ-zZ-Fih" secondAttribute="leading" constant="13" id="Jig-bK-B0e"/>
+                                                <constraint firstAttribute="topMargin" secondItem="iEf-aO-lO8" secondAttribute="top" id="okW-Lb-uqH"/>
+                                                <constraint firstItem="UZr-Jl-wLj" firstAttribute="leading" secondItem="vtJ-zZ-Fih" secondAttribute="leadingMargin" constant="5" id="pIv-aj-KLM"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Plk-ak-Kni">
-                                        <rect key="frame" x="0.0" y="44" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="57" id="d5P-rw-h4G" userLabel="New Password Cell">
+                                        <rect key="frame" x="0.0" y="57" width="600" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Plk-ak-Kni" id="eA9-yn-2hM">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d5P-rw-h4G" id="IjH-se-sSb">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="56.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="YjA-ia-f63">
+                                                    <rect key="frame" x="13" y="8" width="579" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="579" id="Z2t-Sp-DZT"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your New password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="83G-Yc-mQo" userLabel="New Password Input">
+                                                    <rect key="frame" x="13" y="27" width="579" height="21.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21.5" id="7wX-Zi-vwb"/>
+                                                        <constraint firstAttribute="width" constant="579" id="8cd-09-xf7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="YjA-ia-f63" firstAttribute="leading" secondItem="IjH-se-sSb" secondAttribute="leading" constant="13" id="F8u-df-rrD"/>
+                                                <constraint firstAttribute="topMargin" secondItem="YjA-ia-f63" secondAttribute="top" id="kMn-f3-mZ1"/>
+                                                <constraint firstItem="83G-Yc-mQo" firstAttribute="top" secondItem="YjA-ia-f63" secondAttribute="bottom" constant="2" id="m30-7z-HVg"/>
+                                                <constraint firstItem="83G-Yc-mQo" firstAttribute="leading" secondItem="IjH-se-sSb" secondAttribute="leadingMargin" constant="5" id="mSg-G8-Bc0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="eYE-4L-mzB">
-                                        <rect key="frame" x="0.0" y="88" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="57" id="dea-ig-qC0" userLabel="Confirm Password Cell">
+                                        <rect key="frame" x="0.0" y="114" width="600" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eYE-4L-mzB" id="OD1-Y0-ia8">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dea-ig-qC0" id="dFe-js-lW4">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="56.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONFIRM PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="yqq-L2-h3D">
+                                                    <rect key="frame" x="13" y="8" width="579" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="579" id="vac-bv-OKt"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm your New password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dkX-6L-7Ad" userLabel="Confirm New Password Input">
+                                                    <rect key="frame" x="13" y="27" width="579" height="21.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21.5" id="714-cR-K8O"/>
+                                                        <constraint firstAttribute="width" constant="579" id="GOE-lc-Adh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dkX-6L-7Ad" firstAttribute="leading" secondItem="dFe-js-lW4" secondAttribute="leadingMargin" constant="5" id="4nh-Y3-jXd"/>
+                                                <constraint firstItem="yqq-L2-h3D" firstAttribute="leading" secondItem="dFe-js-lW4" secondAttribute="leading" constant="13" id="YrC-yq-K5D"/>
+                                                <constraint firstItem="dkX-6L-7Ad" firstAttribute="top" secondItem="yqq-L2-h3D" secondAttribute="bottom" constant="2" id="qjn-wX-unY"/>
+                                                <constraint firstAttribute="topMargin" secondItem="yqq-L2-h3D" secondAttribute="top" id="sfm-27-q89"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -2782,8 +2866,18 @@
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PvA-SW-bSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationBar contentMode="scaleToFill" id="Tvw-YM-PDd">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <items>
+                        <navigationItem title="Title" id="V6N-Yu-KHS">
+                            <barButtonItem key="leftBarButtonItem" title="BACK" id="YcX-yQ-Mm8"/>
+                            <barButtonItem key="rightBarButtonItem" title="SAVE" id="CZW-ZN-KIg"/>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
             </objects>
-            <point key="canvasLocation" x="859" y="3787"/>
+            <point key="canvasLocation" x="2485" y="5289"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="C5s-ql-1IP">
@@ -3172,7 +3266,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="msw-bU-yns" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="859" y="3111"/>
+            <point key="canvasLocation" x="2485" y="4613"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vwQ-yv-OOC">

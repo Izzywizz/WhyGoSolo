@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FontSetup.h"
+
 
 @interface UniversityViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
