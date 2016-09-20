@@ -8,8 +8,11 @@
 
 #import "FilterViewController.h"
 
-@interface FilterViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *testLabel;
+@interface FilterViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UISlider *slider;
+@property (weak, nonatomic) IBOutlet UILabel *mileLabel;
+@property NSArray *halls;
 
 @end
 
@@ -19,6 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Filter View Activated!");
+    [self setNavigationButtonFontAndSize];
+    [self unpackHallsData];
+}
+
+-(void) viewWillAppear:(BOOL)animated   {
+    [[UISlider appearance] setThumbImage:[UIImage imageNamed:@"thumb.png.png"] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,20 +43,48 @@
     [_applyButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
+-(void) unpackHallsData {
+    
+    self.halls = [HallsOfResidence returnHallsOfResidence];
+}
+
+#pragma mark - TableView DataSource Methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section    {
+    
+    return self.halls.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath  {
+    
+    NSString *reuseID = @"residentCell";
+    UITableViewCell *cell  = [tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID];
+    }
+    
+    cell.textLabel.text = [_halls objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+#pragma mark - TableView Header Methods
+
+
+
+
 #pragma mark - Action Methods
 
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)applyButtonPressed:(UIBarButtonItem *)sender {
-    NSLog(@"apply");
+    NSLog(@"apply filter");
 }
 
-- (IBAction)sliderValueTest:(UISlider *)sender {
-    int sliderValue;
-    NSLog(@"Value: %d", (int) sender.value);
-    sliderValue = (int) sender.value;
-    _testLabel.text = [NSString stringWithFormat:@"%d", sliderValue];
+- (IBAction)sliderMileValueChange:(UISlider *)sender {
+    self.mileLabel.text = [NSString stringWithFormat:@"%d MILES", (int) sender.value];
 }
 
 @end

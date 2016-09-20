@@ -19,6 +19,7 @@
 		430919421D8158A000EE9220 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 430919411D8158A000EE9220 /* car.png */; };
 		4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4319E7841D89582800FD5142 /* CommentTableViewController.m */; };
 		431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 431C45B81D895C6B00A05C11 /* MainViewController.m */; };
+		433981411D91310B00A995B3 /* HallsOfResidence.m in Sources */ = {isa = PBXBuildFile; fileRef = 433981401D91310B00A995B3 /* HallsOfResidence.m */; };
 		436E84B01D815FA700B23402 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 436E84AF1D815FA700B23402 /* flag.png */; };
 		4380C59D1D8FD70000FA08C5 /* FontSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380C59C1D8FD70000FA08C5 /* FontSetup.m */; };
 		4380C5A01D8FE34E00FA08C5 /* ForgotPasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380C59F1D8FE34E00FA08C5 /* ForgotPasswordTableViewController.m */; };
@@ -98,6 +99,8 @@
 		4319E7841D89582800FD5142 /* CommentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewController.m; path = ../CommentTableViewController.m; sourceTree = "<group>"; };
 		431C45B71D895C6B00A05C11 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		431C45B81D895C6B00A05C11 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		4339813F1D91310B00A995B3 /* HallsOfResidence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HallsOfResidence.h; sourceTree = "<group>"; };
+		433981401D91310B00A995B3 /* HallsOfResidence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HallsOfResidence.m; sourceTree = "<group>"; };
 		436E84AF1D815FA700B23402 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		4380C59B1D8FD70000FA08C5 /* FontSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSetup.h; sourceTree = "<group>"; };
 		4380C59C1D8FD70000FA08C5 /* FontSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontSetup.m; sourceTree = "<group>"; };
@@ -205,6 +208,8 @@
 				4309193E1D81552200EE9220 /* PinLocationData.m */,
 				430503131D89911600CA73D1 /* UniversityLocations.h */,
 				430503141D89911600CA73D1 /* UniversityLocations.m */,
+				4339813F1D91310B00A995B3 /* HallsOfResidence.h */,
+				433981401D91310B00A995B3 /* HallsOfResidence.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 				43A893601D8057AE00BEA24B /* FooterEventsTableViewCell.m in Sources */,
 				4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */,
 				4309193F1D81552200EE9220 /* PinLocationData.m in Sources */,
+				433981411D91310B00A995B3 /* HallsOfResidence.m in Sources */,
 				4308DCA81D901462008CA934 /* ContainerForgotPasswordViewController.m in Sources */,
 				43D17EDD1D8C1F1800451E90 /* SignInTableViewController.m in Sources */,
 				43A893681D8057FA00BEA24B /* EventTableViewController.m in Sources */,
