@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UILabel *mileLabel;
 @property NSArray *halls;
+@property NSMutableArray *selectedObjects;
 
 @end
 
@@ -22,11 +23,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Filter View Activated!");
-    [self setNavigationButtonFontAndSize];
     [self unpackHallsData];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+
 }
 
 -(void) viewWillAppear:(BOOL)animated   {
+    
+    if (!_selectedObjects)
+    {
+        _selectedObjects = [NSMutableArray new];
+    }
     [[UISlider appearance] setThumbImage:[UIImage imageNamed:@"thumb.png.png"] forState:UIControlStateNormal];
 }
 
@@ -45,8 +52,25 @@
 
 -(void) unpackHallsData {
     
-    self.halls = [HallsOfResidence returnHallsOfResidence];
+    HallsOfResidence *hallsOfResidence = [[HallsOfResidence alloc] init];
+    self.halls = [hallsOfResidence returnHallsOfResidence];
 }
+
+/** Ensures that the selection seperators are setup before the main views are shown*/
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    [self setNavigationButtonFontAndSize];
+    
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 
 #pragma mark - TableView DataSource Methods
 
@@ -65,14 +89,88 @@
     }
     
     cell.textLabel.text = [_halls objectAtIndex:indexPath.row];
+//    cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check-button-20-20"]];
+//    cell.accessoryView.alpha = 0;
+//    NSLog(@"SELECETED OBJECTS = %@", _selectedObjects);
     
+ /*   if (![_selectedObjects containsObject:[_halls objectAtIndex:indexPath.row]])
+    {
+        cell.accessoryView.alpha = 0;
+    }
+    else
+    {
+        cell.accessoryView.alpha = 1;
+    }*/
     return cell;
 }
 
+/** Allows the cell selection seperators (the grey line across the tableView Cell) to extend across the entire table view */
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+    
+   /* HallsOfResidence *object = [_halls objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+   if (cell.accessoryView != nil) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [_selectedObjects removeObject:object];
+    }
+    else {
+        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check-button-20-20"]];
+        [_selectedObjects addObject:object];
+    }*/
+    
+    HallsOfResidence *object = [_halls objectAtIndex:indexPath.row]; //This assumes that your table has only one section and all cells are populated directly into that section from sourceArray.
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [_selectedObjects removeObject:object];
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [_selectedObjects addObject:object];
+    }
+}
+
+
+
 #pragma mark - TableView Header Methods
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    return [self headerCellAtIndex:section];
+}
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section    {
+    
+    return 56;
+}
 
+#pragma mark - Custom TableCell
+-(FilterTableViewCell *) headerCellAtIndex:(NSInteger) section  {
+    
+    NSString *nibName = @"FilterHeader";
+    NSString *reuseID = @"FilterHeaderCell";
+    
+    [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
+    FilterTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID];
+    
+    if (cell == nil) {
+        cell = [[FilterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID];
 
+    }
+    
+    return cell;
+}
 
 #pragma mark - Action Methods
 

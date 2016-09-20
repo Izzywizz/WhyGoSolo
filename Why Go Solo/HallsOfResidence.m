@@ -10,7 +10,7 @@
 
 @implementation HallsOfResidence
 
-+(NSArray *) returnHallsOfResidence {
+-(NSArray *) returnHallsOfResidence {
     NSArray *halls = @[@"Agnes Jones House",  @"Atlantic Towers", @"Carnatic Studios", @"Dome House", @"Grand Central", @"Hope Street Studios", @"John Moores Halls", @"K2 Block"];
     
     return halls;

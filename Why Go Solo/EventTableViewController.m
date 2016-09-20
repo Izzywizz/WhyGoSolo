@@ -146,6 +146,8 @@ NSArray *sectionTitles;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"Bring up maps!: row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
     [self performSegueWithIdentifier:@"GoToMap" sender:self];
+    
+    
 }
 
 

@@ -14,7 +14,7 @@
 
 
 
-@interface AccommodationMapViewController : UIViewController <HandleMapSearch, MKMapViewDelegate>
+@interface AccommodationMapViewController : UIViewController <HandleMapSearch, MKMapViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

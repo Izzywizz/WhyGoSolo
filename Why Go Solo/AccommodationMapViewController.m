@@ -12,8 +12,8 @@
 
 @interface AccommodationMapViewController ()
 
-@property (nonatomic) SearchBarTableViewController *locationSearchTable;
-@property (nonatomic) UISearchController *resultSearchController;
+@property (nonatomic, strong) SearchBarTableViewController *locationSearchTable;
+@property (nonatomic, strong) UISearchController *resultSearchController;
 
 @end
 
@@ -24,7 +24,7 @@
     [super viewDidLoad];
     NSLog(@"Accommodation Map View");
     [self setNavigationButtonFontAndSize];
-    [self setupSearchBar];
+    [self setup];
     _internalAccoutCreatedView.layer.cornerRadius = 5;
 }
 
@@ -35,12 +35,14 @@
 
 -(void)viewWillAppear:(BOOL)animated   {
     [self.mapView setDelegate:self];
-    self.locationSearchTable.delegate = self;
+//    self.locationSearchTable.delegate = self;
     [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
 }
 
 -(void) viewWillDisappear:(BOOL)animated    {
     self.mapView.delegate = nil;
+//    self.locationSearchTable.delegate = nil;
+    self.definesPresentationContext = NO;
 }
 
 
@@ -67,7 +69,12 @@
     [_doneButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
--(void) setupSearchBar  {
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    searchBar.text = @"";
+}
+
+-(void) setup  {
     NSLog(@"SerachBar Loaded");
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     _locationSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"SearchBarTableViewController"];
@@ -75,20 +82,17 @@
     _resultSearchController.searchResultsUpdater = _locationSearchTable;
     
     UISearchBar *searchBar = _resultSearchController.searchBar;
-    //    searchBar.barTintColor = [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1];
-    searchBar.searchBarStyle = UISearchBarStyleMinimal; // allows you to create a barButton item without affecting the style of serach, without this that horrible default overlay would return
     [searchBar sizeToFit];
-    searchBar.placeholder = @"Accommodation";
-
-    self.navigationItem.titleView = _resultSearchController.searchBar;
+    searchBar.placeholder = @"Accomodation";
+    self.navigationItem.titleView = searchBar;
+    searchBar.searchBarStyle = UISearchBarStyleMinimal;
     _resultSearchController.hidesNavigationBarDuringPresentation = NO;
     _resultSearchController.dimsBackgroundDuringPresentation = YES;
-    _resultSearchController.searchBar.showsCancelButton = false;
-
+    
     self.definesPresentationContext = YES;
+    
     _locationSearchTable.mapView = _mapView;
     _locationSearchTable.delegate = self;
-    
 
 }
 
@@ -142,7 +146,7 @@
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Done Pressed");
-    NSLog(@"accommodation: %@",_resultSearchController.searchBar.text);
+//    NSLog(@"accommodation: %@",_resultSearchController.searchBar.text);
     [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay
 }
 

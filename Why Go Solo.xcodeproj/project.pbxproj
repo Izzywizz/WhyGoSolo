@@ -20,6 +20,8 @@
 		4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4319E7841D89582800FD5142 /* CommentTableViewController.m */; };
 		431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 431C45B81D895C6B00A05C11 /* MainViewController.m */; };
 		433981411D91310B00A995B3 /* HallsOfResidence.m in Sources */ = {isa = PBXBuildFile; fileRef = 433981401D91310B00A995B3 /* HallsOfResidence.m */; };
+		433981431D9136B800A995B3 /* FilterHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 433981421D9136B800A995B3 /* FilterHeader.xib */; };
+		433981461D9137DB00A995B3 /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 433981451D9137DB00A995B3 /* FilterTableViewCell.m */; };
 		436E84B01D815FA700B23402 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 436E84AF1D815FA700B23402 /* flag.png */; };
 		4380C59D1D8FD70000FA08C5 /* FontSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380C59C1D8FD70000FA08C5 /* FontSetup.m */; };
 		4380C5A01D8FE34E00FA08C5 /* ForgotPasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380C59F1D8FE34E00FA08C5 /* ForgotPasswordTableViewController.m */; };
@@ -101,6 +103,9 @@
 		431C45B81D895C6B00A05C11 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		4339813F1D91310B00A995B3 /* HallsOfResidence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HallsOfResidence.h; sourceTree = "<group>"; };
 		433981401D91310B00A995B3 /* HallsOfResidence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HallsOfResidence.m; sourceTree = "<group>"; };
+		433981421D9136B800A995B3 /* FilterHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterHeader.xib; sourceTree = "<group>"; };
+		433981441D9137DB00A995B3 /* FilterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterTableViewCell.h; sourceTree = "<group>"; };
+		433981451D9137DB00A995B3 /* FilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewCell.m; sourceTree = "<group>"; };
 		436E84AF1D815FA700B23402 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		4380C59B1D8FD70000FA08C5 /* FontSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSetup.h; sourceTree = "<group>"; };
 		4380C59C1D8FD70000FA08C5 /* FontSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontSetup.m; sourceTree = "<group>"; };
@@ -370,6 +375,9 @@
 				43FBC2F91D8AC6C200AE4E1F /* PeopleNotAttending.xib */,
 				43FBC2F61D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.h */,
 				43FBC2F71D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m */,
+				433981421D9136B800A995B3 /* FilterHeader.xib */,
+				433981441D9137DB00A995B3 /* FilterTableViewCell.h */,
+				433981451D9137DB00A995B3 /* FilterTableViewCell.m */,
 			);
 			name = "Table Cells";
 			path = ..;
@@ -455,6 +463,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				433981431D9136B800A995B3 /* FilterHeader.xib in Resources */,
 				438A14BD1D801E0F005E6AF7 /* OFL.txt in Resources */,
 				436E84B01D815FA700B23402 /* flag.png in Resources */,
 				43A893641D8057AE00BEA24B /* HeaderEvents.xib in Resources */,
@@ -517,6 +526,7 @@
 				43FBC2F51D8AAFBC00AE4E1F /* SetupProfileTableViewController.m in Sources */,
 				43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */,
 				438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */,
+				433981461D9137DB00A995B3 /* FilterTableViewCell.m in Sources */,
 				4308DCAB1D9025A3008CA934 /* FilterViewController.m in Sources */,
 				438A14811D8011C2005E6AF7 /* main.m in Sources */,
 				43FBC2F81D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m in Sources */,

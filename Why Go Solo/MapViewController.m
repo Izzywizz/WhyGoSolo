@@ -98,27 +98,22 @@ MKPlacemark *selectedPin;
 
 -(void) setupSearchBar  {
     NSLog(@"SerachBar Loaded");
-    
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     _locationSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"SearchBarTableViewController"];
     _resultSearchController = [[UISearchController alloc] initWithSearchResultsController:_locationSearchTable];
     _resultSearchController.searchResultsUpdater = _locationSearchTable;
     
     UISearchBar *searchBar = _resultSearchController.searchBar;
-//    searchBar.barTintColor = [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1];
-    searchBar.searchBarStyle = UISearchBarStyleMinimal; // allows you to create a barButton item without affecting the style of serach, without this that horrible default overlay would return
     [searchBar sizeToFit];
     searchBar.placeholder = @"Search for places";
     self.navigationItem.titleView = _resultSearchController.searchBar;
-    
+    searchBar.searchBarStyle = UISearchBarStyleMinimal;
     _resultSearchController.hidesNavigationBarDuringPresentation = NO;
     _resultSearchController.dimsBackgroundDuringPresentation = YES;
     self.definesPresentationContext = YES;
     
     _locationSearchTable.mapView = _mapView;
     _locationSearchTable.delegate = self;
-    
 }
 
 #pragma mark - Protocol Methods

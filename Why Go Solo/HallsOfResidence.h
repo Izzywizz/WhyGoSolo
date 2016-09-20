@@ -10,6 +10,6 @@
 
 @interface HallsOfResidence : NSObject
 
-+(NSArray *) returnHallsOfResidence;
+-(NSArray *) returnHallsOfResidence;
 
 @end

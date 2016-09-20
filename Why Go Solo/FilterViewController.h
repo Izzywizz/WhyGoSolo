@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FontSetup.h"
 #import "HallsOfResidence.h"
+#import "FilterTableViewCell.h"
 
 
 @interface FilterViewController : UIViewController

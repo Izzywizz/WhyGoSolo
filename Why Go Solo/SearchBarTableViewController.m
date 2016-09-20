@@ -20,18 +20,18 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    _sc.delegate = self;
     self.tableView.backgroundColor = [UIColor clearColor];
 }
 
--(void)didPresentSearchController:(UISearchController *)searchController    {
-    searchController.searchBar.showsCancelButton = false;
-    
+-(void) viewWillDisappear:(BOOL)animated    {
+    self.mapView.delegate = nil;
+    //    self.locationSearchTable.delegate = nil;
+    self.definesPresentationContext = NO;
 }
+
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController;
 {
     _sc = searchController;
-    searchController.searchBar.showsCancelButton = false;
     NSString *searchBarText = searchController.searchBar.text;
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = searchBarText;
