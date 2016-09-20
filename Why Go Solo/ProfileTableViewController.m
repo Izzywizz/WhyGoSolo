@@ -42,10 +42,8 @@
 #pragma mark - Helper Functions
 -(void) setNavigationButtonFontAndSize  {
     
-    NSUInteger size = 12;
-    NSString *fontName = @"Lato";
-    UIFont *font = [UIFont fontWithName:fontName size:size];
-    NSDictionary * attributes = @{NSFontAttributeName: font};
+    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+
     [_editButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
     [_backButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }

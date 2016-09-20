@@ -31,8 +31,7 @@ NSArray *sectionTitles;
     [super viewDidLoad];
     [self setupDummyData];
     [self setupTable];
-    [self ListenOutProfileBeingPressed];
-
+    [self setupObservers];
 }
 
 
@@ -49,23 +48,37 @@ NSArray *sectionTitles;
 
 #pragma mark - Observer Methods
 
-- (void)receivedNotification:(NSNotification *) notification {
+- (void)moveToFilter:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"Filter Found"]) {
+        NSLog(@"Filter Time");
+        [self moveToFilter];
+    }
+    
+}
+
+- (void)profileFound:(NSNotification *) notification {
     if ([[notification name] isEqualToString:@"Profile Found"]) {
         [self moveToOtherUserProfile];
     }
 }
 
--(void) ListenOutProfileBeingPressed    {
+-(void) setupObservers    {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receivedNotification:)
+                                             selector:@selector(profileFound:)
                                                  name:@"Profile Found"
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToFilter:) name:@"Filter Found" object:nil];
 }
 
 #pragma mark - Helper Functions
 
 -(void) moveToOtherUserProfile  {
     [self performSegueWithIdentifier:@"GoToOtherUserProfile" sender:self];
+}
+
+-(void)moveToFilter {
+    [self performSegueWithIdentifier:@"GoToFilter" sender:self];
 }
 
 -(void) setupDummyData  {

@@ -1559,6 +1559,102 @@
             </objects>
             <point key="canvasLocation" x="3548" y="2164"/>
         </scene>
+        <!--Filter-->
+        <scene sceneID="vLO-Ry-SHI">
+            <objects>
+                <viewController id="pLz-n4-2fB" customClass="FilterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fFF-vc-3dd"/>
+                        <viewControllerLayoutGuide type="bottom" id="SF4-dv-mCJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G61-hx-P30">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="byi-WC-6vv" userLabel="Colour Bar">
+                                <rect key="frame" x="0.0" y="64" width="601" height="3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="0HX-v4-af0"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="3" id="KD1-y6-pCz"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="3" id="Zfz-GU-8lJ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="3" id="cXC-C0-fBg"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="KD1-y6-pCz"/>
+                                        <exclude reference="Zfz-GU-8lJ"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZQ-qO-nQO">
+                                <rect key="frame" x="0.0" y="97" width="600" height="100"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="KH8-XH-7Vu">
+                                        <rect key="frame" x="75" y="35" width="450" height="31"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.67450980392156867" green="0.90588235294117647" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="446" id="8Zg-oi-wwG"/>
+                                        </constraints>
+                                        <color key="maximumTrackTintColor" red="0.96078431369999995" green="0.98823529409999999" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="sliderValueTest:" destination="pLz-n4-2fB" eventType="valueChanged" id="ssc-2n-jmj"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMJ-hW-l2Y">
+                                        <rect key="frame" x="279" y="6" width="42" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Owp-Oi-NeL"/>
+                                            <constraint firstAttribute="width" constant="42" id="fnH-IP-wpa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="41w-MW-ktD"/>
+                                    <constraint firstItem="KH8-XH-7Vu" firstAttribute="top" secondItem="hMJ-hW-l2Y" secondAttribute="bottom" constant="8" id="72P-2P-G6P"/>
+                                    <constraint firstItem="KH8-XH-7Vu" firstAttribute="centerY" secondItem="tZQ-qO-nQO" secondAttribute="centerY" id="Aoe-Tr-PTQ"/>
+                                    <constraint firstItem="hMJ-hW-l2Y" firstAttribute="centerX" secondItem="tZQ-qO-nQO" secondAttribute="centerX" id="QdQ-LL-AlB"/>
+                                    <constraint firstItem="KH8-XH-7Vu" firstAttribute="centerX" secondItem="tZQ-qO-nQO" secondAttribute="centerX" id="pO8-56-M1s"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tZQ-qO-nQO" firstAttribute="top" secondItem="byi-WC-6vv" secondAttribute="bottom" constant="30" id="Dth-8M-XDi"/>
+                            <constraint firstAttribute="trailing" secondItem="byi-WC-6vv" secondAttribute="trailing" constant="-1" id="Elz-Ij-IKK"/>
+                            <constraint firstItem="byi-WC-6vv" firstAttribute="leading" secondItem="G61-hx-P30" secondAttribute="leading" id="IYA-ZF-1NF"/>
+                            <constraint firstItem="byi-WC-6vv" firstAttribute="top" secondItem="fFF-vc-3dd" secondAttribute="bottom" id="uRu-NS-EV4"/>
+                            <constraint firstAttribute="trailing" secondItem="tZQ-qO-nQO" secondAttribute="trailing" id="ubt-vm-Mqx"/>
+                            <constraint firstItem="tZQ-qO-nQO" firstAttribute="leading" secondItem="G61-hx-P30" secondAttribute="leading" id="wQz-UN-ZK7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Filter" id="alj-fL-noh">
+                        <barButtonItem key="leftBarButtonItem" image="back-arrow-20-20" id="gK2-hZ-4hF">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="pLz-n4-2fB" id="zOC-1S-Egf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="APPLY" id="3bF-7u-lq7">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="applyButtonPressed:" destination="pLz-n4-2fB" id="UYy-hd-ieb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="applyButton" destination="3bF-7u-lq7" id="bzf-G7-HSz"/>
+                        <outlet property="testLabel" destination="hMJ-hW-l2Y" id="XkA-7V-FEb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kFI-px-mPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7538" y="1096"/>
+        </scene>
         <!--Event Table View Controller-->
         <scene sceneID="8Ta-J5-8iR">
             <objects>
@@ -1600,6 +1696,7 @@
                     <connections>
                         <segue destination="ZWB-zS-1us" kind="show" identifier="GoToMap" id="Dya-pO-aS6"/>
                         <segue destination="rdM-Mk-tqG" kind="show" identifier="GoToOtherUserProfile" id="TjZ-bR-Fvr"/>
+                        <segue destination="pLz-n4-2fB" kind="show" identifier="GoToFilter" id="kDu-9A-PPC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JR4-us-JDb" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FontSetup.h"
 
 @interface SetupProfileTableViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIView *roundImageUploadView;

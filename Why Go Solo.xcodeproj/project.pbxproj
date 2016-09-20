@@ -11,6 +11,7 @@
 		430503151D89911600CA73D1 /* UniversityLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 430503141D89911600CA73D1 /* UniversityLocations.m */; };
 		430503181D8998F600CA73D1 /* SetupLoginDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430503171D8998F600CA73D1 /* SetupLoginDetailsViewController.m */; };
 		4308DCA81D901462008CA934 /* ContainerForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4308DCA71D901462008CA934 /* ContainerForgotPasswordViewController.m */; };
+		4308DCAB1D9025A3008CA934 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4308DCAA1D9025A3008CA934 /* FilterViewController.m */; };
 		430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919311D8154F400EE9220 /* CurrentUserLocation.m */; };
 		4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919351D8154F400EE9220 /* SearchBarTableViewController.m */; };
 		4309193B1D8154F400EE9220 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430919371D8154F400EE9220 /* MapViewController.m */; };
@@ -82,6 +83,8 @@
 		430503171D8998F600CA73D1 /* SetupLoginDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupLoginDetailsViewController.m; sourceTree = "<group>"; };
 		4308DCA61D901462008CA934 /* ContainerForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerForgotPasswordViewController.h; sourceTree = "<group>"; };
 		4308DCA71D901462008CA934 /* ContainerForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerForgotPasswordViewController.m; sourceTree = "<group>"; };
+		4308DCA91D9025A3008CA934 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		4308DCAA1D9025A3008CA934 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		430919301D8154F400EE9220 /* CurrentUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUserLocation.h; sourceTree = "<group>"; };
 		430919311D8154F400EE9220 /* CurrentUserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUserLocation.m; sourceTree = "<group>"; };
 		430919341D8154F400EE9220 /* SearchBarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarTableViewController.h; sourceTree = "<group>"; };
@@ -298,6 +301,8 @@
 				43BD7BB21D86993B00DDA384 /* PeopleViewController.m */,
 				43A893661D8057FA00BEA24B /* EventTableViewController.h */,
 				43A893671D8057FA00BEA24B /* EventTableViewController.m */,
+				4308DCA91D9025A3008CA934 /* FilterViewController.h */,
+				4308DCAA1D9025A3008CA934 /* FilterViewController.m */,
 				438A14881D8011C2005E6AF7 /* Main.storyboard */,
 				438A148B1D8011C2005E6AF7 /* Assets.xcassets */,
 				438A148D1D8011C2005E6AF7 /* LaunchScreen.storyboard */,
@@ -506,6 +511,7 @@
 				43FBC2F51D8AAFBC00AE4E1F /* SetupProfileTableViewController.m in Sources */,
 				43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */,
 				438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */,
+				4308DCAB1D9025A3008CA934 /* FilterViewController.m in Sources */,
 				438A14811D8011C2005E6AF7 /* main.m in Sources */,
 				43FBC2F81D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m in Sources */,
 				430503121D89868700CA73D1 /* UniversityViewController.m in Sources */,

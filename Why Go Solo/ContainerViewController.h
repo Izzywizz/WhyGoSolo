@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FontSetup.h"
 
 @interface ContainerViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;

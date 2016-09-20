@@ -25,6 +25,7 @@
     switch (sender.tag) {
         case FILTER:
             NSLog(@"Filter Button Pressed");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Filter Found" object:self];
             break;
             case NOFILTER:
             NSLog(@"NO FILTER");

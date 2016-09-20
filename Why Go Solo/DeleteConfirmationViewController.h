@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FontSetup.h"
 
 @interface DeleteConfirmationViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;

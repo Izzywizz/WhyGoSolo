@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-@import MapKit;
 #import "MapViewController.h"
+#import "FontSetup.h"
+@import MapKit;
+
+
 
 @interface AccommodationMapViewController : UIViewController <HandleMapSearch, MKMapViewDelegate>
 
