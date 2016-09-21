@@ -10,6 +10,6 @@
 
 @interface HallsOfResidence : NSObject
 
--(NSArray *) returnHallsOfResidence;
+-(NSMutableArray *) returnHallsOfResidence;
 
 @end

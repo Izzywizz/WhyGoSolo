@@ -32,6 +32,8 @@ NSArray *sectionTitles;
     [self setupDummyData];
     [self setupTable];
     [self setupObservers];
+    
+    // By default, isHallsSwitchOn = 1 as when it passed by the observer for the FilterTableViewCell it comes actiavted and I couldn't find a way to pass a value via an observer
 }
 
 
@@ -61,6 +63,8 @@ NSArray *sectionTitles;
         [self moveToOtherUserProfile];
     }
 }
+
+
 
 -(void) setupObservers    {
     [[NSNotificationCenter defaultCenter] addObserver:self

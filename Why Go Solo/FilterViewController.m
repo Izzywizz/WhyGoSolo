@@ -12,8 +12,11 @@
 
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UILabel *mileLabel;
-@property NSArray *halls;
+@property NSMutableArray *halls;
 @property NSMutableArray *selectedObjects;
+@property BOOL isHallsSwitchOn;
+@property (weak, nonatomic) IBOutlet UISwitch *hallsSwitch;
+
 
 @end
 
@@ -22,8 +25,8 @@
 #pragma mark - UI View Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"Filter View Activated!");
-    [self unpackHallsData];
+    _halls = [NSMutableArray new];
+    _halls = [self unpackHallsData];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 
 }
@@ -42,7 +45,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)switchValueChanged:(UISwitch *)sender {
+    
+    if (sender.on) {
+        NSLog(@"Halls Activated");
+        _isHallsSwitchOn = YES;
+        self.tableView.alpha = 1;
+    } else  {
+        NSLog(@"Halls Deactivated");
+        _isHallsSwitchOn = NO;
+        self.tableView.alpha = 0;
+    }
+    
+}
 #pragma mark - Helper Functions
+
+
 -(void) setNavigationButtonFontAndSize  {
     
     NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
@@ -50,11 +68,15 @@
     [_applyButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
--(void) unpackHallsData {
+-(NSMutableArray *) unpackHallsData {
     
     HallsOfResidence *hallsOfResidence = [[HallsOfResidence alloc] init];
-    self.halls = [hallsOfResidence returnHallsOfResidence];
+    NSMutableArray *hallsArray = [[NSMutableArray alloc] init];
+    hallsArray = [hallsOfResidence returnHallsOfResidence];
+    
+    return hallsArray;
 }
+
 
 /** Ensures that the selection seperators are setup before the main views are shown*/
 -(void)viewDidLayoutSubviews
@@ -89,6 +111,8 @@
     }
     
     cell.textLabel.text = [_halls objectAtIndex:indexPath.row];
+
+    
 //    cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check-button-20-20"]];
 //    cell.accessoryView.alpha = 0;
 //    NSLog(@"SELECETED OBJECTS = %@", _selectedObjects);
@@ -143,34 +167,6 @@
 }
 
 
-
-#pragma mark - TableView Header Methods
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-    return [self headerCellAtIndex:section];
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section    {
-    
-    return 56;
-}
-
-#pragma mark - Custom TableCell
--(FilterTableViewCell *) headerCellAtIndex:(NSInteger) section  {
-    
-    NSString *nibName = @"FilterHeader";
-    NSString *reuseID = @"FilterHeaderCell";
-    
-    [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
-    FilterTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID];
-    
-    if (cell == nil) {
-        cell = [[FilterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID];
-
-    }
-    
-    return cell;
-}
 
 #pragma mark - Action Methods
 
