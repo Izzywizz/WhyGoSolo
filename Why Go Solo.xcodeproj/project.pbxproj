@@ -21,7 +21,6 @@
 		4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4319E7841D89582800FD5142 /* CommentTableViewController.m */; };
 		431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 431C45B81D895C6B00A05C11 /* MainViewController.m */; };
 		433981411D91310B00A995B3 /* HallsOfResidence.m in Sources */ = {isa = PBXBuildFile; fileRef = 433981401D91310B00A995B3 /* HallsOfResidence.m */; };
-		4350B3821D93C558001A5AE8 /* ISEmojiList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4350B37F1D93C558001A5AE8 /* ISEmojiList.plist */; };
 		4350B3831D93C558001A5AE8 /* ISEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4350B3811D93C558001A5AE8 /* ISEmojiView.m */; };
 		436E84B01D815FA700B23402 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 436E84AF1D815FA700B23402 /* flag.png */; };
 		4380C59D1D8FD70000FA08C5 /* FontSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380C59C1D8FD70000FA08C5 /* FontSetup.m */; };
@@ -29,6 +28,7 @@
 		438188311D86EFCB009591F4 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438188301D86EFCB009591F4 /* ContainerViewController.m */; };
 		4383E10B1D93ECD50021CA30 /* FriendHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4383E10A1D93ECD50021CA30 /* FriendHeaderTableViewCell.m */; };
 		4383E10D1D93ECF90021CA30 /* FriendHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4383E10C1D93ECF90021CA30 /* FriendHeader.xib */; };
+		4383E1111D941F3C0021CA30 /* NibCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4383E1101D941F3C0021CA30 /* NibCollectionCell.xib */; };
 		438A14811D8011C2005E6AF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14801D8011C2005E6AF7 /* main.m */; };
 		438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14831D8011C2005E6AF7 /* AppDelegate.m */; };
 		438A148A1D8011C2005E6AF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438A14881D8011C2005E6AF7 /* Main.storyboard */; };
@@ -46,6 +46,7 @@
 		438A14BB1D801E0F005E6AF7 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 438A14B01D801E0F005E6AF7 /* Lato-LightItalic.ttf */; };
 		438A14BC1D801E0F005E6AF7 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 438A14B11D801E0F005E6AF7 /* Lato-Regular.ttf */; };
 		438A14BD1D801E0F005E6AF7 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 438A14B21D801E0F005E6AF7 /* OFL.txt */; };
+		439A01F21D9425C300AA6AF7 /* ISEmojiList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 439A01F11D9425C300AA6AF7 /* ISEmojiList.plist */; };
 		43A8935F1D8057AE00BEA24B /* Events.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A893561D8057AE00BEA24B /* Events.xib */; };
 		43A893601D8057AE00BEA24B /* FooterEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A893581D8057AE00BEA24B /* FooterEventsTableViewCell.m */; };
 		43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A8935A1D8057AE00BEA24B /* HeaderEventsTableViewCell.m */; };
@@ -108,7 +109,6 @@
 		431C45B81D895C6B00A05C11 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		4339813F1D91310B00A995B3 /* HallsOfResidence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HallsOfResidence.h; sourceTree = "<group>"; };
 		433981401D91310B00A995B3 /* HallsOfResidence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HallsOfResidence.m; sourceTree = "<group>"; };
-		4350B37F1D93C558001A5AE8 /* ISEmojiList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ISEmojiList.plist; sourceTree = "<group>"; };
 		4350B3801D93C558001A5AE8 /* ISEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEmojiView.h; sourceTree = "<group>"; };
 		4350B3811D93C558001A5AE8 /* ISEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEmojiView.m; sourceTree = "<group>"; };
 		436E84AF1D815FA700B23402 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
@@ -121,6 +121,7 @@
 		4383E1091D93ECD50021CA30 /* FriendHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendHeaderTableViewCell.h; sourceTree = "<group>"; };
 		4383E10A1D93ECD50021CA30 /* FriendHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendHeaderTableViewCell.m; sourceTree = "<group>"; };
 		4383E10C1D93ECF90021CA30 /* FriendHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendHeader.xib; sourceTree = "<group>"; };
+		4383E1101D941F3C0021CA30 /* NibCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCollectionCell.xib; sourceTree = "<group>"; };
 		438A147C1D8011C2005E6AF7 /* Why Go Solo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Why Go Solo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		438A14801D8011C2005E6AF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		438A14821D8011C2005E6AF7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -143,6 +144,7 @@
 		438A14B01D801E0F005E6AF7 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		438A14B11D801E0F005E6AF7 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		438A14B21D801E0F005E6AF7 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		439A01F11D9425C300AA6AF7 /* ISEmojiList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ISEmojiList.plist; sourceTree = "<group>"; };
 		43A893561D8057AE00BEA24B /* Events.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Events.xib; sourceTree = "<group>"; };
 		43A893571D8057AE00BEA24B /* FooterEventsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooterEventsTableViewCell.h; sourceTree = "<group>"; };
 		43A893581D8057AE00BEA24B /* FooterEventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooterEventsTableViewCell.m; sourceTree = "<group>"; };
@@ -264,7 +266,7 @@
 		4350B37E1D93C558001A5AE8 /* ISEmojiView */ = {
 			isa = PBXGroup;
 			children = (
-				4350B37F1D93C558001A5AE8 /* ISEmojiList.plist */,
+				439A01F11D9425C300AA6AF7 /* ISEmojiList.plist */,
 				4350B3801D93C558001A5AE8 /* ISEmojiView.h */,
 				4350B3811D93C558001A5AE8 /* ISEmojiView.m */,
 			);
@@ -328,6 +330,7 @@
 				438A14831D8011C2005E6AF7 /* AppDelegate.m */,
 				430C14B61D929D5900F76C35 /* CreateEventViewController.h */,
 				430C14B71D929D5900F76C35 /* CreateEventViewController.m */,
+				4383E1101D941F3C0021CA30 /* NibCollectionCell.xib */,
 				43BD7BB11D86993B00DDA384 /* PeopleViewController.h */,
 				43BD7BB21D86993B00DDA384 /* PeopleViewController.m */,
 				43A893661D8057FA00BEA24B /* EventTableViewController.h */,
@@ -491,8 +494,8 @@
 				430919421D8158A000EE9220 /* car.png in Resources */,
 				438A14B91D801E0F005E6AF7 /* Lato-Italic.ttf in Resources */,
 				438A14B31D801E0F005E6AF7 /* Lato-Black.ttf in Resources */,
-				4350B3821D93C558001A5AE8 /* ISEmojiList.plist in Resources */,
 				438A14B51D801E0F005E6AF7 /* Lato-Bold.ttf in Resources */,
+				4383E1111D941F3C0021CA30 /* NibCollectionCell.xib in Resources */,
 				438A14BA1D801E0F005E6AF7 /* Lato-Light.ttf in Resources */,
 				43A893631D8057AE00BEA24B /* FooterEvents.xib in Resources */,
 				438A148F1D8011C2005E6AF7 /* LaunchScreen.storyboard in Resources */,
@@ -501,6 +504,7 @@
 				43B4009C1D86BDE70094DFB6 /* PeopleEvent.xib in Resources */,
 				438A14BB1D801E0F005E6AF7 /* Lato-LightItalic.ttf in Resources */,
 				438A14B81D801E0F005E6AF7 /* Lato-HairlineItalic.ttf in Resources */,
+				439A01F21D9425C300AA6AF7 /* ISEmojiList.plist in Resources */,
 				438A14B61D801E0F005E6AF7 /* Lato-BoldItalic.ttf in Resources */,
 				43A8936A1D805D8700BEA24B /* profile.png in Resources */,
 				438A14BC1D801E0F005E6AF7 /* Lato-Regular.ttf in Resources */,

@@ -1956,7 +1956,7 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7a-pm-1c3">
-                                        <rect key="frame" x="33" y="21.5" width="10" height="33"/>
+                                        <rect key="frame" x="33" y="21" width="10" height="33"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2066,18 +2066,18 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="V7t-PM-zAh">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zm9-XN-g79">
                                 <rect key="frame" x="0.0" y="388" width="600" height="168"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4qw-RW-IDC">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pE9-ta-dah">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="oyO-OP-5Dh">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mUN-Kc-1vk">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -2086,8 +2086,8 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="bBE-xF-yzs" id="ci4-Ie-K1a"/>
-                                    <outlet property="delegate" destination="bBE-xF-yzs" id="rbp-Cv-D0l"/>
+                                    <outlet property="dataSource" destination="bBE-xF-yzs" id="ePR-z8-DQq"/>
+                                    <outlet property="delegate" destination="bBE-xF-yzs" id="HBw-89-rZm"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -2097,9 +2097,8 @@
                             <constraint firstAttribute="trailing" secondItem="FFb-S6-hE0" secondAttribute="trailing" constant="-1" id="80e-tf-D24"/>
                             <constraint firstItem="mj3-Az-ygd" firstAttribute="leading" secondItem="Ntp-Hp-Kgu" secondAttribute="leading" id="AfK-5I-ui4"/>
                             <constraint firstItem="EGf-bR-oYv" firstAttribute="top" secondItem="xKf-ME-euh" secondAttribute="bottom" constant="17.5" id="Dh2-YC-1V8"/>
-                            <constraint firstItem="2YP-23-CaO" firstAttribute="top" secondItem="V7t-PM-zAh" secondAttribute="bottom" id="HCX-SY-PaL"/>
                             <constraint firstItem="njE-jJ-Gke" firstAttribute="top" secondItem="UpS-He-kVG" secondAttribute="bottom" constant="20" id="HEh-Ld-ILL"/>
-                            <constraint firstItem="V7t-PM-zAh" firstAttribute="top" secondItem="S6o-Qu-Ixq" secondAttribute="bottom" id="I8c-HB-jLD"/>
+                            <constraint firstItem="2YP-23-CaO" firstAttribute="top" secondItem="zm9-XN-g79" secondAttribute="bottom" id="Jo4-Sh-HLw"/>
                             <constraint firstItem="xKf-ME-euh" firstAttribute="top" secondItem="njE-jJ-Gke" secondAttribute="bottom" constant="15" id="Km0-zC-q8K"/>
                             <constraint firstAttribute="trailing" secondItem="mj3-Az-ygd" secondAttribute="trailing" id="LSt-hP-r2s"/>
                             <constraint firstAttribute="trailing" secondItem="njE-jJ-Gke" secondAttribute="trailing" id="OdU-ej-QZs"/>
@@ -2107,11 +2106,12 @@
                             <constraint firstItem="mj3-Az-ygd" firstAttribute="top" secondItem="EGf-bR-oYv" secondAttribute="bottom" constant="15" id="XzE-cx-mdD"/>
                             <constraint firstItem="mj3-Az-ygd" firstAttribute="leading" secondItem="Ntp-Hp-Kgu" secondAttribute="leading" id="dPT-uz-tOd"/>
                             <constraint firstItem="njE-jJ-Gke" firstAttribute="leading" secondItem="Ntp-Hp-Kgu" secondAttribute="leading" id="fwE-xF-rDg"/>
-                            <constraint firstAttribute="trailing" secondItem="V7t-PM-zAh" secondAttribute="trailing" id="kBl-ZI-Tnu"/>
+                            <constraint firstAttribute="trailing" secondItem="zm9-XN-g79" secondAttribute="trailing" id="grW-d9-qFb"/>
                             <constraint firstItem="EGf-bR-oYv" firstAttribute="centerX" secondItem="Ntp-Hp-Kgu" secondAttribute="centerX" id="mfz-Dp-Umd"/>
                             <constraint firstItem="EGf-bR-oYv" firstAttribute="top" secondItem="xKf-ME-euh" secondAttribute="bottom" constant="5" id="oSx-Kw-THT"/>
                             <constraint firstItem="xKf-ME-euh" firstAttribute="centerX" secondItem="Ntp-Hp-Kgu" secondAttribute="centerX" id="q45-vt-5lh"/>
-                            <constraint firstItem="V7t-PM-zAh" firstAttribute="leading" secondItem="Ntp-Hp-Kgu" secondAttribute="leading" id="uw5-qw-9Zg"/>
+                            <constraint firstItem="zm9-XN-g79" firstAttribute="top" secondItem="mj3-Az-ygd" secondAttribute="bottom" id="sMB-Nv-6Es"/>
+                            <constraint firstItem="zm9-XN-g79" firstAttribute="leading" secondItem="Ntp-Hp-Kgu" secondAttribute="leading" id="uA7-zh-whh"/>
                             <constraint firstItem="FFb-S6-hE0" firstAttribute="top" secondItem="UpS-He-kVG" secondAttribute="bottom" id="voa-Nf-R0O"/>
                         </constraints>
                         <variation key="default">
@@ -2138,7 +2138,7 @@
                     <connections>
                         <outlet property="addEmojiImage" destination="oZr-I6-vSN" id="zp1-2X-OEd"/>
                         <outlet property="circularView" destination="EGf-bR-oYv" id="v2J-B6-qKc"/>
-                        <outlet property="collectionView" destination="V7t-PM-zAh" id="TMQ-wt-zu9"/>
+                        <outlet property="collectionView" destination="zm9-XN-g79" id="4zS-ma-bOP"/>
                         <outlet property="emojiTextView" destination="K7a-pm-1c3" id="g93-7Q-fKb"/>
                         <outlet property="eventDescriptionInput" destination="AdV-Ky-xiS" id="aol-IM-cIK"/>
                         <outlet property="nextButton" destination="emk-Bl-Z87" id="jfb-OO-dQx"/>

@@ -94,7 +94,8 @@ static const CGFloat EmojiFontSize = 32;
             column = 0; // The number of columns is 0
         }
         
-        CGRect currentRect = CGRectMake(((page-1) * frame.size.width) + (column * EmojiWidth),
+        //Change this page value
+        CGRect currentRect = CGRectMake(((page - 1) * frame.size.width) + (column * EmojiWidth),
                                         row * EmojiHeight,
                                         EmojiWidth,
                                         EmojiHeight);

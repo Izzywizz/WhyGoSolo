@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *publicPrivateLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+
 @end

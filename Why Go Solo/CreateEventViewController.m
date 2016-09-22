@@ -10,7 +10,7 @@
 #import "ISEmojiView.h"
 
 
-@interface CreateEventViewController () <UITextViewDelegate, UITextFieldDelegate, ISEmojiViewDelegate>
+@interface CreateEventViewController () <UITextViewDelegate, UITextFieldDelegate, ISEmojiViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *eventDescriptionInput;
 @property (weak, nonatomic) IBOutlet UIImageView *addEmojiImage;
 @property (weak, nonatomic) IBOutlet UIView *circularView;
@@ -32,7 +32,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [self createDummyData];
+    
+    UINib *cellNib = [UINib nibWithNibName:@"NibCollectionCell" bundle:nil];
+    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setItemSize:CGSizeMake(200, 200)];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    
+    [self.collectionView setCollectionViewLayout:flowLayout];
+    
     [self placeholderTextViewSetup];
     [self NavigationButtonSetup];
     
@@ -57,7 +67,9 @@
 
 -(void) createDummyData {
     
-    NSMutableArray *firstSection = [[NSMutableArray alloc] init]; NSMutableArray *secondSection = [[NSMutableArray alloc] init];
+    NSMutableArray *firstSection = [[NSMutableArray alloc] init];
+    NSMutableArray *secondSection = [[NSMutableArray alloc] init];
+    
     for (int i=0; i<50; i++) {
         [firstSection addObject:[NSString stringWithFormat:@"Cell %d", i]];
         [secondSection addObject:[NSString stringWithFormat:@"item %d", i]];
@@ -65,15 +77,32 @@
     self.dataArray = [[NSArray alloc] initWithObjects:firstSection, secondSection, nil];
 }
 
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section    {
-    return self.dataArray.count;
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return [self.dataArray count];
 }
 
-// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
-//- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//}
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    NSMutableArray *sectionArray = [self.dataArray objectAtIndex:section];
+    return [sectionArray count];
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
+    
+    NSString *cellData = [data objectAtIndex:indexPath.row];
+    
+    static NSString *cellIdentifier = @"cvCell";
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    UILabel *titleLabel = (UILabel *)[cell viewWithTag:100];
+    
+    [titleLabel setText:cellData];
+    
+    return cell;
+    
+}
 
 #pragma mark - Emoji Methods
 
