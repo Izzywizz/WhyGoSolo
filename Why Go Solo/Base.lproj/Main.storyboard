@@ -1816,9 +1816,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kFI-px-mPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7528" y="912"/>
+            <point key="canvasLocation" x="7327" y="928"/>
         </scene>
-        <!--Create Event View Controller-->
+        <!--Create Event-->
         <scene sceneID="qJy-YK-usv">
             <objects>
                 <viewController id="bBE-xF-yzs" customClass="CreateEventViewController" sceneMemberID="viewController">
@@ -1882,7 +1882,7 @@
                                             <constraint firstAttribute="width" constant="188" id="7Qc-yB-s60"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -1943,12 +1943,24 @@
                                     <constraint firstAttribute="width" constant="243" id="SYc-5C-9nn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGf-bR-oYv" userLabel="Circle View">
                                 <rect key="frame" x="262" y="241" width="76" height="76"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0R-R5-VNm" userLabel="Invisable Add Emoji Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="76" height="76"/>
+                                        <connections>
+                                            <action selector="emojiButtonPressed:" destination="bBE-xF-yzs" eventType="touchUpInside" id="mxA-pk-mDY"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="K7a-pm-1c3">
+                                        <rect key="frame" x="0.0" y="0.0" width="76" height="76"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-emoji-38-38" translatesAutoresizingMaskIntoConstraints="NO" id="oZr-I6-vSN">
                                         <rect key="frame" x="19" y="19" width="38" height="38"/>
                                         <constraints>
@@ -1956,24 +1968,22 @@
                                             <constraint firstAttribute="width" constant="38" id="e9J-oX-0oE"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0R-R5-VNm" userLabel="Invisable Add Emoji Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="76" height="76"/>
-                                        <connections>
-                                            <action selector="emojiButtonPressed:" destination="bBE-xF-yzs" eventType="touchUpInside" id="mxA-pk-mDY"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="76" id="AYE-oK-zqU"/>
                                     <constraint firstItem="f0R-R5-VNm" firstAttribute="leading" secondItem="EGf-bR-oYv" secondAttribute="leading" constant="-7" id="D6a-km-1Gl"/>
+                                    <constraint firstAttribute="trailing" secondItem="K7a-pm-1c3" secondAttribute="trailing" id="Ldc-jv-6zI"/>
                                     <constraint firstItem="f0R-R5-VNm" firstAttribute="leading" secondItem="EGf-bR-oYv" secondAttribute="leading" id="Lgi-Yj-vWw"/>
+                                    <constraint firstItem="K7a-pm-1c3" firstAttribute="top" secondItem="EGf-bR-oYv" secondAttribute="top" id="MGH-z5-xFS"/>
                                     <constraint firstAttribute="bottom" secondItem="f0R-R5-VNm" secondAttribute="bottom" id="NWE-X8-gcw"/>
                                     <constraint firstItem="f0R-R5-VNm" firstAttribute="top" secondItem="EGf-bR-oYv" secondAttribute="top" id="NZH-ek-aWm"/>
                                     <constraint firstItem="oZr-I6-vSN" firstAttribute="centerX" secondItem="EGf-bR-oYv" secondAttribute="centerX" id="Usx-ju-4x4"/>
+                                    <constraint firstItem="K7a-pm-1c3" firstAttribute="leading" secondItem="EGf-bR-oYv" secondAttribute="leading" id="V4f-6g-H4u"/>
                                     <constraint firstAttribute="trailing" secondItem="f0R-R5-VNm" secondAttribute="trailing" id="aBH-R0-T8S"/>
                                     <constraint firstAttribute="width" constant="76" id="j56-q0-0Pu"/>
                                     <constraint firstItem="oZr-I6-vSN" firstAttribute="centerY" secondItem="EGf-bR-oYv" secondAttribute="centerY" id="oXF-fk-CPt"/>
+                                    <constraint firstAttribute="bottom" secondItem="K7a-pm-1c3" secondAttribute="bottom" id="sCQ-Fs-ftp"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -2011,10 +2021,10 @@
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="qSK-Us-bNu"/>
-                                                <exclude reference="ii3-IF-bBg"/>
                                                 <exclude reference="U2c-lS-pSs"/>
                                                 <exclude reference="bdU-ef-ddd"/>
+                                                <exclude reference="ii3-IF-bBg"/>
+                                                <exclude reference="qSK-Us-bNu"/>
                                             </mask>
                                         </variation>
                                     </label>
@@ -2050,8 +2060,22 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cLO-OJ-3lE">
+                                <rect key="frame" x="0.0" y="388" width="600" height="168"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="privateEventCell" id="ovV-6E-MZ0">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ovV-6E-MZ0" id="gHF-4V-Vgd">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="FFb-S6-hE0" firstAttribute="leading" secondItem="Ntp-Hp-Kgu" secondAttribute="leading" id="47C-LV-VoU"/>
                             <constraint firstAttribute="trailing" secondItem="FFb-S6-hE0" secondAttribute="trailing" constant="-1" id="80e-tf-D24"/>
@@ -2061,31 +2085,56 @@
                             <constraint firstItem="xKf-ME-euh" firstAttribute="top" secondItem="njE-jJ-Gke" secondAttribute="bottom" constant="15" id="Km0-zC-q8K"/>
                             <constraint firstAttribute="trailing" secondItem="mj3-Az-ygd" secondAttribute="trailing" id="LSt-hP-r2s"/>
                             <constraint firstAttribute="trailing" secondItem="njE-jJ-Gke" secondAttribute="trailing" id="OdU-ej-QZs"/>
+                            <constraint firstItem="cLO-OJ-3lE" firstAttribute="leading" secondItem="Ntp-Hp-Kgu" secondAttribute="leading" id="Qyl-0g-vuh"/>
                             <constraint firstAttribute="trailing" secondItem="mj3-Az-ygd" secondAttribute="trailing" constant="-1" id="Usj-vt-9Xe"/>
+                            <constraint firstAttribute="trailing" secondItem="cLO-OJ-3lE" secondAttribute="trailing" id="Xvw-rO-APb"/>
                             <constraint firstItem="mj3-Az-ygd" firstAttribute="top" secondItem="EGf-bR-oYv" secondAttribute="bottom" constant="15" id="XzE-cx-mdD"/>
+                            <constraint firstItem="2YP-23-CaO" firstAttribute="top" secondItem="cLO-OJ-3lE" secondAttribute="bottom" id="aPa-Rj-Vpd"/>
                             <constraint firstItem="mj3-Az-ygd" firstAttribute="leading" secondItem="Ntp-Hp-Kgu" secondAttribute="leading" id="dPT-uz-tOd"/>
                             <constraint firstItem="njE-jJ-Gke" firstAttribute="leading" secondItem="Ntp-Hp-Kgu" secondAttribute="leading" id="fwE-xF-rDg"/>
+                            <constraint firstItem="cLO-OJ-3lE" firstAttribute="top" secondItem="mj3-Az-ygd" secondAttribute="bottom" id="kSM-Jl-9zK"/>
                             <constraint firstItem="EGf-bR-oYv" firstAttribute="centerX" secondItem="Ntp-Hp-Kgu" secondAttribute="centerX" id="mfz-Dp-Umd"/>
                             <constraint firstItem="EGf-bR-oYv" firstAttribute="top" secondItem="xKf-ME-euh" secondAttribute="bottom" constant="5" id="oSx-Kw-THT"/>
                             <constraint firstItem="xKf-ME-euh" firstAttribute="centerX" secondItem="Ntp-Hp-Kgu" secondAttribute="centerX" id="q45-vt-5lh"/>
                             <constraint firstItem="FFb-S6-hE0" firstAttribute="top" secondItem="UpS-He-kVG" secondAttribute="bottom" id="voa-Nf-R0O"/>
+                            <constraint firstItem="cLO-OJ-3lE" firstAttribute="leading" secondItem="Ntp-Hp-Kgu" secondAttribute="leading" id="xl4-72-gT0"/>
+                            <constraint firstAttribute="trailing" secondItem="cLO-OJ-3lE" secondAttribute="trailing" id="ycW-2M-8x5"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Usj-vt-9Xe"/>
                                 <exclude reference="oSx-Kw-THT"/>
+                                <exclude reference="xl4-72-gT0"/>
+                                <exclude reference="ycW-2M-8x5"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Create Event" id="iii-Wu-PR5">
+                        <barButtonItem key="leftBarButtonItem" image="back-arrow-20-20" id="N86-Pn-2EI">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="bBE-xF-yzs" id="FjV-2U-ZaN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="NEXT" id="emk-Bl-Z87">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="nextButtonPressed:" destination="bBE-xF-yzs" id="F0h-rh-kKf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addEmojiImage" destination="oZr-I6-vSN" id="zp1-2X-OEd"/>
                         <outlet property="circularView" destination="EGf-bR-oYv" id="v2J-B6-qKc"/>
+                        <outlet property="emojiTextView" destination="K7a-pm-1c3" id="g93-7Q-fKb"/>
                         <outlet property="eventDescriptionInput" destination="AdV-Ky-xiS" id="aol-IM-cIK"/>
+                        <outlet property="nextButton" destination="emk-Bl-Z87" id="jfb-OO-dQx"/>
+                        <outlet property="tableView" destination="cLO-OJ-3lE" id="zfQ-cZ-BRS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziL-8v-F7g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7528" y="1588"/>
+            <point key="canvasLocation" x="7327" y="1598"/>
         </scene>
         <!--Event Table View Controller-->
         <scene sceneID="8Ta-J5-8iR">

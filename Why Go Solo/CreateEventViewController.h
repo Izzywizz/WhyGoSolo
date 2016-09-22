@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FontSetup.h"
 
 @interface CreateEventViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
