@@ -78,8 +78,8 @@
 
 -(void) setupDummyData  {
     //Dummy Data
-    _tableData = @{@"ATTNEDING EVENTS" : @[@"Andy Jones", @"Jennifer Cooper"],
-                   @"NOT ATTENDING EVENTS" : @[@"Nathan Barnes", @"Izzy Ali"]};
+    _tableData = @{@"FRIENDS" : @[@"Patrick", @"Steven", @"Philipe"],
+                   @"EVERYONE" : @[@"Nathan Barnes", @"Izzy Ali"]};
     
     NSSortDescriptor *ascending = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES];
     NSArray *ascendingOrder = [NSArray arrayWithObject:ascending];

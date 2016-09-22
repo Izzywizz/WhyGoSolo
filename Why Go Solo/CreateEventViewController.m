@@ -19,6 +19,10 @@
 
 @property BOOL isPrivateEvent;
 @property NSString *placeholderEventText;
+@property NSString *privateText;
+@property NSString *publicText;
+
+@property (nonatomic, strong) NSArray *dataArray;
 
 @end
 
@@ -28,23 +32,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [self placeholderTextViewSetup];
     [self NavigationButtonSetup];
     
     _placeholderEventText = @"Describe your event in less than 140 characters, don’t forget to include the time....";
+    _privateText = @"PRIVATE EVENT";
+    _publicText = @"PUBLIC EVENT";
     
     //Intially private mode is off thus the tableView has been hidden
-    self.tableView.alpha = 0;
     
     _circularView.layer.cornerRadius = _circularView.bounds.size.width/2; //create circular profile view
     _circularView.layer.masksToBounds = YES;
-    
-    //Removes the carret I animation
-    self.emojiTextView.tintColor = [UIColor clearColor];
-    // init ISEmojiView
-    ISEmojiView *emojiView = [[ISEmojiView alloc] initWithTextField:self.emojiTextView delegate:self];
-    self.emojiTextView.inputView = emojiView;
 
+    [self createEmojiView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,7 +53,37 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - CollectionView Methods
+
+-(void) createDummyData {
+    
+    NSMutableArray *firstSection = [[NSMutableArray alloc] init]; NSMutableArray *secondSection = [[NSMutableArray alloc] init];
+    for (int i=0; i<50; i++) {
+        [firstSection addObject:[NSString stringWithFormat:@"Cell %d", i]];
+        [secondSection addObject:[NSString stringWithFormat:@"item %d", i]];
+    }
+    self.dataArray = [[NSArray alloc] initWithObjects:firstSection, secondSection, nil];
+}
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section    {
+    return self.dataArray.count;
+}
+
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+//- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//}
+
 #pragma mark - Emoji Methods
+
+-(void) createEmojiView {
+    //Removes the carret I animation
+    self.emojiTextView.tintColor = [UIColor clearColor];
+    // init ISEmojiView
+    ISEmojiView *emojiView = [[ISEmojiView alloc] initWithTextField:self.emojiTextView delegate:self];
+    self.emojiTextView.inputView = emojiView;
+}
 
 -(void)emojiView:(ISEmojiView *)emojiView didSelectEmoji:(NSString *)emoji{
     if (self.emojiTextView.text == nil) {
@@ -66,7 +97,6 @@
     self.emojiTextView.font = [UIFont systemFontOfSize:52.0];
     self.addEmojiImage.hidden = YES;
     
-//    [[self.emojiTextView valueForKey:@"textInputTraits"] setValue:[UIColor clearColor] forKey:@"insertionPointColor"];
 }
 
 
@@ -76,8 +106,6 @@
         self.emojiTextView.text = [self.emojiTextView.text substringToIndex:lastRange.location];
     }
 }
-
-
 
 #pragma mark - Helper Functions
 
@@ -124,7 +152,7 @@
     
     if(_eventDescriptionInput.text.length == 0){
         _eventDescriptionInput.textColor = [UIColor lightGrayColor];
-        _eventDescriptionInput.text = @"Comment";
+        _eventDescriptionInput.text = _placeholderEventText; //@"COMMENTS"
         [_eventDescriptionInput resignFirstResponder];
     }
 }
@@ -133,12 +161,13 @@
 - (IBAction)eventSwitch:(UISwitch *)sender {
     if (sender.on) {
         NSLog(@"Activate Privacy");
-        self.tableView.alpha = 1;
+//        self.tableView.alpha = 1;
         _isPrivateEvent = YES;
+        self.publicPrivateLabel.text = self.privateText;
     } else  {
         NSLog(@"Public Mode, Hide TableView");
-        self.tableView.alpha = 0;
         _isPrivateEvent = NO;
+        self.publicPrivateLabel.text = self.publicText;
     }
 }
 
@@ -151,6 +180,7 @@
 }
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"NEXT Button PRessed");
+    //TODO: Need to implement the MAP feature.
 }
 
 @end

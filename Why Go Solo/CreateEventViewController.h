@@ -10,6 +10,7 @@
 #import "FontSetup.h"
 
 @interface CreateEventViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *publicPrivateLabel;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
