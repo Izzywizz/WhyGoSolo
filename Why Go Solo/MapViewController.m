@@ -375,8 +375,21 @@ MKPlacemark *selectedPin;
     } else {
         NSLog(@"POST EVENT");
         //TODO: Add logic to create the event
+        [self setupAlertBox];
     }
 
+}
+
+-(void) setupAlertBox  {
+    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"Event Posted" message:@"Your event has been created" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Return to main event screen");
+        [self performSegueWithIdentifier:@"GoToEvent" sender:self];
+    }];
+    
+    [alertVC addAction:ok];
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 

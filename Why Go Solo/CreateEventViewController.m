@@ -230,12 +230,11 @@
 
 
 #pragma mark - Prepare Segue
-/** This method */
+/** This method changes the default button of done for mapView to post in order to fake the functionality of passing a post */
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"GoToAddMap"]) {
-        NSLog(@"TEST segue
-              ");
+        NSLog(@"TEST segue");
         // Get reference to the destination view controller
         MapViewController *vc = [segue destinationViewController];
         vc.doneOrNextButton.title = @"POST";
