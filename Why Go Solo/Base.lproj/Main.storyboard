@@ -1989,11 +1989,11 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="D6a-km-1Gl"/>
                                         <exclude reference="Ldc-jv-6zI"/>
                                         <exclude reference="MGH-z5-xFS"/>
                                         <exclude reference="V4f-6g-H4u"/>
                                         <exclude reference="sCQ-Fs-ftp"/>
-                                        <exclude reference="D6a-km-1Gl"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -2068,23 +2068,45 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zm9-XN-g79">
                                 <rect key="frame" x="0.0" y="388" width="600" height="168"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pE9-ta-dah">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OTK-ia-ay3">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mUN-Kc-1vk">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="mUN-Kc-1vk">
+                                        <rect key="frame" x="0.0" y="50" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderCell" id="vmJ-AV-Wjp" customClass="HeaderCollectionReusableView">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGd-9F-wOg">
+                                            <rect key="frame" x="20" y="14" width="567" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="567" id="7B0-NN-Zrj"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="CGd-9F-wOg" firstAttribute="top" secondItem="vmJ-AV-Wjp" secondAttribute="topMargin" constant="6" id="CcH-U2-Imn"/>
+                                        <constraint firstItem="CGd-9F-wOg" firstAttribute="leading" secondItem="vmJ-AV-Wjp" secondAttribute="leadingMargin" constant="12" id="spI-pq-Hs9"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="sectionHeader" destination="CGd-9F-wOg" id="Fwk-g9-UjL"/>
+                                    </connections>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="bBE-xF-yzs" id="ePR-z8-DQq"/>
                                     <outlet property="delegate" destination="bBE-xF-yzs" id="HBw-89-rZm"/>

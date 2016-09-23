@@ -8,7 +8,8 @@
 
 #import "CreateEventViewController.h"
 #import "ISEmojiView.h"
-
+#import "CustomerCollectionViewCell.h"
+#import "HeaderCollectionReusableView.h"
 
 @interface CreateEventViewController () <UITextViewDelegate, UITextFieldDelegate, ISEmojiViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *eventDescriptionInput;
@@ -16,13 +17,15 @@
 @property (weak, nonatomic) IBOutlet UIView *circularView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 @property (weak, nonatomic) IBOutlet UITextView *emojiTextView;
+@property (weak, nonatomic) IBOutlet UILabel *headerLabel;
 
 @property BOOL isPrivateEvent;
 @property NSString *placeholderEventText;
 @property NSString *privateText;
 @property NSString *publicText;
 
-@property (nonatomic, strong) NSArray *dataArray;
+@property NSArray *dummyData;
+@property NSArray *sectionTitles;
 
 @end
 
@@ -34,14 +37,13 @@
     [super viewDidLoad];
     [self createDummyData];
     
-    UINib *cellNib = [UINib nibWithNibName:@"NibCollectionCell" bundle:nil];
-    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
+    //Register The Nib for the collection cell
+    [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"Cell"];
+    self.collectionView.backgroundColor = [UIColor clearColor];
     
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setItemSize:CGSizeMake(200, 200)];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    
-    [self.collectionView setCollectionViewLayout:flowLayout];
+    //Add padding betweeen the section headers
+    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
     
     [self placeholderTextViewSetup];
     [self NavigationButtonSetup];
@@ -51,10 +53,13 @@
     _publicText = @"PUBLIC EVENT";
     
     //Intially private mode is off thus the tableView has been hidden
-    
-    _circularView.layer.cornerRadius = _circularView.bounds.size.width/2; //create circular profile view
+    self.collectionView.hidden = YES;
+
+    //create circular profile view
+    _circularView.layer.cornerRadius = _circularView.bounds.size.width/2;
     _circularView.layer.masksToBounds = YES;
 
+    
     [self createEmojiView];
 }
 
@@ -67,43 +72,49 @@
 
 -(void) createDummyData {
     
-    NSMutableArray *firstSection = [[NSMutableArray alloc] init];
-    NSMutableArray *secondSection = [[NSMutableArray alloc] init];
+    // Initialize recipe image array
+    NSArray *mainDishImages = [NSArray arrayWithObjects:@"egg_benedict.jpg", @"full_breakfast.jpg", @"ham_and_cheese_panini.jpg", @"ham_and_egg_sandwich.jpg", @"hamburger.jpg", @"instant_noodle_with_egg.jpg", @"japanese_noodle_with_pork.jpg", @"mushroom_risotto.jpg", @"noodle_with_bbq_pork.jpg", @"thai_shrimp_cake.jpg", @"vegetable_curry.jpg", nil];
+    NSArray *drinkDessertImages = [NSArray arrayWithObjects:@"angry_birds_cake.jpg", @"creme_brelee.jpg", @"green_tea.jpg", @"starbucks_coffee.jpg", @"white_chocolate_donut.jpg", nil];
+    self.dummyData = [NSArray arrayWithObjects:mainDishImages, drinkDessertImages, nil];
     
-    for (int i=0; i<50; i++) {
-        [firstSection addObject:[NSString stringWithFormat:@"Cell %d", i]];
-        [secondSection addObject:[NSString stringWithFormat:@"item %d", i]];
-    }
-    self.dataArray = [[NSArray alloc] initWithObjects:firstSection, secondSection, nil];
+    _sectionTitles = [[NSArray alloc] init];
+    _sectionTitles = @[@"FRIENDS", @"EVERYONE"];
 }
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [self.dataArray count];
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [[self.dummyData objectAtIndex:section] count];
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSMutableArray *sectionArray = [self.dataArray objectAtIndex:section];
-    return [sectionArray count];
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return [self.dummyData count]; //2
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
+    static NSString *identifier = @"Cell";
     
-    NSString *cellData = [data objectAtIndex:indexPath.row];
+    CustomerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    static NSString *cellIdentifier = @"cvCell";
-    
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-    UILabel *titleLabel = (UILabel *)[cell viewWithTag:100];
-    
-    [titleLabel setText:cellData];
+    cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
     
     return cell;
     
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableview = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        HeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderCell" forIndexPath:indexPath];
+        headerView.sectionHeader.text = [_sectionTitles objectAtIndex:indexPath.section];
+        
+        reusableview = headerView;
+    }
+    
+    return reusableview;
+}
 #pragma mark - Emoji Methods
 
 -(void) createEmojiView {
@@ -190,13 +201,15 @@
 - (IBAction)eventSwitch:(UISwitch *)sender {
     if (sender.on) {
         NSLog(@"Activate Privacy");
-//        self.tableView.alpha = 1;
+        self.collectionView.hidden = NO;
         _isPrivateEvent = YES;
         self.publicPrivateLabel.text = self.privateText;
     } else  {
         NSLog(@"Public Mode, Hide TableView");
+        self.collectionView.hidden = YES;
         _isPrivateEvent = NO;
         self.publicPrivateLabel.text = self.publicText;
+        
     }
 }
 
