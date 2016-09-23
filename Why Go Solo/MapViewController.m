@@ -10,6 +10,7 @@
 #import "CurrentUserLocation.h"
 #import "SearchBarTableViewController.h"
 #import "PinLocationData.h"
+#import "FontSetup.h"
 
 #define METERS_PER_MILE 1609.344
 
@@ -40,6 +41,7 @@ MKPlacemark *selectedPin;
 #pragma mark - UI View Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNavigationButtonFontAndSize];
     [self initialSetup];
 //    [self startCurrentUserLocation:[self readUserLocationBoolValue]];
     [self startCurrentUserLocation:YES];
@@ -57,8 +59,18 @@ MKPlacemark *selectedPin;
 -(void)viewWillDisappear:(BOOL)animated {
     self.mapView.delegate = nil;
     self.locationManager.delegate = nil;
+    
+    self.definesPresentationContext = NO;
+
 }
 #pragma mark - Helper Functions
+
+-(void) setNavigationButtonFontAndSize  {
+    
+    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    
+    [_doneOrNextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+}
 
 -(void) sayHello    {
     NSLog(@"Hello");
@@ -348,5 +360,24 @@ MKPlacemark *selectedPin;
     [alertVC addAction:settings];
     [self presentViewController:alertVC animated:YES completion:nil];
 }
+
+
+#pragma mark - Action Methods
+- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
+    
+    if (sender.tag == 0) {
+        NSLog(@"DONE pressed");
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        NSLog(@"POST EVENT");
+        //TODO: Add logic to create the event
+    }
+
+}
+
 
 @end

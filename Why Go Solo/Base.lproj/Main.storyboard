@@ -1816,7 +1816,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kFI-px-mPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7327" y="928"/>
+            <point key="canvasLocation" x="7175" y="910"/>
         </scene>
         <!--Create Event-->
         <scene sceneID="qJy-YK-usv">
@@ -2154,6 +2154,7 @@
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="nextButtonPressed:" destination="bBE-xF-yzs" id="F0h-rh-kKf"/>
+                                <segue destination="ZWB-zS-1us" kind="show" identifier="GoToAddMap" id="kzU-dh-vLe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2169,7 +2170,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziL-8v-F7g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7327" y="1598"/>
+            <point key="canvasLocation" x="7185" y="1574"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QPY-ns-lj2">
+            <objects>
+                <viewController id="oJL-R2-jeC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IYn-yL-Sh1"/>
+                        <viewControllerLayoutGuide type="bottom" id="8BK-Ww-Vha"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BbT-hx-AzS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iku-pa-M7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7858" y="1571"/>
         </scene>
         <!--Event Table View Controller-->
         <scene sceneID="8Ta-J5-8iR">
@@ -2220,7 +2239,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JR4-us-JDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6428" y="1572"/>
+            <point key="canvasLocation" x="6412" y="1548"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="yg0-Za-Wrf">
@@ -3614,8 +3633,22 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Map Search" id="ylq-fe-Tbc"/>
+                    <navigationItem key="navigationItem" title="Map Search" id="ylq-fe-Tbc">
+                        <barButtonItem key="leftBarButtonItem" image="back-arrow-20-20" id="5Az-HB-5FK">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="ZWB-zS-1us" id="Nn8-Lo-8eR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="DtS-lV-F4A">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="ZWB-zS-1us" id="ip5-bp-p4F"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="doneOrNextButton" destination="DtS-lV-F4A" id="m6f-p2-W54"/>
                         <outlet property="mapView" destination="Ufn-zu-YfG" id="IUZ-28-m9A"/>
                     </connections>
                 </viewController>
@@ -4230,4 +4263,7 @@
         <image name="upload-pic-icon-40-40" width="41" height="41"/>
         <image name="white-logo-125-125" width="125" height="126"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="kzU-dh-vLe"/>
+    </inferredMetricsTieBreakers>
 </document>

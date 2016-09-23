@@ -10,6 +10,7 @@
 #import "ISEmojiView.h"
 #import "CustomerCollectionViewCell.h"
 #import "HeaderCollectionReusableView.h"
+#import "MapViewController.h"
 
 @interface CreateEventViewController () <UITextViewDelegate, UITextFieldDelegate, ISEmojiViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *eventDescriptionInput;
@@ -223,6 +224,23 @@
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"NEXT Button PRessed");
     //TODO: Need to implement the MAP feature.
+    [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
+
+}
+
+
+#pragma mark - Prepare Segue
+/** This method */
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"GoToAddMap"]) {
+        NSLog(@"TEST segue
+              ");
+        // Get reference to the destination view controller
+        MapViewController *vc = [segue destinationViewController];
+        vc.doneOrNextButton.title = @"POST";
+        [vc.doneOrNextButton setTag:100];
+    }
 }
 
 @end

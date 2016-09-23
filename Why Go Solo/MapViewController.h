@@ -26,6 +26,7 @@
 
 @interface MapViewController : UIViewController <HandleMapSearch, HandleCurrentUserLocation, MKMapViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneOrNextButton;
 
 -(void) setupLongPressGesture;
 -(void) startCurrentUserLocation: (BOOL) isUserLocation;
