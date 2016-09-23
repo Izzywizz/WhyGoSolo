@@ -12,5 +12,6 @@
 @interface SetupProfileTableViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIView *roundImageUploadView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
 @end

@@ -230,7 +230,7 @@
 
 
 #pragma mark - Prepare Segue
-/** This method changes the default button of done for mapView to post in order to fake the functionality of passing a post */
+/** This method changes the default button of DONE for mapView to POST in order to fake the functionality of passing a post to the evne creation */
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"GoToAddMap"]) {

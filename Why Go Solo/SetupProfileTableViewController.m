@@ -8,7 +8,7 @@
 
 #import "SetupProfileTableViewController.h"
 
-@interface SetupProfileTableViewController ()
+@interface SetupProfileTableViewController ()<UIImagePickerControllerDelegate>
 
 @end
 
@@ -50,6 +50,30 @@
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
+- (void)selectPhoto {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.profileImageView.image = chosenImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
 
 #pragma mark - Table view data source
 
@@ -71,6 +95,7 @@
 
 - (IBAction)uploadPhotoButton:(UIButton *)sender {
     NSLog(@"Upload Photo");
+    [self selectPhoto];
 }
 
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {

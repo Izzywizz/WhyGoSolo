@@ -643,9 +643,17 @@
                                                                 <action selector="uploadPhotoButton:" destination="tv0-iu-svJ" eventType="touchUpInside" id="fep-Wd-A0G"/>
                                                             </connections>
                                                         </button>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DVg-HT-8T1">
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="120" id="Xpk-95-mnq"/>
+                                                                <constraint firstAttribute="height" constant="120" id="dFy-8s-Pqk"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstItem="DVg-HT-8T1" firstAttribute="centerY" secondItem="GYT-wI-tjz" secondAttribute="centerY" id="0Ho-DY-xcn"/>
                                                         <constraint firstItem="bVc-Kh-qmJ" firstAttribute="top" secondItem="GYT-wI-tjz" secondAttribute="top" id="7A6-HW-vfz"/>
                                                         <constraint firstItem="hwn-Bg-UUu" firstAttribute="centerY" secondItem="GYT-wI-tjz" secondAttribute="centerY" id="F6a-bi-PkY"/>
                                                         <constraint firstItem="bVc-Kh-qmJ" firstAttribute="leading" secondItem="GYT-wI-tjz" secondAttribute="leading" id="MM0-Gk-HVZ"/>
@@ -653,6 +661,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="bVc-Kh-qmJ" secondAttribute="trailing" id="Ohd-Fz-HY3"/>
                                                         <constraint firstItem="hwn-Bg-UUu" firstAttribute="centerX" secondItem="GYT-wI-tjz" secondAttribute="centerX" id="Tyf-Y0-soF"/>
                                                         <constraint firstAttribute="height" constant="120" id="scp-bR-1Hq"/>
+                                                        <constraint firstItem="DVg-HT-8T1" firstAttribute="centerX" secondItem="GYT-wI-tjz" secondAttribute="centerX" id="sni-i9-reC"/>
                                                         <constraint firstAttribute="width" constant="120" id="xoq-3X-YRA"/>
                                                     </constraints>
                                                 </view>
@@ -901,6 +910,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="nextButton" destination="Hkh-5C-GRC" id="eQk-gq-ijP"/>
+                        <outlet property="profileImageView" destination="DVg-HT-8T1" id="2LG-8a-X2W"/>
                         <outlet property="roundImageUploadView" destination="GYT-wI-tjz" id="I2E-f2-EUt"/>
                     </connections>
                 </tableViewController>
