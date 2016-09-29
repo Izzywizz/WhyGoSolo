@@ -11,6 +11,8 @@
 #import "ISEmojiView.h"
 #import "CustomerCollectionViewCell.h"
 #import "HeaderCollectionReusableView.h"
+#import "MapViewController.h"
+
 
 
 @interface EditEventViewController : UIViewController

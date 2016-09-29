@@ -2185,7 +2185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziL-8v-F7g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7695" y="1702"/>
+            <point key="canvasLocation" x="8449" y="1604"/>
         </scene>
         <!--Event Table View Controller-->
         <scene sceneID="8Ta-J5-8iR">
@@ -3314,6 +3314,7 @@
                                         </state>
                                         <connections>
                                             <action selector="changeLocationButton:" destination="yTN-Rs-fGW" eventType="touchUpInside" id="FUx-Z2-4Wk"/>
+                                            <segue destination="ZWB-zS-1us" kind="show" identifier="GoToEditMap" id="Zte-WL-H10"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow-20-20" translatesAutoresizingMaskIntoConstraints="NO" id="OYv-25-maF">
@@ -3691,7 +3692,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6f-hG-vJo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7695" y="1033"/>
+            <point key="canvasLocation" x="8455" y="793"/>
         </scene>
         <!--Comment Table View Controller-->
         <scene sceneID="oyq-QS-aoq">

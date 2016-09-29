@@ -230,5 +230,19 @@
     }
 }
 
+#pragma mark - Prepare Segue / Map Kit preperation
+/** This method changes the default button of DONE for mapView to POST in order to fake the functionality of passing a post to the evne creation */
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"GoToEditMap"]) {
+        NSLog(@"TEST segue");
+        // Get reference to the destination view controller
+        MapViewController *vc = [segue destinationViewController];
+        // TAG and Title are set to 0, so they bypass the functionality and just pop back to the edit view
+        vc.doneOrNextButton.title = @"NEXT";
+        [vc.doneOrNextButton setTag:0];
+    }
+}
+
 
 @end
