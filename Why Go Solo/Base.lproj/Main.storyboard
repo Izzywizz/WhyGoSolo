@@ -3543,14 +3543,14 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QHn-Ho-cov" userLabel="Circle View">
                                 <rect key="frame" x="262" y="305" width="77" height="16"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ab-Wf-Ye2" userLabel="Emoji Text View">
-                                        <rect key="frame" x="32.5" y="21.5" width="10" height="33"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ab-Wf-Ye2" userLabel="Emoji Text View">
+                                        <rect key="frame" x="32" y="21" width="10" height="33"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-emoji-38-38" translatesAutoresizingMaskIntoConstraints="NO" id="wkJ-Qd-aLK">
-                                        <rect key="frame" x="18.5" y="19" width="38" height="38"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="add-emoji-38-38" translatesAutoresizingMaskIntoConstraints="NO" id="wkJ-Qd-aLK">
+                                        <rect key="frame" x="18" y="19" width="38" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="38" id="6Ak-y5-Z4p"/>
                                             <constraint firstAttribute="height" constant="38" id="jCM-Rd-yOP"/>
@@ -3656,7 +3656,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YXp-It-Z4J" userLabel="Mid Line">
-                                                <rect key="frame" x="124.5" y="94" width="1" height="36"/>
+                                                <rect key="frame" x="124" y="94" width="1" height="36"/>
                                                 <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="1" id="qwN-sX-HNe"/>
@@ -3749,24 +3749,78 @@
                                             </mask>
                                         </variation>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RmX-Yu-deJ">
+                                        <rect key="frame" x="175" y="150" width="250" height="300"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDQ-ba-OHt">
+                                                <rect key="frame" x="103" y="17" width="44" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="8LO-O5-FNc"/>
+                                                    <constraint firstAttribute="height" constant="21" id="cL7-oq-5sO"/>
+                                                    <constraint firstAttribute="width" constant="44" id="hpG-Dg-hwY"/>
+                                                    <constraint firstAttribute="width" constant="44" id="mIj-6s-PJp"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="8LO-O5-FNc"/>
+                                                        <exclude reference="mIj-6s-PJp"/>
+                                                    </mask>
+                                                </variation>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ea6-3u-u74">
+                                                <rect key="frame" x="10" y="39" width="230" height="216.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <string key="text">Close Event
+Closing an event will stop any one else being able to join and will remove it from their timelines
+
+Cancel Event
+Cancelling an event will remote it from people's timelines, however if it already has attendees they will still see it</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="05R-jC-hcC"/>
+                                            <constraint firstItem="Ea6-3u-u74" firstAttribute="top" secondItem="IDQ-ba-OHt" secondAttribute="bottom" constant="1" id="6A1-Ws-pES"/>
+                                            <constraint firstItem="IDQ-ba-OHt" firstAttribute="top" secondItem="RmX-Yu-deJ" secondAttribute="top" constant="17" id="Niq-Yw-ccU"/>
+                                            <constraint firstItem="IDQ-ba-OHt" firstAttribute="centerX" secondItem="RmX-Yu-deJ" secondAttribute="centerX" id="R1U-cY-W0u"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ea6-3u-u74" secondAttribute="trailing" constant="10" id="UVR-3G-fUg"/>
+                                            <constraint firstAttribute="width" constant="250" id="mS6-tD-qyQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ea6-3u-u74" secondAttribute="bottom" constant="44.5" id="rpM-Jt-NHP"/>
+                                            <constraint firstItem="Ea6-3u-u74" firstAttribute="leading" secondItem="RmX-Yu-deJ" secondAttribute="leading" constant="10" id="x5Z-Gr-LF9"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69975754310000005" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="RmX-Yu-deJ" secondAttribute="bottom" constant="157" id="9fX-Pr-jCb"/>
                                     <constraint firstItem="A3o-Sl-Xir" firstAttribute="centerX" secondItem="rh4-ES-mmx" secondAttribute="centerX" id="ATK-QE-0qh"/>
                                     <constraint firstItem="A3o-Sl-Xir" firstAttribute="leading" secondItem="rh4-ES-mmx" secondAttribute="leading" constant="141" id="EWH-sa-Win"/>
                                     <constraint firstItem="A3o-Sl-Xir" firstAttribute="centerY" secondItem="rh4-ES-mmx" secondAttribute="centerY" constant="7.5" id="JgZ-uF-1bO"/>
+                                    <constraint firstItem="RmX-Yu-deJ" firstAttribute="centerX" secondItem="rh4-ES-mmx" secondAttribute="centerX" id="KQ3-ek-Ezj"/>
                                     <constraint firstItem="A3o-Sl-Xir" firstAttribute="centerY" secondItem="rh4-ES-mmx" secondAttribute="centerY" id="Skf-y7-32c"/>
                                     <constraint firstItem="A3o-Sl-Xir" firstAttribute="centerX" secondItem="rh4-ES-mmx" secondAttribute="centerX" id="Stu-AB-r9D"/>
                                     <constraint firstAttribute="bottom" secondItem="A3o-Sl-Xir" secondAttribute="bottom" constant="248" id="WVB-nt-CvB"/>
+                                    <constraint firstItem="RmX-Yu-deJ" firstAttribute="leading" secondItem="rh4-ES-mmx" secondAttribute="leading" constant="175" id="eDl-dc-Heq"/>
+                                    <constraint firstItem="RmX-Yu-deJ" firstAttribute="top" secondItem="rh4-ES-mmx" secondAttribute="top" constant="157" id="etk-mW-fii"/>
+                                    <constraint firstAttribute="trailing" secondItem="RmX-Yu-deJ" secondAttribute="trailing" constant="175" id="iIx-Dv-WWv"/>
+                                    <constraint firstItem="RmX-Yu-deJ" firstAttribute="centerY" secondItem="rh4-ES-mmx" secondAttribute="centerY" id="k9M-kr-OUJ"/>
                                     <constraint firstItem="A3o-Sl-Xir" firstAttribute="top" secondItem="rh4-ES-mmx" secondAttribute="top" constant="236" id="vjI-09-hVw"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="vjI-09-hVw"/>
+                                        <exclude reference="9fX-Pr-jCb"/>
+                                        <exclude reference="eDl-dc-Heq"/>
+                                        <exclude reference="etk-mW-fii"/>
+                                        <exclude reference="iIx-Dv-WWv"/>
                                         <exclude reference="EWH-sa-Win"/>
-                                        <exclude reference="WVB-nt-CvB"/>
                                         <exclude reference="Skf-y7-32c"/>
                                         <exclude reference="Stu-AB-r9D"/>
+                                        <exclude reference="WVB-nt-CvB"/>
+                                        <exclude reference="vjI-09-hVw"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -3838,6 +3892,7 @@
                         <outlet property="collectionView" destination="2Zt-kp-3rJ" id="pS0-hy-XKc"/>
                         <outlet property="emojiTextView" destination="5ab-Wf-Ye2" id="oq4-rm-EUn"/>
                         <outlet property="eventDescriptionInput" destination="UlN-m3-Stx" id="FyX-7z-b9B"/>
+                        <outlet property="helpView" destination="RmX-Yu-deJ" id="qJH-JZ-lQ7"/>
                         <outlet property="overlayDescription" destination="m4A-4t-YhM" id="YuM-8Q-OGu"/>
                         <outlet property="overlayTitle" destination="s4j-9g-FNe" id="Uxx-Ha-Fap"/>
                         <outlet property="overlayView" destination="rh4-ES-mmx" id="S40-er-kGW"/>
