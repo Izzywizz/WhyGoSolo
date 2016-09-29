@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *eventDescriptionInput;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *publicPrivateLabel;
+@property (weak, nonatomic) IBOutlet UIView *overlayView;
 
 @end

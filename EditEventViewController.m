@@ -13,6 +13,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *addEmojiImage;
 @property (weak, nonatomic) IBOutlet UITextView *emojiTextView;
 
+@property (weak, nonatomic) IBOutlet UILabel *overlayTitle;
+@property (weak, nonatomic) IBOutlet UILabel *overlayDescription;
+
+@property (weak, nonatomic) IBOutlet UIButton *yesButton;
 
 @property NSString *placeholderEventText;
 @property BOOL isPrivateEvent;
@@ -27,12 +31,15 @@
 
 #pragma mark - UI Methods
 
+-(void)viewWillAppear:(BOOL)animated    {
+    [self closeCancelOverlayAlpha:0 animationDuration:0.0f];//Hide the overlay
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createDummyData];
     [self navigationButtonSetup];
     [self previousEventTextViewSetup];
-    
     
     //Register The Nib for the collection cell
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"Cell"];
@@ -119,6 +126,20 @@
 
 #pragma mark - Helper Methods
 
+-(void)closeCancelOverlayAlpha:(int)a animationDuration:(float)duration
+{
+    [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        for (id x in _overlayView.subviews)
+        {
+            if ([x class] == [UIView class])
+            {
+                [(UIView*)x setAlpha:a];
+            }
+        }
+        _overlayView.alpha = a;
+    } completion:nil];
+}
+
 -(void) navigationButtonSetup   {
     
     NSDictionary *attributes = [NSDictionary new];
@@ -163,9 +184,16 @@
 }
 - (IBAction)closeEventButtonPressed:(UIButton *)sender {
     NSLog(@"Close Event Pressed");
+    self.yesButton.tag = 0;
+    [self closeCancelOverlayAlpha:1 animationDuration:0.2f];
+
 }
 - (IBAction)cancelEventButtonPressed:(UIButton *)sender {
     NSLog(@"Cancel Event Pressed");
+    self.overlayTitle.text = @"Cancel Event";
+    self.overlayDescription.text = @"Are you sure you want to cancel your event?";
+    self.yesButton.tag = 1; //Change the tag to create different functionality based on it.
+    [self closeCancelOverlayAlpha:1 animationDuration:0.2f];
 }
 
 - (IBAction)changeLocationButton:(UIButton *)sender {
@@ -175,6 +203,16 @@
 - (IBAction)addEmojiImage:(UIButton *)sender {
     NSLog(@"Add Emoji Button");
     [self.emojiTextView becomeFirstResponder];
+}
+- (IBAction)yesButton:(UIButton *)sender {
+    if (sender.tag == 1) {
+        NSLog(@"Cancel Button Overlay activated");
+    } else  {
+        NSLog(@"Close Button Overlay activated");
+    }
+}
+- (IBAction)noButton:(UIButton *)sender {
+    [self closeCancelOverlayAlpha:0 animationDuration:0.0f];//Hide the overlay
 }
 
 #pragma mark - Text View Delegates
