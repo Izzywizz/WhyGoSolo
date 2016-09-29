@@ -21,6 +21,7 @@
 		4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4319E7841D89582800FD5142 /* CommentTableViewController.m */; };
 		431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 431C45B81D895C6B00A05C11 /* MainViewController.m */; };
 		433981411D91310B00A995B3 /* HallsOfResidence.m in Sources */ = {isa = PBXBuildFile; fileRef = 433981401D91310B00A995B3 /* HallsOfResidence.m */; };
+		434288991D9D11BE00D4E911 /* EditEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 434288981D9D11BE00D4E911 /* EditEventViewController.m */; };
 		4350B3831D93C558001A5AE8 /* ISEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4350B3811D93C558001A5AE8 /* ISEmojiView.m */; };
 		436E84B01D815FA700B23402 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 436E84AF1D815FA700B23402 /* flag.png */; };
 		4380C59D1D8FD70000FA08C5 /* FontSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380C59C1D8FD70000FA08C5 /* FontSetup.m */; };
@@ -129,6 +130,8 @@
 		431C45B81D895C6B00A05C11 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		4339813F1D91310B00A995B3 /* HallsOfResidence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HallsOfResidence.h; sourceTree = "<group>"; };
 		433981401D91310B00A995B3 /* HallsOfResidence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HallsOfResidence.m; sourceTree = "<group>"; };
+		434288971D9D11BE00D4E911 /* EditEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditEventViewController.h; path = ../EditEventViewController.h; sourceTree = "<group>"; };
+		434288981D9D11BE00D4E911 /* EditEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditEventViewController.m; path = ../EditEventViewController.m; sourceTree = "<group>"; };
 		4350B3801D93C558001A5AE8 /* ISEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEmojiView.h; sourceTree = "<group>"; };
 		4350B3811D93C558001A5AE8 /* ISEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEmojiView.m; sourceTree = "<group>"; };
 		436E84AF1D815FA700B23402 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
@@ -377,6 +380,8 @@
 				43B981E01D95318400E7DD05 /* Collection Cells */,
 				430C14B61D929D5900F76C35 /* CreateEventViewController.h */,
 				430C14B71D929D5900F76C35 /* CreateEventViewController.m */,
+				434288971D9D11BE00D4E911 /* EditEventViewController.h */,
+				434288981D9D11BE00D4E911 /* EditEventViewController.m */,
 				43BD7BB11D86993B00DDA384 /* PeopleViewController.h */,
 				43BD7BB21D86993B00DDA384 /* PeopleViewController.m */,
 				43A893661D8057FA00BEA24B /* EventTableViewController.h */,
@@ -632,6 +637,7 @@
 				43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */,
 				43A893621D8057AE00BEA24B /* EventsTableViewCell.m in Sources */,
 				4383E10B1D93ECD50021CA30 /* FriendHeaderTableViewCell.m in Sources */,
+				434288991D9D11BE00D4E911 /* EditEventViewController.m in Sources */,
 				43B981DE1D95291800E7DD05 /* CustomerCollectionViewCell.m in Sources */,
 				431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */,
 				43D17EDA1D8BD7C300451E90 /* AccommodationMapViewController.m in Sources */,

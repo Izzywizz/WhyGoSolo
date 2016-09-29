@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIView *circularView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 @property (weak, nonatomic) IBOutlet UITextView *emojiTextView;
-@property (weak, nonatomic) IBOutlet UILabel *headerLabel;
 
 @property BOOL isPrivateEvent;
 @property NSString *placeholderEventText;
@@ -47,7 +46,7 @@
     collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
     
     [self placeholderTextViewSetup];
-    [self NavigationButtonSetup];
+    [self navigationButtonSetup];
     
     _placeholderEventText = @"Describe your event in less than 140 characters, don’t forget to include the time....";
     _privateText = @"PRIVATE EVENT";
@@ -150,7 +149,7 @@
 
 #pragma mark - Helper Functions
 
--(void) NavigationButtonSetup   {
+-(void) navigationButtonSetup   {
     
     NSDictionary *attributes = [NSDictionary new];
     attributes = [FontSetup setNavigationButtonFontAndSize];

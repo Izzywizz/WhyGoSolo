@@ -50,6 +50,7 @@ NSArray *sectionTitles;
 
 #pragma mark - Observer Methods
 
+/** The actual method that handles the observer that has been posted*/
 - (void)moveToFilter:(NSNotification *) notification {
     if ([[notification name] isEqualToString:@"Filter Found"]) {
         NSLog(@"Filter Time");
@@ -64,26 +65,40 @@ NSArray *sectionTitles;
     }
 }
 
+-(void)moveToEdit:(NSNotification *) notification   {
+    if ([[notification name] isEqualToString:@"Edit Found"]) {
+        [self moveToEdit];
+    }
+}
+
 
 
 -(void) setupObservers    {
+    //When the profile button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(profileFound:)
                                                  name:@"Profile Found"
                                                object:nil];
-    
+    //Filter button is pressed
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToFilter:) name:@"Filter Found" object:nil];
+    
+    //Edit
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToEdit:) name:@"Edit Found" object:nil];
 }
 
 #pragma mark - Helper Functions
 
+/** Segue to another viewController */
 -(void) moveToOtherUserProfile  {
-    
     [self performSegueWithIdentifier:@"GoToOtherUserProfile" sender:self];
 }
 
 -(void)moveToFilter {
     [self performSegueWithIdentifier:@"GoToFilter" sender:self];
+}
+
+-(void) moveToEdit  {
+    [self performSegueWithIdentifier:@"GoToEdit" sender:self];
 }
 
 -(void) setupDummyData  {

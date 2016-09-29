@@ -28,6 +28,7 @@
         case JOIN: NSLog(@"Join Button Pressed");
             break;
         case EDIT: NSLog(@"Edit Button Pressed");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Edit Found" object:self];
             break;
         case PROFILE: NSLog(@"Profile Button Pressed");
             [[NSNotificationCenter defaultCenter] postNotificationName:@"Profile Found" object:self];
