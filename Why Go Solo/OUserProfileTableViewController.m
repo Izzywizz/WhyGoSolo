@@ -6,7 +6,7 @@
 //  Copyright © 2016 Izzy. All rights reserved.
 //
 
-#import "OtherUserProfileTableViewController.h"
+#import "OUserProfileTableViewController.h"
 #import "EventsTableViewCell.h"
 #import "FooterEventsTableViewCell.h"
 #import "HeaderEventsTableViewCell.h"

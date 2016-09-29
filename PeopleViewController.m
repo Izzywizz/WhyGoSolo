@@ -11,7 +11,7 @@
 #import "PeopleEventTableViewCell.h"
 #import "FooterEventsTableViewCell.h"
 #import "PeopleNotAttendingTableViewCell.h"
-#import "OtherUserProfileTableViewController.h"
+#import "OUserProfileTableViewController.h"
 
 @interface PeopleViewController () <UITableViewDelegate, UITableViewDataSource>
 

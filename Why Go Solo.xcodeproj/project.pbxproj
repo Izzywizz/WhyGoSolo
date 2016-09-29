@@ -79,7 +79,7 @@
 		43B981E31D9534C100E7DD05 /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B981E21D9534C100E7DD05 /* HeaderCollectionReusableView.m */; };
 		43B981E61D953D7B00E7DD05 /* AddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B981E51D953D7B00E7DD05 /* AddLocationViewController.m */; };
 		43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BD7BB21D86993B00DDA384 /* PeopleViewController.m */; };
-		43BE4C361D82A26700D6B26A /* OtherUserProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C351D82A26700D6B26A /* OtherUserProfileTableViewController.m */; };
+		43BE4C361D82A26700D6B26A /* OUserProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C351D82A26700D6B26A /* OUserProfileTableViewController.m */; };
 		43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */; };
 		43BE4C3C1D82F91400D6B26A /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C3B1D82F91400D6B26A /* EditProfileTableViewController.m */; };
 		43D17EDA1D8BD7C300451E90 /* AccommodationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */; };
@@ -207,8 +207,8 @@
 		43B981E51D953D7B00E7DD05 /* AddLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocationViewController.m; sourceTree = "<group>"; };
 		43BD7BB11D86993B00DDA384 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeopleViewController.h; path = ../PeopleViewController.h; sourceTree = "<group>"; };
 		43BD7BB21D86993B00DDA384 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeopleViewController.m; path = ../PeopleViewController.m; sourceTree = "<group>"; };
-		43BE4C341D82A26700D6B26A /* OtherUserProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherUserProfileTableViewController.h; sourceTree = "<group>"; };
-		43BE4C351D82A26700D6B26A /* OtherUserProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherUserProfileTableViewController.m; sourceTree = "<group>"; };
+		43BE4C341D82A26700D6B26A /* OUserProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OUserProfileTableViewController.h; sourceTree = "<group>"; };
+		43BE4C351D82A26700D6B26A /* OUserProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OUserProfileTableViewController.m; sourceTree = "<group>"; };
 		43BE4C371D82DCDF00D6B26A /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
 		43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
 		43BE4C3A1D82F91400D6B26A /* EditProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileTableViewController.h; sourceTree = "<group>"; };
@@ -319,8 +319,8 @@
 		436E84B71D8171AB00B23402 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				43BE4C341D82A26700D6B26A /* OtherUserProfileTableViewController.h */,
-				43BE4C351D82A26700D6B26A /* OtherUserProfileTableViewController.m */,
+				43BE4C341D82A26700D6B26A /* OUserProfileTableViewController.h */,
+				43BE4C351D82A26700D6B26A /* OUserProfileTableViewController.m */,
 				43BE4C371D82DCDF00D6B26A /* ProfileTableViewController.h */,
 				43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */,
 				43BE4C3A1D82F91400D6B26A /* EditProfileTableViewController.h */,
@@ -665,7 +665,7 @@
 				430503181D8998F600CA73D1 /* SetupLoginDetailsViewController.m in Sources */,
 				4309193B1D8154F400EE9220 /* MapViewController.m in Sources */,
 				4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */,
-				43BE4C361D82A26700D6B26A /* OtherUserProfileTableViewController.m in Sources */,
+				43BE4C361D82A26700D6B26A /* OUserProfileTableViewController.m in Sources */,
 				43ACED5B1D87EDAC008D949C /* DeleteConfirmationViewController.m in Sources */,
 				43B4009F1D86C0F20094DFB6 /* PeopleEventTableViewCell.m in Sources */,
 			);

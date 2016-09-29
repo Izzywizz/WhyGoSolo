@@ -3665,7 +3665,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2LE-ov-y7h" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6856" y="2403"/>
+            <point key="canvasLocation" x="6862" y="2342"/>
         </scene>
         <!--Search Bar Table View Controller-->
         <scene sceneID="IYT-Eg-tSX">
@@ -4276,6 +4276,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7Oc-fg-bvC"/>
-        <segue reference="kzU-dh-vLe"/>
+        <segue reference="Dya-pO-aS6"/>
     </inferredMetricsTieBreakers>
 </document>

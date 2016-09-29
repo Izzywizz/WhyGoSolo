@@ -78,6 +78,7 @@ NSArray *sectionTitles;
 #pragma mark - Helper Functions
 
 -(void) moveToOtherUserProfile  {
+    
     [self performSegueWithIdentifier:@"GoToOtherUserProfile" sender:self];
 }
 
