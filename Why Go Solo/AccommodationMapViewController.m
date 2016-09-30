@@ -153,6 +153,8 @@
 - (IBAction)okButtonPressed:(UIButton *)sender {
     NSLog(@"Ok Button Pressed");
     [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
+    [self performSegueWithIdentifier:@"GoToEventTable" sender:self];
+
 }
 
 @end

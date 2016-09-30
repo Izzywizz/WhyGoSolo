@@ -20,9 +20,12 @@
 		430C14B81D929D5900F76C35 /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C14B71D929D5900F76C35 /* CreateEventViewController.m */; };
 		4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4319E7841D89582800FD5142 /* CommentTableViewController.m */; };
 		431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 431C45B81D895C6B00A05C11 /* MainViewController.m */; };
+		4335A4E11D9E5E0600DCCC3E /* EditCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4335A4E01D9E5E0600DCCC3E /* EditCollectionViewController.m */; };
 		433981411D91310B00A995B3 /* HallsOfResidence.m in Sources */ = {isa = PBXBuildFile; fileRef = 433981401D91310B00A995B3 /* HallsOfResidence.m */; };
 		434288991D9D11BE00D4E911 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 434288981D9D11BE00D4E911 /* EditViewController.m */; };
 		4350B3831D93C558001A5AE8 /* ISEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4350B3811D93C558001A5AE8 /* ISEmojiView.m */; };
+		436655AE1D9E6A910041F491 /* EditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 436655AD1D9E6A910041F491 /* EditCell.xib */; };
+		436655B11D9E6DD70041F491 /* EditCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 436655B01D9E6DD70041F491 /* EditCellCollectionViewCell.m */; };
 		436E84B01D815FA700B23402 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 436E84AF1D815FA700B23402 /* flag.png */; };
 		4380C59D1D8FD70000FA08C5 /* FontSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380C59C1D8FD70000FA08C5 /* FontSetup.m */; };
 		4380C5A01D8FE34E00FA08C5 /* ForgotPasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4380C59F1D8FE34E00FA08C5 /* ForgotPasswordTableViewController.m */; };
@@ -76,7 +79,7 @@
 		43B981D71D95220400E7DD05 /* white_chocolate_donut.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 43B981C61D95220400E7DD05 /* white_chocolate_donut.jpg */; };
 		43B981D91D95242300E7DD05 /* ISEmojiList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43B981D81D95242300E7DD05 /* ISEmojiList.plist */; };
 		43B981DB1D95282900E7DD05 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B981DA1D95282900E7DD05 /* CollectionCell.xib */; };
-		43B981DE1D95291800E7DD05 /* CustomerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B981DD1D95291800E7DD05 /* CustomerCollectionViewCell.m */; };
+		43B981DE1D95291800E7DD05 /* FriendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B981DD1D95291800E7DD05 /* FriendCollectionViewCell.m */; };
 		43B981E31D9534C100E7DD05 /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B981E21D9534C100E7DD05 /* HeaderCollectionReusableView.m */; };
 		43B981E61D953D7B00E7DD05 /* AddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B981E51D953D7B00E7DD05 /* AddLocationViewController.m */; };
 		43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BD7BB21D86993B00DDA384 /* PeopleViewController.m */; };
@@ -128,12 +131,17 @@
 		4319E7841D89582800FD5142 /* CommentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewController.m; path = ../CommentTableViewController.m; sourceTree = "<group>"; };
 		431C45B71D895C6B00A05C11 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		431C45B81D895C6B00A05C11 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		4335A4DF1D9E5E0600DCCC3E /* EditCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditCollectionViewController.h; path = ../EditCollectionViewController.h; sourceTree = "<group>"; };
+		4335A4E01D9E5E0600DCCC3E /* EditCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCollectionViewController.m; path = ../EditCollectionViewController.m; sourceTree = "<group>"; };
 		4339813F1D91310B00A995B3 /* HallsOfResidence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HallsOfResidence.h; sourceTree = "<group>"; };
 		433981401D91310B00A995B3 /* HallsOfResidence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HallsOfResidence.m; sourceTree = "<group>"; };
 		434288971D9D11BE00D4E911 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditViewController.h; path = ../EditViewController.h; sourceTree = "<group>"; };
 		434288981D9D11BE00D4E911 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditViewController.m; path = ../EditViewController.m; sourceTree = "<group>"; };
 		4350B3801D93C558001A5AE8 /* ISEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEmojiView.h; sourceTree = "<group>"; };
 		4350B3811D93C558001A5AE8 /* ISEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEmojiView.m; sourceTree = "<group>"; };
+		436655AD1D9E6A910041F491 /* EditCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditCell.xib; sourceTree = "<group>"; };
+		436655AF1D9E6DD70041F491 /* EditCellCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCellCollectionViewCell.h; sourceTree = "<group>"; };
+		436655B01D9E6DD70041F491 /* EditCellCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCellCollectionViewCell.m; sourceTree = "<group>"; };
 		436E84AF1D815FA700B23402 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		4380C59B1D8FD70000FA08C5 /* FontSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSetup.h; sourceTree = "<group>"; };
 		4380C59C1D8FD70000FA08C5 /* FontSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontSetup.m; sourceTree = "<group>"; };
@@ -202,8 +210,8 @@
 		43B981C61D95220400E7DD05 /* white_chocolate_donut.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white_chocolate_donut.jpg; sourceTree = "<group>"; };
 		43B981D81D95242300E7DD05 /* ISEmojiList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ISEmojiList.plist; sourceTree = "<group>"; };
 		43B981DA1D95282900E7DD05 /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionCell.xib; path = "Why Go Solo/CollectionCell.xib"; sourceTree = "<group>"; };
-		43B981DC1D95291800E7DD05 /* CustomerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomerCollectionViewCell.h; path = "Why Go Solo/CustomerCollectionViewCell.h"; sourceTree = "<group>"; };
-		43B981DD1D95291800E7DD05 /* CustomerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomerCollectionViewCell.m; path = "Why Go Solo/CustomerCollectionViewCell.m"; sourceTree = "<group>"; };
+		43B981DC1D95291800E7DD05 /* FriendCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendCollectionViewCell.h; path = "Why Go Solo/FriendCollectionViewCell.h"; sourceTree = "<group>"; };
+		43B981DD1D95291800E7DD05 /* FriendCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendCollectionViewCell.m; path = "Why Go Solo/FriendCollectionViewCell.m"; sourceTree = "<group>"; };
 		43B981E11D9534C100E7DD05 /* HeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCollectionReusableView.h; sourceTree = "<group>"; };
 		43B981E21D9534C100E7DD05 /* HeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionReusableView.m; sourceTree = "<group>"; };
 		43B981E41D953D7B00E7DD05 /* AddLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocationViewController.h; sourceTree = "<group>"; };
@@ -380,6 +388,8 @@
 				43B981E01D95318400E7DD05 /* Collection Cells */,
 				430C14B61D929D5900F76C35 /* CreateEventViewController.h */,
 				430C14B71D929D5900F76C35 /* CreateEventViewController.m */,
+				4335A4DF1D9E5E0600DCCC3E /* EditCollectionViewController.h */,
+				4335A4E01D9E5E0600DCCC3E /* EditCollectionViewController.m */,
 				434288971D9D11BE00D4E911 /* EditViewController.h */,
 				434288981D9D11BE00D4E911 /* EditViewController.m */,
 				43BD7BB11D86993B00DDA384 /* PeopleViewController.h */,
@@ -486,10 +496,13 @@
 			isa = PBXGroup;
 			children = (
 				43B981DA1D95282900E7DD05 /* CollectionCell.xib */,
-				43B981DC1D95291800E7DD05 /* CustomerCollectionViewCell.h */,
-				43B981DD1D95291800E7DD05 /* CustomerCollectionViewCell.m */,
+				43B981DC1D95291800E7DD05 /* FriendCollectionViewCell.h */,
+				43B981DD1D95291800E7DD05 /* FriendCollectionViewCell.m */,
 				43B981E11D9534C100E7DD05 /* HeaderCollectionReusableView.h */,
 				43B981E21D9534C100E7DD05 /* HeaderCollectionReusableView.m */,
+				436655AD1D9E6A910041F491 /* EditCell.xib */,
+				436655AF1D9E6DD70041F491 /* EditCellCollectionViewCell.h */,
+				436655B01D9E6DD70041F491 /* EditCellCollectionViewCell.m */,
 			);
 			name = "Collection Cells";
 			path = ..;
@@ -595,6 +608,7 @@
 				43B981D31D95220400E7DD05 /* photo-frame.png in Resources */,
 				43A893631D8057AE00BEA24B /* FooterEvents.xib in Resources */,
 				43B981D11D95220400E7DD05 /* mushroom_risotto.jpg in Resources */,
+				436655AE1D9E6A910041F491 /* EditCell.xib in Resources */,
 				438A148F1D8011C2005E6AF7 /* LaunchScreen.storyboard in Resources */,
 				43B981CC1D95220400E7DD05 /* ham_and_cheese_panini.jpg in Resources */,
 				438A14B41D801E0F005E6AF7 /* Lato-BlackItalic.ttf in Resources */,
@@ -638,11 +652,12 @@
 				43A893621D8057AE00BEA24B /* EventsTableViewCell.m in Sources */,
 				4383E10B1D93ECD50021CA30 /* FriendHeaderTableViewCell.m in Sources */,
 				434288991D9D11BE00D4E911 /* EditViewController.m in Sources */,
-				43B981DE1D95291800E7DD05 /* CustomerCollectionViewCell.m in Sources */,
+				43B981DE1D95291800E7DD05 /* FriendCollectionViewCell.m in Sources */,
 				431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */,
 				43D17EDA1D8BD7C300451E90 /* AccommodationMapViewController.m in Sources */,
 				438188311D86EFCB009591F4 /* ContainerViewController.m in Sources */,
 				43FBC2F21D8AA49100AE4E1F /* TermsViewController.m in Sources */,
+				4335A4E11D9E5E0600DCCC3E /* EditCollectionViewController.m in Sources */,
 				4380C59D1D8FD70000FA08C5 /* FontSetup.m in Sources */,
 				43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */,
 				430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */,
@@ -657,6 +672,7 @@
 				4309193F1D81552200EE9220 /* PinLocationData.m in Sources */,
 				433981411D91310B00A995B3 /* HallsOfResidence.m in Sources */,
 				4308DCA81D901462008CA934 /* ContainerForgotPasswordViewController.m in Sources */,
+				436655B11D9E6DD70041F491 /* EditCellCollectionViewCell.m in Sources */,
 				43D17EDD1D8C1F1800451E90 /* SignInTableViewController.m in Sources */,
 				43A893681D8057FA00BEA24B /* EventTableViewController.m in Sources */,
 				430C14B81D929D5900F76C35 /* CreateEventViewController.m in Sources */,

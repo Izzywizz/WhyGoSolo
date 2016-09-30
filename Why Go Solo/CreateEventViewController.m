@@ -8,7 +8,7 @@
 
 #import "CreateEventViewController.h"
 #import "ISEmojiView.h"
-#import "CustomerCollectionViewCell.h"
+#import "FriendCollectionViewCell.h"
 #import "HeaderCollectionReusableView.h"
 #import "MapViewController.h"
 
@@ -94,7 +94,7 @@
     
     static NSString *identifier = @"Cell";
     
-    CustomerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    FriendCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
     

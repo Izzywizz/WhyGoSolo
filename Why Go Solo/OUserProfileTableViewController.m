@@ -138,7 +138,7 @@
     //Map functionality has not been implemented as of yet.
 }
 
-#pragma mark - Customer Cells
+#pragma mark - Custom Cells
 
 -(HeaderEventsTableViewCell *) headerCellAtIndex:(NSInteger) section  {
     

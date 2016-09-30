@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FontSetup.h"
 #import "ISEmojiView.h"
-#import "CustomerCollectionViewCell.h"
+#import "FriendCollectionViewCell.h"
 #import "HeaderCollectionReusableView.h"
 #import "MapViewController.h"
 
