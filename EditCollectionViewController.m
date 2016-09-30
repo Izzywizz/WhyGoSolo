@@ -39,9 +39,9 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"Cell"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"EditCell" bundle:nil] forCellWithReuseIdentifier:@"EditCell"];
     
-    //Add padding betweeen the section headers
-    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
-    collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
+//    //Add padding betweeen the section headers
+//    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+//    collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
     
     self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 //    self.collectionView.backgroundView = nil;
@@ -136,7 +136,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath    {
     if (indexPath.section == 0) {
-        return self.view.frame.size;
+//        return self.view.frame.size;
+        return CGSizeMake(self.collectionView.bounds.size.width, 400);
     } else if (_isPrivateEvent) {
         return CGSizeZero;
     } else  {

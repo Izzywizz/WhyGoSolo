@@ -1879,7 +1879,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="tNI-3b-Dns" firstAttribute="leading" secondItem="kzZ-zT-aRU" secondAttribute="leadingMargin" id="OXu-JQ-lst"/>
