@@ -34,8 +34,8 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"Cell"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"EditCell" bundle:nil] forCellWithReuseIdentifier:@"EditCell"];
     
-    self.collectionView.backgroundColor = [UIColor redColor];
-    self.collectionView.backgroundView = nil;
+    self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+//    self.collectionView.backgroundView = nil;
     
     
 }
@@ -85,6 +85,8 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
+#pragma mark - Custom Collection Cells
+
 -(FriendCollectionViewCell *) friendEveryoneCell:(NSIndexPath *)indexPath {
     
     static NSString *identifier = @"Cell";
@@ -102,11 +104,29 @@ static NSString * const reuseIdentifier = @"Cell";
     
     EditCellCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    cell.testLabel.text = @"test";
     
     return cell;
 }
 
+#pragma mark - Collection View Delegates
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return CGSizeZero;
+    }else {
+        return CGSizeMake(self.collectionView.bounds.size.width, 100); //Modify the 100 value to adjust the height of the HEader
+    }
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath    {
+    if (indexPath.section == 0) {
+        return self.view.frame.size;
+    } else  {
+        return CGSizeMake(100, 100);
+    }
+    
+}
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
@@ -121,6 +141,8 @@ static NSString * const reuseIdentifier = @"Cell";
     
     return reusableview;
 }
+
+#pragma mark - Custom Flow
 
 
 

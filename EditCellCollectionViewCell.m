@@ -10,4 +10,8 @@
 
 @implementation EditCellCollectionViewCell
 
+- (IBAction)helpButtonPressed:(UIButton *)sender {
+    NSLog(@"Help Button Pressed");
+}
+
 @end

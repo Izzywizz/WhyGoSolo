@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface EditCellCollectionViewCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UILabel *testLabel;
+@property (weak, nonatomic) IBOutlet UIButton *helpButton;
 
 @end
