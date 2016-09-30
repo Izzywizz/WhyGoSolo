@@ -3750,7 +3750,7 @@
                                         </variation>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RmX-Yu-deJ">
-                                        <rect key="frame" x="175" y="150" width="250" height="300"/>
+                                        <rect key="frame" x="175" y="150" width="250" height="274"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDQ-ba-OHt">
                                                 <rect key="frame" x="103" y="17" width="44" height="21"/>
@@ -3770,7 +3770,7 @@
                                                 </variation>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ea6-3u-u74">
-                                                <rect key="frame" x="10" y="39" width="230" height="216.5"/>
+                                                <rect key="frame" x="10" y="39" width="230" height="177.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <string key="text">Close Event
 Closing an event will stop any one else being able to join and will remove it from their timelines
@@ -3780,16 +3780,48 @@ Cancelling an event will remote it from people's timelines, however if it alread
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8T0-En-LYL" userLabel="Line">
+                                                <rect key="frame" x="0.0" y="224" width="250" height="1"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="iYS-QZ-Cqa"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bd0-L3-Ufe">
+                                                <rect key="frame" x="0.0" y="225" width="250" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="85j-NA-NZc"/>
+                                                    <constraint firstAttribute="width" constant="250" id="Pjj-XY-hUH"/>
+                                                </constraints>
+                                                <state key="normal" title="OK">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="85j-NA-NZc"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="okHelpButtonPressed:" destination="yTN-Rs-fGW" eventType="touchUpInside" id="zH5-Rg-n8U"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="300" id="05R-jC-hcC"/>
+                                            <constraint firstAttribute="height" constant="274" id="05R-jC-hcC"/>
+                                            <constraint firstAttribute="trailing" secondItem="Bd0-L3-Ufe" secondAttribute="trailing" id="2WT-Qa-c3Z"/>
                                             <constraint firstItem="Ea6-3u-u74" firstAttribute="top" secondItem="IDQ-ba-OHt" secondAttribute="bottom" constant="1" id="6A1-Ws-pES"/>
+                                            <constraint firstAttribute="trailing" secondItem="8T0-En-LYL" secondAttribute="trailing" id="CI4-es-zsV"/>
+                                            <constraint firstItem="Bd0-L3-Ufe" firstAttribute="top" secondItem="8T0-En-LYL" secondAttribute="bottom" id="Did-t5-KiZ"/>
+                                            <constraint firstItem="Bd0-L3-Ufe" firstAttribute="leading" secondItem="RmX-Yu-deJ" secondAttribute="leading" id="JY0-md-bxg"/>
                                             <constraint firstItem="IDQ-ba-OHt" firstAttribute="top" secondItem="RmX-Yu-deJ" secondAttribute="top" constant="17" id="Niq-Yw-ccU"/>
                                             <constraint firstItem="IDQ-ba-OHt" firstAttribute="centerX" secondItem="RmX-Yu-deJ" secondAttribute="centerX" id="R1U-cY-W0u"/>
+                                            <constraint firstItem="8T0-En-LYL" firstAttribute="top" secondItem="Ea6-3u-u74" secondAttribute="bottom" constant="7.5" id="Rpf-ri-K7W"/>
                                             <constraint firstAttribute="trailing" secondItem="Ea6-3u-u74" secondAttribute="trailing" constant="10" id="UVR-3G-fUg"/>
+                                            <constraint firstAttribute="bottom" secondItem="Bd0-L3-Ufe" secondAttribute="bottom" constant="-1" id="eij-6V-n5S"/>
                                             <constraint firstAttribute="width" constant="250" id="mS6-tD-qyQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ea6-3u-u74" secondAttribute="bottom" constant="44.5" id="rpM-Jt-NHP"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ea6-3u-u74" secondAttribute="bottom" constant="57.5" id="rpM-Jt-NHP"/>
+                                            <constraint firstItem="8T0-En-LYL" firstAttribute="leading" secondItem="RmX-Yu-deJ" secondAttribute="leading" id="tFf-iy-Axh"/>
                                             <constraint firstItem="Ea6-3u-u74" firstAttribute="leading" secondItem="RmX-Yu-deJ" secondAttribute="leading" constant="10" id="x5Z-Gr-LF9"/>
                                         </constraints>
                                     </view>
@@ -3807,7 +3839,7 @@ Cancelling an event will remote it from people's timelines, however if it alread
                                     <constraint firstItem="RmX-Yu-deJ" firstAttribute="leading" secondItem="rh4-ES-mmx" secondAttribute="leading" constant="175" id="eDl-dc-Heq"/>
                                     <constraint firstItem="RmX-Yu-deJ" firstAttribute="top" secondItem="rh4-ES-mmx" secondAttribute="top" constant="157" id="etk-mW-fii"/>
                                     <constraint firstAttribute="trailing" secondItem="RmX-Yu-deJ" secondAttribute="trailing" constant="175" id="iIx-Dv-WWv"/>
-                                    <constraint firstItem="RmX-Yu-deJ" firstAttribute="centerY" secondItem="rh4-ES-mmx" secondAttribute="centerY" id="k9M-kr-OUJ"/>
+                                    <constraint firstItem="RmX-Yu-deJ" firstAttribute="centerY" secondItem="rh4-ES-mmx" secondAttribute="centerY" constant="-13" id="k9M-kr-OUJ"/>
                                     <constraint firstItem="A3o-Sl-Xir" firstAttribute="top" secondItem="rh4-ES-mmx" secondAttribute="top" constant="236" id="vjI-09-hVw"/>
                                 </constraints>
                                 <variation key="default">
@@ -4330,7 +4362,7 @@ Cancelling an event will remote it from people's timelines, however if it alread
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2LE-ov-y7h" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6785" y="2432"/>
+            <point key="canvasLocation" x="6817" y="2470"/>
         </scene>
         <!--Search Bar Table View Controller-->
         <scene sceneID="IYT-Eg-tSX">
@@ -4941,7 +4973,7 @@ Cancelling an event will remote it from people's timelines, however if it alread
         <image name="white-logo-125-125" width="125" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="shq-06-Hzj"/>
-        <segue reference="Zte-WL-H10"/>
+        <segue reference="7Oc-fg-bvC"/>
+        <segue reference="Dya-pO-aS6"/>
     </inferredMetricsTieBreakers>
 </document>

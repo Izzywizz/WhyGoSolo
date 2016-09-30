@@ -6,7 +6,7 @@
 //  Copyright © 2016 Izzy. All rights reserved.
 //
 
-#import "EditEventViewController.h"
+#import "EditViewController.h"
 
 @interface EditEventViewController () <UITextViewDelegate, UITextFieldDelegate, ISEmojiViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *circularView;
@@ -40,6 +40,7 @@
     [self createDummyData];
     [self navigationButtonSetup];
     [self previousEventTextViewSetup];
+    
     
     //Register The Nib for the collection cell
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"Cell"];
@@ -172,6 +173,12 @@
     }
 }
 
+- (IBAction)okHelpButtonPressed:(UIButton *)sender {
+    [self closeCancelOverlayAlpha:0 animationDuration:0.2f];
+    _helpView.alpha = 0;
+}
+
+
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -181,19 +188,24 @@
 
 - (IBAction)helpButtonPressed:(UIButton *)sender {
     NSLog(@"Help Button Pressed");
+    [self closeCancelOverlayAlpha:1 animationDuration:0.2f];
+    _helpView.alpha = 1;
 }
+
 - (IBAction)closeEventButtonPressed:(UIButton *)sender {
     NSLog(@"Close Event Pressed");
     self.yesButton.tag = 0;
     [self closeCancelOverlayAlpha:1 animationDuration:0.2f];
-
+    _helpView.alpha = 0;
 }
+
 - (IBAction)cancelEventButtonPressed:(UIButton *)sender {
     NSLog(@"Cancel Event Pressed");
     self.overlayTitle.text = @"Cancel Event";
     self.overlayDescription.text = @"Are you sure you want to cancel your event?";
     self.yesButton.tag = 1; //Change the tag to create different functionality based on it.
     [self closeCancelOverlayAlpha:1 animationDuration:0.2f];
+    _helpView.alpha = 0;
 }
 
 - (IBAction)changeLocationButton:(UIButton *)sender {
