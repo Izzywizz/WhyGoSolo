@@ -1833,7 +1833,7 @@
             </objects>
             <point key="canvasLocation" x="7835" y="410"/>
         </scene>
-        <!--Title-->
+        <!--Edit Event-->
         <scene sceneID="KW5-wB-Got">
             <objects>
                 <collectionViewController id="x9e-dd-b5b" customClass="EditCollectionViewController" sceneMemberID="viewController">
@@ -1896,8 +1896,12 @@
                         </connections>
                     </collectionView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="3vh-II-45r">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="Q3h-qJ-d1D"/>
+                    <navigationItem key="navigationItem" title="Edit Event" id="3vh-II-45r">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Q3h-qJ-d1D">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="x9e-dd-b5b" id="e7Q-Gh-UjT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EoU-xE-Nsm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3406,8 +3410,8 @@
                                     <constraint firstAttribute="trailing" secondItem="OYv-25-maF" secondAttribute="trailing" constant="17" id="t6L-37-MUH"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nhm-Uc-ac4" userLabel="Describe Inner View">
-                                <rect key="frame" x="0.0" y="245" width="600" height="30.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhm-Uc-ac4" userLabel="Describe Inner View">
+                                <rect key="frame" x="0.0" y="202" width="600" height="110"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7k-5i-A3K" userLabel="Line">
                                         <rect key="frame" x="0.0" y="42" width="600" height="1"/>
@@ -3600,16 +3604,16 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRF-LW-0M9" userLabel="Invisable Add Emoji Button">
-                                <rect key="frame" x="263" y="305" width="76" height="76"/>
-                                <connections>
-                                    <action selector="addEmojiImage:" destination="yTN-Rs-fGW" eventType="touchUpInside" id="5qo-Ll-FxQ"/>
-                                    <action selector="emojiButtonPressed:" destination="bBE-xF-yzs" eventType="touchUpInside" id="LTn-5R-QjY"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QHn-Ho-cov" userLabel="Circle View">
-                                <rect key="frame" x="262" y="305" width="77" height="16"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHn-Ho-cov" userLabel="Circle View">
+                                <rect key="frame" x="262.5" y="347" width="76" height="76"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRF-LW-0M9" userLabel="Invisable Add Emoji Button">
+                                        <rect key="frame" x="-0.5" y="0.0" width="76" height="76"/>
+                                        <connections>
+                                            <action selector="addEmojiImage:" destination="yTN-Rs-fGW" eventType="touchUpInside" id="5qo-Ll-FxQ"/>
+                                            <action selector="emojiButtonPressed:" destination="bBE-xF-yzs" eventType="touchUpInside" id="LTn-5R-QjY"/>
+                                        </connections>
+                                    </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ab-Wf-Ye2" userLabel="Emoji Text View">
                                         <rect key="frame" x="32" y="21" width="10" height="33"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

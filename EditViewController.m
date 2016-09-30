@@ -169,7 +169,6 @@
         self.collectionView.hidden = YES;
         _isPrivateEvent = NO;
         self.publicPrivateLabel.text = self.publicText;
-        
     }
 }
 

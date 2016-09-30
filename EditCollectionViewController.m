@@ -12,6 +12,8 @@
 @property NSArray *dummyData;
 @property NSArray *sectionTitles;
 
+@property BOOL isPrivateEvent;
+
 @end
 
 @implementation EditCollectionViewController
@@ -20,7 +22,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _isPrivateEvent = NO;
+    
     [self createDummyData];
+    [self setupObservers];
     
     
     // Uncomment the following line to preserve selection between presentations
@@ -33,6 +38,10 @@ static NSString * const reuseIdentifier = @"Cell";
     //Register The Nib for the collection cell
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"Cell"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"EditCell" bundle:nil] forCellWithReuseIdentifier:@"EditCell"];
+    
+    //Add padding betweeen the section headers
+    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
     
     self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 //    self.collectionView.backgroundView = nil;
@@ -93,8 +102,13 @@ static NSString * const reuseIdentifier = @"Cell";
     
     FriendCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
+    if (_isPrivateEvent) {
+        cell.contentView.hidden = YES;
+    } else  {
+        cell.contentView.hidden = NO;
+    }
     cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
-    
+
     return cell;
 }
 
@@ -103,8 +117,7 @@ static NSString * const reuseIdentifier = @"Cell";
     static NSString *identifier = @"EditCell";
     
     EditCellCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    
-    
+        
     return cell;
 }
 
@@ -114,14 +127,18 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     if (section == 0) {
         return CGSizeZero;
-    }else {
-        return CGSizeMake(self.collectionView.bounds.size.width, 100); //Modify the 100 value to adjust the height of the HEader
+    } else if (_isPrivateEvent) {
+        return CGSizeZero;
+    } else {
+        return CGSizeMake(self.collectionView.bounds.size.width, 50); //Modify the 100 value to adjust the height of the HEader
     }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath    {
     if (indexPath.section == 0) {
         return self.view.frame.size;
+    } else if (_isPrivateEvent) {
+        return CGSizeZero;
     } else  {
         return CGSizeMake(100, 100);
     }
@@ -134,6 +151,14 @@ static NSString * const reuseIdentifier = @"Cell";
     
     if (kind == UICollectionElementKindSectionHeader) {
         HeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderCell" forIndexPath:indexPath];
+        
+        if (_isPrivateEvent) {
+            headerView.hidden = YES;
+            
+        } else {
+            headerView.hidden = NO;
+        }
+        
         headerView.sectionHeader.text = [_sectionTitles objectAtIndex:indexPath.section];
         
         reusableview = headerView;
@@ -142,7 +167,32 @@ static NSString * const reuseIdentifier = @"Cell";
     return reusableview;
 }
 
-#pragma mark - Custom Flow
+#pragma mark - Action Methods
+- (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Observer MEthods
+
+-(void)privacyMode:(NSNotification *) notification   {
+    if ([[notification name] isEqualToString:@"Privacy Mode"]) {
+        
+        NSLog(@"Bool: %d ", [[NSUserDefaults standardUserDefaults] boolForKey:@"publicPrivate"]);
+        _isPrivateEvent = [[NSUserDefaults standardUserDefaults] boolForKey:@"publicPrivate"];
+        [self.collectionView reloadData];
+    }
+}
+
+
+-(void) setupObservers    {
+    //When the profile button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(privacyMode:)
+                                                 name:@"Privacy Mode"
+                                               object:nil];
+
+
+}
 
 
 
