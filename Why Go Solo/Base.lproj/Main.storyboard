@@ -1910,6 +1910,75 @@
             </objects>
             <point key="canvasLocation" x="7951" y="1542"/>
         </scene>
+        <!--Create-->
+        <scene sceneID="ybM-ON-qT6">
+            <objects>
+                <collectionViewController id="aTF-Ww-xhV" customClass="CreateCollectionViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="BmS-40-GdF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="83c-xW-awX">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CreateCell" id="NkE-M3-2XN">
+                                <rect key="frame" x="0.0" y="114" width="100" height="103"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="103"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <size key="customSize" width="100" height="103"/>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Fab-t7-sIL">
+                                <rect key="frame" x="110" y="115.5" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <size key="customSize" width="100" height="100"/>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderCell" id="QYg-Qk-dRy" customClass="HeaderCollectionReusableView">
+                            <rect key="frame" x="0.0" y="64" width="600" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jh-Se-Cgh">
+                                    <rect key="frame" x="8" y="14" width="584" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="9jh-Se-Cgh" firstAttribute="trailing" secondItem="QYg-Qk-dRy" secondAttribute="trailingMargin" id="87w-ka-pFI"/>
+                                <constraint firstItem="9jh-Se-Cgh" firstAttribute="leading" secondItem="QYg-Qk-dRy" secondAttribute="leadingMargin" id="Y4S-3h-8BQ"/>
+                                <constraint firstItem="9jh-Se-Cgh" firstAttribute="centerY" secondItem="QYg-Qk-dRy" secondAttribute="centerY" id="pIl-ns-aXz"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="sectionHeader" destination="9jh-Se-Cgh" id="28b-If-f1a"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="aTF-Ww-xhV" id="5We-iW-JDT"/>
+                            <outlet property="delegate" destination="aTF-Ww-xhV" id="d8H-Vz-H9y"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Create" id="ong-0b-8iP">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="nCi-s7-cab"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NA0-hQ-Ck5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8324" y="2296"/>
+        </scene>
         <!--Create Event-->
         <scene sceneID="qJy-YK-usv">
             <objects>
@@ -1922,7 +1991,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="FFb-S6-hE0" userLabel="Colour Bar">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="FFb-S6-hE0" userLabel="Colour Bar">
                                 <rect key="frame" x="0.0" y="64" width="601" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="3" id="1qg-RW-PkP"/>
@@ -1938,7 +2007,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="njE-jJ-Gke" userLabel="Inner View">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="njE-jJ-Gke" userLabel="Inner View">
                                 <rect key="frame" x="0.0" y="84" width="600" height="110"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AdV-Ky-xiS">
@@ -2029,7 +2098,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REPRESENT YOUR EVENT WITH AN EMOJI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKf-ME-euh" userLabel="Represent Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="REPRESENT YOUR EVENT WITH AN EMOJI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKf-ME-euh" userLabel="Represent Label">
                                 <rect key="frame" x="179" y="209" width="243" height="14.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="243" id="SYc-5C-9nn"/>
@@ -2038,7 +2107,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGf-bR-oYv" userLabel="Circle View">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EGf-bR-oYv" userLabel="Circle View">
                                 <rect key="frame" x="262" y="241" width="76" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0R-R5-VNm" userLabel="Invisable Add Emoji Button">
@@ -2158,7 +2227,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zm9-XN-g79">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zm9-XN-g79">
                                 <rect key="frame" x="0.0" y="388" width="600" height="168"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OTK-ia-ay3">
                                     <size key="itemSize" width="100" height="100"/>
@@ -2246,7 +2315,6 @@
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="nextButtonPressed:" destination="bBE-xF-yzs" id="F0h-rh-kKf"/>
-                                <segue destination="ZWB-zS-1us" kind="show" identifier="GoToAddMap" id="kzU-dh-vLe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2262,7 +2330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziL-8v-F7g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8867" y="2324"/>
+            <point key="canvasLocation" x="9243" y="2340"/>
         </scene>
         <!--Event Table View Controller-->
         <scene sceneID="8Ta-J5-8iR">
@@ -2300,7 +2368,7 @@
                         <barButtonItem key="rightBarButtonItem" image="add-event-20-20" id="NC8-yQ-K8G">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="bBE-xF-yzs" kind="show" id="Kcz-UV-UgZ"/>
+                                <segue destination="aTF-Ww-xhV" kind="show" id="4F3-Q0-7Aq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2314,7 +2382,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JR4-us-JDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7128" y="1542"/>
+            <point key="canvasLocation" x="7098" y="1520"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="yg0-Za-Wrf">
@@ -3765,7 +3833,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6f-hG-vJo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8626" y="1472"/>
+            <point key="canvasLocation" x="9116" y="1472"/>
         </scene>
         <!--Comment Table View Controller-->
         <scene sceneID="oyq-QS-aoq">
@@ -4192,7 +4260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2LE-ov-y7h" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7551" y="3158"/>
+            <point key="canvasLocation" x="7461" y="3078"/>
         </scene>
         <!--Search Bar Table View Controller-->
         <scene sceneID="IYT-Eg-tSX">

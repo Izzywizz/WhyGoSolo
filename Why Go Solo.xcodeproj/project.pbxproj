@@ -89,6 +89,9 @@
 		43D17EDA1D8BD7C300451E90 /* AccommodationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */; };
 		43D17EDD1D8C1F1800451E90 /* SignInTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17EDC1D8C1F1800451E90 /* SignInTableViewController.m */; };
 		43D17EE01D8C3A1900451E90 /* ChangePasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17EDF1D8C3A1900451E90 /* ChangePasswordTableViewController.m */; };
+		43ECC9EE1DA250AB0059A333 /* CreateCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43ECC9ED1DA250AB0059A333 /* CreateCollectionViewController.m */; };
+		43ECC9F01DA25B480059A333 /* CreateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43ECC9EF1DA25B480059A333 /* CreateCell.xib */; };
+		43ECC9F31DA25D930059A333 /* CreateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43ECC9F21DA25D930059A333 /* CreateCollectionViewCell.m */; };
 		43FBC2F21D8AA49100AE4E1F /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */; };
 		43FBC2F51D8AAFBC00AE4E1F /* SetupProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F41D8AAFBC00AE4E1F /* SetupProfileTableViewController.m */; };
 		43FBC2F81D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F71D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m */; };
@@ -135,8 +138,8 @@
 		4335A4E01D9E5E0600DCCC3E /* EditCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCollectionViewController.m; path = ../EditCollectionViewController.m; sourceTree = "<group>"; };
 		4339813F1D91310B00A995B3 /* HallsOfResidence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HallsOfResidence.h; sourceTree = "<group>"; };
 		433981401D91310B00A995B3 /* HallsOfResidence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HallsOfResidence.m; sourceTree = "<group>"; };
-		434288971D9D11BE00D4E911 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditViewController.h; path = ../EditViewController.h; sourceTree = "<group>"; };
-		434288981D9D11BE00D4E911 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditViewController.m; path = ../EditViewController.m; sourceTree = "<group>"; };
+		434288971D9D11BE00D4E911 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		434288981D9D11BE00D4E911 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		4350B3801D93C558001A5AE8 /* ISEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEmojiView.h; sourceTree = "<group>"; };
 		4350B3811D93C558001A5AE8 /* ISEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEmojiView.m; sourceTree = "<group>"; };
 		436655AD1D9E6A910041F491 /* EditCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditCell.xib; sourceTree = "<group>"; };
@@ -230,6 +233,11 @@
 		43D17EDC1D8C1F1800451E90 /* SignInTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInTableViewController.m; sourceTree = "<group>"; };
 		43D17EDE1D8C3A1900451E90 /* ChangePasswordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordTableViewController.h; sourceTree = "<group>"; };
 		43D17EDF1D8C3A1900451E90 /* ChangePasswordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordTableViewController.m; sourceTree = "<group>"; };
+		43ECC9EC1DA250AB0059A333 /* CreateCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateCollectionViewController.h; path = ../CreateCollectionViewController.h; sourceTree = "<group>"; };
+		43ECC9ED1DA250AB0059A333 /* CreateCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateCollectionViewController.m; path = ../CreateCollectionViewController.m; sourceTree = "<group>"; };
+		43ECC9EF1DA25B480059A333 /* CreateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCell.xib; sourceTree = "<group>"; };
+		43ECC9F11DA25D930059A333 /* CreateCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCollectionViewCell.h; sourceTree = "<group>"; };
+		43ECC9F21DA25D930059A333 /* CreateCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCollectionViewCell.m; sourceTree = "<group>"; };
 		43FBC2F01D8AA49100AE4E1F /* TermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsViewController.h; sourceTree = "<group>"; };
 		43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsViewController.m; sourceTree = "<group>"; };
 		43FBC2F31D8AAFBC00AE4E1F /* SetupProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupProfileTableViewController.h; sourceTree = "<group>"; };
@@ -388,16 +396,17 @@
 				43B981E01D95318400E7DD05 /* Collection Cells */,
 				430C14B61D929D5900F76C35 /* CreateEventViewController.h */,
 				430C14B71D929D5900F76C35 /* CreateEventViewController.m */,
+				43ECC9EC1DA250AB0059A333 /* CreateCollectionViewController.h */,
+				43ECC9ED1DA250AB0059A333 /* CreateCollectionViewController.m */,
 				4335A4DF1D9E5E0600DCCC3E /* EditCollectionViewController.h */,
 				4335A4E01D9E5E0600DCCC3E /* EditCollectionViewController.m */,
-				434288971D9D11BE00D4E911 /* EditViewController.h */,
-				434288981D9D11BE00D4E911 /* EditViewController.m */,
 				43BD7BB11D86993B00DDA384 /* PeopleViewController.h */,
 				43BD7BB21D86993B00DDA384 /* PeopleViewController.m */,
 				43A893661D8057FA00BEA24B /* EventTableViewController.h */,
 				43A893671D8057FA00BEA24B /* EventTableViewController.m */,
 				4308DCA91D9025A3008CA934 /* FilterViewController.h */,
 				4308DCAA1D9025A3008CA934 /* FilterViewController.m */,
+				43ECC9EB1DA24D1E0059A333 /* No Longer Need */,
 				438A14881D8011C2005E6AF7 /* Main.storyboard */,
 				438A148B1D8011C2005E6AF7 /* Assets.xcassets */,
 				438A148D1D8011C2005E6AF7 /* LaunchScreen.storyboard */,
@@ -503,8 +512,21 @@
 				436655AD1D9E6A910041F491 /* EditCell.xib */,
 				436655AF1D9E6DD70041F491 /* EditCellCollectionViewCell.h */,
 				436655B01D9E6DD70041F491 /* EditCellCollectionViewCell.m */,
+				43ECC9EF1DA25B480059A333 /* CreateCell.xib */,
+				43ECC9F11DA25D930059A333 /* CreateCollectionViewCell.h */,
+				43ECC9F21DA25D930059A333 /* CreateCollectionViewCell.m */,
 			);
 			name = "Collection Cells";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		43ECC9EB1DA24D1E0059A333 /* No Longer Need */ = {
+			isa = PBXGroup;
+			children = (
+				434288971D9D11BE00D4E911 /* EditViewController.h */,
+				434288981D9D11BE00D4E911 /* EditViewController.m */,
+			);
+			name = "No Longer Need";
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -615,6 +637,7 @@
 				43B981CD1D95220400E7DD05 /* ham_and_egg_sandwich.jpg in Resources */,
 				43B981D01D95220400E7DD05 /* japanese_noodle_with_pork.jpg in Resources */,
 				438A148C1D8011C2005E6AF7 /* Assets.xcassets in Resources */,
+				43ECC9F01DA25B480059A333 /* CreateCell.xib in Resources */,
 				43B4009C1D86BDE70094DFB6 /* PeopleEvent.xib in Resources */,
 				43B981CA1D95220400E7DD05 /* full_breakfast.jpg in Resources */,
 				438A14BB1D801E0F005E6AF7 /* Lato-LightItalic.ttf in Resources */,
@@ -656,6 +679,7 @@
 				431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */,
 				43D17EDA1D8BD7C300451E90 /* AccommodationMapViewController.m in Sources */,
 				438188311D86EFCB009591F4 /* ContainerViewController.m in Sources */,
+				43ECC9F31DA25D930059A333 /* CreateCollectionViewCell.m in Sources */,
 				43FBC2F21D8AA49100AE4E1F /* TermsViewController.m in Sources */,
 				4335A4E11D9E5E0600DCCC3E /* EditCollectionViewController.m in Sources */,
 				4380C59D1D8FD70000FA08C5 /* FontSetup.m in Sources */,
@@ -686,6 +710,7 @@
 				430503121D89868700CA73D1 /* UniversityViewController.m in Sources */,
 				430503181D8998F600CA73D1 /* SetupLoginDetailsViewController.m in Sources */,
 				4309193B1D8154F400EE9220 /* MapViewController.m in Sources */,
+				43ECC9EE1DA250AB0059A333 /* CreateCollectionViewController.m in Sources */,
 				4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */,
 				43BE4C361D82A26700D6B26A /* OUserProfileTableViewController.m in Sources */,
 				43ACED5B1D87EDAC008D949C /* DeleteConfirmationViewController.m in Sources */,
