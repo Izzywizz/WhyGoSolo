@@ -2845,18 +2845,33 @@
                             <rect key="frame" x="0.0" y="64" width="600" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="s24-cX-NAs" userLabel="Background-Gradient">
+                                    <rect key="frame" x="0.0" y="0.0" width="601" height="50"/>
+                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8T8-8C-Rq9">
                                     <rect key="frame" x="8" y="14" width="584" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="s24-cX-NAs" firstAttribute="centerY" secondItem="lpY-EQ-WsR" secondAttribute="centerY" id="5U5-uM-v0t"/>
                                 <constraint firstItem="8T8-8C-Rq9" firstAttribute="centerY" secondItem="lpY-EQ-WsR" secondAttribute="centerY" id="A5D-eV-wxm"/>
                                 <constraint firstItem="8T8-8C-Rq9" firstAttribute="leading" secondItem="lpY-EQ-WsR" secondAttribute="leadingMargin" id="Drb-bA-Pa8"/>
                                 <constraint firstItem="8T8-8C-Rq9" firstAttribute="trailing" secondItem="lpY-EQ-WsR" secondAttribute="trailingMargin" id="EFY-0M-6hS"/>
+                                <constraint firstAttribute="trailing" secondItem="s24-cX-NAs" secondAttribute="trailing" constant="-1" id="IJb-EZ-a0w"/>
+                                <constraint firstItem="s24-cX-NAs" firstAttribute="centerX" secondItem="lpY-EQ-WsR" secondAttribute="centerX" id="NzI-cq-meh"/>
+                                <constraint firstItem="s24-cX-NAs" firstAttribute="top" secondItem="lpY-EQ-WsR" secondAttribute="top" id="Toe-Rz-pkm"/>
+                                <constraint firstAttribute="bottom" secondItem="s24-cX-NAs" secondAttribute="bottom" id="aI6-Zp-hHk"/>
+                                <constraint firstItem="s24-cX-NAs" firstAttribute="leading" secondItem="lpY-EQ-WsR" secondAttribute="leading" id="fvz-ty-yua"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="5U5-uM-v0t"/>
+                                    <exclude reference="NzI-cq-meh"/>
+                                </mask>
+                            </variation>
                             <connections>
                                 <outlet property="sectionHeader" destination="8T8-8C-Rq9" id="peQ-Wc-ppZ"/>
                             </connections>

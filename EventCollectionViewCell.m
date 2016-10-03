@@ -10,4 +10,21 @@
 
 @implementation EventCollectionViewCell
 
+-(void)awakeFromNib {
+    self.innerView.layer.cornerRadius = 5;
+}
+- (IBAction)eventButtonPressed:(UIButton *)sender {
+    switch (sender.tag) {
+        case JOIN: NSLog(@"Join Button Pressed");
+            break;
+        case EDIT: NSLog(@"Edit Button Pressed");
+            break;
+        case PROFILE: NSLog(@"Profile Button Pressed");
+            break;
+        default:
+            break;
+    }
+    
+}
+
 @end
