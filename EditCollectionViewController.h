@@ -10,6 +10,8 @@
 #import "FriendCollectionViewCell.h"
 #import "HeaderCollectionReusableView.h"
 #import "EditCellCollectionViewCell.h"
+#import "MapViewController.h"
+
 
 
 @interface EditCollectionViewController : UICollectionViewController

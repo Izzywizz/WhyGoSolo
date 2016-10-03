@@ -27,26 +27,11 @@ static NSString * const reuseIdentifier = @"Cell";
     [self createDummyData];
     [self setupObservers];
     
-    
-    // Uncomment the following line to preserve selection between presentations
-    //     self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
-    //    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    
     //Register The Nib for the collection cell
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"Cell"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"EditCell" bundle:nil] forCellWithReuseIdentifier:@"EditCell"];
     
-//    //Add padding betweeen the section headers
-//    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
-//    collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
-    
     self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-//    self.collectionView.backgroundView = nil;
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -108,7 +93,7 @@ static NSString * const reuseIdentifier = @"Cell";
         cell.contentView.hidden = NO;
     }
     cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
-
+    
     return cell;
 }
 
@@ -117,7 +102,7 @@ static NSString * const reuseIdentifier = @"Cell";
     static NSString *identifier = @"EditCell";
     
     EditCellCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-        
+    
     return cell;
 }
 
@@ -136,7 +121,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath    {
     if (indexPath.section == 0) {
-//        return self.view.frame.size;
+        //        return self.view.frame.size;
         return CGSizeMake(self.collectionView.bounds.size.width, 400);
     } else if (_isPrivateEvent) {
         return CGSizeZero;
@@ -184,6 +169,12 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
+-(void) changeLocation:(NSNotification *) notification  {
+    if ([[notification name] isEqualToString:@"changeLocation"]) {
+        NSLog(@"Location changing");
+        [self performSegueWithIdentifier:@"GoToEditMap" sender:self];
+    }
+}
 
 -(void) setupObservers    {
     //When the profile button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
@@ -191,8 +182,22 @@ static NSString * const reuseIdentifier = @"Cell";
                                              selector:@selector(privacyMode:)
                                                  name:@"Privacy Mode"
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLocation:) name:@"changeLocation" object:nil];
+}
 
+#pragma mark - Prepare Segue / Map Kit preperation
+/** This method changes the default button of DONE for mapView to POST in order to fake the functionality of passing a post to the evne creation */
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"GoToEditMap"]) {
+        NSLog(@"TEST segue");
+        // Get reference to the destination view controller
+        MapViewController *vc = [segue destinationViewController];
+        // TAG and Title are set to 0, so they bypass the functionality and just pop back to the edit view
+        vc.doneOrNextButton.title = @"NEXT";
+        [vc.doneOrNextButton setTag:0];
+    }
 }
 
 

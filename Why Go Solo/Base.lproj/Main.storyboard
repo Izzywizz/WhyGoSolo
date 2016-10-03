@@ -1902,10 +1902,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ZWB-zS-1us" kind="show" identifier="GoToEditMap" id="WpI-Ea-7qB"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EoU-xE-Nsm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7973" y="1472"/>
+            <point key="canvasLocation" x="7951" y="1542"/>
         </scene>
         <!--Create Event-->
         <scene sceneID="qJy-YK-usv">
@@ -2259,7 +2262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziL-8v-F7g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8197" y="2236"/>
+            <point key="canvasLocation" x="8867" y="2324"/>
         </scene>
         <!--Event Table View Controller-->
         <scene sceneID="8Ta-J5-8iR">
@@ -2575,13 +2578,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="YXj-dg-G1Q" userLabel="Colour Bar">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="YXj-dg-G1Q" userLabel="Colour Bar">
                                 <rect key="frame" x="0.0" y="64" width="599" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="LFf-rY-5bK"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzc-m6-dFI">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzc-m6-dFI">
                                 <rect key="frame" x="0.0" y="107" width="600" height="57"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jr2-oi-d1p" userLabel="Top Line">
@@ -2642,7 +2645,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cm7-Ny-nyU">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cm7-Ny-nyU">
                                 <rect key="frame" x="50" y="185" width="500" height="50"/>
                                 <color key="backgroundColor" red="0.87450980389999999" green="0.2274509804" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -2670,7 +2673,7 @@
                                     <action selector="deleteButtonPressed:" destination="JvF-fK-4hY" eventType="touchUpInside" id="59b-7P-rH6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Once your account is deleted you cannot undo this action" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="nvE-YA-c0h">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Once your account is deleted you cannot undo this action" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="nvE-YA-c0h">
                                 <rect key="frame" x="50" y="243" width="500" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="440" id="1mB-b2-rUY"/>
@@ -3377,8 +3380,8 @@
                                     <action selector="closeEventButtonPressed:" destination="yTN-Rs-fGW" eventType="touchUpInside" id="aoe-mu-zJw"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LOz-gD-Oje" userLabel="Location View">
-                                <rect key="frame" x="0.0" y="197" width="600" height="38"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOz-gD-Oje" userLabel="Location View">
+                                <rect key="frame" x="0.0" y="154" width="600" height="38"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qi-6T-A1c">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="38"/>
@@ -3604,7 +3607,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHn-Ho-cov" userLabel="Circle View">
-                                <rect key="frame" x="262.5" y="347" width="76" height="76"/>
+                                <rect key="frame" x="262" y="347" width="76" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRF-LW-0M9" userLabel="Invisable Add Emoji Button">
                                         <rect key="frame" x="-0.5" y="0.0" width="76" height="76"/>
@@ -4800,7 +4803,7 @@
         <image name="white-logo-125-125" width="125" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QFo-9Z-Gzg"/>
-        <segue reference="Dya-pO-aS6"/>
+        <segue reference="7Oc-fg-bvC"/>
+        <segue reference="WpI-Ea-7qB"/>
     </inferredMetricsTieBreakers>
 </document>

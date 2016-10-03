@@ -148,9 +148,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="8QB-f2-epc"/>
                                         <exclude reference="geJ-xb-58Z"/>
                                         <exclude reference="w5C-Uf-wyU"/>
-                                        <exclude reference="8QB-f2-epc"/>
                                     </mask>
                                 </variation>
                             </textView>

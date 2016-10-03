@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ISEmojiView.h"
+#import "MapViewController.h"
+
 
 
 @interface EditCellCollectionViewCell : UICollectionViewCell <UITextViewDelegate, UITextFieldDelegate, ISEmojiViewDelegate>

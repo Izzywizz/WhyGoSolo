@@ -35,7 +35,8 @@
     NSLog(@"Cancel");
 }
 - (IBAction)changeLocationButtonPressed:(UIButton *)sender {
-    NSLog(@"Change Location");
+    NSLog(@"Change Location (Locally)");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeLocation" object:self];
 }
 - (IBAction)addEmojiButtonPressed:(UIButton *)sender {
     [self.emojiTextView becomeFirstResponder];
@@ -114,6 +115,7 @@
         self.emojiTextView.text = [self.emojiTextView.text substringToIndex:lastRange.location];
     }
 }
+
 
 
 @end
