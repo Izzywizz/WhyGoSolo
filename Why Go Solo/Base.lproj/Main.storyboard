@@ -1977,8 +1977,18 @@
                                 <action selector="backButtonPressed:" destination="aTF-Ww-xhV" id="y3H-23-PJP"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="NEXT" id="9Wu-bF-5jT">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="nextButton:" destination="aTF-Ww-xhV" id="l7E-lu-Ghy"/>
+                                <segue destination="ZWB-zS-1us" kind="show" identifier="GoToAddMap" id="Gs0-rZ-4e0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="nextButton" destination="9Wu-bF-5jT" id="1cT-nX-h4f"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NA0-hQ-Ck5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4877,6 +4887,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7Oc-fg-bvC"/>
-        <segue reference="WpI-Ea-7qB"/>
+        <segue reference="Gs0-rZ-4e0"/>
     </inferredMetricsTieBreakers>
 </document>

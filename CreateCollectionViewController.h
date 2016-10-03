@@ -11,8 +11,11 @@
 #import "HeaderCollectionReusableView.h"
 #import "EditCellCollectionViewCell.h"
 #import "CreateCollectionViewCell.h"
+#import "MapViewController.h"
+
 
 
 @interface CreateCollectionViewController : UICollectionViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 
 @end

@@ -183,5 +183,22 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)nextButton:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"GoToAddMap" sender:self];    
+}
+
+#pragma mark - Prepare Segue
+/** This method changes the default button of DONE for mapView to POST in order to fake the functionality of passing a post to the evne creation */
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"GoToAddMap"]) {
+        NSLog(@"TEST segue");
+        // Get reference to the destination view controller
+        MapViewController *vc = [segue destinationViewController];
+        vc.doneOrNextButton.title = @"POST";
+        [vc.doneOrNextButton setTag:100];
+    }
+}
+
 
 @end
