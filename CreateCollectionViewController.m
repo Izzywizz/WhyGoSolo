@@ -168,13 +168,6 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
--(void) changeLocation:(NSNotification *) notification  {
-    if ([[notification name] isEqualToString:@"changeLocation"]) {
-        NSLog(@"Location changing");
-        [self performSegueWithIdentifier:@"GoToEditMap" sender:self];
-    }
-}
-
 -(void) setupObservers    {
     //When the profile button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -182,7 +175,13 @@ static NSString * const reuseIdentifier = @"Cell";
                                                  name:@"Privacy Mode"
                                                object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLocation:) name:@"changeLocation" object:nil];
 }
+
+#pragma mark - Action Methods
+
+- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 @end

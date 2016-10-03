@@ -66,9 +66,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="n7V-sQ-Ybg"/>
                                         <exclude reference="BCd-ee-guB"/>
                                         <exclude reference="BQ3-Hu-Dpp"/>
+                                        <exclude reference="n7V-sQ-Ybg"/>
                                     </mask>
                                 </variation>
                             </textView>
@@ -106,21 +106,21 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="KRU-5o-P97"/>
-                                <exclude reference="rDQ-7u-GGM"/>
-                                <exclude reference="jFr-oq-47R"/>
                                 <exclude reference="hgg-3m-VDo"/>
-                                <exclude reference="kxD-Fv-7MA"/>
+                                <exclude reference="jFr-oq-47R"/>
+                                <exclude reference="rDQ-7u-GGM"/>
+                                <exclude reference="4w0-nF-5xb"/>
                                 <exclude reference="7lU-FX-exv"/>
-                                <exclude reference="fqi-a7-BTE"/>
-                                <exclude reference="nDd-HM-VAz"/>
-                                <exclude reference="ifO-fX-e9p"/>
+                                <exclude reference="GE5-Ec-aP0"/>
+                                <exclude reference="HN5-il-03Y"/>
+                                <exclude reference="P3L-uv-wkv"/>
+                                <exclude reference="SnM-Ii-oDI"/>
                                 <exclude reference="bGn-lY-WVh"/>
                                 <exclude reference="fFL-fS-XkJ"/>
-                                <exclude reference="4w0-nF-5xb"/>
-                                <exclude reference="P3L-uv-wkv"/>
-                                <exclude reference="HN5-il-03Y"/>
-                                <exclude reference="SnM-Ii-oDI"/>
-                                <exclude reference="GE5-Ec-aP0"/>
+                                <exclude reference="fqi-a7-BTE"/>
+                                <exclude reference="ifO-fX-e9p"/>
+                                <exclude reference="kxD-Fv-7MA"/>
+                                <exclude reference="nDd-HM-VAz"/>
                             </mask>
                         </variation>
                     </view>
@@ -149,6 +149,9 @@
                                     <constraint firstAttribute="height" constant="76" id="NS5-ZG-d0f"/>
                                     <constraint firstAttribute="width" constant="76" id="ouM-xp-fAv"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="addEmojiButtonPressed:" destination="osa-Ag-Upi" eventType="touchUpInside" id="kxk-39-lXJ"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3H-nT-dzG" userLabel="Emoji Text View">
                                 <rect key="frame" x="33" y="21" width="10" height="33"/>
@@ -183,10 +186,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="ffm-KJ-dWo"/>
-                                <exclude reference="Xkl-u7-R0m"/>
-                                <exclude reference="RYl-L1-kbd"/>
                                 <exclude reference="Dj7-0S-08e"/>
+                                <exclude reference="RYl-L1-kbd"/>
+                                <exclude reference="Xkl-u7-R0m"/>
+                                <exclude reference="ffm-KJ-dWo"/>
                             </mask>
                         </variation>
                     </view>
@@ -221,10 +224,10 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="mHQ-mf-aSl"/>
                                         <exclude reference="N50-51-bEd"/>
-                                        <exclude reference="mSl-tD-Ola"/>
                                         <exclude reference="dyF-Nr-DS7"/>
+                                        <exclude reference="mHQ-mf-aSl"/>
+                                        <exclude reference="mSl-tD-Ola"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -234,6 +237,9 @@
                                     <constraint firstAttribute="width" constant="49" id="NRC-SZ-SJF"/>
                                     <constraint firstAttribute="height" constant="31" id="OFc-ZI-N7P"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="eventSwitch:" destination="osa-Ag-Upi" eventType="valueChanged" id="IiU-tF-j2B"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -261,8 +267,8 @@
                                 <exclude reference="xid-wQ-28w"/>
                                 <exclude reference="RKq-9G-MWm"/>
                                 <exclude reference="aQl-yE-o7q"/>
-                                <exclude reference="iMe-Bv-Bb4"/>
                                 <exclude reference="hhg-N7-T4b"/>
+                                <exclude reference="iMe-Bv-Bb4"/>
                                 <exclude reference="so7-de-GNP"/>
                                 <exclude reference="eJa-cs-L7y"/>
                             </mask>
@@ -286,11 +292,11 @@
             </constraints>
             <size key="customSize" width="425" height="459"/>
             <connections>
-                <outlet property="addEmojiImage" destination="Geu-fh-cEi" id="axq-5i-44S"/>
+                <outlet property="addEmojiImage" destination="aEv-tC-5Sb" id="fGM-sC-TfN"/>
                 <outlet property="circularView" destination="A4x-Gd-bod" id="D6d-cn-Dr9"/>
                 <outlet property="describeEventTextView" destination="7Xc-P0-gBx" id="Xcc-ug-sfg"/>
                 <outlet property="emojiTextView" destination="x3H-nT-dzG" id="jcu-Vr-9Nt"/>
-                <outlet property="publicPrivateLabel" destination="IzF-mh-B5A" id="Ban-yE-7Nm"/>
+                <outlet property="publicPrivateLabel" destination="gJi-Va-tvR" id="dyl-F1-9vv"/>
             </connections>
             <point key="canvasLocation" x="448.5" y="462"/>
         </collectionViewCell>

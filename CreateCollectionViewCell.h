@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ISEmojiView.h"
 
-@interface CreateCollectionViewCell : UICollectionViewCell
+
+@interface CreateCollectionViewCell : UICollectionViewCell <UITextViewDelegate, UITextFieldDelegate, ISEmojiViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *describeEventTextView;
 @property (weak, nonatomic) IBOutlet UIView *circularView;
-@property (weak, nonatomic) IBOutlet UIButton *addEmojiImage;
+@property (weak, nonatomic) IBOutlet UIImageView *addEmojiImage;
 @property (weak, nonatomic) IBOutlet UITextView *emojiTextView;
-@property (weak, nonatomic) IBOutlet UIImageView *publicPrivateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *publicPrivateLabel;
 
 @end

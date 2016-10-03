@@ -128,8 +128,8 @@
 		4309193D1D81552200EE9220 /* PinLocationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinLocationData.h; sourceTree = "<group>"; };
 		4309193E1D81552200EE9220 /* PinLocationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinLocationData.m; sourceTree = "<group>"; };
 		430919411D8158A000EE9220 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
-		430C14B61D929D5900F76C35 /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventViewController.h; sourceTree = "<group>"; };
-		430C14B71D929D5900F76C35 /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventViewController.m; sourceTree = "<group>"; };
+		430C14B61D929D5900F76C35 /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateEventViewController.h; path = "Why Go Solo/CreateEventViewController.h"; sourceTree = "<group>"; };
+		430C14B71D929D5900F76C35 /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateEventViewController.m; path = "Why Go Solo/CreateEventViewController.m"; sourceTree = "<group>"; };
 		4319E7831D89582800FD5142 /* CommentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentTableViewController.h; path = ../CommentTableViewController.h; sourceTree = "<group>"; };
 		4319E7841D89582800FD5142 /* CommentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewController.m; path = ../CommentTableViewController.m; sourceTree = "<group>"; };
 		431C45B71D895C6B00A05C11 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -394,8 +394,6 @@
 				438A14821D8011C2005E6AF7 /* AppDelegate.h */,
 				438A14831D8011C2005E6AF7 /* AppDelegate.m */,
 				43B981E01D95318400E7DD05 /* Collection Cells */,
-				430C14B61D929D5900F76C35 /* CreateEventViewController.h */,
-				430C14B71D929D5900F76C35 /* CreateEventViewController.m */,
 				43ECC9EC1DA250AB0059A333 /* CreateCollectionViewController.h */,
 				43ECC9ED1DA250AB0059A333 /* CreateCollectionViewController.m */,
 				4335A4DF1D9E5E0600DCCC3E /* EditCollectionViewController.h */,
@@ -523,6 +521,8 @@
 		43ECC9EB1DA24D1E0059A333 /* No Longer Need */ = {
 			isa = PBXGroup;
 			children = (
+				430C14B61D929D5900F76C35 /* CreateEventViewController.h */,
+				430C14B71D929D5900F76C35 /* CreateEventViewController.m */,
 				434288971D9D11BE00D4E911 /* EditViewController.h */,
 				434288981D9D11BE00D4E911 /* EditViewController.m */,
 			);
