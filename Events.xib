@@ -189,6 +189,17 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNF-iW-exW">
+                                <rect key="frame" x="75" y="166.5" width="98" height="29.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29.5" id="TdE-EG-Fpd"/>
+                                    <constraint firstAttribute="width" constant="98" id="faP-3e-mYS"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="peopleEventButtonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="9KG-Oa-Ga6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -206,6 +217,7 @@
                             <constraint firstItem="3Oi-In-Wv7" firstAttribute="leading" secondItem="2Pf-mv-1cn" secondAttribute="leading" constant="15" id="9Lc-lj-pM7"/>
                             <constraint firstItem="QhB-Uy-I1u" firstAttribute="leading" secondItem="H2f-bt-vGd" secondAttribute="trailing" constant="21.5" id="AHu-mi-BdM"/>
                             <constraint firstAttribute="bottom" secondItem="3Oi-In-Wv7" secondAttribute="bottom" constant="50.5" id="AL6-75-la9"/>
+                            <constraint firstItem="nNF-iW-exW" firstAttribute="top" secondItem="3Oi-In-Wv7" secondAttribute="bottom" constant="7" id="Ado-vZ-ifl"/>
                             <constraint firstItem="rdB-0n-bkb" firstAttribute="leading" secondItem="QhB-Uy-I1u" secondAttribute="trailing" constant="3" id="BxB-OQ-hmx"/>
                             <constraint firstItem="FXw-a4-BaV" firstAttribute="top" secondItem="NVY-XN-eK4" secondAttribute="bottom" constant="17" id="DY0-c8-EeX"/>
                             <constraint firstItem="Hmb-ch-Tf3" firstAttribute="leading" secondItem="Cgu-GY-CmA" secondAttribute="trailing" constant="6" id="DeT-PH-Jjq"/>
@@ -226,6 +238,7 @@
                             <constraint firstItem="NVY-XN-eK4" firstAttribute="leading" secondItem="2Pf-mv-1cn" secondAttribute="leading" constant="15" id="S1G-7C-rqY"/>
                             <constraint firstItem="FXw-a4-BaV" firstAttribute="leading" secondItem="Hmb-ch-Tf3" secondAttribute="leading" id="Tef-Rf-esx"/>
                             <constraint firstItem="Cgu-GY-CmA" firstAttribute="leading" secondItem="X31-ZH-LSy" secondAttribute="trailing" constant="6" id="Vdc-DA-Tcd"/>
+                            <constraint firstItem="nNF-iW-exW" firstAttribute="leading" secondItem="H2f-bt-vGd" secondAttribute="trailing" constant="7.5" id="Vs9-lx-TUy"/>
                             <constraint firstAttribute="bottom" secondItem="Cgu-GY-CmA" secondAttribute="bottom" constant="173.5" id="XcL-Dr-PpZ"/>
                             <constraint firstItem="3Oi-In-Wv7" firstAttribute="top" secondItem="FXw-a4-BaV" secondAttribute="bottom" constant="10.5" id="Zq6-5U-Of9"/>
                             <constraint firstItem="H2f-bt-vGd" firstAttribute="leading" secondItem="dMr-mC-bzt" secondAttribute="trailing" constant="4" id="aQN-oQ-cU8"/>

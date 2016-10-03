@@ -71,6 +71,14 @@ NSArray *sectionTitles;
     }
 }
 
+-(void)moveToEvent:(NSNotification *) notification  {
+    if ([[notification name] isEqualToString:@"People Event"])  {
+        NSLog(@"Moving to Event related to People");
+        [self moveToEvent];
+    }
+}
+
+
 
 
 -(void) setupObservers    {
@@ -84,6 +92,9 @@ NSArray *sectionTitles;
     
     //Edit
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToEdit:) name:@"Edit Found" object:nil];
+    
+    //People Event
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToEvent:) name:@"People Event" object:nil];
 }
 
 #pragma mark - Helper Functions
@@ -101,6 +112,10 @@ NSArray *sectionTitles;
     [self performSegueWithIdentifier:@"GoToEdit" sender:self];
 }
 
+-(void) moveToEvent {
+    [self performSegueWithIdentifier:@"GoToEvent" sender:self];
+}
+
 -(void) setupDummyData  {
     //Dummy Data
     tableData = @{@"My Events" : @[@"Andy Jones"],
@@ -114,7 +129,7 @@ NSArray *sectionTitles;
     self.tableView.allowsSelectionDuringEditing=YES;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 140;
-//    self.tableView.allowsSelection = NO;
+    //    self.tableView.allowsSelection = NO;
 }
 
 #pragma mark - Table view data source
@@ -235,7 +250,7 @@ NSArray *sectionTitles;
 #pragma mark - Actions
 - (IBAction)peopleButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"People Button Pressed");
-
+    
 }
 
 

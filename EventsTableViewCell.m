@@ -37,5 +37,9 @@
             break;
     }
 }
+- (IBAction)peopleEventButtonPressed:(UIButton *)sender {
+    NSLog(@"People Event Button Pressed");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"People Event" object:self];
+}
 
 @end
