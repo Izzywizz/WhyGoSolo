@@ -13,6 +13,7 @@
 @interface UniversityViewController () <UITableViewDelegate, UITableViewDataSource>
 @property NSArray *universityList;
 @property (nonatomic) UniversityLocations *locations;
+@property BOOL hasUniBeenSelected;
 
 @end
 
@@ -21,12 +22,14 @@
 #pragma mark - UI Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.hasUniBeenSelected = false; //intially set selction false becasue nothing has been selected!
+    
     _locations = [[UniversityLocations alloc] init];
     [self unpackData];
     NSLog(@"University");
     _universityList = [self unpackData];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,7 +60,7 @@
 {
     [super viewDidLayoutSubviews];
     [self setNavigationButtonFontAndSize];
-
+    
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     }
@@ -111,9 +114,13 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
-    NSLog(@"row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
-    NSLog(@"Location: %@,", [_universityList objectAtIndex:indexPath.row]);
-    [tableView cellForRowAtIndexPath:indexPath].accessoryView =  [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check-button-20-20"]];
+    
+    self.hasUniBeenSelected = true;
+    if (_hasUniBeenSelected) {
+        NSLog(@"row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
+        NSLog(@"Location: %@,", [_universityList objectAtIndex:indexPath.row]);
+        [tableView cellForRowAtIndexPath:indexPath].accessoryView =  [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check-button-20-20"]];
+    }
 }
 
 -(void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath   {
@@ -127,8 +134,21 @@
 }
 
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
-    NSLog(@"Next button");
+    NSLog(@"Next button pressed");
+    if (_hasUniBeenSelected == false) {
+        [self alertSetupandView];
+    } else  {
+        [self performSegueWithIdentifier:@"GoToSetupLoginDetails" sender:self];
+    }
 }
 
+-(void) alertSetupandView  {
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"No Uni Selected" message:@"Please select a university before proceededing" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Dismiss");
+    }];
+    [alertVC addAction:dismiss];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
 
 @end

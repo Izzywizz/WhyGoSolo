@@ -13,7 +13,7 @@
 -(NSDictionary *) returnListOfUniversity {
     
     NSDictionary *dict = [[NSDictionary alloc] init];
-    dict = @{@"Liverpool" : @[@"Liverpool University", @"Liverpool John Moores", @"Liverpool University", @"Liverpool Hope", @"Liverpool Institude for Performing Arts", @"Edge Hill University"]
+    dict = @{@"Liverpool" : @[@"Liverpool University", @"Liverpool John Moores", @"Liverpool Hope", @"Liverpool Institude for Performing Arts", @"Edge Hill University"]
              };
     
     return dict;

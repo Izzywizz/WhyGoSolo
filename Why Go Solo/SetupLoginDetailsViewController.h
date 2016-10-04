@@ -11,5 +11,6 @@
 
 @interface SetupLoginDetailsViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
+@property BOOL hasTermsAgreed;
 
 @end

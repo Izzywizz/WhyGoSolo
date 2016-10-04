@@ -10,6 +10,7 @@
 
 @interface SetupLoginDetailsViewController ()
 
+
 @end
 
 @implementation SetupLoginDetailsViewController
@@ -19,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationButtonFontAndSize];
+    self.hasTermsAgreed = false;
+    
     NSLog(@"Setup Login Details");
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
@@ -63,28 +66,37 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)termsAndConditionButtonPressed:(UIButton *)sender {
-    NSLog(@"Activate Terms and condtion");
-}
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
-    NSLog(@"Next Button Pressed");
+    if (_hasTermsAgreed) {
+        [self performSegueWithIdentifier:@"GoToProfile" sender:self];
+    } else {
+        [self alertSetupandView:@"Terms" andMessage:@"Please read and agree to the terms"];
+    }
 }
 
+- (IBAction)termsAgreed:(UISwitch *)sender {
+    if (sender.on) {
+        self.hasTermsAgreed = true;
+    } else {
+        self.hasTermsAgreed = false;
+    }
+}
 
 #pragma mark - Table view data source
-
 
 /** Allows the cell selection seperators (the grey line across the tableView Cell) to extend across the entire table view */
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
+    if (indexPath.row == 3) {
+        cell.separatorInset = UIEdgeInsetsMake(0, 1000, 0, 0); //removes insert
     }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+    else  {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 }
+
+#pragma mark - TableView Delegates
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     NSLog(@"row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
@@ -102,6 +114,17 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     return  30.0;
+}
+
+#pragma mark - Alert View Controller 
+
+-(void) alertSetupandView: (NSString *) WithTitle andMessage: (NSString *) message  {
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:WithTitle message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Dismiss");
+    }];
+    [alertVC addAction:dismiss];
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 @end

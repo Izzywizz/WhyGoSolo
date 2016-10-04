@@ -81,7 +81,6 @@
 		43B981DB1D95282900E7DD05 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B981DA1D95282900E7DD05 /* CollectionCell.xib */; };
 		43B981DE1D95291800E7DD05 /* FriendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B981DD1D95291800E7DD05 /* FriendCollectionViewCell.m */; };
 		43B981E31D9534C100E7DD05 /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B981E21D9534C100E7DD05 /* HeaderCollectionReusableView.m */; };
-		43B981E61D953D7B00E7DD05 /* AddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B981E51D953D7B00E7DD05 /* AddLocationViewController.m */; };
 		43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BD7BB21D86993B00DDA384 /* PeopleViewController.m */; };
 		43BE4C361D82A26700D6B26A /* OUserProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C351D82A26700D6B26A /* OUserProfileTableViewController.m */; };
 		43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */; };
@@ -220,8 +219,6 @@
 		43B981DD1D95291800E7DD05 /* FriendCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendCollectionViewCell.m; path = "Why Go Solo/FriendCollectionViewCell.m"; sourceTree = "<group>"; };
 		43B981E11D9534C100E7DD05 /* HeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCollectionReusableView.h; sourceTree = "<group>"; };
 		43B981E21D9534C100E7DD05 /* HeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionReusableView.m; sourceTree = "<group>"; };
-		43B981E41D953D7B00E7DD05 /* AddLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocationViewController.h; sourceTree = "<group>"; };
-		43B981E51D953D7B00E7DD05 /* AddLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocationViewController.m; sourceTree = "<group>"; };
 		43BD7BB11D86993B00DDA384 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeopleViewController.h; path = ../PeopleViewController.h; sourceTree = "<group>"; };
 		43BD7BB21D86993B00DDA384 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeopleViewController.m; path = ../PeopleViewController.m; sourceTree = "<group>"; };
 		43BE4C341D82A26700D6B26A /* OUserProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OUserProfileTableViewController.h; sourceTree = "<group>"; };
@@ -365,8 +362,6 @@
 		438A14731D8011C2005E6AF7 = {
 			isa = PBXGroup;
 			children = (
-				43B981E41D953D7B00E7DD05 /* AddLocationViewController.h */,
-				43B981E51D953D7B00E7DD05 /* AddLocationViewController.m */,
 				43A893691D805D8700BEA24B /* profile.png */,
 				436E84AF1D815FA700B23402 /* flag.png */,
 				430919411D8158A000EE9220 /* car.png */,
@@ -701,7 +696,6 @@
 				43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */,
 				430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */,
 				43BE4C3C1D82F91400D6B26A /* EditProfileTableViewController.m in Sources */,
-				43B981E61D953D7B00E7DD05 /* AddLocationViewController.m in Sources */,
 				430503151D89911600CA73D1 /* UniversityLocations.m in Sources */,
 				43D17EE01D8C3A1900451E90 /* ChangePasswordTableViewController.m in Sources */,
 				4350B3831D93C558001A5AE8 /* ISEmojiView.m in Sources */,
