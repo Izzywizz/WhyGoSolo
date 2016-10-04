@@ -28,7 +28,7 @@
     [self unpackData];
     NSLog(@"University");
     _universityList = [self unpackData];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; //remove any extra table cell rows
     
 }
 

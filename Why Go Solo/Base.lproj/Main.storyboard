@@ -349,6 +349,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N5v-4W-VUf">
+                                                    <rect key="frame" x="0.0" y="1" width="600" height="58.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3j-GS-Ngv">
                                                     <rect key="frame" x="20" y="14" width="572" height="16"/>
                                                     <constraints>
@@ -368,11 +372,15 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="N5v-4W-VUf" firstAttribute="top" secondItem="VPh-QE-uz5" secondAttribute="top" constant="1" id="Dbw-iJ-gL8"/>
                                                 <constraint firstItem="W9y-mT-iij" firstAttribute="top" secondItem="n3j-GS-Ngv" secondAttribute="bottom" constant="1" id="Uhw-3K-Ue2"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="n3j-GS-Ngv" secondAttribute="trailing" id="Yy5-iQ-cXM"/>
                                                 <constraint firstAttribute="topMargin" secondItem="n3j-GS-Ngv" secondAttribute="top" constant="-6" id="gxC-fm-ZtH"/>
                                                 <constraint firstItem="W9y-mT-iij" firstAttribute="top" secondItem="n3j-GS-Ngv" secondAttribute="bottom" constant="2" id="hdq-Ld-Xkm"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="W9y-mT-iij" secondAttribute="trailing" id="kOZ-6P-onB"/>
+                                                <constraint firstAttribute="trailing" secondItem="N5v-4W-VUf" secondAttribute="trailing" id="pyL-wl-weW"/>
+                                                <constraint firstAttribute="bottom" secondItem="N5v-4W-VUf" secondAttribute="bottom" constant="0.5" id="rwA-09-uVz"/>
+                                                <constraint firstItem="N5v-4W-VUf" firstAttribute="leading" secondItem="VPh-QE-uz5" secondAttribute="leading" id="sGL-CM-Goy"/>
                                                 <constraint firstItem="W9y-mT-iij" firstAttribute="leading" secondItem="VPh-QE-uz5" secondAttribute="leading" constant="20" id="vsy-Ml-aeS"/>
                                                 <constraint firstItem="n3j-GS-Ngv" firstAttribute="leading" secondItem="VPh-QE-uz5" secondAttribute="leading" constant="20" id="xM0-qU-U7h"/>
                                                 <constraint firstItem="n3j-GS-Ngv" firstAttribute="top" secondItem="VPh-QE-uz5" secondAttribute="topMargin" constant="6" id="zMk-Te-NFT"/>
@@ -501,7 +509,7 @@
                                                                 <segue destination="kG2-dm-QBe" kind="show" id="nCL-yl-JXW"/>
                                                             </connections>
                                                         </button>
-                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="569-bK-cga">
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="569-bK-cga">
                                                             <rect key="frame" x="210" y="0.0" width="51" height="31"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="49" id="NpF-7a-1NS"/>
@@ -544,6 +552,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailAddress" destination="W9y-mT-iij" id="cKc-s1-y7o"/>
+                        <outlet property="emailAddressLabel" destination="n3j-GS-Ngv" id="ln0-NT-dyr"/>
+                        <outlet property="emailContentView" destination="VPh-QE-uz5" id="cMc-ZQ-SJ6"/>
                         <outlet property="nextButton" destination="rue-Uv-wgD" id="Hp8-HM-vak"/>
                         <segue destination="tv0-iu-svJ" kind="show" identifier="GoToProfile" id="a6r-8v-ZkP"/>
                     </connections>
