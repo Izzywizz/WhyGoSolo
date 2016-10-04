@@ -26,6 +26,9 @@
     
     self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
+    //Add padding betweeen the section headers
+    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    collectionViewLayout.sectionInset = UIEdgeInsetsMake(5, 0, 5, 0);
 }
 
 - (void)didReceiveMemoryWarning {
