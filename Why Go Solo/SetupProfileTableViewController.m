@@ -8,19 +8,24 @@
 
 #import "SetupProfileTableViewController.h"
 
-@interface SetupProfileTableViewController ()<UIImagePickerControllerDelegate>
-
+@interface SetupProfileTableViewController ()<UIImagePickerControllerDelegate, UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *dateOfBirthField;
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
+@property (nonatomic) UIDatePicker *datePicker;
 @end
 
 @implementation SetupProfileTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _roundImageUploadView.layer.cornerRadius = _roundImageUploadView.bounds.size.width/2; //create circular profile view
-    _roundImageUploadView.layer.masksToBounds = YES;
+    self.lastNameTextField.delegate = self;
+    
+    [self setupCameraView];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // Prevents the tableView from drawing any more empty unused cells
     [self setNavigationButtonFontAndSize];
-
+    
+    [self.tableView setAllowsSelection:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,7 +34,31 @@
 }
 
 
+#pragma mark - TextField Delegate Actions
+
+- (IBAction)lastNameFinshed:(UITextField *)sender {
+    [_lastNameTextField resignFirstResponder];
+}
+
+- (IBAction)lastNameBegin:(UITextField *)sender {
+    [_lastNameTextField becomeFirstResponder];
+}
+- (IBAction)firstNameBegin:(UITextField *)sender {
+    [_firstNameTextField becomeFirstResponder];
+}
+- (IBAction)firstNameFinshed:(UITextField *)sender {
+    [_firstNameTextField resignFirstResponder];
+}
+
 #pragma mark - Helper Functions
+/** create the round affect camera upload view, including border colour */
+-(void) setupCameraView {
+    _roundImageUploadView.layer.cornerRadius = _roundImageUploadView.bounds.size.width/2; //create circular profile view
+    _roundImageUploadView.layer.borderWidth = 0.5;
+    _roundImageUploadView.layer.borderColor = [[UIColor grayColor] CGColor];
+    _roundImageUploadView.layer.masksToBounds = YES;
+}
+
 /** Ensures that the selection seperators are setup before the main views are shown*/
 -(void)viewDidLayoutSubviews
 {
@@ -90,8 +119,27 @@
     }
 }
 
+#pragma mark - Date Picker Methods
+- (void)datePickerChanged:(UIDatePicker *)datePicker
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+    NSString *strDate = [dateFormatter stringFromDate:datePicker.date];
+    self.dateOfBirthField.text = strDate;
+}
 
 #pragma mark - Action Methods
+
+/** */
+- (IBAction)datePicker:(UITextField *)sender {
+    
+    //Create the datePicker, set the mode and assign an action listener to it because I've added to the textview
+     _datePicker = [[UIDatePicker alloc] init];
+    [_datePicker setDatePickerMode:UIDatePickerModeDate];
+    [_dateOfBirthField setInputView:_datePicker];
+    [self.datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];
+
+}
 
 - (IBAction)uploadPhotoButton:(UIButton *)sender {
     NSLog(@"Upload Photo");

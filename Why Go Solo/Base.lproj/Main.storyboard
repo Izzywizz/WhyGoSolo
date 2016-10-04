@@ -739,6 +739,10 @@
                                                             <exclude reference="cwg-AM-CS5"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="firstNameBegin:" destination="tv0-iu-svJ" eventType="editingDidBegin" id="bM2-h9-Ikg"/>
+                                                        <action selector="firstNameFinshed:" destination="tv0-iu-svJ" eventType="editingDidEnd" id="zwA-SR-hHs"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -807,6 +811,11 @@
                                                             <exclude reference="oiv-cf-vHt"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="lastNameBegin:" destination="tv0-iu-svJ" eventType="editingDidBegin" id="Mhy-Fd-eD8"/>
+                                                        <action selector="lastNameFinshed:" destination="tv0-iu-svJ" eventType="editingDidEnd" id="ngp-Qa-uES"/>
+                                                        <outlet property="delegate" destination="tv0-iu-svJ" id="gqr-eA-3Ar"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -875,6 +884,9 @@
                                                             <exclude reference="rGd-qO-fwo"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="datePicker:" destination="tv0-iu-svJ" eventType="editingDidBegin" id="VqC-se-QvI"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -931,6 +943,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateOfBirthField" destination="Hxr-AN-PQ5" id="plj-g1-OAp"/>
+                        <outlet property="firstNameTextField" destination="eHg-xc-jld" id="ohL-h7-Azl"/>
+                        <outlet property="lastNameTextField" destination="mSA-N2-hZf" id="WIb-ua-XhS"/>
                         <outlet property="nextButton" destination="Hkh-5C-GRC" id="eQk-gq-ijP"/>
                         <outlet property="profileImageView" destination="DVg-HT-8T1" id="2LG-8a-X2W"/>
                         <outlet property="roundImageUploadView" destination="GYT-wI-tjz" id="I2E-f2-EUt"/>
@@ -2613,8 +2628,6 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="8TS-mh-u9C"/>
-                                <exclude reference="2KD-V6-9yz"/>
-                                <exclude reference="Ljg-Od-Rc7"/>
                                 <exclude reference="JSu-ZS-tH2"/>
                                 <exclude reference="TeK-6x-5EC"/>
                                 <exclude reference="gZN-Kq-j8I"/>
@@ -2622,6 +2635,8 @@
                                 <exclude reference="kMB-96-R1k"/>
                                 <exclude reference="mzo-Qe-h7G"/>
                                 <exclude reference="yPX-EV-phP"/>
+                                <exclude reference="2KD-V6-9yz"/>
+                                <exclude reference="Ljg-Od-Rc7"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -2630,8 +2645,6 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="8TS-mh-u9C"/>
-                                <exclude reference="2KD-V6-9yz"/>
-                                <include reference="Ljg-Od-Rc7"/>
                                 <exclude reference="JSu-ZS-tH2"/>
                                 <include reference="TeK-6x-5EC"/>
                                 <exclude reference="gZN-Kq-j8I"/>
@@ -2639,6 +2652,8 @@
                                 <exclude reference="kMB-96-R1k"/>
                                 <include reference="mzo-Qe-h7G"/>
                                 <exclude reference="yPX-EV-phP"/>
+                                <exclude reference="2KD-V6-9yz"/>
+                                <include reference="Ljg-Od-Rc7"/>
                             </mask>
                         </variation>
                     </view>

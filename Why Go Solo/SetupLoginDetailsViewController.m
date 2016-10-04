@@ -27,6 +27,10 @@
     [self setNavigationButtonFontAndSize];
     self.hasTermsAgreed = false;
     
+    //This prevents the weird the selection animation occuring when the user selects a cell
+    [self.tableView setAllowsSelection:NO];
+
+    
     NSLog(@"Setup Login Details");
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -117,6 +121,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     NSLog(@"row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
+    [tableView deselectRowAtIndexPath:indexPath animated:YES]; //remove the selection animation
     
 }
 
