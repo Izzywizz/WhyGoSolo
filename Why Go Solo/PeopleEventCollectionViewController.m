@@ -12,6 +12,7 @@
 @property NSArray *dummyData;
 @property NSArray *sectionTitles;
 
+@property BOOL hasJoinedEvent;
 @end
 
 @implementation PeopleEventCollectionViewController
@@ -19,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createDummyData];
+    [self setupObservers];
     
     //Register The Nib for the collection cell
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"Cell"];
@@ -138,12 +140,30 @@
     return cell;
 }
 
-#pragma mark - Action Methods
-- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+#pragma mark - Observer Methods
+
+-(void) joinButton:(NSNotification *) notification  {
+    if ([[notification name] isEqualToString:@"Join"]) {
+        self.hasJoinedEvent = [[NSUserDefaults standardUserDefaults] boolForKey:@"hasJoinedEvent"];
+        NSLog(@"Intiate Join Thingy, Bool: %d", self.hasJoinedEvent);
+    }
 }
 
 
+-(void) joinedButton:(NSNotification *) notification    {
+    if ([[notification name] isEqualToString:@"Joined"]) {
+        self.hasJoinedEvent = [[NSUserDefaults standardUserDefaults] boolForKey:@"hasJoinedEvent"];
+        NSLog(@"Joined, Bool: %d", self.hasJoinedEvent);
+    }
+}
+
+
+-(void) setupObservers    {
+    //When the join button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(joinButton:) name:@"Join" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(joinedButton:) name:@"Joined" object:nil];
+}
 
 
 @end

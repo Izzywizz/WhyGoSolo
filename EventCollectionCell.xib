@@ -36,7 +36,7 @@
                                             <action selector="eventButtonPressed:" destination="uEP-nL-FHe" eventType="touchUpInside" id="sL0-vE-6bE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" alpha="0.0" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xx1-nd-pGL" userLabel="Edit Button">
+                                    <button opaque="NO" alpha="0.0" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xx1-nd-pGL" userLabel="Edit">
                                         <rect key="frame" x="369" y="145" width="85" height="30"/>
                                         <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -64,6 +64,19 @@
                                         </state>
                                         <connections>
                                             <action selector="eventButtonPressed:" destination="uEP-nL-FHe" eventType="touchUpInside" id="I5Q-Cy-ibx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.0" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzr-3U-Id4">
+                                        <rect key="frame" x="369" y="145" width="85" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="85" id="3nP-2b-Uhe"/>
+                                            <constraint firstAttribute="height" constant="30" id="dNM-kP-xML"/>
+                                        </constraints>
+                                        <state key="normal" title="Joined" backgroundImage="joined-button-72-30">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="eventButtonPressed:" destination="uEP-nL-FHe" eventType="touchUpInside" id="ecX-l8-XMl"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="rRo-LV-PB2">
@@ -169,6 +182,7 @@
                                     <constraint firstItem="Qny-6J-4lo" firstAttribute="top" secondItem="WOd-LB-g0R" secondAttribute="bottom" constant="10" id="FgK-5l-AJ5"/>
                                     <constraint firstItem="5jn-tX-9iP" firstAttribute="leading" secondItem="n1v-0N-FUP" secondAttribute="trailing" constant="3" id="GK4-6q-wVk"/>
                                     <constraint firstItem="WOd-LB-g0R" firstAttribute="leading" secondItem="Y0Y-Bs-BdG" secondAttribute="leading" constant="68" id="Ge9-gT-iJI"/>
+                                    <constraint firstAttribute="bottom" secondItem="uzr-3U-Id4" secondAttribute="bottom" constant="14" id="KTf-Yb-RjY"/>
                                     <constraint firstItem="SBj-xz-XVO" firstAttribute="leading" secondItem="rRo-LV-PB2" secondAttribute="trailing" constant="6" id="MZl-BT-Tid"/>
                                     <constraint firstItem="Qny-6J-4lo" firstAttribute="top" secondItem="WOd-LB-g0R" secondAttribute="bottom" constant="18.5" id="OrA-oh-gFp"/>
                                     <constraint firstItem="Qny-6J-4lo" firstAttribute="top" secondItem="WOd-LB-g0R" secondAttribute="bottom" constant="10.5" id="R5x-WF-mej"/>
@@ -193,6 +207,7 @@
                                     <constraint firstItem="WOd-LB-g0R" firstAttribute="top" secondItem="qJd-3Y-tRt" secondAttribute="bottom" constant="17" id="lPp-6e-SCT"/>
                                     <constraint firstAttribute="trailing" secondItem="yzg-q8-2km" secondAttribute="trailing" constant="47" id="oif-Ji-ffR"/>
                                     <constraint firstItem="rRo-LV-PB2" firstAttribute="top" secondItem="Y0Y-Bs-BdG" secondAttribute="top" constant="15" id="onf-0o-8Ic"/>
+                                    <constraint firstAttribute="trailing" secondItem="uzr-3U-Id4" secondAttribute="trailing" constant="14" id="oxE-d9-VAl"/>
                                     <constraint firstItem="WOd-LB-g0R" firstAttribute="leading" secondItem="yzg-q8-2km" secondAttribute="leading" id="pE4-UX-Nln"/>
                                     <constraint firstAttribute="bottom" secondItem="rRo-LV-PB2" secondAttribute="bottom" constant="172.5" id="q67-VP-xdW"/>
                                     <constraint firstAttribute="bottom" secondItem="Qec-oO-oWg" secondAttribute="bottom" constant="14" id="qDM-MU-4bo"/>
@@ -247,7 +262,10 @@
             </constraints>
             <size key="customSize" width="496" height="221"/>
             <connections>
+                <outlet property="editButton" destination="xx1-nd-pGL" id="3uh-Nh-ZDk"/>
                 <outlet property="innerView" destination="Y0Y-Bs-BdG" id="yxL-dx-AJ7"/>
+                <outlet property="joinButton" destination="Qec-oO-oWg" id="Pdp-CB-bua"/>
+                <outlet property="joinedButton" destination="uzr-3U-Id4" id="i7T-Ga-ki8"/>
             </connections>
             <point key="canvasLocation" x="978" y="337.5"/>
         </collectionViewCell>
@@ -255,6 +273,7 @@
     <resources>
         <image name="chat-icon-18-18" width="20" height="19"/>
         <image name="join-button-72-30" width="72" height="30"/>
+        <image name="joined-button-72-30" width="72" height="30"/>
         <image name="profile.png" width="112" height="98"/>
     </resources>
 </document>
