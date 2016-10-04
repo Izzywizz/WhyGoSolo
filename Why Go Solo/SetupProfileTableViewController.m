@@ -79,15 +79,45 @@
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
-- (void)selectPhoto {
+#pragma mark - PHoto MEthods
+
+-(void) createActionSheet   {
+    UIAlertController *alertSheet = [UIAlertController alertControllerWithTitle:nil message:@"Please select photo or camera" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *album = [UIAlertAction actionWithTitle:@"Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self takePhotoOrAlbum:UIImagePickerControllerSourceTypePhotoLibrary];
+//        [self selectPhoto];
+    }];
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Camera");
+        [self takePhotoOrAlbum:UIImagePickerControllerSourceTypeCamera];
+    }];
     
+    [alertSheet addAction:album];
+    [alertSheet addAction:camera];
+    
+    [self presentViewController:alertSheet animated:YES completion:nil];
+}
+
+
+
+-(void) takePhotoOrAlbum: (UIImagePickerControllerSourceType) source   {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.sourceType = source;
     
     [self presentViewController:picker animated:YES completion:NULL];
 }
+
+//- (void)selectPhoto {
+//    
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.delegate = self;
+//    picker.allowsEditing = YES;
+//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    
+//    [self presentViewController:picker animated:YES completion:NULL];
+//}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
@@ -143,7 +173,8 @@
 
 - (IBAction)uploadPhotoButton:(UIButton *)sender {
     NSLog(@"Upload Photo");
-    [self selectPhoto];
+    [self createActionSheet];
+//    [self selectPhoto];
 }
 
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
