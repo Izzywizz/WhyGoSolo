@@ -33,7 +33,7 @@
                                     <action selector="buttonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="TwP-Ft-8Qn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54j-bB-pVw">
+                            <button opaque="NO" alpha="0.0" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54j-bB-pVw">
                                 <rect key="frame" x="321" y="168" width="85" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -61,6 +61,19 @@
                                 </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="hIC-5X-iew"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlW-fC-bAC" userLabel="Joined">
+                                <rect key="frame" x="321" y="168" width="85" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="6At-O5-JsE"/>
+                                    <constraint firstAttribute="height" constant="30" id="CW9-kY-S8g"/>
+                                </constraints>
+                                <state key="normal" title="Joined" backgroundImage="joined-button-72-30">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="6yX-qw-14c"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="X31-ZH-LSy">
@@ -189,8 +202,8 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNF-iW-exW">
-                                <rect key="frame" x="75" y="166.5" width="98" height="29.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNF-iW-exW" userLabel="Event">
+                                <rect key="frame" x="75" y="166" width="98" height="29.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29.5" id="TdE-EG-Fpd"/>
                                     <constraint firstAttribute="width" constant="98" id="faP-3e-mYS"/>
@@ -227,6 +240,7 @@
                             <constraint firstItem="3Oi-In-Wv7" firstAttribute="leading" secondItem="X31-ZH-LSy" secondAttribute="leading" id="ICH-dF-MdK"/>
                             <constraint firstItem="FXw-a4-BaV" firstAttribute="top" secondItem="Cgu-GY-CmA" secondAttribute="bottom" constant="2" id="JIv-FK-gce"/>
                             <constraint firstItem="Cgu-GY-CmA" firstAttribute="top" secondItem="2Pf-mv-1cn" secondAttribute="top" constant="15" id="JQG-ob-Xy8"/>
+                            <constraint firstAttribute="trailing" secondItem="LlW-fC-bAC" secondAttribute="trailing" constant="15" id="K60-cT-ULl"/>
                             <constraint firstAttribute="trailing" secondItem="54j-bB-pVw" secondAttribute="trailing" constant="15" id="M96-Lc-3eA"/>
                             <constraint firstItem="QhB-Uy-I1u" firstAttribute="leading" secondItem="H2f-bt-vGd" secondAttribute="trailing" constant="8" id="MEx-TP-dz3"/>
                             <constraint firstAttribute="trailing" secondItem="FXw-a4-BaV" secondAttribute="trailing" constant="53" id="O2q-U1-BMa"/>
@@ -250,6 +264,7 @@
                             <constraint firstAttribute="bottom" secondItem="QhB-Uy-I1u" secondAttribute="bottom" constant="27.5" id="hfL-nE-uRK"/>
                             <constraint firstAttribute="bottom" secondItem="QhB-Uy-I1u" secondAttribute="bottom" constant="15" id="hyS-gd-o3I"/>
                             <constraint firstItem="rdB-0n-bkb" firstAttribute="leading" secondItem="QhB-Uy-I1u" secondAttribute="trailing" constant="1.5" id="kJh-4s-wzC"/>
+                            <constraint firstAttribute="bottom" secondItem="LlW-fC-bAC" secondAttribute="bottom" constant="21.5" id="mWy-nx-lRU"/>
                             <constraint firstAttribute="bottom" secondItem="X31-ZH-LSy" secondAttribute="bottom" constant="172.5" id="myk-XJ-mrj"/>
                             <constraint firstAttribute="bottom" secondItem="H2f-bt-vGd" secondAttribute="bottom" constant="15" id="nGB-y0-RVm"/>
                             <constraint firstAttribute="bottom" secondItem="QhB-Uy-I1u" secondAttribute="bottom" constant="27.5" id="nwE-Fm-Jj7"/>
@@ -307,6 +322,7 @@
                 <outlet property="eventInviteeCount" destination="rdB-0n-bkb" id="7WO-Yt-ywX"/>
                 <outlet property="eventMessageCount" destination="H2f-bt-vGd" id="atc-rS-4hE"/>
                 <outlet property="joinButton" destination="54j-bB-pVw" id="f53-eO-00H"/>
+                <outlet property="joinedButton" destination="LlW-fC-bAC" id="wju-4N-Su2"/>
                 <outlet property="messageImage" destination="dMr-mC-bzt" id="nlr-6g-fHF"/>
                 <outlet property="nameLabel" destination="Cgu-GY-CmA" id="IF0-P9-tuP"/>
                 <outlet property="profileImage" destination="QhB-Uy-I1u" id="yf8-A5-TUw"/>
@@ -318,6 +334,7 @@
     <resources>
         <image name="chat-icon-18-18" width="20" height="19"/>
         <image name="join-button-72-30" width="72" height="30"/>
+        <image name="joined-button-72-30" width="72" height="30"/>
         <image name="profile.png" width="112" height="98"/>
         <image name="user-icon-18-18" width="19" height="18"/>
     </resources>

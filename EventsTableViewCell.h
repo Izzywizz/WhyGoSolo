@@ -23,11 +23,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *messageImage;
 @property (weak, nonatomic) IBOutlet UIButton *editJoinButton;
+@property (weak, nonatomic) IBOutlet UIButton *joinedButton;
 
 typedef enum {
     EDIT = 1,
     JOIN,
-    PROFILE
+    PROFILE,
+    JOINED
 } EventState;
 
 

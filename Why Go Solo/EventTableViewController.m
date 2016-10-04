@@ -78,6 +78,11 @@ NSArray *sectionTitles;
     }
 }
 
+-(void)joinedButton:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"Joined"]) {
+        NSLog(@"Joined logic needs to be added here similar to collection cell");
+    }
+}
 
 
 
@@ -95,6 +100,8 @@ NSArray *sectionTitles;
     
     //People Event
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToEvent:) name:@"People Event" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(joinedButton:) name:@"Joined" object:nil];
 }
 
 #pragma mark - Helper Functions

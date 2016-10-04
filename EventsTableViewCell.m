@@ -33,6 +33,9 @@
         case PROFILE: NSLog(@"Profile Button Pressed");
             [[NSNotificationCenter defaultCenter] postNotificationName:@"Profile Found" object:self];
             break;
+        case JOINED: NSLog(@"Joined Button");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Joined" object:self];
+            break;
         default:
             break;
     }
