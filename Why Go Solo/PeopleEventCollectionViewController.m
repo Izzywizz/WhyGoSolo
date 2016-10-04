@@ -94,7 +94,7 @@
         //        return self.view.frame.size;
         return CGSizeMake(self.collectionView.bounds.size.width, 300);
     } else  {
-        return CGSizeMake(100, 100);
+        return CGSizeMake(100, 120);
     }
     
 }
@@ -124,6 +124,7 @@
     FriendCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
+    cell.profileName.text = @"Izzy";
     
     return cell;
 }
