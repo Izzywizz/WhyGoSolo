@@ -55,6 +55,7 @@
 }
 - (IBAction)okButtonPressed:(UIButton *)sender {
     NSLog(@"Email has been sent for password reset");
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - Observer Methods

@@ -49,6 +49,8 @@
 		438A14BB1D801E0F005E6AF7 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 438A14B01D801E0F005E6AF7 /* Lato-LightItalic.ttf */; };
 		438A14BC1D801E0F005E6AF7 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 438A14B11D801E0F005E6AF7 /* Lato-Regular.ttf */; };
 		438A14BD1D801E0F005E6AF7 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 438A14B21D801E0F005E6AF7 /* OFL.txt */; };
+		43A325F21DA4EE2F0017FE27 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A325F11DA4EE2F0017FE27 /* OverlayView.xib */; };
+		43A325F51DA4EE620017FE27 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A325F41DA4EE620017FE27 /* OverlayView.m */; };
 		43A8935F1D8057AE00BEA24B /* Events.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A893561D8057AE00BEA24B /* Events.xib */; };
 		43A893601D8057AE00BEA24B /* FooterEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A893581D8057AE00BEA24B /* FooterEventsTableViewCell.m */; };
 		43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A8935A1D8057AE00BEA24B /* HeaderEventsTableViewCell.m */; };
@@ -179,6 +181,9 @@
 		438A14B01D801E0F005E6AF7 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		438A14B11D801E0F005E6AF7 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		438A14B21D801E0F005E6AF7 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		43A325F11DA4EE2F0017FE27 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
+		43A325F31DA4EE620017FE27 /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayView.h; path = ../OverlayView.h; sourceTree = "<group>"; };
+		43A325F41DA4EE620017FE27 /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayView.m; path = ../OverlayView.m; sourceTree = "<group>"; };
 		43A893561D8057AE00BEA24B /* Events.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Events.xib; sourceTree = "<group>"; };
 		43A893571D8057AE00BEA24B /* FooterEventsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooterEventsTableViewCell.h; sourceTree = "<group>"; };
 		43A893581D8057AE00BEA24B /* FooterEventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooterEventsTableViewCell.m; sourceTree = "<group>"; };
@@ -397,6 +402,9 @@
 				438A14821D8011C2005E6AF7 /* AppDelegate.h */,
 				438A14831D8011C2005E6AF7 /* AppDelegate.m */,
 				43B981E01D95318400E7DD05 /* Collection Cells */,
+				43A325F11DA4EE2F0017FE27 /* OverlayView.xib */,
+				43A325F31DA4EE620017FE27 /* OverlayView.h */,
+				43A325F41DA4EE620017FE27 /* OverlayView.m */,
 				43ECC9EC1DA250AB0059A333 /* CreateCollectionViewController.h */,
 				43ECC9ED1DA250AB0059A333 /* CreateCollectionViewController.m */,
 				4335A4DF1D9E5E0600DCCC3E /* EditCollectionViewController.h */,
@@ -621,6 +629,7 @@
 				43B981D91D95242300E7DD05 /* ISEmojiList.plist in Resources */,
 				43B981D41D95220400E7DD05 /* starbucks_coffee.jpg in Resources */,
 				438A14BD1D801E0F005E6AF7 /* OFL.txt in Resources */,
+				43A325F21DA4EE2F0017FE27 /* OverlayView.xib in Resources */,
 				436E84B01D815FA700B23402 /* flag.png in Resources */,
 				43B981CF1D95220400E7DD05 /* instant_noodle_with_egg.jpg in Resources */,
 				4383E10D1D93ECF90021CA30 /* FriendHeader.xib in Resources */,
@@ -699,6 +708,7 @@
 				430503151D89911600CA73D1 /* UniversityLocations.m in Sources */,
 				43D17EE01D8C3A1900451E90 /* ChangePasswordTableViewController.m in Sources */,
 				4350B3831D93C558001A5AE8 /* ISEmojiView.m in Sources */,
+				43A325F51DA4EE620017FE27 /* OverlayView.m in Sources */,
 				43A893601D8057AE00BEA24B /* FooterEventsTableViewCell.m in Sources */,
 				43B981E31D9534C100E7DD05 /* HeaderCollectionReusableView.m in Sources */,
 				4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */,

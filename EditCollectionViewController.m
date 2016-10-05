@@ -11,6 +11,7 @@
 @interface EditCollectionViewController ()
 @property NSArray *dummyData;
 @property NSArray *sectionTitles;
+@property (nonatomic) UIView *overlayView;
 
 @property BOOL isPrivateEvent;
 
@@ -158,6 +159,8 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+
 #pragma mark - Observer MEthods
 
 -(void)privacyMode:(NSNotification *) notification   {
@@ -176,6 +179,23 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
+
+/**This method streches the subview ie the overlay to cover the entire screen and create that dimed affect */
+-(void) createOverlay:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"closeOverlayView"]) {
+        [self setupCloseOrCancelView:@"Close Event" andTextBody:@"Are you sure you want to close your event" andTag:0];
+        
+    } else if ([[notification name] isEqualToString:@"cancelOverlayView"])  {
+        [self setupCloseOrCancelView:@"Cancel Event" andTextBody:@"Are you sure you want to cancel your event" andTag:1];
+    }
+}
+
+/** Method that is called via an observer because of the abstraction of the overlayView nib, so when the No button is pressed on the overlayView xib it causes this method to activate, ie remove the view*/
+-(void) removeOverlay: (NSNotification *) notifcation   {
+    if ([[notifcation name] isEqualToString:@"No"]) {
+        [self deleteOverlayAlpha:0 animationDuration:0.2f];
+    }
+}
 -(void) setupObservers    {
     //When the profile button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -184,7 +204,17 @@ static NSString * const reuseIdentifier = @"Cell";
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLocation:) name:@"changeLocation" object:nil];
+    
+    //This observer is important as it will recreate the illusion of having overlayed screen
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createOverlay:) name:@"closeOverlayView" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createOverlay:) name:@"cancelOverlayView" object:nil];
+
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeOverlay:) name:@"No" object:nil];
+
 }
+
+
 
 #pragma mark - Prepare Segue / Map Kit preperation
 /** This method changes the default button of DONE for mapView to POST in order to fake the functionality of passing a post to the evne creation */
@@ -200,6 +230,44 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
+#pragma mark - Helper Functions
+-(void)deleteOverlayAlpha:(int)a animationDuration:(float)duration
+{
+    [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        for (id x in self.overlayView.subviews)
+        {
+            if ([x class] == [UIView class])
+            {
+                [(UIView*)x setAlpha:a];
+            }
+        }
+        self.overlayView.alpha = a;
+    } completion:nil];
+}
+
+/*ensures that the view added streches properpy to the screen*/
+- (void) stretchToSuperView:(UIView*) view {
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    NSDictionary *bindings = NSDictionaryOfVariableBindings(view);
+    NSString *formatTemplate = @"%@:|[view]|";
+    for (NSString * axis in @[@"H",@"V"]) {
+        NSString * format = [NSString stringWithFormat:formatTemplate,axis];
+        NSArray * constraints = [NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:bindings];
+        [view.superview addConstraints:constraints];
+    }
+    
+}
+
+-(void) setupCloseOrCancelView:(NSString *)eventTitle andTextBody:(NSString *)textBody andTag:(NSInteger) tag    {
+    OverlayView *overlayVC = [OverlayView overlayView];
+    overlayVC.eventTitle.text = eventTitle;
+    overlayVC.eventText.text = textBody;
+    [overlayVC.internalView setTag:tag];
+    self.view.bounds = overlayVC.bounds;
+    [self.view addSubview:overlayVC];
+    [self stretchToSuperView:self.view];
+    self.overlayView = overlayVC;
+}
 
 
 @end

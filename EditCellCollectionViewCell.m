@@ -30,9 +30,12 @@
 
 - (IBAction)closeEventButtonPressed:(UIButton *)sender {
     NSLog(@"Close");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"closeOverlayView" object:self];
 }
 - (IBAction)cancelEventButtonPressed:(UIButton *)sender {
     NSLog(@"Cancel");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"cancelOverlayView" object:self];
+
 }
 - (IBAction)changeLocationButtonPressed:(UIButton *)sender {
     NSLog(@"Change Location (Locally)");
