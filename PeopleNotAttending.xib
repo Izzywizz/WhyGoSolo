@@ -90,7 +90,7 @@
             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="profileButton" destination="Pf7-DJ-ohH" id="JsZ-d6-rvG"/>
-                <outlet property="profileName" destination="hDd-Xy-aap" id="w2s-Cc-HBT"/>
+                <outlet property="profileName" destination="hDd-Xy-aap" id="Mz8-Zr-bVX"/>
                 <outlet property="prolfileImage" destination="0PV-np-Kno" id="tgk-Xw-64h"/>
             </connections>
             <point key="canvasLocation" x="72" y="178.5"/>

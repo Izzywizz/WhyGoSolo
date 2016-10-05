@@ -2353,13 +2353,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="YXj-dg-G1Q" userLabel="Colour Bar">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="YXj-dg-G1Q" userLabel="Colour Bar">
                                 <rect key="frame" x="0.0" y="20" width="599" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="LFf-rY-5bK"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzc-m6-dFI">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzc-m6-dFI">
                                 <rect key="frame" x="0.0" y="63" width="600" height="57"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jr2-oi-d1p" userLabel="Top Line">
@@ -2420,7 +2420,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cm7-Ny-nyU">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cm7-Ny-nyU">
                                 <rect key="frame" x="50" y="141" width="500" height="50"/>
                                 <color key="backgroundColor" red="0.87450980389999999" green="0.2274509804" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -2448,7 +2448,7 @@
                                     <action selector="deleteButtonPressed:" destination="JvF-fK-4hY" eventType="touchUpInside" id="59b-7P-rH6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Once your account is deleted you cannot undo this action" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="nvE-YA-c0h">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Once your account is deleted you cannot undo this action" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="nvE-YA-c0h">
                                 <rect key="frame" x="50" y="199" width="500" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="440" id="1mB-b2-rUY"/>
@@ -4209,7 +4209,7 @@
         <image name="white-logo-125-125" width="125" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QFo-9Z-Gzg"/>
+        <segue reference="7Oc-fg-bvC"/>
         <segue reference="WpI-Ea-7qB"/>
     </inferredMetricsTieBreakers>
 </document>

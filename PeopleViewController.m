@@ -124,12 +124,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath  {
     
-    NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
-    if ([sectionTitle isEqualToString:@"NOT ATTENDING EVENTS"]) {
-        NSLog(@"Found");
+//    NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
+    if (indexPath.section == 1) {
         return [self eventNotAttendingCellAtIndex: indexPath];
-    }
-    
+    } else 
     return [self eventCellAtIndex:indexPath];
 }
 
@@ -167,11 +165,11 @@
     
     
     //Setup cell using data pull down from the server, this is using dummy data
-    NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
-    NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
-    NSString *personName = [sectionEvents objectAtIndex:indexPath.row];
-    
-    cell.profileName.text = personName;
+//    NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
+//    NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
+//    NSString *personName = [sectionEvents objectAtIndex:indexPath.row];
+//    
+    cell.profileName.text = @"test";
     
     return cell;
 }

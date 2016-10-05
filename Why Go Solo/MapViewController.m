@@ -49,6 +49,7 @@ MKPlacemark *selectedPin;
     [self createPinLocations];
     NSLog(@"userLocation: %d",[self.mapView showsUserLocation]);
     _mapView.showsUserLocation = YES;
+    
 
 }
 
@@ -260,6 +261,12 @@ MKPlacemark *selectedPin;
     
     // UserLocation Pin (blue dot)
     if ([annotation isKindOfClass:[MKUserLocation class]])  {
+
+        /* creates the blue dot
+        if (annotation == mapView.userLocation) {
+            self.mapView.tintColor = [UIColor blueColor];
+            return nil;
+        }*/
         
         NSLog(@"User: %@",[annotation title]);
         MKAnnotationView *pin = (MKAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier: @"blueDot"];
@@ -271,10 +278,11 @@ MKPlacemark *selectedPin;
         {
             pin.annotation = annotation;
         }
-        
-        [pin setImage:[UIImage imageNamed:@"car.png"]];
+    
+        [pin setImage:[UIImage imageNamed:@"map-pin-34-58"]]; //Override this to create a pin image
+
         pin.canShowCallout = YES;
-        pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//        pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure]; //creates the pin (i)
         
         return pin;
         
@@ -291,7 +299,7 @@ MKPlacemark *selectedPin;
         
         pin.canShowCallout = YES;
         pin.draggable = YES;
-        pin.image = [UIImage imageNamed:@"flag.png"];
+        pin.image = [UIImage imageNamed:@"map-pin-34-58"];
         
         return pin;
     }
@@ -372,6 +380,7 @@ MKPlacemark *selectedPin;
     if (sender.tag == 0) {
         NSLog(@"DONE pressed");
         [self.navigationController popViewControllerAnimated:YES];
+        
     } else {
         NSLog(@"POST EVENT");
         //TODO: Add logic to create the event
