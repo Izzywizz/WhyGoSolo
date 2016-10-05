@@ -23,16 +23,19 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _isPrivateEvent = NO;
+    _isPrivateEvent = NO; //intailly set the switch to off in the storyboard!
     
     [self createDummyData];
     [self setupObservers];
+    [self setNavigationButtonFontAndSize];
     
     //Register The Nib for the collection cell
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"Cell"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"EditCell" bundle:nil] forCellWithReuseIdentifier:@"EditCell"];
     
     self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -159,6 +162,9 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
+    NSLog(@"Please save this");
+}
 
 
 #pragma mark - Observer MEthods
@@ -282,5 +288,12 @@ static NSString * const reuseIdentifier = @"Cell";
     self.overlayView = overlayVC;
 }
 
+-(void) setNavigationButtonFontAndSize  {
+    
+    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    
+    [_saveButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    [_cancelButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+}
 
 @end

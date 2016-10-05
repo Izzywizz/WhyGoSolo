@@ -11,9 +11,13 @@
 #import "HeaderCollectionReusableView.h"
 #import "EditCellCollectionViewCell.h"
 #import "MapViewController.h"
+#import "FontSetup.h"
 
 
 
 @interface EditCollectionViewController : UICollectionViewController
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 @end

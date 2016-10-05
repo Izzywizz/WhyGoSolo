@@ -53,7 +53,7 @@
                             <action selector="helpButtonPressed:" destination="sMh-PM-wrU" eventType="touchUpInside" id="PrR-OJ-x49"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ju2-OI-6tH">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ju2-OI-6tH">
                         <rect key="frame" x="220" y="41" width="173" height="40"/>
                         <color key="backgroundColor" red="0.8980392157" green="0.29411764709999999" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
@@ -63,9 +63,13 @@
                             <action selector="cancelEventButtonPressed:" destination="sMh-PM-wrU" eventType="touchUpInside" id="kSK-CE-loa"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYd-AK-rRM">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYd-AK-rRM">
                         <rect key="frame" x="27" y="41" width="173" height="40"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="3fl-Zg-EI2"/>
+                            <constraint firstAttribute="width" constant="173" id="gV0-B3-CfM"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <state key="normal" title="Close Event"/>
@@ -73,7 +77,7 @@
                             <action selector="closeEventButtonPressed:" destination="sMh-PM-wrU" eventType="touchUpInside" id="C9L-Xr-HYv"/>
                         </connections>
                     </button>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwS-2m-4NV" userLabel="Location View">
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hwS-2m-4NV" userLabel="Location View">
                         <rect key="frame" x="0.0" y="83" width="425" height="38"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eI-qp-MFE">
@@ -105,7 +109,7 @@
                             <constraint firstAttribute="bottom" secondItem="4eI-qp-MFE" secondAttribute="bottom" id="zIf-Y7-qW8"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjA-8w-5cV" userLabel="Describe Event View">
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zjA-8w-5cV" userLabel="Describe Event View">
                         <rect key="frame" x="0.0" y="131" width="425" height="110"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xf-4C-22l" userLabel="Line">
@@ -206,7 +210,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REPRESENT YOUR EVENT WITH AN EMOJI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxG-9N-HK5" userLabel="Emoji Title Label">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="REPRESENT YOUR EVENT WITH AN EMOJI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxG-9N-HK5" userLabel="Emoji Title Label">
                         <rect key="frame" x="69" y="250" width="286" height="14.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="286" id="OL8-rq-OiN"/>
@@ -222,7 +226,7 @@
                             </mask>
                         </variation>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TFa-hG-AGF" userLabel="Emoji Circle View">
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFa-hG-AGF" userLabel="Emoji Circle View">
                         <rect key="frame" x="174" y="271" width="76" height="76"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMV-3z-gnY" userLabel="Invisable Add Emoji Button">
@@ -275,7 +279,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrz-ZH-Fva" userLabel="Header">
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rrz-ZH-Fva" userLabel="Header">
                         <rect key="frame" x="0.0" y="355" width="425" height="56"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="0qS-P6-AJB" userLabel="Background Image">
@@ -384,11 +388,14 @@
                 <constraint firstItem="IFz-Mz-QEu" firstAttribute="top" secondItem="sMh-PM-wrU" secondAttribute="top" constant="8" id="dnG-42-Kq3"/>
                 <constraint firstItem="TFa-hG-AGF" firstAttribute="centerX" secondItem="sMh-PM-wrU" secondAttribute="centerX" id="gYp-v5-5hS"/>
                 <constraint firstItem="Ju2-OI-6tH" firstAttribute="leading" secondItem="bYd-AK-rRM" secondAttribute="trailing" constant="20" id="iHK-t0-pop"/>
+                <constraint firstItem="Ju2-OI-6tH" firstAttribute="width" secondItem="bYd-AK-rRM" secondAttribute="width" id="kzs-ma-euC"/>
                 <constraint firstItem="bYd-AK-rRM" firstAttribute="width" secondItem="Ju2-OI-6tH" secondAttribute="width" id="mAh-9J-2ZQ"/>
                 <constraint firstItem="zxG-9N-HK5" firstAttribute="top" secondItem="zjA-8w-5cV" secondAttribute="bottom" constant="9" id="nMM-PI-iH9"/>
                 <constraint firstItem="TFa-hG-AGF" firstAttribute="top" secondItem="zxG-9N-HK5" secondAttribute="bottom" constant="6.5" id="oIh-8s-YZc"/>
+                <constraint firstItem="Ju2-OI-6tH" firstAttribute="height" secondItem="bYd-AK-rRM" secondAttribute="height" id="odI-pD-1ZV"/>
                 <constraint firstAttribute="bottom" secondItem="rrz-ZH-Fva" secondAttribute="bottom" id="pFj-dg-Ees"/>
                 <constraint firstAttribute="trailing" secondItem="hwS-2m-4NV" secondAttribute="trailing" id="r1X-JE-af6"/>
+                <constraint firstItem="Ju2-OI-6tH" firstAttribute="leading" secondItem="bYd-AK-rRM" secondAttribute="trailing" constant="20" id="ux7-y4-xo8"/>
                 <constraint firstItem="zjA-8w-5cV" firstAttribute="leading" secondItem="sMh-PM-wrU" secondAttribute="leading" id="y2d-jx-CwX"/>
                 <constraint firstItem="rrz-ZH-Fva" firstAttribute="top" secondItem="TFa-hG-AGF" secondAttribute="bottom" constant="8" id="yiM-nz-iib"/>
             </constraints>
@@ -400,7 +407,10 @@
                     <exclude reference="0LA-KB-F2O"/>
                     <exclude reference="dnG-42-Kq3"/>
                     <exclude reference="0Ka-32-wTb"/>
+                    <exclude reference="A3e-kq-gtO"/>
                     <exclude reference="Jrq-Jr-Cn2"/>
+                    <exclude reference="UXT-zI-Aam"/>
+                    <exclude reference="Wej-pa-ftE"/>
                     <exclude reference="iHK-t0-pop"/>
                 </mask>
             </variation>
