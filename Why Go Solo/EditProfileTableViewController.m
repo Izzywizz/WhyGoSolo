@@ -19,7 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Edit view loaded");
-    _studentAccommdationCell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"right-arrow-20-20"]];
+//    _studentAccommdationCell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"right-arrow-20-20"]];
+
+    //This prevents the weird the selection animation occuring when the user selects a cell
+    //[self.tableView setAllowsSelection:NO];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,7 +45,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"Selected");
+    NSLog(@"Selected row: %ld", (long)indexPath.row);
 }
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath    {
         cell.separatorInset = UIEdgeInsetsZero;

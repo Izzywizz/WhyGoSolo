@@ -21,6 +21,10 @@
     [super viewDidLoad];
     NSLog(@"People View Loaded");
     [self setNavigationButtonFontAndSize];
+    
+    //This prevents the weird the selection animation occuring when the user selects a cell
+    [self.tableView setAllowsSelection:NO];
+
 }
 
 - (void)didReceiveMemoryWarning {
