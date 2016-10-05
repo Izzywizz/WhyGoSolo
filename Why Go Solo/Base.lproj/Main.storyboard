@@ -100,12 +100,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-up-screen-375-667" translatesAutoresizingMaskIntoConstraints="NO" id="qtZ-y1-DOM" userLabel="Background image">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="600" id="bGD-l1-Fud"/>
-                                </constraints>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white-logo-125-125" translatesAutoresizingMaskIntoConstraints="NO" id="Tmg-5I-HYr" userLabel="Logo">
                                 <rect key="frame" x="238" y="104" width="125" height="125"/>
                                 <constraints>
@@ -177,6 +171,12 @@
                                     <segue destination="jvq-Me-sNd" kind="show" id="ZVb-EL-lHO"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-up-screen-375-667" translatesAutoresizingMaskIntoConstraints="NO" id="qtZ-y1-DOM" userLabel="Background image">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="600" id="bGD-l1-Fud"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

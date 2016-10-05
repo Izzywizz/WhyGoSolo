@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UniversityViewController.h"
+#import "UniversityLocations.h"
 
 @interface EditProfileTableViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UITableViewCell *studentAccommdationCell;

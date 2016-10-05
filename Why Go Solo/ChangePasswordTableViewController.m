@@ -23,7 +23,10 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self createNavigationTitleAndItems];
     [self setNavigationButtonFontAndSize];
-
+    
+    
+    //This prevents the weird the selection animation occuring when the user selects a cell
+    [self.tableView setAllowsSelection:NO];
     
 }
 
