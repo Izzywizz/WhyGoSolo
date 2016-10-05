@@ -26,6 +26,7 @@
 #pragma mark - Action Methods (Target)
 - (IBAction)helpButtonPressed:(UIButton *)sender {
     NSLog(@"Help Button Pressed");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"helpOverlayView" object:self];
 }
 
 - (IBAction)closeEventButtonPressed:(UIButton *)sender {

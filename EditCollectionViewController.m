@@ -192,10 +192,22 @@ static NSString * const reuseIdentifier = @"Cell";
 
 /** Method that is called via an observer because of the abstraction of the overlayView nib, so when the No button is pressed on the overlayView xib it causes this method to activate, ie remove the view*/
 -(void) removeOverlay: (NSNotification *) notifcation   {
-    if ([[notifcation name] isEqualToString:@"No"]) {
+    if ([[notifcation name] isEqualToString:@"removeOverlay"]) {
         [self deleteOverlayAlpha:0 animationDuration:0.2f];
     }
 }
+
+-(void) showHelpView:(NSNotification *) notification    {
+    if ([[notification name] isEqualToString:@"helpOverlayView"]) {
+        OverlayView *overlayVC = [OverlayView overlayView];
+        overlayVC.internalHelpView.alpha = 1;
+        self.view.bounds = overlayVC.bounds;
+        [self.view addSubview:overlayVC];
+        [self stretchToSuperView:self.view];
+        self.overlayView = overlayVC;
+    }
+}
+
 -(void) setupObservers    {
     //When the profile button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -208,9 +220,10 @@ static NSString * const reuseIdentifier = @"Cell";
     //This observer is important as it will recreate the illusion of having overlayed screen
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createOverlay:) name:@"closeOverlayView" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createOverlay:) name:@"cancelOverlayView" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showHelpView:) name:@"helpOverlayView" object:nil];
 
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeOverlay:) name:@"No" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeOverlay:) name:@"removeOverlay" object:nil];
 
 }
 

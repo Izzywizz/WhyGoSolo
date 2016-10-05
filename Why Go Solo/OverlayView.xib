@@ -5,6 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+        </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
@@ -120,15 +124,127 @@
                         </mask>
                     </variation>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USx-TY-xfX" userLabel="HelpView">
+                    <rect key="frame" x="175" y="150" width="250" height="300"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ag8-e1-RKp" userLabel="Line">
+                            <rect key="frame" x="0.0" y="243" width="250" height="1"/>
+                            <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="H8l-Ll-nzF"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LBF-Nu-DSe" userLabel="Top Line">
+                            <rect key="frame" x="0.0" y="42" width="250" height="1"/>
+                            <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="0Hu-ah-sTh"/>
+                                <constraint firstAttribute="height" constant="1" id="54y-z1-Mlh"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDS-ay-wnn">
+                            <rect key="frame" x="0.0" y="245" width="250" height="55"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="55" id="gJS-E5-bRW"/>
+                                <constraint firstAttribute="width" constant="250" id="srs-Kg-zPt"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                            <state key="normal" title="OK">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="okButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="xy0-6D-41B"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="094-sJ-Yd4">
+                            <rect key="frame" x="8" y="49" width="234" height="188"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="188" id="3if-cJ-AKY"/>
+                                <constraint firstAttribute="width" constant="234" id="Aog-rz-dX4"/>
+                            </constraints>
+                            <attributedString key="attributedText">
+                                <fragment>
+                                    <string key="content">Close Event
+</string>
+                                    <attributes>
+                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <font key="NSFont" size="15" name="Lato-Bold"/>
+                                        <font key="NSOriginalFont" size="15" name="Lato-Bold"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content">Closing an event will stop any one else being able to join and will remove it from their timelines.
+
+</string>
+                                    <attributes>
+                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <font key="NSFont" size="15" name="Lato-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment>
+                                    <string key="content">Cancel Event
+</string>
+                                    <attributes>
+                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <font key="NSFont" size="15" name="Lato-Bold"/>
+                                        <font key="NSOriginalFont" size="15" name="Lato-Bold"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="Cancelling an event will remote it from people's timelines, however if it already has attnedees theill still see it">
+                                    <attributes>
+                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <font key="NSFont" size="15" name="Lato-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7X-Bg-HlA" userLabel="Title">
+                            <rect key="frame" x="69" y="14" width="112" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="112" id="6cF-Xv-HNp"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="112" id="YE3-cE-9dW"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="LBF-Nu-DSe" firstAttribute="leading" secondItem="USx-TY-xfX" secondAttribute="leading" id="5tf-Qo-t91"/>
+                        <constraint firstItem="B7X-Bg-HlA" firstAttribute="top" secondItem="USx-TY-xfX" secondAttribute="top" constant="14" id="BgV-Sd-dqP"/>
+                        <constraint firstItem="094-sJ-Yd4" firstAttribute="centerX" secondItem="USx-TY-xfX" secondAttribute="centerX" id="FVi-MH-kaH"/>
+                        <constraint firstItem="Ag8-e1-RKp" firstAttribute="top" secondItem="094-sJ-Yd4" secondAttribute="bottom" constant="6" id="ITq-N6-KBk"/>
+                        <constraint firstItem="094-sJ-Yd4" firstAttribute="top" secondItem="B7X-Bg-HlA" secondAttribute="bottom" constant="17" id="K7C-Ln-5bM"/>
+                        <constraint firstItem="B7X-Bg-HlA" firstAttribute="centerX" secondItem="USx-TY-xfX" secondAttribute="centerX" id="KbN-2a-AJc"/>
+                        <constraint firstItem="QDS-ay-wnn" firstAttribute="top" secondItem="Ag8-e1-RKp" secondAttribute="bottom" constant="1" id="LFQ-ea-kfm"/>
+                        <constraint firstAttribute="bottom" secondItem="QDS-ay-wnn" secondAttribute="bottom" id="M9r-HL-afb"/>
+                        <constraint firstAttribute="trailing" secondItem="QDS-ay-wnn" secondAttribute="trailing" id="Mm5-3e-byI"/>
+                        <constraint firstAttribute="width" constant="250" id="TpB-8h-Q1u"/>
+                        <constraint firstItem="Ag8-e1-RKp" firstAttribute="leading" secondItem="USx-TY-xfX" secondAttribute="leading" id="dga-bY-Kf0"/>
+                        <constraint firstItem="QDS-ay-wnn" firstAttribute="leading" secondItem="USx-TY-xfX" secondAttribute="leading" id="mQP-xf-kuG"/>
+                        <constraint firstAttribute="trailing" secondItem="Ag8-e1-RKp" secondAttribute="trailing" id="mcM-NG-Plx"/>
+                        <constraint firstItem="LBF-Nu-DSe" firstAttribute="top" secondItem="B7X-Bg-HlA" secondAttribute="bottom" constant="10" id="va6-7k-Mo0"/>
+                        <constraint firstAttribute="height" constant="300" id="vgc-c1-cDy"/>
+                        <constraint firstAttribute="trailing" secondItem="LBF-Nu-DSe" secondAttribute="trailing" id="wFl-De-5d8"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="kQN-P2-s2e" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="99B-1F-fVs"/>
                 <constraint firstItem="kQN-P2-s2e" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="NJq-qn-JC7"/>
+                <constraint firstItem="USx-TY-xfX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="P99-Mf-cDx"/>
+                <constraint firstItem="USx-TY-xfX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tC9-P1-Oez"/>
             </constraints>
             <connections>
                 <outlet property="eventText" destination="x29-JA-cTP" id="Em4-9N-4Ha"/>
                 <outlet property="eventTitle" destination="3TR-Cf-AZc" id="kz3-Xw-ibT"/>
+                <outlet property="internalHelpView" destination="USx-TY-xfX" id="il9-Hc-YET"/>
                 <outlet property="internalView" destination="kQN-P2-s2e" id="Hkh-cp-HYC"/>
             </connections>
             <point key="canvasLocation" x="751" y="114"/>

@@ -21,13 +21,15 @@
 
 -(void)awakeFromNib {
     self.internalView.layer.cornerRadius = 5;
+    self.internalHelpView.layer.cornerRadius = 5;
+    self.internalHelpView.alpha = 0; //intially hide the help view
+    [self setupObserver];
     
-
 }
 
 #pragma mark - Action Methods
 - (IBAction)noButtonPressed:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"No" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"removeOverlay" object:self];
 }
 
 - (IBAction)yesButtonPressed:(UIButton *)sender {
@@ -38,6 +40,12 @@
     }
 }
 
+- (IBAction)okButtonPressed:(UIButton *)sender {
+    NSLog(@"ok Button pressed");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"removeOverlay" object:self];
+}
+
+#pragma mark - Class Methods
 + (id)overlayView
 {
     OverlayView *overlayView = [[[NSBundle mainBundle] loadNibNamed:@"OverlayView" owner:nil options:nil] lastObject];
@@ -48,4 +56,20 @@
     else
         return nil;
 }
+
+#pragma mark - Observer Methods 
+-(void) showHelpView:(NSNotification *) notification    {
+    if ([[notification name] isEqualToString:@"helpOverlayView"]) {
+        self.internalHelpView.alpha = 1;
+    } else  {
+        self.internalHelpView.alpha = 0;
+    }
+}
+
+
+-(void) setupObserver   {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showHelpView:) name:@"helpOverlayView" object:nil];
+}
+
 @end

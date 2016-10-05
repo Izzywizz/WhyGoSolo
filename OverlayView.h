@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIView *internalView;
 @property (weak, nonatomic) IBOutlet UILabel *eventText;
 @property (weak, nonatomic) IBOutlet UILabel *eventTitle;
+@property (weak, nonatomic) IBOutlet UIView *internalHelpView;
 
 
 + (id)overlayView;
