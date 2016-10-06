@@ -19,11 +19,12 @@
 
 @property (nonatomic, strong) MapViewController *mapController;
 @property (nonatomic, strong) CurrentUserLocation *userLocation;
+@property (nonatomic) NSDictionary *tableData;
 
 @end
 
 @implementation EventTableViewController
-NSDictionary *tableData;
+
 NSArray *sectionTitles;
 
 #pragma mark - UI View Methods
@@ -125,11 +126,11 @@ NSArray *sectionTitles;
 
 -(void) setupDummyData  {
     //Dummy Data
-    tableData = @{@"My Events" : @[@"Andy Jones"],
+    _tableData = @{@"My Events" : @[@"Andy Jones"],
                   @"Events Near Me" : @[@"Jennifer Cooper", @"Nathan Barnes"]};
     NSSortDescriptor *decending = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:NO];
     NSArray *decendingOrder = [NSArray arrayWithObject:decending];
-    sectionTitles = [[tableData allKeys] sortedArrayUsingDescriptors:decendingOrder];
+    sectionTitles = [[_tableData allKeys] sortedArrayUsingDescriptors:decendingOrder];
 }
 
 -(void) setupTable  {
@@ -148,7 +149,7 @@ NSArray *sectionTitles;
     
     // Return the number of rows in the section.
     NSString *sectionTitle = [sectionTitles objectAtIndex:section];
-    NSArray *sectionEvents = [tableData objectForKey:sectionTitle];
+    NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
     return [sectionEvents count];
 }
 
@@ -187,9 +188,11 @@ NSArray *sectionTitles;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"Bring up maps!: row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
-    [self performSegueWithIdentifier:@"GoToMap" sender:self];
-    
-    
+    MapViewController *map = [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    map.nextButton.title = @"DIRECTIONS";
+    map.nextButton.tag = 1;
+    [self.navigationController pushViewController:map animated:YES];
+//    [self performSegueWithIdentifier:@"GoToMap" sender:self];
 }
 
 
@@ -236,7 +239,7 @@ NSArray *sectionTitles;
     
     //Setup cell using data pull down from the server, this is using dummy data
     NSString *sectionTitle = [sectionTitles objectAtIndex:indexPath.section];
-    NSArray *sectionEvents = [tableData objectForKey:sectionTitle];
+    NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
     NSString *eventName = [sectionEvents objectAtIndex:indexPath.row];
     
     //Basic logic to ensure that the correct join/ edit are displayed for events
@@ -246,6 +249,7 @@ NSArray *sectionTitles;
         [cell viewWithTag:EDIT].alpha = 0; // Edit is hidden
     }
     
+    cell.eventAddressLabel.text = @"14 Paradise Street, Liverpool, Merseyside, L1 8JF";
     cell.timeLabel.hidden = YES;
     cell.nameLabel.text = eventName;
     //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
@@ -259,7 +263,5 @@ NSArray *sectionTitles;
     NSLog(@"People Button Pressed");
     
 }
-
-
 
 @end

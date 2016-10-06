@@ -30,6 +30,7 @@
 
 -(void) setupLongPressGesture;
 -(void) startCurrentUserLocation: (BOOL) isUserLocation;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 
 @end
 

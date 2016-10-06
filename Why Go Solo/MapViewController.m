@@ -43,14 +43,14 @@ MKPlacemark *selectedPin;
     [super viewDidLoad];
     [self setNavigationButtonFontAndSize];
     [self initialSetup];
-//    [self startCurrentUserLocation:[self readUserLocationBoolValue]];
+    //    [self startCurrentUserLocation:[self readUserLocationBoolValue]];
     [self startCurrentUserLocation:YES];
     [self setupLongPressGesture];
     [self createPinLocations];
     NSLog(@"userLocation: %d",[self.mapView showsUserLocation]);
     _mapView.showsUserLocation = YES;
     
-
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated    {
@@ -62,7 +62,7 @@ MKPlacemark *selectedPin;
     self.locationManager.delegate = nil;
     
     self.definesPresentationContext = NO;
-
+    
 }
 #pragma mark - Helper Functions
 
@@ -78,10 +78,10 @@ MKPlacemark *selectedPin;
 }
 
 //-(BOOL) readUserLocationBoolValue   {
-//    
+//
 //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    BOOL isUserLocationOn = [defaults integerForKey:@"isUserLocationOn"];
-//    
+//
 //    return isUserLocationOn;
 //}
 
@@ -152,7 +152,7 @@ MKPlacemark *selectedPin;
     // cache the pin
     selectedPin = placemark;
     // clear existing pins
-//    [_mapView removeAnnotations:(_mapView.annotations)];
+    //    [_mapView removeAnnotations:(_mapView.annotations)];
     MKPointAnnotation *annotation = [MKPointAnnotation new];
     annotation.coordinate = placemark.coordinate;
     annotation.title = placemark.name;
@@ -194,8 +194,8 @@ MKPlacemark *selectedPin;
     //if the user is not in the long press state then dont do anything
     if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
         return;
-
-
+    
+    
     //Obtain the map coordinates from the user touch and store it for future use
     CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
     CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
@@ -261,12 +261,12 @@ MKPlacemark *selectedPin;
     
     // UserLocation Pin (blue dot)
     if ([annotation isKindOfClass:[MKUserLocation class]])  {
-
+        
         /* creates the blue dot
-        if (annotation == mapView.userLocation) {
-            self.mapView.tintColor = [UIColor blueColor];
-            return nil;
-        }*/
+         if (annotation == mapView.userLocation) {
+         self.mapView.tintColor = [UIColor blueColor];
+         return nil;
+         }*/
         
         NSLog(@"User: %@",[annotation title]);
         MKAnnotationView *pin = (MKAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier: @"blueDot"];
@@ -278,11 +278,11 @@ MKPlacemark *selectedPin;
         {
             pin.annotation = annotation;
         }
-    
+        
         [pin setImage:[UIImage imageNamed:@"map-pin-34-58"]]; //Override this to create a pin image
-
+        
         pin.canShowCallout = YES;
-//        pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure]; //creates the pin (i)
+        //        pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure]; //creates the pin (i)
         
         return pin;
         
@@ -380,13 +380,14 @@ MKPlacemark *selectedPin;
     if (sender.tag == 0) {
         NSLog(@"DONE pressed");
         [self.navigationController popViewControllerAnimated:YES];
-        
+    } else if(sender.tag == 1)   {
+        NSLog(@"Directions method!");
     } else {
         NSLog(@"POST EVENT");
         //TODO: Add logic to create the event
         [self setupAlertBox];
     }
-
+    
 }
 
 -(void) setupAlertBox  {

@@ -2577,7 +2577,7 @@
                         <barButtonItem key="leftBarButtonItem" image="back-arrow-20-20" id="fgH-VF-QDg">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="backButtonPressed:" destination="b7G-aT-a8r" id="DJd-Fe-wSY"/>
+                                <action selector="backButtonPressed:" destination="b7G-aT-a8r" id="96d-7T-WIG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2585,7 +2585,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfu-fr-tFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6071" y="1516"/>
+            <point key="canvasLocation" x="6083" y="1606"/>
         </scene>
         <!--People-->
         <scene sceneID="H4d-PV-hY6">
@@ -3596,9 +3596,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="doneOrNextButton" destination="DtS-lV-F4A" id="m6f-p2-W54"/>
                         <outlet property="mapView" destination="Ufn-zu-YfG" id="IUZ-28-m9A"/>
+                        <outlet property="nextButton" destination="DtS-lV-F4A" id="HVS-I5-bao"/>
                         <segue destination="ZUf-B2-SL3" kind="show" identifier="GoToEvent" id="7Oc-fg-bvC"/>
                     </connections>
                 </viewController>
