@@ -97,6 +97,7 @@
 		43ECC9F81DA284D40059A333 /* EventCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43ECC9F71DA284D40059A333 /* EventCollectionCell.xib */; };
 		43ECC9FE1DA287240059A333 /* EventCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43ECC9FD1DA287240059A333 /* EventCollectionViewCell.m */; };
 		43F2954E1DA63EFE006321BD /* HallsOfResidenceMark.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43F2954D1DA63EFE006321BD /* HallsOfResidenceMark.plist */; };
+		43F295541DA698AF006321BD /* DirectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F295531DA698AF006321BD /* DirectionViewController.m */; };
 		43FBC2F21D8AA49100AE4E1F /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */; };
 		43FBC2F51D8AAFBC00AE4E1F /* SetupProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F41D8AAFBC00AE4E1F /* SetupProfileTableViewController.m */; };
 		43FBC2F81D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F71D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m */; };
@@ -250,6 +251,8 @@
 		43ECC9FC1DA287240059A333 /* EventCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCollectionViewCell.h; sourceTree = "<group>"; };
 		43ECC9FD1DA287240059A333 /* EventCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCollectionViewCell.m; sourceTree = "<group>"; };
 		43F2954D1DA63EFE006321BD /* HallsOfResidenceMark.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HallsOfResidenceMark.plist; sourceTree = "<group>"; };
+		43F295521DA698AF006321BD /* DirectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DirectionViewController.h; path = ../DirectionViewController.h; sourceTree = "<group>"; };
+		43F295531DA698AF006321BD /* DirectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DirectionViewController.m; path = ../DirectionViewController.m; sourceTree = "<group>"; };
 		43FBC2F01D8AA49100AE4E1F /* TermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsViewController.h; sourceTree = "<group>"; };
 		43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsViewController.m; sourceTree = "<group>"; };
 		43FBC2F31D8AAFBC00AE4E1F /* SetupProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupProfileTableViewController.h; sourceTree = "<group>"; };
@@ -420,6 +423,8 @@
 				43ECC9F51DA27FE80059A333 /* PeopleEventCollectionViewController.m */,
 				4308DCA91D9025A3008CA934 /* FilterViewController.h */,
 				4308DCAA1D9025A3008CA934 /* FilterViewController.m */,
+				43F295521DA698AF006321BD /* DirectionViewController.h */,
+				43F295531DA698AF006321BD /* DirectionViewController.m */,
 				43ECC9EB1DA24D1E0059A333 /* No Longer Need */,
 				438A14881D8011C2005E6AF7 /* Main.storyboard */,
 				438A148B1D8011C2005E6AF7 /* Assets.xcassets */,
@@ -709,6 +714,7 @@
 				43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */,
 				430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */,
 				43BE4C3C1D82F91400D6B26A /* EditProfileTableViewController.m in Sources */,
+				43F295541DA698AF006321BD /* DirectionViewController.m in Sources */,
 				430503151D89911600CA73D1 /* UniversityLocations.m in Sources */,
 				43D17EE01D8C3A1900451E90 /* ChangePasswordTableViewController.m in Sources */,
 				4350B3831D93C558001A5AE8 /* ISEmojiView.m in Sources */,

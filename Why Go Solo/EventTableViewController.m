@@ -188,11 +188,9 @@ NSArray *sectionTitles;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"Bring up maps!: row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
-    MapViewController *map = [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
-    map.nextButton.title = @"DIRECTIONS";
-    map.nextButton.tag = 1;
+    DirectionViewController *map = [self.storyboard instantiateViewControllerWithIdentifier:@"DirectionViewController"];
+    map.addressToBeReverse =@"14 Paradise Street, Liverpool, Merseyside, L1 8JF";
     [self.navigationController pushViewController:map animated:YES];
-//    [self performSegueWithIdentifier:@"GoToMap" sender:self];
 }
 
 

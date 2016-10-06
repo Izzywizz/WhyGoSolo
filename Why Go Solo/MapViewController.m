@@ -387,9 +387,6 @@
     if (sender.tag == 0) {
         NSLog(@"DONE pressed");
         [self.navigationController popViewControllerAnimated:YES];
-    } else if(sender.tag == 1)   {
-        NSLog(@"Directions method!");
-        [self getDirections];
     } else {
         NSLog(@"POST EVENT");
         //TODO: Add logic to create the event

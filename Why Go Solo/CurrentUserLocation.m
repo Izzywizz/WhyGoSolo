@@ -64,8 +64,6 @@
     [_delegate reverseGeoCoodantes:location.coordinate];
 }
 
-
-
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status  {
 //    [_userLocationDelegate requestAlwaysAuthorization];
     switch (status) {

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EventsTableViewCell.h"
+#import "DirectionViewController.h"
 
 
 @interface EventTableViewController : UITableViewController
