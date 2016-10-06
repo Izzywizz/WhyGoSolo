@@ -40,10 +40,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"Selected row: %ld", (long)indexPath.row);
     if (indexPath.row == 3) {
-        NSLog(@"Student Accommodation");
-        
+        UniversityViewController *uni = [self.storyboard instantiateViewControllerWithIdentifier:@"University"];
+        uni.nextButton.title = @"DONE";
+        uni.nextButton.tag = 1;
+        [self.navigationController pushViewController:uni animated:YES];
     }
 }
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath    {

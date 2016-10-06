@@ -138,7 +138,12 @@
     if (_hasUniBeenSelected == false) {
         [self alertSetupandView];
     } else  {
-        [self performSegueWithIdentifier:@"GoToSetupLoginDetails" sender:self];
+        if (sender.tag == 1) {
+            //basically return back to the edit profile selction screen, this is only used when the user wants to edit their uni accommodation
+            [self.navigationController popViewControllerAnimated:YES];
+        } else  {
+            [self performSegueWithIdentifier:@"GoToSetupLoginDetails" sender:self];
+        }
     }
 }
 
