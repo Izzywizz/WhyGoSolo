@@ -12,11 +12,12 @@
 
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UILabel *mileLabel;
-@property NSMutableArray *halls;
-@property NSMutableArray *selectedObjects;
+
 @property BOOL isHallsSwitchOn;
 @property (weak, nonatomic) IBOutlet UISwitch *hallsSwitch;
 
+//test
+@property NSMutableArray *dataArray;
 
 @end
 
@@ -25,19 +26,15 @@
 #pragma mark - UI View Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _halls = [NSMutableArray new];
-    _halls = [self unpackHallsData];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-
-}
-
--(void) viewWillAppear:(BOOL)animated   {
     
-    if (!_selectedObjects)
-    {
-        _selectedObjects = [NSMutableArray new];
-    }
-    [[UISlider appearance] setThumbImage:[UIImage imageNamed:@"thumb.png.png"] forState:UIControlStateNormal];
+    
+    //test to get checkmarks working,
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"HallsOfResidenceMark" ofType:@"plist"];
+    self.dataArray = [NSMutableArray arrayWithContentsOfFile:path];
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,7 +95,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section    {
     
-    return self.halls.count;
+    //test
+    return [_dataArray count];
+    
+    //return self.halls.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath  {
@@ -108,24 +108,62 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     
-    cell.textLabel.text = [_halls objectAtIndex:indexPath.row];
-
+    //removed temporarily
+    //cell.textLabel.text = [_halls objectAtIndex:indexPath.row];
     
-//    cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check-button-20-20"]];
-//    cell.accessoryView.alpha = 0;
-//    NSLog(@"SELECETED OBJECTS = %@", _selectedObjects);
+    NSMutableDictionary *item = [_dataArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [item objectForKey:@"text"];
     
- /*   if (![_selectedObjects containsObject:[_halls objectAtIndex:indexPath.row]])
-    {
-        cell.accessoryView.alpha = 0;
-    }
-    else
-    {
-        cell.accessoryView.alpha = 1;
-    }*/
+    [item setObject:cell forKey:@"cell"];
+    
+    BOOL checked = [[item objectForKey:@"checked"] boolValue];
+    NSLog(@"BOOL: %d", checked);
+    
+    UIImage *image = (checked) ? [UIImage imageNamed:@"check-button-20-20"] : [UIImage imageNamed:@"blank-checkmark"];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    CGRect frame = CGRectMake(0.0, 0.0, image.size.width, image.size.height);
+    button.frame = frame;
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    
+    [button addTarget:self action:@selector(checkButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor = [UIColor clearColor];
+    cell.accessoryView = button;
+    
     return cell;
+}
+
+- (void)checkButtonTapped:(id)sender event:(id)event
+{
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint: currentTouchPosition];
+    
+    if (indexPath != nil)
+    {
+        [self tableView: self.tableView accessoryButtonTappedForRowWithIndexPath: indexPath];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableDictionary *item = [self.dataArray objectAtIndex:indexPath.row];
+    
+    BOOL checked = [[item objectForKey:@"checked"] boolValue];
+    NSLog(@"BOOL: %d", checked);
+    
+    [item setObject:[NSNumber numberWithBool:!checked] forKey:@"checked"];
+    
+    UITableViewCell *cell = [item objectForKey:@"cell"];
+    UIButton *button = (UIButton *)cell.accessoryView;
+    
+    UIImage *newImage = (checked) ? [UIImage imageNamed:@"blank-checkmark"] : [UIImage imageNamed:@"check-button-20-20"];
+    [button setBackgroundImage:newImage forState:UIControlStateNormal];
 }
 
 /** Allows the cell selection seperators (the grey line across the tableView Cell) to extend across the entire table view */
@@ -142,28 +180,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     
-   /* HallsOfResidence *object = [_halls objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-   if (cell.accessoryView != nil) {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        [_selectedObjects removeObject:object];
-    }
-    else {
-        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check-button-20-20"]];
-        [_selectedObjects addObject:object];
-    }*/
-    
-    HallsOfResidence *object = [_halls objectAtIndex:indexPath.row]; //This assumes that your table has only one section and all cells are populated directly into that section from sourceArray.
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        [_selectedObjects removeObject:object];
-    }
-    else {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [_selectedObjects addObject:object];
-    }
+    [self tableView: self.tableView accessoryButtonTappedForRowWithIndexPath: indexPath];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    NSLog(@"Halls: %@", _dataArray);
 }
 
 

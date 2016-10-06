@@ -96,6 +96,7 @@
 		43ECC9F61DA27FE80059A333 /* PeopleEventCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43ECC9F51DA27FE80059A333 /* PeopleEventCollectionViewController.m */; };
 		43ECC9F81DA284D40059A333 /* EventCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43ECC9F71DA284D40059A333 /* EventCollectionCell.xib */; };
 		43ECC9FE1DA287240059A333 /* EventCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43ECC9FD1DA287240059A333 /* EventCollectionViewCell.m */; };
+		43F2954E1DA63EFE006321BD /* HallsOfResidenceMark.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43F2954D1DA63EFE006321BD /* HallsOfResidenceMark.plist */; };
 		43FBC2F21D8AA49100AE4E1F /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */; };
 		43FBC2F51D8AAFBC00AE4E1F /* SetupProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F41D8AAFBC00AE4E1F /* SetupProfileTableViewController.m */; };
 		43FBC2F81D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F71D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m */; };
@@ -248,6 +249,7 @@
 		43ECC9F71DA284D40059A333 /* EventCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCollectionCell.xib; sourceTree = "<group>"; };
 		43ECC9FC1DA287240059A333 /* EventCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCollectionViewCell.h; sourceTree = "<group>"; };
 		43ECC9FD1DA287240059A333 /* EventCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCollectionViewCell.m; sourceTree = "<group>"; };
+		43F2954D1DA63EFE006321BD /* HallsOfResidenceMark.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HallsOfResidenceMark.plist; sourceTree = "<group>"; };
 		43FBC2F01D8AA49100AE4E1F /* TermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsViewController.h; sourceTree = "<group>"; };
 		43FBC2F11D8AA49100AE4E1F /* TermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsViewController.m; sourceTree = "<group>"; };
 		43FBC2F31D8AAFBC00AE4E1F /* SetupProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupProfileTableViewController.h; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				430503141D89911600CA73D1 /* UniversityLocations.m */,
 				4339813F1D91310B00A995B3 /* HallsOfResidence.h */,
 				433981401D91310B00A995B3 /* HallsOfResidence.m */,
+				43F2954D1DA63EFE006321BD /* HallsOfResidenceMark.plist */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				43B981D11D95220400E7DD05 /* mushroom_risotto.jpg in Resources */,
 				436655AE1D9E6A910041F491 /* EditCell.xib in Resources */,
 				438A148F1D8011C2005E6AF7 /* LaunchScreen.storyboard in Resources */,
+				43F2954E1DA63EFE006321BD /* HallsOfResidenceMark.plist in Resources */,
 				43B981CC1D95220400E7DD05 /* ham_and_cheese_panini.jpg in Resources */,
 				438A14B41D801E0F005E6AF7 /* Lato-BlackItalic.ttf in Resources */,
 				43B981CD1D95220400E7DD05 /* ham_and_egg_sandwich.jpg in Resources */,
