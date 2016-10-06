@@ -65,6 +65,7 @@
 }
 
 
+
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status  {
 //    [_userLocationDelegate requestAlwaysAuthorization];
     switch (status) {

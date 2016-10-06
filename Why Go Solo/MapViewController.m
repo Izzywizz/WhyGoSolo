@@ -29,27 +29,26 @@
 @property (nonatomic) UISearchController *resultSearchController;
 @property (nonatomic) MKAnnotationView *annotationView;
 @property (strong, nonatomic) PinLocationData *pinData;
+@property (nonatomic) MKPlacemark *selectedPin;
 
 @property int touchPinCount;
+
 
 @end
 
 @implementation MapViewController
 
-MKPlacemark *selectedPin;
 
 #pragma mark - UI View Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationButtonFontAndSize];
     [self initialSetup];
-    //    [self startCurrentUserLocation:[self readUserLocationBoolValue]];
     [self startCurrentUserLocation:YES];
     [self setupLongPressGesture];
-    [self createPinLocations];
+    //[self createPinLocations];
     NSLog(@"userLocation: %d",[self.mapView showsUserLocation]);
     _mapView.showsUserLocation = YES;
-    
     
 }
 
@@ -143,17 +142,21 @@ MKPlacemark *selectedPin;
 }
 
 - (void)getDirections {
-    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:selectedPin];
-    [mapItem openInMapsWithLaunchOptions:(@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving})];
+    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:_selectedPin];
+    //[mapItem openInMapsWithLaunchOptions:(@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving})];
+    [mapItem openInMapsWithLaunchOptions:nil];
 }
+
 
 - (void)dropPinZoomIn:(MKPlacemark *)placemark
 {
     // cache the pin
-    selectedPin = placemark;
+    _selectedPin = placemark;
     // clear existing pins
     //    [_mapView removeAnnotations:(_mapView.annotations)];
-    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    
+    //Create an anotation from where the user had touched the location
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     annotation.coordinate = placemark.coordinate;
     annotation.title = placemark.name;
     annotation.subtitle = [NSString stringWithFormat:@"%@ %@",
@@ -169,6 +172,7 @@ MKPlacemark *selectedPin;
 /** A method that obtains the address based on the coordiantes passed in to it */
 -(void) reverseGeoCoodantes: (CLLocationCoordinate2D) coordinates     {
     CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:coordinates.latitude longitude:coordinates.longitude];
+    
     [_geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
             NSLog(@"Geocode failed with error: %@", error);
@@ -287,6 +291,7 @@ MKPlacemark *selectedPin;
         return pin;
         
     }
+    
     if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
         MKAnnotationView *pin = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"myPin"];
         
@@ -303,7 +308,9 @@ MKPlacemark *selectedPin;
         
         return pin;
     }
+    
     return nil;
+
 }
 
 /** Handles the different states of dragging when the user picks up the event pins, updates the coordinates and then sends them to be reversed engineered so that the address bar shows the correct addres for the pins new locaiton */
@@ -382,6 +389,7 @@ MKPlacemark *selectedPin;
         [self.navigationController popViewControllerAnimated:YES];
     } else if(sender.tag == 1)   {
         NSLog(@"Directions method!");
+        [self getDirections];
     } else {
         NSLog(@"POST EVENT");
         //TODO: Add logic to create the event
@@ -402,5 +410,6 @@ MKPlacemark *selectedPin;
     [self presentViewController:alertVC animated:YES completion:nil];
 }
 
+#pragma mark - Directions Methods
 
 @end
