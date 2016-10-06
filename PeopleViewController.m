@@ -32,6 +32,7 @@
     [self setupDummyData];
     [self initialButtonSetup];
     [self ListenOutProfileBeingPressed];
+    [self setNavigationButtonFontAndSize];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +41,13 @@
 }
 
 #pragma mark - Helper Functions
+
+
+-(void) setNavigationButtonFontAndSize  {
+    
+    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    [_profileButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+}
 
 - (void)receivedNotification:(NSNotification *) notification {
     if ([[notification name] isEqualToString:@"Profile Found"]) {
@@ -56,7 +64,7 @@
 
 -(void) moveToOtherUserProfile  {
     
-    //Prevents the app from 
+    //Prevents the app from showing the viewController twice, also changing the fileName helps with this problem
     if(![self.navigationController.topViewController isKindOfClass:[OtherUserProfileTableViewController class]]) {
         UIViewController* infoController = [self.storyboard instantiateViewControllerWithIdentifier:@"OtherUserProfileViewController"];
         [self.navigationController pushViewController:infoController animated:YES];

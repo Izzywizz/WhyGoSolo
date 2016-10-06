@@ -41,10 +41,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 3) {
-        UniversityViewController *uni = [self.storyboard instantiateViewControllerWithIdentifier:@"University"];
-        uni.nextButton.title = @"DONE";
-        uni.nextButton.tag = 1;
-        [self.navigationController pushViewController:uni animated:YES];
+        [self createUniveresitySelctionView];
     }
 }
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath    {
@@ -64,6 +61,12 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - Student 
+#pragma mark - Student ViewController Creation Methods
+-(void) createUniveresitySelctionView   {
+    UniversityViewController *uni = [self.storyboard instantiateViewControllerWithIdentifier:@"University"];
+    uni.nextButton.title = @"DONE";
+    uni.nextButton.tag = 1;
+    [self.navigationController pushViewController:uni animated:YES];
+}
 
 @end

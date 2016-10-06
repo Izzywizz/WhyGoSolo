@@ -208,7 +208,6 @@
                                     <constraint firstAttribute="height" constant="29.5" id="TdE-EG-Fpd"/>
                                     <constraint firstAttribute="width" constant="98" id="faP-3e-mYS"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="peopleEventButtonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="9KG-Oa-Ga6"/>
                                 </connections>

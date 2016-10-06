@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FontSetup.h"
 
 @interface PeopleViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *friendsButton;
 @property (weak, nonatomic) IBOutlet UIButton *everyoneButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *profileButton;
 
 @end
