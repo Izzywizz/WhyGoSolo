@@ -9,6 +9,7 @@
 #import "DirectionViewController.h"
 
 @interface DirectionViewController ()
+@property (nonatomic) MKPlacemark *selectedPin;
 
 @end
 
@@ -45,6 +46,7 @@
                      if (placemarks.count > 0) {
                          CLPlacemark *topResult = [placemarks firstObject];
                          MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
+                         _selectedPin = placemark;
                          
                          MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
                          annotation.coordinate = placemark.coordinate;
@@ -72,13 +74,21 @@
         }
         
         pin.canShowCallout = YES;
-        pin.draggable = YES;
         pin.image = [UIImage imageNamed:@"map-pin-34-58"];
         
         return pin;
     }
     
     return nil;
+}
+
+- (void)getDirections {
+    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:self.selectedPin];
+    //[mapItem openInMapsWithLaunchOptions:(@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving})];
+    [mapItem openInMapsWithLaunchOptions:nil];
+}
+- (IBAction)testButtonPressed:(UIButton *)sender {
+    [self getDirections];
 }
 
 @end

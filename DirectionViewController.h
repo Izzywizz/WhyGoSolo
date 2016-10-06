@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) NSString *addressToBeReverse;
+@property (weak, nonatomic) IBOutlet UIButton *testButton;
 
 -(void) reverseEngineerAddressToCoodinates: (NSString *) address;
 

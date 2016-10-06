@@ -1967,22 +1967,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TZQ-Rc-jmE">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="133" width="600" height="467"/>
                                 <connections>
                                     <outlet property="delegate" destination="2fY-pw-kmA" id="xm5-D7-5PM"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3z3-ER-feY">
+                                <rect key="frame" x="277" y="95" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="1mn-g5-7GI"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="testButtonPressed:" destination="2fY-pw-kmA" eventType="touchUpInside" id="uJL-vE-elJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TZQ-Rc-jmE" firstAttribute="leading" secondItem="CFu-Zp-XZV" secondAttribute="leading" id="059-KN-y2y"/>
-                            <constraint firstItem="TZQ-Rc-jmE" firstAttribute="top" secondItem="CFu-Zp-XZV" secondAttribute="top" id="1jf-ZE-ess"/>
-                            <constraint firstAttribute="trailing" secondItem="TZQ-Rc-jmE" secondAttribute="trailing" id="3tQ-p7-SAK"/>
-                            <constraint firstItem="p6t-Nc-wN4" firstAttribute="top" secondItem="TZQ-Rc-jmE" secondAttribute="bottom" id="xiN-Ey-1e5"/>
+                            <constraint firstItem="TZQ-Rc-jmE" firstAttribute="bottom" secondItem="p6t-Nc-wN4" secondAttribute="top" id="LfW-jk-Q7c"/>
+                            <constraint firstItem="3z3-ER-feY" firstAttribute="centerX" secondItem="TZQ-Rc-jmE" secondAttribute="centerX" id="W29-MZ-lbZ"/>
+                            <constraint firstItem="TZQ-Rc-jmE" firstAttribute="leading" secondItem="CFu-Zp-XZV" secondAttribute="leading" id="dkQ-hn-85d"/>
+                            <constraint firstItem="3z3-ER-feY" firstAttribute="top" secondItem="oMe-Ag-SB1" secondAttribute="bottom" constant="75" id="kdQ-pz-AEg"/>
+                            <constraint firstItem="TZQ-Rc-jmE" firstAttribute="top" secondItem="3z3-ER-feY" secondAttribute="bottom" constant="8" symbolic="YES" id="mvJ-ax-OgX"/>
+                            <constraint firstItem="3z3-ER-feY" firstAttribute="leading" secondItem="CFu-Zp-XZV" secondAttribute="leadingMargin" constant="257" id="u8U-jH-06i"/>
+                            <constraint firstAttribute="trailing" secondItem="TZQ-Rc-jmE" secondAttribute="trailing" id="uan-Q4-nHv"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="TZQ-Rc-jmE" id="vQx-fj-zS6"/>
+                        <outlet property="testButton" destination="3z3-ER-feY" id="W5C-PA-yZ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZT-0S-1sT" userLabel="First Responder" sceneMemberID="firstResponder"/>
