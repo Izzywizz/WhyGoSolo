@@ -18,8 +18,7 @@
 #pragma mark - UIView methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    NSLog(@"Delegate set in interface");
+    [self setNavigationButtonFontAndSize];
     [self reverseEngineerAddressToCoodinates:self.addressToBeReverse];
 }
 
@@ -36,7 +35,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - REverse engineer Address to coodinates
+#pragma mark - Coodirnates method
 
 -(void) reverseEngineerAddressToCoodinates: (NSString *) address  {
     NSString *location = address;
@@ -51,7 +50,7 @@
                          MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
                          annotation.coordinate = placemark.coordinate;
                          
-                         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(placemark.coordinate, 5000, 5000);
+                         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(placemark.coordinate, 500, 500);
 
                          [self.mapView setRegion:region animated:YES];
                          [self.mapView addAnnotation:annotation];
@@ -60,7 +59,7 @@
      ];
 }
 
-
+#pragma mark - Map Delegates
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation   {
     
     if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
@@ -82,13 +81,26 @@
     return nil;
 }
 
+#pragma mark - Helper Functions
 - (void)getDirections {
     MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:self.selectedPin];
     //[mapItem openInMapsWithLaunchOptions:(@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving})];
     [mapItem openInMapsWithLaunchOptions:nil];
 }
-- (IBAction)testButtonPressed:(UIButton *)sender {
+
+-(void) setNavigationButtonFontAndSize  {
+    
+    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    [self.backButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+}
+
+#pragma mark - Helper functions
+- (IBAction)directionsButtonPressed:(UIBarButtonItem *)sender {
     [self getDirections];
+}
+
+- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

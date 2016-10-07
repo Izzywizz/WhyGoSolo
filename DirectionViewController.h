@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "FontSetup.h"
 
 @interface DirectionViewController : UIViewController<MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) NSString *addressToBeReverse;
-@property (weak, nonatomic) IBOutlet UIButton *testButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 
 -(void) reverseEngineerAddressToCoodinates: (NSString *) address;
 

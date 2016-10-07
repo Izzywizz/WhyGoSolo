@@ -68,7 +68,6 @@
     if(![self.navigationController.topViewController isKindOfClass:[OtherUserProfileTableViewController class]]) {
         UIViewController* infoController = [self.storyboard instantiateViewControllerWithIdentifier:@"OtherUserProfileViewController"];
         [self.navigationController pushViewController:infoController animated:YES];
-        [self.navigationController pushViewController:infoController animated:YES];
     }
 }
 

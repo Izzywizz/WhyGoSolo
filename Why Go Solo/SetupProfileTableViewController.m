@@ -85,15 +85,19 @@
     UIAlertController *alertSheet = [UIAlertController alertControllerWithTitle:nil message:@"Please select photo or camera" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *album = [UIAlertAction actionWithTitle:@"Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self takePhotoOrAlbum:UIImagePickerControllerSourceTypePhotoLibrary];
-//        [self selectPhoto];
     }];
     UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"Camera");
         [self takePhotoOrAlbum:UIImagePickerControllerSourceTypeCamera];
     }];
     
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Dismiss ACtion Sheet");
+    }];
+    
     [alertSheet addAction:album];
     [alertSheet addAction:camera];
+    [alertSheet addAction:cancel];
     
     [self presentViewController:alertSheet animated:YES completion:nil];
 }
