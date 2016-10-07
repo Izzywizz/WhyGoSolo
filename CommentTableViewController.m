@@ -7,10 +7,12 @@
 //
 
 #import "CommentTableViewController.h"
+#import "CommentsTableViewCell.h"
 
 @interface CommentTableViewController ()
 
-@property NSArray *testData;
+@property NSMutableArray *testData;
+@property (nonatomic) NSMutableString *textInput;
 
 @end
 
@@ -18,16 +20,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"View Loaded");
-    _testData = @[@"Test", @"TEst TWo"];
-    
-
+//    [self setupObservers];
+    _testData = [@[@"Test", @"TEst TWo"] mutableCopy];
+    [self setupTable];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];// remove extra tableViewCells at the bottom
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark - Table view data source
 
@@ -41,56 +44,48 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [_testData objectAtIndex:indexPath.row];
+    return [self commentsCellAtIndex:indexPath];
+}
+
+-(CommentsTableViewCell *) commentsCellAtIndex: (NSIndexPath *) indexPath   {
+    
+    NSString *reusedID = @"CommentCell";
+    NSString *nibName = @"CommentCell";
+    
+    [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reusedID];
+    CommentsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reusedID forIndexPath:indexPath];
+    
+    if (indexPath.row % 2) {
+        [cell setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+        [cell.profileImage setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    } else  {
+        [cell setBackgroundColor:[UIColor whiteColor]];
+        [cell.profileImage setBackgroundColor:[UIColor whiteColor]];
+    }
     
     return cell;
 }
 
-                  
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+#pragma mark - Table Helper Methods
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+-(void) setupTable  {
+    self.tableView.allowsSelectionDuringEditing=YES;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 115;
+    //    self.tableView.allowsSelection = NO;
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+
+#pragma mark - Action Methods
+
+- (IBAction)addCommmentsButtonPressed:(UIBarButtonItem *)sender {
+    NSLog(@"Add comments");
+    [self performSegueWithIdentifier:@"GoToAddComment" sender:self];
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

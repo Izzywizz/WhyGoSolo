@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface CommentsTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *profileName;
+@property (weak, nonatomic) IBOutlet UIButton *deleteOrReportButton;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (weak, nonatomic) IBOutlet UILabel *userInputext;
 
 @end

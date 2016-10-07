@@ -24,6 +24,7 @@
 		433981411D91310B00A995B3 /* HallsOfResidence.m in Sources */ = {isa = PBXBuildFile; fileRef = 433981401D91310B00A995B3 /* HallsOfResidence.m */; };
 		433B85291DA79B4F0092E5F1 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 433B85281DA79B4F0092E5F1 /* CommentCell.xib */; };
 		433B852C1DA7A1B40092E5F1 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 433B852B1DA7A1B40092E5F1 /* CommentsTableViewCell.m */; };
+		433B852F1DA7C8FF0092E5F1 /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 433B852E1DA7C8FF0092E5F1 /* AddCommentViewController.m */; };
 		434288991D9D11BE00D4E911 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 434288981D9D11BE00D4E911 /* EditViewController.m */; };
 		4350B3831D93C558001A5AE8 /* ISEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4350B3811D93C558001A5AE8 /* ISEmojiView.m */; };
 		436655AE1D9E6A910041F491 /* EditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 436655AD1D9E6A910041F491 /* EditCell.xib */; };
@@ -149,6 +150,8 @@
 		433B85281DA79B4F0092E5F1 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		433B852A1DA7A1B40092E5F1 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewCell.h; sourceTree = "<group>"; };
 		433B852B1DA7A1B40092E5F1 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewCell.m; sourceTree = "<group>"; };
+		433B852D1DA7C8FF0092E5F1 /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
+		433B852E1DA7C8FF0092E5F1 /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
 		434288971D9D11BE00D4E911 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		434288981D9D11BE00D4E911 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		4350B3801D93C558001A5AE8 /* ISEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEmojiView.h; sourceTree = "<group>"; };
@@ -317,6 +320,8 @@
 			children = (
 				4319E7831D89582800FD5142 /* CommentTableViewController.h */,
 				4319E7841D89582800FD5142 /* CommentTableViewController.m */,
+				433B852D1DA7C8FF0092E5F1 /* AddCommentViewController.h */,
+				433B852E1DA7C8FF0092E5F1 /* AddCommentViewController.m */,
 			);
 			name = Comments;
 			sourceTree = "<group>";
@@ -709,6 +714,7 @@
 			files = (
 				43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */,
 				43A893621D8057AE00BEA24B /* EventsTableViewCell.m in Sources */,
+				433B852F1DA7C8FF0092E5F1 /* AddCommentViewController.m in Sources */,
 				4383E10B1D93ECD50021CA30 /* FriendHeaderTableViewCell.m in Sources */,
 				434288991D9D11BE00D4E911 /* EditViewController.m in Sources */,
 				43B981DE1D95291800E7DD05 /* FriendCollectionViewCell.m in Sources */,
