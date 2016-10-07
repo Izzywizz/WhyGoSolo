@@ -22,6 +22,8 @@
 		431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 431C45B81D895C6B00A05C11 /* MainViewController.m */; };
 		4335A4E11D9E5E0600DCCC3E /* EditCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4335A4E01D9E5E0600DCCC3E /* EditCollectionViewController.m */; };
 		433981411D91310B00A995B3 /* HallsOfResidence.m in Sources */ = {isa = PBXBuildFile; fileRef = 433981401D91310B00A995B3 /* HallsOfResidence.m */; };
+		433B85291DA79B4F0092E5F1 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 433B85281DA79B4F0092E5F1 /* CommentCell.xib */; };
+		433B852C1DA7A1B40092E5F1 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 433B852B1DA7A1B40092E5F1 /* CommentsTableViewCell.m */; };
 		434288991D9D11BE00D4E911 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 434288981D9D11BE00D4E911 /* EditViewController.m */; };
 		4350B3831D93C558001A5AE8 /* ISEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4350B3811D93C558001A5AE8 /* ISEmojiView.m */; };
 		436655AE1D9E6A910041F491 /* EditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 436655AD1D9E6A910041F491 /* EditCell.xib */; };
@@ -144,6 +146,9 @@
 		4335A4E01D9E5E0600DCCC3E /* EditCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCollectionViewController.m; path = ../EditCollectionViewController.m; sourceTree = "<group>"; };
 		4339813F1D91310B00A995B3 /* HallsOfResidence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HallsOfResidence.h; sourceTree = "<group>"; };
 		433981401D91310B00A995B3 /* HallsOfResidence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HallsOfResidence.m; sourceTree = "<group>"; };
+		433B85281DA79B4F0092E5F1 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		433B852A1DA7A1B40092E5F1 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewCell.h; sourceTree = "<group>"; };
+		433B852B1DA7A1B40092E5F1 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewCell.m; sourceTree = "<group>"; };
 		434288971D9D11BE00D4E911 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		434288981D9D11BE00D4E911 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		4350B3801D93C558001A5AE8 /* ISEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEmojiView.h; sourceTree = "<group>"; };
@@ -491,6 +496,9 @@
 				4383E10C1D93ECF90021CA30 /* FriendHeader.xib */,
 				4383E1091D93ECD50021CA30 /* FriendHeaderTableViewCell.h */,
 				4383E10A1D93ECD50021CA30 /* FriendHeaderTableViewCell.m */,
+				433B85281DA79B4F0092E5F1 /* CommentCell.xib */,
+				433B852A1DA7A1B40092E5F1 /* CommentsTableViewCell.h */,
+				433B852B1DA7A1B40092E5F1 /* CommentsTableViewCell.m */,
 			);
 			name = "Table Cells";
 			path = ..;
@@ -637,6 +645,7 @@
 				43B981D91D95242300E7DD05 /* ISEmojiList.plist in Resources */,
 				43B981D41D95220400E7DD05 /* starbucks_coffee.jpg in Resources */,
 				438A14BD1D801E0F005E6AF7 /* OFL.txt in Resources */,
+				433B85291DA79B4F0092E5F1 /* CommentCell.xib in Resources */,
 				43A325F21DA4EE2F0017FE27 /* OverlayView.xib in Resources */,
 				436E84B01D815FA700B23402 /* flag.png in Resources */,
 				43B981CF1D95220400E7DD05 /* instant_noodle_with_egg.jpg in Resources */,
@@ -741,6 +750,7 @@
 				4309193B1D8154F400EE9220 /* MapViewController.m in Sources */,
 				43ECC9EE1DA250AB0059A333 /* CreateCollectionViewController.m in Sources */,
 				43ECC9F61DA27FE80059A333 /* PeopleEventCollectionViewController.m in Sources */,
+				433B852C1DA7A1B40092E5F1 /* CommentsTableViewCell.m in Sources */,
 				4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */,
 				43BE4C361D82A26700D6B26A /* OUserProfileTableViewController.m in Sources */,
 				43ACED5B1D87EDAC008D949C /* DeleteConfirmationViewController.m in Sources */,

@@ -44,5 +44,9 @@
     NSLog(@"People Event Button Pressed");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"People Event" object:self];
 }
+- (IBAction)commentsButtonPressed:(UIButton *)sender {
+    NSLog(@"Comments button pressed");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Comments" object:self];
+}
 
 @end

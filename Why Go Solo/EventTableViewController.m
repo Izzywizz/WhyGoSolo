@@ -85,6 +85,12 @@ NSArray *sectionTitles;
     }
 }
 
+-(void) commentsButton:(NSNotification *) notication    {
+    if ([[notication name] isEqualToString:@"Comments"]) {
+        [self moveToComments];
+    }
+}
+
 
 
 -(void) setupObservers    {
@@ -102,7 +108,12 @@ NSArray *sectionTitles;
     //People Event
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToEvent:) name:@"People Event" object:nil];
     
+    //Joined button
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(joinedButton:) name:@"Joined" object:nil];
+    
+    //comments page
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentsButton:) name:@"Comments" object:nil];
+    
 }
 
 #pragma mark - Helper Functions
@@ -122,6 +133,10 @@ NSArray *sectionTitles;
 
 -(void) moveToEvent {
     [self performSegueWithIdentifier:@"GoToEvent" sender:self];
+}
+
+-(void) moveToComments  {
+    [self performSegueWithIdentifier:@"GoToComments" sender:self];
 }
 
 -(void) setupDummyData  {

@@ -2141,6 +2141,7 @@
                         <segue destination="x9e-dd-b5b" kind="show" identifier="GoToEdit" id="xP8-wX-T53"/>
                         <segue destination="b7G-aT-a8r" kind="show" identifier="GoToEvent" id="hOX-lZ-ROD"/>
                         <segue destination="2fY-pw-kmA" kind="show" id="LFw-gK-zUD"/>
+                        <segue destination="Cgf-Pn-vhP" kind="show" identifier="GoToComments" id="2EJ-EJ-fh5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JR4-us-JDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2640,7 +2641,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfu-fr-tFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6083" y="1606"/>
+            <point key="canvasLocation" x="6120" y="1587"/>
         </scene>
         <!--People-->
         <scene sceneID="H4d-PV-hY6">
@@ -3261,7 +3262,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TtI-EK-o19" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2632" y="1486"/>
+            <point key="canvasLocation" x="3729" y="3095"/>
         </scene>
         <!--Profile-->
         <scene sceneID="RGL-7h-a0G">
