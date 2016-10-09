@@ -7,6 +7,8 @@
 //
 
 #import "MainViewController.h"
+#import "WebService.h"
+#import "PersistanceManager.h"
 
 @interface MainViewController ()
 
@@ -17,7 +19,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Main has been loaded");
+
+    [self checkForToken];
 }
+
+-(void)checkForToken
+{
+    if (![[PersistanceManager sharedInstance]loadLoginDetails])
+    {
+      //  [[WebService sharedInstance]universities];
+    }
+    else
+    {
+        [[WebService sharedInstance]authentication];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
