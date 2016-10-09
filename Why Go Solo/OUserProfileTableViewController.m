@@ -40,11 +40,13 @@
     [self internalViewSetup];
     _isFriend = true;
     
+    self.tableView.contentInset = UIEdgeInsetsMake(20,0,0,0); //prevents that weird scrolling under the bar thing 
+    
     _accomodationLabel.text = @"The Killers";
 }
 
 -(void) viewWillAppear:(BOOL)animated   {
-    [self reportOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay    
+    [self reportOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,7 +112,7 @@
 
 /** Header View setup*/
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [self headerCellAtIndex:section];
+        return [self headerCellAtIndex:section];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section    {
@@ -125,7 +127,11 @@
 /** Footer view setup */
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     
-    return [self footerCellAtIndex:section];
+    if (section == 0) {
+        return nil;
+    } else  {
+        return [self footerCellAtIndex:section];
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section    {
@@ -136,6 +142,7 @@
     } else  {
         return 94;
     }
+    
 }
 
 /** Standard cell creation*/

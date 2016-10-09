@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface OtherProfileTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *profileUniversityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ProfileAccommodation;
 
 @end
