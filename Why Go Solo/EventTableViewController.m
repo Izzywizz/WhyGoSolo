@@ -16,13 +16,18 @@
 #import "CurrentUserLocation.h"
 
 #import "FilterViewController.h"
+#import "WebService.h"
+#import "Event.h"
+#import "Data.h"
 
-@interface EventTableViewController ()
+@interface EventTableViewController () <DataDelegate>
 
 @property (nonatomic, strong) MapViewController *mapController;
 @property (nonatomic, strong) CurrentUserLocation *userLocation;
 @property (nonatomic) NSDictionary *tableData;
 
+@property NSArray *myEventsDataArray;
+@property NSArray *dataArray;
 @end
 
 @implementation EventTableViewController
@@ -44,22 +49,51 @@ NSArray *sectionTitles;
     [self setupDummyData];
     [self setupTable];
     [self setupObservers];
-    
+  //  [Data sharedInstance].eventsArray = [NSMutableArray new];
     // By default, isHallsSwitchOn = 1 as when it passed by the observer for the FilterTableViewCell it comes actiavted and I couldn't find a way to pass a value via an observer
+    _dataArray = [NSArray new];
+    _myEventsDataArray = [NSArray new];
 }
 
 
 
 -(void)viewWillAppear:(BOOL)animated  {
-    _mapController = [[MapViewController alloc] init];
-    _userLocation =[[CurrentUserLocation alloc] init];
+  
+    if (!_mapController) {
+        _mapController = [[MapViewController alloc] init];
+    }
+    if(!_userLocation)
+    {
+        _userLocation =[[CurrentUserLocation alloc] init];
+    }
+    
+    
+    [[WebService sharedInstance]events];
+    [Data sharedInstance].delegate = self;
 }
 
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+-(void)eventsDownloadedSuccessfully
+{
+    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
+}
+
+-(void)handleUpdates
+{
+    _myEventsDataArray = [Data sharedInstance].myEventsArray;
+    _dataArray = [Data sharedInstance].eventsArray;
+
+    [self.tableView reloadData];
+}
 #pragma mark - Observer Methods
 
 /** The actual method that handles the observer that has been posted*/
@@ -170,19 +204,49 @@ NSArray *sectionTitles;
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+   
+    if ([_myEventsDataArray count] > 0)
+    {
+        return 2;
+    }
+    
+    return 1;
+    
     return [sectionTitles count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
+    
+    
+    
+    switch (section) {
+        case 0:
+            if ([_myEventsDataArray count] > 0)
+            {
+                return [_myEventsDataArray count];
+            }
+            return [_dataArray count];
+            break;
+        case 1:
+            return [_dataArray count];
+            break;
+        default:
+            return 0;
+            break;
+    }
+    
     // Return the number of rows in the section.
     NSString *sectionTitle = [sectionTitles objectAtIndex:section];
     NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
+    
+  //  return [[Data sharedInstance].eventsArray count];
     return [sectionEvents count];
 }
 
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
     
     return [self headerCellAtIndex:section];
 }
@@ -263,24 +327,51 @@ NSArray *sectionTitles;
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     EventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
+    Event *e = [Event new];
+    
+    if (self.tableView.numberOfSections == 2 && indexPath.section ==  0)
+    {
+        e = [[Data sharedInstance].myEventsArray objectAtIndex:indexPath.row];
+        if (e.userID != (int)[[Data sharedInstance].userID integerValue])
+        {
+            [cell viewWithTag:EDIT].alpha = 0;
+            [cell viewWithTag:JOIN].alpha = 0;
+        }
+    }
+    else
+    {
+        e = [[Data sharedInstance].eventsArray objectAtIndex:indexPath.row];
+        [cell viewWithTag:EDIT].alpha = 0;
+        [cell viewWithTag:JOIN].alpha = 1;
+
+        
+    }
+    
+    //  cell.eventAddressLabel.text = @"14 Paradise Street, Liverpool, Merseyside, L1 8JF";
+    cell.timeLabel.hidden = YES;
+    cell.nameLabel.text = e.userName;
+    cell.eventAddressLabel.text = e.address;
+    cell.eventDescriptionText.text = e.eventDescription;
+    cell.eventMessageCount.text = e.totalComments;
+    cell.eventInviteeCount.text = e.totalAttending;
+    cell.eventEmoticonLabel.text = e.emoji;
+    //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
+    
+    return cell;
+    
     //Setup cell using data pull down from the server, this is using dummy data
-    NSString *sectionTitle = [sectionTitles objectAtIndex:indexPath.section];
-    NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
-    NSString *eventName = [sectionEvents objectAtIndex:indexPath.row];
+//    NSString *sectionTitle = [sectionTitles objectAtIndex:indexPath.section];
+//    NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
+//    NSString *eventName = [sectionEvents objectAtIndex:indexPath.row];
     
     //Basic logic to ensure that the correct join/ edit are displayed for events
-    if ([sectionTitle isEqualToString:@"My Events"]) {
+/*    if ([sectionTitle isEqualToString:@"My Events"]) {
         [cell viewWithTag:JOIN].alpha = 0;
     } else  {
         [cell viewWithTag:EDIT].alpha = 0; // Edit is hidden
     }
-    
-    cell.eventAddressLabel.text = @"14 Paradise Street, Liverpool, Merseyside, L1 8JF";
-    cell.timeLabel.hidden = YES;
-    cell.nameLabel.text = eventName;
-    //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
-    
-    return cell;
+ */
+
 }
 
 

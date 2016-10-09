@@ -122,6 +122,7 @@
 		A1151F5B1DAA5D13008222ED /* PersistanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1151F561DAA5D13008222ED /* PersistanceManager.m */; };
 		A1151F5C1DAA5D13008222ED /* RRRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = A1151F581DAA5D13008222ED /* RRRegistration.m */; };
 		A1151F5D1DAA5D13008222ED /* RRDateFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = A1151F5A1DAA5D13008222ED /* RRDateFormater.m */; };
+		A1151F601DAA8494008222ED /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = A1151F5F1DAA8494008222ED /* Event.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -319,6 +320,8 @@
 		A1151F581DAA5D13008222ED /* RRRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRRegistration.m; sourceTree = "<group>"; };
 		A1151F591DAA5D13008222ED /* RRDateFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRDateFormater.h; sourceTree = "<group>"; };
 		A1151F5A1DAA5D13008222ED /* RRDateFormater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRDateFormater.m; sourceTree = "<group>"; };
+		A1151F5E1DAA8494008222ED /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		A1151F5F1DAA8494008222ED /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,6 +358,8 @@
 		430919401D81557300EE9220 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A1151F5E1DAA8494008222ED /* Event.h */,
+				A1151F5F1DAA8494008222ED /* Event.m */,
 				A1151F4B1DAA5CF5008222ED /* University.h */,
 				A1151F4C1DAA5CF5008222ED /* University.m */,
 				A1151F4D1DAA5CF5008222ED /* User.h */,
@@ -822,6 +827,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1151F601DAA8494008222ED /* Event.m in Sources */,
 				43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */,
 				43A893621D8057AE00BEA24B /* EventsTableViewCell.m in Sources */,
 				433B852F1DA7C8FF0092E5F1 /* AddCommentViewController.m in Sources */,

@@ -16,6 +16,9 @@
 //#define API_BASE_URL @"http://goalmachine.app"
 #define API_BASE_URL @"http://139.59.180.166/api"
 
+//#define API_BASE_URL @"http://192.168.10.10/api"
+
+
 @implementation WebService
 + (WebService*)sharedInstance
 {
@@ -228,41 +231,71 @@
 
 -(void)authentication
 {
+    
+    [Data sharedInstance].userToken = @"Px4tY6XxJ0";
+    [Data sharedInstance].userID = @"30";
+    
     NSString *requestUrl = [NSString stringWithFormat:@"%@/users/authentication", API_BASE_URL];
     
     NSDictionary *params = @{
-                             @"user_id":@"3"
+                             @"user_id":[NSString stringWithFormat:@"%@",[Data sharedInstance].userID]
                             };
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    [manager.requestSerializer setValue:@"qPYSIQpr3V" forHTTPHeaderField:@"Token"];
+    [manager.requestSerializer setValue:[Data sharedInstance].userToken forHTTPHeaderField:@"Token"];
+    
+    NSLog(@"USER PARAMS = %@", params);
     
     [manager POST:requestUrl parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         
         [[Data sharedInstance]authenticationSuccessful];
-  /*      if ([[responseObject valueForKey:@"Error"]isEqualToString:@"UserExists"])
-        {
-            [[[UIAlertView alloc]initWithTitle:@"Username Exists" message:@"This username has already been taken, please choose a different one" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
-            return;
-            
-        }
-        if ([[responseObject valueForKey:@"Error"]isEqualToString:@"EmailExists"])
-        {
-            [[[UIAlertView alloc]initWithTitle:@"Email has already been used" message:@"This email has already been used to create an account." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
-            return;
-            
-        }
-        
-        [[Data sharedInstance]registeredUserWithDict:responseObject];
-        
-        */
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
+      } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
 }
 
+
+-(void)events
+{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/events", API_BASE_URL];
+    
+    NSError * err;
+    
+    [Data sharedInstance].residenceFilterArray = @[@"3",@"5"];
+    
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:[Data sharedInstance].residenceFilterArray options:0 error:&err];
+    
+    NSString *filterArrayString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    NSDictionary *params = @{
+                             @"user_id":[Data sharedInstance].userID,
+                             @"filter_distance":@"0",
+                             @"residence_id_array":filterArrayString
+                             };
+    
+//    NSMutableArray *paramsArray = [[NSMutableArray alloc]initWithObjects:params, nil];
+    
+
+    
+    NSLog(@"EVENTS REQUEST DICT = %@", params);
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager.requestSerializer setValue:[Data sharedInstance].userToken forHTTPHeaderField:@"Token"];
+    
+    [manager POST:requestUrl parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"EVENTS JSON: %@", responseObject);
+        
+        [[Data sharedInstance]createEventsArrayFromDict:responseObject];
+       
+        
+        
+        
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
 
 /*
 -(void)registerUser

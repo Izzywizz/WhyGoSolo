@@ -33,5 +33,6 @@ typedef NS_ENUM(NSInteger, apiRequests) {
 -(void)residences;
 -(void)authentication;
 
+-(void)events;
 
 @end

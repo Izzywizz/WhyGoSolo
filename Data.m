@@ -10,6 +10,7 @@
 #import "University.h"
 #import "Residence.h"
 #import "PersistanceManager.h"
+#import "Event.h";
 @interface Data ()
 
 @end
@@ -82,6 +83,44 @@
     if (_delegate && [_delegate respondsToSelector:@selector(residencesDownloadedSuccessfully)])
     {
         [self.delegate residencesDownloadedSuccessfully];
+    }
+}
+
+
+-(void)createEventsArrayFromDict:(NSDictionary *)dict
+{
+    _eventsArray = [NSMutableArray new];
+    _myEventsArray = [NSMutableArray new];
+    
+    for (NSDictionary *d in [dict valueForKey:@"events"])
+    {
+        Event *event = [[Event alloc]initWithDict:d];
+        
+    //    Event *event = [Event new];
+        
+      //  event.userID = (int)[[[d valueForKey:@"user" ]valueForKey:@"id"]integerValue];
+        //event.eventDescription = [d valueForKey:@"description" ];
+        [_eventsArray addObject:event];
+    }
+    
+    for (NSDictionary *d in [dict valueForKey:@"my_events"])
+    {
+        Event *event = [[Event alloc]initWithDict:d];
+        
+        //    Event *event = [Event new];
+        
+        //  event.userID = (int)[[[d valueForKey:@"user" ]valueForKey:@"id"]integerValue];
+        //event.eventDescription = [d valueForKey:@"description" ];
+        [_myEventsArray addObject:event];
+    }
+    
+    // [_universitesArray sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    NSLog(@"Event ARR = %@", _eventsArray);
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(eventsDownloadedSuccessfully)])
+    {
+        [self.delegate eventsDownloadedSuccessfully];
     }
 }
 @end
