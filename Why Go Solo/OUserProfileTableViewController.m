@@ -109,8 +109,11 @@
 /** Header View setup*/
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    
-    return [self headerCellAtIndex:section];
+    if (section == 0) {
+        UIView* view = [[UIView alloc] initWithFrame: CGRectMake(0.0f, 0.0f, 640.0f, 0.0f)];
+        return view;
+    } else  {
+        return [self headerCellAtIndex:section];}
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section    {
