@@ -11,7 +11,7 @@
 @implementation CreateCollectionViewCell
 
 -(void)awakeFromNib {
-    [self previousEventTextViewSetup];
+    [self placeholderEventTextView];
     
     self.describeEventTextView.delegate = self;
     
@@ -43,9 +43,22 @@
 }
 
 /** creates the placeholder effect*/
--(void) previousEventTextViewSetup    {
+-(void) placeholderEventTextView    {
     self.describeEventTextView.delegate = self;
     self.describeEventTextView.text = @"This is the event description from the previous event";
+}
+
+- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
+{
+    if (_describeEventTextView.text.length == 0) {
+        [self placeholderEventTextView];
+    } else  {
+        _describeEventTextView.text = @"";
+        _describeEventTextView.textColor = [UIColor blackColor];
+        return YES;
+    }
+    
+    return YES;
 }
 
 #pragma mark - Action Method

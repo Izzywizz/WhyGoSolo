@@ -21,5 +21,8 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)deleteOrReportCommentPressed:(UIButton *)sender {
+    NSLog(@"Delete or Report a comment");
+}
 
 @end

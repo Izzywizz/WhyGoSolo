@@ -26,6 +26,8 @@
 - (IBAction)buttonPressed:(UIButton *)sender {
     switch (sender.tag) {
         case JOIN: NSLog(@"Join Button Pressed");
+            _joinButton.alpha = 0;
+            _joinedButton.alpha = 1;
             break;
         case EDIT: NSLog(@"Edit Button Pressed");
             [[NSNotificationCenter defaultCenter] postNotificationName:@"Edit Found" object:self];
@@ -35,6 +37,9 @@
             break;
         case JOINED: NSLog(@"Joined Button");
             [[NSNotificationCenter defaultCenter] postNotificationName:@"Joined" object:self];
+            NSLog(@"Alpha values are just being set, no logic here!");
+            _joinButton.alpha = 1;
+            _joinedButton.alpha = 0;
             break;
         default:
             break;

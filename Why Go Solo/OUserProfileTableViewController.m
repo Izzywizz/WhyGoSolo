@@ -17,6 +17,8 @@
 @property NSArray *sectionTitles;
 @property NSArray *sectionData;
 @property BOOL isUserBlocked;
+@property BOOL isFriend;
+
 
 //TextProperties
 
@@ -34,6 +36,7 @@
     [self setupTable];
     [self setupUserReportingName:@"Andy Jones"];
     [self internalViewSetup];
+    _isFriend = true;
     
     _accomodationLabel.text = @"The Killers";
 }
@@ -237,7 +240,16 @@
 
 
 - (IBAction)addFriendButton:(UIBarButtonItem *)sender {
-    NSLog(@"Friend Added");
+            NSLog(@"Friend LOgic needs to be added");
+    if (_isFriend) {
+        _addFriendButton.image = [UIImage imageNamed:@"check-button-20-20"];
+        _isFriend = false;
+                NSLog(@"Friend Added");
+    } else {
+        _addFriendButton.image = [UIImage imageNamed:@"add-event-20-20"];
+        _isFriend = true;
+                NSLog(@"Friend Removed");
+    }
 }
 
 - (IBAction)noButtonPressed:(UIButton *)sender {

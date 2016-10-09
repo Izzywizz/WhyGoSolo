@@ -15,6 +15,8 @@
 #import "MapViewController.h"
 #import "CurrentUserLocation.h"
 
+#import "FilterViewController.h"
+
 @interface EventTableViewController ()
 
 @property (nonatomic, strong) MapViewController *mapController;
@@ -124,7 +126,9 @@ NSArray *sectionTitles;
 }
 
 -(void)moveToFilter {
+    if(![self.navigationController.topViewController isKindOfClass:[FilterViewController class]]) {
     [self performSegueWithIdentifier:@"GoToFilter" sender:self];
+    }
 }
 
 -(void) moveToEdit  {

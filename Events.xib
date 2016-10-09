@@ -218,7 +218,6 @@
                                     <constraint firstAttribute="height" constant="30.5" id="YlB-oC-8NI"/>
                                     <constraint firstAttribute="width" constant="65" id="wVg-XJ-ni0"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="commentsButtonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="Mif-1m-8La"/>
                                 </connections>
