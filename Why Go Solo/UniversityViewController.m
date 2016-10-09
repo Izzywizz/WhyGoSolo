@@ -8,27 +8,52 @@
 
 #import "UniversityViewController.h"
 #import "UniversityLocations.h"
-
-
-@interface UniversityViewController () <UITableViewDelegate, UITableViewDataSource>
+#import "WebService.h"
+#import "Data.h"
+#import "University.h"
+@interface UniversityViewController () <UITableViewDelegate, UITableViewDataSource, DataDelegate>
 @property NSArray *universityList;
 @property (nonatomic) UniversityLocations *locations;
 @property BOOL hasUniBeenSelected;
+
+@property int selectedIndex;
 
 @end
 
 @implementation UniversityViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [[WebService sharedInstance]universities];
+    [Data sharedInstance].delegate = self; // Set Data delegate
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil; // Remove Data delegate
+}
+
+-(void)universitiesDownloadedSuccessfully // Data protocol response method
+{
+    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
+    // Need to set to main thread as this is currently running on a background thread
+}
+
+-(void)handleUpdates
+{
+    _universityList = [[NSArray alloc]initWithArray:[Data sharedInstance].universitesArray];
+    [_tableView reloadData];
+}
+
 #pragma mark - UI Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _locations = [[UniversityLocations alloc] init];
     self.hasUniBeenSelected = false; //intially set selction false becasue nothing has been selected!
     
-    _locations = [[UniversityLocations alloc] init];
-    [self unpackData];
     NSLog(@"University");
-    _universityList = [self unpackData];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; //remove any extra table cell rows
+    //  _universityList = [self unpackData];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 }
 
@@ -41,18 +66,11 @@
 
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSUInteger size = 12;
+    NSString *fontName = @"Lato";
+    UIFont *font = [UIFont fontWithName:fontName size:size];
+    NSDictionary * attributes = @{NSFontAttributeName: font};
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
-}
-
--(NSArray *) unpackData  {
-    NSDictionary *dict = [[NSDictionary alloc] init];
-    dict = [_locations returnListOfUniversity];
-    
-    NSArray *liverpoolArray = [[NSArray alloc] init];
-    liverpoolArray =[dict valueForKey:@"Liverpool"];
-    
-    return liverpoolArray;
 }
 
 /** Ensures that the selection seperators are setup before the main views are shown*/
@@ -106,7 +124,25 @@
         cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [_universityList objectAtIndex:indexPath.row];
+    University *uni = [_universityList objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = uni.universityName;
+    
+    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+  
+    if (_selectedIndex == indexPath.row &&  _hasUniBeenSelected == YES)
+    {
+        cell.accessoryView =  [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check-button-20-20"]];
+
+        NSLog(@"SELECTED %i", indexPath.row);
+    }
+    else
+    {
+        cell.accessoryView =  [[UIImageView alloc]initWithImage:[UIImage imageNamed:@""]];
+    }
+    
+    
+    [tableView reloadInputViews];
     
     return cell;
     
@@ -114,13 +150,15 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+    NSLog(@"row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
+    NSLog(@"Location: %@,", [_universityList objectAtIndex:indexPath.row]);
+     _hasUniBeenSelected = YES;
+    _selectedIndex = indexPath.row;
+    [Data sharedInstance].selectedUniversity = [_universityList objectAtIndex:indexPath.row];
+        [tableView reloadData];
     
-    self.hasUniBeenSelected = true;
-    if (_hasUniBeenSelected) {
-        NSLog(@"row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
-        NSLog(@"Location: %@,", [_universityList objectAtIndex:indexPath.row]);
-        [tableView cellForRowAtIndexPath:indexPath].accessoryView =  [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check-button-20-20"]];
-    }
+    return;
+
 }
 
 -(void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath   {
@@ -134,7 +172,7 @@
 }
 
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
-    NSLog(@"Next button pressed");
+    NSLog(@"Next button pressed: %@", [Data sharedInstance].selectedUniversity.universityName);
     if (_hasUniBeenSelected == false) {
         [self alertSetupandView];
     } else  {
@@ -155,5 +193,6 @@
     [alertVC addAction:dismiss];
     [self presentViewController:alertVC animated:YES completion:nil];
 }
+
 
 @end
