@@ -29,6 +29,15 @@
     return _sharedInstance;
 }
 
+-(void)authenticationSuccessful
+{
+    NSLog(@"AUTHENTICATION SUCCESSFUL");
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(authenticationSuccessful)])
+    {
+        [self.delegate authenticationSuccessful];
+    }
+}
 
 -(void)createUniversitesArrayFromDict:(NSDictionary *)dict
 {

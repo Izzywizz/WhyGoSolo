@@ -11,6 +11,8 @@
 @class Residence;
 @protocol DataDelegate <NSObject>
 
+-(void)authenticationSuccessful;
+
 -(void)universitiesDownloadedSuccessfully;
 -(void)residencesDownloadedSuccessfully;
 
@@ -36,4 +38,5 @@
 
 -(void)createResidencesArrayFromDict:(NSDictionary *)dict;
 
+-(void)authenticationSuccessful;
 @end

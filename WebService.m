@@ -231,12 +231,12 @@
     NSString *requestUrl = [NSString stringWithFormat:@"%@/users/authentication", API_BASE_URL];
     
     NSDictionary *params = @{
-                             @"user_id":@"2"
+                             @"user_id":@"3"
                             };
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    [manager.requestSerializer setValue:@"X0rzBGWiY1" forHTTPHeaderField:@"Token"];
+    [manager.requestSerializer setValue:@"qPYSIQpr3V" forHTTPHeaderField:@"Token"];
     
     [manager POST:requestUrl parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);

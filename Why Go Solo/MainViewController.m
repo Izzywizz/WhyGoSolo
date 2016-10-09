@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "WebService.h"
 #import "PersistanceManager.h"
+#import "EventTableViewController.h"
 
 @interface MainViewController ()
 
@@ -33,6 +34,10 @@
     {
         [[WebService sharedInstance]authentication];
     }
+}
+
+-(void)authenticationSuccessful
+{
 }
 
 
