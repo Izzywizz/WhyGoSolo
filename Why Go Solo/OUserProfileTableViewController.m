@@ -63,8 +63,10 @@
 
 -(void) setupDummyData  {
     //Dummy Data
-    _tableData = @{@"My Events" : @[@"Andy Jones", @"Nathan Barnes"]
+    _tableData = @{@"My Events" : @[@"test"],
+                   @"My Events Two" : @[@"Andy Jones", @"Nathan Barnes"]
                    };
+    
     NSSortDescriptor *decending = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:NO];
     NSArray *decendingOrder = [NSArray arrayWithObject:decending];
     _sectionTitles = [[_tableData allKeys] sortedArrayUsingDescriptors:decendingOrder];
@@ -99,21 +101,18 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section    {
-    return 2;
+    
+    return 1;
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return _tableData.count;
+    return 2;
 }
 
 /** Header View setup*/
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-    if (section == 0) {
-        UIView* view = [[UIView alloc] initWithFrame: CGRectMake(0.0f, 0.0f, 640.0f, 0.0f)];
-        return view;
-    } else  {
-        return [self headerCellAtIndex:section];}
+    return [self headerCellAtIndex:section];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section    {
@@ -134,17 +133,26 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section    {
     
     //Forced the Footer to conform to a specific height that is equal to the header space between the cell
-    return 15;
+    if (section == 0) {
+        return 0;
+    } else  {
+        return 15;
+    }
 }
 
 /** Standard cell creation*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath  {
     
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
+        NSLog(@"Section 0");
         return [self otherProfileCellAtIndex:indexPath];
-    } else  {
+    }
+    if (indexPath.section == 1) {
+        NSLog(@"Section 1");
         return [self eventCellAtIndex:indexPath];
     }
+    
+    return [self eventCellAtIndex:indexPath];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
