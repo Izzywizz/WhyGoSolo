@@ -10,6 +10,7 @@
 #import "EventsTableViewCell.h"
 #import "FooterEventsTableViewCell.h"
 #import "HeaderEventsTableViewCell.h"
+#import "OtherProfileTableViewCell.h"
 
 
 @interface OtherUserProfileTableViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -131,7 +132,11 @@
 /** Standard cell creation*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath  {
     
+    if (indexPath.row == 0) {
+        return [self otherProfileCellAtIndex:indexPath];
+    } else  {
     return [self eventCellAtIndex:indexPath];
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
@@ -165,6 +170,17 @@
 
     }
     cell.MyEventsLabel.text = sectionTitle;
+    
+    return cell;
+}
+
+-(OtherProfileTableViewCell *) otherProfileCellAtIndex: (NSIndexPath *) indexPath    {
+    
+    NSString *reuseID = @"OtherProfileCell";
+    NSString *nibName = @"OtherProfile";
+    
+    [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
+    OtherProfileTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
     return cell;
 }
