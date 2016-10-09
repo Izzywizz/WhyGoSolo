@@ -9,6 +9,7 @@
 #import "Data.h"
 #import "University.h"
 #import "Residence.h"
+#import "PersistanceManager.h"
 @interface Data ()
 
 @end
@@ -31,8 +32,6 @@
 
 -(void)authenticationSuccessful
 {
-    NSLog(@"AUTHENTICATION SUCCESSFUL");
-    
     if (_delegate && [_delegate respondsToSelector:@selector(authenticationSuccessful)])
     {
         [self.delegate authenticationSuccessful];

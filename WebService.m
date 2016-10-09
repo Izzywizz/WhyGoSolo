@@ -241,6 +241,7 @@
     [manager POST:requestUrl parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         
+        [[Data sharedInstance]authenticationSuccessful];
   /*      if ([[responseObject valueForKey:@"Error"]isEqualToString:@"UserExists"])
         {
             [[[UIAlertView alloc]initWithTitle:@"Username Exists" message:@"This username has already been taken, please choose a different one" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
