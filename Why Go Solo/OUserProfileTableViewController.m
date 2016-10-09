@@ -34,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupDummyData];
+    [self setupObservers];
     [self setupTable];
     [self setupUserReportingName:@"Andy Jones"];
     [self internalViewSetup];
@@ -43,10 +44,7 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated   {
-    [self reportOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
-    [_unBlockButton viewWithTag:0].alpha = 0;
-    _unBlockButton.layer.cornerRadius = 3;
-    
+    [self reportOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -136,7 +134,7 @@
     if (section == 0) {
         return 0;
     } else  {
-        return 15;
+        return 94;
     }
 }
 
@@ -240,6 +238,12 @@
     [self.tableView registerNib: [UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:resuseID];
     FooterEventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:resuseID];
     
+    if (_isUserBlocked) {
+        cell.blockButton.alpha = 0;
+    } else  {
+        cell.blockButton.alpha = 1;
+    }
+    
     return cell;
 }
 
@@ -247,27 +251,6 @@
 
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (IBAction)reportUserPressed:(UIButton *)sender {
-    NSLog(@"Report User button  pressed");
-    [self reportOverlayAlpha:1 animationDuration:0.2f];
-    [_userReportedView viewWithTag:0].alpha = 0;
-}
-
-- (IBAction)blockUserPressed:(UIButton *)sender {
-    NSLog(@"Block User Pressed");
-    [_unBlockButton viewWithTag:0].alpha = 1;
-    _isUserBlocked = YES;
-    [_tableView reloadData];
-}
-
-- (IBAction)unblockButtonPressed:(UIButton *)sender {
-    NSLog(@"Unblock User Pressed");
-    [_unBlockButton viewWithTag:0].alpha = 0;
-    _isUserBlocked = NO;
-    _tableView.scrollEnabled = YES;
-    [_tableView reloadData];
 }
 
 
@@ -325,4 +308,31 @@
     return mask;
 }
 
+#pragma mark - Registering Observers
+
+-(void) setupObservers {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportUserPressed:) name:@"ReportUser" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(blockUserPressed:) name:@"BlockUser" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unblockButtonPressed:) name:@"UnblockUser" object:nil];
+}
+
+#pragma mark - Oberver MEthods
+- (void)blockUserPressed:(NSNotificationCenter *) notification {
+    NSLog(@"Block User Pressed from Observer");
+    _isUserBlocked = YES;
+    [_tableView reloadData];
+}
+
+- (void)unblockButtonPressed:(NSNotificationCenter *) notification {
+    NSLog(@"Unblock User Pressed from Observer");
+    _isUserBlocked = NO;
+    _tableView.scrollEnabled = YES;
+    [_tableView reloadData];
+}
+
+- (void)reportUserPressed:(NSNotificationCenter *) notification {
+    NSLog(@"Report User button pressed from Observer");
+    [self reportOverlayAlpha:1 animationDuration:0.2f];
+    [_userReportedView viewWithTag:0].alpha = 0;
+}
 @end

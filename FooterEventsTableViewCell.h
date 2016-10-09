@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FooterEventsTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *blockButton;
+@property (weak, nonatomic) IBOutlet UIButton *unblockButton;
 
 @end
