@@ -13,6 +13,12 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    
+    /*Setup logic to fake whether its a user own comment or something they can delete*/
+    if (_deleteOrReportButton.tag == 0) {
+        NSLog(@"Report Button");
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
