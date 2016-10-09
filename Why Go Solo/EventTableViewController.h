@@ -13,6 +13,6 @@
 
 @interface EventTableViewController : UITableViewController
 
-
+- (instancetype)initWithStoryboard;
 
 @end

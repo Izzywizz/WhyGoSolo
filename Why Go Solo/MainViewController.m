@@ -8,9 +8,11 @@
 
 #import "MainViewController.h"
 #import "WebService.h"
+#import "Data.h"
 #import "PersistanceManager.h"
+#import "EventTableViewController.h"
 
-@interface MainViewController ()
+@interface MainViewController () <DataDelegate>
 
 @end
 
@@ -25,6 +27,8 @@
 
 -(void)checkForToken
 {
+    [Data sharedInstance].delegate = self;
+      [[WebService sharedInstance]authentication];
     if (![[PersistanceManager sharedInstance]loadLoginDetails])
     {
       //  [[WebService sharedInstance]universities];
@@ -33,6 +37,15 @@
     {
         [[WebService sharedInstance]authentication];
     }
+}
+
+-(void)authenticationSuccessful
+{
+    
+    NSLog(@"AUTH DELEGATE RECEIVED");
+    EventTableViewController *vc = [[EventTableViewController alloc]initWithStoryboard];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -48,6 +61,8 @@
 
 -(void)viewWillDisappear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [Data sharedInstance].delegate = nil;
+
 }
 
 - (IBAction)signInButtonPressed:(UIButton *)sender {

@@ -130,15 +130,18 @@
     
     //cell.selectionStyle = UITableViewCellSelectionStyleNone;
   
+    
+
+    
     if (_selectedIndex == indexPath.row &&  _hasUniBeenSelected == YES)
     {
+        
         cell.accessoryView =  [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check-button-20-20"]];
-
         NSLog(@"SELECTED %i", indexPath.row);
     }
     else
     {
-        cell.accessoryView =  [[UIImageView alloc]initWithImage:[UIImage imageNamed:@""]];
+        cell.accessoryView =  [[UIImageView alloc] initWithImage:[UIImage new]];
     }
     
     

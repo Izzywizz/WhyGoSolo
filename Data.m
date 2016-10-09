@@ -9,6 +9,7 @@
 #import "Data.h"
 #import "University.h"
 #import "Residence.h"
+#import "PersistanceManager.h"
 @interface Data ()
 
 @end
@@ -29,6 +30,13 @@
     return _sharedInstance;
 }
 
+-(void)authenticationSuccessful
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(authenticationSuccessful)])
+    {
+        [self.delegate authenticationSuccessful];
+    }
+}
 
 -(void)createUniversitesArrayFromDict:(NSDictionary *)dict
 {

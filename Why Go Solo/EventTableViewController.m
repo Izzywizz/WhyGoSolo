@@ -29,6 +29,15 @@
 
 NSArray *sectionTitles;
 
+- (instancetype)initWithStoryboard
+{
+    self = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass([self class])];
+    if (self)
+    {
+    }
+    return self;
+}
+
 #pragma mark - UI View Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
