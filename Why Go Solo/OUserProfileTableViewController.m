@@ -46,7 +46,7 @@
     [self reportOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
     [_unBlockButton viewWithTag:0].alpha = 0;
     _unBlockButton.layer.cornerRadius = 3;
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,7 +64,7 @@
 -(void) setupDummyData  {
     //Dummy Data
     _tableData = @{@"My Events" : @[@"Andy Jones", @"Nathan Barnes"]
-                  };
+                   };
     NSSortDescriptor *decending = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:NO];
     NSArray *decendingOrder = [NSArray arrayWithObject:decending];
     _sectionTitles = [[_tableData allKeys] sortedArrayUsingDescriptors:decendingOrder];
@@ -109,17 +109,22 @@
 /** Header View setup*/
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
+    
     return [self headerCellAtIndex:section];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section    {
     
-    return 40;
+    if (section == 0) {
+        return 0;
+    } else  {
+        return 40;
+    }
 }
 
 /** Footer view setup */
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-
+    
     return [self footerCellAtIndex:section];
 }
 
@@ -135,14 +140,14 @@
     if (indexPath.row == 0) {
         return [self otherProfileCellAtIndex:indexPath];
     } else  {
-    return [self eventCellAtIndex:indexPath];
+        return [self eventCellAtIndex:indexPath];
     }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"Bring up maps!: row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
-//    [self performSegueWithIdentifier:@"GoToMap" sender:self];
+    //    [self performSegueWithIdentifier:@"GoToMap" sender:self];
     //Map functionality has not been implemented as of yet.
 }
 
@@ -167,7 +172,7 @@
     if ([sectionTitle  isEqual: @"My Events"]) {
         [cell.filterButton setHidden:YES];
         
-
+        
     }
     cell.MyEventsLabel.text = sectionTitle;
     
@@ -209,7 +214,7 @@
         [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
         _tableView.scrollEnabled = NO;
     }
-
+    
     cell.nameLabel.text = eventName;
     //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
     
@@ -256,15 +261,15 @@
 
 
 - (IBAction)addFriendButton:(UIBarButtonItem *)sender {
-            NSLog(@"Friend LOgic needs to be added");
+    NSLog(@"Friend LOgic needs to be added");
     if (_isFriend) {
         _addFriendButton.image = [UIImage imageNamed:@"check-button-20-20"];
         _isFriend = false;
-                NSLog(@"Friend Added");
+        NSLog(@"Friend Added");
     } else {
         _addFriendButton.image = [UIImage imageNamed:@"add-event-20-20"];
         _isFriend = true;
-                NSLog(@"Friend Removed");
+        NSLog(@"Friend Removed");
     }
 }
 
