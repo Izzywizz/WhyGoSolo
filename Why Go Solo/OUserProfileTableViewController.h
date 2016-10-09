@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIView *userReportedView;
 @property (weak, nonatomic) IBOutlet UIButton *okReportedUserButton;
 @property (weak, nonatomic) IBOutlet UILabel *userHasBeenReportedLabel;
-@property (weak, nonatomic) IBOutlet UIButton *unBlockButton;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addFriendButton;
 

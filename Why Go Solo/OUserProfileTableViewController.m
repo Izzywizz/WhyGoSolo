@@ -34,19 +34,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupDummyData];
+    [self setupObservers];
     [self setupTable];
     [self setupUserReportingName:@"Andy Jones"];
     [self internalViewSetup];
     _isFriend = true;
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(20,0,0,0); //prevents that weird scrolling under the bar thing 
     
     _accomodationLabel.text = @"The Killers";
 }
 
 -(void) viewWillAppear:(BOOL)animated   {
     [self reportOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
-    [_unBlockButton viewWithTag:0].alpha = 0;
-    _unBlockButton.layer.cornerRadius = 3;
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,8 +63,10 @@
 
 -(void) setupDummyData  {
     //Dummy Data
-    _tableData = @{@"My Events" : @[@"Andy Jones", @"Nathan Barnes"]
+    _tableData = @{@"My Events" : @[@"test"],
+                   @"My Events Two" : @[@"Andy Jones", @"Nathan Barnes"]
                    };
+    
     NSSortDescriptor *decending = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:NO];
     NSArray *decendingOrder = [NSArray arrayWithObject:decending];
     _sectionTitles = [[_tableData allKeys] sortedArrayUsingDescriptors:decendingOrder];
@@ -99,18 +101,18 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section    {
-    return 2;
+    
+    return 1;
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return _tableData.count;
+    return 2;
 }
 
 /** Header View setup*/
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-    
-    return [self headerCellAtIndex:section];
+        return [self headerCellAtIndex:section];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section    {
@@ -125,23 +127,37 @@
 /** Footer view setup */
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     
-    return [self footerCellAtIndex:section];
+    if (section == 0) {
+        return nil;
+    } else  {
+        return [self footerCellAtIndex:section];
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section    {
     
     //Forced the Footer to conform to a specific height that is equal to the header space between the cell
-    return 15;
+    if (section == 0) {
+        return 0;
+    } else  {
+        return 94;
+    }
+    
 }
 
 /** Standard cell creation*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath  {
     
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
+        NSLog(@"Section 0");
         return [self otherProfileCellAtIndex:indexPath];
-    } else  {
+    }
+    if (indexPath.section == 1) {
+        NSLog(@"Section 1");
         return [self eventCellAtIndex:indexPath];
     }
+    
+    return [self eventCellAtIndex:indexPath];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
@@ -229,6 +245,12 @@
     [self.tableView registerNib: [UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:resuseID];
     FooterEventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:resuseID];
     
+    if (_isUserBlocked) {
+        cell.blockButton.alpha = 0;
+    } else  {
+        cell.blockButton.alpha = 1;
+    }
+    
     return cell;
 }
 
@@ -236,27 +258,6 @@
 
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (IBAction)reportUserPressed:(UIButton *)sender {
-    NSLog(@"Report User button  pressed");
-    [self reportOverlayAlpha:1 animationDuration:0.2f];
-    [_userReportedView viewWithTag:0].alpha = 0;
-}
-
-- (IBAction)blockUserPressed:(UIButton *)sender {
-    NSLog(@"Block User Pressed");
-    [_unBlockButton viewWithTag:0].alpha = 1;
-    _isUserBlocked = YES;
-    [_tableView reloadData];
-}
-
-- (IBAction)unblockButtonPressed:(UIButton *)sender {
-    NSLog(@"Unblock User Pressed");
-    [_unBlockButton viewWithTag:0].alpha = 0;
-    _isUserBlocked = NO;
-    _tableView.scrollEnabled = YES;
-    [_tableView reloadData];
 }
 
 
@@ -314,4 +315,31 @@
     return mask;
 }
 
+#pragma mark - Registering Observers
+
+-(void) setupObservers {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportUserPressed:) name:@"ReportUser" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(blockUserPressed:) name:@"BlockUser" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unblockButtonPressed:) name:@"UnblockUser" object:nil];
+}
+
+#pragma mark - Oberver MEthods
+- (void)blockUserPressed:(NSNotificationCenter *) notification {
+    NSLog(@"Block User Pressed from Observer");
+    _isUserBlocked = YES;
+    [_tableView reloadData];
+}
+
+- (void)unblockButtonPressed:(NSNotificationCenter *) notification {
+    NSLog(@"Unblock User Pressed from Observer");
+    _isUserBlocked = NO;
+    _tableView.scrollEnabled = YES;
+    [_tableView reloadData];
+}
+
+- (void)reportUserPressed:(NSNotificationCenter *) notification {
+    NSLog(@"Report User button pressed from Observer");
+    [self reportOverlayAlpha:1 animationDuration:0.2f];
+    [_userReportedView viewWithTag:0].alpha = 0;
+}
 @end

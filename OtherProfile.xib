@@ -18,14 +18,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OtherProfileCell" rowHeight="185" id="rfv-gi-CBL" customClass="OtherProfileTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="590" height="185"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OtherProfileCell" rowHeight="185" id="rfv-gi-CBL" customClass="OtherProfileTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="605" height="185"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rfv-gi-CBL" id="4gH-GO-vbU">
-                <rect key="frame" x="0.0" y="0.0" width="590" height="184.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="605" height="184.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9G-4W-9KJ" userLabel="Background View">
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N9G-4W-9KJ" userLabel="Background View">
                         <rect key="frame" x="0.0" y="0.0" width="590" height="185"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="dZR-xa-gc5" userLabel="Profile Image">
@@ -53,8 +53,8 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="P0n-29-sOv"/>
                                         <exclude reference="FeX-6K-2fB"/>
+                                        <exclude reference="P0n-29-sOv"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -68,8 +68,8 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="xR6-Pn-Dfv"/>
                                         <exclude reference="g0R-l1-ZuR"/>
+                                        <exclude reference="xR6-Pn-Dfv"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -83,8 +83,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="ACCOMODATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qe-vW-Ck7">
-                                <rect key="frame" x="8" y="140" width="109" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="ACCOMMODATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qe-vW-Ck7">
+                                <rect key="frame" x="8" y="143" width="121" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="87" id="d2Q-Df-QEw"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="109" id="wlg-Np-vpO"/>
@@ -99,17 +99,17 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Liverpool University" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cku-VO-TX1">
-                                <rect key="frame" x="8" y="104" width="584" height="18"/>
-                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Agnes Jones House" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glq-9h-cJz">
                                 <rect key="frame" x="8" y="157" width="584" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="584" id="P64-5g-OmQ"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Liverpool University" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cku-VO-TX1">
+                                <rect key="frame" x="8" y="105" width="584" height="18"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -153,18 +153,44 @@
                             </mask>
                         </variation>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="yiI-3M-cpq" userLabel="Colour Bar">
+                        <rect key="frame" x="0.0" y="-1" width="600" height="3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="3" id="UhV-Dr-KVn"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="3" id="VyV-fy-5gA"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="VyV-fy-5gA"/>
+                            </mask>
+                        </variation>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="N9G-4W-9KJ" secondAttribute="trailing" id="C6j-UJ-36Z"/>
                     <constraint firstItem="N9G-4W-9KJ" firstAttribute="top" secondItem="4gH-GO-vbU" secondAttribute="top" id="LCP-iu-Sjr"/>
                     <constraint firstAttribute="bottom" secondItem="N9G-4W-9KJ" secondAttribute="bottom" id="Pem-6N-gIm"/>
+                    <constraint firstItem="yiI-3M-cpq" firstAttribute="leading" secondItem="4gH-GO-vbU" secondAttribute="leading" id="TFP-Pl-sDd"/>
+                    <constraint firstItem="yiI-3M-cpq" firstAttribute="leading" secondItem="4gH-GO-vbU" secondAttribute="leadingMargin" constant="-8" id="iY6-wb-EUl"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="yiI-3M-cpq" secondAttribute="trailing" constant="-18" id="mXy-8f-5DY"/>
                     <constraint firstItem="N9G-4W-9KJ" firstAttribute="leading" secondItem="4gH-GO-vbU" secondAttribute="leading" id="sL8-3W-RHO"/>
+                    <constraint firstItem="yiI-3M-cpq" firstAttribute="top" secondItem="4gH-GO-vbU" secondAttribute="topMargin" constant="-9" id="t3R-uu-ONa"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="iY6-wb-EUl"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="488" y="426.5"/>
+            <connections>
+                <outlet property="ProfileAccommodation" destination="glq-9h-cJz" id="fm8-v4-ATV"/>
+                <outlet property="profileUniversityLabel" destination="Cku-VO-TX1" id="xFS-U3-SOh"/>
+            </connections>
+            <point key="canvasLocation" x="495.5" y="426.5"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="profile.png" width="112" height="98"/>
+        <image name="title-bg-375-40" width="376" height="41"/>
     </resources>
 </document>
