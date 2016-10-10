@@ -86,7 +86,6 @@
         NSLog(@"no underlying photo data");
         return NO;
     } else  {
-        NSLog(@"no underlying data");
         return YES;
     }
     

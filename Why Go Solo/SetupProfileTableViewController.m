@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupCustomActions];
     self.lastNameTextField.delegate = self;
     
     [self setupCameraView];
@@ -80,6 +81,29 @@
     
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
+
+-(void)textFieldDidChange: (UITextField *) theTextField {
+    
+    RRRegistration *registration = [[RRRegistration alloc] init];
+    FontSetup *fontSetup = [FontSetup new];
+    
+    if (![registration validateTextField:_firstNameTextField]) {
+        [fontSetup setColourOf:_firstNameContentView toLabel:_firstNameLabel toTextField:_firstNameTextField toMessage:@"Enter your First Name"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_firstNameContentView toLabel:_firstNameLabel toTextField:_firstNameTextField toMessage:@"Enter your First Name"];
+    }
+    
+    if (![registration validateTextField:_lastNameTextField]) {
+        [fontSetup setColourOf:_lastNameContentView toLabel:_lastNameLabel toTextField:_lastNameTextField toMessage:@"Enter your Last Name"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_lastNameContentView toLabel:_lastNameLabel toTextField:_lastNameTextField toMessage:@"Enter your Last Name"];
+    }
+    
+    if ([_dateOfBirthField.text isEqualToString:@""]) {
+        [fontSetup setColourOf:_dateOfBirthContentView toLabel:_dateOfBirthLabel toTextField:_dateOfBirthField toMessage:@"Enter your Date of Birth"];
+    }
+}
+
 
 #pragma mark - PHoto MEthods
 
@@ -153,6 +177,12 @@
     [dateFormatter setDateFormat:@"dd-MM-yyyy"];
     NSString *strDate = [dateFormatter stringFromDate:datePicker.date];
     self.dateOfBirthField.text = strDate;
+    
+    //Change the colour here!!!!!
+    self.dateOfBirthField.textColor = [UIColor blackColor];
+    self.dateOfBirthLabel.textColor = [UIColor blackColor];
+    self.dateOfBirthContentView.backgroundColor = [UIColor blackColor];
+    
 }
 
 #pragma mark - Action Methods
@@ -180,32 +210,26 @@
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Next-> Accommodation");
     RRRegistration *registration = [[RRRegistration alloc] init];
- 
     FontSetup *fontSetup = [FontSetup new];
-    
-    if (![registration validateTextField:_firstNameTextField]) {
-        [fontSetup setColourOf:_firstNameContentView toLabel:_firstNameLabel toTextField:_firstNameTextField toMessage:@"Enter your First Name"];
-    } else  {
-        [fontSetup setColourGrayAndBlack:_firstNameContentView toLabel:_firstNameLabel toTextField:_firstNameTextField toMessage:@"Enter your First Name"];
-    }
-    
-    if (![registration validateTextField:_lastNameTextField]) {
-        [fontSetup setColourOf:_lastNameContentView toLabel:_lastNameLabel toTextField:_lastNameTextField toMessage:@"Enter Your Last Name"];
-    } else  {
-        [fontSetup setColourGrayAndBlack:_lastNameContentView toLabel:_lastNameLabel toTextField:_lastNameTextField toMessage:@"Enter Your Last Name"];
-    }
-    
-    if ([_dateOfBirthField.text isEqualToString:@""]) {
-        [fontSetup setColourOf:_dateOfBirthContentView toLabel:_dateOfBirthLabel toTextField:_dateOfBirthField toMessage:@"Enter your Date of Birth"];
-    } else  {
-        [fontSetup setColourGrayAndBlack:_dateOfBirthContentView toLabel:_dateOfBirthLabel toTextField:_dateOfBirthField toMessage:@"Enter your Date of Birth"];
-    }
-    
     
     CGImageRef cgref = [_profileImageView.image CGImage];
     CIImage *cim = [_profileImageView.image CIImage];
     registration.cgref = cgref;
     registration.cim = cim;
+    
+    if (![registration validateTextField:_firstNameTextField]) {
+        [fontSetup setColourOf:_firstNameContentView toLabel:_firstNameLabel toTextField:_firstNameTextField toMessage:@"Enter your First Name"];
+    }
+    
+    if (![registration validateTextField:_lastNameTextField]) {
+        [fontSetup setColourOf:_lastNameContentView toLabel:_lastNameLabel toTextField:_lastNameTextField toMessage:@"Enter your Last Name"];
+    }
+    
+    if ([_dateOfBirthField.text isEqualToString:@""]) {
+        [fontSetup setColourOf:_dateOfBirthContentView toLabel:_dateOfBirthLabel toTextField:_dateOfBirthField toMessage:@"Enter your Date of Birth"];
+    }
+    
+    
     
     if (![registration validatePhotoImageRef:cgref andImageData:cim]) {
         [self alertSetupandView:@"Photo" andMessage:@"Please take or upload a photo"];
@@ -216,6 +240,21 @@
     }
 
 }
+
+-(void) setupCustomActions  {
+    [_firstNameTextField addTarget:self
+                               action:@selector(textFieldDidChange:)
+                     forControlEvents:UIControlEventEditingChanged];
+    
+    [_lastNameTextField addTarget:self
+                           action:@selector(textFieldDidChange:)
+                 forControlEvents:UIControlEventEditingChanged];
+    
+    [_dateOfBirthField addTarget:self
+                                  action:@selector(textFieldDidChange:)
+                        forControlEvents:UIControlEventEditingChanged];
+}
+
 
 #pragma mark - Alert Method
 -(void) alertSetupandView: (NSString *) WithTitle andMessage: (NSString *) message  {
