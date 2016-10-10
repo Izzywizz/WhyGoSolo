@@ -10,7 +10,7 @@
 @class University;
 @class Residence;
 @class Event;
-
+@class User;
 @protocol DataDelegate <NSObject>
 
 -(void)authenticationSuccessful;
@@ -18,7 +18,8 @@
 -(void)universitiesDownloadedSuccessfully;
 -(void)residencesDownloadedSuccessfully;
 -(void)eventsDownloadedSuccessfully;
-
+-(void)joinedStatusUpdatedSuccessfully;
+-(void)userParsedSuccessfully;
 @end
 
 @interface Data : NSObject
@@ -31,6 +32,7 @@
 
 @property NSString* filterDistance;
 @property NSArray* residenceFilterArray;
+
 
 
 + (Data*)sharedInstance;
@@ -46,11 +48,16 @@
 @property University *selectedUniversity;
 @property Residence *selectedResidence;
 @property Event *selectedEvent;
+@property User *selectedUser;
 //-(void)createUserFromDict:(NSDictionary *)dict;
 
 -(void)createUniversitesArrayFromDict:(NSDictionary *)dict;
 -(void)createResidencesArrayFromDict:(NSDictionary *)dict;
 -(void)createEventsArrayFromDict:(NSDictionary *)dict;
 
+-(void)parseUserFromDict:(NSDictionary*)dict;
+
 -(void)authenticationSuccessful;
+
+-(void)updateJoinedStatusFromDict:(NSDictionary*)dict;
 @end

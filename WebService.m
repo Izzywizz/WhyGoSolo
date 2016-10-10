@@ -12,7 +12,8 @@
 #import "Data.h"
 #import "University.h"
 #import "RRRegistration.h"
-
+#import "Event.h"
+#import "User.h"
 //#define API_BASE_URL @"http://goalmachine.app"
 #define API_BASE_URL @"http://139.59.180.166/api"
 
@@ -229,6 +230,139 @@
     }]; */
 }
 
+-(void)postRequest:(NSString*)requestUrl withParams:(NSDictionary*)params withResponseSelctor:(SEL)responseMethod
+{
+    NSString *fullRequestUrl = [NSString stringWithFormat:@"%@/%@", API_BASE_URL, requestUrl];
+
+    NSLog(@"POST REQUEST DICT = %@", params);
+    NSLog(@"POST REQUEST URL = %@", fullRequestUrl);
+
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager.requestSerializer setValue:[Data sharedInstance].userToken forHTTPHeaderField:@"Token"];
+    
+    [manager POST:fullRequestUrl parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"EVENTS JSON: %@", responseObject);
+        NSLog(@"RESPONSE HEADERS = %@", task.response);
+
+        NSHTTPURLResponse* res = task.response;
+        
+      //  NSLog(@"RESPONSE HEADERS = %@", [res.allHeaderFields ]);
+        
+        NSMutableDictionary *resDict = [[NSMutableDictionary alloc]initWithDictionary:responseObject];
+        [resDict setObject:res.allHeaderFields forKey:@"header"];
+        [[Data sharedInstance]performSelector:responseMethod withObject:resDict];
+        
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+
+}
+
+
+
+-(void)events
+{
+    NSString *requestUrl = @"events";
+    
+    NSError * err;
+    
+    [Data sharedInstance].residenceFilterArray = @[@"3",@"5"];
+    
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:[Data sharedInstance].residenceFilterArray options:0 error:&err];
+    
+    NSString *filterArrayString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    NSDictionary *params = @{
+                             @"user_id":[Data sharedInstance].userID,
+                             @"filter_distance":@"0",
+                             @"residence_id_array":filterArrayString
+                             };
+    
+    
+    NSLog(@"EVENTS REQUEST DICT = %@", params);
+    
+    SEL responseSelector = @selector(createEventsArrayFromDict:);
+    
+    [self postRequest:requestUrl withParams:params withResponseSelctor:responseSelector];
+}
+
+-(void)updateJoinedStatus
+{
+
+    NSString *requestUrl = [NSString stringWithFormat:@"events/%i/update_join_status", [Data sharedInstance].selectedEvent.eventID];
+
+    NSDictionary *params = @{
+                             @"user_id":[Data sharedInstance].userID,
+                              @"event_id":[NSString stringWithFormat:@"%i", [Data sharedInstance].selectedEvent.eventID],
+                            };
+    
+    
+    NSLog(@"Update Joined STATUS REQUEST DICT = %@", params);
+    
+    SEL responseSelector = @selector(updateJoinedStatusFromDict:);
+    
+    [self postRequest:requestUrl withParams:params withResponseSelctor:responseSelector];
+
+}
+
+
+
+
+-(void)user:(int)userID
+{
+    NSString *requestUrl = [NSString stringWithFormat:@"users/%i", userID];
+    
+    NSDictionary *params = @{
+                             @"user_id":[Data sharedInstance].userID
+                             };
+    
+    
+    NSLog(@"Users REQUEST DICT = %@", params);
+    
+    SEL responseSelector = @selector(parseUserFromDict:);
+    
+    [self postRequest:requestUrl withParams:params withResponseSelctor:responseSelector];
+}
+/*-(void)events
+{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/events", API_BASE_URL];
+    
+    NSError * err;
+    
+    [Data sharedInstance].residenceFilterArray = @[@"3",@"5"];
+    
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:[Data sharedInstance].residenceFilterArray options:0 error:&err];
+    
+    NSString *filterArrayString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    NSDictionary *params = @{
+                             @"user_id":[Data sharedInstance].userID,
+                             @"filter_distance":@"0",
+                             @"residence_id_array":filterArrayString
+                             };
+    
+    //    NSMutableArray *paramsArray = [[NSMutableArray alloc]initWithObjects:params, nil];
+    
+    
+    
+    NSLog(@"EVENTS REQUEST DICT = %@", params);
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager.requestSerializer setValue:[Data sharedInstance].userToken forHTTPHeaderField:@"Token"];
+    
+    [manager POST:requestUrl parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"EVENTS JSON: %@", responseObject);
+        
+        [[Data sharedInstance]createEventsArrayFromDict:responseObject];
+        
+        
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+
+}*/
+
 -(void)authentication
 {
     
@@ -257,45 +391,7 @@
 }
 
 
--(void)events
-{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@/events", API_BASE_URL];
-    
-    NSError * err;
-    
-    [Data sharedInstance].residenceFilterArray = @[@"3",@"5"];
-    
-    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:[Data sharedInstance].residenceFilterArray options:0 error:&err];
-    
-    NSString *filterArrayString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-    NSDictionary *params = @{
-                             @"user_id":[Data sharedInstance].userID,
-                             @"filter_distance":@"0",
-                             @"residence_id_array":filterArrayString
-                             };
-    
-//    NSMutableArray *paramsArray = [[NSMutableArray alloc]initWithObjects:params, nil];
-    
 
-    
-    NSLog(@"EVENTS REQUEST DICT = %@", params);
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    [manager.requestSerializer setValue:[Data sharedInstance].userToken forHTTPHeaderField:@"Token"];
-    
-    [manager POST:requestUrl parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"EVENTS JSON: %@", responseObject);
-        
-        [[Data sharedInstance]createEventsArrayFromDict:responseObject];
-       
-        
-        
-        
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-}
 
 /*
 -(void)registerUser

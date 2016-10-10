@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Event;
 
 @interface EventsTableViewCell : UITableViewCell
 
@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *messageImage;
 @property (weak, nonatomic) IBOutlet UIButton *editJoinButton;
 @property (weak, nonatomic) IBOutlet UIButton *joinedButton;
-
+@property Event *event;
 typedef enum {
     EDIT = 1,
     JOIN,

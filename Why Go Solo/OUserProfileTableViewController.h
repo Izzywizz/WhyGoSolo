@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface OtherUserProfileTableViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
 @property (weak, nonatomic) IBOutlet UIView *internalView;

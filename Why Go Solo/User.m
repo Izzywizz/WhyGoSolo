@@ -10,4 +10,19 @@
 
 @implementation User
 
+-(User*)initWithDict:(NSDictionary*)dict
+{
+    if (self)
+    {
+        self.userID = (int)[[dict valueForKey:@"id"]integerValue];
+
+        self.firstName = [dict valueForKey:@"first_name"];
+        self.lastName = [dict valueForKey:@"last_name"];
+        
+        self.userName = [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+    }
+    return self;
+}
+
+
 @end

@@ -10,4 +10,11 @@
 
 @interface User : NSObject
 
+-(User*)initWithDict:(NSDictionary*)dict;
+
+@property int userID;
+@property NSString* firstName;
+@property NSString* lastName;
+@property NSString* userName;
+@property NSMutableArray *eventsArray;
 @end

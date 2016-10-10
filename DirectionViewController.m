@@ -28,6 +28,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated {
     self.mapView.delegate = nil;
+    self.mapView = nil;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -10,7 +10,8 @@
 #import "University.h"
 #import "Residence.h"
 #import "PersistanceManager.h"
-#import "Event.h";
+#import "Event.h"
+#import "User.h"
 @interface Data ()
 
 @end
@@ -89,6 +90,7 @@
 
 -(void)createEventsArrayFromDict:(NSDictionary *)dict
 {
+    NSLog(@"EV DICT = %@", dict);
     _eventsArray = [NSMutableArray new];
     _myEventsArray = [NSMutableArray new];
     
@@ -123,4 +125,31 @@
         [self.delegate eventsDownloadedSuccessfully];
     }
 }
+
+-(void)updateJoinedStatusFromDict:(NSDictionary*)dict
+{
+    NSLog(@"UPDATE JOINED DATA DICT: %@", dict);
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(joinedStatusUpdatedSuccessfully)])
+    {
+        [self.delegate joinedStatusUpdatedSuccessfully];
+    }
+}
+
+-(void)parseUserFromDict:(NSDictionary*)dict;
+{
+    NSLog(@"USER DICT = %@", dict);
+    
+    [Data sharedInstance].selectedUser = [[User alloc]initWithDict:dict];
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(userParsedSuccessfully)])
+    {
+        [self.delegate userParsedSuccessfully];
+    }
+
+
+}
+
+
+
 @end

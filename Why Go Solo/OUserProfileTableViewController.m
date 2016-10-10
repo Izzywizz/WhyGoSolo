@@ -11,9 +11,11 @@
 #import "FooterEventsTableViewCell.h"
 #import "HeaderEventsTableViewCell.h"
 #import "OtherProfileTableViewCell.h"
-
-
-@interface OtherUserProfileTableViewController () <UITableViewDataSource, UITableViewDelegate>
+#import "WebService.h"
+#import "Data.h"
+#import "User.h"
+#import "Event.h"
+@interface OtherUserProfileTableViewController () <UITableViewDataSource, UITableViewDelegate, DataDelegate>
 @property NSDictionary *tableData;
 @property NSArray *sectionTitles;
 @property NSArray *sectionData;
@@ -46,14 +48,31 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated   {
+    [Data sharedInstance].delegate = self;
     [self reportOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
+    
+    [[WebService sharedInstance]user:[Data sharedInstance].selectedEvent.userID];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+-(void)userParsedSuccessfully
+{
+    NSLog(@"USER PARSED SUCCESSFULLLY!");
+}
+
+
+-(void)handleUpdates
+{
+    
+}
 #pragma mark - Helper Functions
 
 -(void) internalViewSetup   {

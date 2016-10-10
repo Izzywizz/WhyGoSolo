@@ -34,5 +34,7 @@ typedef NS_ENUM(NSInteger, apiRequests) {
 -(void)authentication;
 
 -(void)events;
+-(void)updateJoinedStatus;
+-(void)user:(int)userID;
 
 @end

@@ -19,7 +19,7 @@
 #import "WebService.h"
 #import "Event.h"
 #import "Data.h"
-
+#import "User.h"
 @interface EventTableViewController () <DataDelegate>
 
 @property (nonatomic, strong) MapViewController *mapController;
@@ -28,6 +28,9 @@
 
 @property NSArray *myEventsDataArray;
 @property NSArray *dataArray;
+
+
+@property Event *reusableEvent;
 @end
 
 @implementation EventTableViewController
@@ -107,6 +110,9 @@ NSArray *sectionTitles;
 
 - (void)profileFound:(NSNotification *) notification {
     if ([[notification name] isEqualToString:@"Profile Found"]) {
+        
+        [Data sharedInstance].selectedEvent = notification.object;
+        
         [self moveToOtherUserProfile];
     }
 }
@@ -126,6 +132,9 @@ NSArray *sectionTitles;
 
 -(void)joinedButton:(NSNotification *) notification {
     if ([[notification name] isEqualToString:@"Joined"]) {
+        NSLog(@"NOTIFICATION DATA = %@", notification);
+        [Data sharedInstance].selectedEvent = notification.object;
+        [[WebService sharedInstance]updateJoinedStatus];
         NSLog(@"Joined logic needs to be added here similar to collection cell");
     }
 }
@@ -136,6 +145,14 @@ NSArray *sectionTitles;
     }
 }
 
+-(void)joinedStatusUpdatedSuccessfully
+{
+    [[WebService sharedInstance]events];
+    
+    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+
+    NSLog(@"DATAT RELOAD");
+}
 
 
 -(void) setupObservers    {
@@ -327,53 +344,52 @@ NSArray *sectionTitles;
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     EventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
-    Event *e = [Event new];
+    if (!_reusableEvent)
+    {
+        _reusableEvent = [Event new];
+    }
     
     if (self.tableView.numberOfSections == 2 && indexPath.section ==  0)
     {
-        e = [[Data sharedInstance].myEventsArray objectAtIndex:indexPath.row];
-        if (e.userID != (int)[[Data sharedInstance].userID integerValue])
+        _reusableEvent = [[Data sharedInstance].myEventsArray objectAtIndex:indexPath.row];
+       
+        if (_reusableEvent.userID != (int)[[Data sharedInstance].userID integerValue])
         {
             [cell viewWithTag:EDIT].alpha = 0;
             [cell viewWithTag:JOIN].alpha = 0;
+            [cell viewWithTag:JOINED].alpha = 1;
+        }
+        else
+        {
+            [cell viewWithTag:EDIT].alpha = 1;
+            [cell viewWithTag:JOIN].alpha = 0;
+            [cell viewWithTag:JOINED].alpha = 0;
         }
     }
     else
     {
-        e = [[Data sharedInstance].eventsArray objectAtIndex:indexPath.row];
+        _reusableEvent = [[Data sharedInstance].eventsArray objectAtIndex:indexPath.row];
         [cell viewWithTag:EDIT].alpha = 0;
         [cell viewWithTag:JOIN].alpha = 1;
-
-        
+        [cell viewWithTag:JOINED].alpha = 0;
     }
     
-    //  cell.eventAddressLabel.text = @"14 Paradise Street, Liverpool, Merseyside, L1 8JF";
-    cell.timeLabel.hidden = YES;
-    cell.nameLabel.text = e.userName;
-    cell.eventAddressLabel.text = e.address;
-    cell.eventDescriptionText.text = e.eventDescription;
-    cell.eventMessageCount.text = e.totalComments;
-    cell.eventInviteeCount.text = e.totalAttending;
-    cell.eventEmoticonLabel.text = e.emoji;
-    //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
-    
-    return cell;
-    
-    //Setup cell using data pull down from the server, this is using dummy data
-//    NSString *sectionTitle = [sectionTitles objectAtIndex:indexPath.section];
-//    NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
-//    NSString *eventName = [sectionEvents objectAtIndex:indexPath.row];
-    
-    //Basic logic to ensure that the correct join/ edit are displayed for events
-/*    if ([sectionTitle isEqualToString:@"My Events"]) {
-        [cell viewWithTag:JOIN].alpha = 0;
-    } else  {
-        [cell viewWithTag:EDIT].alpha = 0; // Edit is hidden
-    }
- */
-
+    return [self configureCell:cell withEvent:_reusableEvent];
 }
 
+-(EventsTableViewCell*)configureCell:(EventsTableViewCell*)cell withEvent:(Event*)event
+{
+    cell.event = event;
+    cell.timeLabel.hidden = YES;
+    cell.nameLabel.text = event.userName;
+    cell.eventAddressLabel.text = event.address;
+    cell.eventDescriptionText.text = event.eventDescription;
+    cell.eventMessageCount.text = event.totalComments;
+    cell.eventInviteeCount.text = event.totalAttending;
+    cell.eventEmoticonLabel.text = event.emoji;
+
+    return cell;
+}
 
 #pragma mark - Actions
 - (IBAction)peopleButtonPressed:(UIBarButtonItem *)sender {
