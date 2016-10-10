@@ -30,15 +30,18 @@
     [self setNavigationButtonFontAndSize];
     self.hasTermsAgreed = false;
     [self obtainAndSetEmailSuffix];
+    [self setupCustomActions];
+    [self.tableView setSeparatorColor:[UIColor grayColor]];
     
     //This prevents the weird the selection animation occuring when the user selects a cell
     [self.tableView setAllowsSelection:NO];
-    self.emailAddressTextField.delegate = self;
-    
+//    self.emailAddressTextField.delegate = self;
     
     NSLog(@"Setup Login Details");
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
+
+
 
 -(void)viewDidDisappear:(BOOL)animated    {
     self.emailAddressTextField.delegate = nil;
@@ -58,7 +61,45 @@
                                    toPosition:textField.beginningOfDocument];
 }
 
+/** vldiation method to make sure an email address has been entered*/
+-(void)textFieldDidChange: (UITextField *) theTextField {
+    RRRegistration *registration = [[RRRegistration alloc] init];
+    FontSetup *fontSetup = [FontSetup new];
+    
+    if (![registration validateTextField:_emailAddressTextField]) {
+        [fontSetup setColourOf:_emailContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_emailContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
+    }
+    
+    if ([_passwordTextField.text isEqualToString: @""]) {
+        [fontSetup setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];
+    }
+    
+    if ([_confirmPasswordTextField.text isEqualToString: @""]) {
+        [fontSetup setColourOf:_confirmPasswordContentView toLabel:_confirmPasswordLabel toTextField:_confirmPasswordTextField toMessage:@"Enter your Password"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_confirmPasswordContentView toLabel:_confirmPasswordLabel toTextField:_confirmPasswordTextField toMessage:@"Enter your Password"];
+    }
+}
+
 #pragma mark - Helper Functions
+
+-(void) setupCustomActions  {
+    [_emailAddressTextField addTarget:self
+                               action:@selector(textFieldDidChange:)
+                     forControlEvents:UIControlEventEditingChanged];
+    
+    [_passwordTextField addTarget:self
+                           action:@selector(textFieldDidChange:)
+                 forControlEvents:UIControlEventEditingChanged];
+    
+    [_confirmPasswordTextField addTarget:self
+                                  action:@selector(textFieldDidChange:)
+                        forControlEvents:UIControlEventEditingChanged];
+}
 
 -(void)  obtainAndSetEmailSuffix  {
     _university = [[University alloc] init];
@@ -114,18 +155,12 @@
     registration.password = _passwordTextField.text;
     registration.confirmPassword = _confirmPasswordTextField.text;
     FontSetup *fontSetup = [FontSetup new];
-
-    
-    if (![registration validateTextField:_emailAddressTextField]) {
-//        [self setColourOf:_emailContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
-        [fontSetup setColourOf:_emailContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
-    }
     
     if(![registration validateTextField:_passwordTextField])    {
-        [fontSetup setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your password"];
+        [fontSetup setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];
     }
     
-    if(![registration validateTextField:_passwordTextField])    {
+    if(![registration validateTextField:_confirmPasswordTextField])    {
         [fontSetup setColourOf:_confirmPasswordContentView toLabel:_confirmPasswordLabel toTextField:_confirmPasswordTextField toMessage:@"Confirm Your Password"];
     }
 
@@ -202,5 +237,6 @@
     [alertVC addAction:dismiss];
     [self presentViewController:alertVC animated:YES completion:nil];
 }
+
 
 @end

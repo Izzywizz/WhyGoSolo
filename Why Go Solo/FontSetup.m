@@ -31,4 +31,14 @@
     textfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:message attributes:@{NSForegroundColorAttributeName: colour}];
 }
 
+-(void) setColourGrayAndBlack: (UIView *)view toLabel: (UILabel *)label toTextField: (UITextField *)textfield toMessage: (NSString *)message  {
+    UIColor *colourGray = [UIColor grayColor];
+    UIColor *colour = [UIColor blackColor];
+    
+    view.backgroundColor = colourGray;
+    label.textColor = colour;
+    textfield.textColor = colour;
+    textfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:message attributes:@{NSForegroundColorAttributeName: colourGray}];
+}
+
 @end

@@ -180,25 +180,51 @@
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Next-> Accommodation");
     RRRegistration *registration = [[RRRegistration alloc] init];
+ 
     FontSetup *fontSetup = [FontSetup new];
     
     if (![registration validateTextField:_firstNameTextField]) {
-        [fontSetup setColourOf:_firstNameContentView toLabel:_firstNameLabel toTextField:_firstNameTextField toMessage:@"Enter your first name"];
+        [fontSetup setColourOf:_firstNameContentView toLabel:_firstNameLabel toTextField:_firstNameTextField toMessage:@"Enter your First Name"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_firstNameContentView toLabel:_firstNameLabel toTextField:_firstNameTextField toMessage:@"Enter your First Name"];
     }
     
     if (![registration validateTextField:_lastNameTextField]) {
-        [fontSetup setColourOf:_lastNameContentView toLabel:_lastNameLabel toTextField:_lastNameTextField toMessage:@"Enter your last name"];
+        [fontSetup setColourOf:_lastNameContentView toLabel:_lastNameLabel toTextField:_lastNameTextField toMessage:@"Enter Your Last Name"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_lastNameContentView toLabel:_lastNameLabel toTextField:_lastNameTextField toMessage:@"Enter Your Last Name"];
     }
     
     if ([_dateOfBirthField.text isEqualToString:@""]) {
-        [fontSetup setColourOf:_dateOfBirthContentView toLabel:_dateOfBirthLabel toTextField:_dateOfBirthField toMessage:@"Enter your DoB"];
+        [fontSetup setColourOf:_dateOfBirthContentView toLabel:_dateOfBirthLabel toTextField:_dateOfBirthField toMessage:@"Enter your Date of Birth"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_dateOfBirthContentView toLabel:_dateOfBirthLabel toTextField:_dateOfBirthField toMessage:@"Enter your Date of Birth"];
     }
     
+    
+    CGImageRef cgref = [_profileImageView.image CGImage];
+    CIImage *cim = [_profileImageView.image CIImage];
+    registration.cgref = cgref;
+    registration.cim = cim;
+    
+    if (![registration validatePhotoImageRef:cgref andImageData:cim]) {
+        [self alertSetupandView:@"Photo" andMessage:@"Please take or upload a photo"];
+    }
     
     if ([registration validateTextField:_firstNameTextField] && [registration validateTextField:_lastNameTextField] && ![_dateOfBirthField.text isEqualToString:@""]) {
         [self performSegueWithIdentifier:@"GoToAccommodation" sender:self];
     }
 
+}
+
+#pragma mark - Alert Method
+-(void) alertSetupandView: (NSString *) WithTitle andMessage: (NSString *) message  {
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:WithTitle message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Dismiss");
+    }];
+    [alertVC addAction:dismiss];
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 @end

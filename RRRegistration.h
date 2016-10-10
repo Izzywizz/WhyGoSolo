@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, textfields) {
     FIRST_NAME = 4,
     LAST_NAME = 5,
     DOB = 6,
- 
+    PHOTO = 7,
 };
 
 @interface RRRegistration : NSObject
@@ -40,9 +40,11 @@ typedef NS_ENUM(NSInteger, textfields) {
 @property double latitude;
 
 @property UIImage *profilePhoto;
-
+@property CGImageRef cgref;
+@property CIImage *cim;
 
 
 -(BOOL)validateTextField:(UITextField *)textField;
+-(BOOL) validatePhotoImageRef: (CGImageRef)cgref andImageData:(CIImage *) cim;
 
 @end

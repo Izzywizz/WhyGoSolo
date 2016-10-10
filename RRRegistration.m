@@ -59,6 +59,9 @@
             return [self validatePassword];
             break;
             
+        case PHOTO:
+            return [self validatePhotoImageRef:_cgref andImageData:_cim];
+            break;
         default:
             break;
     }
@@ -76,6 +79,18 @@
     return NO;
 }
 
+-(BOOL) validatePhotoImageRef: (CGImageRef)cgref andImageData:(CIImage *) cim   {
+    
+    if (cim == nil && cgref == NULL)
+    {
+        NSLog(@"no underlying photo data");
+        return NO;
+    } else  {
+        NSLog(@"no underlying data");
+        return YES;
+    }
+    
+}
 
 
 -(BOOL)validateEmail:(NSString*)email

@@ -354,8 +354,12 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Lew-K7-0wh" id="MNn-Og-gdF"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="N5v-4W-VUf" firstAttribute="top" secondItem="VPh-QE-uz5" secondAttribute="top" constant="1" id="Dbw-iJ-gL8"/>
                                                 <constraint firstItem="W9y-mT-iij" firstAttribute="top" secondItem="n3j-GS-Ngv" secondAttribute="bottom" constant="1" id="Uhw-3K-Ue2"/>
@@ -405,8 +409,12 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Lew-K7-0wh" id="bAI-7N-S3c"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="sCa-bR-EhP" firstAttribute="leading" secondItem="25w-bB-Srw" secondAttribute="leading" constant="20" id="BEb-aU-jAO"/>
                                                 <constraint firstAttribute="bottom" secondItem="6mK-LB-lj4" secondAttribute="bottom" constant="0.5" id="BLt-7j-GIO"/>
@@ -415,7 +423,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="I42-b3-9Td" secondAttribute="trailing" id="SOW-Jo-0KY"/>
                                                 <constraint firstItem="I42-b3-9Td" firstAttribute="top" secondItem="sCa-bR-EhP" secondAttribute="bottom" constant="1" id="dpm-2g-Xi0"/>
                                                 <constraint firstItem="sCa-bR-EhP" firstAttribute="top" secondItem="25w-bB-Srw" secondAttribute="topMargin" constant="6" id="eTf-WN-ZiA"/>
-                                                <constraint firstItem="6mK-LB-lj4" firstAttribute="top" secondItem="25w-bB-Srw" secondAttribute="top" constant="1" id="ehY-HV-dgm"/>
+                                                <constraint firstItem="6mK-LB-lj4" firstAttribute="top" secondItem="25w-bB-Srw" secondAttribute="top" constant="0.5" id="ehY-HV-dgm"/>
                                                 <constraint firstAttribute="topMargin" secondItem="sCa-bR-EhP" secondAttribute="top" constant="-6" id="hTx-6F-h9O"/>
                                                 <constraint firstAttribute="trailing" secondItem="6mK-LB-lj4" secondAttribute="trailing" id="i11-p9-vpd"/>
                                                 <constraint firstItem="I42-b3-9Td" firstAttribute="top" secondItem="sCa-bR-EhP" secondAttribute="bottom" constant="2" id="w0P-9a-u9J"/>
@@ -456,13 +464,17 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Lew-K7-0wh" id="IFb-nx-ch9"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="sR1-Hv-SkJ" firstAttribute="leading" secondItem="3DO-St-PNA" secondAttribute="leading" constant="20" id="94y-WU-XhD"/>
                                                 <constraint firstAttribute="trailing" secondItem="VMx-7E-XE1" secondAttribute="trailing" id="AQl-Ur-1Ov"/>
                                                 <constraint firstItem="VMx-7E-XE1" firstAttribute="leading" secondItem="3DO-St-PNA" secondAttribute="leading" id="GcZ-gi-Xt6"/>
-                                                <constraint firstItem="VMx-7E-XE1" firstAttribute="top" secondItem="3DO-St-PNA" secondAttribute="top" constant="1" id="Ir8-eA-fNh"/>
+                                                <constraint firstItem="VMx-7E-XE1" firstAttribute="top" secondItem="3DO-St-PNA" secondAttribute="top" constant="0.5" id="Ir8-eA-fNh"/>
                                                 <constraint firstItem="RQw-sn-R4y" firstAttribute="leading" secondItem="3DO-St-PNA" secondAttribute="leading" constant="20" id="Nds-Fi-ArC"/>
                                                 <constraint firstItem="RQw-sn-R4y" firstAttribute="top" secondItem="sR1-Hv-SkJ" secondAttribute="bottom" constant="2" id="T93-J8-eVx"/>
                                                 <constraint firstItem="RQw-sn-R4y" firstAttribute="top" secondItem="sR1-Hv-SkJ" secondAttribute="bottom" constant="1" id="b1k-Ey-aPZ"/>
@@ -5401,7 +5413,7 @@ Cg
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GYT-wI-tjz">
                                                     <rect key="frame" x="240" y="25" width="120" height="120"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-pic-icon-40-40" translatesAutoresizingMaskIntoConstraints="NO" id="hwn-Bg-UUu" userLabel="Photo Image">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload-pic-icon-40-40" translatesAutoresizingMaskIntoConstraints="NO" id="hwn-Bg-UUu" userLabel="Photo Icon">
                                                             <rect key="frame" x="40" y="40" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="J7n-QJ-YPC"/>
