@@ -39,7 +39,7 @@
             _firstName = text;
             return [self validateTextFieldText:textField];
             break;
-
+            
         case LAST_NAME:
             _lastName = text;
             return [self validateTextFieldText:textField];
@@ -53,7 +53,7 @@
             _password = text;
             return [self validatePassword];
             break;
-
+            
         case CONFRIM_PASSWORD:
             _confirmPassword = text;
             return [self validatePassword];

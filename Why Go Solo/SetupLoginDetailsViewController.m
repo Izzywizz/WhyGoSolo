@@ -35,6 +35,7 @@
     [self.tableView setAllowsSelection:NO];
     self.emailAddressTextField.delegate = self;
     
+    
     NSLog(@"Setup Login Details");
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
@@ -101,7 +102,6 @@
     label.textColor = colour;
     textfield.textColor = colour;
     textfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:message attributes:@{NSForegroundColorAttributeName: colour}];
-
 }
 
 #pragma mark - Actions Methods
@@ -113,22 +113,29 @@
     RRRegistration *registration = [[RRRegistration alloc] init];
     registration.password = _passwordTextField.text;
     registration.confirmPassword = _confirmPasswordTextField.text;
+    FontSetup *fontSetup = [FontSetup new];
+
     
     if (![registration validateTextField:_emailAddressTextField]) {
-        [self setColourOf:_emailContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
+//        [self setColourOf:_emailContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
+        [fontSetup setColourOf:_emailContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
     }
     
     if(![registration validateTextField:_passwordTextField])    {
-        [self setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your password"];
+        [fontSetup setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your password"];
     }
     
     if(![registration validateTextField:_passwordTextField])    {
-        [self setColourOf:_confirmPasswordContentView toLabel:_confirmPasswordLabel toTextField:_confirmPasswordTextField toMessage:@"Confirm Your Password"];
+        [fontSetup setColourOf:_confirmPasswordContentView toLabel:_confirmPasswordLabel toTextField:_confirmPasswordTextField toMessage:@"Confirm Your Password"];
     }
 
     if (_hasTermsAgreed) {
         if ([registration validateTextField:_emailAddressTextField] && [registration validateTextField:_passwordTextField] && [registration validateTextField:_confirmPasswordTextField]) {
             [self performSegueWithIdentifier:@"GoToProfile" sender:self];
+            
+        } else if (![registration validateTextField:_emailAddressTextField])    {
+            [fontSetup setColourOf:_emailContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
+            
         } else if (![registration validateTextField:_passwordTextField] || [registration validateTextField:_confirmPasswordTextField]) {
             [self alertSetupandView:@"Password" andMessage:@"Your passwords do not match"];
         }

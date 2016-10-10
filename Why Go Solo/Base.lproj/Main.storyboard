@@ -5459,6 +5459,10 @@ Cg
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TkB-YK-FgG" userLabel="First Name View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="55.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2Y-b2-Dgk">
                                                     <rect key="frame" x="20" y="8" width="572" height="16"/>
                                                     <constraints>
@@ -5474,7 +5478,7 @@ Cg
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eHg-xc-jld" userLabel="First Name Input">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eHg-xc-jld" userLabel="First Name Input">
                                                     <rect key="frame" x="20" y="25" width="572" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="572" id="QAI-mj-sub"/>
@@ -5495,18 +5499,30 @@ Cg
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="TkB-YK-FgG" firstAttribute="top" secondItem="H8n-al-fw6" secondAttribute="topMargin" constant="-8" id="5Td-Ut-rQV"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TkB-YK-FgG" secondAttribute="trailing" constant="-8" id="84T-xD-vKr"/>
+                                                <constraint firstAttribute="trailing" secondItem="TkB-YK-FgG" secondAttribute="trailing" id="84h-ft-MBu"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="c2Y-b2-Dgk" secondAttribute="trailing" id="EGK-i1-IHv"/>
                                                 <constraint firstItem="c2Y-b2-Dgk" firstAttribute="top" secondItem="H8n-al-fw6" secondAttribute="top" constant="8" id="Ja8-2O-C9t"/>
                                                 <constraint firstItem="eHg-xc-jld" firstAttribute="top" secondItem="c2Y-b2-Dgk" secondAttribute="bottom" constant="1" id="Jb6-Tf-SCt"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="TkB-YK-FgG" secondAttribute="bottom" constant="-8" id="KXP-dc-sYP"/>
                                                 <constraint firstItem="c2Y-b2-Dgk" firstAttribute="leading" secondItem="H8n-al-fw6" secondAttribute="leading" constant="20" id="Rhz-9b-Ku3"/>
                                                 <constraint firstItem="eHg-xc-jld" firstAttribute="top" secondItem="c2Y-b2-Dgk" secondAttribute="bottom" constant="-2" id="bcW-5p-cGO"/>
+                                                <constraint firstItem="TkB-YK-FgG" firstAttribute="leading" secondItem="H8n-al-fw6" secondAttribute="leadingMargin" constant="-8" id="dbH-pM-d60"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="eHg-xc-jld" secondAttribute="trailing" id="f3g-mA-dnH"/>
                                                 <constraint firstItem="eHg-xc-jld" firstAttribute="leading" secondItem="c2Y-b2-Dgk" secondAttribute="leading" id="gq3-Tg-Tli"/>
                                                 <constraint firstItem="eHg-xc-jld" firstAttribute="leading" secondItem="c2Y-b2-Dgk" secondAttribute="leading" id="gzD-QR-fmH"/>
+                                                <constraint firstItem="TkB-YK-FgG" firstAttribute="leading" secondItem="H8n-al-fw6" secondAttribute="leading" id="q42-tP-d3R"/>
+                                                <constraint firstAttribute="bottom" secondItem="TkB-YK-FgG" secondAttribute="bottom" constant="0.5" id="s3o-Nd-tHS"/>
                                                 <constraint firstItem="eHg-xc-jld" firstAttribute="top" secondItem="c2Y-b2-Dgk" secondAttribute="bottom" constant="-2" id="v1M-ra-qcd"/>
+                                                <constraint firstItem="TkB-YK-FgG" firstAttribute="top" secondItem="H8n-al-fw6" secondAttribute="top" constant="1" id="yQE-xa-Vx8"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="5Td-Ut-rQV"/>
+                                                    <exclude reference="84T-xD-vKr"/>
+                                                    <exclude reference="KXP-dc-sYP"/>
+                                                    <exclude reference="dbH-pM-d60"/>
                                                     <exclude reference="EGK-i1-IHv"/>
                                                     <exclude reference="bcW-5p-cGO"/>
                                                     <exclude reference="f3g-mA-dnH"/>
@@ -5527,10 +5543,14 @@ Cg
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="pKW-og-ZDH" userLabel="Last Name">
                                         <rect key="frame" x="0.0" y="283" width="600" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pKW-og-ZDH" id="gSE-IN-Xzr">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pKW-og-ZDH" id="gSE-IN-Xzr" userLabel="LastName Content View">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2K-9M-265" userLabel="Last Name View">
+                                                    <rect key="frame" x="0.0" y="0.5" width="600" height="55.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeh-Al-E1B">
                                                     <rect key="frame" x="20" y="8" width="572" height="16"/>
                                                     <constraints>
@@ -5546,7 +5566,7 @@ Cg
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mSA-N2-hZf" userLabel="Last Name Input">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mSA-N2-hZf" userLabel="Last Name Input">
                                                     <rect key="frame" x="20" y="25" width="572" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="R8S-U5-cs7"/>
@@ -5568,14 +5588,18 @@ Cg
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="K2K-9M-265" secondAttribute="trailing" id="5Ld-1e-QFC"/>
                                                 <constraint firstItem="mSA-N2-hZf" firstAttribute="top" secondItem="aeh-Al-E1B" secondAttribute="bottom" constant="-2" id="BC5-if-ixN"/>
                                                 <constraint firstItem="mSA-N2-hZf" firstAttribute="top" secondItem="aeh-Al-E1B" secondAttribute="bottom" constant="1" id="Ma2-ii-T0t"/>
                                                 <constraint firstItem="aeh-Al-E1B" firstAttribute="leading" secondItem="gSE-IN-Xzr" secondAttribute="leading" constant="20" id="MuG-V9-WwG"/>
+                                                <constraint firstAttribute="bottom" secondItem="K2K-9M-265" secondAttribute="bottom" constant="0.5" id="NqS-3s-Fod"/>
+                                                <constraint firstItem="K2K-9M-265" firstAttribute="top" secondItem="gSE-IN-Xzr" secondAttribute="top" constant="0.5" id="Q15-Dt-x4t"/>
                                                 <constraint firstItem="mSA-N2-hZf" firstAttribute="leading" secondItem="aeh-Al-E1B" secondAttribute="leading" id="UIs-sE-1tq"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="aeh-Al-E1B" secondAttribute="trailing" id="Y4W-Jb-WE9"/>
                                                 <constraint firstItem="mSA-N2-hZf" firstAttribute="top" secondItem="aeh-Al-E1B" secondAttribute="bottom" constant="-2" id="cRB-TJ-SbF"/>
                                                 <constraint firstItem="aeh-Al-E1B" firstAttribute="top" secondItem="gSE-IN-Xzr" secondAttribute="top" constant="8" id="cdF-Zh-xb4"/>
                                                 <constraint firstItem="mSA-N2-hZf" firstAttribute="leading" secondItem="aeh-Al-E1B" secondAttribute="leading" id="oid-7Q-OwF"/>
+                                                <constraint firstItem="K2K-9M-265" firstAttribute="leading" secondItem="gSE-IN-Xzr" secondAttribute="leading" id="sK0-K7-KOU"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mSA-N2-hZf" secondAttribute="trailing" id="yVU-Y0-bz7"/>
                                             </constraints>
                                             <variation key="default">
@@ -5600,10 +5624,14 @@ Cg
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="jnp-8U-8mm" userLabel="Date of Birth Cell">
                                         <rect key="frame" x="0.0" y="339" width="600" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jnp-8U-8mm" id="82w-bK-eJs">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jnp-8U-8mm" id="82w-bK-eJs" userLabel="DoB Content View">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iMi-vv-1HN" userLabel="DoB View">
+                                                    <rect key="frame" x="0.0" y="0.5" width="600" height="55.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE OF BIRTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRA-2w-NAB">
                                                     <rect key="frame" x="20" y="8" width="572" height="16"/>
                                                     <constraints>
@@ -5619,7 +5647,7 @@ Cg
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select your Date of Birth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hxr-AN-PQ5" userLabel="DoB input">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select your Date of Birth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hxr-AN-PQ5" userLabel="DoB input">
                                                     <rect key="frame" x="20" y="25" width="572" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="572" id="Lp7-2g-fHM"/>
@@ -5641,12 +5669,16 @@ Cg
                                             <constraints>
                                                 <constraint firstItem="Hxr-AN-PQ5" firstAttribute="leading" secondItem="vRA-2w-NAB" secondAttribute="leading" id="0ht-z5-e9b"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="vRA-2w-NAB" secondAttribute="trailing" id="84g-lR-HuZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="iMi-vv-1HN" secondAttribute="bottom" constant="0.5" id="8Wg-Eh-8mV"/>
                                                 <constraint firstItem="Hxr-AN-PQ5" firstAttribute="top" secondItem="vRA-2w-NAB" secondAttribute="bottom" constant="-2" id="NId-dp-CPH"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Hxr-AN-PQ5" secondAttribute="trailing" id="NN2-07-eWt"/>
+                                                <constraint firstAttribute="trailing" secondItem="iMi-vv-1HN" secondAttribute="trailing" id="R8x-Il-88P"/>
                                                 <constraint firstItem="vRA-2w-NAB" firstAttribute="top" secondItem="82w-bK-eJs" secondAttribute="top" constant="8" id="Uku-BQ-qxQ"/>
                                                 <constraint firstItem="Hxr-AN-PQ5" firstAttribute="leading" secondItem="vRA-2w-NAB" secondAttribute="leading" id="Ykr-me-Sov"/>
+                                                <constraint firstItem="iMi-vv-1HN" firstAttribute="leading" secondItem="82w-bK-eJs" secondAttribute="leading" id="ZHx-Kh-dj9"/>
                                                 <constraint firstItem="Hxr-AN-PQ5" firstAttribute="top" secondItem="vRA-2w-NAB" secondAttribute="bottom" constant="1" id="mca-8V-scb"/>
                                                 <constraint firstItem="Hxr-AN-PQ5" firstAttribute="top" secondItem="vRA-2w-NAB" secondAttribute="bottom" constant="-2" id="mlZ-3f-jd4"/>
+                                                <constraint firstItem="iMi-vv-1HN" firstAttribute="top" secondItem="82w-bK-eJs" secondAttribute="top" constant="0.5" id="nym-Yi-Laf"/>
                                                 <constraint firstItem="vRA-2w-NAB" firstAttribute="leading" secondItem="82w-bK-eJs" secondAttribute="leading" constant="20" id="vGj-e5-L3J"/>
                                             </constraints>
                                             <variation key="default">
@@ -5687,22 +5719,28 @@ Cg
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="nextButtonPressed:" destination="tv0-iu-svJ" id="X3I-nz-UAX"/>
-                                <segue destination="Z2e-vn-lVb" kind="show" id="Hk9-Pd-YXQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateOfBirthContentView" destination="82w-bK-eJs" id="jkh-qO-elB"/>
                         <outlet property="dateOfBirthField" destination="Hxr-AN-PQ5" id="plj-g1-OAp"/>
+                        <outlet property="dateOfBirthLabel" destination="vRA-2w-NAB" id="5Ga-a5-AKD"/>
+                        <outlet property="firstNameContentView" destination="H8n-al-fw6" id="b2D-kW-MSo"/>
+                        <outlet property="firstNameLabel" destination="c2Y-b2-Dgk" id="WsY-b4-6Jn"/>
                         <outlet property="firstNameTextField" destination="eHg-xc-jld" id="ohL-h7-Azl"/>
+                        <outlet property="lastNameContentView" destination="gSE-IN-Xzr" id="JQu-Pz-eg1"/>
+                        <outlet property="lastNameLabel" destination="aeh-Al-E1B" id="48d-e1-loq"/>
                         <outlet property="lastNameTextField" destination="mSA-N2-hZf" id="WIb-ua-XhS"/>
                         <outlet property="nextButton" destination="Hkh-5C-GRC" id="eQk-gq-ijP"/>
                         <outlet property="profileImageView" destination="DVg-HT-8T1" id="2LG-8a-X2W"/>
                         <outlet property="roundImageUploadView" destination="GYT-wI-tjz" id="I2E-f2-EUt"/>
+                        <segue destination="Z2e-vn-lVb" kind="show" identifier="GoToAccommodation" id="99k-CO-H3U"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rU9-GL-6NT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5751" y="741"/>
+            <point key="canvasLocation" x="5722" y="741"/>
         </scene>
         <!--Accommodation-->
         <scene sceneID="otE-Yt-LRJ">

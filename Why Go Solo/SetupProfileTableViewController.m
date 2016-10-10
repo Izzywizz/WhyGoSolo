@@ -7,11 +7,13 @@
 //
 
 #import "SetupProfileTableViewController.h"
+#import "RRRegistration.h"
+#import "FontSetup.h"
 
 @interface SetupProfileTableViewController ()<UIImagePickerControllerDelegate, UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *dateOfBirthField;
-@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
+
+
+
 @property (nonatomic) UIDatePicker *datePicker;
 @end
 
@@ -75,7 +77,7 @@
 -(void) setNavigationButtonFontAndSize  {
     
     NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
-
+    
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
@@ -113,15 +115,6 @@
     [self presentViewController:picker animated:YES completion:NULL];
 }
 
-//- (void)selectPhoto {
-//    
-//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//    picker.delegate = self;
-//    picker.allowsEditing = YES;
-//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//    
-//    [self presentViewController:picker animated:YES completion:NULL];
-//}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
@@ -164,28 +157,48 @@
 
 #pragma mark - Action Methods
 
-/** */
+/** Calls the date picker from IOS*/
 - (IBAction)datePicker:(UITextField *)sender {
     
     //Create the datePicker, set the mode and assign an action listener to it because I've added to the textview
-     _datePicker = [[UIDatePicker alloc] init];
+    _datePicker = [[UIDatePicker alloc] init];
     [_datePicker setDatePickerMode:UIDatePickerModeDate];
     [_dateOfBirthField setInputView:_datePicker];
     [self.datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];
-
+    
 }
 
 - (IBAction)uploadPhotoButton:(UIButton *)sender {
     NSLog(@"Upload Photo");
     [self createActionSheet];
-//    [self selectPhoto];
+    //    [self selectPhoto];
 }
 
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
-    NSLog(@"Next Button Pressed");
+    NSLog(@"Next-> Accommodation");
+    RRRegistration *registration = [[RRRegistration alloc] init];
+    FontSetup *fontSetup = [FontSetup new];
+    
+    if (![registration validateTextField:_firstNameTextField]) {
+        [fontSetup setColourOf:_firstNameContentView toLabel:_firstNameLabel toTextField:_firstNameTextField toMessage:@"Enter your first name"];
+    }
+    
+    if (![registration validateTextField:_lastNameTextField]) {
+        [fontSetup setColourOf:_lastNameContentView toLabel:_lastNameLabel toTextField:_lastNameTextField toMessage:@"Enter your last name"];
+    }
+    
+    if ([_dateOfBirthField.text isEqualToString:@""]) {
+        [fontSetup setColourOf:_dateOfBirthContentView toLabel:_dateOfBirthLabel toTextField:_dateOfBirthField toMessage:@"Enter your DoB"];
+    }
+    
+    
+    if ([registration validateTextField:_firstNameTextField] && [registration validateTextField:_lastNameTextField] && ![_dateOfBirthField.text isEqualToString:@""]) {
+        [self performSegueWithIdentifier:@"GoToAccommodation" sender:self];
+    }
+
 }
 
 @end

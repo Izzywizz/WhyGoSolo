@@ -13,4 +13,6 @@
 
 
 +(NSDictionary *) setNavigationButtonFontAndSize;
+-(void) setColourOf: (UIView *)view toLabel: (UILabel *)label toTextField: (UITextField *)textfield toMessage: (NSString *)message;
+
 @end

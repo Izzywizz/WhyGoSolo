@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, textfields) {
 @property NSString* universityEmailSuffix;
 @property NSString* firstName;
 @property NSString* lastName;
+@property NSString *strDateOfBirth;
 
 @property NSString* email;
 @property NSString* password;
