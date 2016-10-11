@@ -29,8 +29,6 @@
 @property NSArray *myEventsDataArray;
 @property NSArray *dataArray;
 
-
-@property Event *reusableEvent;
 @end
 
 @implementation EventTableViewController
@@ -344,52 +342,22 @@ NSArray *sectionTitles;
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     EventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
-    if (!_reusableEvent)
-    {
-        _reusableEvent = [Event new];
-    }
-    
     if (self.tableView.numberOfSections == 2 && indexPath.section ==  0)
     {
-        _reusableEvent = [[Data sharedInstance].myEventsArray objectAtIndex:indexPath.row];
-       
-        if (_reusableEvent.userID != (int)[[Data sharedInstance].userID integerValue])
-        {
-            [cell viewWithTag:EDIT].alpha = 0;
-            [cell viewWithTag:JOIN].alpha = 0;
-            [cell viewWithTag:JOINED].alpha = 1;
-        }
-        else
-        {
-            [cell viewWithTag:EDIT].alpha = 1;
-            [cell viewWithTag:JOIN].alpha = 0;
-            [cell viewWithTag:JOINED].alpha = 0;
-        }
+        cell.joined = YES;
+        cell.event =  [[Data sharedInstance].myEventsArray objectAtIndex:indexPath.row];
     }
     else
     {
-        _reusableEvent = [[Data sharedInstance].eventsArray objectAtIndex:indexPath.row];
-        [cell viewWithTag:EDIT].alpha = 0;
-        [cell viewWithTag:JOIN].alpha = 1;
-        [cell viewWithTag:JOINED].alpha = 0;
+        cell.joined = NO;
+        cell.event = [[Data sharedInstance].eventsArray objectAtIndex:indexPath.row];
     }
     
-    return [self configureCell:cell withEvent:_reusableEvent];
-}
-
--(EventsTableViewCell*)configureCell:(EventsTableViewCell*)cell withEvent:(Event*)event
-{
-    cell.event = event;
-    cell.timeLabel.hidden = YES;
-    cell.nameLabel.text = event.userName;
-    cell.eventAddressLabel.text = event.address;
-    cell.eventDescriptionText.text = event.eventDescription;
-    cell.eventMessageCount.text = event.totalComments;
-    cell.eventInviteeCount.text = event.totalAttending;
-    cell.eventEmoticonLabel.text = event.emoji;
-
+    [cell configureCellWithEvent];
+   
     return cell;
 }
+
 
 #pragma mark - Actions
 - (IBAction)peopleButtonPressed:(UIBarButtonItem *)sender {
