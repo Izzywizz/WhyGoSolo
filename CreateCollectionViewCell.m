@@ -104,6 +104,11 @@
     self.emojiTextView.font = [UIFont systemFontOfSize:52.0];
     self.addEmojiImage.hidden = YES;
     
+    NSString *emojiUTF8 = [NSString stringWithUTF8String:[self.emojiTextView.text UTF8String]];
+    NSData *emojiData = [emojiUTF8 dataUsingEncoding:NSNonLossyASCIIStringEncoding];
+    NSString *emojiString = [[NSString alloc] initWithData:emojiData encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"EMOJI TEXT = %@", emojiString);
 }
 
 
