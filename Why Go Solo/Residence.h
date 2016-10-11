@@ -12,12 +12,13 @@
 
 @property NSString* residenceName;
 
-@property double* longitude;
-@property double* latitude;
+@property double longitude;
+@property double latitude;
 
 @property NSString* address;
 @property NSString* city;
 @property NSString* postCode;
 
+-(Residence *) initWithDict: (NSDictionary *)dict;
 @end
 

@@ -63,9 +63,24 @@
 
 #pragma mark - Delegate Methods
 
+-(void)handleUpdates
+{
+    
+}
+
 -(void)residencesDownloadedSuccessfully {
     NSLog(@"Sucessfully downloaded residences");
+    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
+    // Need to set to main thread as this is currently running on a background thread
+    
     NSLog(@"residences array: %@", [Data sharedInstance].residencesArray);
+    NSArray *residenceArray = [[NSArray alloc] init];
+    residenceArray = [Data sharedInstance].residencesArray;
+    
+    _residence = [[Residence alloc] init];
+    _residence = [residenceArray objectAtIndex:0];
+    NSLog(@"Residence: %@", _residence);
+    NSLog(@"Longitude: %f", _residence.longitude);
 }
 
 #pragma mark - UITextField Delegate
