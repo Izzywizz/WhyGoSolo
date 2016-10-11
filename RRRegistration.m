@@ -39,7 +39,7 @@
             _firstName = text;
             return [self validateTextFieldText:textField];
             break;
-
+            
         case LAST_NAME:
             _lastName = text;
             return [self validateTextFieldText:textField];
@@ -53,12 +53,15 @@
             _password = text;
             return [self validatePassword];
             break;
-
+            
         case CONFRIM_PASSWORD:
             _confirmPassword = text;
             return [self validatePassword];
             break;
             
+        case PHOTO:
+            return [self validatePhotoImageRef:_cgref andImageData:_cim];
+            break;
         default:
             break;
     }
@@ -76,6 +79,17 @@
     return NO;
 }
 
+-(BOOL) validatePhotoImageRef: (CGImageRef)cgref andImageData:(CIImage *) cim   {
+    
+    if (cim == nil && cgref == NULL)
+    {
+        NSLog(@"no underlying photo data");
+        return NO;
+    } else  {
+        return YES;
+    }
+    
+}
 
 
 -(BOOL)validateEmail:(NSString*)email

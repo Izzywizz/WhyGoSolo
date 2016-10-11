@@ -7,11 +7,13 @@
 //
 
 #import "SetupProfileTableViewController.h"
+#import "RRRegistration.h"
+#import "FontSetup.h"
 
 @interface SetupProfileTableViewController ()<UIImagePickerControllerDelegate, UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *dateOfBirthField;
-@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
+
+
+
 @property (nonatomic) UIDatePicker *datePicker;
 @end
 
@@ -19,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupCustomActions];
     self.lastNameTextField.delegate = self;
     
     [self setupCameraView];
@@ -75,9 +78,32 @@
 -(void) setNavigationButtonFontAndSize  {
     
     NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
-
+    
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
+
+-(void)textFieldDidChange: (UITextField *) theTextField {
+    
+    RRRegistration *registration = [[RRRegistration alloc] init];
+    FontSetup *fontSetup = [FontSetup new];
+    
+    if (![registration validateTextField:_firstNameTextField]) {
+        [fontSetup setColourOf:_firstNameContentView toLabel:_firstNameLabel toTextField:_firstNameTextField toMessage:@"Enter your First Name"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_firstNameContentView toLabel:_firstNameLabel toTextField:_firstNameTextField toMessage:@"Enter your First Name"];
+    }
+    
+    if (![registration validateTextField:_lastNameTextField]) {
+        [fontSetup setColourOf:_lastNameContentView toLabel:_lastNameLabel toTextField:_lastNameTextField toMessage:@"Enter your Last Name"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_lastNameContentView toLabel:_lastNameLabel toTextField:_lastNameTextField toMessage:@"Enter your Last Name"];
+    }
+    
+    if ([_dateOfBirthField.text isEqualToString:@""]) {
+        [fontSetup setColourOf:_dateOfBirthContentView toLabel:_dateOfBirthLabel toTextField:_dateOfBirthField toMessage:@"Enter your Date of Birth"];
+    }
+}
+
 
 #pragma mark - PHoto MEthods
 
@@ -113,15 +139,6 @@
     [self presentViewController:picker animated:YES completion:NULL];
 }
 
-//- (void)selectPhoto {
-//    
-//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//    picker.delegate = self;
-//    picker.allowsEditing = YES;
-//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//    
-//    [self presentViewController:picker animated:YES completion:NULL];
-//}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
@@ -160,32 +177,93 @@
     [dateFormatter setDateFormat:@"dd-MM-yyyy"];
     NSString *strDate = [dateFormatter stringFromDate:datePicker.date];
     self.dateOfBirthField.text = strDate;
+    
+    //Change the colour here!!!!!
+    self.dateOfBirthField.textColor = [UIColor blackColor];
+    self.dateOfBirthLabel.textColor = [UIColor blackColor];
+    self.dateOfBirthContentView.backgroundColor = [UIColor blackColor];
+    
 }
 
 #pragma mark - Action Methods
 
-/** */
+/** Calls the date picker from IOS*/
 - (IBAction)datePicker:(UITextField *)sender {
     
     //Create the datePicker, set the mode and assign an action listener to it because I've added to the textview
-     _datePicker = [[UIDatePicker alloc] init];
+    _datePicker = [[UIDatePicker alloc] init];
     [_datePicker setDatePickerMode:UIDatePickerModeDate];
     [_dateOfBirthField setInputView:_datePicker];
     [self.datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];
-
+    
 }
 
 - (IBAction)uploadPhotoButton:(UIButton *)sender {
     NSLog(@"Upload Photo");
     [self createActionSheet];
-//    [self selectPhoto];
+    //    [self selectPhoto];
 }
 
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
-    NSLog(@"Next Button Pressed");
+    NSLog(@"Next-> Accommodation");
+    RRRegistration *registration = [[RRRegistration alloc] init];
+    FontSetup *fontSetup = [FontSetup new];
+    
+    CGImageRef cgref = [_profileImageView.image CGImage];
+    CIImage *cim = [_profileImageView.image CIImage];
+    registration.cgref = cgref;
+    registration.cim = cim;
+    
+    if (![registration validateTextField:_firstNameTextField]) {
+        [fontSetup setColourOf:_firstNameContentView toLabel:_firstNameLabel toTextField:_firstNameTextField toMessage:@"Enter your First Name"];
+    }
+    
+    if (![registration validateTextField:_lastNameTextField]) {
+        [fontSetup setColourOf:_lastNameContentView toLabel:_lastNameLabel toTextField:_lastNameTextField toMessage:@"Enter your Last Name"];
+    }
+    
+    if ([_dateOfBirthField.text isEqualToString:@""]) {
+        [fontSetup setColourOf:_dateOfBirthContentView toLabel:_dateOfBirthLabel toTextField:_dateOfBirthField toMessage:@"Enter your Date of Birth"];
+    }
+    
+    
+    
+    if (![registration validatePhotoImageRef:cgref andImageData:cim]) {
+        [self alertSetupandView:@"Photo" andMessage:@"Please take or upload a photo"];
+    }
+    
+    if ([registration validateTextField:_firstNameTextField] && [registration validateTextField:_lastNameTextField] && ![_dateOfBirthField.text isEqualToString:@""]) {
+        [self performSegueWithIdentifier:@"GoToAccommodation" sender:self];
+    }
+
+}
+
+-(void) setupCustomActions  {
+    [_firstNameTextField addTarget:self
+                               action:@selector(textFieldDidChange:)
+                     forControlEvents:UIControlEventEditingChanged];
+    
+    [_lastNameTextField addTarget:self
+                           action:@selector(textFieldDidChange:)
+                 forControlEvents:UIControlEventEditingChanged];
+    
+    [_dateOfBirthField addTarget:self
+                                  action:@selector(textFieldDidChange:)
+                        forControlEvents:UIControlEventEditingChanged];
+}
+
+
+#pragma mark - Alert Method
+-(void) alertSetupandView: (NSString *) WithTitle andMessage: (NSString *) message  {
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:WithTitle message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Dismiss");
+    }];
+    [alertVC addAction:dismiss];
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 @end

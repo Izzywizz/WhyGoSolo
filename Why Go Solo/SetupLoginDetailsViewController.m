@@ -7,14 +7,17 @@
 //
 
 #import "SetupLoginDetailsViewController.h"
+#import "Data.h"
+#import "University.h" //Used to get email suffix
+#import "RRRegistration.h"
 
-@interface SetupLoginDetailsViewController ()
+@interface SetupLoginDetailsViewController () <UITextFieldDelegate>
 
 //email/ password/ confrim password validation
-@property (weak, nonatomic) IBOutlet UITextField *emailAddress;
-@property (weak, nonatomic) IBOutlet UILabel *emailAddressLabel;
-@property (weak, nonatomic) IBOutlet UIView *emailContentView;
 
+
+
+@property(strong, nonatomic) University *university; //Able to access
 
 @end
 
@@ -26,14 +29,22 @@
     [super viewDidLoad];
     [self setNavigationButtonFontAndSize];
     self.hasTermsAgreed = false;
+    [self obtainAndSetEmailSuffix];
+    [self setupCustomActions];
+    [self.tableView setSeparatorColor:[UIColor grayColor]];
     
     //This prevents the weird the selection animation occuring when the user selects a cell
     [self.tableView setAllowsSelection:NO];
-
+//    self.emailAddressTextField.delegate = self;
     
     NSLog(@"Setup Login Details");
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
+}
+
+
+
+-(void)viewDidDisappear:(BOOL)animated    {
+    self.emailAddressTextField.delegate = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,7 +52,62 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UITextField Delegate
+
+/* Ensure that the caret goes to beginning of the textfield*/
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    textField.selectedTextRange = [textField
+                                   textRangeFromPosition:textField.beginningOfDocument
+                                   toPosition:textField.beginningOfDocument];
+}
+
+/** vldiation method to make sure an email address has been entered*/
+-(void)textFieldDidChange: (UITextField *) theTextField {
+    RRRegistration *registration = [[RRRegistration alloc] init];
+    FontSetup *fontSetup = [FontSetup new];
+    
+    if (![registration validateTextField:_emailAddressTextField]) {
+        [fontSetup setColourOf:_emailContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_emailContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
+    }
+    
+    if ([_passwordTextField.text isEqualToString: @""]) {
+        [fontSetup setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];
+    }
+    
+    if ([_confirmPasswordTextField.text isEqualToString: @""]) {
+        [fontSetup setColourOf:_confirmPasswordContentView toLabel:_confirmPasswordLabel toTextField:_confirmPasswordTextField toMessage:@"Enter your Password"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_confirmPasswordContentView toLabel:_confirmPasswordLabel toTextField:_confirmPasswordTextField toMessage:@"Enter your Password"];
+    }
+}
+
 #pragma mark - Helper Functions
+
+-(void) setupCustomActions  {
+    [_emailAddressTextField addTarget:self
+                               action:@selector(textFieldDidChange:)
+                     forControlEvents:UIControlEventEditingChanged];
+    
+    [_passwordTextField addTarget:self
+                           action:@selector(textFieldDidChange:)
+                 forControlEvents:UIControlEventEditingChanged];
+    
+    [_confirmPasswordTextField addTarget:self
+                                  action:@selector(textFieldDidChange:)
+                        forControlEvents:UIControlEventEditingChanged];
+}
+
+-(void)  obtainAndSetEmailSuffix  {
+    _university = [[University alloc] init];
+    _university = [Data sharedInstance].selectedUniversity;
+    NSLog(@"Email Suffix: %@", _university.emailSuffix);
+    
+    _emailAddressTextField.text = [NSString stringWithFormat:@"@%@",_university.emailSuffix];
+}
 -(void) setNavigationButtonFontAndSize  {
     
     NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
@@ -70,28 +136,50 @@
     }
 }
 
+-(void) setColourOf: (UIView *)view toLabel: (UILabel *)label toTextField: (UITextField *)textfield toMessage: (NSString *)message  {
+    UIColor *colour = [UIColor redColor];
+
+    view.backgroundColor = colour;
+    label.textColor = colour;
+    textfield.textColor = colour;
+    textfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:message attributes:@{NSForegroundColorAttributeName: colour}];
+}
+
 #pragma mark - Actions Methods
 - (IBAction)backbuttonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
+    RRRegistration *registration = [[RRRegistration alloc] init];
+    registration.password = _passwordTextField.text;
+    registration.confirmPassword = _confirmPasswordTextField.text;
+    FontSetup *fontSetup = [FontSetup new];
     
-    if ([_emailAddress.text isEqualToString:@""] || _emailAddress == nil) {
-        UIColor *colour = [UIColor redColor];
-
-        _emailContentView.backgroundColor = colour;
-        _emailAddressLabel.textColor = colour;
-        _emailAddress.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Enter your University Address" attributes:@{NSForegroundColorAttributeName: colour}];
-
+    if(![registration validateTextField:_passwordTextField])    {
+        [fontSetup setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];
+    }
+    
+    if(![registration validateTextField:_confirmPasswordTextField])    {
+        [fontSetup setColourOf:_confirmPasswordContentView toLabel:_confirmPasswordLabel toTextField:_confirmPasswordTextField toMessage:@"Confirm Your Password"];
     }
 
     if (_hasTermsAgreed) {
-        [self performSegueWithIdentifier:@"GoToProfile" sender:self];
+        if ([registration validateTextField:_emailAddressTextField] && [registration validateTextField:_passwordTextField] && [registration validateTextField:_confirmPasswordTextField]) {
+            [self performSegueWithIdentifier:@"GoToProfile" sender:self];
+            
+        } else if (![registration validateTextField:_emailAddressTextField])    {
+            [fontSetup setColourOf:_emailContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
+            
+        } else if (![registration validateTextField:_passwordTextField] || [registration validateTextField:_confirmPasswordTextField]) {
+            [self alertSetupandView:@"Password" andMessage:@"Your passwords do not match"];
+        }
+    
     } else {
         [self alertSetupandView:@"Terms" andMessage:@"Please read and agree to the terms"];
     }
 }
+
 
 - (IBAction)termsAgreed:(UISwitch *)sender {
     self.hasTermsAgreed = false; //intially the switch is false
@@ -149,5 +237,6 @@
     [alertVC addAction:dismiss];
     [self presentViewController:alertVC animated:YES completion:nil];
 }
+
 
 @end

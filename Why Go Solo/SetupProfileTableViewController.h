@@ -14,4 +14,19 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
+
+@property (weak, nonatomic) IBOutlet UIView *firstNameContentView;
+@property (weak, nonatomic) IBOutlet UILabel *firstNameLabel;
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
+
+
+
+@property (weak, nonatomic) IBOutlet UIView *lastNameContentView;
+@property (weak, nonatomic) IBOutlet UILabel *lastNameLabel;
+@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
+
+@property (weak, nonatomic) IBOutlet UIView *dateOfBirthContentView;
+@property (weak, nonatomic) IBOutlet UILabel *dateOfBirthLabel;
+@property (weak, nonatomic) IBOutlet UITextField *dateOfBirthField;
+
 @end
