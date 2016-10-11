@@ -124,6 +124,7 @@ NSArray *sectionTitles;
 -(void)moveToEvent:(NSNotification *) notification  {
     if ([[notification name] isEqualToString:@"People Event"])  {
         NSLog(@"Moving to Event related to People");
+        [Data sharedInstance].selectedEvent = notification.object;
         [self moveToEvent];
     }
 }
@@ -231,8 +232,6 @@ NSArray *sectionTitles;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    
     
     
     switch (section) {

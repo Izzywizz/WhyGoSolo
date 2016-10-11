@@ -16,9 +16,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-//    NSLog(@"Data: %@", [Data sharedInstance].selectedEvent);
-//    self.event = [Data sharedInstance].selectedEvent;
-//    NSLog(@"Name: %@", self.event.userName);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -31,7 +28,6 @@
 {
     self.event = [Data sharedInstance].selectedEvent;
     self.nameLabel.text = self.event.userName;
-    
     return  self;
     
 }

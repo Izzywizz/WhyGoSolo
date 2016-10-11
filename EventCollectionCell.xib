@@ -150,12 +150,13 @@
                                         </variation>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" placeholderIntrinsicWidth="391" placeholderIntrinsicHeight="78.5" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qny-6J-4lo" userLabel="Event Text">
-                                        <rect key="frame" x="30" y="65" width="391" height="76"/>
+                                        <rect key="frame" x="30" y="65" width="391" height="72"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="391" id="CMi-Im-NJD"/>
                                             <constraint firstAttribute="height" constant="70" id="Uoh-IM-fPq"/>
                                             <constraint firstAttribute="height" constant="78.5" id="bT3-es-ezI"/>
+                                            <constraint firstAttribute="height" constant="72" id="pXP-US-KmA"/>
                                         </constraints>
                                         <string key="text">We are having a flat party to celebrate the end of the exam perod. Starts at 8pm, all you need is your own alcohol, snacks are a bonus!</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -185,7 +186,7 @@
                                     <constraint firstItem="SBj-xz-XVO" firstAttribute="leading" secondItem="rRo-LV-PB2" secondAttribute="trailing" constant="6" id="MZl-BT-Tid"/>
                                     <constraint firstItem="Qny-6J-4lo" firstAttribute="top" secondItem="WOd-LB-g0R" secondAttribute="bottom" constant="18.5" id="OrA-oh-gFp"/>
                                     <constraint firstItem="Qny-6J-4lo" firstAttribute="top" secondItem="WOd-LB-g0R" secondAttribute="bottom" constant="10.5" id="R5x-WF-mej"/>
-                                    <constraint firstItem="xx1-nd-pGL" firstAttribute="top" secondItem="Qny-6J-4lo" secondAttribute="bottom" constant="4" id="R6T-bX-ClR"/>
+                                    <constraint firstItem="xx1-nd-pGL" firstAttribute="top" secondItem="Qny-6J-4lo" secondAttribute="bottom" constant="8" id="R6T-bX-ClR"/>
                                     <constraint firstItem="yzg-q8-2km" firstAttribute="leading" secondItem="qJd-3Y-tRt" secondAttribute="trailing" constant="6" id="Vos-CZ-cAp"/>
                                     <constraint firstItem="rRo-LV-PB2" firstAttribute="leading" secondItem="Y0Y-Bs-BdG" secondAttribute="leading" constant="30" id="WHV-1k-ljQ"/>
                                     <constraint firstAttribute="bottom" secondItem="5jn-tX-9iP" secondAttribute="bottom" constant="15" id="WhW-NU-1Ob"/>
@@ -237,6 +238,7 @@
                                         <exclude reference="WhW-NU-1Ob"/>
                                         <exclude reference="aBz-b4-U0A"/>
                                         <exclude reference="zHZ-JQ-xyw"/>
+                                        <exclude reference="R6T-bX-ClR"/>
                                     </mask>
                                 </variation>
                             </view>

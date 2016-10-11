@@ -43,40 +43,8 @@
 
 -(EventCollectionViewCell*) configureCellWithEventForTableView:(UICollectionView*)collectionView atIndexPath:(NSIndexPath*)indexPath  {
     
-    if (collectionView.numberOfSections == 2)
-    {
-        self.joined = YES;
-        self.event =  [[Data sharedInstance].myEventsArray objectAtIndex:indexPath.row];
-    }
-    else
-    {
-        self.joined = NO;
-        self.event = [[Data sharedInstance].eventsArray objectAtIndex:indexPath.row];
-    }
-    
-    
-    if (self.joined)
-    {
-        if (self.event.userID != (int)[[Data sharedInstance].userID integerValue])
-        {
-            [self viewWithTag:EDIT].alpha = 0;
-            [self viewWithTag:JOIN].alpha = 0;
-            [self viewWithTag:JOINED].alpha = 1;
-        }
-        else
-        {
-            [self viewWithTag:EDIT].alpha = 1;
-            [self viewWithTag:JOIN].alpha = 0;
-            [self viewWithTag:JOINED].alpha = 0;
-        }
-    }
-    else
-    {
-        [self viewWithTag:EDIT].alpha = 0;
-        [self viewWithTag:JOIN].alpha = 1;
-        [self viewWithTag:JOINED].alpha = 0;
-    }
-
+    self.event = [Data sharedInstance].selectedEvent;
+    NSLog(@"Event Description: %@", _event.eventDescription);
     
     self.nameLabel.text = self.event.userName;
     self.eventAddressLabel.text = self.event.address;
