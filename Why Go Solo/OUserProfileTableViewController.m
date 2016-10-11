@@ -222,6 +222,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     OtherProfileTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
+    [cell configureCollectionForOtherProfile:self.tableView atIndexPath:indexPath];
     return cell;
 }
 

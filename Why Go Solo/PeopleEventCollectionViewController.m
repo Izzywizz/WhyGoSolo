@@ -55,6 +55,8 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 
+    NSLog(@"Sections Count: %d", self.dummyData.count);
+//    return 2;
     return self.dummyData.count;
 }
 
@@ -136,6 +138,8 @@
     static NSString *identifier = @"EventCollectionCell";
     
     EventCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
+    [cell configureCellWithEventForTableView:self.collectionView atIndexPath:indexPath];
     
     return cell;
 }

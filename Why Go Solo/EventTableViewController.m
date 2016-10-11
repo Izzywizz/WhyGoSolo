@@ -50,7 +50,7 @@ NSArray *sectionTitles;
     [self setupDummyData];
     [self setupTable];
     [self setupObservers];
-  //  [Data sharedInstance].eventsArray = [NSMutableArray new];
+    //  [Data sharedInstance].eventsArray = [NSMutableArray new];
     // By default, isHallsSwitchOn = 1 as when it passed by the observer for the FilterTableViewCell it comes actiavted and I couldn't find a way to pass a value via an observer
     _dataArray = [NSArray new];
     _myEventsDataArray = [NSArray new];
@@ -59,7 +59,7 @@ NSArray *sectionTitles;
 
 
 -(void)viewWillAppear:(BOOL)animated  {
-  
+    
     if (!_mapController) {
         _mapController = [[MapViewController alloc] init];
     }
@@ -92,7 +92,7 @@ NSArray *sectionTitles;
 {
     _myEventsDataArray = [Data sharedInstance].myEventsArray;
     _dataArray = [Data sharedInstance].eventsArray;
-
+    
     [self.tableView reloadData];
 }
 #pragma mark - Observer Methods
@@ -148,7 +148,7 @@ NSArray *sectionTitles;
     [[WebService sharedInstance]events];
     
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
-
+    
     NSLog(@"DATAT RELOAD");
 }
 
@@ -185,7 +185,7 @@ NSArray *sectionTitles;
 
 -(void)moveToFilter {
     if(![self.navigationController.topViewController isKindOfClass:[FilterViewController class]]) {
-    [self performSegueWithIdentifier:@"GoToFilter" sender:self];
+        [self performSegueWithIdentifier:@"GoToFilter" sender:self];
     }
 }
 
@@ -204,7 +204,7 @@ NSArray *sectionTitles;
 -(void) setupDummyData  {
     //Dummy Data
     _tableData = @{@"My Events" : @[@"Andy Jones"],
-                  @"Events Near Me" : @[@"Jennifer Cooper", @"Nathan Barnes"]};
+                   @"Events Near Me" : @[@"Jennifer Cooper", @"Nathan Barnes"]};
     NSSortDescriptor *decending = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:NO];
     NSArray *decendingOrder = [NSArray arrayWithObject:decending];
     sectionTitles = [[_tableData allKeys] sortedArrayUsingDescriptors:decendingOrder];
@@ -219,7 +219,7 @@ NSArray *sectionTitles;
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-   
+    
     if ([_myEventsDataArray count] > 0)
     {
         return 2;
@@ -255,7 +255,7 @@ NSArray *sectionTitles;
     NSString *sectionTitle = [sectionTitles objectAtIndex:section];
     NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
     
-  //  return [[Data sharedInstance].eventsArray count];
+    //  return [[Data sharedInstance].eventsArray count];
     return [sectionEvents count];
 }
 
@@ -273,10 +273,6 @@ NSArray *sectionTitles;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //    if (cell == nil) {
-    //        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options: nil];
-    //        cell = [nib objectAtIndex:0];
-    //    }
     
     return [self eventCellAtIndex:indexPath];
 }
@@ -335,16 +331,16 @@ NSArray *sectionTitles;
 }
 
 -(EventsTableViewCell *) eventCellAtIndex: (NSIndexPath *) indexPath {
-
-   NSString *reuseID = @"EventsTableViewCell";
+    
+    NSString *reuseID = @"EventsTableViewCell";
     NSString *nibName = @"Events";
     
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     EventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
-
+    
     [cell configureCellWithEventForTableView:self.tableView atIndexPath:indexPath];
-   
+    
     return cell;
 }
 
