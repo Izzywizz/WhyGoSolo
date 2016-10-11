@@ -10,14 +10,14 @@
 #import "Data.h"
 #import "University.h" //Used to get email suffix
 #import "RRRegistration.h"
+#import "WebService.h"
 
-@interface SetupLoginDetailsViewController () <UITextFieldDelegate>
+@interface SetupLoginDetailsViewController () <UITextFieldDelegate, DataDelegate>
 
 //email/ password/ confrim password validation
 
-
-
 @property(strong, nonatomic) University *university; //Able to access
+@property (nonatomic, strong) WebService *Webservice;
 
 @end
 
@@ -25,13 +25,19 @@
 
 #pragma mark - UI Methods
 
+-(void) viewWillAppear:(BOOL)animated   {
+    
+    [[WebService sharedInstance] residences];
+    [Data sharedInstance].delegate = self; // Set Data delegate
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationButtonFontAndSize];
     self.hasTermsAgreed = false;
     [self obtainAndSetEmailSuffix];
     [self setupCustomActions];
-    [self.tableView setSeparatorColor:[UIColor grayColor]];
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:188/ 255.0 green:186/255.0 blue:193/255.0 alpha:1.0]];
     
     //This prevents the weird the selection animation occuring when the user selects a cell
     [self.tableView setAllowsSelection:NO];
@@ -45,6 +51,8 @@
 
 -(void)viewDidDisappear:(BOOL)animated    {
     self.emailAddressTextField.delegate = nil;
+    [Data sharedInstance].delegate = nil; // release Data delegate
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,6 +61,24 @@
 }
 
 #pragma mark - UITextField Delegate
+
+-(BOOL)textFieldShouldReturn:(UITextField*)textField
+{
+    NSInteger nextTag = textField.tag + 1;
+    NSLog(@"tag: %ld", (long)nextTag);
+    // Try to find next responder, If the superview of the text field will be a UITableViewCell (contentView) then next responder will be few levels down to access the textfield in order to access the responder be
+    UIResponder* nextResponder = [textField.superview.superview.superview viewWithTag:nextTag];
+
+    if (nextResponder) {
+        NSLog(@"nextResponder: %@", nextResponder);
+        // Found next responder, so set it.
+        [nextResponder becomeFirstResponder];
+    } else {
+        // Not found, so remove keyboard.
+        [textField resignFirstResponder];
+    }
+    return NO; // We do not want UITextField to insert line-breaks.
+}
 
 /* Ensure that the caret goes to beginning of the textfield*/
 -(void)textFieldDidBeginEditing:(UITextField *)textField {

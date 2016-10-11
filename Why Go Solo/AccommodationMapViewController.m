@@ -8,12 +8,15 @@
 
 #import "AccommodationMapViewController.h"
 #import "SearchBarTableViewController.h"
-
+#import "Data.h"
+#import "Residence.h"
 
 @interface AccommodationMapViewController ()
 
 @property (nonatomic, strong) SearchBarTableViewController *locationSearchTable;
 @property (nonatomic, strong) UISearchController *resultSearchController;
+
+@property (nonatomic) Residence *residence;
 
 @end
 
@@ -26,6 +29,13 @@
     [self setNavigationButtonFontAndSize];
     [self setup];
     _internalAccoutCreatedView.layer.cornerRadius = 5;
+    
+    
+    _residence = [[Residence alloc] init];
+    _residence = [Data sharedInstance].selectedResidence;
+    NSLog(@"Residence: %@", _residence.residenceName);
+
+    
 }
 
 - (void)didReceiveMemoryWarning {

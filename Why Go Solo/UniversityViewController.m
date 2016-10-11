@@ -11,6 +11,8 @@
 #import "WebService.h"
 #import "Data.h"
 #import "University.h"
+#import "Residence.h"
+
 @interface UniversityViewController () <UITableViewDelegate, UITableViewDataSource, DataDelegate>
 @property NSArray *universityList;
 @property (nonatomic) UniversityLocations *locations;
@@ -26,6 +28,7 @@
 {
     [[WebService sharedInstance]universities];
     [Data sharedInstance].delegate = self; // Set Data delegate
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -55,6 +58,7 @@
     //  _universityList = [self unpackData];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,6 +75,7 @@
     UIFont *font = [UIFont fontWithName:fontName size:size];
     NSDictionary * attributes = @{NSFontAttributeName: font};
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+
 }
 
 /** Ensures that the selection seperators are setup before the main views are shown*/

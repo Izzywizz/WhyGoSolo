@@ -39,6 +39,24 @@
 
 #pragma mark - TextField Delegate Actions
 
+-(BOOL)textFieldShouldReturn:(UITextField*)textField
+{
+    NSInteger nextTag = textField.tag + 1;
+    NSLog(@"tag: %ld", (long)nextTag);
+    // Try to find next responder, If the superview of the text field will be a UITableViewCell (contentView) then next responder will be few levels down to access the textfield in order to access the responder be
+    UIResponder* nextResponder = [textField.superview.superview.superview viewWithTag:nextTag];
+    
+    if (nextResponder) {
+        NSLog(@"nextResponder: %@", nextResponder);
+        // Found next responder, so set it.
+        [nextResponder becomeFirstResponder];
+    } else {
+        // Not found, so remove keyboard.
+        [textField resignFirstResponder];
+    }
+    return NO; // We do not want UITextField to insert line-breaks.
+}
+
 - (IBAction)lastNameFinshed:(UITextField *)sender {
     [_lastNameTextField resignFirstResponder];
 }

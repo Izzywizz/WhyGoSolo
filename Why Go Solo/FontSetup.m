@@ -32,7 +32,7 @@
 }
 
 -(void) setColourGrayAndBlack: (UIView *)view toLabel: (UILabel *)label toTextField: (UITextField *)textfield toMessage: (NSString *)message  {
-    UIColor *colourGray = [UIColor grayColor];
+    UIColor *colourGray = [UIColor colorWithRed:188/ 255.0 green:186/255.0 blue:193/255.0 alpha:1.0];
     UIColor *colour = [UIColor blackColor];
     
     view.backgroundColor = colourGray;
