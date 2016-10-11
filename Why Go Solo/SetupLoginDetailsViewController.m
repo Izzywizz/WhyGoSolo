@@ -9,15 +9,17 @@
 #import "SetupLoginDetailsViewController.h"
 #import "Data.h"
 #import "University.h" //Used to get email suffix
+#import "Residence.h"// used to get residences
 #import "RRRegistration.h"
 #import "WebService.h"
 
-@interface SetupLoginDetailsViewController () <UITextFieldDelegate, DataDelegate>
+@interface SetupLoginDetailsViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, DataDelegate>
 
 //email/ password/ confrim password validation
 
-@property(strong, nonatomic) University *university; //Able to access
+@property(strong, nonatomic) University *university; //Able to access university.suffix proeprty
 @property (nonatomic, strong) WebService *Webservice;
+@property (strong, nonnull) Residence *residence;
 
 @end
 
@@ -29,6 +31,7 @@
     
     [[WebService sharedInstance] residences];
     [Data sharedInstance].delegate = self; // Set Data delegate
+    
 }
 
 - (void)viewDidLoad {
@@ -40,7 +43,7 @@
     [self.tableView setSeparatorColor:[UIColor colorWithRed:188/ 255.0 green:186/255.0 blue:193/255.0 alpha:1.0]];
     
     //This prevents the weird the selection animation occuring when the user selects a cell
-    [self.tableView setAllowsSelection:NO];
+    [self.tableView setAllowsSelection:YES];
 //    self.emailAddressTextField.delegate = self;
     
     NSLog(@"Setup Login Details");
@@ -48,16 +51,21 @@
 }
 
 
-
 -(void)viewDidDisappear:(BOOL)animated    {
     self.emailAddressTextField.delegate = nil;
     [Data sharedInstance].delegate = nil; // release Data delegate
 
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Delegate Methods
+
+-(void)residencesDownloadedSuccessfully {
+    NSLog(@"Sucessfully downloaded residences");
+    NSLog(@"residences array: %@", [Data sharedInstance].residencesArray);
 }
 
 #pragma mark - UITextField Delegate
@@ -234,8 +242,15 @@
 #pragma mark - TableView Delegates
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
-    NSLog(@"row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
+    NSLog(@"Section: %ld, row: %ld", (long)indexPath.section, (long)indexPath.row);
     [tableView deselectRowAtIndexPath:indexPath animated:YES]; //remove the selection animation
+    if (indexPath.row == 0) {
+        [_emailAddressTextField becomeFirstResponder];
+    } else if (indexPath.row == 1)  {
+        [_passwordTextField becomeFirstResponder];
+    } else if (indexPath.row == 2)  {
+        [_confirmPasswordTextField becomeFirstResponder];
+    }
     
 }
 

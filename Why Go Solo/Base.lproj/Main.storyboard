@@ -327,7 +327,7 @@
                         <sections>
                             <tableViewSection id="L2n-0V-Kr7">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="P0D-z2-fYZ" userLabel="Email Address Cell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="P0D-z2-fYZ" userLabel="Email Address Cell">
                                         <rect key="frame" x="0.0" y="67" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P0D-z2-fYZ" id="VPh-QE-uz5">
@@ -382,7 +382,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="SV2-qS-w0E" userLabel="Password Cell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="SV2-qS-w0E" userLabel="Password Cell">
                                         <rect key="frame" x="0.0" y="127" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SV2-qS-w0E" id="25w-bB-Srw" userLabel="Password Content View">
@@ -437,7 +437,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="OVS-Yg-hJ9" userLabel="Confirm Password">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="OVS-Yg-hJ9" userLabel="Confirm Password">
                                         <rect key="frame" x="0.0" y="187" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OVS-Yg-hJ9" id="3DO-St-PNA">
@@ -492,7 +492,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="termsCell" rowHeight="74" id="NH3-gK-5KP" userLabel="Terms &amp; condition">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="termsCell" rowHeight="74" id="NH3-gK-5KP" userLabel="Terms &amp; condition">
                                         <rect key="frame" x="0.0" y="247" width="600" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NH3-gK-5KP" id="BBr-1O-feZ">
@@ -3336,7 +3336,7 @@ Cg
                         <sections>
                             <tableViewSection id="zHc-hG-LBs">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="G1D-YE-J8H" userLabel="Image Upload Cell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="160" id="G1D-YE-J8H" userLabel="Image Upload Cell">
                                         <rect key="frame" x="0.0" y="67" width="600" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G1D-YE-J8H" id="P7y-Ar-vO5">
@@ -3397,7 +3397,7 @@ Cg
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="M3w-cW-D4V" userLabel="First Name Cell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="56" id="M3w-cW-D4V" userLabel="First Name Cell">
                                         <rect key="frame" x="0.0" y="227" width="600" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M3w-cW-D4V" id="H8n-al-fw6">
@@ -3438,8 +3438,6 @@ Cg
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="firstNameBegin:" destination="tv0-iu-svJ" eventType="editingDidBegin" id="bM2-h9-Ikg"/>
-                                                        <action selector="firstNameFinshed:" destination="tv0-iu-svJ" eventType="editingDidEnd" id="zwA-SR-hHs"/>
                                                         <outlet property="delegate" destination="tv0-iu-svJ" id="SvW-iC-1uR"/>
                                                     </connections>
                                                 </textField>
@@ -3486,7 +3484,7 @@ Cg
                                             </mask>
                                         </variation>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="pKW-og-ZDH" userLabel="Last Name">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="56" id="pKW-og-ZDH" userLabel="Last Name">
                                         <rect key="frame" x="0.0" y="283" width="600" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pKW-og-ZDH" id="gSE-IN-Xzr" userLabel="LastName Content View">
@@ -3527,8 +3525,6 @@ Cg
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="lastNameBegin:" destination="tv0-iu-svJ" eventType="editingDidBegin" id="Mhy-Fd-eD8"/>
-                                                        <action selector="lastNameFinshed:" destination="tv0-iu-svJ" eventType="editingDidEnd" id="ngp-Qa-uES"/>
                                                         <outlet property="delegate" destination="tv0-iu-svJ" id="uin-7H-ud3"/>
                                                     </connections>
                                                 </textField>
@@ -3567,7 +3563,7 @@ Cg
                                             </mask>
                                         </variation>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="jnp-8U-8mm" userLabel="Date of Birth Cell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="56" id="jnp-8U-8mm" userLabel="Date of Birth Cell">
                                         <rect key="frame" x="0.0" y="339" width="600" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jnp-8U-8mm" id="82w-bK-eJs" userLabel="DoB Content View">

@@ -31,9 +31,7 @@
     _internalAccoutCreatedView.layer.cornerRadius = 5;
     
     
-    _residence = [[Residence alloc] init];
-    _residence = [Data sharedInstance].selectedResidence;
-    NSLog(@"Residence: %@", _residence.residenceName);
+
 
     
 }
