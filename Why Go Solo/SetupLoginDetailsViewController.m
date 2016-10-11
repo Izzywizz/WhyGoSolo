@@ -11,13 +11,12 @@
 #import "University.h" //Used to get email suffix
 #import "RRRegistration.h"
 
-@interface SetupLoginDetailsViewController () <UITextFieldDelegate>
+@interface SetupLoginDetailsViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 //email/ password/ confrim password validation
 
+@property(strong, nonatomic) University *university; //Able to access university.suffix proeprty
 
-
-@property(strong, nonatomic) University *university; //Able to access
 
 @end
 
@@ -31,10 +30,10 @@
     self.hasTermsAgreed = false;
     [self obtainAndSetEmailSuffix];
     [self setupCustomActions];
-    [self.tableView setSeparatorColor:[UIColor grayColor]];
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:188/ 255.0 green:186/255.0 blue:193/255.0 alpha:1.0]];
     
     //This prevents the weird the selection animation occuring when the user selects a cell
-    [self.tableView setAllowsSelection:NO];
+    [self.tableView setAllowsSelection:YES];
 //    self.emailAddressTextField.delegate = self;
     
     NSLog(@"Setup Login Details");
@@ -42,17 +41,36 @@
 }
 
 
-
 -(void)viewDidDisappear:(BOOL)animated    {
     self.emailAddressTextField.delegate = nil;
-}
 
+
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+
 #pragma mark - UITextField Delegate
+
+-(BOOL)textFieldShouldReturn:(UITextField*)textField
+{
+    NSInteger nextTag = textField.tag + 1;
+    NSLog(@"tag: %ld", (long)nextTag);
+    // Try to find next responder, If the superview of the text field will be a UITableViewCell (contentView) then next responder will be few levels down to access the textfield in order to access the responder be
+    UIResponder* nextResponder = [textField.superview.superview.superview viewWithTag:nextTag];
+
+    if (nextResponder) {
+        NSLog(@"nextResponder: %@", nextResponder);
+        // Found next responder, so set it.
+        [nextResponder becomeFirstResponder];
+    } else {
+        // Not found, so remove keyboard.
+        [textField resignFirstResponder];
+    }
+    return NO; // We do not want UITextField to insert line-breaks.
+}
 
 /* Ensure that the caret goes to beginning of the textfield*/
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -208,8 +226,15 @@
 #pragma mark - TableView Delegates
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
-    NSLog(@"row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
+    NSLog(@"Section: %ld, row: %ld", (long)indexPath.section, (long)indexPath.row);
     [tableView deselectRowAtIndexPath:indexPath animated:YES]; //remove the selection animation
+    if (indexPath.row == 0) {
+        [_emailAddressTextField becomeFirstResponder];
+    } else if (indexPath.row == 1)  {
+        [_passwordTextField becomeFirstResponder];
+    } else if (indexPath.row == 2)  {
+        [_confirmPasswordTextField becomeFirstResponder];
+    }
     
 }
 

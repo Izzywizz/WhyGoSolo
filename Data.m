@@ -69,10 +69,11 @@
 -(void)createResidencesArrayFromDict:(NSDictionary *)dict
 {
     _residencesArray = [NSMutableArray new];
+    NSLog(@"Residence Dict inside DAta: %@", [dict valueForKey:@"residences"]);
     
-    for (NSDictionary *d in dict)
+    for (NSDictionary *d in [dict valueForKey:@"residences"])
     {
-        Residence *res = [Residence new];
+        Residence *res = [[Residence alloc] initWithDict:d];
         
         [_residencesArray addObject:res];
     }

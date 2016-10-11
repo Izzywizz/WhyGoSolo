@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
             <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
@@ -100,9 +101,12 @@
                                             </mask>
                                         </variation>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grance Central, Skelhorne St, Liverpool" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="WOd-LB-g0R" userLabel="Address">
-                                        <rect key="frame" x="68" y="48" width="315" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grance Central, Skelhorne St, Liverpool" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="WOd-LB-g0R" userLabel="Address">
+                                        <rect key="frame" x="68" y="48" width="315" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="mXE-il-OER"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                         <color key="textColor" red="0.98431372549999996" green="0.12549019610000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -150,12 +154,13 @@
                                         </variation>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" placeholderIntrinsicWidth="391" placeholderIntrinsicHeight="78.5" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qny-6J-4lo" userLabel="Event Text">
-                                        <rect key="frame" x="30" y="65" width="391" height="76"/>
+                                        <rect key="frame" x="30" y="69" width="391" height="72"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="391" id="CMi-Im-NJD"/>
                                             <constraint firstAttribute="height" constant="70" id="Uoh-IM-fPq"/>
                                             <constraint firstAttribute="height" constant="78.5" id="bT3-es-ezI"/>
+                                            <constraint firstAttribute="height" constant="72" id="pXP-US-KmA"/>
                                         </constraints>
                                         <string key="text">We are having a flat party to celebrate the end of the exam perod. Starts at 8pm, all you need is your own alcohol, snacks are a bonus!</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -177,27 +182,28 @@
                                     <constraint firstAttribute="trailing" secondItem="Qec-oO-oWg" secondAttribute="trailing" constant="14" id="3bm-db-CAD"/>
                                     <constraint firstItem="yzg-q8-2km" firstAttribute="leading" secondItem="SBj-xz-XVO" secondAttribute="trailing" constant="6" id="3sm-Wb-QX5"/>
                                     <constraint firstItem="5jn-tX-9iP" firstAttribute="leading" secondItem="n1v-0N-FUP" secondAttribute="trailing" constant="8" id="6Ex-9L-fN2"/>
+                                    <constraint firstItem="WOd-LB-g0R" firstAttribute="top" secondItem="SBj-xz-XVO" secondAttribute="bottom" constant="2" id="AXa-T6-qLr"/>
                                     <constraint firstItem="yzg-q8-2km" firstAttribute="top" secondItem="Y0Y-Bs-BdG" secondAttribute="top" constant="15" id="Ffq-6q-YlT"/>
                                     <constraint firstItem="Qny-6J-4lo" firstAttribute="top" secondItem="WOd-LB-g0R" secondAttribute="bottom" constant="10" id="FgK-5l-AJ5"/>
                                     <constraint firstItem="5jn-tX-9iP" firstAttribute="leading" secondItem="n1v-0N-FUP" secondAttribute="trailing" constant="3" id="GK4-6q-wVk"/>
-                                    <constraint firstItem="WOd-LB-g0R" firstAttribute="leading" secondItem="Y0Y-Bs-BdG" secondAttribute="leading" constant="68" id="Ge9-gT-iJI"/>
+                                    <constraint firstItem="WOd-LB-g0R" firstAttribute="leading" secondItem="SBj-xz-XVO" secondAttribute="leading" id="K0F-J0-Qod"/>
+                                    <constraint firstItem="WOd-LB-g0R" firstAttribute="trailing" secondItem="SBj-xz-XVO" secondAttribute="trailing" id="K3h-v3-qoY"/>
                                     <constraint firstAttribute="bottom" secondItem="uzr-3U-Id4" secondAttribute="bottom" constant="14" id="KTf-Yb-RjY"/>
                                     <constraint firstItem="SBj-xz-XVO" firstAttribute="leading" secondItem="rRo-LV-PB2" secondAttribute="trailing" constant="6" id="MZl-BT-Tid"/>
+                                    <constraint firstItem="WOd-LB-g0R" firstAttribute="trailing" secondItem="SBj-xz-XVO" secondAttribute="trailing" id="MiJ-g9-1Fs"/>
                                     <constraint firstItem="Qny-6J-4lo" firstAttribute="top" secondItem="WOd-LB-g0R" secondAttribute="bottom" constant="18.5" id="OrA-oh-gFp"/>
                                     <constraint firstItem="Qny-6J-4lo" firstAttribute="top" secondItem="WOd-LB-g0R" secondAttribute="bottom" constant="10.5" id="R5x-WF-mej"/>
-                                    <constraint firstItem="xx1-nd-pGL" firstAttribute="top" secondItem="Qny-6J-4lo" secondAttribute="bottom" constant="4" id="R6T-bX-ClR"/>
+                                    <constraint firstItem="xx1-nd-pGL" firstAttribute="top" secondItem="Qny-6J-4lo" secondAttribute="bottom" constant="8" id="R6T-bX-ClR"/>
                                     <constraint firstItem="yzg-q8-2km" firstAttribute="leading" secondItem="qJd-3Y-tRt" secondAttribute="trailing" constant="6" id="Vos-CZ-cAp"/>
                                     <constraint firstItem="rRo-LV-PB2" firstAttribute="leading" secondItem="Y0Y-Bs-BdG" secondAttribute="leading" constant="30" id="WHV-1k-ljQ"/>
                                     <constraint firstAttribute="bottom" secondItem="5jn-tX-9iP" secondAttribute="bottom" constant="15" id="WhW-NU-1Ob"/>
-                                    <constraint firstAttribute="trailing" secondItem="WOd-LB-g0R" secondAttribute="trailing" constant="85" id="XeK-cI-HRL"/>
-                                    <constraint firstItem="Qny-6J-4lo" firstAttribute="top" secondItem="yzg-q8-2km" secondAttribute="bottom" constant="18" id="Zoc-XA-PbD"/>
+                                    <constraint firstItem="Qny-6J-4lo" firstAttribute="top" secondItem="yzg-q8-2km" secondAttribute="bottom" constant="22" id="Zoc-XA-PbD"/>
                                     <constraint firstItem="5jn-tX-9iP" firstAttribute="centerY" secondItem="n1v-0N-FUP" secondAttribute="centerY" id="aBz-b4-U0A"/>
                                     <constraint firstItem="qJd-3Y-tRt" firstAttribute="leading" secondItem="Y0Y-Bs-BdG" secondAttribute="leading" constant="30" id="apx-CJ-mHZ"/>
                                     <constraint firstAttribute="bottom" secondItem="n1v-0N-FUP" secondAttribute="bottom" constant="20" id="bAf-Ym-Q69"/>
                                     <constraint firstAttribute="trailing" secondItem="xx1-nd-pGL" secondAttribute="trailing" constant="14" id="buU-L5-xIq"/>
                                     <constraint firstItem="qJd-3Y-tRt" firstAttribute="top" secondItem="Y0Y-Bs-BdG" secondAttribute="top" id="dFw-C4-DFT"/>
                                     <constraint firstItem="SBj-xz-XVO" firstAttribute="top" secondItem="Y0Y-Bs-BdG" secondAttribute="top" constant="15" id="egz-yH-9YX"/>
-                                    <constraint firstItem="Qny-6J-4lo" firstAttribute="top" secondItem="WOd-LB-g0R" secondAttribute="bottom" constant="-3.5" id="eqT-h8-jwo"/>
                                     <constraint firstAttribute="bottom" secondItem="5jn-tX-9iP" secondAttribute="bottom" constant="19" id="fq7-JU-pXe"/>
                                     <constraint firstAttribute="trailing" secondItem="Qny-6J-4lo" secondAttribute="trailing" constant="47" id="g9d-4V-KH2"/>
                                     <constraint firstItem="n1v-0N-FUP" firstAttribute="leading" secondItem="Y0Y-Bs-BdG" secondAttribute="leading" constant="30" id="ieW-Tf-SSS"/>
@@ -211,7 +217,6 @@
                                     <constraint firstAttribute="bottom" secondItem="rRo-LV-PB2" secondAttribute="bottom" constant="172.5" id="q67-VP-xdW"/>
                                     <constraint firstAttribute="bottom" secondItem="Qec-oO-oWg" secondAttribute="bottom" constant="14" id="qDM-MU-4bo"/>
                                     <constraint firstItem="Qny-6J-4lo" firstAttribute="leading" secondItem="Y0Y-Bs-BdG" secondAttribute="leading" constant="30" id="uoG-4X-iBh"/>
-                                    <constraint firstItem="WOd-LB-g0R" firstAttribute="top" secondItem="SBj-xz-XVO" secondAttribute="bottom" constant="2" id="vJM-oO-oJF"/>
                                     <constraint firstAttribute="bottom" secondItem="xx1-nd-pGL" secondAttribute="bottom" constant="14" id="van-Zk-B5v"/>
                                     <constraint firstAttribute="bottom" secondItem="n1v-0N-FUP" secondAttribute="bottom" constant="11.5" id="wCF-O1-RWJ"/>
                                     <constraint firstItem="n1v-0N-FUP" firstAttribute="leading" secondItem="Y0Y-Bs-BdG" secondAttribute="leading" constant="15" id="wyb-ql-xHX"/>
@@ -228,6 +233,7 @@
                                         <exclude reference="jxp-s6-QlH"/>
                                         <exclude reference="zEQ-na-hpQ"/>
                                         <exclude reference="1ev-E6-Q4L"/>
+                                        <exclude reference="K3h-v3-qoY"/>
                                         <exclude reference="lMF-gK-ZhR"/>
                                         <exclude reference="lPp-6e-SCT"/>
                                         <exclude reference="pE4-UX-Nln"/>
@@ -237,6 +243,7 @@
                                         <exclude reference="WhW-NU-1Ob"/>
                                         <exclude reference="aBz-b4-U0A"/>
                                         <exclude reference="zHZ-JQ-xyw"/>
+                                        <exclude reference="R6T-bX-ClR"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -262,9 +269,13 @@
             <size key="customSize" width="496" height="221"/>
             <connections>
                 <outlet property="editButton" destination="xx1-nd-pGL" id="3uh-Nh-ZDk"/>
+                <outlet property="eventAddressLabel" destination="WOd-LB-g0R" id="ENV-Ob-Veb"/>
+                <outlet property="eventDescriptionText" destination="Qny-6J-4lo" id="3Lc-i8-ruG"/>
+                <outlet property="eventEmoticonLabel" destination="yzg-q8-2km" id="PKp-fo-ifN"/>
                 <outlet property="innerView" destination="Y0Y-Bs-BdG" id="yxL-dx-AJ7"/>
                 <outlet property="joinButton" destination="Qec-oO-oWg" id="Pdp-CB-bua"/>
                 <outlet property="joinedButton" destination="uzr-3U-Id4" id="i7T-Ga-ki8"/>
+                <outlet property="nameLabel" destination="SBj-xz-XVO" id="1Pt-Ak-QV2"/>
             </connections>
             <point key="canvasLocation" x="978" y="337.5"/>
         </collectionViewCell>

@@ -10,7 +10,7 @@
 #import "RRRegistration.h"
 #import "FontSetup.h"
 
-@interface SetupProfileTableViewController ()<UIImagePickerControllerDelegate, UITextFieldDelegate>
+@interface SetupProfileTableViewController ()<UIImagePickerControllerDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
 
 
@@ -28,7 +28,7 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // Prevents the tableView from drawing any more empty unused cells
     [self setNavigationButtonFontAndSize];
     
-    [self.tableView setAllowsSelection:NO];
+    [self.tableView setAllowsSelection:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,19 +39,24 @@
 
 #pragma mark - TextField Delegate Actions
 
-- (IBAction)lastNameFinshed:(UITextField *)sender {
-    [_lastNameTextField resignFirstResponder];
+-(BOOL)textFieldShouldReturn:(UITextField*)textField
+{
+    NSInteger nextTag = textField.tag + 1;
+    NSLog(@"tag: %ld", (long)nextTag);
+    // Try to find next responder, If the superview of the text field will be a UITableViewCell (contentView) then next responder will be few levels down to access the textfield in order to access the responder be
+    UIResponder* nextResponder = [textField.superview.superview.superview viewWithTag:nextTag];
+    
+    if (nextResponder) {
+        NSLog(@"nextResponder: %@", nextResponder);
+        // Found next responder, so set it.
+        [nextResponder becomeFirstResponder];
+    } else {
+        // Not found, so remove keyboard.
+        [textField resignFirstResponder];
+    }
+    return NO; // We do not want UITextField to insert line-breaks.
 }
 
-- (IBAction)lastNameBegin:(UITextField *)sender {
-    [_lastNameTextField becomeFirstResponder];
-}
-- (IBAction)firstNameBegin:(UITextField *)sender {
-    [_firstNameTextField becomeFirstResponder];
-}
-- (IBAction)firstNameFinshed:(UITextField *)sender {
-    [_firstNameTextField resignFirstResponder];
-}
 
 #pragma mark - Helper Functions
 /** create the round affect camera upload view, including border colour */
@@ -155,7 +160,20 @@
     
 }
 
-#pragma mark - Table view data source
+#pragma mark - Table view delegates
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"Section: %ld, Row: %ld", (long)indexPath.section, (long)indexPath.row);
+    [tableView deselectRowAtIndexPath:indexPath animated:YES]; //remove the selection animation
+    
+    if (indexPath.row == 0) {
+        [_firstNameTextField becomeFirstResponder];
+    } else if (indexPath.row == 1)  {
+        [_lastNameTextField becomeFirstResponder];
+    } else if (indexPath.row == 2)  {
+        [_dateOfBirthField becomeFirstResponder];
+    }
+}
 
 
 /** Allows the cell selection seperators (the grey line across the tableView Cell) to extend across the entire table view */

@@ -7,6 +7,9 @@
 //
 
 #import "OtherProfileTableViewCell.h"
+#import "Data.h"
+#import "Event.h"
+
 
 @implementation OtherProfileTableViewCell
 
@@ -20,5 +23,14 @@
 
     // Configure the view for the selected state
 }
+
+-(OtherProfileTableViewCell * )configureCollectionForOtherProfile:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath
+{
+    self.event = [Data sharedInstance].selectedEvent;
+    self.nameLabel.text = self.event.userName;
+    return  self;
+    
+}
+
 
 @end

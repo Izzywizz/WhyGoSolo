@@ -10,4 +10,21 @@
 
 @implementation Residence
 
+-(Residence *) initWithDict: (NSDictionary *)dict   {
+    
+    NSLog(@"Dictionary Inside Residence: %@", dict);
+    if (self)
+    {
+        self.residenceName = [dict valueForKey:@"name"];
+        self.address = [dict valueForKey:@"address"];
+        self.city = [dict valueForKey:@"city"];
+        self.postCode = [dict valueForKey:@"post_code"];
+        self.longitude = (double)[[dict valueForKey:@"longitude"] doubleValue];
+        self.latitude = (double)[[dict valueForKey:@"latitude"]doubleValue];
+        
+    }
+    return self;
+    
+}
+
 @end

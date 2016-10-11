@@ -184,6 +184,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="ProfileAccommodation" destination="glq-9h-cJz" id="fm8-v4-ATV"/>
+                <outlet property="nameLabel" destination="wuk-me-FAB" id="fo6-gT-Zoz"/>
                 <outlet property="profileUniversityLabel" destination="Cku-VO-TX1" id="xFS-U3-SOh"/>
             </connections>
             <point key="canvasLocation" x="495.5" y="426.5"/>

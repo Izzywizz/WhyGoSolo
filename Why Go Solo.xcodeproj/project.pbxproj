@@ -18,6 +18,7 @@
 		4309193F1D81552200EE9220 /* PinLocationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4309193E1D81552200EE9220 /* PinLocationData.m */; };
 		430919421D8158A000EE9220 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 430919411D8158A000EE9220 /* car.png */; };
 		430C14B81D929D5900F76C35 /* CreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430C14B71D929D5900F76C35 /* CreateEventViewController.m */; };
+		4311A5C41DAD36B200052EE1 /* ISEmojiList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4311A5C31DAD36B200052EE1 /* ISEmojiList.plist */; };
 		4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4319E7841D89582800FD5142 /* CommentTableViewController.m */; };
 		431C45B91D895C6B00A05C11 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 431C45B81D895C6B00A05C11 /* MainViewController.m */; };
 		4335A4E11D9E5E0600DCCC3E /* EditCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4335A4E01D9E5E0600DCCC3E /* EditCollectionViewController.m */; };
@@ -82,7 +83,6 @@
 		43B981D51D95220400E7DD05 /* thai_shrimp_cake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 43B981C41D95220400E7DD05 /* thai_shrimp_cake.jpg */; };
 		43B981D61D95220400E7DD05 /* vegetable_curry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 43B981C51D95220400E7DD05 /* vegetable_curry.jpg */; };
 		43B981D71D95220400E7DD05 /* white_chocolate_donut.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 43B981C61D95220400E7DD05 /* white_chocolate_donut.jpg */; };
-		43B981D91D95242300E7DD05 /* ISEmojiList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43B981D81D95242300E7DD05 /* ISEmojiList.plist */; };
 		43B981DB1D95282900E7DD05 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B981DA1D95282900E7DD05 /* CollectionCell.xib */; };
 		43B981DE1D95291800E7DD05 /* FriendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B981DD1D95291800E7DD05 /* FriendCollectionViewCell.m */; };
 		43B981E31D9534C100E7DD05 /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B981E21D9534C100E7DD05 /* HeaderCollectionReusableView.m */; };
@@ -157,6 +157,7 @@
 		430919411D8158A000EE9220 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
 		430C14B61D929D5900F76C35 /* CreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateEventViewController.h; path = "Why Go Solo/CreateEventViewController.h"; sourceTree = "<group>"; };
 		430C14B71D929D5900F76C35 /* CreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateEventViewController.m; path = "Why Go Solo/CreateEventViewController.m"; sourceTree = "<group>"; };
+		4311A5C31DAD36B200052EE1 /* ISEmojiList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ISEmojiList.plist; sourceTree = "<group>"; };
 		4319E7831D89582800FD5142 /* CommentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentTableViewController.h; path = ../CommentTableViewController.h; sourceTree = "<group>"; };
 		4319E7841D89582800FD5142 /* CommentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewController.m; path = ../CommentTableViewController.m; sourceTree = "<group>"; };
 		431C45B71D895C6B00A05C11 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -246,7 +247,6 @@
 		43B981C41D95220400E7DD05 /* thai_shrimp_cake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thai_shrimp_cake.jpg; sourceTree = "<group>"; };
 		43B981C51D95220400E7DD05 /* vegetable_curry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vegetable_curry.jpg; sourceTree = "<group>"; };
 		43B981C61D95220400E7DD05 /* white_chocolate_donut.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white_chocolate_donut.jpg; sourceTree = "<group>"; };
-		43B981D81D95242300E7DD05 /* ISEmojiList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ISEmojiList.plist; sourceTree = "<group>"; };
 		43B981DA1D95282900E7DD05 /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionCell.xib; path = "Why Go Solo/CollectionCell.xib"; sourceTree = "<group>"; };
 		43B981DC1D95291800E7DD05 /* FriendCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendCollectionViewCell.h; path = "Why Go Solo/FriendCollectionViewCell.h"; sourceTree = "<group>"; };
 		43B981DD1D95291800E7DD05 /* FriendCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendCollectionViewCell.m; path = "Why Go Solo/FriendCollectionViewCell.m"; sourceTree = "<group>"; };
@@ -416,7 +416,7 @@
 		4350B37E1D93C558001A5AE8 /* ISEmojiView */ = {
 			isa = PBXGroup;
 			children = (
-				43B981D81D95242300E7DD05 /* ISEmojiList.plist */,
+				4311A5C31DAD36B200052EE1 /* ISEmojiList.plist */,
 				4350B3801D93C558001A5AE8 /* ISEmojiView.h */,
 				4350B3811D93C558001A5AE8 /* ISEmojiView.m */,
 			);
@@ -761,7 +761,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43B981D91D95242300E7DD05 /* ISEmojiList.plist in Resources */,
 				43B981D41D95220400E7DD05 /* starbucks_coffee.jpg in Resources */,
 				438A14BD1D801E0F005E6AF7 /* OFL.txt in Resources */,
 				433B85291DA79B4F0092E5F1 /* CommentCell.xib in Resources */,
@@ -789,6 +788,7 @@
 				43F2954E1DA63EFE006321BD /* HallsOfResidenceMark.plist in Resources */,
 				43B981CC1D95220400E7DD05 /* ham_and_cheese_panini.jpg in Resources */,
 				438A14B41D801E0F005E6AF7 /* Lato-BlackItalic.ttf in Resources */,
+				4311A5C41DAD36B200052EE1 /* ISEmojiList.plist in Resources */,
 				43B981CD1D95220400E7DD05 /* ham_and_egg_sandwich.jpg in Resources */,
 				43B981D01D95220400E7DD05 /* japanese_noodle_with_pork.jpg in Resources */,
 				438A148C1D8011C2005E6AF7 /* Assets.xcassets in Resources */,

@@ -22,6 +22,8 @@
 @property BOOL isUserBlocked;
 @property BOOL isFriend;
 
+@property NSArray *myEventsDataArray;
+@property NSArray *dataArray;
 
 //TextProperties
 
@@ -42,7 +44,10 @@
     [self internalViewSetup];
     _isFriend = true;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(20,0,0,0); //prevents that weird scrolling under the bar thing 
+    self.tableView.contentInset = UIEdgeInsetsMake(20,0,0,0); //prevents that weird scrolling under the bar thing
+    
+    _dataArray = [NSArray new];
+    _myEventsDataArray = [NSArray new];
     
     _accomodationLabel.text = @"The Killers";
 }
@@ -222,6 +227,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     OtherProfileTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
+    [cell configureCollectionForOtherProfile:self.tableView atIndexPath:indexPath];
     return cell;
 }
 
@@ -233,7 +239,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     EventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
-    //Setup cell using data pull down from the server, this is using dummy data
+   /* //Setup cell using data pull down from the server, this is using dummy data
     NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
     NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
     NSString *eventName = [sectionEvents objectAtIndex:indexPath.row];
@@ -252,6 +258,9 @@
     
     cell.nameLabel.text = eventName;
     //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
+    */
+    [cell configureCellWithEventForTableView:self.tableView atIndexPath:indexPath];
+
     
     return cell;
 }

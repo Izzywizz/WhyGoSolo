@@ -327,7 +327,7 @@
                         <sections>
                             <tableViewSection id="L2n-0V-Kr7">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="P0D-z2-fYZ" userLabel="Email Address Cell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="P0D-z2-fYZ" userLabel="Email Address Cell">
                                         <rect key="frame" x="0.0" y="67" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P0D-z2-fYZ" id="VPh-QE-uz5">
@@ -359,9 +359,9 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.73725490199999999" green="0.72941176470000002" blue="0.75686274509999996" alpha="0.75" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="N5v-4W-VUf" firstAttribute="top" secondItem="VPh-QE-uz5" secondAttribute="top" constant="1" id="Dbw-iJ-gL8"/>
+                                                <constraint firstItem="N5v-4W-VUf" firstAttribute="top" secondItem="VPh-QE-uz5" secondAttribute="top" constant="0.5" id="Dbw-iJ-gL8"/>
                                                 <constraint firstItem="W9y-mT-iij" firstAttribute="top" secondItem="n3j-GS-Ngv" secondAttribute="bottom" constant="1" id="Uhw-3K-Ue2"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="n3j-GS-Ngv" secondAttribute="trailing" id="Yy5-iQ-cXM"/>
                                                 <constraint firstAttribute="topMargin" secondItem="n3j-GS-Ngv" secondAttribute="top" constant="-6" id="gxC-fm-ZtH"/>
@@ -382,7 +382,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="SV2-qS-w0E" userLabel="Password Cell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="SV2-qS-w0E" userLabel="Password Cell">
                                         <rect key="frame" x="0.0" y="127" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SV2-qS-w0E" id="25w-bB-Srw" userLabel="Password Content View">
@@ -414,7 +414,7 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.73725490199999999" green="0.72941176470000002" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="sCa-bR-EhP" firstAttribute="leading" secondItem="25w-bB-Srw" secondAttribute="leading" constant="20" id="BEb-aU-jAO"/>
                                                 <constraint firstAttribute="bottom" secondItem="6mK-LB-lj4" secondAttribute="bottom" constant="0.5" id="BLt-7j-GIO"/>
@@ -437,7 +437,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="OVS-Yg-hJ9" userLabel="Confirm Password">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="OVS-Yg-hJ9" userLabel="Confirm Password">
                                         <rect key="frame" x="0.0" y="187" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OVS-Yg-hJ9" id="3DO-St-PNA">
@@ -469,7 +469,7 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.73725490199999999" green="0.72941176470000002" blue="0.75686274509999996" alpha="0.75" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="sR1-Hv-SkJ" firstAttribute="leading" secondItem="3DO-St-PNA" secondAttribute="leading" constant="20" id="94y-WU-XhD"/>
                                                 <constraint firstAttribute="trailing" secondItem="VMx-7E-XE1" secondAttribute="trailing" id="AQl-Ur-1Ov"/>
@@ -492,7 +492,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="termsCell" rowHeight="74" id="NH3-gK-5KP" userLabel="Terms &amp; condition">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="termsCell" rowHeight="74" id="NH3-gK-5KP" userLabel="Terms &amp; condition">
                                         <rect key="frame" x="0.0" y="247" width="600" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NH3-gK-5KP" id="BBr-1O-feZ">
@@ -3336,7 +3336,7 @@ Cg
                         <sections>
                             <tableViewSection id="zHc-hG-LBs">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="G1D-YE-J8H" userLabel="Image Upload Cell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="160" id="G1D-YE-J8H" userLabel="Image Upload Cell">
                                         <rect key="frame" x="0.0" y="67" width="600" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G1D-YE-J8H" id="P7y-Ar-vO5">
@@ -3397,7 +3397,7 @@ Cg
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="M3w-cW-D4V" userLabel="First Name Cell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="56" id="M3w-cW-D4V" userLabel="First Name Cell">
                                         <rect key="frame" x="0.0" y="227" width="600" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M3w-cW-D4V" id="H8n-al-fw6">
@@ -3438,8 +3438,7 @@ Cg
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="firstNameBegin:" destination="tv0-iu-svJ" eventType="editingDidBegin" id="bM2-h9-Ikg"/>
-                                                        <action selector="firstNameFinshed:" destination="tv0-iu-svJ" eventType="editingDidEnd" id="zwA-SR-hHs"/>
+                                                        <outlet property="delegate" destination="tv0-iu-svJ" id="SvW-iC-1uR"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -3485,7 +3484,7 @@ Cg
                                             </mask>
                                         </variation>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="pKW-og-ZDH" userLabel="Last Name">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="56" id="pKW-og-ZDH" userLabel="Last Name">
                                         <rect key="frame" x="0.0" y="283" width="600" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pKW-og-ZDH" id="gSE-IN-Xzr" userLabel="LastName Content View">
@@ -3526,9 +3525,7 @@ Cg
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="lastNameBegin:" destination="tv0-iu-svJ" eventType="editingDidBegin" id="Mhy-Fd-eD8"/>
-                                                        <action selector="lastNameFinshed:" destination="tv0-iu-svJ" eventType="editingDidEnd" id="ngp-Qa-uES"/>
-                                                        <outlet property="delegate" destination="tv0-iu-svJ" id="gqr-eA-3Ar"/>
+                                                        <outlet property="delegate" destination="tv0-iu-svJ" id="uin-7H-ud3"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -3566,7 +3563,7 @@ Cg
                                             </mask>
                                         </variation>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="jnp-8U-8mm" userLabel="Date of Birth Cell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="56" id="jnp-8U-8mm" userLabel="Date of Birth Cell">
                                         <rect key="frame" x="0.0" y="339" width="600" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jnp-8U-8mm" id="82w-bK-eJs" userLabel="DoB Content View">
@@ -3608,6 +3605,7 @@ Cg
                                                     </variation>
                                                     <connections>
                                                         <action selector="datePicker:" destination="tv0-iu-svJ" eventType="editingDidBegin" id="VqC-se-QvI"/>
+                                                        <outlet property="delegate" destination="tv0-iu-svJ" id="lvy-UK-SYc"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>

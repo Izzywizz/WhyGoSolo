@@ -55,6 +55,8 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 
+    NSLog(@"Sections Count: %d", self.dummyData.count);
+//    return 2;
     return self.dummyData.count;
 }
 
@@ -94,7 +96,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath    {
     if (indexPath.section == 0) {
         //        return self.view.frame.size;
-        return CGSizeMake(self.collectionView.bounds.size.width, 300);
+        return CGSizeMake(self.collectionView.bounds.size.width, 220);
     } else  {
         return CGSizeMake(100, 120);
     }
@@ -136,6 +138,8 @@
     static NSString *identifier = @"EventCollectionCell";
     
     EventCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
+    [cell configureCellWithEventForTableView:self.collectionView atIndexPath:indexPath];
     
     return cell;
 }
