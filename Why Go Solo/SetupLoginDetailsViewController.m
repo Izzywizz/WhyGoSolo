@@ -9,30 +9,20 @@
 #import "SetupLoginDetailsViewController.h"
 #import "Data.h"
 #import "University.h" //Used to get email suffix
-#import "Residence.h"// used to get residences
 #import "RRRegistration.h"
-#import "WebService.h"
 
-@interface SetupLoginDetailsViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, DataDelegate>
+@interface SetupLoginDetailsViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 //email/ password/ confrim password validation
 
 @property(strong, nonatomic) University *university; //Able to access university.suffix proeprty
-@property (nonatomic, strong) WebService *Webservice;
-@property (strong, nonnull) Residence *residence;
+
 
 @end
 
 @implementation SetupLoginDetailsViewController
 
 #pragma mark - UI Methods
-
--(void) viewWillAppear:(BOOL)animated   {
-    
-    [[WebService sharedInstance] residences];
-    [Data sharedInstance].delegate = self; // Set Data delegate
-    
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,7 +43,7 @@
 
 -(void)viewDidDisappear:(BOOL)animated    {
     self.emailAddressTextField.delegate = nil;
-    [Data sharedInstance].delegate = nil; // release Data delegate
+
 
 }
 - (void)didReceiveMemoryWarning {
@@ -61,27 +51,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Delegate Methods
-
--(void)handleUpdates
-{
-    
-}
-
--(void)residencesDownloadedSuccessfully {
-    NSLog(@"Sucessfully downloaded residences");
-    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
-    // Need to set to main thread as this is currently running on a background thread
-    
-    NSLog(@"residences array: %@", [Data sharedInstance].residencesArray);
-    NSArray *residenceArray = [[NSArray alloc] init];
-    residenceArray = [Data sharedInstance].residencesArray;
-    
-    _residence = [[Residence alloc] init];
-    _residence = [residenceArray objectAtIndex:0];
-    NSLog(@"Residence: %@", _residence);
-    NSLog(@"Longitude: %f", _residence.longitude);
-}
 
 #pragma mark - UITextField Delegate
 

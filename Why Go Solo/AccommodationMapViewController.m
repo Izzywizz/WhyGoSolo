@@ -10,13 +10,15 @@
 #import "SearchBarTableViewController.h"
 #import "Data.h"
 #import "Residence.h"
+#import "WebService.h"
 
-@interface AccommodationMapViewController ()
+@interface AccommodationMapViewController ()<DataDelegate>
 
 @property (nonatomic, strong) SearchBarTableViewController *locationSearchTable;
 @property (nonatomic, strong) UISearchController *resultSearchController;
 
 @property (nonatomic) Residence *residence;
+@property (nonatomic, strong) WebService *Webservice;
 
 @end
 
@@ -30,10 +32,6 @@
     [self setup];
     _internalAccoutCreatedView.layer.cornerRadius = 5;
     
-    
-
-
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,12 +43,37 @@
     [self.mapView setDelegate:self];
 //    self.locationSearchTable.delegate = self;
     [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
+    
+    [[WebService sharedInstance] residences];
+    [Data sharedInstance].delegate = self; // Set Data delegate
+
 }
 
 -(void) viewWillDisappear:(BOOL)animated    {
     self.mapView.delegate = nil;
 //    self.locationSearchTable.delegate = nil;
     self.definesPresentationContext = NO;
+    [Data sharedInstance].delegate = nil; // release Data delegate
+}
+
+
+#pragma mark - Delegate Methods
+
+-(void)handleUpdates
+{
+    for (Residence *element in [Data sharedInstance].residencesArray) {
+        NSLog(@"Name: %@", element.residenceName);
+        NSLog(@"Longitude: %f", element.longitude);
+        NSLog(@"LAtitude: %f", element.latitude);
+    }
+}
+
+-(void)residencesDownloadedSuccessfully {
+    NSLog(@"Sucessfully downloaded residences");
+    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
+    // Need to set to main thread as this is currently running on a background thread
+    
+    
 }
 
 
