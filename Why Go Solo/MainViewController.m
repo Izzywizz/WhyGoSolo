@@ -22,7 +22,7 @@
     [super viewDidLoad];
     NSLog(@"Main has been loaded");
 
-//    [self checkForToken];
+    [self checkForToken];
 }
 
 -(void)checkForToken

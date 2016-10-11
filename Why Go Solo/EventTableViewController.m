@@ -335,25 +335,15 @@ NSArray *sectionTitles;
 }
 
 -(EventsTableViewCell *) eventCellAtIndex: (NSIndexPath *) indexPath {
-    
-    NSString *reuseID = @"EventsTableViewCell";
+
+   NSString *reuseID = @"EventsTableViewCell";
     NSString *nibName = @"Events";
     
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     EventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
-    if (self.tableView.numberOfSections == 2 && indexPath.section ==  0)
-    {
-        cell.joined = YES;
-        cell.event =  [[Data sharedInstance].myEventsArray objectAtIndex:indexPath.row];
-    }
-    else
-    {
-        cell.joined = NO;
-        cell.event = [[Data sharedInstance].eventsArray objectAtIndex:indexPath.row];
-    }
-    
-    [cell configureCellWithEvent];
+
+    [cell configureCellWithEventForTableView:self.tableView atIndexPath:indexPath];
    
     return cell;
 }

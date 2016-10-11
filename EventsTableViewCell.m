@@ -61,8 +61,21 @@
 
 
 
--(void)configureCellWithEvent
+-(EventsTableViewCell*)configureCellWithEventForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath
 {
+
+    if (tableView.numberOfSections == 2 && indexPath.section ==  0)
+    {
+        self.joined = YES;
+        self.event =  [[Data sharedInstance].myEventsArray objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        self.joined = NO;
+        self.event = [[Data sharedInstance].eventsArray objectAtIndex:indexPath.row];
+    }
+
+    
     if (self.joined)
     {
         if (self.event.userID != (int)[[Data sharedInstance].userID integerValue])
@@ -92,6 +105,8 @@
     self.eventMessageCount.text = self.event.totalComments;
     self.eventInviteeCount.text = self.event.totalAttending;
     self.eventEmoticonLabel.text = self.event.emoji;
+    
+    return  self;
 
 }
 @end

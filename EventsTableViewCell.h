@@ -35,6 +35,7 @@ typedef enum {
 } EventState;
 
 
--(void)configureCellWithEvent;
+//-(void)configureCellWithEvent;
+-(EventsTableViewCell*)configureCellWithEventForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath;
 
 @end
