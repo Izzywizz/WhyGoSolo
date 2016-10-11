@@ -276,7 +276,7 @@
     NSDictionary *params = @{
                              @"user_id":[Data sharedInstance].userID,
                              @"filter_distance":@"0",
-                             @"residence_id_array":filterArrayString
+                             @"residence_id_array":@"all"
                              };
     
     

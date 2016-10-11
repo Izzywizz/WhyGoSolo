@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *messageImage;
 @property (weak, nonatomic) IBOutlet UIButton *editJoinButton;
 @property (weak, nonatomic) IBOutlet UIButton *joinedButton;
+
+@property BOOL joined;
 @property Event *event;
 typedef enum {
     EDIT = 1,
@@ -33,5 +35,7 @@ typedef enum {
 } EventState;
 
 
+//-(void)configureCellWithEvent;
+-(EventsTableViewCell*)configureCellWithEventForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath;
 
 @end
