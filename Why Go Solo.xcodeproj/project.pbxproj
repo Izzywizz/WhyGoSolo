@@ -27,6 +27,7 @@
 		433B852C1DA7A1B40092E5F1 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 433B852B1DA7A1B40092E5F1 /* CommentsTableViewCell.m */; };
 		433B852F1DA7C8FF0092E5F1 /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 433B852E1DA7C8FF0092E5F1 /* AddCommentViewController.m */; };
 		434288991D9D11BE00D4E911 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 434288981D9D11BE00D4E911 /* EditViewController.m */; };
+		4343D16A1DAE442A00A4156C /* assests.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4343D1691DAE442A00A4156C /* assests.xcassets */; };
 		4350B3831D93C558001A5AE8 /* ISEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4350B3811D93C558001A5AE8 /* ISEmojiView.m */; };
 		436655AE1D9E6A910041F491 /* EditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 436655AD1D9E6A910041F491 /* EditCell.xib */; };
 		436655B11D9E6DD70041F491 /* EditCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 436655B01D9E6DD70041F491 /* EditCellCollectionViewCell.m */; };
@@ -39,7 +40,6 @@
 		438A14811D8011C2005E6AF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14801D8011C2005E6AF7 /* main.m */; };
 		438A14841D8011C2005E6AF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14831D8011C2005E6AF7 /* AppDelegate.m */; };
 		438A148A1D8011C2005E6AF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438A14881D8011C2005E6AF7 /* Main.storyboard */; };
-		438A148C1D8011C2005E6AF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438A148B1D8011C2005E6AF7 /* Assets.xcassets */; };
 		438A148F1D8011C2005E6AF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438A148D1D8011C2005E6AF7 /* LaunchScreen.storyboard */; };
 		438A149A1D8011C2005E6AF7 /* Why_Go_SoloTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 438A14991D8011C2005E6AF7 /* Why_Go_SoloTests.m */; };
 		438A14B31D801E0F005E6AF7 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 438A14A81D801E0F005E6AF7 /* Lato-Black.ttf */; };
@@ -173,6 +173,7 @@
 		433B852E1DA7C8FF0092E5F1 /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
 		434288971D9D11BE00D4E911 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		434288981D9D11BE00D4E911 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		4343D1691DAE442A00A4156C /* assests.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = assests.xcassets; path = ../assests.xcassets; sourceTree = "<group>"; };
 		4350B3801D93C558001A5AE8 /* ISEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEmojiView.h; sourceTree = "<group>"; };
 		4350B3811D93C558001A5AE8 /* ISEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEmojiView.m; sourceTree = "<group>"; };
 		436655AD1D9E6A910041F491 /* EditCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditCell.xib; sourceTree = "<group>"; };
@@ -193,7 +194,6 @@
 		438A14821D8011C2005E6AF7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		438A14831D8011C2005E6AF7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		438A14891D8011C2005E6AF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		438A148B1D8011C2005E6AF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		438A148E1D8011C2005E6AF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		438A14901D8011C2005E6AF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		438A14951D8011C2005E6AF7 /* Why Go SoloTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Why Go SoloTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -501,9 +501,9 @@
 				43F295531DA698AF006321BD /* DirectionViewController.m */,
 				43ECC9EB1DA24D1E0059A333 /* No Longer Need */,
 				438A14881D8011C2005E6AF7 /* Main.storyboard */,
-				438A148B1D8011C2005E6AF7 /* Assets.xcassets */,
 				438A148D1D8011C2005E6AF7 /* LaunchScreen.storyboard */,
 				438A14901D8011C2005E6AF7 /* Info.plist */,
+				4343D1691DAE442A00A4156C /* assests.xcassets */,
 				438A147F1D8011C2005E6AF7 /* Supporting Files */,
 			);
 			path = "Why Go Solo";
@@ -781,6 +781,7 @@
 				438A14B51D801E0F005E6AF7 /* Lato-Bold.ttf in Resources */,
 				438A14BA1D801E0F005E6AF7 /* Lato-Light.ttf in Resources */,
 				43B981D31D95220400E7DD05 /* photo-frame.png in Resources */,
+				4343D16A1DAE442A00A4156C /* assests.xcassets in Resources */,
 				43A893631D8057AE00BEA24B /* FooterEvents.xib in Resources */,
 				43B981D11D95220400E7DD05 /* mushroom_risotto.jpg in Resources */,
 				436655AE1D9E6A910041F491 /* EditCell.xib in Resources */,
@@ -791,7 +792,6 @@
 				4311A5C41DAD36B200052EE1 /* ISEmojiList.plist in Resources */,
 				43B981CD1D95220400E7DD05 /* ham_and_egg_sandwich.jpg in Resources */,
 				43B981D01D95220400E7DD05 /* japanese_noodle_with_pork.jpg in Resources */,
-				438A148C1D8011C2005E6AF7 /* Assets.xcassets in Resources */,
 				43ECC9F01DA25B480059A333 /* CreateCell.xib in Resources */,
 				43B4009C1D86BDE70094DFB6 /* PeopleEvent.xib in Resources */,
 				43B981CA1D95220400E7DD05 /* full_breakfast.jpg in Resources */,
@@ -1022,6 +1022,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = "Why Go Solo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1035,6 +1036,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = "Why Go Solo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

@@ -277,13 +277,17 @@ NSArray *sectionTitles;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 10)];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
     return [self footerCellAtIndex:section];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section    {
     
     //Forced the Footer to conform to a specific height that is equal to the header space between the cell
-    return 10;
+    return 14;
 }
 
 
