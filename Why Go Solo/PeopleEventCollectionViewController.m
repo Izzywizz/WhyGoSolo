@@ -56,7 +56,6 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 
-    NSLog(@"Sections Count: %d", self.dummyData.count);
 //    return 2;
     return self.dummyData.count;
 }
@@ -83,7 +82,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(25, 40, 20, 40); //allows padding between cells to be changed
+    return UIEdgeInsetsMake(20, 20, 20, 20); //allows padding between cells to be changed
 }
 
 #pragma mark - Collection View Delegates

@@ -97,7 +97,8 @@ static NSString * const reuseIdentifier = @"Cell";
         cell.contentView.hidden = NO;
     }
     cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
-    
+    cell.profileName.text = @"Isfandyar";
+
     return cell;
 }
 
@@ -130,9 +131,18 @@ static NSString * const reuseIdentifier = @"Cell";
     } else if (_isPrivateEvent) {
         return CGSizeZero;
     } else  {
-        return CGSizeMake(100, 100); //This is sizes for round image icons.
+        return CGSizeMake(60, 90); //This is sizes for round image icons.
     }
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     
+    if (section == 1) {
+        return UIEdgeInsetsMake(20, 20, 20, 20); //allows padding between cells to be changed but not the FRIENDS/ EVERYONE headerViews
+    } else if (section == 2) {
+        return UIEdgeInsetsMake(20, 20, 20, 20); //allows padding between cells to be changed but not the FRIENDS/ EVERYONE headerViews
+    } else
+        return UIEdgeInsetsMake(0, 0, 0, 0); //Just set the default values
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -250,6 +260,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark - Helper Functions
+
 -(void)deleteOverlayAlpha:(int)a animationDuration:(float)duration
 {
     [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{

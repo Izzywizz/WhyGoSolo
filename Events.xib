@@ -293,12 +293,12 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="myk-XJ-mrj"/>
+                                <exclude reference="XcL-Dr-PpZ"/>
                                 <exclude reference="AL6-75-la9"/>
                                 <exclude reference="ICH-dF-MdK"/>
                                 <exclude reference="Zq6-5U-Of9"/>
                                 <exclude reference="fcn-bx-TCw"/>
                                 <exclude reference="qTZ-2S-YWT"/>
-                                <exclude reference="XcL-Dr-PpZ"/>
                                 <exclude reference="1St-RD-K0H"/>
                                 <exclude reference="DY0-c8-EeX"/>
                                 <exclude reference="PLD-8q-hHP"/>

@@ -21,12 +21,14 @@
 
 static NSString * const reuseIdentifier = @"Cell";
 
+#pragma mark - UI View Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     _isPrivateEvent = NO;
     [self createDummyData];
     [self setupObservers];
+    [self setNavigationButtonFontAndSize];
     
     //Register The Nib for the collection cell
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"Cell"];
@@ -40,6 +42,14 @@ static NSString * const reuseIdentifier = @"Cell";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Helper Methods
+
+-(void) setNavigationButtonFontAndSize  {
+    
+    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    
+    [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+}
 
 
 #pragma mark <UICollectionViewDataSource>
@@ -97,7 +107,8 @@ static NSString * const reuseIdentifier = @"Cell";
         cell.contentView.hidden = NO;
     }
     cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
-    
+    cell.profileName.text = @"IsfandyarIsfandyar";
+
     return cell;
 }
 
@@ -138,12 +149,11 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     
     if (section == 1) {
-        return UIEdgeInsetsMake(25, 40, 20, 40); //allows padding between cells to be changed but not the FRIENDS/ EVERYONE headerViews
+        return UIEdgeInsetsMake(20, 20, 20, 20); //allows padding between cells to be changed but not the FRIENDS/ EVERYONE headerViews
     } else if (section == 2) {
-        return UIEdgeInsetsMake(25, 40, 20, 40); //allows padding between cells to be changed but not the FRIENDS/ EVERYONE headerViews
+        return UIEdgeInsetsMake(20, 20, 20, 20); //allows padding between cells to be changed but not the FRIENDS/ EVERYONE headerViews
     } else
         return UIEdgeInsetsMake(0, 0, 0, 0); //Just set the default values
-    
 }
 
 

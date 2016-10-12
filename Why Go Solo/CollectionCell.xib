@@ -12,10 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="sxJ-Fn-0jR" customClass="FriendCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="60" height="90"/>
+            <rect key="frame" x="0.0" y="0.0" width="60" height="87"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="60" height="90"/>
+                <rect key="frame" x="0.0" y="0.0" width="60" height="87"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Kg-Ue-ipK">
@@ -25,10 +25,10 @@
                             <constraint firstAttribute="width" constant="60" id="cWi-d4-u55"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Tph-de-5g8">
-                        <rect key="frame" x="0.0" y="65" width="60" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Tph-de-5g8">
+                        <rect key="frame" x="0.0" y="61" width="60" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="18" id="ZLa-BH-YFq"/>
+                            <constraint firstAttribute="height" constant="20" id="ZLa-BH-YFq"/>
                             <constraint firstAttribute="width" constant="100" id="yE6-ah-C8n"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
@@ -48,14 +48,15 @@
                 <constraint firstItem="4Kg-Ue-ipK" firstAttribute="top" secondItem="sxJ-Fn-0jR" secondAttribute="top" id="EiE-bk-ket"/>
                 <constraint firstItem="4Kg-Ue-ipK" firstAttribute="leading" secondItem="Tph-de-5g8" secondAttribute="leading" id="H5H-Wr-XNg"/>
                 <constraint firstAttribute="trailing" secondItem="4Kg-Ue-ipK" secondAttribute="trailing" id="Sur-8d-eap"/>
-                <constraint firstItem="Tph-de-5g8" firstAttribute="top" secondItem="4Kg-Ue-ipK" secondAttribute="bottom" constant="5" id="TP0-Kh-GmL"/>
+                <constraint firstItem="Tph-de-5g8" firstAttribute="top" secondItem="4Kg-Ue-ipK" secondAttribute="bottom" constant="2" id="TP0-Kh-GmL"/>
                 <constraint firstItem="4Kg-Ue-ipK" firstAttribute="leading" secondItem="sxJ-Fn-0jR" secondAttribute="leading" id="TYV-Kl-AJD"/>
                 <constraint firstItem="4Kg-Ue-ipK" firstAttribute="centerY" secondItem="sxJ-Fn-0jR" secondAttribute="centerY" id="U2F-5h-vdu"/>
+                <constraint firstItem="Tph-de-5g8" firstAttribute="top" secondItem="4Kg-Ue-ipK" secondAttribute="bottom" constant="1" id="Z9r-eY-8AN"/>
                 <constraint firstItem="4Kg-Ue-ipK" firstAttribute="leading" secondItem="sxJ-Fn-0jR" secondAttribute="leading" id="gN4-xT-P3F"/>
                 <constraint firstItem="4Kg-Ue-ipK" firstAttribute="centerX" secondItem="sxJ-Fn-0jR" secondAttribute="centerX" id="ucO-67-EOc"/>
                 <constraint firstItem="4Kg-Ue-ipK" firstAttribute="top" secondItem="sxJ-Fn-0jR" secondAttribute="top" id="xch-GQ-rUR"/>
             </constraints>
-            <size key="customSize" width="89" height="99"/>
+            <size key="customSize" width="89" height="96"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="EiE-bk-ket"/>
@@ -63,13 +64,14 @@
                     <exclude reference="U2F-5h-vdu"/>
                     <exclude reference="gN4-xT-P3F"/>
                     <exclude reference="ucO-67-EOc"/>
+                    <exclude reference="TP0-Kh-GmL"/>
                 </mask>
             </variation>
             <connections>
                 <outlet property="profileImageView" destination="4Kg-Ue-ipK" id="zTB-mw-coJ"/>
                 <outlet property="profileName" destination="Tph-de-5g8" id="2dV-8g-uGF"/>
             </connections>
-            <point key="canvasLocation" x="349" y="384"/>
+            <point key="canvasLocation" x="349" y="382.5"/>
         </collectionViewCell>
     </objects>
 </document>

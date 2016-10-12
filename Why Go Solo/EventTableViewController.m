@@ -288,6 +288,7 @@ NSArray *sectionTitles;
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 10)];
     view.backgroundColor = [UIColor clearColor];
     return view;
+    
     return [self footerCellAtIndex:section];
 }
 
