@@ -283,7 +283,7 @@ NSArray *sectionTitles;
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section    {
     
     //Forced the Footer to conform to a specific height that is equal to the header space between the cell
-    return 15;
+    return 10;
 }
 
 
