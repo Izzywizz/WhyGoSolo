@@ -31,6 +31,7 @@
     //Add padding betweeen the section headers
     UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     collectionViewLayout.sectionInset = UIEdgeInsetsMake(5, 0, 5, 0);
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +82,9 @@
     }
 }
 
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    return UIEdgeInsetsMake(25, 40, 20, 40); //allows padding between cells to be changed
+}
 
 #pragma mark - Collection View Delegates
 
@@ -98,7 +102,7 @@
         //        return self.view.frame.size;
         return CGSizeMake(self.collectionView.bounds.size.width, 200);
     } else  {
-        return CGSizeMake(100, 120);
+        return CGSizeMake(60, 90); //Height for the images
     }
     
 }
@@ -128,7 +132,7 @@
     FriendCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
-    cell.profileName.text = @"Izzy";
+    cell.profileName.text = @"Isfandyar";
     
     return cell;
 }

@@ -130,7 +130,7 @@ static NSString * const reuseIdentifier = @"Cell";
     } else if (_isPrivateEvent) {
         return CGSizeZero;
     } else  {
-        return CGSizeMake(100, 100);
+        return CGSizeMake(100, 100); //This is sizes for round image icons.
     }
     
 }

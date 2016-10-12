@@ -47,6 +47,7 @@ NSArray *sectionTitles;
 #pragma mark - UI View Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupNavigationController];
     [self setupDummyData];
     [self setupTable];
     [self setupObservers];
@@ -178,6 +179,12 @@ NSArray *sectionTitles;
 }
 
 #pragma mark - Helper Functions
+
+-(void) setupNavigationController   {
+    
+    UIImage *image = [UIImage imageNamed:@"title-bar-logo"];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];
+}
 
 /** Segue to another viewController */
 -(void) moveToOtherUserProfile  {
