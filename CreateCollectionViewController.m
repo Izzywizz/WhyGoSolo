@@ -126,14 +126,26 @@ static NSString * const reuseIdentifier = @"Cell";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath    {
     if (indexPath.section == 0) {
         //        return self.view.frame.size;
-        return CGSizeMake(self.collectionView.bounds.size.width, 300);
+        return CGSizeMake(self.collectionView.bounds.size.width, 280);
     } else if (_isPrivateEvent) {
         return CGSizeZero;
     } else  {
-        return CGSizeMake(100, 100);
+        return CGSizeMake(60, 90);
     }
     
 }
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    
+    if (section == 1) {
+        return UIEdgeInsetsMake(25, 40, 20, 40); //allows padding between cells to be changed but not the FRIENDS/ EVERYONE headerViews
+    } else if (section == 2) {
+        return UIEdgeInsetsMake(25, 40, 20, 40); //allows padding between cells to be changed but not the FRIENDS/ EVERYONE headerViews
+    } else
+        return UIEdgeInsetsMake(0, 0, 0, 0); //Just set the default values
+    
+}
+
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
@@ -150,7 +162,6 @@ static NSString * const reuseIdentifier = @"Cell";
         }
         
         headerView.sectionHeader.text = [_sectionTitles objectAtIndex:indexPath.section];
-        
         reusableview = headerView;
     }
     
