@@ -50,13 +50,13 @@
         NSLog(@"Activate Privacy: %d", sender.on);
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"publicPrivate"]; //YES
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Privacy Mode" object:self];
-        self.publicPrivateLabel.text = @"Private Event";
+        self.publicPrivateLabel.text = @"PRIVATE EVENT - VISABLE BY n(x)";
 
     } else  {
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"publicPrivate"]; //NO
         NSLog(@"Public Mode, Hide TableView: %d", sender.on);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Privacy Mode" object:self];
-        self.publicPrivateLabel.text = @"Public";
+        self.publicPrivateLabel.text = @"PUBLIC EVENT";
     }
 }
 

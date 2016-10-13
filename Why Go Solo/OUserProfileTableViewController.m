@@ -44,7 +44,9 @@
     [self internalViewSetup];
     _isFriend = true;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(20,0,0,0); //prevents that weird scrolling under the bar thing
+        self.tableView.contentInset = UIEdgeInsetsMake(20,0,0,0); //prevents that weird scrolling under the bar thing
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(20,0,0,0);
+    
     
     _dataArray = [NSArray new];
     _myEventsDataArray = [NSArray new];
@@ -136,7 +138,7 @@
 
 /** Header View setup*/
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-        return [self headerCellAtIndex:section];
+    return [self headerCellAtIndex:section];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section    {
@@ -239,28 +241,28 @@
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     EventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
-   /* //Setup cell using data pull down from the server, this is using dummy data
-    NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
-    NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
-    NSString *eventName = [sectionEvents objectAtIndex:indexPath.row];
-    
-    //Basic logic to ensure that the correct join/ edit are displayed for events
-    if ([sectionTitle isEqualToString:@"My Events"]) {
-        [cell viewWithTag:EDIT].alpha = 0;
-    }
-    
-    if (_isUserBlocked) {
-        cell.hidden = YES;
-        [cell setUserInteractionEnabled:NO];
-        [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-        _tableView.scrollEnabled = NO;
-    }
-    
-    cell.nameLabel.text = eventName;
-    //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
-    */
+    /* //Setup cell using data pull down from the server, this is using dummy data
+     NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
+     NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
+     NSString *eventName = [sectionEvents objectAtIndex:indexPath.row];
+     
+     //Basic logic to ensure that the correct join/ edit are displayed for events
+     if ([sectionTitle isEqualToString:@"My Events"]) {
+     [cell viewWithTag:EDIT].alpha = 0;
+     }
+     
+     if (_isUserBlocked) {
+     cell.hidden = YES;
+     [cell setUserInteractionEnabled:NO];
+     [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+     _tableView.scrollEnabled = NO;
+     }
+     
+     cell.nameLabel.text = eventName;
+     //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
+     */
     [cell configureCellWithEventForTableView:self.tableView atIndexPath:indexPath];
-
+    
     
     return cell;
 }
@@ -319,6 +321,7 @@
 #pragma mark - Scroll locking methods
 
 /** SO allows masking of the top of the table*/
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     for (UITableViewCell *cell in self.tableView.visibleCells) {
         CGFloat hiddenFrameHeight = scrollView.contentOffset.y + self.navigationController.navigationBar.frame.size.height + 40 - cell.frame.origin.y;
