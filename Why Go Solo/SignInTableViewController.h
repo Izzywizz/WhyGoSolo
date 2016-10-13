@@ -10,4 +10,13 @@
 
 @interface SignInTableViewController : UITableViewController
 
+
+@property (weak, nonatomic) IBOutlet UIView *emailAddressContentView;
+@property (weak, nonatomic) IBOutlet UILabel *emailAddressLabel;
+@property (weak, nonatomic) IBOutlet UITextField *emailAddressTextField;
+
+@property (weak, nonatomic) IBOutlet UIView *passwordContentView;
+@property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
 @end

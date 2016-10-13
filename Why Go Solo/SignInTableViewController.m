@@ -7,12 +7,11 @@
 //
 
 #import "SignInTableViewController.h"
+#import "FontSetup.h"
+#import "RRRegistration.h"
 
 @interface SignInTableViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
-@property (weak, nonatomic) IBOutlet UITextField *emailInputField;
-@property (weak, nonatomic) IBOutlet UIView *emailContentView;
-@property (weak, nonatomic) IBOutlet UIView *passwordContentView;
+
 
 /**
  Use the container view for each tableView cell and set the constraints of the view to 1 top/botom but 0 on the others
@@ -30,6 +29,7 @@
     NSLog(@"SignIn Table VC");
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // Prevents the tableView from drawing any more empty unused cell
     self.tableView.allowsSelection = NO; //becareful this may disable button interaction.
+    [self setupCustomActions];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,18 +46,21 @@
 //TODO: Need tro validation propery for email and changing the colour of the selction inserts
 - (IBAction)signinButtonPressed:(UIButton *)sender {
     NSLog(@"Sign In Button");
-    if ([_emailInputField.text isEqualToString:@""] || _emailInputField == nil) {
-        NSLog(@"EMpty");
-        _emailLabel.textColor = [UIColor redColor];
-        
-        NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"Enter your email address" attributes:@{ NSForegroundColorAttributeName : [UIColor redColor] }];
-        self.emailInputField.attributedPlaceholder = str;
-        
-//        [self.tableView setSeparatorColor:[UIColor redColor]];
-        _emailContentView.backgroundColor = [UIColor redColor];
-//        _passwordContentView.backgroundColor = [UIColor redColor];
-        //creates the red valdiation box when the password wrong like the ama
-
+    RRRegistration *registration = [[RRRegistration alloc] init];
+    registration.password = _passwordTextField.text;
+    registration.confirmPassword = @"test";// placeholder password
+    FontSetup *fontSetup = [FontSetup new];
+    
+    if(![registration validateTextField:_passwordTextField])    {
+        [fontSetup setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];
+    }
+    
+    if ([registration validateTextField:_emailAddressTextField] && [registration validateTextField:_passwordTextField]) {
+        NSLog(@"Correctly signed in");
+    } else if (![registration validateTextField:_emailAddressTextField])    {
+        [fontSetup setColourOf:_emailAddressContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
+    } else  {
+        [self alertSetupandView:@"Incorrect Password/ Email" andMessage:@"Please type in your correct email/ password comibation"];
     }
 }
 
@@ -65,6 +68,24 @@
     NSLog(@"Forgot Button");
 }
 
+#pragma mark - TextField Delegate (custom)
+/** vldiation method to make sure an email address has been entered*/
+-(void)textFieldDidChange: (UITextField *) theTextField {
+    FontSetup *fontSetup = [FontSetup new];
+    
+    if ([_emailAddressTextField.text isEqualToString:@""]) {
+        [fontSetup setColourOf:_emailAddressContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_emailAddressContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
+    }
+    
+    if ([_passwordTextField.text isEqualToString: @""]) {
+        [fontSetup setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];
+    } else  {
+        [fontSetup setColourGrayAndBlack:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];
+    }
+    
+}
 
 #pragma mark - Helper Functions
 /** Ensures that the selection seperators are setup before the main views are shown*/
@@ -78,6 +99,16 @@
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
+}
+
+-(void) setupCustomActions  {
+    [_emailAddressTextField addTarget:self
+                               action:@selector(textFieldDidChange:)
+                     forControlEvents:UIControlEventEditingChanged];
+    
+    [_passwordTextField addTarget:self
+                           action:@selector(textFieldDidChange:)
+                 forControlEvents:UIControlEventEditingChanged];
 }
 
 #pragma mark - Table view data source
@@ -109,5 +140,14 @@
     return  60.0;
 }
 
+#pragma mark - Alert View Setup
+-(void) alertSetupandView: (NSString *) WithTitle andMessage: (NSString *) message  {
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:WithTitle message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Dismiss");
+    }];
+    [alertVC addAction:dismiss];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
 
 @end
