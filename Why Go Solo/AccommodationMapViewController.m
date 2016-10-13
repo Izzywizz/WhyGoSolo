@@ -23,6 +23,9 @@
 @property (nonatomic) Residence *residence;
 @property (nonatomic, strong) WebService *Webservice;
 
+@property (nonatomic) CLGeocoder *geocoder;
+@property (nonatomic) CLPlacemark *placemark;
+
 @end
 
 @implementation AccommodationMapViewController
@@ -31,6 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Accommodation Map View");
+    [self setupGeocoderPlacemark];
+    
     _residence = [[Residence alloc] init];
     
     [self setNavigationButtonFontAndSize];
@@ -62,7 +67,7 @@
 }
 
 
-#pragma mark - Delegate Methods
+#pragma mark - API Delegate Methods
 
 -(void)handleUpdates
 {
@@ -110,6 +115,9 @@
 
 #pragma mark - Helper Functions
 
+-(void) setupGeocoderPlacemark  {
+        _geocoder = [[CLGeocoder alloc] init];
+}
 
 -(void)accountCreationOverlayAlpha:(int)a animationDuration:(float)duration
 {
@@ -185,9 +193,11 @@
         pin.canShowCallout = YES;
         pin.draggable = YES;
         pin.image = [UIImage imageNamed:@"map-pin-34-58.png"];
-        pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure]; //creates the pin (i) and allows it to be clicked!
-        return pin;
+        // Add an image to the left callout.
         
+        pin.rightCalloutAccessoryView = [UIButton buttonWithType: UIButtonTypeContactAdd];
+        
+        return pin;
         
     }
     
@@ -203,10 +213,11 @@
     {
         NSString *location = [annotation title];
         NSLog(@"Clicked Flag: %@", location);
+        [self reverseGeoCoodantes:annotation.coordinate];
     }
 }
 
-#pragma mark - Internal Delegate Method
+#pragma mark - Internal MAP Delegate Method
 
 - (void)dropPinZoomIn:(MKPlacemark *)placemark
 {
@@ -226,7 +237,28 @@
     MKCoordinateRegion region = MKCoordinateRegionMake(placemark.coordinate, span);
     [_mapView setRegion:region animated:true];
     [self createPinLocations]; //Called again to create the custom pins, remember that it creates the pins based on the university selected
+    
 
+}
+
+/** A method that obtains the address based on the coordiantes passed in to it */
+-(void) reverseGeoCoodantes: (CLLocationCoordinate2D) coordinates     {
+    CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:coordinates.latitude longitude:coordinates.longitude];
+    
+    [_geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error) {
+            NSLog(@"Geocode failed with error: %@", error);
+            return;
+        }
+        //                NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+        if (error == nil && [placemarks count] > 0) {
+            _placemark = [placemarks lastObject];
+            [_resultSearchController.searchBar setText:[_locationSearchTable parseAddress:(MKPlacemark *)_placemark]];
+            
+        } else {
+            NSLog(@"%@", error.debugDescription);
+        }
+    }];
 }
 
 #pragma mark - Action Methods
@@ -237,6 +269,8 @@
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Done Pressed");
 //    NSLog(@"accommodation: %@",_resultSearchController.searchBar.text);
+    _AccommodationAddress = _resultSearchController.searchBar.text; //Set the address of where the user has clicked as the actual address of where they live, ready for upload!
+    NSLog(@"Accommodation: %@", _AccommodationAddress);
     [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay
 }
 

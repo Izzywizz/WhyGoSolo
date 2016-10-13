@@ -21,4 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
 @property (weak, nonatomic) IBOutlet UIView *internalAccoutCreatedView;
 
+@property (nonatomic, strong) NSString *AccommodationAddress;
+
+
 @end

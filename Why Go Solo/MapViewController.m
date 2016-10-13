@@ -31,6 +31,8 @@
 @property (strong, nonatomic) PinLocationData *pinData;
 @property (nonatomic) MKPlacemark *selectedPin;
 
+
+
 @property int touchPinCount;
 
 
