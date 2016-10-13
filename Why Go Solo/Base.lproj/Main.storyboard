@@ -79,6 +79,8 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -4653,9 +4655,9 @@ Cg
                             <rect key="frame" x="0.0" y="64" width="600" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgD-OQ-Tfg">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgD-OQ-Tfg">
                                     <rect key="frame" x="8" y="14" width="42" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -4789,9 +4791,9 @@ Cg
                             <rect key="frame" x="0.0" y="64" width="600" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jh-Se-Cgh">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jh-Se-Cgh">
                                     <rect key="frame" x="8" y="14" width="584" height="21"/>
-                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -5340,9 +5342,9 @@ Cg
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="s24-cX-NAs" userLabel="Background-Gradient">
                                     <rect key="frame" x="0.0" y="0.0" width="601" height="50"/>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8T8-8C-Rq9">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8T8-8C-Rq9">
                                     <rect key="frame" x="8" y="14" width="584" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -5385,7 +5387,7 @@ Cg
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfu-fr-tFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6120" y="1587"/>
+            <point key="canvasLocation" x="6106" y="1587"/>
         </scene>
         <!--People-->
         <scene sceneID="H4d-PV-hY6">
@@ -6914,7 +6916,7 @@ Cg
         <image name="white-logo-125-125" width="125" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WpI-Ea-7qB"/>
+        <segue reference="Gs0-rZ-4e0"/>
         <segue reference="7Oc-fg-bvC"/>
     </inferredMetricsTieBreakers>
 </document>

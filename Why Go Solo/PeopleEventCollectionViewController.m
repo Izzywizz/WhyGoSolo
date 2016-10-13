@@ -51,7 +51,7 @@
     self.dummyData = [NSArray arrayWithObjects: blankArray, mainDishImages, drinkDessertImages, nil];
     
     _sectionTitles = [[NSArray alloc] init];
-    _sectionTitles = @[@"EVENT", @"FRIENDS", @"OTHER"];
+    _sectionTitles = @[@"EVENT", @"FRIENDS (n)", @"OTHER ATTENDEES (n)"];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

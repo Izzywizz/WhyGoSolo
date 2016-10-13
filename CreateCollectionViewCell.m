@@ -70,12 +70,12 @@
 - (IBAction)eventSwitch:(UISwitch *)sender {
     if (sender.on) {
         NSLog(@"Activate Privacy: %d", sender.on);
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"publicPrivate"]; //YES
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"publicPrivate"]; //YES
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Privacy Mode" object:self];
         self.publicPrivateLabel.text = @"PRIVATE EVENT - VISABLE BY n(x)";
         
     } else  {
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"publicPrivate"]; //NO
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"publicPrivate"]; //NO
         NSLog(@"Public Mode, Hide TableView: %d", sender.on);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Privacy Mode" object:self];
         self.publicPrivateLabel.text = @"PUBLIC EVENT";

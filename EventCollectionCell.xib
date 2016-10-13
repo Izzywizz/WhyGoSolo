@@ -227,12 +227,12 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="q67-VP-xdW"/>
-                                        <exclude reference="2sk-uo-Pgu"/>
                                         <exclude reference="FgK-5l-AJ5"/>
                                         <exclude reference="OrA-oh-gFp"/>
                                         <exclude reference="R5x-WF-mej"/>
                                         <exclude reference="jxp-s6-QlH"/>
                                         <exclude reference="zEQ-na-hpQ"/>
+                                        <exclude reference="2sk-uo-Pgu"/>
                                         <exclude reference="1ev-E6-Q4L"/>
                                         <exclude reference="K3h-v3-qoY"/>
                                         <exclude reference="lMF-gK-ZhR"/>

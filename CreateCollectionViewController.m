@@ -12,7 +12,7 @@
 @property NSArray *dummyData;
 @property NSArray *sectionTitles;
 
-@property BOOL isPrivateEvent;
+@property BOOL isPublicEvent;
 
 
 @end
@@ -25,7 +25,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _isPrivateEvent = NO;
+    _isPublicEvent = YES;
     [self createDummyData];
     [self setupObservers];
     [self setNavigationButtonFontAndSize];
@@ -63,7 +63,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.dummyData = [NSArray arrayWithObjects: blankArray, mainDishImages, drinkDessertImages, nil];
     
     _sectionTitles = [[NSArray alloc] init];
-    _sectionTitles = @[@"HELP", @"FRIENDS", @"EVERYONE"];
+    _sectionTitles = @[@"HELP", @"FRIENDS (n/n)", @"EVERYONE(n)"];
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -101,7 +101,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     FriendCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    if (_isPrivateEvent) {
+    if (_isPublicEvent) {
         cell.contentView.hidden = YES;
     } else  {
         cell.contentView.hidden = NO;
@@ -127,7 +127,7 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     if (section == 0) {
         return CGSizeZero;
-    } else if (_isPrivateEvent) {
+    } else if (_isPublicEvent) {
         return CGSizeZero;
     } else {
         return CGSizeMake(self.collectionView.bounds.size.width, 50); //Modify the 100 value to adjust the height of the HEader
@@ -138,7 +138,7 @@ static NSString * const reuseIdentifier = @"Cell";
     if (indexPath.section == 0) {
         //        return self.view.frame.size;
         return CGSizeMake(self.collectionView.bounds.size.width, 280);
-    } else if (_isPrivateEvent) {
+    } else if (_isPublicEvent) {
         return CGSizeZero;
     } else  {
         return CGSizeMake(60, 90);
@@ -164,7 +164,7 @@ static NSString * const reuseIdentifier = @"Cell";
     if (kind == UICollectionElementKindSectionHeader) {
         HeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderCell" forIndexPath:indexPath];
         
-        if (_isPrivateEvent) {
+        if (_isPublicEvent) {
             headerView.hidden = YES;
             
         } else {
@@ -183,8 +183,8 @@ static NSString * const reuseIdentifier = @"Cell";
 -(void)privacyMode:(NSNotification *) notification   {
     if ([[notification name] isEqualToString:@"Privacy Mode"]) {
         
-        NSLog(@"Bool: %d ", [[NSUserDefaults standardUserDefaults] boolForKey:@"publicPrivate"]);
-        _isPrivateEvent = [[NSUserDefaults standardUserDefaults] boolForKey:@"publicPrivate"];
+        NSLog(@"Is Public: %d ", [[NSUserDefaults standardUserDefaults] boolForKey:@"publicPrivate"]);
+        _isPublicEvent = [[NSUserDefaults standardUserDefaults] boolForKey:@"publicPrivate"];
         [self.collectionView reloadData];
     }
 }

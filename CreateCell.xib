@@ -236,6 +236,7 @@
                                     <constraint firstAttribute="width" constant="49" id="NRC-SZ-SJF"/>
                                     <constraint firstAttribute="height" constant="31" id="OFc-ZI-N7P"/>
                                 </constraints>
+                                <color key="onTintColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="eventSwitch:" destination="osa-Ag-Upi" eventType="valueChanged" id="IiU-tF-j2B"/>
                                 </connections>
