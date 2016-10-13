@@ -4662,10 +4662,14 @@ Cg
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="OgD-OQ-Tfg" firstAttribute="leading" secondItem="udU-MJ-VTk" secondAttribute="leadingMargin" id="JYP-WZ-qPu"/>
                                 <constraint firstItem="OgD-OQ-Tfg" firstAttribute="centerY" secondItem="udU-MJ-VTk" secondAttribute="centerY" id="OvF-du-J3F"/>
                             </constraints>
+                            <connections>
+                                <outlet property="sectionHeader" destination="OgD-OQ-Tfg" id="uTi-2W-tSv"/>
+                            </connections>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="x9e-dd-b5b" id="4JS-BN-iqm"/>
@@ -6916,7 +6920,7 @@ Cg
         <image name="white-logo-125-125" width="125" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gs0-rZ-4e0"/>
+        <segue reference="WpI-Ea-7qB"/>
         <segue reference="7Oc-fg-bvC"/>
     </inferredMetricsTieBreakers>
 </document>
