@@ -261,6 +261,9 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark - Helper Functions
 
+
+
+
 -(void)deleteOverlayAlpha:(int)a animationDuration:(float)duration
 {
     [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -275,7 +278,7 @@ static NSString * const reuseIdentifier = @"Cell";
     } completion:nil];
 }
 
-/*ensures that the view added streches properpy to the screen*/
+/*ensures that the view added streches properly to the screen*/
 - (void) stretchToSuperView:(UIView*) view {
     view.translatesAutoresizingMaskIntoConstraints = NO;
     NSDictionary *bindings = NSDictionaryOfVariableBindings(view);
@@ -285,6 +288,7 @@ static NSString * const reuseIdentifier = @"Cell";
         NSArray * constraints = [NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:bindings];
         [view.superview addConstraints:constraints];
     }
+    
     
 }
 

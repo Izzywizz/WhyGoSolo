@@ -20,7 +20,8 @@
     _circularView.layer.masksToBounds = YES;
     
     [self createEmojiView];
-
+    _cancelEvent.layer.cornerRadius = 3;
+    _closeEvent.layer.cornerRadius = 3;
 }
 
 #pragma mark - Action Methods (Target)
@@ -84,6 +85,13 @@
 -(void) previousEventTextViewSetup    {
     self.describeEventTextView.delegate = self;
     self.describeEventTextView.text = @"This is the event description from the previous event";
+}
+
+/**This method is called when the user touches the background and resigns the keybaord*/
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    NSLog(@"touchesBegan:withEvent:");
+    [self endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
 }
 
 

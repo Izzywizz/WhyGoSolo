@@ -119,7 +119,7 @@
     
     UISearchBar *searchBar = _resultSearchController.searchBar;
     [searchBar sizeToFit];
-    searchBar.placeholder = @"Search for places";
+    searchBar.placeholder = @"Add Location";
     self.navigationItem.titleView = _resultSearchController.searchBar;
     searchBar.searchBarStyle = UISearchBarStyleMinimal;
     _resultSearchController.hidesNavigationBarDuringPresentation = NO;
@@ -268,11 +268,12 @@
     // UserLocation Pin (blue dot)
     if ([annotation isKindOfClass:[MKUserLocation class]])  {
         
-        /* creates the blue dot
-         if (annotation == mapView.userLocation) {
+        //creates the blue dot
+         /*if (annotation == mapView.userLocation) {
          self.mapView.tintColor = [UIColor blueColor];
          return nil;
          }*/
+        
         
         NSLog(@"User: %@",[annotation title]);
         MKAnnotationView *pin = (MKAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier: @"blueDot"];

@@ -28,7 +28,7 @@
     [super viewDidLoad];
     NSLog(@"SignIn Table VC");
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // Prevents the tableView from drawing any more empty unused cell
-    self.tableView.allowsSelection = NO; //becareful this may disable button interaction.
+    self.tableView.allowsSelection = YES; //becareful this may disable button interaction.
     [self setupCustomActions];
 }
 
@@ -122,6 +122,16 @@
     
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+    NSLog(@"Section: %ld, row: %ld", (long)indexPath.section, (long)indexPath.row);
+    [tableView deselectRowAtIndexPath:indexPath animated:YES]; //remove the selection animation
+    if (indexPath.row == 0) {
+        [_emailAddressTextField becomeFirstResponder];
+    } else if (indexPath.row == 1)  {
+        [_passwordTextField becomeFirstResponder];
     }
 }
 

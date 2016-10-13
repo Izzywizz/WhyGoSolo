@@ -82,7 +82,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eI-qp-MFE">
                                 <rect key="frame" x="0.0" y="0.0" width="425" height="38"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <state key="normal" title="    Change Location">
+                                <state key="normal" title="      Change Location">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -111,6 +111,23 @@
                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zjA-8w-5cV" userLabel="Describe Event View">
                         <rect key="frame" x="0.0" y="131" width="425" height="110"/>
                         <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jLI-92-9BF" userLabel="User Input Text View">
+                                <rect key="frame" x="11" y="46" width="406" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="564" id="8QB-f2-epc"/>
+                                    <constraint firstAttribute="height" constant="56" id="geJ-xb-58Z"/>
+                                    <constraint firstAttribute="width" constant="564" id="w5C-Uf-wyU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8QB-f2-epc"/>
+                                        <exclude reference="geJ-xb-58Z"/>
+                                        <exclude reference="w5C-Uf-wyU"/>
+                                    </mask>
+                                </variation>
+                            </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xf-4C-22l" userLabel="Line">
                                 <rect key="frame" x="0.0" y="39" width="425" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,24 +156,6 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jLI-92-9BF" userLabel="User Input Text View">
-                                <rect key="frame" x="11" y="46" width="406" height="56"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="564" id="8QB-f2-epc"/>
-                                    <constraint firstAttribute="height" constant="56" id="geJ-xb-58Z"/>
-                                    <constraint firstAttribute="width" constant="564" id="w5C-Uf-wyU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="8QB-f2-epc"/>
-                                        <exclude reference="geJ-xb-58Z"/>
-                                        <exclude reference="w5C-Uf-wyU"/>
-                                    </mask>
-                                </variation>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -362,7 +361,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="Ju2-OI-6tH" firstAttribute="top" secondItem="IFz-Mz-QEu" secondAttribute="bottom" constant="3" id="0Ka-32-wTb"/>
                 <constraint firstItem="IFz-Mz-QEu" firstAttribute="centerY" secondItem="sMh-PM-wrU" secondAttribute="centerY" id="0LA-KB-F2O"/>
