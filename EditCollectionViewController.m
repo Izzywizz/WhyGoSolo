@@ -24,7 +24,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     _isPublicEvent = YES; //intailly set the switch to off in the storyboard!
-    
+
     [self createDummyData];
     [self setupObservers];
     [self setNavigationButtonFontAndSize];
@@ -34,7 +34,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"EditCell" bundle:nil] forCellWithReuseIdentifier:@"EditCell"];
     
     self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    
     
 }
 
@@ -127,7 +126,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath    {
     if (indexPath.section == 0) {
         //        return self.view.frame.size;
-        return CGSizeMake(self.collectionView.bounds.size.width, 400); //Height for the collectionCell
+        return CGSizeMake(self.collectionView.bounds.size.width, 450); //Height for the collectionCell
     } else if (_isPublicEvent) {
         return CGSizeZero;
     } else  {

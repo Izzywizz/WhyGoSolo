@@ -14,6 +14,8 @@
 
 
 @interface EditCellCollectionViewCell : UICollectionViewCell <UITextViewDelegate, UITextFieldDelegate, ISEmojiViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *charCount;
 @property (weak, nonatomic) IBOutlet UIButton *helpButton;
 @property (weak, nonatomic) IBOutlet UIButton *closeEvent;
 @property (weak, nonatomic) IBOutlet UIButton *cancelEvent;

@@ -12,7 +12,6 @@
 
 -(void)awakeFromNib {
     [self previousEventTextViewSetup];
-    
     self.describeEventTextView.delegate = self;
     
     //create circular emoji view
@@ -22,6 +21,8 @@
     [self createEmojiView];
     _cancelEvent.layer.cornerRadius = 3;
     _closeEvent.layer.cornerRadius = 3;
+    
+    self.describeEventTextView.enablesReturnKeyAutomatically = YES;
 }
 
 #pragma mark - Action Methods (Target)
@@ -72,18 +73,8 @@
     [self.describeEventTextView resignFirstResponder]; // get rid of the keybaord
 }
 
--(void) textViewDidChange:(UITextView *)textView
-{
-    
-    if(self.describeEventTextView.text.length == 0){
-        self.describeEventTextView.text = @"Placeholder!"; //load up previous description if empty
-        [self.describeEventTextView resignFirstResponder];
-    }
-}
-
 /** creates the placeholder effect*/
 -(void) previousEventTextViewSetup    {
-    self.describeEventTextView.delegate = self;
     self.describeEventTextView.text = @"This is the event description from the previous event";
 }
 
@@ -94,7 +85,16 @@
     [super touchesBegan:touches withEvent:event];
 }
 
+- (void)textViewDidChange:(UITextView *)textView    {
+    _charCount.text =  [NSString stringWithFormat:@"%d", textView.text.length];
 
+    if (textView.text.length != 140) {
+        _charCount.textColor = [UIColor blueColor];
+    } else {
+        _charCount.textColor = [UIColor redColor];
+    }
+
+}
 
 #pragma mark - Emoji Methods
 
