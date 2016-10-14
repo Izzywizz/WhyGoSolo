@@ -38,6 +38,8 @@
     
     _residence = [[Residence alloc] init];
     
+    NSLog(@"BOOL isEditProfile: %d",_isEditProfile);
+    
     [self setNavigationButtonFontAndSize];
     [self setup];
     _internalAccoutCreatedView.layer.cornerRadius = 5;
@@ -51,17 +53,21 @@
 
 -(void)viewWillAppear:(BOOL)animated   {
     [self.mapView setDelegate:self];
-//    self.locationSearchTable.delegate = self;
+    //    self.locationSearchTable.delegate = self;
     [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
     
-    [[WebService sharedInstance] residences];
-    [Data sharedInstance].delegate = self; // Set Data delegate
-
+    if (!_isEditProfile) {
+        [[WebService sharedInstance] residences];
+        [Data sharedInstance].delegate = self; // Set Data delegate
+    } else  {
+        NSLog(@"Web Service Down");
+    }
+    
 }
 
 -(void) viewWillDisappear:(BOOL)animated    {
     self.mapView.delegate = nil;
-//    self.locationSearchTable.delegate = nil;
+    //    self.locationSearchTable.delegate = nil;
     self.definesPresentationContext = NO;
     [Data sharedInstance].delegate = nil; // release Data delegate
 }
@@ -78,7 +84,7 @@
         NSLog(@"Postcode:%@", element.address);
     }
     [self createPinLocations];
-
+    
 }
 
 -(void)residencesDownloadedSuccessfully {
@@ -91,14 +97,14 @@
 
 -(NSMutableArray *) unpackPinData   {
     
-
+    
     NSMutableArray *arrayOfPins = [[NSMutableArray alloc] init];
     
     for (Residence *element in [Data sharedInstance].residencesArray) {
         MKPointAnnotation *pin = [[MKPointAnnotation alloc] init];
         double latitude = element.latitude;
         double longitude = element.longitude;
-
+        
         //create the pin coordinates
         pin.coordinate = CLLocationCoordinate2DMake(latitude, longitude);
         pin.title = element.residenceName;
@@ -116,7 +122,7 @@
 #pragma mark - Helper Functions
 
 -(void) setupGeocoderPlacemark  {
-        _geocoder = [[CLGeocoder alloc] init];
+    _geocoder = [[CLGeocoder alloc] init];
 }
 
 -(void)accountCreationOverlayAlpha:(int)a animationDuration:(float)duration
@@ -136,7 +142,7 @@
 -(void) setNavigationButtonFontAndSize  {
     
     NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
-
+    
     [_doneButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
@@ -164,7 +170,7 @@
     
     _locationSearchTable.mapView = _mapView;
     _locationSearchTable.delegate = self;
-
+    
 }
 
 
@@ -179,7 +185,7 @@
 
 #pragma mark - Map Delegate Methods
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation   {
-
+    
     if (annotation != mapView.userLocation) {
         MKAnnotationView *pin = (MKAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"myPin"];
         
@@ -208,7 +214,7 @@
 /** This delegate method ensures that when the user taps on the flag or current location that the address in scope updated*/
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     id <MKAnnotation> annotation = [view annotation];
-
+    
     if ([annotation isKindOfClass:[MKPointAnnotation class]])
     {
         NSString *location = [annotation title];
@@ -238,7 +244,7 @@
     [_mapView setRegion:region animated:true];
     [self createPinLocations]; //Called again to create the custom pins, remember that it creates the pins based on the university selected
     
-
+    
 }
 
 /** A method that obtains the address based on the coordiantes passed in to it */
@@ -268,17 +274,22 @@
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Done Pressed");
-//    NSLog(@"accommodation: %@",_resultSearchController.searchBar.text);
-    _AccommodationAddress = _resultSearchController.searchBar.text; //Set the address of where the user has clicked as the actual address of where they live, ready for upload!
-    NSLog(@"Accommodation: %@", _AccommodationAddress);
-    [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay
+    //    NSLog(@"accommodation: %@",_resultSearchController.searchBar.text);
+    if (sender.tag == 1) {
+        NSLog(@"SAVED");
+        [self.navigationController popViewControllerAnimated:YES];
+    } else  {
+        _AccommodationAddress = _resultSearchController.searchBar.text; //Set the address of where the user has clicked as the actual address of where they live, ready for upload!
+        NSLog(@"Accommodation: %@", _AccommodationAddress);
+        [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay
+    }
 }
 
 - (IBAction)okButtonPressed:(UIButton *)sender {
     NSLog(@"Ok Button Pressed");
     [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
     [self performSegueWithIdentifier:@"GoToEventTable" sender:self];
-
+    
 }
 
 @end

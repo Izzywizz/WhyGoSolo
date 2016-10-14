@@ -23,5 +23,6 @@
 
 @property (nonatomic, strong) NSString *AccommodationAddress;
 
+@property BOOL isEditProfile;
 
 @end

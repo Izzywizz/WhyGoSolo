@@ -7,6 +7,7 @@
 //
 
 #import "EditProfileTableViewController.h"
+#import "AccommodationMapViewController.h"
 #import "ViewSetupHelper.h"
 
 @interface EditProfileTableViewController ()
@@ -45,8 +46,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     if (indexPath.row == 3) {
-        [self createUniveresitySelctionView];
+        [self createAccomdationMap];
     }
 }
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath    {
@@ -67,11 +69,12 @@
 }
 
 #pragma mark - Student ViewController Creation Methods
--(void) createUniveresitySelctionView   {
-    UniversityViewController *uni = [self.storyboard instantiateViewControllerWithIdentifier:@"University"];
-    uni.nextButton.title = @"DONE";
-    uni.nextButton.tag = 1;
-    [self.navigationController pushViewController:uni animated:YES];
+-(void) createAccomdationMap   {
+    AccommodationMapViewController *accommodationMap =[self.storyboard instantiateViewControllerWithIdentifier:@"AccommodationMap"];
+    accommodationMap.doneButton.title = @"SAVE";
+    accommodationMap.isEditProfile = YES;
+    accommodationMap.doneButton.tag = 1;
+    [self.navigationController pushViewController:accommodationMap animated:YES];
 }
 
 @end
