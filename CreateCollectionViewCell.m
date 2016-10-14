@@ -35,9 +35,16 @@
 
 -(void) textViewDidChange:(UITextView *)textView
 {
+    _charCount.text =  [NSString stringWithFormat:@"%lu", (unsigned long)textView.text.length];
+    
+    if (textView.text.length != 140) {
+        _charCount.textColor = [UIColor blueColor];
+    } else {
+        _charCount.textColor = [UIColor redColor];
+    }
     
     if(self.describeEventTextView.text.length == 0){
-        self.describeEventTextView.text = @"Placeholder!"; //load up previous description if empty
+        self.describeEventTextView.text = @"Describe your event 140 chracters or less!"; //load up previous description if empty
         [self.describeEventTextView resignFirstResponder];
     }
 }
@@ -45,7 +52,8 @@
 /** creates the placeholder effect*/
 -(void) placeholderEventTextView    {
     self.describeEventTextView.delegate = self;
-    self.describeEventTextView.text = @"This is the event description from the previous event";
+    self.describeEventTextView.text = @"Describe your event 140 chracters or less!";
+    self.describeEventTextView.textColor = [UIColor grayColor];
 }
 
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView
@@ -60,6 +68,7 @@
     
     return YES;
 }
+
 
 #pragma mark - Action Method
 
