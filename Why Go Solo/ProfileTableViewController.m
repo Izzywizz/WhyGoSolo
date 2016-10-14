@@ -7,6 +7,7 @@
 //
 
 #import "ProfileTableViewController.h"
+#import "FontSetup.h"
 #import <UIKit/UIKit.h>
 
 @interface ProfileTableViewController ()
@@ -22,6 +23,9 @@
     NSLog(@"People View Loaded");
     [self setNavigationButtonFontAndSize];
     
+    FontSetup *fontSetup = [[FontSetup alloc] init];
+    [fontSetup createCircularView:_profileImage];
+
     //This prevents the weird the selection animation occuring when the user selects a cell
     [self.tableView setAllowsSelection:NO];
 
@@ -44,6 +48,7 @@
 }
 
 #pragma mark - Helper Functions
+
 -(void) setNavigationButtonFontAndSize  {
     
     NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];

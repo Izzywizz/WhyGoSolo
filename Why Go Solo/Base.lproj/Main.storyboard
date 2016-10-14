@@ -134,7 +134,7 @@
                                     <constraint firstAttribute="width" constant="50" id="zWH-T2-Ogb"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rMW-fw-MmW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rMW-fw-MmW">
                                 <rect key="frame" x="195" y="480" width="211" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="211" id="5tw-nw-fjb"/>
@@ -4423,7 +4423,7 @@ Cg
                                             <action selector="sliderMileValueChange:" destination="pLz-n4-2fB" eventType="valueChanged" id="bRz-fG-fSS"/>
                                         </connections>
                                     </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0 MILES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMJ-hW-l2Y">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 MILES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMJ-hW-l2Y">
                                         <rect key="frame" x="530" y="14" width="51" height="21"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -4950,7 +4950,7 @@ Cg
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LxJ-EC-aYS">
                                         <rect key="frame" x="175" y="242" width="250" height="131"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Delete Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="bqV-lS-EOa">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="bqV-lS-EOa">
                                                 <rect key="frame" x="73" y="18" width="103" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="103" id="qSJ-2L-d7x"/>
@@ -4958,7 +4958,7 @@ Cg
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Are you sure you want to delete your account?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U04-Or-NJk">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to delete your account?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U04-Or-NJk">
                                                 <rect key="frame" x="23" y="48" width="204" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="204" id="HzP-6p-zsG"/>
@@ -5546,7 +5546,7 @@ Cg
                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7v-86-bZK">
                                         <rect key="frame" x="175" y="234" width="250" height="131"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Report User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="jvj-B8-tbj" userLabel="Report Title Label">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="jvj-B8-tbj" userLabel="Report Title Label">
                                                 <rect key="frame" x="73" y="18" width="103" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="103" id="qMT-K4-LSu"/>
@@ -5554,7 +5554,7 @@ Cg
                                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Are you sure report you want to report (name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cr6-j2-wiO">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure report you want to report (name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cr6-j2-wiO">
                                                 <rect key="frame" x="23" y="48" width="204" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="204" id="INe-qk-P8M"/>
@@ -5663,7 +5663,7 @@ Cg
                                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(name) profile has been reported and will be reviewed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96X-ok-oGA" userLabel="Text Label">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(name) profile has been reported and will be reviewed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96X-ok-oGA" userLabel="Text Label">
                                                 <rect key="frame" x="23" y="41" width="204" height="36"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
@@ -5937,17 +5937,17 @@ Cg
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJe-Ww-JHm" userLabel="Line">
-                                                    <rect key="frame" x="0.0" y="159" width="600" height="1"/>
+                                                    <rect key="frame" x="0.0" y="160" width="600" height="1"/>
                                                     <color key="backgroundColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="P0w-4n-mix"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="kw3-P8-BdH" userLabel="Profile Image">
-                                                    <rect key="frame" x="244" y="31" width="112" height="98"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circleProfile.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kw3-P8-BdH" userLabel="Profile Image">
+                                                    <rect key="frame" x="250" y="30" width="100" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="98" id="5mA-j4-1Jx"/>
-                                                        <constraint firstAttribute="width" constant="112" id="u1X-Ix-qYD"/>
+                                                        <constraint firstAttribute="height" constant="100" id="5mA-j4-1Jx"/>
+                                                        <constraint firstAttribute="width" constant="100" id="u1X-Ix-qYD"/>
                                                         <constraint firstAttribute="width" constant="128" id="yXl-8C-vhH"/>
                                                     </constraints>
                                                     <variation key="default">
@@ -5957,7 +5957,7 @@ Cg
                                                     </variation>
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nathanbarnfas@live.ac.uk" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICK-0h-WA9" userLabel="Email Label">
-                                                    <rect key="frame" x="208" y="129" width="185" height="18"/>
+                                                    <rect key="frame" x="208" y="130" width="185" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="185" id="WfJ-uq-5S5"/>
                                                     </constraints>
@@ -6522,18 +6522,18 @@ Cg
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iuc-by-mDJ" userLabel="Line">
-                                                    <rect key="frame" x="0.0" y="159" width="600" height="1"/>
+                                                    <rect key="frame" x="0.0" y="160" width="600" height="1"/>
                                                     <color key="backgroundColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="uQs-bH-wOG"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="76V-PT-gTk" userLabel="Profile Image">
-                                                    <rect key="frame" x="244" y="31" width="112" height="98"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circleProfile.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="76V-PT-gTk" userLabel="Profile Image">
+                                                    <rect key="frame" x="250" y="30" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="128" id="ISO-Pt-9gq"/>
-                                                        <constraint firstAttribute="width" constant="112" id="XvR-sp-BUr"/>
-                                                        <constraint firstAttribute="height" constant="98" id="mbC-d3-ttU"/>
+                                                        <constraint firstAttribute="width" constant="100" id="XvR-sp-BUr"/>
+                                                        <constraint firstAttribute="height" constant="100" id="mbC-d3-ttU"/>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -6542,7 +6542,7 @@ Cg
                                                     </variation>
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nathanbarnfas@live.ac.uk" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXA-se-8r6" userLabel="Email Label">
-                                                    <rect key="frame" x="208" y="129" width="185" height="18"/>
+                                                    <rect key="frame" x="208" y="130" width="185" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="185" id="3G1-oe-a4J"/>
                                                     </constraints>
@@ -6878,6 +6878,7 @@ Cg
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="profileView" destination="76V-PT-gTk" id="jxs-4I-Ndb"/>
                         <outlet property="studentAccommdationCell" destination="BmN-FE-UOp" id="6mw-3z-R1F"/>
                     </connections>
                 </tableViewController>
@@ -6909,10 +6910,10 @@ Cg
         <image name="10m" width="24" height="9"/>
         <image name="add-event-20-20" width="22" height="22"/>
         <image name="back-arrow-20-20" width="22" height="23"/>
+        <image name="circleProfile.jpg" width="1024" height="1024"/>
         <image name="gradient-button-250-50" width="250" height="50"/>
         <image name="location-18-24" width="20" height="26"/>
         <image name="people-icon-20-20" width="24" height="24"/>
-        <image name="profile.png" width="112" height="98"/>
         <image name="reply-14-14" width="16" height="17"/>
         <image name="right-arrow-20-20" width="22" height="22"/>
         <image name="sign-up-screen-375-667" width="375" height="668"/>

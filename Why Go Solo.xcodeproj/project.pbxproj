@@ -107,6 +107,7 @@
 		43FBC2F51D8AAFBC00AE4E1F /* SetupProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F41D8AAFBC00AE4E1F /* SetupProfileTableViewController.m */; };
 		43FBC2F81D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FBC2F71D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m */; };
 		43FBC2FA1D8AC6C200AE4E1F /* PeopleNotAttending.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43FBC2F91D8AC6C200AE4E1F /* PeopleNotAttending.xib */; };
+		43FD15341DB0F4E200C7FE1E /* circleProfile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 43FD15331DB0F4E200C7FE1E /* circleProfile.jpg */; };
 		A1151F341DAA5CA3008222ED /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = A1151F2F1DAA5CA3008222ED /* Data.m */; };
 		A1151F351DAA5CA3008222ED /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = A1151F311DAA5CA3008222ED /* WebService.m */; };
 		A1151F361DAA5CA3008222ED /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A1151F331DAA5CA3008222ED /* Reachability.m */; };
@@ -289,6 +290,7 @@
 		43FBC2F61D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleNotAttendingTableViewCell.h; sourceTree = "<group>"; };
 		43FBC2F71D8AC6AD00AE4E1F /* PeopleNotAttendingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleNotAttendingTableViewCell.m; sourceTree = "<group>"; };
 		43FBC2F91D8AC6C200AE4E1F /* PeopleNotAttending.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleNotAttending.xib; sourceTree = "<group>"; };
+		43FD15331DB0F4E200C7FE1E /* circleProfile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = circleProfile.jpg; sourceTree = "<group>"; };
 		A1151F2E1DAA5CA3008222ED /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		A1151F2F1DAA5CA3008222ED /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
 		A1151F301DAA5CA3008222ED /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 				43A893691D805D8700BEA24B /* profile.png */,
 				436E84AF1D815FA700B23402 /* flag.png */,
 				430919411D8158A000EE9220 /* car.png */,
+				43FD15331DB0F4E200C7FE1E /* circleProfile.jpg */,
 				A1151F541DAA5D05008222ED /* Persistance */,
 				A1151F2D1DAA5C96008222ED /* Web Service */,
 				43B981B51D95220400E7DD05 /* RecipePhotoImagePack */,
@@ -803,6 +806,7 @@
 				43B981DB1D95282900E7DD05 /* CollectionCell.xib in Resources */,
 				43B981CB1D95220400E7DD05 /* green_tea.jpg in Resources */,
 				438A14BC1D801E0F005E6AF7 /* Lato-Regular.ttf in Resources */,
+				43FD15341DB0F4E200C7FE1E /* circleProfile.jpg in Resources */,
 				438A14B71D801E0F005E6AF7 /* Lato-Hairline.ttf in Resources */,
 				43A8935F1D8057AE00BEA24B /* Events.xib in Resources */,
 				438A148A1D8011C2005E6AF7 /* Main.storyboard in Resources */,

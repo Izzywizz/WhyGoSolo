@@ -7,6 +7,7 @@
 //
 
 #import "EditProfileTableViewController.h"
+#import "FontSetup.h"
 
 @interface EditProfileTableViewController ()
 
@@ -19,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Edit view loaded");
+    
+    FontSetup *fontSetup = [FontSetup new];
+    [fontSetup createCircularView:_profileView];
+
 }
 
 - (void)didReceiveMemoryWarning {

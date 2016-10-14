@@ -41,4 +41,9 @@
     textfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:message attributes:@{NSForegroundColorAttributeName: colourGray}];
 }
 
+-(void) createCircularView:(UIImageView *) imageView  {
+    imageView.layer.cornerRadius = imageView.frame.size.width / 2;
+    imageView.clipsToBounds = YES;
+}
+
 @end

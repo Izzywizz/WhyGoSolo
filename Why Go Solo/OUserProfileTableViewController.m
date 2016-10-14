@@ -241,7 +241,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     EventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
-    /* //Setup cell using data pull down from the server, this is using dummy data
+     //Setup cell using data pull down from the server, this is using dummy data
      NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
      NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
      NSString *eventName = [sectionEvents objectAtIndex:indexPath.row];
@@ -260,8 +260,8 @@
      
      cell.nameLabel.text = eventName;
      //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
-     */
-    [cell configureCellWithEventForTableView:self.tableView atIndexPath:indexPath];
+     
+//    [cell configureCellWithEventForTableView:self.tableView atIndexPath:indexPath];
     
     
     return cell;
