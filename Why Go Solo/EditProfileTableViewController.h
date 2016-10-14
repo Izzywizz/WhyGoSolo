@@ -13,5 +13,6 @@
 @interface EditProfileTableViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UITableViewCell *studentAccommdationCell;
 @property (weak, nonatomic) IBOutlet UIImageView *profileView;
+@property (weak, nonatomic) IBOutlet UITextField *dateOfBirthTextField;
 
 @end

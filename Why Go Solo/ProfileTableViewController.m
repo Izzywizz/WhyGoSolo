@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ProfileTableViewController ()
+@property (nonatomic) UIDatePicker *datePicker;
 
 @end
 
@@ -61,8 +62,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"Selected");
 }
-
-#pragma mark - Action Methods
 
 - (IBAction)editActioin:(id)sender {
     NSLog(@"Edit Pressed");
