@@ -25,7 +25,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="425" height="407"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IFz-Mz-QEu">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IFz-Mz-QEu">
                         <rect key="frame" x="150" y="8" width="126" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="126" id="TH1-Hq-Bbl"/>
@@ -51,7 +51,7 @@
                             <action selector="helpButtonPressed:" destination="sMh-PM-wrU" eventType="touchUpInside" id="PrR-OJ-x49"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ju2-OI-6tH">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ju2-OI-6tH">
                         <rect key="frame" x="220" y="41" width="173" height="40"/>
                         <color key="backgroundColor" red="0.8980392157" green="0.29411764709999999" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
@@ -61,7 +61,7 @@
                             <action selector="cancelEventButtonPressed:" destination="sMh-PM-wrU" eventType="touchUpInside" id="kSK-CE-loa"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYd-AK-rRM">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYd-AK-rRM">
                         <rect key="frame" x="27" y="41" width="173" height="40"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -75,7 +75,7 @@
                             <action selector="closeEventButtonPressed:" destination="sMh-PM-wrU" eventType="touchUpInside" id="C9L-Xr-HYv"/>
                         </connections>
                     </button>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hwS-2m-4NV" userLabel="Change Location View">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwS-2m-4NV" userLabel="Change Location View">
                         <rect key="frame" x="0.0" y="87" width="425" height="38"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eI-qp-MFE">
