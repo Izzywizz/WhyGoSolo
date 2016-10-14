@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "MapViewController.h"
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 @import MapKit;
 
 

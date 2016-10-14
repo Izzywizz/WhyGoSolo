@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface FontSetup : NSObject
+@interface ViewSetupHelper : NSObject
 
 /**Ensures that the Navigation Controller Bar Button items that are returned are of the correct font type/ size and colour */
 +(NSDictionary *) setNavigationButtonFontAndSize;

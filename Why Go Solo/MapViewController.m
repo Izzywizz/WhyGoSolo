@@ -10,7 +10,7 @@
 #import "CurrentUserLocation.h"
 #import "SearchBarTableViewController.h"
 #import "PinLocationData.h"
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 
 #define METERS_PER_MILE 1609.344
 
@@ -69,7 +69,7 @@
 
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
     
     [_doneOrNextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }

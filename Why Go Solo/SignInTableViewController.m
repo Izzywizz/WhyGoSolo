@@ -7,7 +7,7 @@
 //
 
 #import "SignInTableViewController.h"
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 #import "RRRegistration.h"
 
 @interface SignInTableViewController ()
@@ -49,7 +49,7 @@
     RRRegistration *registration = [[RRRegistration alloc] init];
     registration.password = _passwordTextField.text;
     registration.confirmPassword = @"test";// placeholder password
-    FontSetup *fontSetup = [FontSetup new];
+    ViewSetupHelper *fontSetup = [ViewSetupHelper new];
     
     if(![registration validateTextField:_passwordTextField])    {
         [fontSetup setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];
@@ -71,7 +71,7 @@
 #pragma mark - TextField Delegate (custom)
 /** vldiation method to make sure an email address has been entered*/
 -(void)textFieldDidChange: (UITextField *) theTextField {
-    FontSetup *fontSetup = [FontSetup new];
+    ViewSetupHelper *fontSetup = [ViewSetupHelper new];
     
     if ([_emailAddressTextField.text isEqualToString:@""]) {
         [fontSetup setColourOf:_emailAddressContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];

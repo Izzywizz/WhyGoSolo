@@ -50,7 +50,7 @@
 #pragma mark - Helper Functions
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
 
     [_saveButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
     [_cancelButton setTitleTextAttributes:attributes forState:UIControlStateNormal];

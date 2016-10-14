@@ -73,7 +73,7 @@
 
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
     [ _backButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
     [ _saveButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
     _backButton.tintColor = [UIColor grayColor];

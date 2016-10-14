@@ -46,7 +46,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
     
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }

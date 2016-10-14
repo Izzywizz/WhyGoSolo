@@ -45,7 +45,7 @@
 
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
     [_profileButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 

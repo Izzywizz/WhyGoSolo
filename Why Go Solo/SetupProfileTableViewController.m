@@ -8,7 +8,7 @@
 
 #import "SetupProfileTableViewController.h"
 #import "RRRegistration.h"
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 
 @interface SetupProfileTableViewController ()<UIImagePickerControllerDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -82,7 +82,7 @@
 
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
     
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
@@ -90,7 +90,7 @@
 -(void)textFieldDidChange: (UITextField *) theTextField {
     
     RRRegistration *registration = [[RRRegistration alloc] init];
-    FontSetup *fontSetup = [FontSetup new];
+    ViewSetupHelper *fontSetup = [ViewSetupHelper new];
     
     if (![registration validateTextField:_firstNameTextField]) {
         [fontSetup setColourOf:_firstNameContentView toLabel:_firstNameLabel toTextField:_firstNameTextField toMessage:@"Enter your First Name"];
@@ -228,7 +228,7 @@
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Next-> Accommodation");
     RRRegistration *registration = [[RRRegistration alloc] init];
-    FontSetup *fontSetup = [FontSetup new];
+    ViewSetupHelper *fontSetup = [ViewSetupHelper new];
     
     CGImageRef cgref = [_profileImageView.image CGImage];
     CIImage *cim = [_profileImageView.image CIImage];

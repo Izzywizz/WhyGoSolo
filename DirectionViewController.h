@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 
 @interface DirectionViewController : UIViewController<MKMapViewDelegate>
 

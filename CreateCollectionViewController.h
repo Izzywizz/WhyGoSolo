@@ -12,7 +12,7 @@
 #import "EditCellCollectionViewCell.h"
 #import "CreateCollectionViewCell.h"
 #import "MapViewController.h"
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 
 
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 
 @interface CreateEventViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *publicPrivateLabel;

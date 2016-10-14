@@ -7,7 +7,7 @@
 //
 
 #import "ProfileTableViewController.h"
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 #import <UIKit/UIKit.h>
 
 @interface ProfileTableViewController ()
@@ -23,7 +23,7 @@
     NSLog(@"People View Loaded");
     [self setNavigationButtonFontAndSize];
     
-    FontSetup *fontSetup = [[FontSetup alloc] init];
+    ViewSetupHelper *fontSetup = [[ViewSetupHelper alloc] init];
     [fontSetup createCircularView:_profileImage];
 
     //This prevents the weird the selection animation occuring when the user selects a cell
@@ -51,7 +51,7 @@
 
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
 
     [_editButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
     [_backButton setTitleTextAttributes:attributes forState:UIControlStateNormal];

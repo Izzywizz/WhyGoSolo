@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 
 @interface SetupLoginDetailsViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;

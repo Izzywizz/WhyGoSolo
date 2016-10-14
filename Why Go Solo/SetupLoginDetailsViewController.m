@@ -82,7 +82,7 @@
 /** vldiation method to make sure an email address has been entered*/
 -(void)textFieldDidChange: (UITextField *) theTextField {
     RRRegistration *registration = [[RRRegistration alloc] init];
-    FontSetup *fontSetup = [FontSetup new];
+    ViewSetupHelper *fontSetup = [ViewSetupHelper new];
     
     if (![registration validateTextField:_emailAddressTextField]) {
         [fontSetup setColourOf:_emailContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
@@ -128,7 +128,7 @@
 }
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
     
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
@@ -172,7 +172,7 @@
     RRRegistration *registration = [[RRRegistration alloc] init];
     registration.password = _passwordTextField.text;
     registration.confirmPassword = _confirmPasswordTextField.text;
-    FontSetup *fontSetup = [FontSetup new];
+    ViewSetupHelper *fontSetup = [ViewSetupHelper new];
     
     if(![registration validateTextField:_passwordTextField])    {
         [fontSetup setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];

@@ -6,9 +6,9 @@
 //  Copyright © 2016 Izzy. All rights reserved.
 //
 
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 
-@implementation FontSetup
+@implementation ViewSetupHelper
 
 
 +(NSDictionary *) setNavigationButtonFontAndSize  {

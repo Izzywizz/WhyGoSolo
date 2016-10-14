@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 
 @interface ProfileTableViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
