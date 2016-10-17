@@ -25,4 +25,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *confirmPasswordLabel;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
 
+-(NSString *)  obtainAndSetEmailSuffix;
+
 @end

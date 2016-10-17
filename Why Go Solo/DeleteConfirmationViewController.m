@@ -38,7 +38,7 @@
 #pragma mark - Action Methods
 
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)deleteButtonPressed:(UIButton *)sender {

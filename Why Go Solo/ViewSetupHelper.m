@@ -46,4 +46,7 @@
     imageView.clipsToBounds = YES;
 }
 
+/*Photo Methods*/
+
+
 @end

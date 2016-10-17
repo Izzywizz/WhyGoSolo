@@ -119,12 +119,15 @@
                         forControlEvents:UIControlEventEditingChanged];
 }
 
--(void)  obtainAndSetEmailSuffix  {
+-(NSString *)  obtainAndSetEmailSuffix  {
     _university = [[University alloc] init];
     _university = [Data sharedInstance].selectedUniversity;
     NSLog(@"Email Suffix: %@", _university.emailSuffix);
     
     _emailAddressTextField.text = [NSString stringWithFormat:@"@%@",_university.emailSuffix];
+    
+    return _university.emailSuffix;
+    
 }
 -(void) setNavigationButtonFontAndSize  {
     

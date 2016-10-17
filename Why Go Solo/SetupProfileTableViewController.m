@@ -199,7 +199,6 @@
     self.dateOfBirthField.textColor = [UIColor blackColor];
     self.dateOfBirthLabel.textColor = [UIColor blackColor];
     self.dateOfBirthContentView.backgroundColor = [UIColor blackColor];
-    
 }
 
 #pragma mark - Action Methods

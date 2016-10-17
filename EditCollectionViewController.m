@@ -259,10 +259,6 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark - Helper Functions
-
-
-
-
 -(void)deleteOverlayAlpha:(int)a animationDuration:(float)duration
 {
     [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{

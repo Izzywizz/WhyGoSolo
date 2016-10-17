@@ -78,11 +78,18 @@
     [ _saveButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
     _backButton.tintColor = [UIColor grayColor];
     _saveButton.tintColor = [UIColor grayColor];
-    
+}
+
+-(void) popNavigationControllerNumberOfTimes:(int) times {
+    NSInteger noOfViewControllers = [self.navigationController.viewControllers count];
+    [self.navigationController
+     popToViewController:[self.navigationController.viewControllers
+                          objectAtIndex:(noOfViewControllers-times)] animated:YES];
 }
 
 -(void) goBack  {
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+    [self popNavigationControllerNumberOfTimes:2];
 }
 
 -(void) save    {
@@ -102,6 +109,7 @@
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 }
+
 
 
 

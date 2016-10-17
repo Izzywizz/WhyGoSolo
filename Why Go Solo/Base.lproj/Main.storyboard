@@ -4910,41 +4910,15 @@ Cg
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRf-jc-T4g">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.87450980389999999" green="0.2274509804" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="8vI-rx-GfA"/>
-                                    <constraint firstAttribute="width" constant="250" id="zo0-OD-4hi"/>
-                                </constraints>
-                                <state key="normal" title="Delete Account">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="8vI-rx-GfA"/>
-                                        <exclude reference="zo0-OD-4hi"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="8vI-rx-GfA"/>
-                                        <include reference="zo0-OD-4hi"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="deleteButtonPressed:" destination="zjW-pp-IYL" eventType="touchUpInside" id="hAS-Rz-ILp"/>
-                                </connections>
-                            </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qi0-9d-OKN">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qi0-9d-OKN">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="600" id="KMO-Jk-b2d"/>
                                 </constraints>
-                                <connections>
-                                    <segue destination="TFt-a0-ZUr" kind="embed" id="Omn-5I-bmZ"/>
-                                </connections>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="-44" width="600" height="694"/>
+                                </variation>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahT-vt-C92" userLabel="Overlay View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -4956,14 +4930,6 @@ Cg
                                                 <rect key="frame" x="73" y="18" width="103" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="103" id="qSJ-2L-d7x"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to delete your account?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U04-Or-NJk">
-                                                <rect key="frame" x="23" y="48" width="204" height="36"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="204" id="HzP-6p-zsG"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
@@ -5014,9 +4980,16 @@ Cg
                                                 </state>
                                                 <connections>
                                                     <action selector="yesButtonPressed:" destination="zjW-pp-IYL" eventType="touchUpInside" id="5ba-bR-Yav"/>
-                                                    <segue destination="JvF-fK-4hY" kind="show" id="fwQ-Wd-WXG"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to delete your account?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U04-Or-NJk">
+                                                <rect key="frame" x="23" y="48" width="204" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="204" id="HzP-6p-zsG"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -5063,7 +5036,36 @@ Cg
                                         <exclude reference="psE-bR-AE8"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="615"/>
+                                </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRf-jc-T4g">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.87450980389999999" green="0.2274509804" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8vI-rx-GfA"/>
+                                    <constraint firstAttribute="width" constant="250" id="zo0-OD-4hi"/>
+                                </constraints>
+                                <state key="normal" title="Delete Account">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8vI-rx-GfA"/>
+                                        <exclude reference="zo0-OD-4hi"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="8vI-rx-GfA"/>
+                                        <include reference="zo0-OD-4hi"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="deleteButtonPressed:" destination="zjW-pp-IYL" eventType="touchUpInside" id="hAS-Rz-ILp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -5154,7 +5156,7 @@ Cg
         <!--Confirm Account Deletion-->
         <scene sceneID="Jav-0E-Zbl">
             <objects>
-                <viewController id="JvF-fK-4hY" customClass="DeleteConfirmationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeleteConfirmation" id="JvF-fK-4hY" customClass="DeleteConfirmationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IhB-nv-AbV"/>
                         <viewControllerLayoutGuide type="bottom" id="JGW-Am-bD7"/>
@@ -5195,7 +5197,7 @@ Cg
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="natural" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="VAo-lm-esv">
                                         <rect key="frame" x="20" y="14" width="561" height="30"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -5308,7 +5310,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xWo-Dq-tzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5256" y="3874"/>
+            <point key="canvasLocation" x="5168" y="3876"/>
         </scene>
         <!--Event-->
         <scene sceneID="Yt1-sd-D2U">
@@ -5960,13 +5962,16 @@ Cg
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nathanbarnfas@live.ac.uk" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICK-0h-WA9" userLabel="Email Label">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nathanbarnfas@live.ac.uk" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICK-0h-WA9" userLabel="Email Label">
                                                     <rect key="frame" x="208" y="130" width="185" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="185" id="WfJ-uq-5S5"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Uty-lc-xaZ" id="QRn-3i-LHH"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
@@ -6226,7 +6231,6 @@ Cg
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="editActioin:" destination="Uty-lc-xaZ" id="7Kv-qp-abg"/>
-                                <segue destination="zjW-pp-IYL" kind="show" id="Bjt-RA-oKp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -6239,6 +6243,7 @@ Cg
                         <outlet property="profileImage" destination="kw3-P8-BdH" id="mUH-k7-RNf"/>
                         <outlet property="profileUser" destination="Cwe-R5-RV4" id="LG0-8Z-0XQ"/>
                         <outlet property="studentAccommodationTextField" destination="7eQ-3z-0we" id="dT5-PV-BNk"/>
+                        <segue destination="TFt-a0-ZUr" kind="show" identifier="GoToEdit" id="o4x-n5-3eO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U5S-va-VPg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6376,7 +6381,7 @@ Cg
                             <tableViewSection id="Wu2-lv-Q3j">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="57" id="VM2-4K-Tdo" userLabel="Old Password Cell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
+                                        <rect key="frame" x="0.0" y="64" width="600" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VM2-4K-Tdo" id="vtJ-zZ-Fih">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="56.5"/>
@@ -6410,7 +6415,7 @@ Cg
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="57" id="d5P-rw-h4G" userLabel="New Password Cell">
-                                        <rect key="frame" x="0.0" y="57" width="600" height="57"/>
+                                        <rect key="frame" x="0.0" y="121" width="600" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d5P-rw-h4G" id="IjH-se-sSb">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="56.5"/>
@@ -6444,7 +6449,7 @@ Cg
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="57" id="dea-ig-qC0" userLabel="Confirm Password Cell">
-                                        <rect key="frame" x="0.0" y="114" width="600" height="57"/>
+                                        <rect key="frame" x="0.0" y="178" width="600" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dea-ig-qC0" id="dFe-js-lW4">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="56.5"/>
@@ -6498,7 +6503,7 @@ Cg
                     </items>
                 </navigationBar>
             </objects>
-            <point key="canvasLocation" x="4355" y="4545"/>
+            <point key="canvasLocation" x="4467" y="3888"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="C5s-ql-1IP">
@@ -6511,8 +6516,8 @@ Cg
                         <sections>
                             <tableViewSection id="whh-iw-oNe">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="160" id="rk6-aX-kUW" userLabel="ProfileImage">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="160"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="160" id="rk6-aX-kUW" userLabel="ProfileImage">
+                                        <rect key="frame" x="0.0" y="64" width="600" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rk6-aX-kUW" id="xEI-rM-Q2N">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="160"/>
@@ -6544,13 +6549,26 @@ Cg
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nathanbarnfas@live.ac.uk" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXA-se-8r6" userLabel="Email Label">
-                                                    <rect key="frame" x="208" y="130" width="185" height="18"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daf-7L-Uma" userLabel="Invisable Upload">
+                                                    <rect key="frame" x="250" y="30" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="8tX-Rb-DcV"/>
+                                                        <constraint firstAttribute="width" constant="100" id="aHZ-e8-TkQ"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="uploadButtonPressed:" destination="TFt-a0-ZUr" eventType="touchUpInside" id="PVq-cF-NMn"/>
+                                                    </connections>
+                                                </button>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nathanbarnfas@live.ac.uk" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXA-se-8r6" userLabel="Email Label">
+                                                    <rect key="frame" x="208" y="134" width="185" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="185" id="3G1-oe-a4J"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="TFt-a0-ZUr" id="zJ5-6P-lxg"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -6559,12 +6577,14 @@ Cg
                                                 <constraint firstItem="76V-PT-gTk" firstAttribute="top" secondItem="xEI-rM-Q2N" secondAttribute="topMargin" id="9Yz-Kv-4UD"/>
                                                 <constraint firstItem="Iuc-by-mDJ" firstAttribute="leading" secondItem="xEI-rM-Q2N" secondAttribute="leading" id="AmT-ug-Tnc"/>
                                                 <constraint firstItem="fXA-se-8r6" firstAttribute="centerX" secondItem="xEI-rM-Q2N" secondAttribute="centerX" id="G5x-Bg-4dZ"/>
+                                                <constraint firstItem="daf-7L-Uma" firstAttribute="centerY" secondItem="xEI-rM-Q2N" secondAttribute="centerY" id="H8A-X2-CrH"/>
                                                 <constraint firstItem="76V-PT-gTk" firstAttribute="centerX" secondItem="xEI-rM-Q2N" secondAttribute="centerX" id="HmF-Sq-KMk"/>
                                                 <constraint firstItem="fXA-se-8r6" firstAttribute="top" secondItem="76V-PT-gTk" secondAttribute="bottom" id="Ho7-AM-AgC"/>
                                                 <constraint firstItem="76V-PT-gTk" firstAttribute="centerY" secondItem="xEI-rM-Q2N" secondAttribute="centerY" constant="-19" id="Ouu-Dm-AaC"/>
                                                 <constraint firstItem="76V-PT-gTk" firstAttribute="centerY" secondItem="xEI-rM-Q2N" secondAttribute="centerY" id="PV5-wE-kZb"/>
                                                 <constraint firstItem="76V-PT-gTk" firstAttribute="centerX" secondItem="xEI-rM-Q2N" secondAttribute="centerX" constant="5" id="ZJv-sR-kjA"/>
                                                 <constraint firstItem="Fzb-f3-qMz" firstAttribute="leading" secondItem="xEI-rM-Q2N" secondAttribute="leading" id="dpA-Jj-wiT"/>
+                                                <constraint firstItem="daf-7L-Uma" firstAttribute="centerX" secondItem="xEI-rM-Q2N" secondAttribute="centerX" id="ham-vg-TXp"/>
                                                 <constraint firstItem="Iuc-by-mDJ" firstAttribute="top" secondItem="fXA-se-8r6" secondAttribute="bottom" constant="12" id="kQP-r7-n7z"/>
                                                 <constraint firstAttribute="trailing" secondItem="Fzb-f3-qMz" secondAttribute="trailing" constant="-1" id="knB-kn-DBd"/>
                                                 <constraint firstAttribute="trailing" secondItem="Iuc-by-mDJ" secondAttribute="trailing" id="qI9-gV-egR"/>
@@ -6583,8 +6603,8 @@ Cg
                                             <constraint firstItem="Fzb-f3-qMz" firstAttribute="top" secondItem="rk6-aX-kUW" secondAttribute="top" id="z0D-SE-LBL"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="67" id="WUQ-5q-moB" userLabel="FirstName">
-                                        <rect key="frame" x="0.0" y="160" width="600" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="67" id="WUQ-5q-moB" userLabel="FirstName">
+                                        <rect key="frame" x="0.0" y="224" width="600" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WUQ-5q-moB" id="Bw3-z6-t2P">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
@@ -6609,7 +6629,7 @@ Cg
                                                         <outlet property="delegate" destination="TFt-a0-ZUr" id="2cv-wH-OjU"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="qHj-qW-Aun">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="qHj-qW-Aun">
                                                     <rect key="frame" x="18" y="14" width="574" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="574" id="n4c-Go-i7U"/>
@@ -6638,8 +6658,8 @@ Cg
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="67" id="T2W-dg-Lqa" userLabel="LastName">
-                                        <rect key="frame" x="0.0" y="227" width="600" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="67" id="T2W-dg-Lqa" userLabel="LastName">
+                                        <rect key="frame" x="0.0" y="291" width="600" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T2W-dg-Lqa" id="Lid-gd-ecm">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
@@ -6664,7 +6684,7 @@ Cg
                                                         <outlet property="delegate" destination="TFt-a0-ZUr" id="P7R-Ue-mDF"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="IBu-qD-s37">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="IBu-qD-s37">
                                                     <rect key="frame" x="18" y="14" width="574" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="574" id="Pyv-wn-RWT"/>
@@ -6694,7 +6714,7 @@ Cg
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="67" id="BmN-FE-UOp" userLabel="Student Accommodation">
-                                        <rect key="frame" x="0.0" y="294" width="600" height="67"/>
+                                        <rect key="frame" x="0.0" y="358" width="600" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BmN-FE-UOp" id="HwC-6E-133">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
@@ -6764,8 +6784,8 @@ Cg
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="67" id="JcX-C8-w4U" userLabel="Date of Birth">
-                                        <rect key="frame" x="0.0" y="361" width="600" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="67" id="JcX-C8-w4U" userLabel="Date of Birth">
+                                        <rect key="frame" x="0.0" y="425" width="600" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JcX-C8-w4U" id="aQy-aq-AJZ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
@@ -6793,7 +6813,7 @@ Cg
                                                         <outlet property="delegate" destination="TFt-a0-ZUr" id="lUA-Qb-Zuw"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE OF BIRTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Fgq-vS-HEb">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE OF BIRTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Fgq-vS-HEb">
                                                     <rect key="frame" x="18" y="14" width="574" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="574" id="BFm-vK-5Ci"/>
@@ -6822,8 +6842,8 @@ Cg
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="FVH-Ah-OpK" userLabel="Change Password">
-                                        <rect key="frame" x="0.0" y="428" width="600" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="FVH-Ah-OpK" userLabel="Change Password">
+                                        <rect key="frame" x="0.0" y="492" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FVH-Ah-OpK" id="n6B-VE-6az">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
@@ -6871,6 +6891,82 @@ Cg
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="MzN-UQ-Oey" userLabel="Delete">
+                                        <rect key="frame" x="0.0" y="552" width="600" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MzN-UQ-Oey" id="a1n-jh-ssW">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tid-yh-9Ik" userLabel="Line">
+                                                    <rect key="frame" x="0.0" y="59" width="600" height="1"/>
+                                                    <color key="backgroundColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="600" id="5FH-QN-CTK"/>
+                                                        <constraint firstAttribute="height" constant="0.5" id="GDW-tI-ttm"/>
+                                                    </constraints>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sb0-lX-JMM">
+                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                    <color key="backgroundColor" red="0.87450980389999999" green="0.2274509804" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="Ils-H1-ewp"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Qls-el-c0k"/>
+                                                        <constraint firstAttribute="width" constant="250" id="dsh-zR-aDe"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="xsc-BM-M1w"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Delete Account">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Ils-H1-ewp"/>
+                                                            <exclude reference="Qls-el-c0k"/>
+                                                            <exclude reference="dsh-zR-aDe"/>
+                                                            <exclude reference="xsc-BM-M1w"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular">
+                                                        <mask key="constraints">
+                                                            <include reference="Ils-H1-ewp"/>
+                                                            <exclude reference="Qls-el-c0k"/>
+                                                            <include reference="dsh-zR-aDe"/>
+                                                            <exclude reference="xsc-BM-M1w"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <action selector="deleteButtonPressed:" destination="TFt-a0-ZUr" eventType="touchUpInside" id="M66-7C-02F"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="tid-yh-9Ik" firstAttribute="leading" secondItem="a1n-jh-ssW" secondAttribute="leading" id="G4w-Ry-FHD"/>
+                                                <constraint firstItem="Sb0-lX-JMM" firstAttribute="centerY" secondItem="a1n-jh-ssW" secondAttribute="centerY" id="Vn7-Af-IjX"/>
+                                                <constraint firstItem="Sb0-lX-JMM" firstAttribute="centerX" secondItem="a1n-jh-ssW" secondAttribute="centerX" id="oZ1-1H-jGQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="tid-yh-9Ik" secondAttribute="bottom" id="tmL-Yd-RYr"/>
+                                                <constraint firstAttribute="trailing" secondItem="tid-yh-9Ik" secondAttribute="trailing" id="zH7-ga-ah7"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="Sb0-lX-JMM"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="Vn7-Af-IjX"/>
+                                                    <exclude reference="oZ1-1H-jGQ"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular">
+                                                <mask key="subviews">
+                                                    <include reference="Sb0-lX-JMM"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="Vn7-Af-IjX"/>
+                                                    <include reference="oZ1-1H-jGQ"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -6891,14 +6987,19 @@ Cg
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="qYC-um-v3q" id="o4N-5v-x3v"/>
                         <outlet property="dateOfBirthTextField" destination="QYo-Db-Gtt" id="QaP-G6-RoC"/>
+                        <outlet property="deleteButton" destination="Sb0-lX-JMM" id="ruA-l3-UJu"/>
+                        <outlet property="profileImageView" destination="76V-PT-gTk" id="eIw-Ph-7MY"/>
                         <outlet property="profileView" destination="76V-PT-gTk" id="jxs-4I-Ndb"/>
+                        <outlet property="saveButton" destination="jor-is-Zf3" id="3x5-2y-DtG"/>
                         <outlet property="studentAccommdationCell" destination="BmN-FE-UOp" id="6mw-3z-R1F"/>
+                        <segue destination="JvF-fK-4hY" kind="show" identifier="GoToDeleteConfirmation" id="zdI-25-Tae"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="msw-bU-yns" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4355" y="3841"/>
+            <point key="canvasLocation" x="4467" y="3094"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vwQ-yv-OOC">

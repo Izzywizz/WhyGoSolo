@@ -29,4 +29,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateOfBirthLabel;
 @property (weak, nonatomic) IBOutlet UITextField *dateOfBirthField;
 
+-(void) createActionSheet;
+
 @end

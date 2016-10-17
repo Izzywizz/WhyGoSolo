@@ -65,6 +65,7 @@
 
 - (IBAction)editActioin:(id)sender {
     NSLog(@"Edit Pressed");
+    [self performSegueWithIdentifier:@"GoToEdit" sender:self];
 }
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];

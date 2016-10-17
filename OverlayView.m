@@ -35,8 +35,11 @@
 - (IBAction)yesButtonPressed:(UIButton *)sender {
     if (_internalView.tag == 1) {
         NSLog(@"Cancel event TAG");
-    } else  {
+    } else if (_internalView.tag == 2)  {
         NSLog(@"CLOSE TAG");
+    } else  {
+        NSLog(@"Delete");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteConfirmation" object:self];
     }
 }
 
@@ -70,6 +73,7 @@
 -(void) setupObserver   {
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showHelpView:) name:@"helpOverlayView" object:nil];
+
 }
 
 @end
