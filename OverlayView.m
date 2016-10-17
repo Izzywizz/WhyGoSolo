@@ -40,7 +40,7 @@
         NSLog(@"Delete comment from the user: Logic to be added to remove message from the server");
     } else if (_internalView.tag == 5)  {
         NSLog(@"Report comment from another user");
-        _helpLabel.text = [NSString stringWithFormat:@"\n%@'s comment has been reported our moderators will review it\n",_commmentReportedUserName];
+        _helpLabel.text = [NSString stringWithFormat:@"%@'s comment has been reported our moderators will review it\n",_commmentReportedUserName];
         _helpLabel.textAlignment = NSTextAlignmentCenter;
         _helpViewTitleLabel.text = @"Comment Reported";
         _internalHelpView.alpha = 1;
