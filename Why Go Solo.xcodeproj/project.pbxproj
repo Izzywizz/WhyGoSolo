@@ -90,6 +90,7 @@
 		43BE4C361D82A26700D6B26A /* OUserProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C351D82A26700D6B26A /* OUserProfileTableViewController.m */; };
 		43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */; };
 		43BE4C3C1D82F91400D6B26A /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C3B1D82F91400D6B26A /* EditProfileTableViewController.m */; };
+		43D0271A1DB4E1A90077DEF0 /* AlternateProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D027191DB4E1A90077DEF0 /* AlternateProfileTableViewController.m */; };
 		43D17EDA1D8BD7C300451E90 /* AccommodationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */; };
 		43D17EDD1D8C1F1800451E90 /* SignInTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17EDC1D8C1F1800451E90 /* SignInTableViewController.m */; };
 		43D17EE01D8C3A1900451E90 /* ChangePasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D17EDF1D8C3A1900451E90 /* ChangePasswordTableViewController.m */; };
@@ -261,6 +262,8 @@
 		43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
 		43BE4C3A1D82F91400D6B26A /* EditProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileTableViewController.h; sourceTree = "<group>"; };
 		43BE4C3B1D82F91400D6B26A /* EditProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileTableViewController.m; sourceTree = "<group>"; };
+		43D027181DB4E1A90077DEF0 /* AlternateProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlternateProfileTableViewController.h; sourceTree = "<group>"; };
+		43D027191DB4E1A90077DEF0 /* AlternateProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlternateProfileTableViewController.m; sourceTree = "<group>"; };
 		43D17ED81D8BD7C300451E90 /* AccommodationMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccommodationMapViewController.h; sourceTree = "<group>"; };
 		43D17ED91D8BD7C300451E90 /* AccommodationMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccommodationMapViewController.m; sourceTree = "<group>"; };
 		43D17EDB1D8C1F1800451E90 /* SignInTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInTableViewController.h; sourceTree = "<group>"; };
@@ -428,6 +431,8 @@
 		436E84B71D8171AB00B23402 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				43D027181DB4E1A90077DEF0 /* AlternateProfileTableViewController.h */,
+				43D027191DB4E1A90077DEF0 /* AlternateProfileTableViewController.m */,
 				43BE4C341D82A26700D6B26A /* OUserProfileTableViewController.h */,
 				43BE4C351D82A26700D6B26A /* OUserProfileTableViewController.m */,
 				43BE4C371D82DCDF00D6B26A /* ProfileTableViewController.h */,
@@ -844,6 +849,7 @@
 				43D17EDA1D8BD7C300451E90 /* AccommodationMapViewController.m in Sources */,
 				43EAA7AD1DAA6C790029828B /* OtherProfileTableViewCell.m in Sources */,
 				438188311D86EFCB009591F4 /* ContainerViewController.m in Sources */,
+				43D0271A1DB4E1A90077DEF0 /* AlternateProfileTableViewController.m in Sources */,
 				43ECC9F31DA25D930059A333 /* CreateCollectionViewCell.m in Sources */,
 				43FBC2F21D8AA49100AE4E1F /* TermsViewController.m in Sources */,
 				A1151F5D1DAA5D13008222ED /* RRDateFormater.m in Sources */,
