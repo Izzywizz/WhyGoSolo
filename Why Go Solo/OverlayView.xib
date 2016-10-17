@@ -123,10 +123,10 @@
                         </mask>
                     </variation>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USx-TY-xfX" userLabel="HelpView">
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="USx-TY-xfX" userLabel="HelpView">
                     <rect key="frame" x="175" y="150" width="250" height="300"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ag8-e1-RKp" userLabel="Line">
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ag8-e1-RKp" userLabel="Line">
                             <rect key="frame" x="0.0" y="243" width="250" height="1"/>
                             <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -141,7 +141,7 @@
                                 <constraint firstAttribute="height" constant="1" id="54y-z1-Mlh"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDS-ay-wnn">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDS-ay-wnn">
                             <rect key="frame" x="0.0" y="245" width="250" height="55"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="55" id="gJS-E5-bRW"/>
@@ -156,7 +156,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="094-sJ-Yd4">
-                            <rect key="frame" x="8" y="49" width="234" height="188"/>
+                            <rect key="frame" x="8" y="49" width="234" height="180"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="188" id="3if-cJ-AKY"/>
                                 <constraint firstAttribute="width" constant="234" id="Aog-rz-dX4"/>
@@ -201,6 +201,11 @@
                                 </fragment>
                             </attributedString>
                             <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="3if-cJ-AKY"/>
+                                </mask>
+                            </variation>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7X-Bg-HlA" userLabel="Title">
                             <rect key="frame" x="69" y="14" width="112" height="18"/>
@@ -231,6 +236,11 @@
                         <constraint firstAttribute="height" constant="300" id="vgc-c1-cDy"/>
                         <constraint firstAttribute="trailing" secondItem="LBF-Nu-DSe" secondAttribute="trailing" id="wFl-De-5d8"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="vgc-c1-cDy"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75479525862068964" colorSpace="calibratedRGB"/>
@@ -243,6 +253,8 @@
             <connections>
                 <outlet property="eventText" destination="x29-JA-cTP" id="Em4-9N-4Ha"/>
                 <outlet property="eventTitle" destination="3TR-Cf-AZc" id="kz3-Xw-ibT"/>
+                <outlet property="helpLabel" destination="094-sJ-Yd4" id="mNZ-xh-FX3"/>
+                <outlet property="helpViewTitleLabel" destination="B7X-Bg-HlA" id="GtY-3V-ADD"/>
                 <outlet property="internalHelpView" destination="USx-TY-xfX" id="il9-Hc-YET"/>
                 <outlet property="internalView" destination="kQN-P2-s2e" id="Hkh-cp-HYC"/>
             </connections>

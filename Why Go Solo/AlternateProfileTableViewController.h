@@ -11,4 +11,6 @@
 @interface AlternateProfileTableViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addFriendButton;
 
+@property (nonatomic, weak) NSString *reportedUserName;
+
 @end

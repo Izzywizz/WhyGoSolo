@@ -89,7 +89,7 @@
 }
 - (IBAction)deleteButtonPressed:(UIButton *)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteOverlayView" object:self];
-    [self setupDeleteOverlay:@"Delete Account" andTextBody:@"Are you sure you want to delete your account?" andTag:3];
+    [self setupDeleteOverlay:@"Delete Account" andTextBody:@"Are you sure you want to delete your account?" andTag:4];
 }
 
 #pragma mark - Student ViewController Creation Methods

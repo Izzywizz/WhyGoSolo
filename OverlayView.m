@@ -10,13 +10,6 @@
 
 @implementation OverlayView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 #pragma mark - View Methods
 
 -(void)awakeFromNib {
@@ -37,7 +30,14 @@
         NSLog(@"Cancel event TAG");
     } else if (_internalView.tag == 2)  {
         NSLog(@"CLOSE TAG");
-    } else  {
+    } else if (_internalView.tag == 3)  {
+        NSLog(@"Report User ***");
+        _helpLabel.text = [NSString stringWithFormat:@"\n%@ profile has been reported and will be reviewed.\n",_reportedUserName];
+        _helpLabel.textAlignment = NSTextAlignmentCenter;
+        _helpViewTitleLabel.text = @"User Reported";
+        _internalHelpView.alpha = 1;
+    }
+    else  {
         NSLog(@"Delete");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteConfirmation" object:self];
     }
@@ -60,7 +60,7 @@
         return nil;
 }
 
-#pragma mark - Observer Methods 
+#pragma mark - Observer Methods
 -(void) showHelpView:(NSNotification *) notification    {
     if ([[notification name] isEqualToString:@"helpOverlayView"]) {
         self.internalHelpView.alpha = 1;
@@ -73,7 +73,7 @@
 -(void) setupObserver   {
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showHelpView:) name:@"helpOverlayView" object:nil];
-
+    
 }
 
 @end

@@ -11,7 +11,7 @@
 #import "PeopleEventTableViewCell.h"
 #import "FooterEventsTableViewCell.h"
 #import "PeopleNotAttendingTableViewCell.h"
-#import "OUserProfileTableViewController.h"
+#import "AlternateProfileTableViewController.h"
 
 @interface PeopleViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -63,10 +63,9 @@
 }
 
 -(void) moveToOtherUserProfile  {
-    
     //Prevents the app from showing the viewController twice, also changing the fileName helps with this problem
-    if(![self.navigationController.topViewController isKindOfClass:[OtherUserProfileTableViewController class]]) {
-        UIViewController* infoController = [self.storyboard instantiateViewControllerWithIdentifier:@"OtherUserProfileViewController"];
+    if(![self.navigationController.topViewController isKindOfClass:[AlternateProfileTableViewController class]]) {
+        UIViewController* infoController = [self.storyboard instantiateViewControllerWithIdentifier:@"AlternateProfileTableViewController"];
         [self.navigationController pushViewController:infoController animated:YES];
     }
 }

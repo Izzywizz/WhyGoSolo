@@ -13,6 +13,8 @@
 #import "OtherProfileTableViewCell.h"
 #import "User.h"
 #import "Event.h"
+#import "OverlayView.h"
+
 
 @interface AlternateProfileTableViewController ()
 
@@ -21,6 +23,9 @@
 @property NSArray *sectionData;
 @property BOOL isUserBlocked;
 @property BOOL isFriend;
+@property (nonatomic) UIView *overlayView;
+
+
 
 @end
 
@@ -33,6 +38,7 @@
     [self setupObservers];
     
     _isFriend = true;
+    _reportedUserName = @"Andy Jones";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -193,8 +199,6 @@
     if (_isUserBlocked) {
         cell.hidden = YES;
         [cell setUserInteractionEnabled:NO];
-        [self.tableView setContentOffset:CGPointZero animated:YES]; //sroll to the top (ish)
-
     }
     
     cell.nameLabel.text = eventName;
@@ -224,20 +228,33 @@
 -(void) setupObservers {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(blockUserPressed:) name:@"BlockUser" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unblockButtonPressed:) name:@"UnblockUser" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportButtonPressed:) name:@"ReportUser" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeOverlay:) name:@"removeOverlay" object:nil];
 }
 
 #pragma mark - Oberver MEthods
-- (void)blockUserPressed:(NSNotificationCenter *) notification {
-    NSLog(@"Block User Pressed from Observer");
-    _isUserBlocked = YES;
-    [self.tableView reloadData];
+- (void)blockUserPressed:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"BlockUser"]) {
+        NSLog(@"Block User Pressed from Observer");
+        _isUserBlocked = YES;
+        [self.tableView reloadData];
+    }
 }
 
-- (void)unblockButtonPressed:(NSNotificationCenter *) notification {
-    NSLog(@"Unblock User Pressed from Observer");
-    _isUserBlocked = NO;
-    [self.tableView reloadData];
+- (void)unblockButtonPressed:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"UnblockUser"]) {
+        NSLog(@"Unblock User Pressed from Observer");
+        _isUserBlocked = NO;
+        [self.tableView reloadData];
+    }
 }
+
+- (void)reportButtonPressed:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"ReportUser"]) {
+        NSLog(@"Report button pressed internally");
+        [self setupReportUserOverlay:@"Report User" andTextBody:[NSString stringWithFormat:@"Are you sure you want to report %@", _reportedUserName] andTag:3 andReportedUser:_reportedUserName];
+        }
+    }
 
 #pragma mark - Action Methods
 
@@ -257,6 +274,57 @@
         NSLog(@"Friend Removed");
     }
     
+}
+
+#pragma mark - OverlayView Methods
+/*ensures that the view added streches properly to the screen*/
+- (void) stretchToSuperView:(UIView*) view {
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    NSDictionary *bindings = NSDictionaryOfVariableBindings(view);
+    NSString *formatTemplate = @"%@:|[view]|";
+    for (NSString * axis in @[@"H",@"V"]) {
+        NSString * format = [NSString stringWithFormat:formatTemplate,axis];
+        NSArray * constraints = [NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:bindings];
+        [view.superview addConstraints:constraints];
+    }
+}
+
+-(void) setupReportUserOverlay:(NSString *)eventTitle andTextBody:(NSString *)textBody andTag:(NSInteger) tag andReportedUser:(NSString *)user    {
+    OverlayView *overlayVC = [OverlayView overlayView];
+    overlayVC.eventTitle.text = eventTitle;
+    overlayVC.eventText.text = textBody;
+    [overlayVC.internalView setTag:tag];
+    overlayVC.reportedUserName = _reportedUserName;
+    self.view.bounds = overlayVC.bounds;
+    [self.view addSubview:overlayVC];
+    [self stretchToSuperView:self.view];
+    self.overlayView = overlayVC;
+}
+
+-(void) removeOverlay: (NSNotification *) notifcation   {
+    if ([[notifcation name] isEqualToString:@"removeOverlay"]) {
+        [self deleteOverlayAlpha:0 animationDuration:0.2f];
+    }
+}
+
+-(void) deleteConfirmation: (NSNotification *) notifcation   {
+    if ([[notifcation name] isEqualToString:@"deleteConfirmation"]) {
+        [self performSegueWithIdentifier:@"GoToDeleteConfirmation" sender:self];
+    }
+}
+
+-(void)deleteOverlayAlpha:(int)a animationDuration:(float)duration
+{
+    [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        for (id x in self.overlayView.subviews)
+        {
+            if ([x class] == [UIView class])
+            {
+                [(UIView*)x setAlpha:a];
+            }
+        }
+        self.overlayView.alpha = a;
+    } completion:nil];
 }
 
 @end
