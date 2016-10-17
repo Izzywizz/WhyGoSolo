@@ -207,14 +207,19 @@
                                 </mask>
                             </variation>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7X-Bg-HlA" userLabel="Title">
-                            <rect key="frame" x="69" y="14" width="112" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="B7X-Bg-HlA" userLabel="Title">
+                            <rect key="frame" x="8" y="14" width="234" height="18"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="112" id="6cF-Xv-HNp"/>
+                                <constraint firstAttribute="width" constant="234" id="6cF-Xv-HNp"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="112" id="YE3-cE-9dW"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                             <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="YE3-cE-9dW"/>
+                                </mask>
+                            </variation>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -255,6 +260,7 @@
                 <outlet property="eventTitle" destination="3TR-Cf-AZc" id="kz3-Xw-ibT"/>
                 <outlet property="helpLabel" destination="094-sJ-Yd4" id="mNZ-xh-FX3"/>
                 <outlet property="helpViewTitleLabel" destination="B7X-Bg-HlA" id="GtY-3V-ADD"/>
+                <outlet property="helpViewTopLine" destination="LBF-Nu-DSe" id="3yi-gV-35u"/>
                 <outlet property="internalHelpView" destination="USx-TY-xfX" id="il9-Hc-YET"/>
                 <outlet property="internalView" destination="kQN-P2-s2e" id="Hkh-cp-HYC"/>
             </connections>

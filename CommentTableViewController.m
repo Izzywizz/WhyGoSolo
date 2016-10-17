@@ -27,6 +27,7 @@
     [self setupTable];
     [self setupObservers];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];// remove extra tableViewCells at the bottom
+    _commmentReportedUserName = @"Neel";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -109,11 +110,12 @@
     }
 }
 
--(void) setupDeleteCommentOverlay:(NSString *)eventTitle andTextBody:(NSString *)textBody andTag:(NSInteger) tag    {
+-(void) setupOverlay:(NSString *)eventTitle andTextBody:(NSString *)textBody andTag:(NSInteger) tag andReportedUser:(NSString *)user    {
     OverlayView *overlayVC = [OverlayView overlayView];
     overlayVC.eventTitle.text = eventTitle;
     overlayVC.eventText.text = textBody;
     [overlayVC.internalView setTag:tag];
+    overlayVC.commmentReportedUserName = _commmentReportedUserName;
     self.view.bounds = overlayVC.bounds;
     [self.view addSubview:overlayVC];
     [self stretchToSuperView:self.view];
@@ -129,7 +131,13 @@
 -(void) deleteOverlay: (NSNotification *) notifcation   {
     if ([[notifcation name] isEqualToString:@"deleteUserComment"]) {
         NSLog(@"delete notification");
-        [self setupDeleteCommentOverlay:@"Delete Comment" andTextBody:@"Would you like to remove your comment?" andTag:4];
+        [self setupOverlay:@"Delete Comment" andTextBody:@"Would you like to remove your comment?" andTag:4 andReportedUser:nil];
+    }
+}
+
+-(void) reportOverlay: (NSNotification *) notification  {
+    if ([[notification name] isEqualToString:@"reportUserComment"]) {
+        [self setupOverlay:@"Report Comment" andTextBody:[NSString stringWithFormat:@"Are you sure you want to report %@ comment",_commmentReportedUserName] andTag:5 andReportedUser:_commmentReportedUserName];
     }
 }
 
@@ -153,6 +161,8 @@
     //When the profile button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeOverlay:) name:@"removeOverlay" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteOverlay:) name:@"deleteUserComment" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportOverlay:) name:@"reportUserComment" object:nil];
+
 }
 
 @end

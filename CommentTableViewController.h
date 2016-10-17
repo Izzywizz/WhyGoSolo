@@ -12,5 +12,6 @@
 @interface CommentTableViewController : UITableViewController
 
 @property BOOL userOwnProfile;
+@property NSString *commmentReportedUserName;
 
 @end

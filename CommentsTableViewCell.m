@@ -29,6 +29,7 @@
 
 - (IBAction)reportButtonPressed:(UIButton *)sender {
     NSLog(@"Reported");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reportUserComment" object:self];
 }
 
 - (IBAction)deleteButtonPressed:(UIButton *)sender {

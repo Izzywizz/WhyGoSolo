@@ -16,9 +16,10 @@
 @property (weak, nonatomic) IBOutlet UIView *internalHelpView;
 @property (weak, nonatomic) IBOutlet UILabel *helpLabel;
 @property (weak, nonatomic) IBOutlet UILabel *helpViewTitleLabel;
+@property (weak, nonatomic) IBOutlet UIView *helpViewTopLine;
 
-@property (nonatomic, weak) NSString *reportedUserName;
-
+@property (nonatomic, strong) NSString *reportedUserName;
+@property (nonatomic, strong) NSString *commmentReportedUserName;
 
 + (id)overlayView;
 

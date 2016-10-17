@@ -40,6 +40,12 @@
         NSLog(@"Delete comment from the user: Logic to be added to remove message from the server");
     } else if (_internalView.tag == 5)  {
         NSLog(@"Report comment from another user");
+        _helpLabel.text = [NSString stringWithFormat:@"\n%@'s comment has been reported our moderators will review it\n",_commmentReportedUserName];
+        _helpLabel.textAlignment = NSTextAlignmentCenter;
+        _helpViewTitleLabel.text = @"Comment Reported";
+        _internalHelpView.alpha = 1;
+        _helpViewTopLine.alpha = 0; //hide the top line but leave it there hidden becasue we need the constraint
+        
     } else if(_internalView.tag == 6)  {
         NSLog(@"Delete Account Comfirmation");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteConfirmation" object:self];
@@ -47,9 +53,11 @@
 }
 
 - (IBAction)okButtonPressed:(UIButton *)sender {
-    NSLog(@"ok Button pressed");
+    NSLog(@"ok Button pressed, logif specifc tag or actions from previous notification can be added here");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"removeOverlay" object:self];
 }
+
+#pragma Helper Functions    
 
 #pragma mark - Class Methods
 + (id)overlayView

@@ -86,7 +86,6 @@
 		43B981DE1D95291800E7DD05 /* FriendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B981DD1D95291800E7DD05 /* FriendCollectionViewCell.m */; };
 		43B981E31D9534C100E7DD05 /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B981E21D9534C100E7DD05 /* HeaderCollectionReusableView.m */; };
 		43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BD7BB21D86993B00DDA384 /* PeopleViewController.m */; };
-		43BE4C361D82A26700D6B26A /* OUserProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C351D82A26700D6B26A /* OUserProfileTableViewController.m */; };
 		43BE4C391D82DCDF00D6B26A /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */; };
 		43BE4C3C1D82F91400D6B26A /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C3B1D82F91400D6B26A /* EditProfileTableViewController.m */; };
 		43D0271A1DB4E1A90077DEF0 /* AlternateProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D027191DB4E1A90077DEF0 /* AlternateProfileTableViewController.m */; };
@@ -253,8 +252,6 @@
 		43B981E21D9534C100E7DD05 /* HeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionReusableView.m; sourceTree = "<group>"; };
 		43BD7BB11D86993B00DDA384 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeopleViewController.h; path = ../PeopleViewController.h; sourceTree = "<group>"; };
 		43BD7BB21D86993B00DDA384 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeopleViewController.m; path = ../PeopleViewController.m; sourceTree = "<group>"; };
-		43BE4C341D82A26700D6B26A /* OUserProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OUserProfileTableViewController.h; sourceTree = "<group>"; };
-		43BE4C351D82A26700D6B26A /* OUserProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OUserProfileTableViewController.m; sourceTree = "<group>"; };
 		43BE4C371D82DCDF00D6B26A /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
 		43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
 		43BE4C3A1D82F91400D6B26A /* EditProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileTableViewController.h; sourceTree = "<group>"; };
@@ -430,8 +427,6 @@
 			children = (
 				43D027181DB4E1A90077DEF0 /* AlternateProfileTableViewController.h */,
 				43D027191DB4E1A90077DEF0 /* AlternateProfileTableViewController.m */,
-				43BE4C341D82A26700D6B26A /* OUserProfileTableViewController.h */,
-				43BE4C351D82A26700D6B26A /* OUserProfileTableViewController.m */,
 				43BE4C371D82DCDF00D6B26A /* ProfileTableViewController.h */,
 				43BE4C381D82DCDF00D6B26A /* ProfileTableViewController.m */,
 				43BE4C3A1D82F91400D6B26A /* EditProfileTableViewController.h */,
@@ -894,7 +889,6 @@
 				433B852C1DA7A1B40092E5F1 /* CommentsTableViewCell.m in Sources */,
 				A1151F5C1DAA5D13008222ED /* RRRegistration.m in Sources */,
 				4319E7851D89582800FD5142 /* CommentTableViewController.m in Sources */,
-				43BE4C361D82A26700D6B26A /* OUserProfileTableViewController.m in Sources */,
 				43ACED5B1D87EDAC008D949C /* DeleteConfirmationViewController.m in Sources */,
 				43B4009F1D86C0F20094DFB6 /* PeopleEventTableViewCell.m in Sources */,
 			);
