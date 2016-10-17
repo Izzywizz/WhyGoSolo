@@ -13,6 +13,8 @@
 
 @property NSMutableArray *testData;
 @property (nonatomic) NSMutableString *textInput;
+@property (nonatomic) UIView *overlayView;
+
 
 @end
 
@@ -23,6 +25,7 @@
 //    [self setupObservers];
     _testData = [@[@"Test", @"TEst TWo"] mutableCopy];
     [self setupTable];
+    [self setupObservers];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];// remove extra tableViewCells at the bottom
 }
 
@@ -59,9 +62,15 @@
     if (indexPath.row % 2) {
         [cell setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
         [cell.profileImage setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+        cell.reportButton.tag = 0;
+
     } else  {
         [cell setBackgroundColor:[UIColor whiteColor]];
         [cell.profileImage setBackgroundColor:[UIColor whiteColor]];
+        
+        //Example logic of user own profile to create the delete comment functionality for the user, so this shows the deete button for the white background comment
+        cell.reportButton.alpha = 0;
+        cell.deleteButton.alpha = 1;
     }
     
     return cell;
@@ -87,5 +96,63 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - OverlayView Methods
+/*ensures that the view added streches properly to the screen*/
+- (void) stretchToSuperView:(UIView*) view {
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    NSDictionary *bindings = NSDictionaryOfVariableBindings(view);
+    NSString *formatTemplate = @"%@:|[view]|";
+    for (NSString * axis in @[@"H",@"V"]) {
+        NSString * format = [NSString stringWithFormat:formatTemplate,axis];
+        NSArray * constraints = [NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:bindings];
+        [view.superview addConstraints:constraints];
+    }
+}
+
+-(void) setupDeleteCommentOverlay:(NSString *)eventTitle andTextBody:(NSString *)textBody andTag:(NSInteger) tag    {
+    OverlayView *overlayVC = [OverlayView overlayView];
+    overlayVC.eventTitle.text = eventTitle;
+    overlayVC.eventText.text = textBody;
+    [overlayVC.internalView setTag:tag];
+    self.view.bounds = overlayVC.bounds;
+    [self.view addSubview:overlayVC];
+    [self stretchToSuperView:self.view];
+    self.overlayView = overlayVC;
+}
+
+-(void) removeOverlay: (NSNotification *) notifcation   {
+    if ([[notifcation name] isEqualToString:@"removeOverlay"]) {
+        [self deleteOverlayAlpha:0 animationDuration:0.2f];
+    }
+}
+
+-(void) deleteOverlay: (NSNotification *) notifcation   {
+    if ([[notifcation name] isEqualToString:@"deleteUserComment"]) {
+        NSLog(@"delete notification");
+        [self setupDeleteCommentOverlay:@"Delete Comment" andTextBody:@"Would you like to remove your comment?" andTag:4];
+    }
+}
+
+-(void)deleteOverlayAlpha:(int)a animationDuration:(float)duration
+{
+    [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        for (id x in self.overlayView.subviews)
+        {
+            if ([x class] == [UIView class])
+            {
+                [(UIView*)x setAlpha:a];
+            }
+        }
+        self.overlayView.alpha = a;
+    } completion:nil];
+}
+
+#pragma mark - Helper Functions
+
+-(void) setupObservers    {
+    //When the profile button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeOverlay:) name:@"removeOverlay" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteOverlay:) name:@"deleteUserComment" object:nil];
+}
 
 @end

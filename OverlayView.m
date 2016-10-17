@@ -36,9 +36,12 @@
         _helpLabel.textAlignment = NSTextAlignmentCenter;
         _helpViewTitleLabel.text = @"User Reported";
         _internalHelpView.alpha = 1;
-    }
-    else  {
-        NSLog(@"Delete");
+    } else if (_internalView.tag == 4)  {
+        NSLog(@"Delete comment from the user: Logic to be added to remove message from the server");
+    } else if (_internalView.tag == 5)  {
+        NSLog(@"Report comment from another user");
+    } else if(_internalView.tag == 6)  {
+        NSLog(@"Delete Account Comfirmation");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteConfirmation" object:self];
     }
 }
