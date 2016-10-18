@@ -14,5 +14,6 @@
 @property (nonatomic) NSString *userComments;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UILabel *charCount;
 
 @end

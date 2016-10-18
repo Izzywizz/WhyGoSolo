@@ -52,7 +52,7 @@
                             <action selector="reportButtonPressed:" destination="320-p9-xdz" eventType="touchUpInside" id="NC7-aQ-FWB"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Excited for this one, been too long since I have a 11:23am relax, wayyyyy too many exams recently." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="3HM-Yf-CT8">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excited for this one, been too long since I have a 11:23am relax, wayyyyy too many exams recently." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="3HM-Yf-CT8">
                         <rect key="frame" x="60" y="32" width="554" height="34"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="554" id="fKG-QZ-lWv"/>
@@ -61,7 +61,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdG-hc-OUn" userLabel="Name">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdG-hc-OUn" userLabel="Name">
                         <rect key="frame" x="60" y="8" width="550" height="18"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="550" id="4Is-RC-7ve"/>
