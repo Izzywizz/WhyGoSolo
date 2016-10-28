@@ -20,6 +20,8 @@
 #import "Event.h"
 #import "Data.h"
 #import "User.h"
+
+#import "WebService.h"
 @interface EventTableViewController () <DataDelegate>
 
 @property (nonatomic, strong) MapViewController *mapController;
@@ -50,6 +52,8 @@ NSArray *sectionTitles;
     [self setupDummyData];
     [self setupTable];
     [self setupObservers];
+    
+    [[WebService sharedInstance]eventsApiRequest:ALL_EVENTS];
     //  [Data sharedInstance].eventsArray = [NSMutableArray new];
     // By default, isHallsSwitchOn = 1 as when it passed by the observer for the FilterTableViewCell it comes actiavted and I couldn't find a way to pass a value via an observer
     _dataArray = [NSArray new];
@@ -68,8 +72,8 @@ NSArray *sectionTitles;
         _userLocation =[[CurrentUserLocation alloc] init];
     }
     
-    
-    [[WebService sharedInstance]events];
+    [[WebService sharedInstance]eventsApiRequest:ALL_EVENTS];
+  //  [[WebService sharedInstance]events];
     [Data sharedInstance].delegate = self;
 }
 
@@ -111,12 +115,15 @@ NSArray *sectionTitles;
         
         [Data sharedInstance].selectedEvent = notification.object;
         
+        
         [self moveToOtherUserProfile];
     }
 }
 
 -(void)moveToEdit:(NSNotification *) notification   {
     if ([[notification name] isEqualToString:@"Edit Found"]) {
+        [Data sharedInstance].selectedEvent = notification.object;
+
         [self moveToEdit];
     }
 }
@@ -133,20 +140,23 @@ NSArray *sectionTitles;
     if ([[notification name] isEqualToString:@"Joined"]) {
         NSLog(@"NOTIFICATION DATA = %@", notification);
         [Data sharedInstance].selectedEvent = notification.object;
-        [[WebService sharedInstance]updateJoinedStatus];
+        
+        [[WebService sharedInstance]eventsApiRequest:JOIN_EVENT];
         NSLog(@"Joined logic needs to be added here similar to collection cell");
     }
 }
 
--(void) commentsButton:(NSNotification *) notication    {
-    if ([[notication name] isEqualToString:@"Comments"]) {
+-(void) commentsButton:(NSNotification *) notification    {
+    if ([[notification name] isEqualToString:@"Comments"]) {
+        [Data sharedInstance].selectedEvent = notification.object;
+
         [self moveToComments];
     }
 }
 
 -(void)joinedStatusUpdatedSuccessfully
 {
-    [[WebService sharedInstance]events];
+    [[WebService sharedInstance]eventsApiRequest:ALL_EVENTS];
     
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
     

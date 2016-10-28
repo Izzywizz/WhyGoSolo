@@ -12,6 +12,7 @@
 #import "PersistanceManager.h"
 #import "Event.h"
 #import "User.h"
+#import "Comment.h"
 @interface Data ()
 
 @end
@@ -77,9 +78,7 @@
         
         [_residencesArray addObject:res];
     }
-    
-    // [_universitesArray sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    
+        
     NSLog(@"UNI ARR = %@", _residencesArray);
     
     if (_delegate && [_delegate respondsToSelector:@selector(residencesDownloadedSuccessfully)])
@@ -98,26 +97,15 @@
     for (NSDictionary *d in [dict valueForKey:@"events"])
     {
         Event *event = [[Event alloc]initWithDict:d];
-        
-    //    Event *event = [Event new];
-        
-      //  event.userID = (int)[[[d valueForKey:@"user" ]valueForKey:@"id"]integerValue];
-        //event.eventDescription = [d valueForKey:@"description" ];
+
         [_eventsArray addObject:event];
     }
     
     for (NSDictionary *d in [dict valueForKey:@"my_events"])
     {
         Event *event = [[Event alloc]initWithDict:d];
-        
-        //    Event *event = [Event new];
-        
-        //  event.userID = (int)[[[d valueForKey:@"user" ]valueForKey:@"id"]integerValue];
-        //event.eventDescription = [d valueForKey:@"description" ];
         [_myEventsArray addObject:event];
     }
-    
-    // [_universitesArray sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
     NSLog(@"Event ARR = %@", _eventsArray);
     
@@ -147,10 +135,49 @@
     {
         [self.delegate userParsedSuccessfully];
     }
-
-
 }
 
+-(void)parseEventFromDict:(NSDictionary*)dict;
+{
+    NSLog(@"SINGLE EVENT DICT = %@", dict);
+    
+    [Data sharedInstance].selectedEvent = [[Event alloc]initWithDict:[dict valueForKey:@"event"]];
+    
+    [Data sharedInstance].selectedEvent.friendsArray = [NSMutableArray new];
+    [Data sharedInstance].selectedEvent.otherUsersArray = [NSMutableArray new];
+    [Data sharedInstance].selectedEvent.commentsArray = [NSMutableArray new];
 
+    
+    for (NSDictionary* d in [[dict valueForKey:@"event"] valueForKey:@"friends"])
+    {
+        User *friend = [[User alloc]initWithDict:d];
+        NSLog(@"Other Frinend name = %@", friend.firstName);
+
+        [[Data sharedInstance].selectedEvent.friendsArray addObject:friend];
+    }
+    
+    for (NSDictionary* d in [[dict valueForKey:@"event"] valueForKey:@"other_users"])
+    {
+        User *otherUser = [[User alloc]initWithDict:d];
+        NSLog(@"Other USer name = %@", otherUser.firstName);
+        [[Data sharedInstance].selectedEvent.otherUsersArray addObject:otherUser];
+    }
+
+    for (NSDictionary *d in [[dict valueForKey:@"event" ] valueForKey:@"comments"]) {
+     
+        NSLog(@"C DICT = %@",d);
+        Comment *comment = [[Comment alloc]initWithDict:d];
+        
+        comment.commentUser = [[User alloc]initWithDict:[d valueForKey:@"user"]];
+
+        [[Data sharedInstance].selectedEvent.commentsArray addObject:comment];
+    
+    }
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(eventParsedSuccessfully)])
+    {
+        [self.delegate eventParsedSuccessfully];
+    }
+}
 
 @end

@@ -28,4 +28,8 @@
 @property NSString* totalAttending;
 @property int status;
 
+@property NSMutableArray *friendsArray;
+@property NSMutableArray *otherUsersArray;
+@property NSMutableArray *commentsArray;
+
 @end

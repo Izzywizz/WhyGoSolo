@@ -13,12 +13,14 @@
 #import "PeopleNotAttendingTableViewCell.h"
 #import "OUserProfileTableViewController.h"
 
+
 @interface PeopleViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property NSDictionary *tableData;
 @property NSArray *sectionTitles;
 
 @property BOOL isFriendsSelected;
+
 @end
 
 @implementation PeopleViewController
@@ -39,6 +41,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 #pragma mark - Helper Functions
 

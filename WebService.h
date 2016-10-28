@@ -17,7 +17,21 @@ typedef NS_ENUM(NSInteger, apiRequests) {
     REGISTER
 };
 
+typedef NS_ENUM(NSInteger, eventsApiRequests) {
+        ALL_EVENTS,
+    CREATE_EVENT,
+        JOIN_EVENT,
+    EDIT_EVENT,
+    CANCEL_EVENT,
+    CLOSE_EVENT,
+        EVENT_DETAILS,
+   // EVENT_COMMENTS,
+  //  EVENT_MAP
+};
+
 @interface WebService : NSObject
+
+
 
 @property (nonatomic) Reachability *hostReachability;
 @property (nonatomic) Reachability *internetReachability;
@@ -33,8 +47,16 @@ typedef NS_ENUM(NSInteger, apiRequests) {
 -(void)residences;
 -(void)authentication;
 
--(void)events;
 -(void)updateJoinedStatus;
 -(void)user:(int)userID;
+-(void)registerAccount;
+
+// EVENTS START
+
+-(void)eventsApiRequest:(int)apiCall;
+
+@property NSString* selectedEventID;
+// EVENTS END
+
 
 @end

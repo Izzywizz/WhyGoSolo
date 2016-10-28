@@ -11,6 +11,7 @@
 @class Residence;
 @class Event;
 @class User;
+
 @protocol DataDelegate <NSObject>
 
 -(void)authenticationSuccessful;
@@ -20,6 +21,7 @@
 -(void)eventsDownloadedSuccessfully;
 -(void)joinedStatusUpdatedSuccessfully;
 -(void)userParsedSuccessfully;
+-(void)eventParsedSuccessfully;
 @end
 
 @interface Data : NSObject
@@ -45,6 +47,7 @@
 @property NSMutableArray* myEventsArray;
 @property NSMutableArray* eventsArray;
 
+
 @property University *selectedUniversity;
 @property Residence *selectedResidence;
 @property Event *selectedEvent;
@@ -60,4 +63,7 @@
 -(void)authenticationSuccessful;
 
 -(void)updateJoinedStatusFromDict:(NSDictionary*)dict;
+
+-(void)parseEventFromDict:(NSDictionary*)dict;
+
 @end

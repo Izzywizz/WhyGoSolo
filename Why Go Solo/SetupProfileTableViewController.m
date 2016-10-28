@@ -89,7 +89,7 @@
 
 -(void)textFieldDidChange: (UITextField *) theTextField {
     
-    RRRegistration *registration = [[RRRegistration alloc] init];
+    RRRegistration *registration = [RRRegistration sharedInstance];
     FontSetup *fontSetup = [FontSetup new];
     
     if (![registration validateTextField:_firstNameTextField]) {
@@ -227,7 +227,7 @@
 }
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Next-> Accommodation");
-    RRRegistration *registration = [[RRRegistration alloc] init];
+    RRRegistration *registration = [RRRegistration sharedInstance];
     FontSetup *fontSetup = [FontSetup new];
     
     CGImageRef cgref = [_profileImageView.image CGImage];
@@ -256,6 +256,13 @@
     if ([registration validateTextField:_firstNameTextField] && [registration validateTextField:_lastNameTextField] && ![_dateOfBirthField.text isEqualToString:@""]) {
         [self performSegueWithIdentifier:@"GoToAccommodation" sender:self];
     }
+
+    [RRRegistration sharedInstance].firstName = _firstNameTextField.text;
+    [RRRegistration sharedInstance].lastName = _lastNameTextField.text;
+    [RRRegistration sharedInstance].strDateOfBirth = _dateOfBirthField.text;
+    
+    [RRRegistration sharedInstance].profilePhoto = _profileImageView.image;
+
 
 }
 

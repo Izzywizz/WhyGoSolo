@@ -81,7 +81,7 @@
 
 /** vldiation method to make sure an email address has been entered*/
 -(void)textFieldDidChange: (UITextField *) theTextField {
-    RRRegistration *registration = [[RRRegistration alloc] init];
+    RRRegistration *registration = [RRRegistration sharedInstance];
     FontSetup *fontSetup = [FontSetup new];
     
     if (![registration validateTextField:_emailAddressTextField]) {
@@ -169,7 +169,7 @@
 }
 
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
-    RRRegistration *registration = [[RRRegistration alloc] init];
+    RRRegistration *registration = [RRRegistration sharedInstance];
     registration.password = _passwordTextField.text;
     registration.confirmPassword = _confirmPasswordTextField.text;
     FontSetup *fontSetup = [FontSetup new];

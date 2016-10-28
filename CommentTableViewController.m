@@ -8,11 +8,18 @@
 
 #import "CommentTableViewController.h"
 #import "CommentsTableViewCell.h"
+#import "WebService.h"
+#import "Data.h"
+#import "Event.h"
+#import "User.h"
 
-@interface CommentTableViewController ()
+@interface CommentTableViewController () <DataDelegate>
 
 @property NSMutableArray *testData;
 @property (nonatomic) NSMutableString *textInput;
+
+@property NSMutableArray *commentsArray;
+
 
 @end
 
@@ -31,7 +38,34 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = self;
+    [[WebService sharedInstance]eventsApiRequest:EVENT_DETAILS];
 
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil;
+
+}
+
+
+-(void)eventParsedSuccessfully
+{
+    NSLog(@"CCCCC PPPPPP EVVVV = %@", [Data sharedInstance].selectedEvent.eventDescription);
+    _commentsArray = [[NSMutableArray alloc]initWithArray:[Data sharedInstance].selectedEvent.commentsArray];
+    
+    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
+}
+
+-(void)handleUpdates
+{
+    NSLog(@"OMMENTS ARR COUNt = %i", [_commentsArray count]);
+    [self.tableView reloadData];
+
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -39,7 +73,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _testData.count;
+    return [_commentsArray count];
 }
 
 

@@ -11,6 +11,7 @@
 #import "Data.h"
 #import "Residence.h"
 #import "WebService.h"
+#import "RRRegistration.h";
 
 #define METERS_PER_MILE 1609.344
 
@@ -48,7 +49,7 @@
     [self.mapView setDelegate:self];
 //    self.locationSearchTable.delegate = self;
     [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
-    
+  //  [self createPinLocations];
     [[WebService sharedInstance] residences];
     [Data sharedInstance].delegate = self; // Set Data delegate
 
@@ -80,6 +81,14 @@
     NSLog(@"Sucessfully downloaded residences");
     [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
     // Need to set to main thread as this is currently running on a background thread
+}
+
+-(void)authenticationSuccessful
+{
+    NSLog(@"AUTH SUCCESS!!!");
+
+    [self performSegueWithIdentifier:@"GoToEventTable" sender:self];
+
 }
 
 #pragma mark - Pin Methods
@@ -203,6 +212,9 @@
     {
         NSString *location = [annotation title];
         NSLog(@"Clicked Flag: %@", location);
+        
+        
+
     }
 }
 
@@ -227,6 +239,9 @@
     [_mapView setRegion:region animated:true];
     [self createPinLocations]; //Called again to create the custom pins, remember that it creates the pins based on the university selected
 
+    [RRRegistration sharedInstance].longitude = span.longitudeDelta;
+    [RRRegistration sharedInstance].latitude = span.latitudeDelta;
+    
 }
 
 #pragma mark - Action Methods
@@ -236,6 +251,8 @@
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Done Pressed");
+    [[WebService sharedInstance]registerAccount];
+    
 //    NSLog(@"accommodation: %@",_resultSearchController.searchBar.text);
     [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay
 }
@@ -243,8 +260,7 @@
 - (IBAction)okButtonPressed:(UIButton *)sender {
     NSLog(@"Ok Button Pressed");
     [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
-    [self performSegueWithIdentifier:@"GoToEventTable" sender:self];
-
 }
+
 
 @end

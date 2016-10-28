@@ -7,10 +7,13 @@
 //
 
 #import "PeopleEventCollectionViewController.h"
-
-@interface PeopleEventCollectionViewController ()
+#import "WebService.h"
+#import "Data.h"
+#import "Event.h"
+@interface PeopleEventCollectionViewController () <DataDelegate>
 @property NSArray *dummyData;
 @property NSArray *sectionTitles;
+@property Event *event;
 
 @property BOOL hasJoinedEvent;
 @end
@@ -38,7 +41,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    [Data sharedInstance].delegate = self;
+    [[WebService sharedInstance]eventsApiRequest:EVENT_DETAILS];
+    
+}
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil;
+}
+
+
+-(void)eventParsedSuccessfully
+{
+    _event = [Data sharedInstance].selectedEvent;
+    
+    NSLog(@"PPPPPP EVVVV = %@", _event.eventDescription);
+}
 #pragma mark <UICollectionViewDataSource>
 
 -(void) createDummyData {

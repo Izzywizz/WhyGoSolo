@@ -27,14 +27,23 @@
 
 -(void)checkForToken
 {
+    
+  //  [WebService sharedInstance].registerAccount;
     [Data sharedInstance].delegate = self;
-      [[WebService sharedInstance]authentication];
+      //[[WebService sharedInstance]authentication];
     if (![[PersistanceManager sharedInstance]loadLoginDetails])
     {
-      //  [[WebService sharedInstance]universities];
+        [[WebService sharedInstance]universities];
     }
     else
     {
+        NSDictionary *authDict = [[PersistanceManager sharedInstance]loadLoginDetails];
+        
+        
+        [Data sharedInstance].userID = [authDict valueForKey:@"UserID"];
+        [Data sharedInstance].userToken = [authDict valueForKey:@"Token"];
+        
+
         [[WebService sharedInstance]authentication];
     }
 }

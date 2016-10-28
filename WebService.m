@@ -14,10 +14,12 @@
 #import "RRRegistration.h"
 #import "Event.h"
 #import "User.h"
+#import "PersistanceManager.h"
+#import "EventsWebService.h"
 //#define API_BASE_URL @"http://goalmachine.app"
-#define API_BASE_URL @"http://139.59.180.166/api"
+#define API_BASE_URL @"http://139.59.180.166/api" // LIVER
 
-//#define API_BASE_URL @"http://192.168.10.10/api"
+//#define API_BASE_URL @"http://192.168.10.10/api" // HOMESTEAD
 
 
 @implementation WebService
@@ -147,49 +149,146 @@
 }
 
 
--(void)universities
-{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@/universities", API_BASE_URL];
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    [manager GET:requestUrl parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        
-        [[Data sharedInstance]createUniversitesArrayFromDict:responseObject];
-        
-        } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        
-        [self performSelector:@selector(showErrorAlert:) withObject:error];
-    }];
 
+-(void)postRequest:(int)request
+{
+    switch (request) {
+        case 0:
+            [[WebService sharedInstance]eventsApiRequest:ALL_EVENTS];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 
--(void)residences
+-(NSString*)requestUrlString:(int)request
 {
-    NSString *requestUrl = [NSString stringWithFormat:@"%@/universities/%@/residences", API_BASE_URL, [Data sharedInstance].selectedUniversity.universityID];
+    switch (0) {
+        case 0:
+            return @"events";
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
+
+
+-(void)registerAccount
+{
+    NSString *fileName = @"profile.png";
+
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *routeFilePath = [paths objectAtIndex:0];
     
+    NSString *photoFilePath = [routeFilePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", @"profile.png"]];
+   
+    NSLog(@"P FILE PATH = %@", photoFilePath);
+    
+ //   UIImage *image = [UIImage imageWithContentsOfFile:photoFilePath];
+
+    
+    UIImage *image = [UIImage imageNamed:fileName];
+    NSLog(@"IMAGE = %@", [UIImage imageNamed:fileName]);
+
+    NSLog(@"IMAGE = %@",image);
+//    NSData *idata = UIImagePNGRepresentation(image);
+
+    
+    
+    
+    
+  //  NSData *imageData = UIImageJPEGRepresentation(image, 1); //0.8
+    NSData *imageData = UIImageJPEGRepresentation(    [RRRegistration sharedInstance].profilePhoto
+, 0.2); //0.8
+
+    NSString* requestURL = [NSString stringWithFormat:@"%@/users/create",API_BASE_URL];
+    
+    
+    
+ NSDictionary *params = @{
+                          @"email":[RRRegistration sharedInstance].email,
+    @"first_name":[RRRegistration sharedInstance].firstName,
+    @"last_name":[RRRegistration sharedInstance].lastName,
+                        
+    @"dob_epoch":@"00000",//[RRRegistration sharedInstance].strDateOfBirth,
+
+    @"latitude":@"0000",//[NSString stringWithFormat:@"%f",[RRRegistration sharedInstance].latitude],
+    @"longitude":@"00001",//[NSString stringWithFormat:@"%f",[RRRegistration sharedInstance].longitude],
+    @"password":[RRRegistration sharedInstance].password,
+    @"university_id":[RRRegistration sharedInstance].universityID,
+    @"residence_id":@"2"//[RRRegistration sharedInstance].residenceID
+                          
+    
+    };
+    
+    
+    NSLog(@"PARAMS = %@", params);
+     NSLog(@"IMAGE = %@", [RRRegistration sharedInstance].profilePhoto);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    [manager GET:requestUrl parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+
+    [manager POST:requestURL parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
+  //   [formData appendPartWithFileData:imageData name:@"avatar" fileName:fileName mimeType:@"image/jpeg"];
+        [formData appendPartWithFileData:imageData name:@"avatar" fileName:fileName mimeType:@"image/jpeg"];
+
+       // [formData appendPartWithFileData:idata name:@"avatar" fileName:fileName mimeType:@"image/png"];
         
-        [[Data sharedInstance]createResidencesArrayFromDict:responseObject];
+    } progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"xxx Success %@ xxx", responseObject);
+
+        NSLog(@"EVENTS JSON: %@", responseObject);
+        NSLog(@"RESPONSE HEADERS = %@", task.response);
         
+        NSHTTPURLResponse* res = task.response;
+        
+        //  NSLog(@"RESPONSE HEADERS = %@", [res.allHeaderFields ]);
+        
+        NSMutableDictionary *resDict = [[NSMutableDictionary alloc]initWithDictionary:responseObject];
+        [resDict setObject:res.allHeaderFields forKey:@"header"];
+        
+        NSLog(@"RES DICT = %@", resDict);
+        
+        
+        [Data sharedInstance].userToken = [[resDict valueForKey:@"header" ] valueForKey:@"Token"];
+        [Data sharedInstance].userID = [responseObject valueForKey:@"id"];
+        
+        [[PersistanceManager sharedInstance]saveUserID:[Data sharedInstance].userID andToken:[Data sharedInstance].userToken];
+        [self authentication];
+
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
-        
-        [self performSelector:@selector(showErrorAlert:) withObject:error];
     }];
-    
+
 }
 
--(void)showErrorAlert:(NSError*)error
+
+-(void)eventsApiRequest:(int)apiCall
 {
-    [[[UIAlertView alloc]initWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
+    EventsWebService *eventsWebService = [[EventsWebService alloc]initWithEventApiReques:apiCall];
+    
+    [self postRequest:eventsWebService.requestUrl withParams:eventsWebService.paramsDict withResponseSelctor:eventsWebService.responseSelector];
 }
+
+
+
+
+
+-(NSDictionary*)registrationDict
+{
+    
+    
+    return @{};
+}
+
+
+
+
+
+
 
 
 -(void)registerUser
@@ -261,32 +360,7 @@
 
 
 
--(void)events
-{
-    NSString *requestUrl = @"events";
-    
-    NSError * err;
-    
-    [Data sharedInstance].residenceFilterArray = @[@"3",@"5"];
-    
-    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:[Data sharedInstance].residenceFilterArray options:0 error:&err];
-    
-    NSString *filterArrayString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-    NSDictionary *params = @{
-                             @"user_id":[Data sharedInstance].userID,
-                             @"filter_distance":@"0",
-                             @"residence_id_array":@"all"
-                             };
-    
-    
-    NSLog(@"EVENTS REQUEST DICT = %@", params);
-    
-    SEL responseSelector = @selector(createEventsArrayFromDict:);
-    
-    [self postRequest:requestUrl withParams:params withResponseSelctor:responseSelector];
-}
-
+/*
 -(void)updateJoinedStatus
 {
 
@@ -294,9 +368,8 @@
 
     NSDictionary *params = @{
                              @"user_id":[Data sharedInstance].userID,
-                              @"event_id":[NSString stringWithFormat:@"%i", [Data sharedInstance].selectedEvent.eventID],
+                             @"event_id":[NSString stringWithFormat:@"%i", [Data sharedInstance].selectedEvent.eventID],
                             };
-    
     
     NSLog(@"Update Joined STATUS REQUEST DICT = %@", params);
     
@@ -304,10 +377,7 @@
     
     [self postRequest:requestUrl withParams:params withResponseSelctor:responseSelector];
 
-}
-
-
-
+}*/
 
 -(void)user:(int)userID
 {
@@ -324,6 +394,8 @@
     
     [self postRequest:requestUrl withParams:params withResponseSelctor:responseSelector];
 }
+
+
 /*-(void)events
 {
     NSString *requestUrl = [NSString stringWithFormat:@"%@/events", API_BASE_URL];
@@ -365,9 +437,8 @@
 
 -(void)authentication
 {
-    
-    [Data sharedInstance].userToken = @"Px4tY6XxJ0";
-    [Data sharedInstance].userID = @"30";
+   // [Data sharedInstance].userToken = @"Px4tY6XxJ0";
+   // [Data sharedInstance].userID = @"30";
     
     NSString *requestUrl = [NSString stringWithFormat:@"%@/users/authentication", API_BASE_URL];
     
@@ -390,7 +461,49 @@
     }];
 }
 
+-(void)universities
+{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/universities", API_BASE_URL];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager GET:requestUrl parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        [[Data sharedInstance]createUniversitesArrayFromDict:responseObject];
+        
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        
+        [self performSelector:@selector(showErrorAlert:) withObject:error];
+    }];
+    
+}
 
+
+-(void)residences
+{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/universities/%@/residences", API_BASE_URL, [Data sharedInstance].selectedUniversity.universityID];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager GET:requestUrl parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        [[Data sharedInstance]createResidencesArrayFromDict:responseObject];
+        
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        
+        [self performSelector:@selector(showErrorAlert:) withObject:error];
+    }];
+    
+}
+
+-(void)showErrorAlert:(NSError*)error
+{
+    [[[UIAlertView alloc]initWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
+}
 
 
 /*

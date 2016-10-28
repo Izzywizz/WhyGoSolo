@@ -12,6 +12,8 @@
 #import "Data.h"
 #import "University.h"
 #import "Residence.h"
+#import "RRRegistration.h"
+
 
 @interface UniversityViewController () <UITableViewDelegate, UITableViewDataSource, DataDelegate>
 @property NSArray *universityList;
@@ -162,8 +164,13 @@
     NSLog(@"Location: %@,", [_universityList objectAtIndex:indexPath.row]);
      _hasUniBeenSelected = YES;
     _selectedIndex = indexPath.row;
+    
+   
+    
     [Data sharedInstance].selectedUniversity = [_universityList objectAtIndex:indexPath.row];
-        [tableView reloadData];
+    
+    [RRRegistration sharedInstance].universityID = [Data sharedInstance].selectedUniversity.universityID;
+    [tableView reloadData];
     
     return;
 

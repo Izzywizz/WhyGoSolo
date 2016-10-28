@@ -47,6 +47,8 @@
             break;
         default:
             break;
+            
+            [Data sharedInstance].selectedEvent = self.event;
     }
 }
 - (IBAction)peopleEventButtonPressed:(UIButton *)sender {
@@ -55,7 +57,7 @@
 }
 - (IBAction)commentsButtonPressed:(UIButton *)sender {
     NSLog(@"Comments button pressed");
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Comments" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Comments" object:self.event];
 }
 
 
