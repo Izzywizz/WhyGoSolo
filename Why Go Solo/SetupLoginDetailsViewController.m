@@ -82,7 +82,7 @@
 /** vldiation method to make sure an email address has been entered*/
 -(void)textFieldDidChange: (UITextField *) theTextField {
     RRRegistration *registration = [RRRegistration sharedInstance];
-    FontSetup *fontSetup = [FontSetup new];
+    ViewSetupHelper *fontSetup = [ViewSetupHelper new];
     
     if (![registration validateTextField:_emailAddressTextField]) {
         [fontSetup setColourOf:_emailContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];

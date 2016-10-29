@@ -56,10 +56,14 @@
     [self.mapView setDelegate:self];
     //    self.locationSearchTable.delegate = self;
     [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
-  //  [self createPinLocations];
-    [[WebService sharedInstance] residences];
-    [Data sharedInstance].delegate = self; // Set Data delegate
-
+    
+    if (!_isEditProfile) {
+        [[WebService sharedInstance] residences];
+        [Data sharedInstance].delegate = self; // Set Data delegate
+    } else  {
+        NSLog(@"Web Service Down");
+    }
+    
 }
 
 -(void) viewWillDisappear:(BOOL)animated    {
@@ -224,9 +228,7 @@
     {
         NSString *location = [annotation title];
         NSLog(@"Clicked Flag: %@", location);
-        
-        
-
+        [self reverseGeoCoodantes:annotation.coordinate];
     }
 }
 
@@ -254,9 +256,26 @@
     
 }
 
-    [RRRegistration sharedInstance].longitude = span.longitudeDelta;
-    [RRRegistration sharedInstance].latitude = span.latitudeDelta;
+/** A method that obtains the address based on the coordiantes passed in to it */
+-(void) reverseGeoCoodantes: (CLLocationCoordinate2D) coordinates     {
+    CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:coordinates.latitude longitude:coordinates.longitude];
+    [RRRegistration sharedInstance].longitude = coordinates.longitude;
+    [RRRegistration sharedInstance].latitude = coordinates.latitude;
     
+    [_geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error) {
+            NSLog(@"Geocode failed with error: %@", error);
+            return;
+        }
+        //                NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+        if (error == nil && [placemarks count] > 0) {
+            _placemark = [placemarks lastObject];
+            [_resultSearchController.searchBar setText:[_locationSearchTable parseAddress:(MKPlacemark *)_placemark]];
+            
+        } else {
+            NSLog(@"%@", error.debugDescription);
+        }
+    }];
 }
 
 #pragma mark - Action Methods
@@ -266,6 +285,15 @@
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Done Pressed");
+    //    NSLog(@"accommodation: %@",_resultSearchController.searchBar.text);
+    if (sender.tag == 1) {
+        NSLog(@"SAVED");
+        [self.navigationController popViewControllerAnimated:YES];
+    } else  {
+        _AccommodationAddress = _resultSearchController.searchBar.text; //Set the address of where the user has clicked as the actual address of where they live, ready for upload!
+        NSLog(@"Accommodation: %@", _AccommodationAddress);
+        [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay
+    }
     [[WebService sharedInstance]registerAccount];
     
 //    NSLog(@"accommodation: %@",_resultSearchController.searchBar.text);
@@ -275,6 +303,8 @@
 - (IBAction)okButtonPressed:(UIButton *)sender {
     NSLog(@"Ok Button Pressed");
     [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
+    [self performSegueWithIdentifier:@"GoToEventTable" sender:self];
+    
 }
 
 

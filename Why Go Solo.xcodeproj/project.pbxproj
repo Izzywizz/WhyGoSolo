@@ -125,6 +125,7 @@
 		A1151F601DAA8494008222ED /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = A1151F5F1DAA8494008222ED /* Event.m */; };
 		A1935A411DC38EBE0025711E /* EventsWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = A1935A401DC38EBE0025711E /* EventsWebService.m */; };
 		A1935A441DC3E4B20025711E /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = A1935A431DC3E4B20025711E /* Comment.m */; };
+		A1A2A9111DC53C6500B2EABB /* WebServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A2A9101DC53C6500B2EABB /* WebServiceRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -327,6 +328,8 @@
 		A1935A401DC38EBE0025711E /* EventsWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsWebService.m; sourceTree = "<group>"; };
 		A1935A421DC3E4B20025711E /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		A1935A431DC3E4B20025711E /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		A1A2A90F1DC53C6500B2EABB /* WebServiceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceRequest.h; sourceTree = "<group>"; };
+		A1A2A9101DC53C6500B2EABB /* WebServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -649,6 +652,8 @@
 				A1151F311DAA5CA3008222ED /* WebService.m */,
 				A1935A3F1DC38EBE0025711E /* EventsWebService.h */,
 				A1935A401DC38EBE0025711E /* EventsWebService.m */,
+				A1A2A90F1DC53C6500B2EABB /* WebServiceRequest.h */,
+				A1A2A9101DC53C6500B2EABB /* WebServiceRequest.m */,
 				A1151F321DAA5CA3008222ED /* Reachability.h */,
 				A1151F331DAA5CA3008222ED /* Reachability.m */,
 				A1151F371DAA5CB1008222ED /* AFNetworking */,
@@ -894,6 +899,7 @@
 				A1935A441DC3E4B20025711E /* Comment.m in Sources */,
 				A1151F481DAA5CC6008222ED /* AFURLRequestSerialization.m in Sources */,
 				A1935A411DC38EBE0025711E /* EventsWebService.m in Sources */,
+				A1A2A9111DC53C6500B2EABB /* WebServiceRequest.m in Sources */,
 				A1151F461DAA5CC6008222ED /* AFNetworkReachabilityManager.m in Sources */,
 				A1151F531DAA5CF5008222ED /* Residence.m in Sources */,
 				43ECC9EE1DA250AB0059A333 /* CreateCollectionViewController.m in Sources */,
