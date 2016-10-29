@@ -10,9 +10,10 @@
 
 @interface CommentsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *profileName;
-@property (weak, nonatomic) IBOutlet UIButton *deleteOrReportButton;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *userInputext;
+@property (weak, nonatomic) IBOutlet UIButton *reportButton;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @end

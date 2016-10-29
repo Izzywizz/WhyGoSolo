@@ -12,7 +12,6 @@
 
 -(void)awakeFromNib {
     [self previousEventTextViewSetup];
-    
     self.describeEventTextView.delegate = self;
     
     //create circular emoji view
@@ -20,7 +19,10 @@
     _circularView.layer.masksToBounds = YES;
     
     [self createEmojiView];
-
+    _cancelEvent.layer.cornerRadius = 3;
+    _closeEvent.layer.cornerRadius = 3;
+    
+    self.describeEventTextView.enablesReturnKeyAutomatically = YES;
 }
 
 #pragma mark - Action Methods (Target)
@@ -48,15 +50,15 @@
 - (IBAction)eventSwitch:(UISwitch *)sender {
     if (sender.on) {
         NSLog(@"Activate Privacy: %d", sender.on);
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"publicPrivate"]; //YES
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"publicPrivate"]; //YES
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Privacy Mode" object:self];
-        self.publicPrivateLabel.text = @"Private Event";
+        self.publicPrivateLabel.text = @"PRIVATE EVENT - VISABLE BY n(x)";
 
     } else  {
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"publicPrivate"]; //NO
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"publicPrivate"]; //NO
         NSLog(@"Public Mode, Hide TableView: %d", sender.on);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Privacy Mode" object:self];
-        self.publicPrivateLabel.text = @"Public";
+        self.publicPrivateLabel.text = @"PUBLIC EVENT";
     }
 }
 
@@ -71,22 +73,27 @@
     [self.describeEventTextView resignFirstResponder]; // get rid of the keybaord
 }
 
--(void) textViewDidChange:(UITextView *)textView
-{
-    
-    if(self.describeEventTextView.text.length == 0){
-        self.describeEventTextView.text = @"Placeholder!"; //load up previous description if empty
-        [self.describeEventTextView resignFirstResponder];
-    }
-}
-
 /** creates the placeholder effect*/
 -(void) previousEventTextViewSetup    {
-    self.describeEventTextView.delegate = self;
     self.describeEventTextView.text = @"This is the event description from the previous event";
 }
 
+/**This method is called when the user touches the background and resigns the keybaord*/
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    NSLog(@"touchesBegan:withEvent:");
+    [self endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
+}
 
+- (void)textViewDidChange:(UITextView *)textView    {
+    _charCount.text =  [NSString stringWithFormat:@"%lu", (unsigned long)textView.text.length];
+
+    if (textView.text.length != 140) {
+        _charCount.textColor = [UIColor blueColor];
+    } else {
+        _charCount.textColor = [UIColor redColor];
+    }
+}
 
 #pragma mark - Emoji Methods
 

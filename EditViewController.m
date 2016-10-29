@@ -144,7 +144,7 @@
 -(void) navigationButtonSetup   {
     
     NSDictionary *attributes = [NSDictionary new];
-    attributes = [FontSetup setNavigationButtonFontAndSize];
+    attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
     
     [_saveButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }

@@ -10,13 +10,6 @@
 
 @implementation OverlayView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 #pragma mark - View Methods
 
 -(void)awakeFromNib {
@@ -35,15 +28,36 @@
 - (IBAction)yesButtonPressed:(UIButton *)sender {
     if (_internalView.tag == 1) {
         NSLog(@"Cancel event TAG");
-    } else  {
+    } else if (_internalView.tag == 2)  {
         NSLog(@"CLOSE TAG");
+    } else if (_internalView.tag == 3)  {
+        NSLog(@"Report User ***");
+        _helpLabel.text = [NSString stringWithFormat:@"\n%@ profile has been reported and will be reviewed.\n",_reportedUserName];
+        _helpLabel.textAlignment = NSTextAlignmentCenter;
+        _helpViewTitleLabel.text = @"User Reported";
+        _internalHelpView.alpha = 1;
+    } else if (_internalView.tag == 4)  {
+        NSLog(@"Delete comment from the user: Logic to be added to remove message from the server");
+    } else if (_internalView.tag == 5)  {
+        NSLog(@"Report comment from another user");
+        _helpLabel.text = [NSString stringWithFormat:@"%@'s comment has been reported our moderators will review it\n",_commmentReportedUserName];
+        _helpLabel.textAlignment = NSTextAlignmentCenter;
+        _helpViewTitleLabel.text = @"Comment Reported";
+        _internalHelpView.alpha = 1;
+        _helpViewTopLine.alpha = 0; //hide the top line but leave it there hidden becasue we need the constraint
+        
+    } else if(_internalView.tag == 6)  {
+        NSLog(@"Delete Account Comfirmation");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteConfirmation" object:self];
     }
 }
 
 - (IBAction)okButtonPressed:(UIButton *)sender {
-    NSLog(@"ok Button pressed");
+    NSLog(@"ok Button pressed, logif specifc tag or actions from previous notification can be added here");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"removeOverlay" object:self];
 }
+
+#pragma Helper Functions    
 
 #pragma mark - Class Methods
 + (id)overlayView
@@ -57,7 +71,7 @@
         return nil;
 }
 
-#pragma mark - Observer Methods 
+#pragma mark - Observer Methods
 -(void) showHelpView:(NSNotification *) notification    {
     if ([[notification name] isEqualToString:@"helpOverlayView"]) {
         self.internalHelpView.alpha = 1;
@@ -70,6 +84,7 @@
 -(void) setupObserver   {
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showHelpView:) name:@"helpOverlayView" object:nil];
+    
 }
 
 @end

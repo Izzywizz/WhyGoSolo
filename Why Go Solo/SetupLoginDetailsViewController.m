@@ -119,16 +119,19 @@
                         forControlEvents:UIControlEventEditingChanged];
 }
 
--(void)  obtainAndSetEmailSuffix  {
+-(NSString *)  obtainAndSetEmailSuffix  {
     _university = [[University alloc] init];
     _university = [Data sharedInstance].selectedUniversity;
     NSLog(@"Email Suffix: %@", _university.emailSuffix);
     
     _emailAddressTextField.text = [NSString stringWithFormat:@"@%@",_university.emailSuffix];
+    
+    return _university.emailSuffix;
+    
 }
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
     
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
@@ -172,7 +175,7 @@
     RRRegistration *registration = [RRRegistration sharedInstance];
     registration.password = _passwordTextField.text;
     registration.confirmPassword = _confirmPasswordTextField.text;
-    FontSetup *fontSetup = [FontSetup new];
+    ViewSetupHelper *fontSetup = [ViewSetupHelper new];
     
     if(![registration validateTextField:_passwordTextField])    {
         [fontSetup setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];

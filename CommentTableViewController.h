@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OverlayView.h"
 
 @interface CommentTableViewController : UITableViewController
+
+@property BOOL userOwnProfile;
+@property NSString *commmentReportedUserName;
 
 @end

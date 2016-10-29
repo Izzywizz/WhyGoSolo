@@ -11,7 +11,7 @@
 #import "PeopleEventTableViewCell.h"
 #import "FooterEventsTableViewCell.h"
 #import "PeopleNotAttendingTableViewCell.h"
-#import "OUserProfileTableViewController.h"
+#import "AlternateProfileTableViewController.h"
 
 
 @interface PeopleViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -50,7 +50,7 @@
 
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
     [_profileButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
@@ -68,10 +68,9 @@
 }
 
 -(void) moveToOtherUserProfile  {
-    
     //Prevents the app from showing the viewController twice, also changing the fileName helps with this problem
-    if(![self.navigationController.topViewController isKindOfClass:[OtherUserProfileTableViewController class]]) {
-        UIViewController* infoController = [self.storyboard instantiateViewControllerWithIdentifier:@"OtherUserProfileViewController"];
+    if(![self.navigationController.topViewController isKindOfClass:[AlternateProfileTableViewController class]]) {
+        UIViewController* infoController = [self.storyboard instantiateViewControllerWithIdentifier:@"AlternateProfileTableViewController"];
         [self.navigationController pushViewController:infoController animated:YES];
     }
 }
@@ -79,13 +78,14 @@
 -(void) setupTable  {
     self.tableView.allowsSelectionDuringEditing = YES;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 123;
+    self.tableView.estimatedRowHeight = 100;
     //    self.tableView.allowsSelection = NO;
 }
 
 -(void) initialButtonSetup  {
     _isFriendsSelected = YES;
-    [_everyoneButton setBackgroundColor:[UIColor grayColor]];
+    [_everyoneButton setBackgroundColor:[UIColor lightGrayColor]];
+    _everyoneButton.tintColor = [UIColor grayColor];
 }
 
 -(void) setupDummyData  {
@@ -175,13 +175,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     PeopleNotAttendingTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
-    
-    //Setup cell using data pull down from the server, this is using dummy data
-//    NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
-//    NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
-//    NSString *personName = [sectionEvents objectAtIndex:indexPath.row];
-//    
-    cell.profileName.text = @"test";
+    cell.profileName.text = @"Isfandyar";
     
     return cell;
 }
@@ -224,7 +218,8 @@
     if (_isFriendsSelected) {
         NSLog(@"Friends");
         [_friendsButton setBackgroundColor:[UIColor whiteColor]];
-        [_everyoneButton setBackgroundColor:[UIColor grayColor]];
+        [_everyoneButton setBackgroundColor:[UIColor lightGrayColor]];
+        _everyoneButton.tintColor = [UIColor grayColor];
         _isFriendsSelected = NO;
     }
 }
@@ -234,7 +229,8 @@
     if (_isFriendsSelected == NO) {
         NSLog(@"Everyone");
         [_everyoneButton setBackgroundColor:[UIColor whiteColor]];
-        [_friendsButton setBackgroundColor:[UIColor grayColor]];
+        [_friendsButton setBackgroundColor:[UIColor lightGrayColor]];
+        _friendsButton.tintColor = [UIColor grayColor];
         _isFriendsSelected = YES;
     }
 }

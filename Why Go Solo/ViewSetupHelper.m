@@ -6,9 +6,9 @@
 //  Copyright © 2016 Izzy. All rights reserved.
 //
 
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 
-@implementation FontSetup
+@implementation ViewSetupHelper
 
 
 +(NSDictionary *) setNavigationButtonFontAndSize  {
@@ -40,5 +40,13 @@
     textfield.textColor = colour;
     textfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:message attributes:@{NSForegroundColorAttributeName: colourGray}];
 }
+
+-(void) createCircularView:(UIImageView *) imageView  {
+    imageView.layer.cornerRadius = imageView.frame.size.width / 2;
+    imageView.clipsToBounds = YES;
+}
+
+/*Photo Methods*/
+
 
 @end

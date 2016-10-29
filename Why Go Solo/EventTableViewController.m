@@ -49,6 +49,7 @@ NSArray *sectionTitles;
 #pragma mark - UI View Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupNavigationController];
     [self setupDummyData];
     [self setupTable];
     [self setupObservers];
@@ -189,6 +190,12 @@ NSArray *sectionTitles;
 
 #pragma mark - Helper Functions
 
+-(void) setupNavigationController   {
+    
+    UIImage *image = [UIImage imageNamed:@"title-bar-logo"];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];
+}
+
 /** Segue to another viewController */
 -(void) moveToOtherUserProfile  {
     [self performSegueWithIdentifier:@"GoToOtherUserProfile" sender:self];
@@ -287,13 +294,18 @@ NSArray *sectionTitles;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 10)];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
+    
     return [self footerCellAtIndex:section];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section    {
     
     //Forced the Footer to conform to a specific height that is equal to the header space between the cell
-    return 15;
+    return 14;
 }
 
 

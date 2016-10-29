@@ -13,7 +13,7 @@
 @property NSArray *sectionTitles;
 @property (nonatomic) UIView *overlayView;
 
-@property BOOL isPrivateEvent;
+@property BOOL isPublicEvent;
 
 @end
 
@@ -23,8 +23,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _isPrivateEvent = NO; //intailly set the switch to off in the storyboard!
-    
+    _isPublicEvent = YES; //intailly set the switch to off in the storyboard!
+
     [self createDummyData];
     [self setupObservers];
     [self setNavigationButtonFontAndSize];
@@ -34,7 +34,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"EditCell" bundle:nil] forCellWithReuseIdentifier:@"EditCell"];
     
     self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    
     
 }
 
@@ -54,7 +53,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.dummyData = [NSArray arrayWithObjects: blankArray, mainDishImages, drinkDessertImages, nil];
     
     _sectionTitles = [[NSArray alloc] init];
-    _sectionTitles = @[@"HELP", @"FRIENDS", @"EVERYONE"];
+    _sectionTitles = @[@"HELP", @"FRIENDS (n/n)", @"EVERYONE (n)"];
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -91,13 +90,14 @@ static NSString * const reuseIdentifier = @"Cell";
     
     FriendCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    if (_isPrivateEvent) {
+    if (_isPublicEvent) {
         cell.contentView.hidden = YES;
     } else  {
         cell.contentView.hidden = NO;
     }
     cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
-    
+    cell.profileName.text = @"Isfandyar";
+
     return cell;
 }
 
@@ -116,7 +116,7 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     if (section == 0) {
         return CGSizeZero;
-    } else if (_isPrivateEvent) {
+    } else if (_isPublicEvent) {
         return CGSizeZero;
     } else {
         return CGSizeMake(self.collectionView.bounds.size.width, 50); //Modify the 100 value to adjust the height of the HEader
@@ -126,13 +126,22 @@ static NSString * const reuseIdentifier = @"Cell";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath    {
     if (indexPath.section == 0) {
         //        return self.view.frame.size;
-        return CGSizeMake(self.collectionView.bounds.size.width, 400); //Height for the collectionCell
-    } else if (_isPrivateEvent) {
+        return CGSizeMake(self.collectionView.bounds.size.width, 450); //Height for the collectionCell
+    } else if (_isPublicEvent) {
         return CGSizeZero;
     } else  {
-        return CGSizeMake(100, 100);
+        return CGSizeMake(60, 90); //This is sizes for round image icons.
     }
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     
+    if (section == 1) {
+        return UIEdgeInsetsMake(20, 20, 20, 20); //allows padding between cells to be changed but not the FRIENDS/ EVERYONE headerViews
+    } else if (section == 2) {
+        return UIEdgeInsetsMake(20, 20, 20, 20); //allows padding between cells to be changed but not the FRIENDS/ EVERYONE headerViews
+    } else
+        return UIEdgeInsetsMake(0, 0, 0, 0); //Just set the default values
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -142,7 +151,7 @@ static NSString * const reuseIdentifier = @"Cell";
     if (kind == UICollectionElementKindSectionHeader) {
         HeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderCell" forIndexPath:indexPath];
         
-        if (_isPrivateEvent) {
+        if (_isPublicEvent) {
             headerView.hidden = YES;
             
         } else {
@@ -172,8 +181,8 @@ static NSString * const reuseIdentifier = @"Cell";
 -(void)privacyMode:(NSNotification *) notification   {
     if ([[notification name] isEqualToString:@"Privacy Mode"]) {
         
-        NSLog(@"Bool: %d ", [[NSUserDefaults standardUserDefaults] boolForKey:@"publicPrivate"]);
-        _isPrivateEvent = [[NSUserDefaults standardUserDefaults] boolForKey:@"publicPrivate"];
+        NSLog(@"isPublic: %d ", [[NSUserDefaults standardUserDefaults] boolForKey:@"publicPrivate"]);
+        _isPublicEvent = [[NSUserDefaults standardUserDefaults] boolForKey:@"publicPrivate"];
         [self.collectionView reloadData];
     }
 }
@@ -264,7 +273,7 @@ static NSString * const reuseIdentifier = @"Cell";
     } completion:nil];
 }
 
-/*ensures that the view added streches properpy to the screen*/
+/*ensures that the view added streches properly to the screen*/
 - (void) stretchToSuperView:(UIView*) view {
     view.translatesAutoresizingMaskIntoConstraints = NO;
     NSDictionary *bindings = NSDictionaryOfVariableBindings(view);
@@ -274,6 +283,7 @@ static NSString * const reuseIdentifier = @"Cell";
         NSArray * constraints = [NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:bindings];
         [view.superview addConstraints:constraints];
     }
+    
     
 }
 
@@ -290,7 +300,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
     
     [_saveButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
     [_cancelButton setTitleTextAttributes:attributes forState:UIControlStateNormal];

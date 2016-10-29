@@ -77,7 +77,7 @@
     UIFont *font = [UIFont fontWithName:fontName size:size];
     NSDictionary * attributes = @{NSFontAttributeName: font};
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
-
+    
 }
 
 /** Ensures that the selection seperators are setup before the main views are shown*/
@@ -136,9 +136,9 @@
     cell.textLabel.text = uni.universityName;
     
     //cell.selectionStyle = UITableViewCellSelectionStyleNone;
-  
     
-
+    
+    
     
     if (_selectedIndex == indexPath.row &&  _hasUniBeenSelected == YES)
     {
@@ -162,7 +162,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     NSLog(@"row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
     NSLog(@"Location: %@,", [_universityList objectAtIndex:indexPath.row]);
-     _hasUniBeenSelected = YES;
+    _hasUniBeenSelected = YES;
     _selectedIndex = indexPath.row;
     
    
@@ -173,7 +173,7 @@
     [tableView reloadData];
     
     return;
-
+    
 }
 
 -(void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath   {
@@ -191,12 +191,7 @@
     if (_hasUniBeenSelected == false) {
         [self alertSetupandView];
     } else  {
-        if (sender.tag == 1) {
-            //basically return back to the edit profile selction screen, this is only used when the user wants to edit their uni accommodation
-            [self.navigationController popViewControllerAnimated:YES];
-        } else  {
-            [self performSegueWithIdentifier:@"GoToSetupLoginDetails" sender:self];
-        }
+        [self performSegueWithIdentifier:@"GoToSetupLoginDetails" sender:self];
     }
 }
 

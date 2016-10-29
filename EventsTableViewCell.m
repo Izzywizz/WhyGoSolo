@@ -16,7 +16,7 @@
     [super awakeFromNib];
     // Initialization code
     //    [self bringSubviewToFront:_joinButton];
-    _viewLayer.layer.cornerRadius = 5;
+    _viewLayer.layer.cornerRadius = 7;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

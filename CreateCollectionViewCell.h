@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *addEmojiImage;
 @property (weak, nonatomic) IBOutlet UITextView *emojiTextView;
 @property (weak, nonatomic) IBOutlet UILabel *publicPrivateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *charCount;
 
 @end

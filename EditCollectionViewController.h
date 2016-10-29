@@ -11,7 +11,7 @@
 #import "HeaderCollectionReusableView.h"
 #import "EditCellCollectionViewCell.h"
 #import "MapViewController.h"
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 
 
 

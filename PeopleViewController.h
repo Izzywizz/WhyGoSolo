@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 
 @interface PeopleViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

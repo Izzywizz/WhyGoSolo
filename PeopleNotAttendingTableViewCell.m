@@ -15,6 +15,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    _viewLayer.layer.cornerRadius = 7;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

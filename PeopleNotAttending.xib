@@ -14,28 +14,28 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PeopleEventsTableViewCell" rowHeight="109" id="5Bx-65-Akd" userLabel="PeopleEventsTableViewCell" customClass="PeopleNotAttendingTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="440" height="109"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Bx-65-Akd" id="9SG-a2-pZB">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="5Bx-65-Akd" id="9SG-a2-pZB">
                 <rect key="frame" x="0.0" y="0.0" width="440" height="108.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oox-ZV-RNz">
-                        <rect key="frame" x="14" y="14" width="412" height="95"/>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oox-ZV-RNz">
+                        <rect key="frame" x="16" y="14" width="408" height="0.0"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="0PV-np-Kno" userLabel="Profile Image">
-                                <rect key="frame" x="15" y="15" width="60" height="60"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="0PV-np-Kno" userLabel="Profile Image">
+                                <rect key="frame" x="15" y="15" width="60" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="O8c-g7-Tkx"/>
-                                    <constraint firstAttribute="height" constant="60" id="TLI-4Y-TFh"/>
+                                    <constraint firstAttribute="height" constant="52" id="TLI-4Y-TFh"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Andy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="hDd-Xy-aap">
-                                <rect key="frame" x="77" y="29" width="321" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Andy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="hDd-Xy-aap">
+                                <rect key="frame" x="83" y="29" width="305" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="321" id="VRD-gO-EGc"/>
+                                    <constraint firstAttribute="width" constant="305" id="VRD-gO-EGc"/>
                                     <constraint firstAttribute="height" constant="31" id="qDQ-YM-W6C"/>
                                     <constraint firstAttribute="height" constant="21" id="s9G-ti-nGV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -44,8 +44,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pf7-DJ-ohH">
-                                <rect key="frame" x="15" y="15" width="383" height="60"/>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pf7-DJ-ohH">
+                                <rect key="frame" x="15" y="15" width="373" height="52"/>
                                 <connections>
                                     <action selector="profileButtonPressed:" destination="5Bx-65-Akd" eventType="touchUpInside" id="WM6-fV-7dw"/>
                                 </connections>
@@ -55,7 +55,7 @@
                         <constraints>
                             <constraint firstItem="Pf7-DJ-ohH" firstAttribute="trailing" secondItem="hDd-Xy-aap" secondAttribute="trailing" id="HMx-0U-Q9E"/>
                             <constraint firstItem="Pf7-DJ-ohH" firstAttribute="top" secondItem="0PV-np-Kno" secondAttribute="top" id="NDL-4S-qZL"/>
-                            <constraint firstItem="hDd-Xy-aap" firstAttribute="leading" secondItem="0PV-np-Kno" secondAttribute="trailing" constant="2" id="Pft-RB-qMM"/>
+                            <constraint firstItem="hDd-Xy-aap" firstAttribute="leading" secondItem="0PV-np-Kno" secondAttribute="trailing" constant="8" id="Pft-RB-qMM"/>
                             <constraint firstItem="hDd-Xy-aap" firstAttribute="top" secondItem="Oox-ZV-RNz" secondAttribute="top" constant="29" id="bDK-LF-9IU"/>
                             <constraint firstItem="Pf7-DJ-ohH" firstAttribute="leading" secondItem="0PV-np-Kno" secondAttribute="leading" id="ibE-E9-Qai"/>
                             <constraint firstAttribute="bottom" secondItem="0PV-np-Kno" secondAttribute="bottom" constant="172.5" id="nlA-Qc-HOQ"/>
@@ -74,11 +74,11 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Oox-ZV-RNz" firstAttribute="leading" secondItem="9SG-a2-pZB" secondAttribute="leading" constant="14" id="5Qv-Sj-I5V"/>
+                    <constraint firstItem="Oox-ZV-RNz" firstAttribute="leading" secondItem="9SG-a2-pZB" secondAttribute="leading" constant="16" id="5Qv-Sj-I5V"/>
                     <constraint firstAttribute="bottom" secondItem="Oox-ZV-RNz" secondAttribute="bottom" id="9fy-6N-qmI"/>
                     <constraint firstAttribute="bottom" secondItem="Oox-ZV-RNz" secondAttribute="bottom" id="E7T-U6-btG"/>
                     <constraint firstItem="Oox-ZV-RNz" firstAttribute="top" secondItem="9SG-a2-pZB" secondAttribute="top" constant="14" id="F0a-lA-Ydt"/>
-                    <constraint firstAttribute="trailing" secondItem="Oox-ZV-RNz" secondAttribute="trailing" constant="14" id="zc1-Le-9eS"/>
+                    <constraint firstAttribute="trailing" secondItem="Oox-ZV-RNz" secondAttribute="trailing" constant="16" id="zc1-Le-9eS"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -91,6 +91,7 @@
                 <outlet property="profileButton" destination="Pf7-DJ-ohH" id="JsZ-d6-rvG"/>
                 <outlet property="profileName" destination="hDd-Xy-aap" id="Mz8-Zr-bVX"/>
                 <outlet property="prolfileImage" destination="0PV-np-Kno" id="tgk-Xw-64h"/>
+                <outlet property="viewLayer" destination="Oox-ZV-RNz" id="UP9-uF-07h"/>
             </connections>
             <point key="canvasLocation" x="72" y="178.5"/>
         </tableViewCell>

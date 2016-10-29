@@ -1,93 +1,55 @@
 //
-//  OtherUserProfileTableViewController.m
+//  AlternateProfileTableViewController.m
 //  Why Go Solo
 //
-//  Created by Izzy on 09/09/2016.
+//  Created by Izzy on 17/10/2016.
 //  Copyright © 2016 Izzy. All rights reserved.
 //
 
-#import "OUserProfileTableViewController.h"
+#import "AlternateProfileTableViewController.h"
 #import "EventsTableViewCell.h"
 #import "FooterEventsTableViewCell.h"
 #import "HeaderEventsTableViewCell.h"
 #import "OtherProfileTableViewCell.h"
-#import "WebService.h"
-#import "Data.h"
 #import "User.h"
 #import "Event.h"
-@interface OtherUserProfileTableViewController () <UITableViewDataSource, UITableViewDelegate, DataDelegate>
+#import "OverlayView.h"
+
+
+@interface AlternateProfileTableViewController ()
+
 @property NSDictionary *tableData;
 @property NSArray *sectionTitles;
 @property NSArray *sectionData;
 @property BOOL isUserBlocked;
 @property BOOL isFriend;
+@property (nonatomic) UIView *overlayView;
 
-@property NSArray *myEventsDataArray;
-@property NSArray *dataArray;
-
-//TextProperties
-
-@property (weak, nonatomic) IBOutlet UILabel *universityLabel;
-@property (weak, nonatomic) IBOutlet UILabel *accomodationLabel;
 
 
 @end
 
-@implementation OtherUserProfileTableViewController
+@implementation AlternateProfileTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupDummyData];
-    [self setupObservers];
     [self setupTable];
-    [self setupUserReportingName:@"Andy Jones"];
-    [self internalViewSetup];
+    [self setupObservers];
+    
     _isFriend = true;
-    
-    self.tableView.contentInset = UIEdgeInsetsMake(20,0,0,0); //prevents that weird scrolling under the bar thing
-    
-    _dataArray = [NSArray new];
-    _myEventsDataArray = [NSArray new];
-    
-    _accomodationLabel.text = @"The Killers";
+    _reportedUserName = @"Andy Jones";
 }
 
--(void) viewWillAppear:(BOOL)animated   {
-    [Data sharedInstance].delegate = self;
-    [self reportOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
-    
-    [[WebService sharedInstance]user:[Data sharedInstance].selectedEvent.userID];
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [Data sharedInstance].delegate = nil;
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(void)userParsedSuccessfully
-{
-    NSLog(@"USER PARSED SUCCESSFULLLY!");
-}
-
-
--(void)handleUpdates
-{
-    
-}
 #pragma mark - Helper Functions
-
--(void) internalViewSetup   {
-    _internalView.layer.cornerRadius = 5;
-    _userReportedView.layer.cornerRadius = 5;
-}
-
 -(void) setupDummyData  {
     //Dummy Data
-    _tableData = @{@"My Events" : @[@"test"],
+    _tableData = @{@"My Events" : @[@"test", @"test2"],
                    @"My Events Two" : @[@"Andy Jones", @"Nathan Barnes"]
                    };
     
@@ -96,10 +58,6 @@
     _sectionTitles = [[_tableData allKeys] sortedArrayUsingDescriptors:decendingOrder];
 }
 
--(void) setupUserReportingName: (NSString *) name  {
-    _reportName.text = [NSString stringWithFormat:@"Are you sure report you want to report %@", name];
-    _userHasBeenReportedLabel.text = [NSString stringWithFormat:@"Are you sure report you want to report %@", name];
-}
 
 -(void) setupTable  {
     self.tableView.allowsSelectionDuringEditing=YES;
@@ -108,26 +66,16 @@
     //    self.tableView.allowsSelection = NO;
 }
 
--(void)reportOverlayAlpha:(int)a animationDuration:(float)duration
-{
-    [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        for (id x in _overlayView.subviews)
-        {
-            if ([x class] == [UIView class])
-            {
-                [(UIView*)x setAlpha:a];
-            }
-        }
-        _overlayView.alpha = a;
-    } completion:nil];
-}
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section    {
     
-    return 1;
-    
+    if (section == 0) {
+        return 1;
+    } else  {
+        return _tableData.count;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -136,7 +84,7 @@
 
 /** Header View setup*/
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-        return [self headerCellAtIndex:section];
+    return [self headerCellAtIndex:section];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section    {
@@ -239,7 +187,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     EventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
-   /* //Setup cell using data pull down from the server, this is using dummy data
+    //Setup cell using data pull down from the server, this is using dummy data
     NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
     NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
     NSString *eventName = [sectionEvents objectAtIndex:indexPath.row];
@@ -248,19 +196,12 @@
     if ([sectionTitle isEqualToString:@"My Events"]) {
         [cell viewWithTag:EDIT].alpha = 0;
     }
-    
     if (_isUserBlocked) {
         cell.hidden = YES;
         [cell setUserInteractionEnabled:NO];
-        [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-        _tableView.scrollEnabled = NO;
     }
     
     cell.nameLabel.text = eventName;
-    //    cell.eventEmoticonLabel.text = @"\ue057"; //pass the emoticon in unicode 6.0 +
-    */
-    [cell configureCellWithEventForTableView:self.tableView atIndexPath:indexPath];
-
     
     return cell;
 }
@@ -282,17 +223,49 @@
     return cell;
 }
 
+#pragma mark - Registering Observers
+
+-(void) setupObservers {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(blockUserPressed:) name:@"BlockUser" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unblockButtonPressed:) name:@"UnblockUser" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportButtonPressed:) name:@"ReportUser" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeOverlay:) name:@"removeOverlay" object:nil];
+}
+
+#pragma mark - Oberver MEthods
+- (void)blockUserPressed:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"BlockUser"]) {
+        NSLog(@"Block User Pressed from Observer");
+        _isUserBlocked = YES;
+        [self.tableView reloadData];
+    }
+}
+
+- (void)unblockButtonPressed:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"UnblockUser"]) {
+        NSLog(@"Unblock User Pressed from Observer");
+        _isUserBlocked = NO;
+        [self.tableView reloadData];
+    }
+}
+
+- (void)reportButtonPressed:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"ReportUser"]) {
+        NSLog(@"Report button pressed internally");
+        [self setupReportUserOverlay:@"Report User" andTextBody:[NSString stringWithFormat:@"Are you sure you want to report %@", _reportedUserName] andTag:3 andReportedUser:_reportedUserName];
+        }
+    }
+
 #pragma mark - Action Methods
 
-- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+- (IBAction)backButton:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
-- (IBAction)addFriendButton:(UIBarButtonItem *)sender {
+- (IBAction)addFriendButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Friend LOgic needs to be added");
     if (_isFriend) {
-        _addFriendButton.image = [UIImage imageNamed:@"check-button-20-20"];
+        _addFriendButton.image = [UIImage imageNamed:@"minus-friend"];
         _isFriend = false;
         NSLog(@"Friend Added");
     } else {
@@ -300,74 +273,58 @@
         _isFriend = true;
         NSLog(@"Friend Removed");
     }
+    
 }
 
-- (IBAction)noButtonPressed:(UIButton *)sender {
-    [self reportOverlayAlpha:0 animationDuration:0];
-}
-
-- (IBAction)yesButtonPressed:(UIButton *)sender {
-    NSLog(@"Reporting User...");
-    [_tableView reloadData];
-    [_userReportedView viewWithTag:0].alpha = 1;
-}
-
-- (IBAction)OkReportedButtonPressed:(UIButton *)sender {
-    NSLog(@"Ok User has been Reported");
-    [self reportOverlayAlpha:0 animationDuration:0];
-}
-#pragma mark - Scroll locking methods
-
-/** SO allows masking of the top of the table*/
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    for (UITableViewCell *cell in self.tableView.visibleCells) {
-        CGFloat hiddenFrameHeight = scrollView.contentOffset.y + self.navigationController.navigationBar.frame.size.height + 40 - cell.frame.origin.y;
-        if (hiddenFrameHeight >= 0 || hiddenFrameHeight <= cell.frame.size.height) {
-            [self maskCell:cell fromTopWithMargin:hiddenFrameHeight];
-        }
+#pragma mark - OverlayView Methods
+/*ensures that the view added streches properly to the screen*/
+- (void) stretchToSuperView:(UIView*) view {
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    NSDictionary *bindings = NSDictionaryOfVariableBindings(view);
+    NSString *formatTemplate = @"%@:|[view]|";
+    for (NSString * axis in @[@"H",@"V"]) {
+        NSString * format = [NSString stringWithFormat:formatTemplate,axis];
+        NSArray * constraints = [NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:bindings];
+        [view.superview addConstraints:constraints];
     }
 }
 
-- (void)maskCell:(UITableViewCell *)cell fromTopWithMargin:(CGFloat)margin
+-(void) setupReportUserOverlay:(NSString *)eventTitle andTextBody:(NSString *)textBody andTag:(NSInteger) tag andReportedUser:(NSString *)user    {
+    OverlayView *overlayVC = [OverlayView overlayView];
+    overlayVC.eventTitle.text = eventTitle;
+    overlayVC.eventText.text = textBody;
+    [overlayVC.internalView setTag:tag];
+    overlayVC.reportedUserName = _reportedUserName;
+    self.view.bounds = overlayVC.bounds;
+    [self.view addSubview:overlayVC];
+    [self stretchToSuperView:self.view];
+    self.overlayView = overlayVC;
+}
+
+-(void) removeOverlay: (NSNotification *) notifcation   {
+    if ([[notifcation name] isEqualToString:@"removeOverlay"]) {
+        [self deleteOverlayAlpha:0 animationDuration:0.2f];
+    }
+}
+
+-(void) deleteConfirmation: (NSNotification *) notifcation   {
+    if ([[notifcation name] isEqualToString:@"deleteConfirmation"]) {
+        [self performSegueWithIdentifier:@"GoToDeleteConfirmation" sender:self];
+    }
+}
+
+-(void)deleteOverlayAlpha:(int)a animationDuration:(float)duration
 {
-    cell.layer.mask = [self visibilityMaskForCell:cell withLocation:margin/cell.frame.size.height];
-    cell.layer.masksToBounds = YES;
+    [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        for (id x in self.overlayView.subviews)
+        {
+            if ([x class] == [UIView class])
+            {
+                [(UIView*)x setAlpha:a];
+            }
+        }
+        self.overlayView.alpha = a;
+    } completion:nil];
 }
 
-- (CAGradientLayer *)visibilityMaskForCell:(UITableViewCell *)cell withLocation:(CGFloat)location
-{
-    CAGradientLayer *mask = [CAGradientLayer layer];
-    mask.frame = cell.bounds;
-    mask.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:1 alpha:0] CGColor], (id)[[UIColor colorWithWhite:1 alpha:1] CGColor], nil];
-    mask.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:location], [NSNumber numberWithFloat:location], nil];
-    return mask;
-}
-
-#pragma mark - Registering Observers
-
--(void) setupObservers {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportUserPressed:) name:@"ReportUser" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(blockUserPressed:) name:@"BlockUser" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unblockButtonPressed:) name:@"UnblockUser" object:nil];
-}
-
-#pragma mark - Oberver MEthods
-- (void)blockUserPressed:(NSNotificationCenter *) notification {
-    NSLog(@"Block User Pressed from Observer");
-    _isUserBlocked = YES;
-    [_tableView reloadData];
-}
-
-- (void)unblockButtonPressed:(NSNotificationCenter *) notification {
-    NSLog(@"Unblock User Pressed from Observer");
-    _isUserBlocked = NO;
-    _tableView.scrollEnabled = YES;
-    [_tableView reloadData];
-}
-
-- (void)reportUserPressed:(NSNotificationCenter *) notification {
-    NSLog(@"Report User button pressed from Observer");
-    [self reportOverlayAlpha:1 animationDuration:0.2f];
-    [_userReportedView viewWithTag:0].alpha = 0;
-}
 @end

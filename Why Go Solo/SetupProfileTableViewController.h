@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 
 @interface SetupProfileTableViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIView *roundImageUploadView;
@@ -28,5 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIView *dateOfBirthContentView;
 @property (weak, nonatomic) IBOutlet UILabel *dateOfBirthLabel;
 @property (weak, nonatomic) IBOutlet UITextField *dateOfBirthField;
+
+-(void) createActionSheet;
 
 @end

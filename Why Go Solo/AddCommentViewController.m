@@ -45,6 +45,14 @@
     [self.commentsTextView resignFirstResponder]; // get rid of the keybaord
 }
 
+- (void)textViewDidChange:(UITextView *)textView    {
+    _charCount.text =  [NSString stringWithFormat:@"%lu", (unsigned long)textView.text.length];
+    if (textView.text.length != 140) {
+        _charCount.textColor = [UIColor blueColor];
+    } else {
+        _charCount.textColor = [UIColor redColor];
+    }
+}
 
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView
 {

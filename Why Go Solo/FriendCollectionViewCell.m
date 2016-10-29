@@ -21,7 +21,8 @@
 -(void) makeItCircular  {
     
     self.profileImageView.layer.masksToBounds = true;
-    self.profileImageView.layer.cornerRadius = self.profileImageView.bounds.size.width/2; //create circular profile view
+    self.profileImageView.layer.cornerRadius = self.profileImageView.bounds.size.height/2; //create circular profile view
+
 }
 
 @end

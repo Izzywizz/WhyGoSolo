@@ -8,13 +8,12 @@
 
 #import "SetupProfileTableViewController.h"
 #import "RRRegistration.h"
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 
 @interface SetupProfileTableViewController ()<UIImagePickerControllerDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
-
-
 @property (nonatomic) UIDatePicker *datePicker;
+
 @end
 
 @implementation SetupProfileTableViewController
@@ -82,7 +81,7 @@
 
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
     
     [_nextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
@@ -200,12 +199,11 @@
     self.dateOfBirthField.textColor = [UIColor blackColor];
     self.dateOfBirthLabel.textColor = [UIColor blackColor];
     self.dateOfBirthContentView.backgroundColor = [UIColor blackColor];
-    
 }
 
 #pragma mark - Action Methods
 
-/** Calls the date picker from IOS*/
+/** Calls the date picker from IOS, hides the caret using the same colour aka clear*/
 - (IBAction)datePicker:(UITextField *)sender {
     
     //Create the datePicker, set the mode and assign an action listener to it because I've added to the textview

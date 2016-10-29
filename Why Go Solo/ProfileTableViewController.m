@@ -7,9 +7,11 @@
 //
 
 #import "ProfileTableViewController.h"
+#import "ViewSetupHelper.h"
 #import <UIKit/UIKit.h>
 
 @interface ProfileTableViewController ()
+@property (nonatomic) UIDatePicker *datePicker;
 
 @end
 
@@ -22,6 +24,9 @@
     NSLog(@"People View Loaded");
     [self setNavigationButtonFontAndSize];
     
+    ViewSetupHelper *fontSetup = [[ViewSetupHelper alloc] init];
+    [fontSetup createCircularView:_profileImage];
+
     //This prevents the weird the selection animation occuring when the user selects a cell
     [self.tableView setAllowsSelection:NO];
 
@@ -44,9 +49,10 @@
 }
 
 #pragma mark - Helper Functions
+
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
 
     [_editButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
     [_backButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
@@ -57,10 +63,9 @@
     NSLog(@"Selected");
 }
 
-#pragma mark - Action Methods
-
 - (IBAction)editActioin:(id)sender {
     NSLog(@"Edit Pressed");
+    [self performSegueWithIdentifier:@"GoToEdit" sender:self];
 }
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];

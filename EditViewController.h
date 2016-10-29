@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FontSetup.h"
+#import "ViewSetupHelper.h"
 #import "ISEmojiView.h"
 #import "FriendCollectionViewCell.h"
 #import "HeaderCollectionReusableView.h"

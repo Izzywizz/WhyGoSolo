@@ -24,6 +24,9 @@
 @property (nonatomic) Residence *residence;
 @property (nonatomic, strong) WebService *Webservice;
 
+@property (nonatomic) CLGeocoder *geocoder;
+@property (nonatomic) CLPlacemark *placemark;
+
 @end
 
 @implementation AccommodationMapViewController
@@ -32,7 +35,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Accommodation Map View");
+    [self setupGeocoderPlacemark];
+    
     _residence = [[Residence alloc] init];
+    
+    NSLog(@"BOOL isEditProfile: %d",_isEditProfile);
     
     [self setNavigationButtonFontAndSize];
     [self setup];
@@ -47,7 +54,7 @@
 
 -(void)viewWillAppear:(BOOL)animated   {
     [self.mapView setDelegate:self];
-//    self.locationSearchTable.delegate = self;
+    //    self.locationSearchTable.delegate = self;
     [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
   //  [self createPinLocations];
     [[WebService sharedInstance] residences];
@@ -57,13 +64,13 @@
 
 -(void) viewWillDisappear:(BOOL)animated    {
     self.mapView.delegate = nil;
-//    self.locationSearchTable.delegate = nil;
+    //    self.locationSearchTable.delegate = nil;
     self.definesPresentationContext = NO;
     [Data sharedInstance].delegate = nil; // release Data delegate
 }
 
 
-#pragma mark - Delegate Methods
+#pragma mark - API Delegate Methods
 
 -(void)handleUpdates
 {
@@ -74,7 +81,7 @@
         NSLog(@"Postcode:%@", element.address);
     }
     [self createPinLocations];
-
+    
 }
 
 -(void)residencesDownloadedSuccessfully {
@@ -95,14 +102,14 @@
 
 -(NSMutableArray *) unpackPinData   {
     
-
+    
     NSMutableArray *arrayOfPins = [[NSMutableArray alloc] init];
     
     for (Residence *element in [Data sharedInstance].residencesArray) {
         MKPointAnnotation *pin = [[MKPointAnnotation alloc] init];
         double latitude = element.latitude;
         double longitude = element.longitude;
-
+        
         //create the pin coordinates
         pin.coordinate = CLLocationCoordinate2DMake(latitude, longitude);
         pin.title = element.residenceName;
@@ -119,6 +126,9 @@
 
 #pragma mark - Helper Functions
 
+-(void) setupGeocoderPlacemark  {
+    _geocoder = [[CLGeocoder alloc] init];
+}
 
 -(void)accountCreationOverlayAlpha:(int)a animationDuration:(float)duration
 {
@@ -136,8 +146,8 @@
 
 -(void) setNavigationButtonFontAndSize  {
     
-    NSDictionary *attributes = [FontSetup setNavigationButtonFontAndSize];
-
+    NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
+    
     [_doneButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
@@ -165,7 +175,7 @@
     
     _locationSearchTable.mapView = _mapView;
     _locationSearchTable.delegate = self;
-
+    
 }
 
 
@@ -180,7 +190,7 @@
 
 #pragma mark - Map Delegate Methods
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation   {
-
+    
     if (annotation != mapView.userLocation) {
         MKAnnotationView *pin = (MKAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"myPin"];
         
@@ -194,9 +204,11 @@
         pin.canShowCallout = YES;
         pin.draggable = YES;
         pin.image = [UIImage imageNamed:@"map-pin-34-58.png"];
-        pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure]; //creates the pin (i) and allows it to be clicked!
-        return pin;
+        // Add an image to the left callout.
         
+        pin.rightCalloutAccessoryView = [UIButton buttonWithType: UIButtonTypeContactAdd];
+        
+        return pin;
         
     }
     
@@ -207,7 +219,7 @@
 /** This delegate method ensures that when the user taps on the flag or current location that the address in scope updated*/
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     id <MKAnnotation> annotation = [view annotation];
-
+    
     if ([annotation isKindOfClass:[MKPointAnnotation class]])
     {
         NSString *location = [annotation title];
@@ -218,7 +230,7 @@
     }
 }
 
-#pragma mark - Internal Delegate Method
+#pragma mark - Internal MAP Delegate Method
 
 - (void)dropPinZoomIn:(MKPlacemark *)placemark
 {
@@ -238,6 +250,9 @@
     MKCoordinateRegion region = MKCoordinateRegionMake(placemark.coordinate, span);
     [_mapView setRegion:region animated:true];
     [self createPinLocations]; //Called again to create the custom pins, remember that it creates the pins based on the university selected
+    
+    
+}
 
     [RRRegistration sharedInstance].longitude = span.longitudeDelta;
     [RRRegistration sharedInstance].latitude = span.latitudeDelta;
