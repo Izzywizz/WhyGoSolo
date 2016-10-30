@@ -33,7 +33,7 @@
 @property (strong, nonatomic) PinLocationData *pinData;
 @property (nonatomic) MKPlacemark *selectedPin;
 
-
+@property NSString *address;
 
 @property int touchPinCount;
 
@@ -395,6 +395,7 @@
     } else {
         NSLog(@"POST EVENT");
         //TODO: Add logic to create the event
+        [Data sharedInstance].createdEvent.address = _resultSearchController.searchBar.text ;
         [Data sharedInstance].createdEvent.latitude = _placemark.location.coordinate.latitude;
         [Data sharedInstance].createdEvent.longitude = _placemark.location.coordinate.longitude;
         [[WebService sharedInstance]eventsApiRequest:EVENT_API_CREATE];

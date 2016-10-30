@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *editJoinButton;
 @property (weak, nonatomic) IBOutlet UIButton *joinedButton;
 
+@property (strong, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property BOOL joined;
 @property Event *event;
 typedef enum {

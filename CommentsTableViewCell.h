@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Comment;
 
 @interface CommentsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *profileName;
@@ -15,5 +16,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *userInputext;
 @property (weak, nonatomic) IBOutlet UIButton *reportButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+
+@property Comment *comment;
+
+-(CommentsTableViewCell*)configureCellWithCommentForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath;
 
 @end

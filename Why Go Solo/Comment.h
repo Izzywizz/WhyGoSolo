@@ -16,6 +16,7 @@
 @property NSString* commentText;
 @property NSString* commentID;
 @property int epochCreated;
+@property NSString* userID;
 @property User* commentUser;
 
 @end

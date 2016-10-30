@@ -64,13 +64,13 @@
     }
     if(_apiRequst == EVENT_API_CREATE)
     {
+        return [self createEventDict];
         selectorString = @"createEventDict";
 
     }
     
-    SEL dataDictSelector = NSSelectorFromString(selectorString);
     
-    NSDictionary *datDict = (NSDictionary*)[self performSelector:dataDictSelector];
+    NSDictionary *datDict = (NSDictionary*)[self performSelector: NSSelectorFromString(selectorString)];
     NSLog(@"PARAM KEYS = %@", [self paramKeys]);
     for (NSString* paramKey in [self paramKeys])
     {
@@ -139,6 +139,8 @@
              EVENT_PARAM_LONGITUDE:[NSString stringWithFormat:@"%f",[Data sharedInstance].createdEvent.longitude],
              EVENT_PARAM_LATITUDE:[NSString stringWithFormat:@"%f",[Data sharedInstance].createdEvent.latitude],
              EVENT_PARAM_EMOJI:[Data sharedInstance].createdEvent.emoji,
+             EVENT_PARAM_PRIVATE:[NSString stringWithFormat:@"%i",[Data sharedInstance].createdEvent.isPrivate],
+             EVENT_PARAM_USER_ID:[Data sharedInstance].userID,
              };
 }
 
@@ -170,6 +172,15 @@
 
          //   return [NSString stringWithFormat:@"events/%i", [Data sharedInstance].selectedEvent.eventID ];
             break;
+            
+            
+        case EVENT_API_CREATE:
+            
+            return [NSString stringWithFormat:@"users/%@/events/create", [Data sharedInstance].userID ];
+            
+            // return [NSString stringWithFormat:@"events/%i/update_join_status", [Data sharedInstance].selectedEvent.eventID ];
+            break;
+    
         case EVENT_API_JOIN:
             
             return [NSString stringWithFormat:@"events/%@/update_join_status", [Data sharedInstance].selectedEventID ];

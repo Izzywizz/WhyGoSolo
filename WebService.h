@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
     #define EVENT_API_JOIN_RESPONSE_SELECTOR @"updateJoinedStatusFromDict:"
     #define EVENT_API_JOIN_ARRAY @[EVENT_API_JOIN_PARAMS, EVENT_API_JOIN_RESPONSE_SELECTOR]
 
-    AUTHENTICATION,
+    
     
     
     LOGIN = 3,
@@ -39,8 +39,15 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
     #define LOGIN_API_RESPONSE_SELECTOR @"login"
     #define LOGIN_API_PARAMS_ARRAY @[LOGIN_API_PARAMS, LOGIN_API_RESPONSE_SELECTOR]
 
+    EVENT_API_CREATE = 4,
+    #define EVENT_API_CREATE_PARAMS @[EVENT_PARAM_USER_ID]
+    #define EVENT_API_CREATE_PARAMS_DICT @{EVENT_PARAM_USER_ID:,}
     
+    #define EVENT_API_CREATE_RESPONSE_SELECTOR @"createEventsArrayFromDict:"
+    #define EVENT_API_CREATE_ARRAY @[EVENT_API_CREATE_PARAMS, EVENT_API_CREATE_RESPONSE_SELECTOR]
 
+
+    AUTHENTICATION,
     USER_API_CREATE,
     
     
@@ -62,13 +69,7 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
     
     
     
-    EVENT_API_CREATE,
-    #define EVENT_API_CREATE_PARAMS @[EVENT_PARAM_USER_ID]
-    #define EVENT_API_CREATE_PARAMS_DICT @{EVENT_PARAM_USER_ID:,}
-    
-    #define EVENT_API_CREATE_RESPONSE_SELECTOR @"createEventsArrayFromDict:"
-    #define EVENT_API_CREATE_ARRAY @[EVENT_API_CREATE_PARAMS, EVENT_API_CREATE_RESPONSE_SELECTOR]
-
+   
 
     EVENT_API_EDIT,
     EVENT_API_CANCEL,
@@ -82,7 +83,7 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
 };
 #define kCREATE_EVENT_DESCRIPTION [Data SharedInstance].createdEvent.eventDescription;
 
-#define API_ARRAY @[EVENT_API_ARRAY, EVENT_API_SINGLE_ARRAY, EVENT_API_JOIN_ARRAY, LOGIN_API_PARAMS_ARRAY]
+#define API_ARRAY @[EVENT_API_ARRAY, EVENT_API_SINGLE_ARRAY, EVENT_API_JOIN_ARRAY, LOGIN_API_PARAMS_ARRAY, EVENT_API_CREATE_ARRAY]
 
 typedef NS_ENUM(NSInteger, ApiDataIndexes) {
     PARAMS = 0,
@@ -147,12 +148,19 @@ typedef NS_ENUM(NSInteger, residenceApiRequests) {
 #define EVENT_PARAM_DESCRIPTION @"description"
 #define EVENT_PARAM_EMOJI @"emoji"
 #define EVENT_PARAM_PRIVATE @"private"
-#define EVENT_PARAM_EPOCH_EXPIRY @"user_id"
+#define EVENT_PARAM_EPOCH_EXPIRY @"epoch_expiry"
 #define EVENT_PARAM_USER_ID @"user_id"
+#define EVENT_PARAM_ID @"id"
+#define EVENT_PARAM_NUMBER_OF_COMMENTS @"number_of_comments"
+#define EVENT_PARAM_NUMBER_OF_USERS_ATTENDING @"number_of_users_attending"
+#define EVENT_PARAM_NUMBER_OF_FRIENDS_ATTENDING @"number_of_friends_attending"
 
 
-#define COMMENT_PARAM_ID @"emoji"
+
+#define COMMENT_PARAM_ID @"id"
 #define COMMENT_PARAM_TEXT @"comment_text"
+#define COMMENT_PARAM_EPOCH_CREATED @"epoch_created"
+#define COMMENT_PARAM_USER_ID @"user_id"
 
 #define USER_PARAM_LOGIN_EMAIL @"email"
 #define USER_PARAM_LOGIN_PASSWORD @"password"

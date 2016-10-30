@@ -35,6 +35,18 @@
     return _sharedInstance;
 }
 
+
+
+-(void)updateAvatarDictWithImage:(UIImage*)avatarImage forUserID:(NSString*)userID
+{
+    [[Data sharedInstance].avatarDict setObject:avatarImage forKey:userID];
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(avatarDownloaded)])
+    {
+        [self.delegate performSelector:@selector(avatarDownloaded)];
+    }
+}
+
 -(void)login
 {
     NSLog(@"XXXXXXewqr2r 2");
@@ -48,6 +60,8 @@
     [Data sharedInstance].filterDistance = FILTER_DEFAULT_VALUE_DISTANCE;
       [Data sharedInstance].residenceFilterArray = [NSMutableArray new];
     [Data sharedInstance].residenceFilterArrayString = FILTER_DEFAULT_VALUE_RESIDENCE_ID_ARRAY;
+    
+    [Data sharedInstance].avatarDict = [NSMutableDictionary new];
     if (_delegate && [_delegate respondsToSelector:@selector(authenticationSuccessful)])
     {
         

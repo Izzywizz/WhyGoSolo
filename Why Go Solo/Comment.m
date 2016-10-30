@@ -7,16 +7,16 @@
 //
 
 #import "Comment.h"
-
+#import "WebService.h"
 @implementation Comment
 
 -(Comment*)initWithDict:(NSDictionary*)dict{
     if (self)
     {
-        self.commentID = [dict valueForKey:@"id"];
-        self.commentText = [dict valueForKey:@"comment_text"];
-        self.epochCreated = (int)[[dict valueForKey:@"epoch_created"]integerValue];
-    
+        self.commentID = [dict valueForKey:COMMENT_PARAM_ID];
+        self.commentText = [dict valueForKey:COMMENT_PARAM_TEXT];
+        self.epochCreated = (int)[[dict valueForKey:COMMENT_PARAM_TEXT]integerValue];
+        self.userID = [dict valueForKey:COMMENT_PARAM_USER_ID];
     }
     return self;
 

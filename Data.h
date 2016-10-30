@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 @class University;
 @class Residence;
 @class Event;
@@ -24,6 +26,8 @@
 -(void)eventParsedSuccessfully;
 
 -(void)userLoggedInSuccessfully;
+
+-(void)avatarDownloaded;
 @end
 
 @interface Data : NSObject
@@ -39,7 +43,7 @@
 @property NSString* filterDistance;
 @property NSArray* residenceFilterArray;
 
-
+@property NSMutableDictionary *avatarDict;
 
 + (Data*)sharedInstance;
 
@@ -78,4 +82,6 @@
 
 
 -(void)login;
+
+-(void)updateAvatarDictWithImage:(UIImage*)avatarImage forUserID:(NSString*)userID;
 @end

@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Event : NSObject
+
 
 -(Event*)initWithDict:(NSDictionary*)dict;
 
@@ -27,6 +29,7 @@
 @property NSString* totalComments;
 @property NSString* totalAttending;
 @property int status;
+@property int isPrivate;
 
 @property NSMutableArray *friendsArray;
 @property NSMutableArray *otherUsersArray;

@@ -196,6 +196,7 @@ static NSString * const reuseIdentifier = @"Cell";
         
         NSLog(@"Is Public: %d ", [[NSUserDefaults standardUserDefaults] boolForKey:@"publicPrivate"]);
         _isPublicEvent = [[NSUserDefaults standardUserDefaults] boolForKey:@"publicPrivate"];
+        [Data sharedInstance].createdEvent.isPrivate = _isPublicEvent;
         [self.collectionView reloadData];
     }
 }

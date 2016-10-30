@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -19,15 +19,23 @@
             <rect key="frame" x="0.0" y="0.0" width="657" height="98"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="320-p9-xdz" id="Nip-hO-q9z">
-                <rect key="frame" x="0.0" y="0.0" width="657" height="97.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="657" height="97"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="U3f-8G-Xe2" userLabel="Profile Image">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="U3f-8G-Xe2" userLabel="Profile Image" customClass="RRCircularImageView">
                         <rect key="frame" x="8" y="8" width="44" height="44"/>
                         <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="GaG-jI-FCV"/>
                             <constraint firstAttribute="height" constant="44" id="MRh-fq-tNR"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="YSl-Uv-frd"/>
                             <constraint firstAttribute="width" constant="44" id="hdd-ZR-VoL"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="GaG-jI-FCV"/>
+                                <exclude reference="YSl-Uv-frd"/>
+                            </mask>
+                        </variation>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10:10am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g47-CS-TqQ" userLabel="Time Label">
                         <rect key="frame" x="9" y="53" width="41" height="12"/>
@@ -118,6 +126,7 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="pPH-Az-7ND"/>
                         <exclude reference="JZG-Pj-25W"/>
                     </mask>
                 </variation>

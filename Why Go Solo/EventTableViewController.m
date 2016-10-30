@@ -50,7 +50,7 @@ NSArray *sectionTitles;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupNavigationController];
-    [self setupDummyData];
+ //   [self setupDummyData];
     [self setupTable];
     
  //   [[WebService sharedInstance]eventsApiRequest:EVENT_API_ALL];
@@ -110,7 +110,20 @@ NSArray *sectionTitles;
 }
 */
 
+-(void)avatarDownloaded
+{
+    
+    NSLog(@"EVENT TV AVATAR DOWNLOADED");
+    [self performSelectorOnMainThread:@selector(refreshCellInputViews) withObject:nil waitUntilDone:YES];
+}
 
+
+-(void)refreshCellInputViews
+{
+    NSLog(@"EVENT TV AVATAR RELOAD INPUT VIEWS");
+    [self.tableView reloadData];
+   // [self.tableView reloadInputViews];
+}
 
 -(void)updatedJoinStatus
 {
@@ -257,6 +270,7 @@ NSArray *sectionTitles;
     [self performSegueWithIdentifier:@"GoToComments" sender:self];
 }
 
+/*
 -(void) setupDummyData  {
     //Dummy Data
     _tableData = @{@"My Events" : @[@"Andy Jones"],
@@ -264,12 +278,16 @@ NSArray *sectionTitles;
     NSSortDescriptor *decending = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:NO];
     NSArray *decendingOrder = [NSArray arrayWithObject:decending];
     sectionTitles = [[_tableData allKeys] sortedArrayUsingDescriptors:decendingOrder];
-}
+}*/
 
 -(void) setupTable  {
     self.tableView.allowsSelectionDuringEditing=YES;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 140;
+    NSSortDescriptor *decending = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:NO];
+    
+    NSArray *decendingOrder = [NSArray arrayWithObject:decending];
+  //  sectionTitles = @[@"My Events", @"Events Near Me"];
     //    self.tableView.allowsSelection = NO;
 }
 
@@ -288,7 +306,8 @@ NSArray *sectionTitles;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    
+
+
     switch (section) {
         case 0:
             if ([_myEventsDataArray count] > 0)
@@ -305,12 +324,7 @@ NSArray *sectionTitles;
             break;
     }
     
-    // Return the number of rows in the section.
-    NSString *sectionTitle = [sectionTitles objectAtIndex:section];
-    NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
-    
-    //  return [[Data sharedInstance].eventsArray count];
-    return [sectionEvents count];
+    return 1;
 }
 
 
@@ -358,6 +372,7 @@ NSArray *sectionTitles;
 
 #pragma mark - Custom Cells
 -(HeaderEventsTableViewCell *) headerCellAtIndex:(NSInteger) section  {
+
     
     NSString *resuseID = @"HeaderEventsCell";
     NSString *nibName = @"HeaderEvents";
@@ -365,14 +380,19 @@ NSArray *sectionTitles;
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:resuseID];
     HeaderEventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:resuseID];
     
-    NSString *sectionTitle = [sectionTitles objectAtIndex:section];
-    
-    if ([sectionTitle  isEqual: @"My Events"]) {
+    NSString *sectionTitle = @"EVENTS NEAR ME";
+    if ([_myEventsDataArray count] > 0 && section == 0)
+    {
+        sectionTitle = @"MY EVENTS";
         [cell.filterButton setHidden:YES];
         [cell.numberOfEventsLabel setHidden:YES];
-    } else {
-        [cell.numberOfEventsLabel setHidden:YES];
     }
+    else
+    {
+        [cell.numberOfEventsLabel setHidden:YES];
+        
+    }
+
     cell.MyEventsLabel.text = sectionTitle;
     
     return cell;

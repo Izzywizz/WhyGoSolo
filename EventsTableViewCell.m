@@ -11,6 +11,15 @@
 #import "User.h"
 #import "Data.h"
 #import "WebService.h"
+
+#import "AFNetworking.h"
+
+#import "UIImageView+AFNetworking.h"
+#import "AFHTTPRequestOperation.h"
+#import "UIImageView+AFNetworking.h"
+
+#import "RRDownloadImage.h"
+
 @implementation EventsTableViewCell
 
 - (void)awakeFromNib {
@@ -73,7 +82,6 @@
 
 -(EventsTableViewCell*)configureCellWithEventForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath
 {
-
     if (tableView.numberOfSections == 2 && indexPath.section ==  0)
     {
         self.joined = YES;
@@ -84,7 +92,6 @@
         self.joined = NO;
         self.event = [[Data sharedInstance].eventsArray objectAtIndex:indexPath.row];
     }
-
     
     if (self.joined)
     {
@@ -116,7 +123,9 @@
     self.eventInviteeCount.text = self.event.totalAttending;
     self.eventEmoticonLabel.text = self.event.emoji;
     
-    return  self;
-
+    self.avatarImageView.image = [[RRDownloadImage sharedInstance]avatarImageForUserID:[NSString stringWithFormat:@"%i",self.event.userID]];
+    
+    return self;
 }
+
 @end

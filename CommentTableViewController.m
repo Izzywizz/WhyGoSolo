@@ -59,11 +59,22 @@
 -(void)eventParsedSuccessfully
 {
     NSLog(@"CCCCC PPPPPP EVVVV = %@", [Data sharedInstance].selectedEvent.eventDescription);
+    _commentsArray = [NSMutableArray new];
     _commentsArray = [[NSMutableArray alloc]initWithArray:[Data sharedInstance].selectedEvent.commentsArray];
     
     [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
 }
+-(void)avatarDownloaded
+{
+        [self performSelectorOnMainThread:@selector(refreshCellInputViews) withObject:nil waitUntilDone:YES];
+}
 
+-(void)refreshCellInputViews
+{
+    NSLog(@"EVENT TV AVATAR RELOAD INPUT VIEWS");
+    [self.tableView reloadData];
+    // [self.tableView reloadInputViews];
+}
 -(void)handleUpdates
 {
     NSLog(@"OMMENTS ARR COUNt = %i", [_commentsArray count]);
@@ -94,20 +105,8 @@
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reusedID];
     CommentsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reusedID forIndexPath:indexPath];
     
-    if (indexPath.row % 2) {
-        [cell setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
-        [cell.profileImage setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
-        cell.reportButton.tag = 0;
+    [cell configureCellWithCommentForTableView:self.tableView atIndexPath:indexPath];
 
-    } else  {
-        [cell setBackgroundColor:[UIColor whiteColor]];
-        [cell.profileImage setBackgroundColor:[UIColor whiteColor]];
-        
-        //Example logic of user own profile to create the delete comment functionality for the user, so this shows the deete button for the white background comment
-        cell.reportButton.alpha = 0;
-        cell.deleteButton.alpha = 1;
-    }
-    
     return cell;
 }
 
