@@ -10,4 +10,14 @@
 
 @interface WebServiceRequest : NSObject
 
+- (id)initWithApiRequest:(long)apiRequest;
+
+@property long apiRequst;
+@property NSDictionary *paramsDict;
+@property NSString *requestUrl;
+@property SEL responseSelector;
+
+
+
++(NSString*)userID;
 @end

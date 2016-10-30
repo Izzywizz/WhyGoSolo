@@ -22,6 +22,8 @@
 -(void)joinedStatusUpdatedSuccessfully;
 -(void)userParsedSuccessfully;
 -(void)eventParsedSuccessfully;
+
+-(void)userLoggedInSuccessfully;
 @end
 
 @interface Data : NSObject
@@ -32,6 +34,8 @@
 @property NSString* userID;
 @property NSString* userToken;
 
+@property NSString* selectedEventID;
+
 @property NSString* filterDistance;
 @property NSArray* residenceFilterArray;
 
@@ -39,10 +43,11 @@
 
 + (Data*)sharedInstance;
 
-
+@property User *loggedInUser;
 
 @property NSMutableArray* universitesArray;
 @property NSMutableArray* residencesArray;
+@property NSString *residenceFilterArrayString;
 
 @property NSMutableArray* myEventsArray;
 @property NSMutableArray* eventsArray;
@@ -66,4 +71,8 @@
 
 -(void)parseEventFromDict:(NSDictionary*)dict;
 
+-(void)updateResidenceFilterArrayString;
+
+
+-(void)login;
 @end

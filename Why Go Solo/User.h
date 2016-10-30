@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class University;
+@class Residence;
+
 @interface User : NSObject
 
 -(User*)initWithDict:(NSDictionary*)dict;
@@ -16,5 +19,17 @@
 @property NSString* firstName;
 @property NSString* lastName;
 @property NSString* userName;
+@property NSString* password;
+@property NSString* dobEpoch;
+@property NSString* email;
+@property long latitude;
+@property long longitude;
+
+@property NSString* universityID;
+@property NSString* residenceID;
+@property University* university;
+@property Residence* residence;
+
+
 @property NSMutableArray *eventsArray;
 @end

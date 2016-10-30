@@ -46,7 +46,7 @@
 {
     
     [Data sharedInstance].delegate = self;
-    [[WebService sharedInstance]eventsApiRequest:EVENT_DETAILS];
+    [[WebService sharedInstance]eventsApiRequest:EVENT_API_SINGLE];
     
 }
 

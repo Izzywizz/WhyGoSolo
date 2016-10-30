@@ -13,6 +13,8 @@
 #import "Event.h"
 #import "User.h"
 #import "Comment.h"
+
+#import "WebService.h"
 @interface Data ()
 
 @end
@@ -33,11 +35,32 @@
     return _sharedInstance;
 }
 
+-(void)login
+{
+    NSLog(@"XXXXXXewqr2r 2");
+    [[PersistanceManager sharedInstance]saveUserID:[Data sharedInstance].userID andToken:[Data sharedInstance].userToken];
+    [[WebService sharedInstance]authentication];
+
+}
+
 -(void)authenticationSuccessful
 {
+    [Data sharedInstance].filterDistance = FILTER_DEFAULT_VALUE_DISTANCE;
+      [Data sharedInstance].residenceFilterArray = [NSMutableArray new];
+    [Data sharedInstance].residenceFilterArrayString = FILTER_DEFAULT_VALUE_RESIDENCE_ID_ARRAY;
     if (_delegate && [_delegate respondsToSelector:@selector(authenticationSuccessful)])
     {
-        [self.delegate authenticationSuccessful];
+        
+        [self.delegate performSelector:@selector(authenticationSuccessful)];
+       // [self.delegate authenticationSuccessful];
+    }
+}
+
+-(void)updateResidenceFilterArrayString
+{
+    if ([[Data sharedInstance].residenceFilterArray count]>0)
+    {
+        [Data sharedInstance].residenceFilterArrayString  = [[[Data sharedInstance].residenceFilterArray valueForKey:@"description"] componentsJoinedByString:@","];
     }
 }
 
@@ -109,6 +132,10 @@
     
     NSLog(@"Event ARR = %@", _eventsArray);
     
+  //  [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"Respose%li",(long)EVENT_API_ALL] object:nil];
+    
+  //  return;
+    
     if (_delegate && [_delegate respondsToSelector:@selector(eventsDownloadedSuccessfully)])
     {
         [self.delegate eventsDownloadedSuccessfully];
@@ -119,8 +146,14 @@
 {
     NSLog(@"UPDATE JOINED DATA DICT: %@", dict);
     
-    if (_delegate && [_delegate respondsToSelector:@selector(joinedStatusUpdatedSuccessfully)])
+    [[WebService sharedInstance]eventsApiRequest:EVENT_API_ALL];
+    return;
+    
+   // [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"Respose%li",(long)EVENT_API_JOIN] object:nil];
+   // return;
+if (_delegate && [_delegate respondsToSelector:@selector(joinedStatusUpdatedSuccessfully)])
     {
+        
         [self.delegate joinedStatusUpdatedSuccessfully];
     }
 }
@@ -173,6 +206,7 @@
         [[Data sharedInstance].selectedEvent.commentsArray addObject:comment];
     
     }
+
     
     if (_delegate && [_delegate respondsToSelector:@selector(eventParsedSuccessfully)])
     {

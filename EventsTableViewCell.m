@@ -10,6 +10,7 @@
 #import "Event.h"
 #import "User.h"
 #import "Data.h"
+#import "WebService.h"
 @implementation EventsTableViewCell
 
 - (void)awakeFromNib {
@@ -25,11 +26,14 @@
     // Configure the view for the selected state
 }
 - (IBAction)buttonPressed:(UIButton *)sender {
+    [Data sharedInstance].selectedEvent = self.event;
+    [Data sharedInstance].selectedEventID = [NSString stringWithFormat:@"%i",self.event.eventID];
     switch (sender.tag) {
         case JOIN: NSLog(@"Join Button Pressed");
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"Joined" object:self.event];
-
-            _joinButton.alpha = 0;
+            //[[NSNotificationCenter defaultCenter] postNotificationName:@"Joined" object:self.event];
+            [[WebService sharedInstance]eventsApiRequest:EVENT_API_JOIN];
+            
+           _joinButton.alpha = 0;
             _joinedButton.alpha = 1;
             break;
         case EDIT: NSLog(@"Edit Button Pressed");
@@ -40,15 +44,19 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"Profile Found" object:self.event];
             break;
         case JOINED: NSLog(@"Joined Button");
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"Joined" object:self.event];
+           // [[NSNotificationCenter defaultCenter] postNotificationName:@"Joined" object:self.event];
             NSLog(@"Alpha values are just being set, no logic here!");
+          
+            [[WebService sharedInstance]eventsApiRequest:EVENT_API_JOIN];
+
+            _joinButton.alpha = !_joinButton.alpha;
+
             _joinButton.alpha = 1;
             _joinedButton.alpha = 0;
             break;
         default:
             break;
             
-            [Data sharedInstance].selectedEvent = self.event;
     }
 }
 - (IBAction)peopleEventButtonPressed:(UIButton *)sender {

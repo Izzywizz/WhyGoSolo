@@ -52,36 +52,42 @@ NSArray *sectionTitles;
     [self setupNavigationController];
     [self setupDummyData];
     [self setupTable];
-    [self setupObservers];
     
-    [[WebService sharedInstance]eventsApiRequest:ALL_EVENTS];
+ //   [[WebService sharedInstance]eventsApiRequest:EVENT_API_ALL];
     //  [Data sharedInstance].eventsArray = [NSMutableArray new];
     // By default, isHallsSwitchOn = 1 as when it passed by the observer for the FilterTableViewCell it comes actiavted and I couldn't find a way to pass a value via an observer
     _dataArray = [NSArray new];
     _myEventsDataArray = [NSArray new];
+    
+    
+   // [self refreshEventsData];
+
 }
 
 
-
 -(void)viewWillAppear:(BOOL)animated  {
+    [Data sharedInstance].delegate = self;
+    [self setupObservers];
+
     
-    if (!_mapController) {
+       if (!_mapController) {
         _mapController = [[MapViewController alloc] init];
     }
     if(!_userLocation)
     {
         _userLocation =[[CurrentUserLocation alloc] init];
     }
-    
-    [[WebService sharedInstance]eventsApiRequest:ALL_EVENTS];
+ //   [self refreshEventsData];
   //  [[WebService sharedInstance]events];
-    [Data sharedInstance].delegate = self;
+    [[WebService sharedInstance]eventsApiRequest:EVENT_API_ALL];
+    NSLog(@"dsdsddsdsdsdz");
 }
 
-
--(void)viewDidDisappear:(BOOL)animated
+-(void)viewWillDisappear:(BOOL)animated
 {
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
     [Data sharedInstance].delegate = nil;
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -90,16 +96,43 @@ NSArray *sectionTitles;
 
 -(void)eventsDownloadedSuccessfully
 {
+    _myEventsDataArray = [Data sharedInstance].myEventsArray;
+    _dataArray = [Data sharedInstance].eventsArray;
+    [self.tableView reloadData];
+
     [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
+}
+/*
+- (void)receivedNotification:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:[NSString stringWithFormat:@"Respose%li",(long)EVENT_API_ALL]]) {
+        [self handleUpdates];
+    }
+}
+*/
+
+
+
+-(void)updatedJoinStatus
+{
+   // [self refreshEventsData];
+   // [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+
+}
+
+-(void)refreshEventsData
+{
+    [[WebService sharedInstance]eventsApiRequest:EVENT_API_ALL];
 }
 
 -(void)handleUpdates
 {
-    _myEventsDataArray = [Data sharedInstance].myEventsArray;
-    _dataArray = [Data sharedInstance].eventsArray;
+
     
-    [self.tableView reloadData];
+    [self.tableView reloadInputViews];
+
+   // [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
+
 #pragma mark - Observer Methods
 
 /** The actual method that handles the observer that has been posted*/
@@ -116,7 +149,7 @@ NSArray *sectionTitles;
         
         [Data sharedInstance].selectedEvent = notification.object;
         
-        
+                [Data sharedInstance].selectedEventID = [NSString stringWithFormat:@"%i", [Data sharedInstance].selectedEvent.eventID];
         [self moveToOtherUserProfile];
     }
 }
@@ -124,7 +157,7 @@ NSArray *sectionTitles;
 -(void)moveToEdit:(NSNotification *) notification   {
     if ([[notification name] isEqualToString:@"Edit Found"]) {
         [Data sharedInstance].selectedEvent = notification.object;
-
+        [Data sharedInstance].selectedEventID = [NSString stringWithFormat:@"%i", [Data sharedInstance].selectedEvent.eventID];
         [self moveToEdit];
     }
 }
@@ -133,37 +166,42 @@ NSArray *sectionTitles;
     if ([[notification name] isEqualToString:@"People Event"])  {
         NSLog(@"Moving to Event related to People");
         [Data sharedInstance].selectedEvent = notification.object;
+              [Data sharedInstance].selectedEventID = [NSString stringWithFormat:@"%i", [Data sharedInstance].selectedEvent.eventID];
         [self moveToEvent];
     }
 }
 
--(void)joinedButton:(NSNotification *) notification {
-    if ([[notification name] isEqualToString:@"Joined"]) {
-        NSLog(@"NOTIFICATION DATA = %@", notification);
-        [Data sharedInstance].selectedEvent = notification.object;
-        
-        [[WebService sharedInstance]eventsApiRequest:JOIN_EVENT];
-        NSLog(@"Joined logic needs to be added here similar to collection cell");
-    }
-}
+
 
 -(void) commentsButton:(NSNotification *) notification    {
     if ([[notification name] isEqualToString:@"Comments"]) {
         [Data sharedInstance].selectedEvent = notification.object;
-
+  [Data sharedInstance].selectedEventID = [NSString stringWithFormat:@"%i", [Data sharedInstance].selectedEvent.eventID];
         [self moveToComments];
     }
 }
 
+/*
+ 
+ -(void)joinedButton:(NSNotification *) notification {
+ if ([[notification name] isEqualToString:@"Joined"]) {
+ NSLog(@"NOTIFICATION DATA = %@", notification);
+ [Data sharedInstance].selectedEvent = notification.object;
+ [Data sharedInstance].selectedEventID = [NSString stringWithFormat:@"%i", [Data sharedInstance].selectedEvent.eventID];
+ [[WebService sharedInstance]eventsApiRequest:EVENT_API_JOIN];
+ NSLog(@"Joined logic needs to be added here similar to collection cell");
+ }
+ }
 -(void)joinedStatusUpdatedSuccessfully
 {
-    [[WebService sharedInstance]eventsApiRequest:ALL_EVENTS];
+  //  [self performSelector:@selector(refreshEventsData) withObject:nil afterDelay:1.0 inModes:@[]];
+    [[WebService sharedInstance]eventsApiRequest:EVENT_API_ALL];
     
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
     
-    NSLog(@"DATAT RELOAD");
+    NSLog(@"DATATxxxx RELOAD");
 }
-
+*/
 
 -(void) setupObservers    {
     //When the profile button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
@@ -359,7 +397,7 @@ NSArray *sectionTitles;
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     EventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
-    
+
     [cell configureCellWithEventForTableView:self.tableView atIndexPath:indexPath];
     
     return cell;

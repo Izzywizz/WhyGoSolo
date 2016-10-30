@@ -126,6 +126,7 @@
 		A1935A411DC38EBE0025711E /* EventsWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = A1935A401DC38EBE0025711E /* EventsWebService.m */; };
 		A1935A441DC3E4B20025711E /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = A1935A431DC3E4B20025711E /* Comment.m */; };
 		A1A2A9111DC53C6500B2EABB /* WebServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A2A9101DC53C6500B2EABB /* WebServiceRequest.m */; };
+		A1A2A9141DC557D100B2EABB /* WebServiceRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A2A9131DC557D100B2EABB /* WebServiceRequestTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -330,6 +331,8 @@
 		A1935A431DC3E4B20025711E /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		A1A2A90F1DC53C6500B2EABB /* WebServiceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceRequest.h; sourceTree = "<group>"; };
 		A1A2A9101DC53C6500B2EABB /* WebServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceRequest.m; sourceTree = "<group>"; };
+		A1A2A9121DC557D100B2EABB /* WebServiceRequestTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceRequestTest.h; sourceTree = "<group>"; };
+		A1A2A9131DC557D100B2EABB /* WebServiceRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceRequestTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -654,6 +657,8 @@
 				A1935A401DC38EBE0025711E /* EventsWebService.m */,
 				A1A2A90F1DC53C6500B2EABB /* WebServiceRequest.h */,
 				A1A2A9101DC53C6500B2EABB /* WebServiceRequest.m */,
+				A1A2A9121DC557D100B2EABB /* WebServiceRequestTest.h */,
+				A1A2A9131DC557D100B2EABB /* WebServiceRequestTest.m */,
 				A1151F321DAA5CA3008222ED /* Reachability.h */,
 				A1151F331DAA5CA3008222ED /* Reachability.m */,
 				A1151F371DAA5CB1008222ED /* AFNetworking */,
@@ -858,6 +863,7 @@
 				43FBC2F21D8AA49100AE4E1F /* TermsViewController.m in Sources */,
 				A1151F5D1DAA5D13008222ED /* RRDateFormater.m in Sources */,
 				4335A4E11D9E5E0600DCCC3E /* EditCollectionViewController.m in Sources */,
+				A1A2A9141DC557D100B2EABB /* WebServiceRequestTest.m in Sources */,
 				4380C59D1D8FD70000FA08C5 /* ViewSetupHelper.m in Sources */,
 				43BD7BB31D86993B00DDA384 /* PeopleViewController.m in Sources */,
 				430919381D8154F400EE9220 /* CurrentUserLocation.m in Sources */,

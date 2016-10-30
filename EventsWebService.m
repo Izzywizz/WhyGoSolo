@@ -27,9 +27,9 @@
 -(NSDictionary*)dictForApiRequest:(long)apiRequest
 {
     NSDictionary *apiDict = @{
-                                   [NSString stringWithFormat:@"%li",(long)ALL_EVENTS]:[self allEventsDict],
-                                   [NSString stringWithFormat:@"%li",(long)EVENT_DETAILS]:[self eventDetailsDict],
-                                   [NSString stringWithFormat:@"%li",(long)JOIN_EVENT]:[self joinEventDict],
+                                   [NSString stringWithFormat:@"%li",(long)EVENT_API_ALL]:[self allEventsDict],
+                                   [NSString stringWithFormat:@"%li",(long)EVENT_API_SINGLE]:[self eventDetailsDict],
+                                   [NSString stringWithFormat:@"%li",(long)EVENT_API_JOIN]:[self joinEventDict],
                                 //   [NSString stringWithFormat:@"%li",(long)EVENT_COMMENTS]:[self eventCommentsDict]
 
                                    };
@@ -40,7 +40,7 @@
     return [apiDict valueForKey:[NSString stringWithFormat:@"%li",(long)apiRequest]];
 }
 
-// ALL_EVENTS
+// EVENT_API_ALL
 -(NSDictionary*)allEventsDict
 {
     return @{
@@ -64,7 +64,7 @@
               };
 }
 
-// EVENT_DETAILS
+// EVENT_API_SINGLE
 -(NSDictionary*)eventDetailsDict
 {
     return @{
@@ -74,7 +74,7 @@
              };
 }
 
-// JOIN_EVENT
+// EVENT_API_JOIN
 -(NSDictionary*)joinEventDict
 {
     return @{

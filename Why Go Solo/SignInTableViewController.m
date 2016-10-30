@@ -9,7 +9,7 @@
 #import "SignInTableViewController.h"
 #import "ViewSetupHelper.h"
 #import "RRRegistration.h"
-
+#import "WebService.h"
 @interface SignInTableViewController ()
 
 
@@ -46,18 +46,23 @@
 //TODO: Need tro validation propery for email and changing the colour of the selction inserts
 - (IBAction)signinButtonPressed:(UIButton *)sender {
     NSLog(@"Sign In Button");
-    RRRegistration *registration = [[RRRegistration alloc] init];
-    registration.password = _passwordTextField.text;
-    registration.confirmPassword = @"test";// placeholder password
+    [RRRegistration sharedInstance].password = _passwordTextField.text;
+    [RRRegistration sharedInstance].email = _emailAddressTextField.text;
+
+    //   [RRRegistration sharedInstance].confirmPassword = @"test";// placeholder password
     ViewSetupHelper *fontSetup = [ViewSetupHelper new];
     
-    if(![registration validateTextField:_passwordTextField])    {
+    if(![[RRRegistration sharedInstance] validateTextField:_passwordTextField])    {
         [fontSetup setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];
     }
     
-    if ([registration validateTextField:_emailAddressTextField] && [registration validateTextField:_passwordTextField]) {
+    NSLog(@"RR L EMAIL : %@ / RR L PW : %@", [RRRegistration sharedInstance].email, [RRRegistration sharedInstance].password);
+    
+    [[WebService sharedInstance]eventsApiRequest:LOGIN];
+    
+    if ([[RRRegistration sharedInstance] validateTextField:_emailAddressTextField] && [[RRRegistration sharedInstance] validateTextField:_passwordTextField]) {
         NSLog(@"Correctly signed in");
-    } else if (![registration validateTextField:_emailAddressTextField])    {
+    } else if (![[RRRegistration sharedInstance] validateTextField:_emailAddressTextField])    {
         [fontSetup setColourOf:_emailAddressContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
     } else  {
         [self alertSetupandView:@"Incorrect Password/ Email" andMessage:@"Please type in your correct email/ password comibation"];

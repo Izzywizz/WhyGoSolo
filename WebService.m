@@ -16,6 +16,8 @@
 #import "User.h"
 #import "PersistanceManager.h"
 #import "EventsWebService.h"
+
+#import "WebServiceRequest.h"
 //#define API_BASE_URL @"http://goalmachine.app"
 #define API_BASE_URL @"http://139.59.180.166/api" // LIVER
 
@@ -154,7 +156,7 @@
 {
     switch (request) {
         case 0:
-            [[WebService sharedInstance]eventsApiRequest:ALL_EVENTS];
+            [[WebService sharedInstance]eventsApiRequest:EVENT_API_ALL];
             break;
             
         default:
@@ -268,9 +270,20 @@
 
 -(void)eventsApiRequest:(int)apiCall
 {
-    EventsWebService *eventsWebService = [[EventsWebService alloc]initWithEventApiReques:apiCall];
+    WebServiceRequest *wsRequest = [[WebServiceRequest alloc]initWithApiRequest:apiCall];
+    
+    [self postRequest:wsRequest.requestUrl withParams:wsRequest.paramsDict withResponseSelctor:wsRequest.responseSelector];
+
+    ;
+    return;
+    
+  /*  EventsWebService *eventsWebService = [[EventsWebService alloc]initWithEventApiReques:apiCall];
     
     [self postRequest:eventsWebService.requestUrl withParams:eventsWebService.paramsDict withResponseSelctor:eventsWebService.responseSelector];
+    
+    NSLog(@"WS REQ: %@ \n  EWS REQ: %@ \n  WS PARAMS: %@ \n  EWS PARAMS: %@ \n WS SEL: %@ \nEWS SEL %@", wsRequest.requestUrl, eventsWebService.requestUrl, wsRequest.paramsDict, eventsWebService.paramsDict, wsRequest.responseSelector, eventsWebService.responseSelector);
+   */
+
 }
 
 
@@ -341,13 +354,22 @@
     [manager.requestSerializer setValue:[Data sharedInstance].userToken forHTTPHeaderField:@"Token"];
     
     [manager POST:fullRequestUrl parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+      
+        
         NSLog(@"EVENTS JSON: %@", responseObject);
         NSLog(@"RESPONSE HEADERS = %@", task.response);
 
         NSHTTPURLResponse* res = task.response;
         
       //  NSLog(@"RESPONSE HEADERS = %@", [res.allHeaderFields ]);
-        
+        if (![Data sharedInstance].userToken) {
+            NSMutableDictionary *resDict = [[NSMutableDictionary alloc]initWithDictionary:responseObject];
+            [resDict setObject:res.allHeaderFields forKey:@"header"];
+            
+            [Data sharedInstance].userToken = [[resDict valueForKey:@"header" ] valueForKey:@"Token"];
+            [Data sharedInstance].userID = [responseObject valueForKey:@"id"];
+        }
+
         NSMutableDictionary *resDict = [[NSMutableDictionary alloc]initWithDictionary:responseObject];
         [resDict setObject:res.allHeaderFields forKey:@"header"];
         [[Data sharedInstance]performSelector:responseMethod withObject:resDict];
