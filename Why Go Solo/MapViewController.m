@@ -11,7 +11,9 @@
 #import "SearchBarTableViewController.h"
 #import "PinLocationData.h"
 #import "ViewSetupHelper.h"
-
+#import "WebService.h"
+#import "Data.h"
+#import "Event.h"
 #define METERS_PER_MILE 1609.344
 
 @import MapKit;
@@ -393,6 +395,9 @@
     } else {
         NSLog(@"POST EVENT");
         //TODO: Add logic to create the event
+        [Data sharedInstance].createdEvent.latitude = _placemark.location.coordinate.latitude;
+        [Data sharedInstance].createdEvent.longitude = _placemark.location.coordinate.longitude;
+        [[WebService sharedInstance]eventsApiRequest:EVENT_API_CREATE];
         [self setupAlertBox];
     }
     

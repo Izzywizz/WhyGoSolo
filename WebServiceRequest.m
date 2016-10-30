@@ -37,16 +37,12 @@
         self.apiRequst = apiRequest;
         
         self.requestUrl = [self requestURLManager];
-//        self.paramsDict = @{@"params":[self paramsDictForApiRequest]};
         NSLog(@"1111111");
         self.paramsDict = [self paramsDictForApiRequest];
         NSLog(@"11111112");
         self.responseSelector = NSSelectorFromString([self responseSelectorManager]);
         NSLog(@"11111113");
-      //  self.paramsDict = [[self dictForApiRequest:apiRequest]valueForKey:@"params"];
-      //  self.requestUrl = [[self dictForApiRequest:apiRequest]valueForKey:@"requestUrl"];
-     //   self.responseSelector = NSSelectorFromString([[self dictForApiRequest:apiRequest]valueForKey:@"responseSelector"]);
-    }
+       }
     return self;
 }
 
@@ -66,7 +62,11 @@
     {
         selectorString = @"loginDict";
     }
+    if(_apiRequst == EVENT_API_CREATE)
+    {
+        selectorString = @"createEventDict";
 
+    }
     
     SEL dataDictSelector = NSSelectorFromString(selectorString);
     
@@ -129,6 +129,20 @@
              RESIDENCE_PARAM_ID:[RRRegistration sharedInstance].residenceID,
              };
 }
+
+
+-(NSDictionary*)createEventDict
+{
+    return @{
+             EVENT_PARAM_ADDRESS:[Data sharedInstance].createdEvent.address,
+             EVENT_PARAM_DESCRIPTION:[Data sharedInstance].createdEvent.eventDescription,
+             EVENT_PARAM_LONGITUDE:[NSString stringWithFormat:@"%f",[Data sharedInstance].createdEvent.longitude],
+             EVENT_PARAM_LATITUDE:[NSString stringWithFormat:@"%f",[Data sharedInstance].createdEvent.latitude],
+             EVENT_PARAM_EMOJI:[Data sharedInstance].createdEvent.emoji,
+             };
+}
+
+
 -(NSString*)requestURLManager
 {
     switch (_apiRequst)

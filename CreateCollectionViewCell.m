@@ -7,7 +7,8 @@
 //
 
 #import "CreateCollectionViewCell.h"
-
+#import "Data.h"
+#import "Event.h"
 @implementation CreateCollectionViewCell
 
 -(void)awakeFromNib {
@@ -47,6 +48,8 @@
         self.describeEventTextView.text = @"Describe your event 140 chracters or less!"; //load up previous description if empty
         [self.describeEventTextView resignFirstResponder];
     }
+    
+    [Data sharedInstance].createdEvent.eventDescription = _describeEventTextView.text;
 }
 
 /** creates the placeholder effect*/
@@ -117,6 +120,9 @@
     NSData *emojiData = [emojiUTF8 dataUsingEncoding:NSNonLossyASCIIStringEncoding];
     NSString *emojiString = [[NSString alloc] initWithData:emojiData encoding:NSUTF8StringEncoding];
     
+    
+    [Data sharedInstance].createdEvent.emoji = emojiString;
+
     NSLog(@"EMOJI TEXT = %@", emojiString);
 }
 

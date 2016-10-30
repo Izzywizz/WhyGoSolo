@@ -42,6 +42,10 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
     
 
     USER_API_CREATE,
+    
+    
+    
+    
     USER_API_DELETE,
     USER_API_EDIT,
     USER_API_SINGLE,
@@ -59,7 +63,11 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
     
     
     EVENT_API_CREATE,
+    #define EVENT_API_CREATE_PARAMS @[EVENT_PARAM_USER_ID]
+    #define EVENT_API_CREATE_PARAMS_DICT @{EVENT_PARAM_USER_ID:,}
     
+    #define EVENT_API_CREATE_RESPONSE_SELECTOR @"createEventsArrayFromDict:"
+    #define EVENT_API_CREATE_ARRAY @[EVENT_API_CREATE_PARAMS, EVENT_API_CREATE_RESPONSE_SELECTOR]
 
 
     EVENT_API_EDIT,
@@ -72,7 +80,7 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
     // EVENT_COMMENTS,
   //  EVENT_MAP
 };
-
+#define kCREATE_EVENT_DESCRIPTION [Data SharedInstance].createdEvent.eventDescription;
 
 #define API_ARRAY @[EVENT_API_ARRAY, EVENT_API_SINGLE_ARRAY, EVENT_API_JOIN_ARRAY, LOGIN_API_PARAMS_ARRAY]
 

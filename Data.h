@@ -57,6 +57,9 @@
 @property Residence *selectedResidence;
 @property Event *selectedEvent;
 @property User *selectedUser;
+
+
+@property Event *createdEvent;
 //-(void)createUserFromDict:(NSDictionary *)dict;
 
 -(void)createUniversitesArrayFromDict:(NSDictionary *)dict;

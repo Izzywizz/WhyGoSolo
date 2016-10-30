@@ -7,6 +7,9 @@
 //
 
 #import "CreateCollectionViewController.h"
+#import "Event.h"
+#import "Data.h"
+
 
 @interface CreateCollectionViewController ()
 @property NSArray *dummyData;
@@ -37,6 +40,14 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 }
 
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (![Data sharedInstance].createdEvent)
+    {
+        [Data sharedInstance].createdEvent = [Event new];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -201,6 +212,8 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark - Action Methods
 
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+    
+    [Data sharedInstance].createdEvent = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
