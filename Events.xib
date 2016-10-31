@@ -30,9 +30,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="SSS-ln-rsa"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="TwP-Ft-8Qn"/>
-                                </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54j-bB-pVw">
                                 <rect key="frame" x="321" y="159" width="85" height="30"/>
@@ -46,7 +43,7 @@
                                     <color key="titleColor" red="0.98431372549999996" green="0.12549019610000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="qBC-dc-eXM"/>
+                                    <action selector="joinButtonPressed:" destination="2Pf-mv-1cn" eventType="touchUpInside" id="pO3-Wa-jmu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdD-gT-2wJ" userLabel="Edit Button">
@@ -61,7 +58,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="hIC-5X-iew"/>
+                                    <action selector="joinButtonPressed:" destination="2Pf-mv-1cn" eventType="touchUpInside" id="BxJ-0V-m4H"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" tag="4" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlW-fC-bAC" userLabel="Joined">
@@ -74,7 +71,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="6yX-qw-14c"/>
+                                    <action selector="joinButtonPressed:" destination="2Pf-mv-1cn" eventType="touchUpInside" id="lkf-LR-lLr"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="X31-ZH-LSy" customClass="RRCircularImageView">
@@ -204,7 +201,7 @@
                                     <constraint firstAttribute="width" constant="98" id="faP-3e-mYS"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="peopleEventButtonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="9KG-Oa-Ga6"/>
+                                    <action selector="peopleEventButtonPressed:" destination="2Pf-mv-1cn" eventType="touchUpInside" id="07W-jN-lnz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="li0-lC-VdL">
@@ -214,7 +211,7 @@
                                     <constraint firstAttribute="width" constant="65" id="wVg-XJ-ni0"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="commentsButtonPressed:" destination="rNa-XG-6sp" eventType="touchUpInside" id="Mif-1m-8La"/>
+                                    <action selector="commentsButtonPressed:" destination="2Pf-mv-1cn" eventType="touchUpInside" id="ClI-ve-UvN"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grance Central, Skelhorne St, Liverpool" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="FXw-a4-BaV" userLabel="Address">
@@ -319,6 +316,21 @@
                                 <exclude reference="u4g-a7-ZV8"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outlet property="attendeesdButton" destination="nNF-iW-exW" id="1im-M0-nDs"/>
+                            <outlet property="avatarImageView" destination="X31-ZH-LSy" id="DLs-Sc-hX8"/>
+                            <outlet property="commentsdButton" destination="li0-lC-VdL" id="d6u-eO-dbC"/>
+                            <outlet property="editJoinButton" destination="DdD-gT-2wJ" id="UDe-b4-0ue"/>
+                            <outlet property="eventAddressLabel" destination="FXw-a4-BaV" id="pYg-2E-QMj"/>
+                            <outlet property="eventDescriptionText" destination="3Oi-In-Wv7" id="dv2-Gs-8wV"/>
+                            <outlet property="eventEmoticonLabel" destination="Hmb-ch-Tf3" id="gF7-OH-OxI"/>
+                            <outlet property="eventInviteeCount" destination="rdB-0n-bkb" id="aHh-X3-53t"/>
+                            <outlet property="eventMessageCount" destination="H2f-bt-vGd" id="UEQ-ZO-i1C"/>
+                            <outlet property="joinButton" destination="54j-bB-pVw" id="0Su-xB-rmF"/>
+                            <outlet property="joinedButton" destination="LlW-fC-bAC" id="MRV-5Y-C8k"/>
+                            <outlet property="nameLabel" destination="Cgu-GY-CmA" id="xuf-3C-d2U"/>
+                            <outlet property="profileButton" destination="NVY-XN-eK4" id="yR6-MZ-dE1"/>
+                        </connections>
                     </view>
                 </subviews>
                 <constraints>
@@ -330,19 +342,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
-                <outlet property="avatarImageView" destination="X31-ZH-LSy" id="DMI-J5-y82"/>
-                <outlet property="editJoinButton" destination="DdD-gT-2wJ" id="iIG-La-cph"/>
-                <outlet property="eventAddressLabel" destination="FXw-a4-BaV" id="w1h-RP-X8K"/>
-                <outlet property="eventDescriptionText" destination="3Oi-In-Wv7" id="F87-Aj-pse"/>
-                <outlet property="eventEmoticonLabel" destination="Hmb-ch-Tf3" id="VRS-MQ-s63"/>
-                <outlet property="eventInviteeCount" destination="rdB-0n-bkb" id="7WO-Yt-ywX"/>
-                <outlet property="eventMessageCount" destination="H2f-bt-vGd" id="atc-rS-4hE"/>
-                <outlet property="joinButton" destination="54j-bB-pVw" id="f53-eO-00H"/>
-                <outlet property="joinedButton" destination="LlW-fC-bAC" id="wju-4N-Su2"/>
-                <outlet property="messageImage" destination="dMr-mC-bzt" id="nlr-6g-fHF"/>
-                <outlet property="nameLabel" destination="Cgu-GY-CmA" id="IF0-P9-tuP"/>
-                <outlet property="profileImage" destination="QhB-Uy-I1u" id="yf8-A5-TUw"/>
-                <outlet property="viewLayer" destination="2Pf-mv-1cn" id="6JI-sU-O1X"/>
+                <outlet property="eventCellView" destination="2Pf-mv-1cn" id="iTS-lg-92a"/>
             </connections>
             <point key="canvasLocation" x="-668.5" y="234"/>
         </tableViewCell>

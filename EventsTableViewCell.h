@@ -11,8 +11,13 @@
 @class EventCellView;
 
 @interface EventsTableViewCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet EventCellView *eventCellView;
 
+@property (strong, nonatomic) IBOutlet EventCellView *eventCellView;
+@property Event *event;
+
+-(EventsTableViewCell*)configureCellWithEventForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath;
+
+/*
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventAddressLabel;
@@ -29,16 +34,16 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property BOOL joined;
-@property Event *event;
+
 typedef enum {
     EDIT = 1,
     JOIN,
     PROFILE,
     JOINED
 } EventState;
-
+*/
 
 //-(void)configureCellWithEvent;
--(EventsTableViewCell*)configureCellWithEventForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath;
+
 
 @end

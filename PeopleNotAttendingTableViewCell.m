@@ -9,7 +9,7 @@
 #import "PeopleNotAttendingTableViewCell.h"
 #import "EventsTableViewCell.h"
 
-
+#import "EventCellView.h"
 @implementation PeopleNotAttendingTableViewCell
 
 - (void)awakeFromNib {

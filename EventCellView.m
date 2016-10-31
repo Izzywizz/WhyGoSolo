@@ -22,6 +22,11 @@
 #import "RRDownloadImage.h"
 #import "EventsTableViewCell.h"
 #import "EventCollectionViewCell.h"
+
+
+#import "Event.h"
+#import "Data.h"
+#import "EventCellView.h"
 @implementation EventCellView
 
 
@@ -86,7 +91,7 @@
 
 }
 
--(void)configureEventsTableViewCell:(EventsTableViewCell*)cell;
+-(void)configureEventsTableViewCell:(EventsTableViewCell*)cell
 {
     [self configureCellWithEvent:cell.event];
 }

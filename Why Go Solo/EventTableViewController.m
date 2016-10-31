@@ -373,7 +373,6 @@ NSArray *sectionTitles;
 #pragma mark - Custom Cells
 -(HeaderEventsTableViewCell *) headerCellAtIndex:(NSInteger) section  {
 
-    
     NSString *resuseID = @"HeaderEventsCell";
     NSString *nibName = @"HeaderEvents";
     
@@ -390,7 +389,6 @@ NSArray *sectionTitles;
     else
     {
         [cell.numberOfEventsLabel setHidden:YES];
-        
     }
 
     cell.MyEventsLabel.text = sectionTitle;
@@ -417,7 +415,6 @@ NSArray *sectionTitles;
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     EventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
-
     [cell configureCellWithEventForTableView:self.tableView atIndexPath:indexPath];
     
     return cell;

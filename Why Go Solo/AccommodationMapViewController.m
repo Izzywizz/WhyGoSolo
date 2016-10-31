@@ -27,9 +27,11 @@
 @property (nonatomic) CLGeocoder *geocoder;
 @property (nonatomic) CLPlacemark *placemark;
 
+@property BOOL isDraggable;
 @end
 
 @implementation AccommodationMapViewController
+
 
 #pragma mark - UI View Methods
 - (void)viewDidLoad {
@@ -84,6 +86,7 @@
         NSLog(@"LAtitude: %f", element.latitude);
         NSLog(@"Postcode:%@", element.address);
     }
+    
     [self createPinLocations];
     
 }
@@ -125,7 +128,10 @@
 
 //add the pins to the mapView
 -(void) createPinLocations  {
+    _isDraggable = NO;
+
     [_mapView addAnnotations:[self unpackPinData]];
+    
 }
 
 #pragma mark - Helper Functions
@@ -206,7 +212,7 @@
         }
         
         pin.canShowCallout = YES;
-        pin.draggable = YES;
+        pin.draggable = _isDraggable;// YES;
         pin.image = [UIImage imageNamed:@"map-pin-34-58.png"];
         // Add an image to the left callout.
         
@@ -215,6 +221,8 @@
         return pin;
         
     }
+    
+    _isDraggable = NO;
     
     return nil;
 }

@@ -48,13 +48,13 @@
 @property BOOL joined;
 @property Event *event;
 
-/*typedef enum {
+typedef enum {
     EDIT = 1,
     JOIN,
     PROFILE,
     JOINED
 } EventState;
-*/
+/**/
 
 
 @property EventsTableViewCell* eventsTableViewCell;

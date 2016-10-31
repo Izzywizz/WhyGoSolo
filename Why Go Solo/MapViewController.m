@@ -38,6 +38,8 @@
 @property int touchPinCount;
 
 
+@property MKPointAnnotation *customAnnotation;
+
 @end
 
 @implementation MapViewController
@@ -48,17 +50,22 @@
     [super viewDidLoad];
     [self setNavigationButtonFontAndSize];
     [self initialSetup];
+}
+
+-(void)viewWillAppear:(BOOL)animated    {
+    if (!_customAnnotation) {
+        _customAnnotation = [[MKPointAnnotation alloc] init];
+        _customAnnotation.title =[_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
+    }
+
     [self startCurrentUserLocation:YES];
     [self setupLongPressGesture];
     //[self createPinLocations];
     NSLog(@"userLocation: %d",[self.mapView showsUserLocation]);
     _mapView.showsUserLocation = YES;
-    
-}
 
--(void)viewWillAppear:(BOOL)animated    {
     [self.mapView setDelegate:self];
-}
+    }
 
 -(void)viewWillDisappear:(BOOL)animated {
     self.mapView.delegate = nil;
@@ -160,14 +167,14 @@
     //    [_mapView removeAnnotations:(_mapView.annotations)];
     
     //Create an anotation from where the user had touched the location
-    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    annotation.coordinate = placemark.coordinate;
-    annotation.title = placemark.name;
-    annotation.subtitle = [NSString stringWithFormat:@"%@ %@",
+
+    _customAnnotation.coordinate = placemark.coordinate;
+    _customAnnotation.title =[_locationSearchTable parseAddress:(MKPlacemark *)_placemark];//placemark.name;
+    _customAnnotation.subtitle = [NSString stringWithFormat:@"%@ %@",
                            (placemark.locality == nil ? @"" : placemark.locality),
                            (placemark.administrativeArea == nil ? @"" : placemark.administrativeArea)
                            ];
-    [_mapView addAnnotation:annotation];
+    [_mapView addAnnotation:_customAnnotation];
     MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
     MKCoordinateRegion region = MKCoordinateRegionMake(placemark.coordinate, span);
     [_mapView setRegion:region animated:true];
@@ -199,6 +206,7 @@
  This is called as when the user touches the screen for period of customisable time*/
 - (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
 {
+
     //if the user is not in the long press state then dont do anything
     if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
         return;
@@ -209,15 +217,15 @@
     CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
     
     //Create an anotation from where the user had touched the location
-    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    annotation.coordinate = touchMapCoordinate;
-    annotation.title = @"PinTEST"; //setup dynamically from the data model?
-    [self.mapView addAnnotation:annotation];
+   // MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    _customAnnotation.coordinate = touchMapCoordinate;
+    _customAnnotation.title = [_locationSearchTable parseAddress:(MKPlacemark *)_placemark]; //setup dynamically from the data model?
+    [self.mapView addAnnotation:_customAnnotation];
     [self reverseGeoCoodantes:touchMapCoordinate];
     _touchPinCount++;
     
     if (_touchPinCount > 1) {
-        [_mapView removeAnnotation:annotation];
+    //    [_mapView removeAnnotation:_customAnnotation];
     }
 }
 
@@ -225,7 +233,7 @@
 -(void) setupLongPressGesture   {
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
                                           initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 1.0; //user needs to press for 1 second
+    lpgr.minimumPressDuration = 0.25; //user needs to press for 1 second
     [self.mapView addGestureRecognizer:lpgr];
 }
 
@@ -331,15 +339,20 @@
         NSLog(@"Coodiantes: longitude: %f, latitude: %f", droppedAt.longitude, droppedAt.latitude);
         [self reverseGeoCoodantes:droppedAt];
         annotationView.dragState = MKAnnotationViewDragStateNone;
+        _customAnnotation.title = [_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
     }
 }
 
 /** This delegate hides the current location if the user wished it, renabling it, hs the effect of hiding the blue dot but showing the user current location anyway.*/
-//-(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
-//{
-//    MKAnnotationView *ulv = [mapView viewForAnnotation:mapView.userLocation];
-//    ulv.hidden = ![self readUserLocationBoolValue];
-//}
+-(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
+    MKAnnotationView *ulv = [mapView viewForAnnotation:mapView.userLocation];
+    
+    ulv.hidden = YES;//![self readUserLocationBoolValue];
+    
+    _customAnnotation.coordinate = mapView.userLocation.coordinate;
+    
+}
 
 /** This delegate method ensures that when the user taps on the flag or current location that the address in scope updated*/
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {

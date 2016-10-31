@@ -14,6 +14,7 @@
 #import "User.h"
 #import "Event.h"
 #import "OverlayView.h"
+#import "EventCellView.h"
 
 
 @interface AlternateProfileTableViewController ()
@@ -201,7 +202,7 @@
         [cell setUserInteractionEnabled:NO];
     }
     
-    cell.nameLabel.text = eventName;
+//    cell.nameLabel.text = eventName;
     
     return cell;
 }

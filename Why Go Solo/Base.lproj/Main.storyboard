@@ -409,7 +409,7 @@
                                                         <constraint firstAttribute="width" constant="572" id="fQB-L4-0YU"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="Lew-K7-0wh" id="bAI-7N-S3c"/>
                                                     </connections>
@@ -464,7 +464,7 @@
                                                         <constraint firstAttribute="width" constant="572" id="R8K-dF-ayD"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="Lew-K7-0wh" id="IFb-nx-ch9"/>
                                                     </connections>

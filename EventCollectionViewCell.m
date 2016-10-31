@@ -14,7 +14,7 @@
 @implementation EventCollectionViewCell
 
 
--(EventCollectionViewCell*) configureCellWithEventForTableView:(UICollectionView*)collectionView atIndexPath:(NSIndexPath*)indexPath  {
+-(EventCollectionViewCell*)configureCellWithEventForTableView:(UICollectionView*)collectionView atIndexPath:(NSIndexPath*)indexPath  {
     
     self.event =  [Data sharedInstance].selectedEvent;
     [_eventCellView configureEventCollectionViewCell:self];

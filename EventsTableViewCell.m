@@ -8,22 +8,28 @@
 
 #import "EventsTableViewCell.h"
 #import "Event.h"
-#import "User.h"
 #import "Data.h"
-#import "WebService.h"
-
-#import "AFNetworking.h"
-
-#import "UIImageView+AFNetworking.h"
-#import "AFHTTPRequestOperation.h"
-#import "UIImageView+AFNetworking.h"
-
-#import "RRDownloadImage.h"
-
 #import "EventCellView.h"
 
 @implementation EventsTableViewCell
 
+-(EventsTableViewCell*)configureCellWithEventForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath
+{
+    if (tableView.numberOfSections == 2 && indexPath.section ==  0)
+    {
+        self.event =  [[Data sharedInstance].myEventsArray objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        self.event = [[Data sharedInstance].eventsArray objectAtIndex:indexPath.row];
+    }
+    
+    [_eventCellView configureEventsTableViewCell:self];
+    
+    return self;
+}
+
+/*
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -136,5 +142,5 @@
     
     return self;
 }
-
+*/
 @end
