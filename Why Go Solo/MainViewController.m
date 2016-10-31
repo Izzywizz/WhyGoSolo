@@ -28,7 +28,7 @@
     
 //        [self runTests];
   //  return;
-   [self checkForToken];
+//   [self checkForToken];
 }
 
 
