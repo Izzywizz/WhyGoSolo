@@ -33,24 +33,202 @@
     self = [super init];
     if(self)
     {
-        
         self.apiRequst = apiRequest;
         
-        self.requestUrl = [self requestURLManager];
+        self.requestUrl = [[self urlArray]objectAtIndex:apiRequest];// [self urlForApiRequest]; // [self requestURLManager];
         NSLog(@"1111111");
         self.paramsDict = [self paramsDictForApiRequest];
         NSLog(@"11111112");
-        self.responseSelector = NSSelectorFromString([self responseSelectorManager]);
+        
+        self.responseSelector = [self responseSelectorForApiRequest];
+     //   self.responseSelector = NSSelectorFromString([self responseSelectorManager]);
         NSLog(@"11111113");
        }
     return self;
 }
 
 
+-(NSArray*)urlArray
+{
+    return  @[
+              //EVENT_API_ALL
+              @"events",
+              
+              //EVENT_API_SINGLE
+              [NSString stringWithFormat:@"events/%@", [Data sharedInstance].selectedEventID],
+              
+              //EVENT_API_JOIN
+              [NSString stringWithFormat:@"events/%@/update_join_status", [Data sharedInstance].selectedEventID],
+              
+              //LOGIN
+              @"users/login",
+              
+              //EVENT_API_CREATE
+              [NSString stringWithFormat:@"users/%@/events/create", [Data sharedInstance].userID ]
+              ];
+
+}
+
+-(NSString*)urlForApiRequest
+{    
+    if (_apiRequst == EVENT_API_ALL)
+    {
+        return @"events";
+    }
+    if (_apiRequst == EVENT_API_SINGLE)
+    {
+        return [NSString stringWithFormat:@"events/%@", [Data sharedInstance].selectedEventID ];
+    }
+    if (_apiRequst == EVENT_API_JOIN)
+    {
+        return [NSString stringWithFormat:@"events/%@/update_join_status", [Data sharedInstance].selectedEventID ];
+    }
+    if (_apiRequst == LOGIN)
+    {
+        return @"users/login";
+    }
+    return @"";
+    
+}
+
+/*-(NSString*)urlForApiRequest
+{
+    return [[API_DICT objectForKey:[NSString stringWithFormat:@"%li",_apiRequst]]objectForKey:@"request"];
+}
+*/
+-(SEL)responseSelectorForApiRequest
+{
+    return NSSelectorFromString([[API_DICT objectForKey:[NSString stringWithFormat:@"%li",_apiRequst]]objectForKey:@"response"]);
+}
+
 -(NSDictionary*)paramsDictForApiRequest
 {
+    NSMutableDictionary *tempDict = [NSMutableDictionary new];
+    
+    NSLog(@"PARAM KEYS = %@", [API_DICT objectForKey:[NSString stringWithFormat:@"%li", _apiRequst]]);
+    for (NSString* paramKey in [[API_DICT objectForKey:[NSString stringWithFormat:@"%li",_apiRequst]]objectForKey:@"params"])
+    {
+     //   NSLog(@"V %@ FOR K %@", paramKey, [self paramForKey:paramKey]);
+        [tempDict setObject:[self paramForKey:paramKey] forKey:paramKey];
+    }
+    
+    return [[NSDictionary alloc]initWithDictionary:tempDict];
+}
+
+-(id)paramForKey:(NSString*)paramKey
+{
+    NSLog(@"P KEY --- %@", paramKey);
+    if ([paramKey isEqualToString:USER_PARAM_LOGIN_EMAIL])
+    {
+        return [RRRegistration sharedInstance].email;
+    }
+    if ([paramKey isEqualToString:USER_PARAM_LOGIN_PASSWORD])
+    {
+        return [RRRegistration sharedInstance].password;
+    }
+    if ([paramKey isEqualToString:EVENT_PARAM_USER_ID])
+    {
+        return [Data sharedInstance].userID;
+    }
+    if ([paramKey isEqualToString:FILTER_PARAM_DISTANCE])
+    {
+        return [Data sharedInstance].filterDistance;
+    }
+    if ([paramKey isEqualToString:FILTER_PARAM_RESIDENCE_ID_ARRAY])
+    {
+        return [Data sharedInstance].residenceFilterArrayString;
+    }
+    if ([paramKey isEqualToString:EVENT_PARAM_ADDRESS])
+    {
+        return [Data sharedInstance].createdEvent.address;
+    }
+    if ([paramKey isEqualToString:FILTER_PARAM_RESIDENCE_ID_ARRAY])
+    {
+        return [Data sharedInstance].residenceFilterArrayString;
+    }
+    if ([paramKey isEqualToString:EVENT_PARAM_DESCRIPTION])
+    {
+        return [Data sharedInstance].createdEvent.eventDescription;
+    }
+    if ([paramKey isEqualToString:EVENT_PARAM_LONGITUDE])
+    {
+        return [NSString stringWithFormat:@"%f",[Data sharedInstance].createdEvent.longitude];
+    }
+    if ([paramKey isEqualToString:EVENT_PARAM_LATITUDE])
+    {
+        return [NSString stringWithFormat:@"%f",[Data sharedInstance].createdEvent.latitude];
+    }
+    if ([paramKey isEqualToString:EVENT_PARAM_EMOJI])
+    {
+        return [Data sharedInstance].createdEvent.emoji;
+    }
+    if ([paramKey isEqualToString:EVENT_PARAM_PRIVATE])
+    {
+        return [NSString stringWithFormat:@"%i",[Data sharedInstance].createdEvent.isPrivate];
+    }
+    if ([paramKey isEqualToString:EVENT_PARAM_USER_ID])
+    {
+        return [Data sharedInstance].userID;
+    }
+    
+    return nil;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-(NSDictionary*)paramsDictForApiRequestx
+{
+    
+    
 
     NSMutableDictionary *tempDict = [NSMutableDictionary new];
+    ////////
+    
+    NSLog(@"PARAM KEYS = %@", [API_DICT objectForKey:[NSString stringWithFormat:@"%li",_apiRequst]]);
+    for (NSString* paramKey in [[API_DICT objectForKey:[NSString stringWithFormat:@"%li",_apiRequst]]objectForKey:@"params"])
+    {
+        NSLog(@"V %@ FOR K %@", paramKey, [self paramForKey:paramKey]);
+        [tempDict setObject:[self paramForKey:paramKey] forKey:paramKey];
+    }
+    self.responseSelector = NSSelectorFromString([[API_DICT objectForKey:[NSString stringWithFormat:@"%li",_apiRequst]]objectForKey:@"response"]);
+
+    
+    return [[NSDictionary alloc]initWithDictionary:tempDict];
+///
+    
+    NSLog(@"PARAM KEYS = %@", [self paramKeys]);
+    for (NSString* paramKey in EVENT_API_ALL_PARAMS)
+    {
+        [tempDict setObject:[self paramForKey:paramKey] forKey:paramKey];
+    }
+    
+    
+    NSLog(@"RR L EMAIL : %@ / RR L PW : %@", [RRRegistration sharedInstance].email, [RRRegistration sharedInstance].password);
+    
+    return [[NSDictionary alloc]initWithDictionary:tempDict];
+
+    
+    //////
     
     NSString *selectorString = @"paramsDictManager";
     
@@ -82,6 +260,7 @@
 
     return [[NSDictionary alloc]initWithDictionary:tempDict];
 }
+
 
 -(NSDictionary*)paramsDictManager
 {
@@ -177,8 +356,7 @@
 
          //   return [NSString stringWithFormat:@"events/%i", [Data sharedInstance].selectedEvent.eventID ];
             break;
-            
-            
+
         case EVENT_API_CREATE:
             
             return [NSString stringWithFormat:@"users/%@/events/create", [Data sharedInstance].userID ];
@@ -201,8 +379,8 @@
 
 -(NSArray*)paramKeys
 {
-    
-    return [[API_ARRAY objectAtIndex:_apiRequst]objectAtIndex:PARAMS];
+    return @[];
+   // return [[API_ARRAY objectAtIndex:_apiRequst]objectAtIndex:PARAMS];
 
     /*
     switch (_apiRequst)
@@ -284,7 +462,8 @@
 
 -(NSString*)responseSelectorManager
 {
-    return [[API_ARRAY objectAtIndex:_apiRequst]objectAtIndex:RESPONSE_SELECTOR];
+    return @"";
+    //return [[API_ARRAY objectAtIndex:_apiRequst]objectAtIndex:RESPONSE_SELECTOR];
 /*
     switch (_apiRequst)
     {

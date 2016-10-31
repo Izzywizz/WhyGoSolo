@@ -15,7 +15,7 @@
 #import "Event.h"
 #import "OverlayView.h"
 #import "EventCellView.h"
-
+#import "WebService.h"
 
 @interface AlternateProfileTableViewController ()
 
@@ -275,6 +275,7 @@
         NSLog(@"Friend Removed");
     }
     
+    [[WebService sharedInstance]eventsApiRequest:USER_API_FRIEND_STATUS_UPDATE];
 }
 
 #pragma mark - OverlayView Methods

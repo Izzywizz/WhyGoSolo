@@ -227,6 +227,9 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (IBAction)nextButton:(UIBarButtonItem *)sender {
+    
+    [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
+
     if (_isDescriptionBlank) {
         [self alertSetupandView];
         _isDescriptionBlank = YES;
