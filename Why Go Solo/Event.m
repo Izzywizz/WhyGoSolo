@@ -33,6 +33,10 @@
         self.userLastName = [[dict valueForKey:@"user"]valueForKey:USER_PARAM_LAST_NAME];
         
         self.userName = [NSString stringWithFormat:@"%@ %@", self.userFirstName, self.userLastName];
+        
+        
+
+        self.joined = (int)[[dict valueForKey:EVENT_PARAM_JOINED_STATUS]integerValue];
     }
     return self;
 }

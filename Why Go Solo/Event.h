@@ -31,6 +31,8 @@
 @property int status;
 @property int isPrivate;
 
+
+@property int joined;
 @property NSMutableArray *friendsArray;
 @property NSMutableArray *otherUsersArray;
 @property NSMutableArray *commentsArray;

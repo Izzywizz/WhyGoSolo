@@ -54,7 +54,6 @@
 		438A14BD1D801E0F005E6AF7 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 438A14B21D801E0F005E6AF7 /* OFL.txt */; };
 		43A325F21DA4EE2F0017FE27 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A325F11DA4EE2F0017FE27 /* OverlayView.xib */; };
 		43A325F51DA4EE620017FE27 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A325F41DA4EE620017FE27 /* OverlayView.m */; };
-		43A8935F1D8057AE00BEA24B /* Events.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A893561D8057AE00BEA24B /* Events.xib */; };
 		43A893601D8057AE00BEA24B /* FooterEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A893581D8057AE00BEA24B /* FooterEventsTableViewCell.m */; };
 		43A893611D8057AE00BEA24B /* HeaderEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A8935A1D8057AE00BEA24B /* HeaderEventsTableViewCell.m */; };
 		43A893621D8057AE00BEA24B /* EventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A8935C1D8057AE00BEA24B /* EventsTableViewCell.m */; };
@@ -140,6 +139,9 @@
 		A1A2A9391DC673DD00B2EABB /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A2A9381DC673DD00B2EABB /* AFURLConnectionOperation.m */; };
 		A1A2A93E1DC6797900B2EABB /* RRCircularImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A2A93D1DC6797900B2EABB /* RRCircularImageView.m */; };
 		A1A2A9411DC6861700B2EABB /* RRDownloadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A2A9401DC6861700B2EABB /* RRDownloadImage.m */; };
+		A1A2A9431DC6ABD000B2EABB /* EventPeopleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A2A9421DC6ABD000B2EABB /* EventPeopleCollectionViewCell.xib */; };
+		A1A2A9461DC6ACEA00B2EABB /* EventCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A2A9451DC6ACEA00B2EABB /* EventCellView.m */; };
+		A1A2A9481DC6C04600B2EABB /* Events.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A2A9471DC6C04600B2EABB /* Events.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -228,7 +230,6 @@
 		43A325F11DA4EE2F0017FE27 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		43A325F31DA4EE620017FE27 /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayView.h; path = ../OverlayView.h; sourceTree = "<group>"; };
 		43A325F41DA4EE620017FE27 /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayView.m; path = ../OverlayView.m; sourceTree = "<group>"; };
-		43A893561D8057AE00BEA24B /* Events.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Events.xib; sourceTree = "<group>"; };
 		43A893571D8057AE00BEA24B /* FooterEventsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooterEventsTableViewCell.h; sourceTree = "<group>"; };
 		43A893581D8057AE00BEA24B /* FooterEventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooterEventsTableViewCell.m; sourceTree = "<group>"; };
 		43A893591D8057AE00BEA24B /* HeaderEventsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderEventsTableViewCell.h; sourceTree = "<group>"; };
@@ -373,6 +374,10 @@
 		A1A2A93D1DC6797900B2EABB /* RRCircularImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRCircularImageView.m; sourceTree = "<group>"; };
 		A1A2A93F1DC6861700B2EABB /* RRDownloadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRDownloadImage.h; sourceTree = "<group>"; };
 		A1A2A9401DC6861700B2EABB /* RRDownloadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRDownloadImage.m; sourceTree = "<group>"; };
+		A1A2A9421DC6ABD000B2EABB /* EventPeopleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventPeopleCollectionViewCell.xib; sourceTree = "<group>"; };
+		A1A2A9441DC6ACEA00B2EABB /* EventCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCellView.h; sourceTree = "<group>"; };
+		A1A2A9451DC6ACEA00B2EABB /* EventCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCellView.m; sourceTree = "<group>"; };
+		A1A2A9471DC6C04600B2EABB /* Events.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Events.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -496,6 +501,7 @@
 		438A14731D8011C2005E6AF7 = {
 			isa = PBXGroup;
 			children = (
+				A1A2A9421DC6ABD000B2EABB /* EventPeopleCollectionViewCell.xib */,
 				43A893691D805D8700BEA24B /* profile.png */,
 				436E84AF1D815FA700B23402 /* flag.png */,
 				430919411D8158A000EE9220 /* car.png */,
@@ -506,6 +512,8 @@
 				A1A2A93D1DC6797900B2EABB /* RRCircularImageView.m */,
 				A1A2A93F1DC6861700B2EABB /* RRDownloadImage.h */,
 				A1A2A9401DC6861700B2EABB /* RRDownloadImage.m */,
+				A1A2A9441DC6ACEA00B2EABB /* EventCellView.h */,
+				A1A2A9451DC6ACEA00B2EABB /* EventCellView.m */,
 				A1151F541DAA5D05008222ED /* Persistance */,
 				A1151F2D1DAA5C96008222ED /* Web Service */,
 				43B981B51D95220400E7DD05 /* RecipePhotoImagePack */,
@@ -605,7 +613,7 @@
 		43A893651D8057B200BEA24B /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
-				43A893561D8057AE00BEA24B /* Events.xib */,
+				A1A2A9471DC6C04600B2EABB /* Events.xib */,
 				43A8935B1D8057AE00BEA24B /* EventsTableViewCell.h */,
 				43A8935C1D8057AE00BEA24B /* EventsTableViewCell.m */,
 				43B4009B1D86BDE70094DFB6 /* PeopleEvent.xib */,
@@ -870,6 +878,7 @@
 				43B981D21D95220400E7DD05 /* noodle_with_bbq_pork.jpg in Resources */,
 				43B981D71D95220400E7DD05 /* white_chocolate_donut.jpg in Resources */,
 				438A14B31D801E0F005E6AF7 /* Lato-Black.ttf in Resources */,
+				A1A2A9481DC6C04600B2EABB /* Events.xib in Resources */,
 				43B981C81D95220400E7DD05 /* creme_brelee.jpg in Resources */,
 				438A14B51D801E0F005E6AF7 /* Lato-Bold.ttf in Resources */,
 				438A14BA1D801E0F005E6AF7 /* Lato-Light.ttf in Resources */,
@@ -891,6 +900,7 @@
 				438A14BB1D801E0F005E6AF7 /* Lato-LightItalic.ttf in Resources */,
 				43B981C91D95220400E7DD05 /* egg_benedict.jpg in Resources */,
 				438A14B81D801E0F005E6AF7 /* Lato-HairlineItalic.ttf in Resources */,
+				A1A2A9431DC6ABD000B2EABB /* EventPeopleCollectionViewCell.xib in Resources */,
 				438A14B61D801E0F005E6AF7 /* Lato-BoldItalic.ttf in Resources */,
 				43A8936A1D805D8700BEA24B /* profile.png in Resources */,
 				43B981DB1D95282900E7DD05 /* CollectionCell.xib in Resources */,
@@ -898,7 +908,6 @@
 				438A14BC1D801E0F005E6AF7 /* Lato-Regular.ttf in Resources */,
 				43FD15341DB0F4E200C7FE1E /* circleProfile.jpg in Resources */,
 				438A14B71D801E0F005E6AF7 /* Lato-Hairline.ttf in Resources */,
-				43A8935F1D8057AE00BEA24B /* Events.xib in Resources */,
 				438A148A1D8011C2005E6AF7 /* Main.storyboard in Resources */,
 				43B981D51D95220400E7DD05 /* thai_shrimp_cake.jpg in Resources */,
 				43EAA7AA1DAA6BE50029828B /* OtherProfile.xib in Resources */,
@@ -963,6 +972,7 @@
 				43B981E31D9534C100E7DD05 /* HeaderCollectionReusableView.m in Sources */,
 				4309193A1D8154F400EE9220 /* SearchBarTableViewController.m in Sources */,
 				A1151F5B1DAA5D13008222ED /* PersistanceManager.m in Sources */,
+				A1A2A9461DC6ACEA00B2EABB /* EventCellView.m in Sources */,
 				A1151F341DAA5CA3008222ED /* Data.m in Sources */,
 				A1151F361DAA5CA3008222ED /* Reachability.m in Sources */,
 				4309193F1D81552200EE9220 /* PinLocationData.m in Sources */,

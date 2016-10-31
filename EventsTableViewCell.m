@@ -20,6 +20,8 @@
 
 #import "RRDownloadImage.h"
 
+#import "EventCellView.h"
+
 @implementation EventsTableViewCell
 
 - (void)awakeFromNib {
@@ -70,10 +72,14 @@
 }
 - (IBAction)peopleEventButtonPressed:(UIButton *)sender {
     NSLog(@"People Event Button Pressed");
+    
+    [Data sharedInstance].selectedEvent = _event;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"People Event" object:self.event];
 }
 - (IBAction)commentsButtonPressed:(UIButton *)sender {
     NSLog(@"Comments button pressed");
+    [Data sharedInstance].selectedEvent = _event;
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Comments" object:self.event];
 }
 
@@ -82,6 +88,9 @@
 
 -(EventsTableViewCell*)configureCellWithEventForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath
 {
+  //  self.event =  [[Data sharedInstance].myEventsArray objectAtIndex:indexPath.row];
+   // [_eventCellView configureEventCollectionViewCell:self];
+    
     if (tableView.numberOfSections == 2 && indexPath.section ==  0)
     {
         self.joined = YES;

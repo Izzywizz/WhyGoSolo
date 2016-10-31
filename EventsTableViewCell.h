@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 @class Event;
+@class EventCellView;
 
 @interface EventsTableViewCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet EventCellView *eventCellView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;

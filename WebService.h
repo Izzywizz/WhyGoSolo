@@ -154,7 +154,7 @@ typedef NS_ENUM(NSInteger, residenceApiRequests) {
 #define EVENT_PARAM_NUMBER_OF_COMMENTS @"number_of_comments"
 #define EVENT_PARAM_NUMBER_OF_USERS_ATTENDING @"number_of_users_attending"
 #define EVENT_PARAM_NUMBER_OF_FRIENDS_ATTENDING @"number_of_friends_attending"
-
+#define EVENT_PARAM_JOINED_STATUS @"logged_in_user_joined_event"
 
 
 #define COMMENT_PARAM_ID @"id"

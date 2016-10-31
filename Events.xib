@@ -21,7 +21,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="445" height="219"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-mv-1cn">
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-mv-1cn" customClass="EventCellView">
                         <rect key="frame" x="12" y="14" width="421" height="198"/>
                         <subviews>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVY-XN-eK4" userLabel="Profile Button">
@@ -344,7 +344,7 @@
                 <outlet property="profileImage" destination="QhB-Uy-I1u" id="yf8-A5-TUw"/>
                 <outlet property="viewLayer" destination="2Pf-mv-1cn" id="6JI-sU-O1X"/>
             </connections>
-            <point key="canvasLocation" x="-279.5" y="247"/>
+            <point key="canvasLocation" x="-668.5" y="234"/>
         </tableViewCell>
     </objects>
     <resources>
