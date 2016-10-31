@@ -7,8 +7,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class User;
+@class RRCircularImageView;
 @interface FriendCollectionViewCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+
+
+@property (weak, nonatomic) IBOutlet RRCircularImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *profileName;
+
+@property User *user;
+
+
+-(FriendCollectionViewCell*) configureCellWithUser:(User*)user;
+
 
 @end

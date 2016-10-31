@@ -15,6 +15,10 @@
 @property NSArray *sectionTitles;
 @property Event *event;
 
+
+@property NSArray *friendsArray;
+@property NSArray *otherPeopleArray;
+
 @property BOOL hasJoinedEvent;
 @end
 
@@ -22,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self createDummyData];
+   // [self createDummyData];
     [self setupObservers];
     
     //Register The Nib for the collection cell
@@ -44,6 +48,8 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    _friendsArray = @[];
+    _otherPeopleArray = @[];
     
     [Data sharedInstance].delegate = self;
     [[WebService sharedInstance]eventsApiRequest:EVENT_API_SINGLE];
@@ -59,8 +65,31 @@
 -(void)eventParsedSuccessfully
 {
     _event = [Data sharedInstance].selectedEvent;
+    _friendsArray = [[NSArray alloc]initWithArray:[Data sharedInstance].selectedEvent.friendsArray];
+    _otherPeopleArray = [[NSArray alloc]initWithArray:[Data sharedInstance].selectedEvent.otherUsersArray];
     
+    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
     NSLog(@"PPPPPP EVVVV = %@", _event.eventDescription);
+}
+
+-(void)handleUpdates
+{
+    [self.collectionView reloadData];
+}
+
+-(void)avatarDownloaded
+{
+    
+    NSLog(@"EVENT TV AVATAR DOWNLOADED");
+    [self performSelectorOnMainThread:@selector(refreshCellInputViews) withObject:nil waitUntilDone:YES];
+}
+
+
+-(void)refreshCellInputViews
+{
+    NSLog(@"EVENT TV AVATAR RELOAD INPUT VIEWS");
+    [self.collectionView reloadData];
+    // [self.tableView reloadInputViews];
 }
 #pragma mark <UICollectionViewDataSource>
 
@@ -78,6 +107,7 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 
+    return 3;
 //    return 2;
     return self.dummyData.count;
 }
@@ -85,12 +115,22 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-        if (section == 0) {
-            return 1; //return just the event cell
-        } else  {
-            return [[self.dummyData objectAtIndex:section] count]; //bring back the specific count for that object in the
-        }
-}
+    switch (section) {
+        case 0:
+            return 1;
+            break;
+        case 1:
+            return [_friendsArray count];
+            break;
+        case 2:
+            return [_otherPeopleArray count];
+            break;
+        default:
+            return 0;
+            break;
+    }
+    
+    }
 
 #pragma mark <UICollectionViewDelegate>
 
@@ -152,8 +192,17 @@
     
     FriendCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
-    cell.profileName.text = @"Isfandyar";
+    if (indexPath.section == 0)
+    {
+        [cell configureCellWithUser:[_friendsArray objectAtIndex:indexPath.row]];
+    }
+    else
+    {
+        [cell configureCellWithUser:[_otherPeopleArray objectAtIndex:indexPath.row]];
+
+    }
+  //  cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
+  //  cell.profileName.text = @"Isfandyar";
     
     return cell;
 }

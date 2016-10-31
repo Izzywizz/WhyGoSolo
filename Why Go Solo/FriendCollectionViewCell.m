@@ -6,23 +6,24 @@
 //
 
 #import "FriendCollectionViewCell.h"
-
+#import "RRDownloadImage.h"
+#import "Data.h"
+#import "RRCircularImageView.h"
+#import "User.h"
 @implementation FriendCollectionViewCell
 
 
 #pragma mark - Helper Functions
 /** Ensures that the selection seperators are setup before the main views are shown*/
--(void)layoutSubviews
+
+-(FriendCollectionViewCell*) configureCellWithUser:(User*)user
 {
-    [super layoutSubviews];
-    [self makeItCircular];
-}
+    NSLog(@"FRIENCE CELL USER = %i", user.userID);
+    self.profileName.text = user.userName;
 
--(void) makeItCircular  {
-    
-    self.profileImageView.layer.masksToBounds = true;
-    self.profileImageView.layer.cornerRadius = self.profileImageView.bounds.size.height/2; //create circular profile view
+    self.profileImageView.image = [[RRDownloadImage sharedInstance]avatarImageForUserID:[NSString stringWithFormat:@"%i",user.userID]];
 
+    return self;
 }
 
 @end

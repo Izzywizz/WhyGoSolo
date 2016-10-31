@@ -16,7 +16,7 @@
 {
     if (self)
     {
-        self.userID = (int)[[dict valueForKey:USER_PARAM_ID]integerValue];
+        self.userID = (int)[[dict valueForKey:@"id"]integerValue];//(int)[[dict valueForKey:USER_PARAM_ID]integerValue];
 
         self.firstName = [dict valueForKey:USER_PARAM_FIRST_NAME];
         self.lastName = [dict valueForKey:USER_PARAM_LAST_NAME];

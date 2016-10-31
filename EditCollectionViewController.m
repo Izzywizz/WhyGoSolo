@@ -95,7 +95,7 @@ static NSString * const reuseIdentifier = @"Cell";
     } else  {
         cell.contentView.hidden = NO;
     }
-    cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
+ //   cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
     cell.profileName.text = @"Isfandyar";
 
     return cell;

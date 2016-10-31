@@ -69,6 +69,7 @@
 
 -(UIImage*)avatarImageForUserID:(NSString*)userID
 {
+    NSLog(@"userID FOR IMAGE DOWNLOAD = %@", userID);
     if ([[Data sharedInstance].avatarDict objectForKey:userID] != nil)
     {
         return [[Data sharedInstance].avatarDict objectForKey:userID];
