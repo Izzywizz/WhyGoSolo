@@ -37,6 +37,11 @@
 -(void) textViewDidChange:(UITextView *)textView
 {
     _charCount.text =  [NSString stringWithFormat:@"%lu", (unsigned long)textView.text.length];
+    _characterCountInt = [_charCount.text intValue];
+    if (_characterCountInt == 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"nilValue" object:self];
+    }
+    NSLog(@"CharCount: %d", _characterCountInt);
     
     if (textView.text.length != 140) {
         _charCount.textColor = [UIColor blueColor];
@@ -46,6 +51,7 @@
     
     if(self.describeEventTextView.text.length == 0){
         self.describeEventTextView.text = @"Describe your event 140 chracters or less!"; //load up previous description if empty
+        _characterCountInt = 0;
         [self.describeEventTextView resignFirstResponder];
     }
     
@@ -63,8 +69,11 @@
 {
     if (_describeEventTextView.text.length == 0) {
         [self placeholderEventTextView];
+        _characterCountInt = [_charCount.text intValue];
+
     } else  {
         _describeEventTextView.text = @"";
+        _characterCountInt = [_charCount.text intValue];
         _describeEventTextView.textColor = [UIColor blackColor];
         return YES;
     }
@@ -133,5 +142,7 @@
         self.emojiTextView.text = [self.emojiTextView.text substringToIndex:lastRange.location];
     }
 }
+
+
 
 @end

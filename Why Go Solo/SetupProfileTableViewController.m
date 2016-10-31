@@ -209,6 +209,29 @@
     //Create the datePicker, set the mode and assign an action listener to it because I've added to the textview
     _datePicker = [[UIDatePicker alloc] init];
     [_datePicker setDatePickerMode:UIDatePickerModeDate];
+    
+    //set intial date to 18 years ago
+    unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
+    NSDate *now = [NSDate date];
+    NSCalendar *gregorian = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [gregorian components:unitFlags fromDate:now];
+    [comps setYear:[comps year] - 18];
+    NSDate *eighteenYearsAgo = [gregorian dateFromComponents:comps];
+    
+    // Date must be between 18 - 100
+    NSDate *todaysDate = [NSDate date];
+    NSDateComponents *minDateComponents = [[NSDateComponents alloc] init];
+    [minDateComponents setYear:-100];
+    NSDate *minDate = [gregorian dateByAddingComponents:minDateComponents toDate:todaysDate  options:0];
+    
+    NSDateComponents *maxDateComponents = [[NSDateComponents alloc] init];
+    [maxDateComponents setYear:-18];
+    NSDate *maxDate = [gregorian dateByAddingComponents:maxDateComponents toDate:todaysDate  options:0];
+    
+    [_datePicker setDate:eighteenYearsAgo];
+    [_datePicker setMinimumDate:minDate];
+    [_datePicker setMaximumDate:maxDate];
+    
     [_dateOfBirthField setInputView:_datePicker];
     [self.datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];
     
@@ -244,7 +267,6 @@
     if ([_dateOfBirthField.text isEqualToString:@""]) {
         [fontSetup setColourOf:_dateOfBirthContentView toLabel:_dateOfBirthLabel toTextField:_dateOfBirthField toMessage:@"Enter your Date of Birth"];
     }
-    
     
     
     if (![registration validatePhotoImageRef:cgref andImageData:cim]) {
