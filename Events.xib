@@ -24,13 +24,6 @@
                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-mv-1cn" customClass="EventCellView">
                         <rect key="frame" x="12" y="14" width="421" height="198"/>
                         <subviews>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVY-XN-eK4" userLabel="Profile Button">
-                                <rect key="frame" x="15" y="0.0" width="353" height="47"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="SSS-ln-rsa"/>
-                                </constraints>
-                            </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54j-bB-pVw">
                                 <rect key="frame" x="321" y="159" width="85" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -48,14 +41,14 @@
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdD-gT-2wJ" userLabel="Edit Button">
                                 <rect key="frame" x="321" y="159" width="85" height="30"/>
-                                <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="EHH-c7-Lxe"/>
                                     <constraint firstAttribute="height" constant="30" id="P4U-r6-ESg"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Edit Event">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Edit" backgroundImage="join-button-72-30">
+                                    <color key="titleColor" red="0.98431372549999996" green="0.12549019610000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="joinButtonPressed:" destination="2Pf-mv-1cn" eventType="touchUpInside" id="BxJ-0V-m4H"/>
@@ -223,6 +216,23 @@
                                 <color key="textColor" red="0.98431372549999996" green="0.12549019610000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVY-XN-eK4" userLabel="Profile Button">
+                                <rect key="frame" x="0.0" y="0.0" width="62" height="61"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="OdJ-lu-3hg"/>
+                                    <constraint firstAttribute="height" constant="47" id="SSS-ln-rsa"/>
+                                    <constraint firstAttribute="height" constant="61" id="lUQ-Wk-5xD"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="SSS-ln-rsa"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="profileButtonPressed:" destination="2Pf-mv-1cn" eventType="touchUpInside" id="WHW-aX-mHs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -256,6 +266,7 @@
                             <constraint firstAttribute="trailing" secondItem="LlW-fC-bAC" secondAttribute="trailing" constant="15" id="K60-cT-ULl"/>
                             <constraint firstAttribute="trailing" secondItem="54j-bB-pVw" secondAttribute="trailing" constant="15" id="M96-Lc-3eA"/>
                             <constraint firstItem="QhB-Uy-I1u" firstAttribute="leading" secondItem="H2f-bt-vGd" secondAttribute="trailing" constant="8" id="MEx-TP-dz3"/>
+                            <constraint firstItem="NVY-XN-eK4" firstAttribute="leading" secondItem="2Pf-mv-1cn" secondAttribute="leading" id="P0m-GM-Lnn"/>
                             <constraint firstItem="FXw-a4-BaV" firstAttribute="top" secondItem="NVY-XN-eK4" secondAttribute="bottom" id="PLD-8q-hHP"/>
                             <constraint firstItem="X31-ZH-LSy" firstAttribute="leading" secondItem="2Pf-mv-1cn" secondAttribute="leading" constant="15" id="PjZ-yx-YvA"/>
                             <constraint firstItem="H2f-bt-vGd" firstAttribute="centerY" secondItem="dMr-mC-bzt" secondAttribute="centerY" id="QMu-l0-ued"/>
@@ -280,6 +291,7 @@
                             <constraint firstAttribute="bottom" secondItem="X31-ZH-LSy" secondAttribute="bottom" constant="172.5" id="myk-XJ-mrj"/>
                             <constraint firstAttribute="bottom" secondItem="H2f-bt-vGd" secondAttribute="bottom" constant="15" id="nGB-y0-RVm"/>
                             <constraint firstAttribute="bottom" secondItem="QhB-Uy-I1u" secondAttribute="bottom" constant="27.5" id="nwE-Fm-Jj7"/>
+                            <constraint firstItem="NVY-XN-eK4" firstAttribute="top" secondItem="2Pf-mv-1cn" secondAttribute="top" id="pR0-RO-k9S"/>
                             <constraint firstItem="3Oi-In-Wv7" firstAttribute="top" secondItem="FXw-a4-BaV" secondAttribute="bottom" constant="10" id="qTZ-2S-YWT"/>
                             <constraint firstAttribute="trailing" secondItem="DdD-gT-2wJ" secondAttribute="trailing" constant="15" id="qWY-tv-UZn"/>
                             <constraint firstAttribute="bottom" secondItem="H2f-bt-vGd" secondAttribute="bottom" constant="12" id="srC-pv-zK0"/>
@@ -289,6 +301,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="S1G-7C-rqY"/>
+                                <exclude reference="eHf-40-dVn"/>
                                 <exclude reference="myk-XJ-mrj"/>
                                 <exclude reference="XcL-Dr-PpZ"/>
                                 <exclude reference="AL6-75-la9"/>
@@ -314,6 +328,7 @@
                                 <exclude reference="54z-qo-3sn"/>
                                 <exclude reference="BxB-OQ-hmx"/>
                                 <exclude reference="u4g-a7-ZV8"/>
+                                <exclude reference="auk-BO-ecf"/>
                             </mask>
                         </variation>
                         <connections>

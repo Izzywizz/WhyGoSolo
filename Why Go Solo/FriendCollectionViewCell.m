@@ -19,7 +19,7 @@
 -(FriendCollectionViewCell*) configureCellWithUser:(User*)user
 {
     NSLog(@"FRIENCE CELL USER = %i", user.userID);
-    self.profileName.text = user.userName;
+    self.profileName.text = user.firstName;
 
     self.profileImageView.image = [[RRDownloadImage sharedInstance]avatarImageForUserID:[NSString stringWithFormat:@"%i",user.userID]];
 

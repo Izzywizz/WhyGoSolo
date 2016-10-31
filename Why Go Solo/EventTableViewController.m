@@ -117,6 +117,14 @@ NSArray *sectionTitles;
     [self performSelectorOnMainThread:@selector(refreshCellInputViews) withObject:nil waitUntilDone:YES];
 }
 
+-(void)userParsedSuccessfully
+{
+    
+    NSLog(@"asdas USER PARSED SUCCESSFULLY");
+
+    [self moveToOtherUserProfile];
+
+}
 
 -(void)refreshCellInputViews
 {

@@ -54,6 +54,8 @@
     [Data sharedInstance].delegate = self;
     [[WebService sharedInstance]eventsApiRequest:EVENT_API_SINGLE];
     
+    
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -74,6 +76,8 @@
 
 -(void)handleUpdates
 {
+    _sectionTitles = @[@"EVENT",[NSString stringWithFormat:@"FRIENDS (%lu)",(unsigned long)[ _friendsArray count]], [NSString stringWithFormat:@"OTHER ATTENDEES (%lu)",(unsigned long)[ _otherPeopleArray count]]];
+
     [self.collectionView reloadData];
 }
 

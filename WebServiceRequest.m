@@ -155,7 +155,12 @@
             break;
             //USERS
         case LOGIN:
-            return @"users/login";
+            return @"users/";
+            break;
+
+        
+        case USER_API_SINGLE:
+            return [NSString stringWithFormat:@"users/%@", [Data sharedInstance].selectedUserID];
             break;
 
             

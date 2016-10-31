@@ -39,6 +39,7 @@
 @property NSString* userToken;
 
 @property NSString* selectedEventID;
+@property NSString *selectedUserID;
 
 @property NSString* filterDistance;
 @property NSArray* residenceFilterArray;
@@ -61,7 +62,6 @@
 @property Residence *selectedResidence;
 @property Event *selectedEvent;
 @property User *selectedUser;
-
 
 @property Event *createdEvent;
 //-(void)createUserFromDict:(NSDictionary *)dict;

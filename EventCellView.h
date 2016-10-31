@@ -50,9 +50,9 @@
 
 typedef enum {
     EDIT = 1,
-    JOIN,
-    PROFILE,
-    JOINED
+    JOIN = 2,
+    PROFILE = 3,
+    JOINED= 4
 } EventState;
 /**/
 

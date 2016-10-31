@@ -35,6 +35,10 @@
     self.layer.cornerRadius = 7;
     _event = event;
     
+    self.joinButton.tag = JOIN;
+    self.joinedButton.tag = JOINED;
+    self.editJoinButton.tag = EDIT;
+    self.profileButton.tag = PROFILE;
     NSLog(@"Event Description:eeeee %@", _event.eventDescription);
     
     self.nameLabel.text = _event.userName;
@@ -51,7 +55,7 @@
     self.eventEmoticonLabel.text = _event.emoji;
     
     self.avatarImageView.image = [[RRDownloadImage sharedInstance]avatarImageForUserID:[NSString stringWithFormat:@"%i",_event.userID]];
-    
+
     
     NSLog(@"EVENT JPIOED STATUS = %i / %i", _event.userID, [Data sharedInstance].loggedInUser.userID);
     if (_event.joined)
@@ -132,13 +136,21 @@
         
         case PROFILE: NSLog(@"Profile Button Pressed");
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"Profile Found" object:self.event];
+            [[WebService sharedInstance]eventsApiRequest:USER_API_SINGLE];
+         //   [[NSNotificationCenter defaultCenter] postNotificationName:@"Profile Found" object:self.event];
             break;
             
                 default:
             break;
             
     }
+}
+
+- (IBAction)profileButtonPressed:(UIButton *)sender {
+    NSLog(@"Profile Button Pressed");
+    [Data sharedInstance].selectedUserID = [NSString stringWithFormat:@"%i", self.event.userID];
+    [[WebService sharedInstance]eventsApiRequest:USER_API_SINGLE];
+
 }
 - (IBAction)peopleEventButtonPressed:(UIButton *)sender {
     NSLog(@"People Event Button Pressed");
