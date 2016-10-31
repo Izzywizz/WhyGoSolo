@@ -4710,7 +4710,7 @@ Cg
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TZQ-Rc-jmE">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TZQ-Rc-jmE">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <connections>
                                     <outlet property="delegate" destination="2fY-pw-kmA" id="xm5-D7-5PM"/>
@@ -4823,19 +4823,18 @@ Cg
                         <barButtonItem key="rightBarButtonItem" title="NEXT" id="9Wu-bF-5jT">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="nextButton:" destination="aTF-Ww-xhV" id="l7E-lu-Ghy"/>
-                                <segue destination="ZWB-zS-1us" kind="show" identifier="GoToAddMap" id="Gs0-rZ-4e0"/>
+                                <action selector="nextButton:" destination="aTF-Ww-xhV" id="YJQ-2o-wJd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="nextButton" destination="9Wu-bF-5jT" id="1cT-nX-h4f"/>
+                        <segue destination="ZWB-zS-1us" kind="show" identifier="GoToAddMap" id="Whk-B4-FYb"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NA0-hQ-Ck5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8324" y="2296"/>
+            <point key="canvasLocation" x="8331" y="2287"/>
         </scene>
         <!--Event Table View Controller-->
         <scene sceneID="8Ta-J5-8iR">
@@ -6115,7 +6114,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2LE-ov-y7h" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7461" y="3078"/>
+            <point key="canvasLocation" x="7510" y="2705"/>
         </scene>
         <!--Search Bar Table View Controller-->
         <scene sceneID="IYT-Eg-tSX">
@@ -6833,7 +6832,7 @@ Cg
         <image name="white-logo-125-125" width="125" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QFo-9Z-Gzg"/>
-        <segue reference="Gs0-rZ-4e0"/>
+        <segue reference="7Oc-fg-bvC"/>
+        <segue reference="Whk-B4-FYb"/>
     </inferredMetricsTieBreakers>
 </document>

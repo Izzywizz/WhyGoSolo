@@ -16,6 +16,7 @@
 @property NSArray *sectionTitles;
 
 @property BOOL isPublicEvent;
+@property BOOL isDescriptionBlank;
 
 
 @end
@@ -129,6 +130,13 @@ static NSString * const reuseIdentifier = @"Cell";
     
     CreateCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
+    if ([cell.describeEventTextView.text isEqualToString:@"Describe your event 140 chracters or less!"] || [cell.describeEventTextView.text isEqualToString:@""]) {
+        NSLog(@"Validate me");
+        _isDescriptionBlank = YES;
+    } else  {
+        _isDescriptionBlank = NO;
+    }
+    
     return cell;
 }
 
@@ -207,8 +215,8 @@ static NSString * const reuseIdentifier = @"Cell";
                                              selector:@selector(privacyMode:)
                                                  name:@"Privacy Mode"
                                                object:nil];
-    
 }
+
 
 #pragma mark - Action Methods
 
@@ -219,7 +227,15 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (IBAction)nextButton:(UIBarButtonItem *)sender {
-    [self performSegueWithIdentifier:@"GoToAddMap" sender:self];    
+    if (_isDescriptionBlank) {
+        [self alertSetupandView];
+        _isDescriptionBlank = YES;
+    } else  {
+        NSLog(@"Good To go");
+        _isDescriptionBlank = NO;
+        [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
+    }
+    
 }
 
 #pragma mark - Prepare Segue
@@ -234,6 +250,18 @@ static NSString * const reuseIdentifier = @"Cell";
         [vc.doneOrNextButton setTag:100];
     }
 }
+
+#pragma mark - Alert Methods
+
+-(void) alertSetupandView  {
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"No description text" message:@"Please enter some text within the descripton" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Dismiss");
+    }];
+    [alertVC addAction:dismiss];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+
 
 
 @end

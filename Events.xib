@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -18,10 +18,10 @@
             <rect key="frame" x="0.0" y="0.0" width="445" height="220"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rNa-XG-6sp" id="h6k-PV-tUv">
-                <rect key="frame" x="0.0" y="0.0" width="445" height="219"/>
+                <rect key="frame" x="0.0" y="0.0" width="445" height="219.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-mv-1cn" customClass="EventCellView">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-mv-1cn" customClass="EventCellView">
                         <rect key="frame" x="12" y="14" width="421" height="198"/>
                         <subviews>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVY-XN-eK4" userLabel="Profile Button">
@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="height" constant="47" id="SSS-ln-rsa"/>
                                 </constraints>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54j-bB-pVw">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54j-bB-pVw">
                                 <rect key="frame" x="321" y="159" width="85" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -46,7 +46,7 @@
                                     <action selector="joinButtonPressed:" destination="2Pf-mv-1cn" eventType="touchUpInside" id="pO3-Wa-jmu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdD-gT-2wJ" userLabel="Edit Button">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdD-gT-2wJ" userLabel="Edit Button">
                                 <rect key="frame" x="321" y="159" width="85" height="30"/>
                                 <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -61,7 +61,7 @@
                                     <action selector="joinButtonPressed:" destination="2Pf-mv-1cn" eventType="touchUpInside" id="BxJ-0V-m4H"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.0" tag="4" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlW-fC-bAC" userLabel="Joined">
+                            <button opaque="NO" alpha="0.0" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlW-fC-bAC" userLabel="Joined">
                                 <rect key="frame" x="321" y="159" width="85" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="6At-O5-JsE"/>
@@ -126,7 +126,7 @@
                                     </mask>
                                 </variation>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="user-icon-18-18" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Uy-I1u" userLabel="Invitee Icon">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user-icon-18-18" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-Uy-I1u" userLabel="Invitee Icon">
                                 <rect key="frame" x="76" y="164" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="4le-Z1-49W"/>
@@ -145,7 +145,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100 (90)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="rdB-0n-bkb" userLabel="Invitee Count">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 (90)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="rdB-0n-bkb" userLabel="Invitee Count">
                                 <rect key="frame" x="97" y="164" width="76" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="76" id="a0J-HH-nxk"/>
@@ -161,7 +161,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="H2f-bt-vGd" userLabel="Message Count">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="H2f-bt-vGd" userLabel="Message Count">
                                 <rect key="frame" x="39" y="163" width="29" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28.5" id="HOy-Xx-DDY"/>
@@ -177,7 +177,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="chat-icon-18-18" translatesAutoresizingMaskIntoConstraints="NO" id="dMr-mC-bzt" userLabel="Message Icon">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat-icon-18-18" translatesAutoresizingMaskIntoConstraints="NO" id="dMr-mC-bzt" userLabel="Message Icon">
                                 <rect key="frame" x="15" y="165" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="JYT-yH-XZf"/>
@@ -194,7 +194,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNF-iW-exW" userLabel="Event">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNF-iW-exW" userLabel="Event">
                                 <rect key="frame" x="75" y="158" width="98" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29.5" id="TdE-EG-Fpd"/>
@@ -204,7 +204,7 @@
                                     <action selector="peopleEventButtonPressed:" destination="2Pf-mv-1cn" eventType="touchUpInside" id="07W-jN-lnz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="li0-lC-VdL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="li0-lC-VdL">
                                 <rect key="frame" x="8" y="158" width="65" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30.5" id="YlB-oC-8NI"/>
