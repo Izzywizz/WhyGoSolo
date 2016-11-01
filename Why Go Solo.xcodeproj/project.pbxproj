@@ -141,7 +141,7 @@
 		A1A2A9411DC6861700B2EABB /* RRDownloadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A2A9401DC6861700B2EABB /* RRDownloadImage.m */; };
 		A1A2A9431DC6ABD000B2EABB /* EventPeopleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A2A9421DC6ABD000B2EABB /* EventPeopleCollectionViewCell.xib */; };
 		A1A2A9461DC6ACEA00B2EABB /* EventCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A2A9451DC6ACEA00B2EABB /* EventCellView.m */; };
-		A1A2A9481DC6C04600B2EABB /* Events.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A2A9471DC6C04600B2EABB /* Events.xib */; };
+		A1A2A94A1DC943E100B2EABB /* Events.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A2A9491DC943E100B2EABB /* Events.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -377,7 +377,7 @@
 		A1A2A9421DC6ABD000B2EABB /* EventPeopleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventPeopleCollectionViewCell.xib; sourceTree = "<group>"; };
 		A1A2A9441DC6ACEA00B2EABB /* EventCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCellView.h; sourceTree = "<group>"; };
 		A1A2A9451DC6ACEA00B2EABB /* EventCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCellView.m; sourceTree = "<group>"; };
-		A1A2A9471DC6C04600B2EABB /* Events.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Events.xib; sourceTree = "<group>"; };
+		A1A2A9491DC943E100B2EABB /* Events.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Events.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -613,7 +613,7 @@
 		43A893651D8057B200BEA24B /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A1A2A9471DC6C04600B2EABB /* Events.xib */,
+				A1A2A9491DC943E100B2EABB /* Events.xib */,
 				43A8935B1D8057AE00BEA24B /* EventsTableViewCell.h */,
 				43A8935C1D8057AE00BEA24B /* EventsTableViewCell.m */,
 				43B4009B1D86BDE70094DFB6 /* PeopleEvent.xib */,
@@ -875,10 +875,10 @@
 				430919421D8158A000EE9220 /* car.png in Resources */,
 				438A14B91D801E0F005E6AF7 /* Lato-Italic.ttf in Resources */,
 				43B981C71D95220400E7DD05 /* angry_birds_cake.jpg in Resources */,
+				A1A2A94A1DC943E100B2EABB /* Events.xib in Resources */,
 				43B981D21D95220400E7DD05 /* noodle_with_bbq_pork.jpg in Resources */,
 				43B981D71D95220400E7DD05 /* white_chocolate_donut.jpg in Resources */,
 				438A14B31D801E0F005E6AF7 /* Lato-Black.ttf in Resources */,
-				A1A2A9481DC6C04600B2EABB /* Events.xib in Resources */,
 				43B981C81D95220400E7DD05 /* creme_brelee.jpg in Resources */,
 				438A14B51D801E0F005E6AF7 /* Lato-Bold.ttf in Resources */,
 				438A14BA1D801E0F005E6AF7 /* Lato-Light.ttf in Resources */,

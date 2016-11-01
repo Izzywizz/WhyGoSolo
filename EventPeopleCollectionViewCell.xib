@@ -111,8 +111,8 @@
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="Jhc-aH-Wwp"/>
                                         <exclude reference="CkK-cD-gxp"/>
+                                        <exclude reference="Jhc-aH-Wwp"/>
                                         <exclude reference="lYC-vk-G6i"/>
                                     </mask>
                                 </variation>
@@ -129,10 +129,10 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="dyG-in-JYn"/>
-                                        <exclude reference="I9W-yh-yLH"/>
-                                        <exclude reference="Hpc-F8-qdo"/>
                                         <exclude reference="BxS-OU-HgI"/>
+                                        <exclude reference="Hpc-F8-qdo"/>
+                                        <exclude reference="I9W-yh-yLH"/>
+                                        <exclude reference="dyG-in-JYn"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -179,8 +179,8 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="Zqz-No-de6"/>
                                         <exclude reference="C2M-bO-64Q"/>
+                                        <exclude reference="Zqz-No-de6"/>
                                         <exclude reference="bgC-at-aPO"/>
                                     </mask>
                                 </variation>
@@ -276,29 +276,29 @@
                             <mask key="constraints">
                                 <exclude reference="WjY-dI-DHX"/>
                                 <exclude reference="m1m-RL-8Ay"/>
-                                <exclude reference="kMm-nD-9hz"/>
+                                <exclude reference="RR4-XY-Hxx"/>
+                                <exclude reference="cKZ-ud-G2L"/>
                                 <exclude reference="eqn-vI-qIn"/>
                                 <exclude reference="f9k-fR-nVK"/>
-                                <exclude reference="cKZ-ud-G2L"/>
-                                <exclude reference="RR4-XY-Hxx"/>
-                                <exclude reference="dWL-g6-fFc"/>
-                                <exclude reference="aga-cu-YaJ"/>
+                                <exclude reference="kMm-nD-9hz"/>
                                 <exclude reference="GfM-xv-Iff"/>
                                 <exclude reference="Lqg-Mg-EeH"/>
-                                <exclude reference="R6L-G8-D0J"/>
+                                <exclude reference="aga-cu-YaJ"/>
+                                <exclude reference="dWL-g6-fFc"/>
                                 <exclude reference="2Hs-fU-Csp"/>
+                                <exclude reference="R6L-G8-D0J"/>
+                                <exclude reference="Nbe-Nu-o5H"/>
                                 <exclude reference="deP-Dy-0sW"/>
                                 <exclude reference="gKn-UY-TVg"/>
-                                <exclude reference="Nbe-Nu-o5H"/>
                                 <exclude reference="gYq-g3-T9m"/>
-                                <exclude reference="kCa-qS-sNM"/>
-                                <exclude reference="wGd-7i-8Va"/>
-                                <exclude reference="tNy-cv-c3Q"/>
                                 <exclude reference="1YN-dE-9db"/>
                                 <exclude reference="Waj-28-cln"/>
-                                <exclude reference="lrb-Bo-KxP"/>
+                                <exclude reference="kCa-qS-sNM"/>
+                                <exclude reference="tNy-cv-c3Q"/>
+                                <exclude reference="wGd-7i-8Va"/>
                                 <exclude reference="M9Y-td-wre"/>
                                 <exclude reference="XEI-7O-Ssy"/>
+                                <exclude reference="lrb-Bo-KxP"/>
                             </mask>
                         </variation>
                     </view>
