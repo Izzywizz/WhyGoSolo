@@ -30,6 +30,6 @@
 @property University* university;
 @property Residence* residence;
 
-
+@property int isFriend;
 @property NSMutableArray *eventsArray;
 @end

@@ -33,19 +33,85 @@
     self = [super init];
     if(self)
     {
+        NSLog(@"gghghhfEVENTS CREATE DICTssssss = %lu", apiRequest);
+
+       // NSLog(@"EVENTS CREATE DICT = %@", EVENT_API_CREATE_DICT);
         self.apiRequst = apiRequest;
+
+        NSDictionary *apiDict = [self dictForApiRequest];
+    NSLog(@"EVENTS CREATE DICT = %@", apiDict);
+        self.requestUrl = [self urlStringFromArray:[apiDict valueForKey:@"request"]]; // NSLog(@"REQUEST XXXXX %@", self.requestUrl);
+         NSLog(@"YYYYYY");
+        self.paramsDict = [apiDict valueForKey:@"params"];  // NSLog(@"PARAMS XXXXX %@", self.paramsDict);
         
-        self.requestUrl = [[self urlArray]objectAtIndex:apiRequest];// [self urlForApiRequest]; // [self requestURLManager];
-        NSLog(@"1111111");
-        self.paramsDict = [self paramsDictForApiRequest];
-        NSLog(@"11111112");
+        NSLog(@"XXXXXXX");
+
+        self.responseSelector = NSSelectorFromString([apiDict valueForKey:@"response"]);// NSLog(@"RESPONSE XXXXX %@", [apiDict valueForKey:@"response"]);
         
-        self.responseSelector = [self responseSelectorForApiRequest];
-     //   self.responseSelector = NSSelectorFromString([self responseSelectorManager]);
-        NSLog(@"11111113");
-       }
+        NSLog(@"asdsadasdsadsadsadasd");
+    }
     return self;
 }
+
+-(NSDictionary*)dictForApiRequest
+{
+    NSLog(@"gghghhfEVENTS CREATE DICT = %lu", self.apiRequst);
+
+    
+    switch (self.apiRequst) {
+        case EVENT_API_ALL:     return EVENT_API_ALL_DICT;
+            break;
+        case EVENT_API_SINGLE:  return EVENT_API_SINGLE_DICT;
+            break;
+        case EVENT_API_JOIN:    return EVENT_API_JOIN_DICT;
+            break;
+        case USER_API_SINGLE:   return USER_API_SINGLE_DICT;
+            break;
+        case EVENT_API_CREATE:  return EVENT_API_CREATE_DICT;
+            break;
+        case USER_API_FRIEND_STATUS_UPDATE:  return USER_API_FRIEND_STATUS_UPDATE_DICT;
+            break;
+        default:
+            break;
+    }
+    return @{};
+}
+
+
+-(NSString*)urlStringFromArray:(NSArray*)urlComponents
+{
+    NSLog(@"URL COMPONENETS: %@", urlComponents);
+    NSString* s= @"";
+    
+    for (id urlComponent in urlComponents)
+    {
+        NSLog(@"URL COMPONENETS: ==== %@", urlComponent);
+        NSLog(@"URL COMPONENETS: ==== %@", [urlComponent class]);
+        
+        s = [s stringByAppendingString:urlComponent];
+
+    }
+    return s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -(NSArray*)urlArray
@@ -64,13 +130,25 @@
               @"users/login",
               
               //EVENT_API_CREATE
-              [NSString stringWithFormat:@"users/%@/events/create", [Data sharedInstance].userID ]
+              [NSString stringWithFormat:@"users/%@/events/create", [Data sharedInstance].userID ],
+              
+              //USER_API_SINGLE
+              [NSString stringWithFormat:@"users/%@", [Data sharedInstance].selectedUserID],
+              
+              //USER_API_FRIEND_STATUS_UPDATE
+
               ];
 
 }
 
+-(void)testDef
+{
+#define X [Data sharedInstance].selectedEventID
+
+    NSLog(@"------ -- - - %@", X);
+}
 -(NSString*)urlForApiRequest
-{    
+{
     if (_apiRequst == EVENT_API_ALL)
     {
         return @"events";
@@ -87,6 +165,11 @@
     {
         return @"users/login";
     }
+    if (_apiRequst == USER_API_SINGLE)
+    {
+        return [NSString stringWithFormat:@"users/%@", [Data sharedInstance].selectedUserID];
+    }
+    
     return @"";
     
 }
@@ -95,12 +178,12 @@
 {
     return [[API_DICT objectForKey:[NSString stringWithFormat:@"%li",_apiRequst]]objectForKey:@"request"];
 }
-*/
+
 -(SEL)responseSelectorForApiRequest
 {
-    return NSSelectorFromString([[API_DICT objectForKey:[NSString stringWithFormat:@"%li",_apiRequst]]objectForKey:@"response"]);
-}
-
+   return NSSelectorFromString([[API_DICT objectForKey:[NSString stringWithFormat:@"%li",_apiRequst]]objectForKey:@"response"]);
+}*/
+/*
 -(NSDictionary*)paramsDictForApiRequest
 {
     NSMutableDictionary *tempDict = [NSMutableDictionary new];
@@ -115,6 +198,19 @@
     return [[NSDictionary alloc]initWithDictionary:tempDict];
 }
 
+/*
+-(NSString*)urlComponentForKey:(long)key
+{
+    
+    if ([paramKey isEqualToString:USER_PARAM_LOGIN_EMAIL])
+    {
+        return [RRRegistration sharedInstance].email;
+    }
+
+    return @"";
+}*/
+
+/*
 -(id)paramForKey:(NSString*)paramKey
 {
     NSLog(@"P KEY --- %@", paramKey);
@@ -176,6 +272,7 @@
 
 
 
+*/
 
 
 
@@ -194,8 +291,7 @@
 
 
 
-
-
+/*
 -(NSDictionary*)paramsDictForApiRequestx
 {
     
@@ -261,7 +357,8 @@
     return [[NSDictionary alloc]initWithDictionary:tempDict];
 }
 
-
+*/
+/*
 -(NSDictionary*)paramsDictManager
 {
     return @{
@@ -271,7 +368,7 @@
                             FILTER_PARAM_DISTANCE:[Data sharedInstance].filterDistance,
                             FILTER_PARAM_RESIDENCE_ID_ARRAY:[Data sharedInstance].residenceFilterArrayString,
                           
-                        /*    USER_PARAM_FIRST_NAME:[Data sharedInstance].loggedInUser.firstName,
+                         USER_PARAM_FIRST_NAME:[Data sharedInstance].loggedInUser.firstName,
                             USER_PARAM_LAST_NAME:[Data sharedInstance].loggedInUser.lastName,
                             USER_PARAM_PASSWORD:[Data sharedInstance].loggedInUser.password,
                             USER_PARAM_DOB_EPOCH,
@@ -279,13 +376,14 @@
                             USER_PARAM_RESIDENCE_LONGITUDE,
                             RESIDENCE_PARAM_ID,
                             USER_PARAM_AVATAR_FILE_NAME,
-                            USER_PARAM_PASSWORD, */
+                            USER_PARAM_PASSWORD,
 
                             
                             
                             };
 }
-
+*/
+/*
 -(NSDictionary*)loginDict
 {
     return @{
@@ -298,8 +396,8 @@
 {
     return @{
              USER_PARAM_EMAIL:[RRRegistration sharedInstance].email,
-             USER_PARAM_FIRST_NAME:[RRRegistration sharedInstance].firstName,
-             USER_PARAM_LAST_NAME:[RRRegistration sharedInstance].lastName,
+             USER_FIRST_NAME_KEY:[RRRegistration sharedInstance].firstName,
+             USER_LAST_NAME_KEY:[RRRegistration sharedInstance].lastName,
              USER_PARAM_PASSWORD:[RRRegistration sharedInstance].password,
              USER_PARAM_DOB_EPOCH:@"44444",//[RRRegistration sharedInstance].strDateOfBirth,
              USER_PARAM_RESIDENCE_LATITUDE:[NSString stringWithFormat:@"%f",[RRRegistration sharedInstance].latitude],
@@ -313,7 +411,7 @@
 -(NSDictionary*)createEventDict
 {
     return @{
-             EVENT_PARAM_ADDRESS:[Data sharedInstance].createdEvent.address,
+             EVENT_ADDRESS_KEY:[Data sharedInstance].createdEvent.address,
              EVENT_PARAM_DESCRIPTION:[Data sharedInstance].createdEvent.eventDescription,
              EVENT_PARAM_LONGITUDE:[NSString stringWithFormat:@"%f",[Data sharedInstance].createdEvent.longitude],
              EVENT_PARAM_LATITUDE:[NSString stringWithFormat:@"%f",[Data sharedInstance].createdEvent.latitude],
@@ -322,8 +420,8 @@
              EVENT_PARAM_USER_ID:[Data sharedInstance].userID,
              };
 }
-
-
+*/
+/*
 -(NSString*)requestURLManager
 {
     switch (_apiRequst)
@@ -375,7 +473,7 @@
     }
     
     return nil;
-}
+}*/
 
 -(NSArray*)paramKeys
 {

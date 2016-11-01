@@ -114,7 +114,7 @@
 ///
 
 -(void)checkForToken
-{        NSLog(@"TESTE TEST %@", TEST);
+{     //   NSLog(@"TESTE TEST %@", TEST);
 
     
   //  [WebService sharedInstance].registerAccount;

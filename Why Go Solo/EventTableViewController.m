@@ -21,6 +21,7 @@
 #import "Data.h"
 #import "User.h"
 
+#import "EditProfileTableViewController.h"
 #import "WebService.h"
 @interface EventTableViewController () <DataDelegate>
 
@@ -120,9 +121,17 @@ NSArray *sectionTitles;
 -(void)userParsedSuccessfully
 {
     
-    NSLog(@"asdas USER PARSED SUCCESSFULLY");
+    NSLog(@"asdas USER PARSED SUCCESSFULLY: SELECTED USER ID = %@ / USER ID = %@", [Data sharedInstance].selectedUserID, [Data sharedInstance].userID);
+    
+    if([[NSString stringWithFormat:@"%@",[Data sharedInstance].selectedUserID] isEqualToString:[NSString stringWithFormat:@"%@",[Data sharedInstance].userID]])
+       {
+           [self moveToUserProfile];
+       }
+       else
+       {
+           [self moveToOtherUserProfile];
 
-    [self moveToOtherUserProfile];
+       }
 
 }
 
@@ -258,6 +267,11 @@ NSArray *sectionTitles;
 /** Segue to another viewController */
 -(void) moveToOtherUserProfile  {
     [self performSegueWithIdentifier:@"GoToOtherUserProfile" sender:self];
+}
+
+
+-(void) moveToUserProfile  {
+    [self performSegueWithIdentifier:@"GoToUserProfile" sender:self];
 }
 
 -(void)moveToFilter {

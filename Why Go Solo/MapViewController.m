@@ -409,10 +409,19 @@
         NSLog(@"POST EVENT");
         //TODO: Add logic to create the event
         [Data sharedInstance].createdEvent.address = _resultSearchController.searchBar.text ;
+        NSLog(@"POST EVENT 1");
+
         [Data sharedInstance].createdEvent.latitude = _placemark.location.coordinate.latitude;
+        NSLog(@"POST EVENT2");
+
         [Data sharedInstance].createdEvent.longitude = _placemark.location.coordinate.longitude;
-        [[WebService sharedInstance]eventsApiRequest:EVENT_API_CREATE];
+        NSLog(@"POST EVENT3");
+       // NSLog(@"EVENTS CREATE DICT aa= %@", EVENT_API_CREATE_DICT);
+
+        NSLog(@"POST EVENT4");
         [self setupAlertBox];
+        [[WebService sharedInstance]eventsApiRequest:EVENT_API_CREATE];
+
     }
     
 }

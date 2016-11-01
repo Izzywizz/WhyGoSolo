@@ -13,50 +13,58 @@
 
 
 typedef NS_ENUM(NSInteger, eventsApiRequests) {
-#define TEST @"loginsssssss"EVENT_API_ALL_RESPONSE_SELECTOR
+//#define TEST @"loginsssssss"API_DICT
     
-    #define API_DICT @{@"0":EVENT_API_ALL_DICT, @"1":EVENT_API_SINGLE_DICT, @"2":EVENT_API_JOIN_DICT, @"3":LOGIN_API_DICT, @"4":EVENT_API_CREATE_DICT}
+   // #define API_DICT @{@"0":EVENT_API_ALL_DICT, @"1":@"", @"2":EVENT_API_JOIN_DICT, @"3":LOGIN_API_DICT, @"4":EVENT_API_CREATE_DICT, @"5":USER_API_SINGLE_DICT, @"6":USER_API_FRIEND_STATUS_UPDATE_DICT}
 
     
     EVENT_API_ALL = 0,
-    #define EVENT_API_ALL_DICT @{ @"params":EVENT_API_ALL_PARAMS, @"response":EVENT_API_ALL_RESPONSE_SELECTOR}
-    #define EVENT_API_ALL_PARAMS @[EVENT_PARAM_USER_ID, FILTER_PARAM_RESIDENCE_ID_ARRAY, FILTER_PARAM_DISTANCE]
-    #define EVENT_API_ALL_RESPONSE_SELECTOR @"createEventsArrayFromDict:"
+  //  #define EVENT_API_ALL_DICT @{@"request":@[@"events"], @"params":EVENT_API_ALL_PARAMS, @"response":@"createEventsArrayFromDict:"}
+//    #define EVENT_API_ALL_PARAMS @[EVENT_PARAM_USER_ID, FILTER_PARAM_RESIDENCE_ID_ARRAY, FILTER_PARAM_DISTANCE]
+  //  #define EVENT_API_ALL_RESPONSE_SELECTOR @"createEventsArrayFromDict:"
 
     
+    
     EVENT_API_SINGLE = 1,
-    #define EVENT_API_SINGLE_DICT @{ @"params":EVENT_API_SINGLE_PARAMS, @"response":EVENT_API_ALL_RESPONSE_SELECTOR}
-    #define EVENT_API_SINGLE_PARAMS @[EVENT_PARAM_USER_ID]
-    #define EVENT_API_SINGLE_PARAMS_RESPONSE_SELECTOR @"parseEventFromDict:"
+//    #define EVENT_API_SINGLE_DICT @{ @"request":@[@"events/",SELECTED_EVENT_ID], @"params":SELECTED_EVENT_PARAMS,  @"response":@"parseEventFromDict:"}
+//    EVENT_API_SINGLE = 1,
+  //  #define EVENT_API_SINGLE_DICT @{ @"params":@[EVENT_PARAM_USER_ID], @"request":@[@"events/",SELECTED_EVENT], @"response":@"parseEventFromDict:"}
+
 
     
     EVENT_API_JOIN = 2,
-    #define EVENT_API_JOIN_DICT @{ @"params":EVENT_API_JOIN_PARAMS, @"response":EVENT_API_JOIN_RESPONSE_SELECTOR }
-    #define EVENT_API_JOIN_PARAMS @[EVENT_PARAM_USER_ID]
-    #define EVENT_API_JOIN_RESPONSE_SELECTOR @"updateJoinedStatusFromDict:"
+  //  #define EVENT_API_JOIN_DICT @{ @"request":@[@"events/",SELECTED_EVENT_ID,@"/update_join_status"], @"params":EVENT_API_JOIN_PARAMS,  @"response":@"updateJoinedStatusFromDict:"}
+
+    //   #define EVENT_API_JOIN_DICT @{ @"params":@[EVENT_PARAM_USER_ID], @"response":@"updateJoinedStatusFromDict:" }
+  //  #define EVENT_API_JOIN_PARAMS @[EVENT_PARAM_USER_ID]
+  //  #define EVENT_API_JOIN_RESPONSE_SELECTOR @"updateJoinedStatusFromDict:"
     
     
     LOGIN = 3,
-    #define LOGIN_API_DICT @{ @"params":LOGIN_API_PARAMS, @"response":LOGIN_API_RESPONSE_SELECTOR }
-    #define LOGIN_API_PARAMS @[USER_PARAM_LOGIN_EMAIL, USER_PARAM_LOGIN_PASSWORD]
-    #define LOGIN_API_RESPONSE_SELECTOR @"login"
+    #define LOGIN_API_DICT @{ @"params":@[USER_PARAM_LOGIN_EMAIL, USER_PARAM_LOGIN_PASSWORD], @"response":@"login" }
+  //  #define LOGIN_API_PARAMS @[USER_PARAM_LOGIN_EMAIL, USER_PARAM_LOGIN_PASSWORD]
+   // #define LOGIN_API_RESPONSE_SELECTOR @"login"
 
     EVENT_API_CREATE = 4,
-    #define EVENT_API_CREATE_DICT @{ @"params":EVENT_API_CREATE_PARAMS, @"response":EVENT_API_CREATE_RESPONSE_SELECTOR }
-    #define EVENT_API_CREATE_PARAMS @[EVENT_PARAM_USER_ID, EVENT_PARAM_ADDRESS, EVENT_PARAM_DESCRIPTION, EVENT_PARAM_LONGITUDE, EVENT_PARAM_LATITUDE, EVENT_PARAM_EMOJI, EVENT_PARAM_PRIVATE, EVENT_PARAM_USER_ID]
-    #define EVENT_API_CREATE_RESPONSE_SELECTOR @"createEventsArrayFromDict:"
+  //  #define EVENT_API_CREATE_DICT @{ @"params":@[EVENT_PARAM_USER_ID, EVENT_PARAM_ADDRESS, EVENT_PARAM_DESCRIPTION, EVENT_PARAM_LONGITUDE, EVENT_PARAM_LATITUDE, EVENT_PARAM_EMOJI, EVENT_PARAM_PRIVATE, EVENT_PARAM_USER_ID], @"response":@"createEventsArrayFromDict:" }
+  //  #define EVENT_API_CREATE_PARAMS @[EVENT_PARAM_USER_ID, EVENT_PARAM_ADDRESS, EVENT_PARAM_DESCRIPTION, EVENT_PARAM_LONGITUDE, EVENT_PARAM_LATITUDE, EVENT_PARAM_EMOJI, EVENT_PARAM_PRIVATE, EVENT_PARAM_USER_ID]
+   // #define EVENT_API_CREATE_RESPONSE_SELECTOR @"createEventsArrayFromDict:"
 
 
     
     USER_API_SINGLE = 5,
-    #define USER_API_SINGLE_PARAMS @[USER_PARAM_ID]
-    #define USER_API_SINGLE_PARAMS_RESPONSE_SELECTOR @"parseUserFromDict:"
-    #define USER_API_SINGLE_PARAMS_ARRAY @[USER_API_SINGLE_PARAMS, USER_API_SINGLE_PARAMS_RESPONSE_SELECTOR]
-    
+//    #define USER_API_SINGLE_DICT @{ @"params":@[USER_PARAM_ID], @"response":@"parseUserFromDict:" }
+
+ //   #define USER_API_SINGLE_PARAMS @[USER_PARAM_ID]
+   // #define USER_API_SINGLE_PARAMS_RESPONSE_SELECTOR @"parseUserFromDict:"
+   // #define USER_API_SINGLE_PARAMS_ARRAY @[USER_API_SINGLE_PARAMS, USER_API_SINGLE_PARAMS_RESPONSE_SELECTOR]
+   
     USER_API_FRIEND_STATUS_UPDATE = 6,
-    #define USER_API_FRIEND_STATUS_UPDATE_PARAMS @[USER_PARAM_ID]
-    #define USER_API_FRIEND_STATUS_UPDATE_RESPONSE_SELECTOR @"friendStatusUpdated:"
-    #define USER_API_FRIEND_STATUS_UPDATE_PARAMS_ARRAY @[USER_API_FRIEND_STATUS_UPDATE_PARAMS, USER_API_FRIEND_STATUS_UPDATE_RESPONSE_SELECTOR]
+ //   #define USER_API_FRIEND_STATUS_UPDATE_DICT @{ @"params":@[USER_PARAM_ID], @"response":@"friendStatusUpdated:" }
+
+  //  #define USER_API_FRIEND_STATUS_UPDATE_PARAMS @[USER_PARAM_ID]
+ //   #define USER_API_FRIEND_STATUS_UPDATE_RESPONSE_SELECTOR @"friendStatusUpdated:"
+   // #define USER_API_FRIEND_STATUS_UPDATE_PARAMS_ARRAY @[USER_API_FRIEND_STATUS_UPDATE_PARAMS, USER_API_FRIEND_STATUS_UPDATE_RESPONSE_SELECTOR]
  
     AUTHENTICATION,
     USER_API_CREATE,
@@ -123,9 +131,83 @@ typedef NS_ENUM(NSInteger, residenceApiRequests) {
 };
 
 
+
+
 //#define EVENT_API_ALL_PARAMS @[EVENT_PARAM_USER_ID, FILTER_PARAM_RESIDENCE_ID_ARRAY, FILTER_PARAM_DISTANCE]
 
+//RUN TIME VALUES
 
+#define USER_ID [NSString stringWithFormat:@"%@",[Data sharedInstance].userID]
+#define SELECTED_EVENT_ID [Data sharedInstance].selectedEventID
+#define SELECTED_USER_ID [Data sharedInstance].selectedUserID
+#define FILTER_DISTANCE [Data sharedInstance].filterDistance
+#define FILTER_RESIDENCE_ID_ARRAY [Data sharedInstance].residenceFilterArrayString
+
+// REQUEST PARAMS DICT
+#define SELECTED_EVENT_PARAMS @{    EVENT_ID_KEY:EVENT_ID_VALUE,\
+                                    USER_ID_KEY:USER_ID_VALUE}
+
+
+//
+#define EVENT_API_ALL_DICT      @{  @"request"  :   @[@ "events"],\
+                                    @"response" :   @   "createEventsArrayFromDict:",\
+                                    @"params"   :   @{  USER_ID_KEY:USER_ID,\
+                                                        FILTER_DISTANCE_KEY:FILTER_DISTANCE,\
+                                                        FILTER_RESIDENCE_ID_ARRAY_KEY:FILTER_RESIDENCE_ID_ARRAY }\
+}
+
+#define EVENT_API_SINGLE_DICT   @{  @"request"  :   @[@ "events/",SELECTED_EVENT_ID],\
+                                    @"response" :   @   "parseEventFromDict:",\
+                                    @"params"   :   @{  USER_ID_KEY:USER_ID,\
+                                                        EVENT_ID_KEY:SELECTED_EVENT_ID }\
+}
+
+#define EVENT_API_JOIN_DICT     @{  @"request"  :   @[@ "events/",SELECTED_EVENT_ID,@"/update_join_status"],\
+                                    @"response" :   @   "updateJoinedStatusFromDict:",\
+                                    @"params"   :    @{ USER_ID_KEY:USER_ID }\
+}
+
+#define USER_API_SINGLE_DICT    @{  @"request"  :   @[@ "users/",SELECTED_USER_ID,],\
+                                    @"response" :   @   "parseUserFromDict:",\
+                                    @"params"   :    @{ USER_ID_KEY:USER_ID }\
+}
+
+#define EVENT_API_CREATE_DICT    @{ @"request"  :   @[@ "users/",USER_ID,@"/events/create"],\
+                                    @"response" :   @   "createEventsArrayFromDict:",\
+                                    @"params"   :    @{ USER_ID_KEY:USER_ID,\
+                                                        EVENT_ADDRESS_KEY:[Data sharedInstance].createdEvent.address,\
+                                                        EVENT_DESCRIPTION_KEY:[Data sharedInstance].createdEvent.eventDescription,\
+                                                        EVENT_LATITUDE_KEY:[NSString stringWithFormat:@"%f",[Data sharedInstance].createdEvent.latitude],\
+                                                        EVENT_LONGITUDE_KEY:[NSString stringWithFormat:@"%f",[Data sharedInstance].createdEvent.longitude],\
+                                                        EVENT_EMOJI_KEY:[Data sharedInstance].createdEvent.emoji,\
+                                                        EVENT_PRIVATE_KEY:[NSString stringWithFormat:@"%i",[Data sharedInstance].createdEvent.isPrivate]}\
+}
+
+#define USER_API_FRIEND_STATUS_UPDATE_DICT    @{  @"request"  :   @[@ "users/",SELECTED_USER_ID,@"/update_friend_status"],\
+@"response" :   @   "friendStatusUpdated:",\
+@"params"   :    @{ USER_ID_KEY:USER_ID }\
+}
+
+
+
+
+
+    //#define EVENT_API_ALL_PARAMS
+
+#define EVENT_API_JOIN_PARAMS   @{    USER_ID_KEY:USER_ID_VALUE }
+// PARAM KEY/VALUE
+#define EVENT_ID_KEY @"id"
+//#define EVENT_ID_VALUE SELECTED_EVENT_ID
+
+#define USER_ID_KEY @"user_id"
+//#define USER_ID_VALUE USER_ID
+//#define SELECTED_USED_VALUE SELECTED_USER_ID
+
+#define FILTER_DISTANCE_KEY @"filter_distance"
+//#define FILTER_DISTANCE_VALUE [Data sharedInstance].filterDistance
+
+#define FILTER_RESIDENCE_ID_ARRAY_KEY @"residence_id_array"
+//#define FILTER_RESIDENCE_ID_ARRAY_VALUE [Data sharedInstance].residenceFilterArrayString
 
 
 #define UNIVERSITY_PARAM_ID @"university_id"
@@ -134,8 +216,8 @@ typedef NS_ENUM(NSInteger, residenceApiRequests) {
 #define USER_PARAM_ID @"user_id"
 #define USER_PARAM_SELECTED_ID @"user_id"
 
-#define USER_PARAM_FIRST_NAME @"first_name"
-#define USER_PARAM_LAST_NAME @"last_name"
+#define USER_FIRST_NAME_KEY @"first_name"
+#define USER_LAST_NAME_KEY @"last_name"
 #define USER_PARAM_DOB_EPOCH @"dob_epoch"
 #define USER_PARAM_RESIDENCE_LATITUDE @"latitude"
 #define USER_PARAM_RESIDENCE_LONGITUDE @"longitude"
@@ -155,19 +237,19 @@ typedef NS_ENUM(NSInteger, residenceApiRequests) {
     #define FILTER_DEFAULT_VALUE_RESIDENCE_ID_ARRAY @"all"
 
 
-#define EVENT_PARAM_ADDRESS @"address"
-#define EVENT_PARAM_LATITUDE @"latitude"
-#define EVENT_PARAM_LONGITUDE @"longitude"
-#define EVENT_PARAM_DESCRIPTION @"description"
-#define EVENT_PARAM_EMOJI @"emoji"
-#define EVENT_PARAM_PRIVATE @"private"
-#define EVENT_PARAM_EPOCH_EXPIRY @"epoch_expiry"
-#define EVENT_PARAM_USER_ID @"user_id"
-#define EVENT_PARAM_ID @"id"
-#define EVENT_PARAM_NUMBER_OF_COMMENTS @"number_of_comments"
-#define EVENT_PARAM_NUMBER_OF_USERS_ATTENDING @"number_of_users_attending"
-#define EVENT_PARAM_NUMBER_OF_FRIENDS_ATTENDING @"number_of_friends_attending"
-#define EVENT_PARAM_JOINED_STATUS @"logged_in_user_joined_event"
+#define EVENT_ADDRESS_KEY @"address"
+#define EVENT_LATITUDE_KEY @"latitude"
+#define EVENT_LONGITUDE_KEY @"longitude"
+#define EVENT_DESCRIPTION_KEY @"description"
+#define EVENT_EMOJI_KEY @"emoji"
+#define EVENT_PRIVATE_KEY @"private"
+#define EVENT_EPOCH_EXPIRY_KEY @"epoch_expiry"
+#define EVENT_USER_ID_KEY @"user_id"
+#define EVENT_ID_KEY @"id"
+#define EVENT_NUMBER_OF_COMMENTS_KEY @"number_of_comments"
+#define EVENT_NUMBER_OF_USERS_ATTENDING_KEY @"number_of_users_attending"
+#define EVENT_NUMBER_OF_FRIENDS_ATTENDING_KEY @"number_of_friends_attending"
+#define EVENT_JOINED_STATUS_KEY @"logged_in_user_joined_event"
 
 
 #define COMMENT_PARAM_ID @"id"

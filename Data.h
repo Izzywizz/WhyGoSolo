@@ -80,7 +80,7 @@
 
 -(void)updateResidenceFilterArrayString;
 
-
+-(void)friendStatusUpdated:(NSDictionary*)dict;
 -(void)login;
 
 -(void)updateAvatarDictWithImage:(UIImage*)avatarImage forUserID:(NSString*)userID;

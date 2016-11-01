@@ -171,11 +171,17 @@ if (_delegate && [_delegate respondsToSelector:@selector(joinedStatusUpdatedSucc
         [self.delegate joinedStatusUpdatedSuccessfully];
     }
 }
-
+-(void)friendStatusUpdated:(NSDictionary*)dict
+{
+    [[WebService sharedInstance]eventsApiRequest:USER_API_SINGLE];
+}
 -(void)parseUserFromDict:(NSDictionary*)dict;
 {
     NSLog(@"USER DICT = %@", dict);
     
+    if ([[dict valueForKey:@"user" ]valueForKey:@"added_as_friend"]) {
+        dict = [dict valueForKey:@"user" ];
+    }
     [Data sharedInstance].selectedUser = [[User alloc]initWithDict:dict];
     
     if (_delegate && [_delegate respondsToSelector:@selector(userParsedSuccessfully)])

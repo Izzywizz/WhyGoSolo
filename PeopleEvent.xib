@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="440" height="99"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="OXs-jg-M0b" id="27M-5w-zOf">
-                <rect key="frame" x="0.0" y="0.0" width="440" height="98.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="440" height="98"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="29V-SN-lv7">
@@ -25,9 +25,6 @@
                             <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hua-00-SDx" userLabel="Profile Button">
                                 <rect key="frame" x="15" y="0.0" width="344" height="47"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="OXs-jg-M0b" eventType="touchUpInside" id="gOY-H4-dGN"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="🍔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fuv-lV-jqu">
                                 <rect key="frame" x="365" y="15" width="47" height="57"/>
@@ -135,13 +132,6 @@
                 </variation>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-            <connections>
-                <outlet property="eventAddressLabel" destination="w2E-oP-9Zi" id="eBu-XE-9vU"/>
-                <outlet property="eventEmoticonLabel" destination="Fuv-lV-jqu" id="NKy-bS-Wvy"/>
-                <outlet property="nameLabel" destination="7nt-Nj-lrc" id="kOw-lc-Q4Y"/>
-                <outlet property="timeLabel" destination="5BC-YN-zML" id="cim-Nq-g9b"/>
-                <outlet property="viewLayer" destination="29V-SN-lv7" id="G3u-AF-FLB"/>
-            </connections>
             <point key="canvasLocation" x="72" y="173.5"/>
         </tableViewCell>
     </objects>

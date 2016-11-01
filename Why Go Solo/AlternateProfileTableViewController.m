@@ -16,8 +16,9 @@
 #import "OverlayView.h"
 #import "EventCellView.h"
 #import "WebService.h"
-
-@interface AlternateProfileTableViewController ()
+#import "User.h"
+#import "Data.h"
+@interface AlternateProfileTableViewController () <DataDelegate>
 
 @property NSDictionary *tableData;
 @property NSArray *sectionTitles;
@@ -26,11 +27,23 @@
 @property BOOL isFriend;
 @property (nonatomic) UIView *overlayView;
 
-
+@property User *user;
 
 @end
 
 @implementation AlternateProfileTableViewController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = self;
+    [[WebService sharedInstance]eventsApiRequest:USER_API_SINGLE];
+
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -67,7 +80,18 @@
     //    self.tableView.allowsSelection = NO;
 }
 
+-(void)userParsedSuccessfully
+{
+    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
+}
 
+-(void)handleUpdates
+{
+    _user = [Data sharedInstance].selectedUser;
+    
+    [self updateFreindButtonStatus];
+
+}
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section    {
@@ -257,6 +281,20 @@
         }
     }
 
+-(void)updateFreindButtonStatus
+{
+    if (_user.isFriend == 1) {
+        _addFriendButton.image = [UIImage imageNamed:@"minus-friend"];
+     //   _isFriend = false;
+        NSLog(@"Friend Added");
+    } else {
+        _addFriendButton.image = [UIImage imageNamed:@"add-event-20-20"];
+       // _isFriend = true;
+        NSLog(@"Friend Removed");
+    }
+
+}
+
 #pragma mark - Action Methods
 
 - (IBAction)backButton:(UIBarButtonItem *)sender {
@@ -265,7 +303,7 @@
 
 - (IBAction)addFriendButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Friend LOgic needs to be added");
-    if (_isFriend) {
+   /* if (_isFriend) {
         _addFriendButton.image = [UIImage imageNamed:@"minus-friend"];
         _isFriend = false;
         NSLog(@"Friend Added");
@@ -273,8 +311,9 @@
         _addFriendButton.image = [UIImage imageNamed:@"add-event-20-20"];
         _isFriend = true;
         NSLog(@"Friend Removed");
-    }
+    }*/
     
+    [self updateFreindButtonStatus];
     [[WebService sharedInstance]eventsApiRequest:USER_API_FRIEND_STATUS_UPDATE];
 }
 
