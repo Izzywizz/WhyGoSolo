@@ -7,8 +7,9 @@
 //
 
 #import "AddCommentViewController.h"
-
-@interface AddCommentViewController ()<UITextViewDelegate>
+#import "WebService.h"
+#import "Data.h"
+@interface AddCommentViewController ()<UITextViewDelegate, DataDelegate>
 
 @end
 
@@ -24,6 +25,13 @@
 -(void)viewWillAppear:(BOOL)animated    {
     //Keybaord appear straight away
     //    [_commentsTextView becomeFirstResponder];
+    [Data sharedInstance].delegate = self;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,12 +82,21 @@
     _commentsTextView.textColor = [UIColor lightGrayColor];
     
 }
+-(void)commentCreated{
+    [self performSelectorOnMainThread:@selector(goBack) withObject:nil waitUntilDone:NO];// [self goBack];
+}
 
 #pragma mark - Action Methods
 - (IBAction)sendButtonPressed:(UIButton *)sender {
     NSLog(@"SEnding");
     _sendButton.alpha = 0;
+    
+    [Data sharedInstance].createdCommentText = _commentsTextView.text;
+    [[WebService sharedInstance]eventsApiRequest:COMMENT_API_CREATE];
+    //[self goBack];
+    return;
     _activityIndicator.hidden = NO;
+    
     [self.activityIndicator startAnimating];
     if ([_activityIndicator isAnimating]) {
         [_activityIndicator performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:3.0];

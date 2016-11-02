@@ -18,7 +18,7 @@
     {
         
         NSLog(@"USERINIT DICT = %@", dict);
-        self.userID = (int)[[dict valueForKey:@"id"]integerValue];//(int)[[dict valueForKey:USER_PARAM_ID]integerValue];
+        self.userID = [NSString stringWithFormat:@"%i",(int)[[dict valueForKey:@"id"]integerValue]];//(int)[[dict valueForKey:USER_PARAM_ID]integerValue];
 
         self.firstName = [dict valueForKey:USER_FIRST_NAME_KEY];
         self.lastName = [dict valueForKey:USER_LAST_NAME_KEY];

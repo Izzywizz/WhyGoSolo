@@ -7,6 +7,9 @@
 //
 
 #import "EditCellCollectionViewCell.h"
+#import "Data.h"
+#import "Event.h"
+#import "WebService.h"
 
 @implementation EditCellCollectionViewCell
 
@@ -33,11 +36,15 @@
 
 - (IBAction)closeEventButtonPressed:(UIButton *)sender {
     NSLog(@"Close");
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"closeOverlayView" object:self];
+    [[WebService sharedInstance]eventsApiRequest:EVENT_API_CLOSE];
+
+   // [[NSNotificationCenter defaultCenter] postNotificationName:@"closeOverlayView" object:self];
 }
 - (IBAction)cancelEventButtonPressed:(UIButton *)sender {
     NSLog(@"Cancel");
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"cancelOverlayView" object:self];
+    
+    [[WebService sharedInstance]eventsApiRequest:EVENT_API_CANCEL];
+   // [[NSNotificationCenter defaultCenter] postNotificationName:@"cancelOverlayView" object:self];
 
 }
 - (IBAction)changeLocationButtonPressed:(UIButton *)sender {
@@ -73,9 +80,14 @@
     [self.describeEventTextView resignFirstResponder]; // get rid of the keybaord
 }
 
+
+
+
 /** creates the placeholder effect*/
 -(void) previousEventTextViewSetup    {
-    self.describeEventTextView.text = @"This is the event description from the previous event";
+    
+    self.describeEventTextView.text = [Data sharedInstance].createdEvent.eventDescription;
+ //   self.describeEventTextView.text = @"This is the event description from the previous event";
 }
 
 /**This method is called when the user touches the background and resigns the keybaord*/
@@ -86,6 +98,9 @@
 }
 
 - (void)textViewDidChange:(UITextView *)textView    {
+   
+    [Data sharedInstance].createdEvent.eventDescription = textView.text;
+
     _charCount.text =  [NSString stringWithFormat:@"%lu", (unsigned long)textView.text.length];
 
     if (textView.text.length != 140) {
@@ -99,11 +114,46 @@
 
 -(void) createEmojiView {
     //Removes the carret I animation
+    if (self.emojiTextView.text == nil) {
+        self.emojiTextView.text = [self.emojiTextView.text stringByAppendingString:[Data sharedInstance].createdEvent.emoji];
+    } else  {
+        self.emojiTextView.text = @"";
+        self.emojiTextView.text = [self.emojiTextView.text stringByAppendingString:[Data sharedInstance].createdEvent.emoji];
+    }
+    self.addEmojiImage.hidden = YES;
+
     self.emojiTextView.tintColor = [UIColor clearColor];
     // init ISEmojiView
     ISEmojiView *emojiView = [[ISEmojiView alloc] initWithTextField:self.emojiTextView delegate:self];
-    self.emojiTextView.inputView = emojiView;
+    self.emojiTextView.font = [UIFont systemFontOfSize:52.0];
+
+       // _emojiTextView.text = [Data sharedInstance].createdEvent.emoji;
+
 }
+
+/*
+-(void)emojiView:(ISEmojiView *)emojiView didSelectEmoji:(NSString *)emoji{
+    if (self.emojiTextView.text == nil) {
+        self.emojiTextView.text = [self.emojiTextView.text stringByAppendingString:emoji];
+    } else  {
+        self.emojiTextView.text = @"";
+        self.emojiTextView.text = [self.emojiTextView.text stringByAppendingString:emoji];
+    }
+    // As soon as the user selects an emoji it hides the keyboard
+    [self.emojiTextView resignFirstResponder];
+//    self.emojiTextView.font = [UIFont systemFontOfSize:52.0];
+    self.addEmojiImage.hidden = YES;
+    
+    NSString *emojiUTF8 = [NSString stringWithUTF8String:[self.emojiTextView.text UTF8String]];
+    NSData *emojiData = [emojiUTF8 dataUsingEncoding:NSNonLossyASCIIStringEncoding];
+    NSString *emojiString = [[NSString alloc] initWithData:emojiData encoding:NSUTF8StringEncoding];
+
+    
+    [Data sharedInstance].createdEvent.emoji = emojiString;
+
+    
+}
+*/
 
 -(void)emojiView:(ISEmojiView *)emojiView didSelectEmoji:(NSString *)emoji{
     if (self.emojiTextView.text == nil) {
@@ -117,6 +167,14 @@
     self.emojiTextView.font = [UIFont systemFontOfSize:52.0];
     self.addEmojiImage.hidden = YES;
     
+    NSString *emojiUTF8 = [NSString stringWithUTF8String:[self.emojiTextView.text UTF8String]];
+    NSData *emojiData = [emojiUTF8 dataUsingEncoding:NSNonLossyASCIIStringEncoding];
+    NSString *emojiString = [[NSString alloc] initWithData:emojiData encoding:NSUTF8StringEncoding];
+    
+    
+    [Data sharedInstance].createdEvent.emoji = emojiString;
+    
+    NSLog(@"EMOJI TEXT = %@", emojiString);
 }
 
 

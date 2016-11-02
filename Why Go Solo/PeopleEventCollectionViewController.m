@@ -67,9 +67,12 @@
 -(void)eventParsedSuccessfully
 {
     _event = [Data sharedInstance].selectedEvent;
+
+
     _friendsArray = [[NSArray alloc]initWithArray:[Data sharedInstance].selectedEvent.friendsArray];
     _otherPeopleArray = [[NSArray alloc]initWithArray:[Data sharedInstance].selectedEvent.otherUsersArray];
-    
+    NSLog(@"FRIENDS ARRAY = %@", _friendsArray );
+    NSLog(@"OTHER PEOPLE ARRAY = %@", _otherPeopleArray);
     [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
     NSLog(@"PPPPPP EVVVV = %@", _event.eventDescription);
 }
@@ -196,7 +199,7 @@
     
     FriendCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    if (indexPath.section == 0)
+    if (indexPath.section ==1)
     {
         [cell configureCellWithUser:[_friendsArray objectAtIndex:indexPath.row]];
     }

@@ -7,7 +7,10 @@
 //
 
 #import "EditCollectionViewController.h"
-
+#import "Data.h"
+#import "Event.h"
+#import "WebService.h"
+#import "RREmojiParser.h"
 @interface EditCollectionViewController ()
 @property NSArray *dummyData;
 @property NSArray *sectionTitles;
@@ -26,6 +29,8 @@ static NSString * const reuseIdentifier = @"Cell";
     _isPublicEvent = YES; //intailly set the switch to off in the storyboard!
 
     [self createDummyData];
+    _sectionTitles = [[NSArray alloc] init];
+    _sectionTitles = @[@"HELP", @"FRIENDS (n/n)", @"EVERYONE (n)"];
     [self setupObservers];
     [self setNavigationButtonFontAndSize];
     
@@ -34,6 +39,22 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"EditCell" bundle:nil] forCellWithReuseIdentifier:@"EditCell"];
     
     self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    if ([Data sharedInstance].createdEvent  == nil)
+    {
+        [Data sharedInstance].createdEvent = [Data sharedInstance].selectedEvent;
+        
+        NSString *emojiUTF8 = [NSString stringWithUTF8String:[[Data sharedInstance].selectedEvent.emoji UTF8String]];
+        NSData *emojiData = [emojiUTF8 dataUsingEncoding:NSNonLossyASCIIStringEncoding];
+        NSString *emojiString = [[NSString alloc] initWithData:emojiData encoding:NSUTF8StringEncoding];
+        
+        
+        [Data sharedInstance].createdEvent.emoji = emojiString;
+    }
     
 }
 
@@ -168,11 +189,20 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark - Action Methods
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
+    [Data sharedInstance].createdEvent  = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
     NSLog(@"Please save this");
+  /*
+    NSString *emojiUTF8 = [NSString stringWithUTF8String:[[Data sharedInstance].createdEvent.emoji UTF8String]];
+    NSData *emojiData = [emojiUTF8 dataUsingEncoding:NSNonLossyASCIIStringEncoding];
+    NSString *emojiString = [[NSString alloc] initWithData:emojiData encoding:NSUTF8StringEncoding];
+    
+    
+    [Data sharedInstance].createdEvent.emoji = emojiString;*/
+    [[WebService sharedInstance]eventsApiRequest:EVENT_API_EDIT];
 }
 
 
@@ -289,8 +319,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void) setupCloseOrCancelView:(NSString *)eventTitle andTextBody:(NSString *)textBody andTag:(NSInteger) tag    {
     OverlayView *overlayVC = [OverlayView overlayView];
-    overlayVC.eventTitle.text = eventTitle;
-    overlayVC.eventText.text = textBody;
+    overlayVC.eventTitle.text = [Data sharedInstance].createdEvent.eventDescription; //eventTitle;
+    overlayVC.eventText.text = [Data sharedInstance].createdEvent.eventDescription; //textBody;
     [overlayVC.internalView setTag:tag];
     self.view.bounds = overlayVC.bounds;
     [self.view addSubview:overlayVC];

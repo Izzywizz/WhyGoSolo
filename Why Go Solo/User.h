@@ -15,7 +15,7 @@
 
 -(User*)initWithDict:(NSDictionary*)dict;
 
-@property int userID;
+@property NSString* userID;
 @property NSString* firstName;
 @property NSString* lastName;
 @property NSString* userName;

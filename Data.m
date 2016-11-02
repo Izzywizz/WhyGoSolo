@@ -161,19 +161,60 @@
     NSLog(@"UPDATE JOINED DATA DICT: %@", dict);
     
     [[WebService sharedInstance]eventsApiRequest:EVENT_API_ALL];
-    return;
-    
-   // [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"Respose%li",(long)EVENT_API_JOIN] object:nil];
-   // return;
-if (_delegate && [_delegate respondsToSelector:@selector(joinedStatusUpdatedSuccessfully)])
-    {
-        
-        [self.delegate joinedStatusUpdatedSuccessfully];
-    }
+
 }
+
 -(void)friendStatusUpdated:(NSDictionary*)dict
 {
     [[WebService sharedInstance]eventsApiRequest:USER_API_SINGLE];
+}
+
+-(void)reportUserSuccessful
+{
+    NSLog(@"USER REPORTED SUCCESSFUL");
+    [[WebService sharedInstance]eventsApiRequest:USER_API_SINGLE];
+
+}
+-(void)blockStatusUpdated
+{
+    NSLog(@"USER BLOCKED SUCCESSFUL");
+
+    [[WebService sharedInstance]eventsApiRequest:USER_API_SINGLE];
+
+}
+-(void)createCommentSuccessful
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(commentCreated)])
+    {
+        [self.delegate commentCreated];
+    }
+}
+
+-(void)eventCancelSuccessful
+{
+     NSLog(@"EVENT CANCELLED");
+    [[WebService sharedInstance]eventsApiRequest:EVENT_API_SINGLE];
+
+}
+-(void)eventCloseSuccessful
+{
+     NSLog(@"EVENT CLOSED");
+    [[WebService sharedInstance]eventsApiRequest:EVENT_API_SINGLE];
+
+}
+
+-(void)deleteCommentSuccessful
+{
+    NSLog(@"COMMENT DELETED");
+    [[WebService sharedInstance]eventsApiRequest:EVENT_API_SINGLE];
+}
+-(void)reportCommentSuccessful
+{
+    NSLog(@"COMMENT REPORTED");
+    if (_delegate && [_delegate respondsToSelector:@selector(commentReported)])
+    {
+        [self.delegate commentReported];
+    }
 }
 -(void)parseUserFromDict:(NSDictionary*)dict;
 {

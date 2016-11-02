@@ -12,7 +12,7 @@
 #import "RRDownloadImage.h"
 #import "Data.h"
 #import "Event.h"
-
+#import "WebService.h"
 @implementation CommentsTableViewCell
 
 - (void)awakeFromNib {
@@ -34,32 +34,47 @@
 
 - (IBAction)reportButtonPressed:(UIButton *)sender {
     NSLog(@"Reported");
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"reportUserComment" object:self];
+     
+     [Data sharedInstance].selectedCommentID = self.comment.commentID;
+    [[WebService sharedInstance]eventsApiRequest:COMMENT_API_REPORT];
 }
 
 - (IBAction)deleteButtonPressed:(UIButton *)sender {
     NSLog(@"DELETED");
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteUserComment" object:self];
+    [Data sharedInstance].selectedCommentID = self.comment.commentID;
+    [[WebService sharedInstance]eventsApiRequest:COMMENT_API_DELETE];
 }
 
 
 -(CommentsTableViewCell*)configureCellWithCommentForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath
 {
+    self.comment = [[Data sharedInstance].selectedEvent.commentsArray objectAtIndex:indexPath.row];
+    NSLog(@"COMMENT USER ID = %@  //  USER ID = %@", _comment.userID , [Data sharedInstance].userID );
+    if ([[NSString stringWithFormat:@"%@",_comment.userID] isEqualToString:[NSString stringWithFormat:@"%@",[Data sharedInstance].userID]])
+    {
+        self.reportButton.alpha = 0;
+        self.deleteButton.alpha = 1;
+    }
+    else
+    {
+        self.reportButton.alpha = 1;
+        self.deleteButton.alpha = 0;
+        
+    }
     if (indexPath.row % 2) {
         [self setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
         [self.profileImage setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
-        self.reportButton.tag = 0;
+    //    self.reportButton.tag = 0;
         
     } else  {
         [self setBackgroundColor:[UIColor whiteColor]];
         [self.profileImage setBackgroundColor:[UIColor whiteColor]];
         
         //Example logic of user own profile to create the delete comment functionality for the user, so this shows the deete button for the white background comment
-        self.reportButton.alpha = 0;
-        self.deleteButton.alpha = 1;
+      //  self.reportButton.alpha = 0;
+      //  self.deleteButton.alpha = 1;
     }
     
-    self.comment = [[Data sharedInstance].selectedEvent.commentsArray objectAtIndex:indexPath.row];
 
     self.userInputext.text = self.comment.commentText;
     self.profileName.text = self.comment.commentUser.userName;

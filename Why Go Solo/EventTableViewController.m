@@ -186,7 +186,7 @@ NSArray *sectionTitles;
 
 -(void)moveToEdit:(NSNotification *) notification   {
     if ([[notification name] isEqualToString:@"Edit Found"]) {
-        [Data sharedInstance].selectedEvent = notification.object;
+       // [Data sharedInstance].selectedEvent = notification.object;
         [Data sharedInstance].selectedEventID = [NSString stringWithFormat:@"%i", [Data sharedInstance].selectedEvent.eventID];
         [self moveToEdit];
     }
@@ -386,8 +386,18 @@ NSArray *sectionTitles;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"Bring up maps!: row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
+    
+    if ([_myEventsDataArray count] > 0 && indexPath.section == 0)
+    {
+        [Data sharedInstance].selectedEvent = [_myEventsDataArray objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        [Data sharedInstance].selectedEvent = [_dataArray objectAtIndex:indexPath.row];
+    }
+
     DirectionViewController *map = [self.storyboard instantiateViewControllerWithIdentifier:@"DirectionViewController"];
-    map.addressToBeReverse =@"14 Paradise Street, Liverpool, Merseyside, L1 8JF";
+    map.addressToBeReverse = [Data sharedInstance].selectedEvent.address;// @"14 Paradise Street, Liverpool, Merseyside, L1 8JF";
     [self.navigationController pushViewController:map animated:YES];
 }
 

@@ -53,6 +53,9 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated    {
+    
+    
+    
     if (!_customAnnotation) {
         _customAnnotation = [[MKPointAnnotation alloc] init];
         _customAnnotation.title =[_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
@@ -61,7 +64,7 @@
     [self startCurrentUserLocation:YES];
     [self setupLongPressGesture];
     //[self createPinLocations];
-    NSLog(@"userLocation: %d",[self.mapView showsUserLocation]);
+    NSLog(@"userLocation xx: %d",[self.mapView showsUserLocation]);
     _mapView.showsUserLocation = YES;
 
     [self.mapView setDelegate:self];
@@ -148,8 +151,21 @@
 }
 
 -(void) zoomToUserLocation: (CLLocation *) userLocation  {
+    
+    
+    if ([Data sharedInstance].createdEvent.longitude > 0)
+    {
+        
+        CLLocation* createdCoordinates = [[CLLocation alloc]initWithLatitude:[Data sharedInstance].createdEvent.latitude longitude:[Data sharedInstance].createdEvent.longitude];
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(createdCoordinates.coordinate, 800, 800);
+        [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+    }
+else
+{
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+}
+
 }
 
 - (void)getDirections {
@@ -405,6 +421,11 @@
     if (sender.tag == 0) {
         NSLog(@"DONE pressed");
         [self.navigationController popViewControllerAnimated:YES];
+        [Data sharedInstance].createdEvent.address = _resultSearchController.searchBar.text ;
+        [Data sharedInstance].createdEvent.latitude = _placemark.location.coordinate.latitude;
+        [Data sharedInstance].createdEvent.longitude = _placemark.location.coordinate.longitude;
+
+
     } else {
         NSLog(@"POST EVENT");
         //TODO: Add logic to create the event

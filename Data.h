@@ -28,6 +28,8 @@
 -(void)userLoggedInSuccessfully;
 
 -(void)avatarDownloaded;
+-(void)commentCreated;
+-(void)commentReported;
 @end
 
 @interface Data : NSObject
@@ -40,12 +42,14 @@
 
 @property NSString* selectedEventID;
 @property NSString *selectedUserID;
+@property NSString* selectedCommentID;
 
 @property NSString* filterDistance;
 @property NSArray* residenceFilterArray;
 
 @property NSMutableDictionary *avatarDict;
 
+@property NSString* createdCommentText;
 + (Data*)sharedInstance;
 
 @property User *loggedInUser;
@@ -82,6 +86,12 @@
 
 -(void)friendStatusUpdated:(NSDictionary*)dict;
 -(void)login;
-
+-(void)createCommentSuccessful;
+-(void)deleteCommentSuccessful;
+-(void)reportCommentSuccessful;
+-(void)reportUserSuccessful;
+-(void)blockStatusUpdated;
+-(void)eventCancelSuccessful;
+-(void)eventCloseSuccessful;
 -(void)updateAvatarDictWithImage:(UIImage*)avatarImage forUserID:(NSString*)userID;
 @end

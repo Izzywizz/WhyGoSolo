@@ -66,6 +66,22 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
  //   #define USER_API_FRIEND_STATUS_UPDATE_RESPONSE_SELECTOR @"friendStatusUpdated:"
    // #define USER_API_FRIEND_STATUS_UPDATE_PARAMS_ARRAY @[USER_API_FRIEND_STATUS_UPDATE_PARAMS, USER_API_FRIEND_STATUS_UPDATE_RESPONSE_SELECTOR]
  
+    
+    
+    COMMENT_API_CREATE = 7,
+    
+    
+    COMMENT_API_DELETE = 8,
+    COMMENT_API_REPORT = 9,
+    
+    USER_API_BLOCK_STATUS_UPDATE = 10,
+    USER_API_REPORT = 11,
+
+    EVENT_API_CANCEL = 12,
+    EVENT_API_CLOSE = 13,
+    EVENT_API_EDIT = 14,
+
+    
     AUTHENTICATION,
     USER_API_CREATE,
     
@@ -85,16 +101,12 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
 
     
     USER_API_RESET_PASSWORD,
-    USER_API_BLOCK_STATUS_UPDATE,
-    USER_API_REPORT,
     
     
     
    
 
-    EVENT_API_EDIT,
-    EVENT_API_CANCEL,
-    EVENT_API_CLOSE,
+
    
     
     
@@ -116,11 +128,11 @@ typedef NS_ENUM(NSInteger, userApiRequests) {
 
 };
 */
-typedef NS_ENUM(NSInteger, commentApiRequests) {
-    COMMENT_API_CREATE,
-    COMMENT_API_DELETE,
-    COMMENT_API_REPORT,
-};
+//typedef NS_ENUM(NSInteger, commentApiRequests) {
+//    COMMENT_API_CREATE,
+  //  COMMENT_API_DELETE,
+   // COMMENT_API_REPORT,
+//};
 
 typedef NS_ENUM(NSInteger, universityApiRequests) {
     UNIVERSITY_API_ALL,
@@ -142,11 +154,15 @@ typedef NS_ENUM(NSInteger, residenceApiRequests) {
 #define SELECTED_USER_ID [Data sharedInstance].selectedUserID
 #define FILTER_DISTANCE [Data sharedInstance].filterDistance
 #define FILTER_RESIDENCE_ID_ARRAY [Data sharedInstance].residenceFilterArrayString
+#define COMMENT_TEXT [Data sharedInstance].createdCommentText
+#define SELECTED_COMMENT_ID [Data sharedInstance].selectedCommentID
+
+
+
 
 // REQUEST PARAMS DICT
 #define SELECTED_EVENT_PARAMS @{    EVENT_ID_KEY:EVENT_ID_VALUE,\
                                     USER_ID_KEY:USER_ID_VALUE}
-
 
 //
 #define EVENT_API_ALL_DICT      @{  @"request"  :   @[@ "events"],\
@@ -183,16 +199,90 @@ typedef NS_ENUM(NSInteger, residenceApiRequests) {
                                                         EVENT_PRIVATE_KEY:[NSString stringWithFormat:@"%i",[Data sharedInstance].createdEvent.isPrivate]}\
 }
 
-#define USER_API_FRIEND_STATUS_UPDATE_DICT    @{  @"request"  :   @[@ "users/",SELECTED_USER_ID,@"/update_friend_status"],\
+
+#define EVENT_API_EDIT_DICT @{\
+@"request"  :   @[@ "events/",SELECTED_EVENT_ID,@"/edit"],\
+@"response" :   @   "createEventsArrayFromDict:",\
+@"params"   :    @{ EVENT_ID_KEY:SELECTED_EVENT_ID,\
+USER_ID_KEY:USER_ID,\
+EVENT_ADDRESS_KEY:[Data sharedInstance].createdEvent.address,\
+EVENT_DESCRIPTION_KEY:[Data sharedInstance].createdEvent.eventDescription,\
+EVENT_LATITUDE_KEY:[NSString stringWithFormat:@"%f",[Data sharedInstance].createdEvent.latitude],\
+EVENT_LONGITUDE_KEY:[NSString stringWithFormat:@"%f",[Data sharedInstance].createdEvent.longitude],\
+EVENT_EMOJI_KEY:[Data sharedInstance].createdEvent.emoji,\
+EVENT_PRIVATE_KEY:[NSString stringWithFormat:@"%i",[Data sharedInstance].createdEvent.isPrivate]}\
+}
+
+#define USER_API_FRIEND_STATUS_UPDATE_DICT @{\
+@"request"  :   @[@ "users/",SELECTED_USER_ID,@"/update_friend_status"],\
 @"response" :   @   "friendStatusUpdated:",\
-@"params"   :    @{ USER_ID_KEY:USER_ID }\
+@"params"   :   @{  USER_ID_KEY:USER_ID }\
 }
 
 
+#define COMMENT_CREATE_DICT @{\
+@"request"  :   @[@ "events/",SELECTED_EVENT_ID,@"/comments/create"],\
+@"response" :   @   "createCommentSuccessful",\
+@"params"   : \
+@{\
+USER_ID_KEY:USER_ID,\
+COMMENT_TEXT_KEY:COMMENT_TEXT}\
+}
+
+#define COMMENT_API_REPORT_DICT @{\
+@"request"  :   @[@ "comments/",SELECTED_COMMENT_ID,@"/report"],\
+@"response" :   @   "reportCommentSuccessful",\
+@"params"   : \
+@{\
+USER_ID_KEY:USER_ID}\
+}
+
+#define COMMENT_API_DELETE_DICT @{\
+@"request"  :   @[@ "comments/",SELECTED_COMMENT_ID,@"/delete"],\
+@"response" :   @   "deleteCommentSuccessful",\
+@"params"   : \
+@{\
+USER_ID_KEY:USER_ID}\
+}
 
 
+#define USER_API_BLOCK_STATUS_UPDATE_DICT @{\
+@"request"  :   @[@ "users/",SELECTED_USER_ID,@"/update_block_status"],\
+@"response" :   @   "blockStatusUpdated",\
+@"params"   : \
+@{\
+USER_ID_KEY:USER_ID}\
+}
 
-    //#define EVENT_API_ALL_PARAMS
+
+#define USER_API_REPORT_DICT @{\
+@"request"  :   @[@ "users/",SELECTED_USER_ID,@"/report_user"],\
+@"response" :   @   "reportUserSuccessful",\
+@"params"   : \
+@{\
+USER_ID_KEY:USER_ID}\
+}
+
+
+#define EVENT_API_CANCEL_DICT @{\
+@"request"  :   @[@ "events/",SELECTED_EVENT_ID,@"/cancel"],\
+@"response" :   @   "eventCancelSuccessful",\
+@"params"   : \
+@{\
+USER_ID_KEY:USER_ID}\
+}
+
+
+#define EVENT_API_CLOSE_DICT @{\
+@"request"  :   @[@ "events/",SELECTED_EVENT_ID,@"/close"],\
+@"response" :   @   "eventCloseSuccessful",\
+@"params"   : \
+@{\
+USER_ID_KEY:USER_ID}\
+}
+
+
+//#define EVENT_API_ALL_PARAMS
 
 #define EVENT_API_JOIN_PARAMS   @{    USER_ID_KEY:USER_ID_VALUE }
 // PARAM KEY/VALUE
@@ -252,10 +342,10 @@ typedef NS_ENUM(NSInteger, residenceApiRequests) {
 #define EVENT_JOINED_STATUS_KEY @"logged_in_user_joined_event"
 
 
-#define COMMENT_PARAM_ID @"id"
-#define COMMENT_PARAM_TEXT @"comment_text"
-#define COMMENT_PARAM_EPOCH_CREATED @"epoch_created"
-#define COMMENT_PARAM_USER_ID @"user_id"
+#define COMMENT_ID_KEY @"id"
+#define COMMENT_TEXT_KEY @"comment_text"
+#define COMMENT_EPOCH_CREATED_KEY @"epoch_created"
+#define COMMENT_USER_ID_KEY @"user_id"
 
 #define USER_PARAM_LOGIN_EMAIL @"email"
 #define USER_PARAM_LOGIN_PASSWORD @"password"
@@ -290,7 +380,7 @@ typedef NS_ENUM(NSInteger, apiParams) {
     PRIVATE_EVENT,
     
     COMMENT_ID,
-    COMMENT_TEXT,
+   // COMMENT_TEXT,
     COMMENT_USER_ID,
     COMMENT_EPOCH_CREATED,
     

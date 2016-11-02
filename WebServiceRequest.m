@@ -71,7 +71,26 @@
             break;
         case USER_API_FRIEND_STATUS_UPDATE:  return USER_API_FRIEND_STATUS_UPDATE_DICT;
             break;
+        case COMMENT_API_CREATE:  return COMMENT_CREATE_DICT;
+            break;
+        case COMMENT_API_DELETE: return COMMENT_API_DELETE_DICT;
+            break;
+        case COMMENT_API_REPORT: return COMMENT_API_REPORT_DICT;
+            break;
+        case USER_API_BLOCK_STATUS_UPDATE: return USER_API_BLOCK_STATUS_UPDATE_DICT;
+            break;
+        case USER_API_REPORT: return USER_API_REPORT_DICT;
+            break;
+        case EVENT_API_CANCEL: return EVENT_API_CANCEL_DICT;
+            break;
+        case EVENT_API_CLOSE: return EVENT_API_CLOSE_DICT;
+            break;
+        case EVENT_API_EDIT: return EVENT_API_EDIT_DICT;
+            break;
+        
         default:
+
+            
             break;
     }
     return @{};

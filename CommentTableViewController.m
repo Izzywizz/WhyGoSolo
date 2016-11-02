@@ -69,6 +69,16 @@
         [self performSelectorOnMainThread:@selector(refreshCellInputViews) withObject:nil waitUntilDone:YES];
 }
 
+-(void)commentReported
+{
+    [self performSelectorOnMainThread:@selector(showCommentReportedAlert) withObject:nil waitUntilDone:NO];
+}
+
+-(void)showCommentReportedAlert
+{
+            [self setupOverlay:@"Report Comment" andTextBody:[NSString stringWithFormat:@"Are you sure you want to report %@ comment",_commmentReportedUserName] andTag:5 andReportedUser:_commmentReportedUserName];
+}
+
 -(void)refreshCellInputViews
 {
     NSLog(@"EVENT TV AVATAR RELOAD INPUT VIEWS");

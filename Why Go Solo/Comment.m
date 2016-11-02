@@ -13,10 +13,10 @@
 -(Comment*)initWithDict:(NSDictionary*)dict{
     if (self)
     {
-        self.commentID = [dict valueForKey:COMMENT_PARAM_ID];
-        self.commentText = [dict valueForKey:COMMENT_PARAM_TEXT];
-        self.epochCreated = (int)[[dict valueForKey:COMMENT_PARAM_TEXT]integerValue];
-        self.userID = [dict valueForKey:COMMENT_PARAM_USER_ID];
+        self.commentID = [NSString stringWithFormat:@"%i", (int)[[dict valueForKey:COMMENT_ID_KEY]integerValue] ];
+        self.commentText = [dict valueForKey:COMMENT_TEXT_KEY];
+        self.epochCreated = (int)[[dict valueForKey:COMMENT_EPOCH_CREATED_KEY]integerValue];
+        self.userID = [NSString stringWithFormat:@"%i", (int)[[dict valueForKey:COMMENT_USER_ID_KEY]integerValue] ];
     }
     return self;
 

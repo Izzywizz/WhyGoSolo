@@ -7,6 +7,7 @@
 //
 
 #import "FooterEventsTableViewCell.h"
+#import "WebService.h"
 
 @implementation FooterEventsTableViewCell
 
@@ -25,16 +26,21 @@
 }
 - (IBAction)reportButtonPressed:(UIButton *)sender {
     NSLog(@"Report");
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReportUser" object:self];
+    [[WebService sharedInstance]eventsApiRequest:USER_API_REPORT];
+   // [[NSNotificationCenter defaultCenter] postNotificationName:@"ReportUser" object:self];
 
 }
 - (IBAction)blockButtonPressed:(UIButton *)sender {
     NSLog(@"Block");
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"BlockUser" object:self];
+    [[WebService sharedInstance]eventsApiRequest:USER_API_BLOCK_STATUS_UPDATE];
+
+  //  [[NSNotificationCenter defaultCenter] postNotificationName:@"BlockUser" object:self];
 }
 - (IBAction)unblockButtonPressed:(UIButton *)sender {
     NSLog(@"UnBlock");
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"UnblockUser" object:self];
+    [[WebService sharedInstance]eventsApiRequest:USER_API_BLOCK_STATUS_UPDATE];
+
+  //  [[NSNotificationCenter defaultCenter] postNotificationName:@"UnblockUser" object:self];
 }
 
 @end

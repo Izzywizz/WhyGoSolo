@@ -7,7 +7,8 @@
 //
 
 #import "DirectionViewController.h"
-
+#import "Data.h"
+#import "Event.h"
 @interface DirectionViewController ()
 @property (nonatomic) MKPlacemark *selectedPin;
 
@@ -19,11 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationButtonFontAndSize];
-    [self reverseEngineerAddressToCoodinates:self.addressToBeReverse];
+ //   [self reverseEngineerAddressToCoodinates:self.addressToBeReverse];
 }
 
 -(void)viewWillAppear:(BOOL)animated    {
     self.mapView.delegate = self;
+    
+    [self reverseGeoCoodantes:CLLocationCoordinate2DMake([Data sharedInstance].selectedEvent.latitude, [Data sharedInstance].selectedEvent.longitude)];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -59,6 +62,40 @@
                  }
      ];
 }
+
+-(void) reverseGeoCoodantes: (CLLocationCoordinate2D) coordinates     {
+    CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:coordinates.latitude longitude:coordinates.longitude];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+
+    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error) {
+            NSLog(@"Geocode failed with error: %@", error);
+            return;
+        }
+        //                NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+        if (error == nil && [placemarks count] > 0) {
+            
+            CLPlacemark *topResult = [placemarks firstObject];
+            MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
+            _selectedPin = placemark;
+            
+            MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+            annotation.coordinate = placemark.coordinate;
+            
+            MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(placemark.coordinate, 500, 500);
+            
+            [self.mapView setRegion:region animated:YES];
+            [self.mapView addAnnotation:annotation];
+
+   //         _placemark = [placemarks lastObject];
+     //       [_resultSearchController.searchBar setText:[_locationSearchTable parseAddress:(MKPlacemark *)_placemark]];
+            
+        } else {
+            NSLog(@"%@", error.debugDescription);
+        }
+    }];
+}
+
 
 #pragma mark - Map Delegates
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation   {
