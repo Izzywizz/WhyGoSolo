@@ -7,18 +7,30 @@
 //
 
 #import "PeopleEventTableViewCell.h"
+#import "Data.h"
+#import "User.h"
+#import "Event.h"
+
+#import "RRDownloadImage.h"
 
 @implementation PeopleEventTableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+-(PeopleEventTableViewCell*)configureCell
+{
+    self.view.layer.cornerRadius = 7;
+
+    self.nameLabel.text = _user.userName;
+    self.addressLabel.text = _event.address;
+    self.emojiLabel.text = _event.emoji;
+    self.profileImage.image = [[RRDownloadImage sharedInstance]avatarImageForUserID:_user.userID];
+    
+    return self;
 }
+- (IBAction)cellPressed:(id)sender {
+    
+    [Data sharedInstance].selectedEvent = _event;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"People Event" object:self.event];
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

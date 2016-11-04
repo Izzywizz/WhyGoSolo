@@ -19,10 +19,11 @@
 
 #import "WebServiceRequest.h"
 //#define API_BASE_URL @"http://goalmachine.app"
-#define API_BASE_URL @"http://139.59.180.166/api" // LIVER
+// #define API_BASE_URL @"http://139.59.180.166/api" // LIVE RE RAISE
 
 //#define API_BASE_URL @"http://192.168.10.10/api" // HOMESTEAD
 
+#define API_BASE_URL @"http://139.59.183.192/api" // LIVE CANDY
 
 @implementation WebService
 + (WebService*)sharedInstance

@@ -52,6 +52,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changeLocation" object:self];
 }
 - (IBAction)addEmojiButtonPressed:(UIButton *)sender {
+    NSLog(@"XXXXXXX EMOJI PRESSED");
     [self.emojiTextView becomeFirstResponder];
 }
 - (IBAction)eventSwitch:(UISwitch *)sender {
@@ -112,6 +113,16 @@
 
 #pragma mark - Emoji Methods
 
+/*
+-(void) createEmojiView {
+    //Removes the carret I animation
+    self.emojiTextView.tintColor = [UIColor clearColor];
+    // init ISEmojiView
+    ISEmojiView *emojiView = [[ISEmojiView alloc] initWithTextField:self.emojiTextView delegate:self];
+    self.emojiTextView.inputView = emojiView;
+}
+*/
+
 -(void) createEmojiView {
     //Removes the carret I animation
     if (self.emojiTextView.text == nil) {
@@ -119,19 +130,22 @@
     } else  {
         self.emojiTextView.text = @"";
         self.emojiTextView.text = [self.emojiTextView.text stringByAppendingString:[Data sharedInstance].createdEvent.emoji];
+        self.addEmojiImage.hidden = YES;
     }
-    self.addEmojiImage.hidden = YES;
+  //
 
     self.emojiTextView.tintColor = [UIColor clearColor];
     // init ISEmojiView
     ISEmojiView *emojiView = [[ISEmojiView alloc] initWithTextField:self.emojiTextView delegate:self];
-    self.emojiTextView.font = [UIFont systemFontOfSize:52.0];
+        self.emojiTextView.font = [UIFont systemFontOfSize:52.0];
+    self.emojiTextView.inputView = emojiView;
+
 
        // _emojiTextView.text = [Data sharedInstance].createdEvent.emoji;
 
 }
 
-/*
+
 -(void)emojiView:(ISEmojiView *)emojiView didSelectEmoji:(NSString *)emoji{
     if (self.emojiTextView.text == nil) {
         self.emojiTextView.text = [self.emojiTextView.text stringByAppendingString:emoji];
@@ -144,17 +158,22 @@
 //    self.emojiTextView.font = [UIFont systemFontOfSize:52.0];
     self.addEmojiImage.hidden = YES;
     
+    
+    self.emojiTextView.font = [UIFont systemFontOfSize:52.0];
+     [Data sharedInstance].createdEvent.emoji = _emojiTextView.text;
+    return;
+    
     NSString *emojiUTF8 = [NSString stringWithUTF8String:[self.emojiTextView.text UTF8String]];
     NSData *emojiData = [emojiUTF8 dataUsingEncoding:NSNonLossyASCIIStringEncoding];
     NSString *emojiString = [[NSString alloc] initWithData:emojiData encoding:NSUTF8StringEncoding];
 
     
-    [Data sharedInstance].createdEvent.emoji = emojiString;
+   
 
     
 }
-*/
 
+/*
 -(void)emojiView:(ISEmojiView *)emojiView didSelectEmoji:(NSString *)emoji{
     if (self.emojiTextView.text == nil) {
         self.emojiTextView.text = [self.emojiTextView.text stringByAppendingString:emoji];
@@ -176,7 +195,7 @@
     
     NSLog(@"EMOJI TEXT = %@", emojiString);
 }
-
+*/
 
 -(void)emojiView:(ISEmojiView *)emojiView didPressDeleteButton:(UIButton *)deletebutton{
     if (self.emojiTextView.text.length > 0) {

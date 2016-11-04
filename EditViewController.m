@@ -7,8 +7,8 @@
 //
 
 #import "EditViewController.h"
-
-@interface EditEventViewController () <UITextViewDelegate, UITextFieldDelegate, ISEmojiViewDelegate>
+#import "Data.h"
+@interface EditEventViewController () <UITextViewDelegate, UITextFieldDelegate, ISEmojiViewDelegate, DataDelegate>
 @property (weak, nonatomic) IBOutlet UIView *circularView;
 @property (weak, nonatomic) IBOutlet UIImageView *addEmojiImage;
 @property (weak, nonatomic) IBOutlet UITextView *emojiTextView;
@@ -32,9 +32,18 @@
 #pragma mark - UI Methods
 
 -(void)viewWillAppear:(BOOL)animated    {
+    
+    NSLog(@"wqwqwqw qw qwq q");
+
     [self closeCancelOverlayAlpha:0 animationDuration:0.0f];//Hide the overlay
+    [Data sharedInstance].delegate = self;
 }
 
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createDummyData];
@@ -69,6 +78,19 @@
     _circularView.layer.masksToBounds = YES;
     
     [self createEmojiView];
+}
+-(void)eventEdited
+{
+    NSLog(@"SDDASDSADASDAD");
+    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:NO];//
+}
+
+-(void)handleUpdates
+{
+    NSLog(@"SDDASDSADASDAD-----");
+
+    [self.navigationController popViewControllerAnimated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -182,7 +204,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
-    NSLog(@"Save Button Pressed");
+    NSLog(@"Save Button Pressed cc");
 }
 
 - (IBAction)helpButtonPressed:(UIButton *)sender {

@@ -160,8 +160,11 @@
 {
     NSLog(@"UPDATE JOINED DATA DICT: %@", dict);
     
-    [[WebService sharedInstance]eventsApiRequest:EVENT_API_ALL];
-
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(joinedStatusUpdatedSuccessfully)])
+    {
+        [self.delegate joinedStatusUpdatedSuccessfully];
+    }
 }
 
 -(void)friendStatusUpdated:(NSDictionary*)dict
@@ -215,6 +218,84 @@
     {
         [self.delegate commentReported];
     }
+}
+-(void)eventEditSuccessful
+{
+    NSLog(@"EVENT EDITED xx");
+    
+    [[WebService sharedInstance]eventsApiRequest:EVENT_API_ALL];
+    return;
+    if (_delegate && [_delegate respondsToSelector:@selector(eventEdited)])
+    {
+        [self.delegate eventEdited ];
+    }
+}
+
+-(void)createFriendsFromDict:(NSDictionary*)dict
+{
+    NSLog(@"Friends  DICT -= %@", dict);
+    
+      _friendsAttendingEventsArray = [NSMutableArray new];
+    _friendsNotAttendingEventsArray = [NSMutableArray new];
+    
+    for (NSDictionary* d in [dict valueForKey:@"attending_events"])
+    {
+        User *u = [[User alloc]initWithDict:[d valueForKey:@"user" ]];
+        
+        Event *e = [[Event alloc]initWithDict:[d valueForKey:@"event" ]];
+        
+        u.eventsArray = [[NSMutableArray alloc]initWithObjects:e, nil];
+        
+        [_friendsAttendingEventsArray addObject:u];
+    }
+   
+    for (NSDictionary* d in [[dict valueForKey:@"not_attending_events"]valueForKey:@"user" ])
+    {
+
+        User *u = [[User alloc]initWithDict:d];
+        
+        [_friendsNotAttendingEventsArray addObject:u];
+    }
+
+    
+    
+    
+    
+    NSLog(@"Friends Attending Array %@", _friendsAttendingEventsArray);
+    
+    NSLog(@"Friends NOT Attending Array %@", _friendsNotAttendingEventsArray);
+
+    if (_delegate && [_delegate respondsToSelector:@selector(friendsParsedSuccessfully)])
+    {
+        [self.delegate friendsParsedSuccessfully ];
+    }
+}
+-(void)createEveryoneFromDict:(NSDictionary*)dict
+{
+    NSLog(@"EVERYUOPNE DICT -= %@", dict);
+    
+    _everyoneArray = [NSMutableArray new];
+    
+    for (NSDictionary* d in [dict valueForKey:@"attending_events"])
+    {
+        User *u = [[User alloc]initWithDict:[d valueForKey:@"user" ]];
+        
+        Event *e = [[Event alloc]initWithDict:[d valueForKey:@"event" ]];
+        
+        u.eventsArray = [[NSMutableArray alloc]initWithObjects:e, nil];
+        
+        [_everyoneArray addObject:u];
+    }
+
+    
+    NSLog(@"Everyone Attending Array %@", _everyoneArray);
+
+
+    if (_delegate && [_delegate respondsToSelector:@selector(everyoneParsedSuccessfully)])
+    {
+        [self.delegate everyoneParsedSuccessfully ];
+    }
+
 }
 -(void)parseUserFromDict:(NSDictionary*)dict;
 {

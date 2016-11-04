@@ -30,6 +30,11 @@
 -(void)avatarDownloaded;
 -(void)commentCreated;
 -(void)commentReported;
+-(void)eventEdited;
+
+
+-(void)friendsParsedSuccessfully;
+-(void)everyoneParsedSuccessfully;
 @end
 
 @interface Data : NSObject
@@ -61,6 +66,10 @@
 @property NSMutableArray* myEventsArray;
 @property NSMutableArray* eventsArray;
 
+@property NSMutableArray* friendsAttendingEventsArray;
+@property NSMutableArray* friendsNotAttendingEventsArray;
+
+@property NSMutableArray* everyoneArray;
 
 @property University *selectedUniversity;
 @property Residence *selectedResidence;
@@ -93,5 +102,9 @@
 -(void)blockStatusUpdated;
 -(void)eventCancelSuccessful;
 -(void)eventCloseSuccessful;
+-(void)eventEditSuccessful;
 -(void)updateAvatarDictWithImage:(UIImage*)avatarImage forUserID:(NSString*)userID;
+
+-(void)createFriendsFromDict:(NSDictionary*)dict;
+-(void)createEveryoneFromDict:(NSDictionary*)dict;
 @end

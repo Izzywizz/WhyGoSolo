@@ -7,12 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RRCircularImageView.h"
 
+@class User;
+@class Event;
 @interface PeopleEventTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
+-(PeopleEventTableViewCell*)configureCell;
+@property (strong, nonatomic) IBOutlet UIView *view;
+
+@property (weak, nonatomic) IBOutlet RRCircularImageView *profileImage;
+@property (weak, nonatomic) IBOutlet UILabel *emojiLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 
-
+@property User *user;
+@property Event *event;
 @end

@@ -82,6 +82,9 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
     EVENT_API_EDIT = 14,
 
     
+    USER_API_FRIENDS = 15,
+    USER_API_EVERYONE = 16,
+    
     AUTHENTICATION,
     USER_API_CREATE,
     
@@ -94,8 +97,7 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
     
 
     
-    USER_API_FRIENDS,
-    USER_API_EVERYONE,
+
     
 
 
@@ -202,7 +204,7 @@ typedef NS_ENUM(NSInteger, residenceApiRequests) {
 
 #define EVENT_API_EDIT_DICT @{\
 @"request"  :   @[@ "events/",SELECTED_EVENT_ID,@"/edit"],\
-@"response" :   @   "createEventsArrayFromDict:",\
+@"response" :   @   "eventEditSuccessful",\
 @"params"   :    @{ EVENT_ID_KEY:SELECTED_EVENT_ID,\
 USER_ID_KEY:USER_ID,\
 EVENT_ADDRESS_KEY:[Data sharedInstance].createdEvent.address,\
@@ -281,6 +283,31 @@ USER_ID_KEY:USER_ID}\
 USER_ID_KEY:USER_ID}\
 }
 
+
+#define USER_API_FRIENDS_DICT @{\
+@"request"  :   @[@ "users/",USER_ID,@"/people/friends"],\
+@"response" :   @   "createFriendsFromDict:",\
+@"params"   : \
+@{\
+USER_ID_KEY:USER_ID}\
+}
+
+
+#define USER_API_EVERYONE_DICT @{\
+@"request"  :   @[@ "users/",USER_ID,@"/people/everyone"],\
+@"response" :   @   "createEveryoneFromDict:",\
+@"params"   : \
+@{\
+USER_ID_KEY:USER_ID}\
+}
+
+
+
+
+
+
+
+//USER_API_EVERYONE
 
 //#define EVENT_API_ALL_PARAMS
 

@@ -87,6 +87,7 @@ NSArray *sectionTitles;
 -(void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [Data sharedInstance].createdEvent = nil;
     [Data sharedInstance].delegate = nil;
 
 }
@@ -94,6 +95,7 @@ NSArray *sectionTitles;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 -(void)eventsDownloadedSuccessfully
 {
@@ -147,6 +149,11 @@ NSArray *sectionTitles;
    // [self refreshEventsData];
    // [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
 
+}
+
+-(void)joinedStatusUpdatedSuccessfully
+{
+    [self refreshEventsData];
 }
 
 -(void)refreshEventsData

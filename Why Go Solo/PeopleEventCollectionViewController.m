@@ -63,6 +63,10 @@
     [Data sharedInstance].delegate = nil;
 }
 
+-(void)joinedStatusUpdatedSuccessfully
+{
+    [[WebService sharedInstance]eventsApiRequest:EVENT_API_SINGLE];
+}
 
 -(void)eventParsedSuccessfully
 {

@@ -11,7 +11,7 @@
 #import "Event.h"
 #import "WebService.h"
 #import "RREmojiParser.h"
-@interface EditCollectionViewController ()
+@interface EditCollectionViewController () <DataDelegate>
 @property NSArray *dummyData;
 @property NSArray *sectionTitles;
 @property (nonatomic) UIView *overlayView;
@@ -44,19 +44,51 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [Data sharedInstance].delegate = self;
     if ([Data sharedInstance].createdEvent  == nil)
     {
         [Data sharedInstance].createdEvent = [Data sharedInstance].selectedEvent;
         
-        NSString *emojiUTF8 = [NSString stringWithUTF8String:[[Data sharedInstance].selectedEvent.emoji UTF8String]];
+ /*       NSString *emojiUTF8 = [NSString stringWithUTF8String:[[Data sharedInstance].selectedEvent.emoji UTF8String]];
         NSData *emojiData = [emojiUTF8 dataUsingEncoding:NSNonLossyASCIIStringEncoding];
         NSString *emojiString = [[NSString alloc] initWithData:emojiData encoding:NSUTF8StringEncoding];
         
         
-        [Data sharedInstance].createdEvent.emoji = emojiString;
+        [Data sharedInstance].createdEvent.emoji = emojiString; */
     }
     
 }
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil;
+
+}
+
+
+-(void)eventsDownloadedSuccessfully
+{
+ //   _myEventsDataArray = [Data sharedInstance].myEventsArray;
+   // _dataArray = [Data sharedInstance].eventsArray;
+  //  [self.tableView reloadData];
+    
+    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
+}
+
+-(void)eventEdited
+{
+    NSLog(@"SDDASDSADASDAD");
+    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:NO];//
+}
+
+-(void)handleUpdates
+{
+    NSLog(@"SDDASDSADASDAD-----");
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -202,6 +234,12 @@ static NSString * const reuseIdentifier = @"Cell";
     
     
     [Data sharedInstance].createdEvent.emoji = emojiString;*/
+    NSString *emojiUTF8 = [NSString stringWithUTF8String:[[Data sharedInstance].selectedEvent.emoji UTF8String]];
+    NSData *emojiData = [emojiUTF8 dataUsingEncoding:NSNonLossyASCIIStringEncoding];
+    NSString *emojiString = [[NSString alloc] initWithData:emojiData encoding:NSUTF8StringEncoding];
+    
+    
+    [Data sharedInstance].createdEvent.emoji = emojiString;
     [[WebService sharedInstance]eventsApiRequest:EVENT_API_EDIT];
 }
 

@@ -164,7 +164,7 @@ static const CGFloat EmojiFontSize = 32;
 }
 
 - (void)emojiButtonPressed:(UIButton *)button {
-    
+
     // Add a simple scale animation
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     animation.byValue = @0.3;

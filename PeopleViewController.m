@@ -13,11 +13,21 @@
 #import "PeopleNotAttendingTableViewCell.h"
 #import "AlternateProfileTableViewController.h"
 
+#import "Data.h"
+#import "WebService.h"
+#import "User.h"
+#import "Event.h"
 
-@interface PeopleViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface PeopleViewController () <UITableViewDelegate, UITableViewDataSource, DataDelegate>
 
-@property NSDictionary *tableData;
-@property NSArray *sectionTitles;
+//@property NSDictionary *tableData;
+//@property NSArray *sectionTitles;
+
+
+
+@property NSArray *friendsAttendingArray;
+@property NSArray *friendsNotAttendingArray;
+@property NSArray *everyoneArray;
 
 @property BOOL isFriendsSelected;
 
@@ -31,10 +41,10 @@
     [super viewDidLoad];
     
     [self setupTable];
-    [self setupDummyData];
-    [self initialButtonSetup];
-    [self ListenOutProfileBeingPressed];
-    [self setNavigationButtonFontAndSize];
+  //  [self setupDummyData];
+[self initialButtonSetup];
+  //  [self ListenOutProfileBeingPressed];
+ [self setNavigationButtonFontAndSize];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,8 +52,65 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToEvent:) name:@"People Event" object:nil];
+
+    [Data sharedInstance].delegate = self;
+    
+    [[WebService sharedInstance]eventsApiRequest:USER_API_FRIENDS];
+    _isFriendsSelected =  YES;
+
+ //   _friendsNotAttendingArray = @[];
+   // _friendsAttendingArray = @[];
+}
 
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil;
+ //   _friendsAttendingArray = nil;
+   // _friendsNotAttendingArray = nil;
+ //   _everyoneArray = nil;
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+-(void)friendsParsedSuccessfully
+{
+    NSLog(@"Freinds Array = %@", [Data sharedInstance].friendsAttendingEventsArray);
+    _isFriendsSelected =  YES;
+
+    _friendsAttendingArray = [[NSArray alloc]initWithArray:[Data sharedInstance].friendsAttendingEventsArray];
+    _friendsNotAttendingArray = [[NSArray alloc]initWithArray:[Data sharedInstance].friendsNotAttendingEventsArray];
+    _everyoneArray = @[];
+
+    
+    NSLog(@"LOCAL F ATTENDING= %@", _friendsAttendingArray);
+    
+    NSLog(@"LOCAL F NOT ATTENDING= %@", _friendsNotAttendingArray);
+
+    
+    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:NO];// handleUpdates];
+ //   [[WebService sharedInstance]eventsApiRequest:USER_API_EVERYONE];
+
+}
+-(void)everyoneParsedSuccessfully
+{
+    
+    _everyoneArray = [[NSArray alloc]initWithArray:[Data sharedInstance].everyoneArray];
+
+    NSLog(@"EVERYOEN Array = %@", [Data sharedInstance].everyoneArray);
+    [self handleUpdates];
+
+
+}
+
+-(void)handleUpdates
+{
+    NSLog(@"1");
+
+    [_tableView reloadData];
+}
 
 #pragma mark - Helper Functions
 
@@ -90,31 +157,74 @@
 
 -(void) setupDummyData  {
     //Dummy Data
-    _tableData = @{@"ATTENDING EVENTS" : @[@"Patrick", @"Steven", @"Philipe"],
-                   @"NOT ATTENDING EVENTS" : @[@"Nathan Barnes", @"Izzy Ali"]};
+  //  _tableData = @{@"ATTENDING EVENTS" : @[@"Patrick", @"Steven", @"Philipe"],
+    //               @"NOT ATTENDING EVENTS" : @[@"Nathan Barnes", @"Izzy Ali"]};
     
-    NSSortDescriptor *ascending = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES];
-    NSArray *ascendingOrder = [NSArray arrayWithObject:ascending];
-    _sectionTitles = [[_tableData allKeys] sortedArrayUsingDescriptors:ascendingOrder];
+    //NSSortDescriptor *ascending = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES];
+   // NSArray *ascendingOrder = [NSArray arrayWithObject:ascending];
+  //  _sectionTitles = [[_tableData allKeys] sortedArrayUsingDescriptors:ascendingOrder];
 }
 
 #pragma mark - Table View Delegate Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [_sectionTitles count];
+   
+    NSLog(@"2");
+  //  return 1;
+    if (_isFriendsSelected && ([_friendsAttendingArray count] > 0 && [_friendsNotAttendingArray count] > 0))
+    {
+        return 2;
+    }
+    return 1;//[_sectionTitles count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
+    NSLog(@"3 - SECTION = %i", section);
+
+    if (_isFriendsSelected && ([_friendsAttendingArray count] > 0 && section ==0))
+    {
+        return [_friendsAttendingArray count];
+    }
+    
+    NSLog(@"3AAAA");
+ //   return 2;
+    if (_isFriendsSelected)
+    {
+        
+        if (section == 1 && [_friendsAttendingArray count]>0)
+        {
+            return [_friendsAttendingArray count];
+        }
+        else
+        {
+            return [_friendsNotAttendingArray count];
+        }
+    
+    }
+    else
+    {
+        if (section == 1) {
+            [_everyoneArray count];
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    return 0;
     // Return the number of rows in the section.
-    NSString *sectionTitle = [_sectionTitles objectAtIndex:section];
-    NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
-    return [sectionEvents count];
+ //   NSString *sectionTitle = [_sectionTitles objectAtIndex:section];
+   // NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
+  //  return [sectionEvents count];
 }
 
 //Custom Height View
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
+    NSLog(@"4");
+
     return [self headerCellAtIndex:section];
 }
 
@@ -124,7 +234,11 @@
 }
 
 //Custom Footer View
+/*
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+   
+    NSLog(@"5");
+
     return [self footerCellAtIndex:section];
 }
 
@@ -133,31 +247,84 @@
     //Forced the Footer to conform to a specific height that is equal to the header space between the cell
     return 15;
 }
-
+*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath  {
+    NSLog(@"6");
+
+//    return [self eventCellAtIndex:indexPath];
+    if (_isFriendsSelected)
+    {
+        
+        if (indexPath.section == 0 && [_friendsAttendingArray count]>0)
+        {
+            return [self eventCellAtIndex:indexPath];
+        }
+        else
+        {
+            return [self eventNotAttendingCellAtIndex: indexPath];
+        }
+        
+    }
+    else
+    {
+        if (indexPath.section == 0) {
+            return [self eventNotAttendingCellAtIndex: indexPath];
+        }
+        else
+        {
+            return nil;
+        }
+    }
+
     
 //    NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
-    if (indexPath.section == 1) {
+    if (_isFriendsSelected && indexPath.section == 1 && [_friendsAttendingArray count]>1) {
+        return [self eventCellAtIndex:indexPath];
+
+    } else
         return [self eventNotAttendingCellAtIndex: indexPath];
-    } else 
-    return [self eventCellAtIndex:indexPath];
+
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"Bring up maps!: row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
+    
+    
+
 }
 
+
+//People Event
+-(void)moveToEvent:(NSNotification *) notification  {
+    if ([[notification name] isEqualToString:@"People Event"])  {
+        NSLog(@"Moving to Event related to People");
+        [Data sharedInstance].selectedEvent = notification.object;
+        [Data sharedInstance].selectedEventID = [NSString stringWithFormat:@"%i", [Data sharedInstance].selectedEvent.eventID];
+        [self performSegueWithIdentifier:@"GoToEvent" sender:self];
+
+    }
+}
 #pragma mark - Custom Cells
 -(HeaderEventsTableViewCell *) headerCellAtIndex:(NSInteger) section  {
     
+    
+    NSLog(@"7");
+
     NSString *resuseID = @"HeaderEventsCell";
     NSString *nibName = @"HeaderEvents";
     
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:resuseID];
     HeaderEventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:resuseID];
     
-    NSString *sectionTitle = [_sectionTitles objectAtIndex:section];
+    NSString *sectionTitle = @"NOT ATTENDING EVENTS";
+
+    
+    
+    if (_isFriendsSelected && [_friendsAttendingArray count]>0)
+    {
+        sectionTitle = @"ATTENDING EVENTS";
+    }
     
     cell.MyEventsLabel.text = sectionTitle;
     cell.filterButton.hidden = YES;
@@ -169,11 +336,27 @@
 
 -(PeopleNotAttendingTableViewCell*) eventNotAttendingCellAtIndex: (NSIndexPath *) indexPath {
     
+    NSLog(@"8");
+
     NSString *reuseID = @"PeopleEventsTableViewCell";
     NSString *nibName = @"PeopleNotAttending";
     
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     PeopleNotAttendingTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
+    
+    User *user = [User new];
+    if (_isFriendsSelected)
+    {
+        user = [_friendsNotAttendingArray objectAtIndex:indexPath.row];
+        
+    }
+    else
+    {
+        user = [_everyoneArray objectAtIndex:indexPath.row];
+    }
+    
+
+    
     
     cell.profileName.text = @"Isfandyar";
     
@@ -182,24 +365,44 @@
 
 -(PeopleEventTableViewCell *) eventCellAtIndex: (NSIndexPath *) indexPath {
     
+    NSLog(@"9");
+
     NSString *reuseID = @"PeopleEventsTableViewCell";
     NSString *nibName = @"PeopleEvent";
     
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     PeopleEventTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
-    //Setup cell using data pull down from the server, this is using dummy data
-    NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
-    NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
-    NSString *personName = [sectionEvents objectAtIndex:indexPath.row];
     
-    cell.nameLabel.text = personName;
+    User *user = [User new];
+    if (_isFriendsSelected)
+    {
+        user = [_friendsAttendingArray objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        user = [_everyoneArray objectAtIndex:indexPath.row];
+    }
+
+    cell.user = user;
+    cell.event = [user.eventsArray objectAtIndex:0];
+    
+    return  [cell configureCell];
+    
+    //Setup cell using data pull down from the server, this is using dummy data
+//    NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
+  //  NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
+  //  NSString *personName = [sectionEvents objectAtIndex:indexPath.row];
+    
+  //  cell.nameLabel.text = personName;
     
     return cell;
 }
 
 -(FooterEventsTableViewCell *) footerCellAtIndex:(NSInteger) section    {
     
+    NSLog(@"10");
+
     NSString *resuseID = @"FooterEventsCell";
     NSString *nibName = @"FooterEvents";
     
@@ -218,23 +421,30 @@
 
 
 - (IBAction)friendsButtonPressed:(UIButton *)sender {
-    if (_isFriendsSelected) {
+    if (!_isFriendsSelected) {
         NSLog(@"Friends");
         [_friendsButton setBackgroundColor:[UIColor whiteColor]];
         [_everyoneButton setBackgroundColor:[UIColor lightGrayColor]];
         _everyoneButton.tintColor = [UIColor grayColor];
-        _isFriendsSelected = NO;
+        _isFriendsSelected = YES;
+        
+        [_tableView reloadData];
+         //[[WebService sharedInstance]eventsApiRequest:USER_API_FRIENDS];
     }
 }
 
 - (IBAction)everyoneButtonPressed:(UIButton *)sender {
-    _isFriendsSelected = NO;
-    if (_isFriendsSelected == NO) {
+
+    if (_isFriendsSelected) {
         NSLog(@"Everyone");
         [_everyoneButton setBackgroundColor:[UIColor whiteColor]];
         [_friendsButton setBackgroundColor:[UIColor lightGrayColor]];
         _friendsButton.tintColor = [UIColor grayColor];
-        _isFriendsSelected = YES;
+        _isFriendsSelected = NO;
+        
+        [_tableView reloadData];
+
+        // [[WebService sharedInstance]eventsApiRequest:USER_API_EVERYONE];
     }
 }
 
