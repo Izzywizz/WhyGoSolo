@@ -360,15 +360,15 @@ else
 }
 
 /** This delegate hides the current location if the user wished it, renabling it, hs the effect of hiding the blue dot but showing the user current location anyway.*/
--(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
-{
-    MKAnnotationView *ulv = [mapView viewForAnnotation:mapView.userLocation];
-    
-    ulv.hidden = YES;//![self readUserLocationBoolValue];
-    
-    _customAnnotation.coordinate = mapView.userLocation.coordinate;
-    
-}
+//-(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+//{
+//    MKAnnotationView *ulv = [mapView viewForAnnotation:mapView.userLocation];
+//    
+//    ulv.hidden = YES;//![self readUserLocationBoolValue];
+//    
+//    _customAnnotation.coordinate = mapView.userLocation.coordinate;
+//    
+//}
 
 /** This delegate method ensures that when the user taps on the flag or current location that the address in scope updated*/
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
