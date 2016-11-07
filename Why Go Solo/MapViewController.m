@@ -171,11 +171,13 @@
 {
     // cache the pin
     _selectedPin = placemark;
+//    if (_touchPinCount > 1) {
+//        [_mapView removeAnnotation:_customAnnotation];
+//    }
     // clear existing pins
-//        [_mapView removeAnnotations:(_mapView.annotations)];
+//    [_mapView removeAnnotations:(_mapView.annotations)];
     
     //Create an anotation from where the user had touched the location
-    
     _customAnnotation.coordinate = placemark.coordinate;
     _customAnnotation.title =[_locationSearchTable parseAddress:(MKPlacemark *)_placemark];//placemark.name;
     _customAnnotation.subtitle = [NSString stringWithFormat:@"%@ %@",
@@ -233,7 +235,7 @@
     _touchPinCount++;
     
     if (_touchPinCount > 1) {
-        //    [_mapView removeAnnotation:_customAnnotation];
+//            [_mapView removeAnnotation:_customAnnotation];
     }
 }
 
@@ -288,7 +290,7 @@
         return nil;
     }
     
-    if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
+    if (annotation != mapView.userLocation) {
         
         MKAnnotationView *pin = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"myPin"];
         
@@ -321,7 +323,8 @@
         CLLocationCoordinate2D droppedAt = annotationView.annotation.coordinate;
         NSLog(@"Coodiantes: longitude: %f, latitude: %f", droppedAt.longitude, droppedAt.latitude);
         [self reverseGeoCoodantes:droppedAt];
-        annotationView.dragState = MKAnnotationViewDragStateNone;
+//        annotationView.dragState = MKAnnotationViewDragStateNone;
+        [annotationView setDragState:MKAnnotationViewDragStateNone animated:YES];
 //        _customAnnotation.title = [_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
     }
 }
