@@ -9,6 +9,14 @@
 #import "OtherProfileTableViewCell.h"
 #import "Data.h"
 #import "Event.h"
+#import "User.h"
+#import "University.h"
+#import "Residence.h"
+#import "RRCircularImageView.h"
+#import "RRDownloadImage.h"
+
+
+
 
 
 @implementation OtherProfileTableViewCell
@@ -26,8 +34,12 @@
 
 -(OtherProfileTableViewCell * )configureCollectionForOtherProfile:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath
 {
-    self.event = [Data sharedInstance].selectedEvent;
-    self.nameLabel.text = self.event.userName;
+    _nameLabel.text = [Data sharedInstance].selectedUser.userName;
+    _profileUniversityLabel.text = [Data sharedInstance].selectedUser.university.universityName;
+    
+    _ProfileAccommodation.text = [Data sharedInstance].selectedUser.residence.residenceName;
+    
+    _profileImage.image = [[RRDownloadImage sharedInstance]avatarImageForUserID:[Data sharedInstance].selectedUserID];
     return  self;
     
 }

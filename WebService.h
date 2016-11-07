@@ -10,7 +10,15 @@
 #import <UIKit/UIKit.h>
 #import "Data.h"
 @class Reachability;
+//#define API_BASE_URL @"http://goalmachine.app"
+// #define API_BASE_URL @"http://139.59.180.166/api" // LIVE RE RAISE
 
+//#define API_BASE_URL @"http://192.168.10.10/api" // HOMESTEAD
+
+
+#define IMAGE_BASE_URL @"http://139.59.183.192/storage" // LIVE CANDY
+
+#define API_BASE_URL @"http://139.59.183.192/api" // LIVE CANDY
 
 typedef NS_ENUM(NSInteger, eventsApiRequests) {
 //#define TEST @"loginsssssss"API_DICT
@@ -185,7 +193,7 @@ typedef NS_ENUM(NSInteger, residenceApiRequests) {
                                     @"params"   :    @{ USER_ID_KEY:USER_ID }\
 }
 
-#define USER_API_SINGLE_DICT    @{  @"request"  :   @[@ "users/",SELECTED_USER_ID,],\
+#define USER_API_SINGLE_DICT    @{  @"request"  :   @[@ "users/",SELECTED_USER_ID],\
                                     @"response" :   @   "parseUserFromDict:",\
                                     @"params"   :    @{ USER_ID_KEY:USER_ID }\
 }

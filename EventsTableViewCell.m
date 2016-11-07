@@ -29,6 +29,17 @@
     return self;
 }
 
+
+-(EventsTableViewCell*)configureCellWithEvent:(Event*)event
+{
+    
+    self.event = event;
+    
+    [_eventCellView configureEventsTableViewCell:self];
+    
+    return self;
+}
+
 /*
 - (void)awakeFromNib {
     [super awakeFromNib];

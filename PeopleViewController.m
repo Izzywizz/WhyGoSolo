@@ -45,6 +45,8 @@
 [self initialButtonSetup];
   //  [self ListenOutProfileBeingPressed];
  [self setNavigationButtonFontAndSize];
+    [[WebService sharedInstance]eventsApiRequest:USER_API_FRIENDS];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,11 +57,13 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToEvent:) name:@"People Event" object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToOtherUserProfile) name:@"Profile Found" object:nil];
     [Data sharedInstance].delegate = self;
     
-    [[WebService sharedInstance]eventsApiRequest:USER_API_FRIENDS];
-    _isFriendsSelected =  YES;
+
+  //  [[WebService sharedInstance]eventsApiRequest:USER_API_FRIENDS];
+    
+    
 
  //   _friendsNotAttendingArray = @[];
    // _friendsAttendingArray = @[];
@@ -77,6 +81,8 @@
 
 -(void)friendsParsedSuccessfully
 {
+    _isFriendsSelected =  YES;
+
     NSLog(@"Freinds Array = %@", [Data sharedInstance].friendsAttendingEventsArray);
     _isFriendsSelected =  YES;
 
@@ -113,6 +119,12 @@
 }
 
 #pragma mark - Helper Functions
+- (void)profileFound:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"Profile Found"]) {
+        
+        [self moveToOtherUserProfile];
+    }
+}
 
 
 -(void) setNavigationButtonFontAndSize  {
@@ -192,7 +204,7 @@
     if (_isFriendsSelected)
     {
         
-        if (section == 1 && [_friendsAttendingArray count]>0)
+        if (section == 0 && [_friendsAttendingArray count]>0)
         {
             return [_friendsAttendingArray count];
         }
@@ -204,8 +216,9 @@
     }
     else
     {
-        if (section == 1) {
-            [_everyoneArray count];
+
+        if (section == 0) {
+            return [_everyoneArray count];
         }
         else
         {
@@ -267,6 +280,11 @@
     }
     else
     {
+        if (indexPath.section == 0 && [_everyoneArray count]>0) {
+            return [self eventCellAtIndex:indexPath];
+
+        }
+        
         if (indexPath.section == 0) {
             return [self eventNotAttendingCellAtIndex: indexPath];
         }
@@ -286,6 +304,9 @@
 
 }
 
+
+
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"Bring up maps!: row: %ld, section: %ld", (long)indexPath.row, (long)indexPath.section);
@@ -295,11 +316,12 @@
 }
 
 
+
 //People Event
 -(void)moveToEvent:(NSNotification *) notification  {
     if ([[notification name] isEqualToString:@"People Event"])  {
         NSLog(@"Moving to Event related to People");
-        [Data sharedInstance].selectedEvent = notification.object;
+     //   [Data sharedInstance].selectedEvent = notification.object;
         [Data sharedInstance].selectedEventID = [NSString stringWithFormat:@"%i", [Data sharedInstance].selectedEvent.eventID];
         [self performSegueWithIdentifier:@"GoToEvent" sender:self];
 
@@ -321,7 +343,7 @@
 
     
     
-    if (_isFriendsSelected && [_friendsAttendingArray count]>0)
+    if (section == 0 && ((_isFriendsSelected && [_friendsAttendingArray count]>0 )|| !_isFriendsSelected))
     {
         sectionTitle = @"ATTENDING EVENTS";
     }
@@ -334,6 +356,7 @@
     return cell;
 }
 
+/*
 -(PeopleNotAttendingTableViewCell*) eventNotAttendingCellAtIndex: (NSIndexPath *) indexPath {
     
     NSLog(@"8");
@@ -359,6 +382,47 @@
     
     
     cell.profileName.text = @"Isfandyar";
+    
+    return cell;
+}
+
+
+*/
+-(PeopleEventTableViewCell*) eventNotAttendingCellAtIndex: (NSIndexPath *) indexPath {
+    
+    NSLog(@"8");
+    
+    
+    NSString *reuseID = @"PeopleEventsTableViewCell";
+    NSString *nibName = @"PeopleEvent";
+    
+    [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
+    PeopleEventTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
+    
+    
+    User *user = [User new];
+    if (_isFriendsSelected)
+    {
+        user = [_friendsNotAttendingArray objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        user = [_everyoneArray objectAtIndex:indexPath.row];
+    }
+    
+    cell.user = user;
+    cell.event = [Event new];
+    
+    return  [cell configureCell];
+    
+    //Setup cell using data pull down from the server, this is using dummy data
+    //    NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
+    //  NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
+    //  NSString *personName = [sectionEvents objectAtIndex:indexPath.row];
+    
+    //  cell.nameLabel.text = personName;
+    
+    return cell;
     
     return cell;
 }
@@ -422,14 +486,17 @@
 
 - (IBAction)friendsButtonPressed:(UIButton *)sender {
     if (!_isFriendsSelected) {
+        _isFriendsSelected = YES;
+
         NSLog(@"Friends");
         [_friendsButton setBackgroundColor:[UIColor whiteColor]];
         [_everyoneButton setBackgroundColor:[UIColor lightGrayColor]];
         _everyoneButton.tintColor = [UIColor grayColor];
-        _isFriendsSelected = YES;
         
+        
+        //[_tableView reloadData];
+    [[WebService sharedInstance]eventsApiRequest:USER_API_FRIENDS];
         [_tableView reloadData];
-         //[[WebService sharedInstance]eventsApiRequest:USER_API_FRIENDS];
     }
 }
 
@@ -442,7 +509,9 @@
         _friendsButton.tintColor = [UIColor grayColor];
         _isFriendsSelected = NO;
         
+        [[WebService sharedInstance]eventsApiRequest:USER_API_EVERYONE];
         [_tableView reloadData];
+     //   [_tableView reloadData];
 
         // [[WebService sharedInstance]eventsApiRequest:USER_API_EVERYONE];
     }

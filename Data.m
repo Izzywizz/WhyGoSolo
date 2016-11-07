@@ -13,6 +13,7 @@
 #import "Event.h"
 #import "User.h"
 #import "Comment.h"
+#import "EventsTableViewCell.h"
 
 #import "WebService.h"
 @interface Data ()
@@ -299,13 +300,37 @@
 }
 -(void)parseUserFromDict:(NSDictionary*)dict;
 {
-    NSLog(@"USER DICT = %@", dict);
-    
+    NSLog(@"USER DICT xxxxxxxxxx = %@", dict);
+
     if ([[dict valueForKey:@"user" ]valueForKey:@"added_as_friend"]) {
-        dict = [dict valueForKey:@"user" ];
+   //     dict = [dict valueForKey:@"user" ];
     }
-    [Data sharedInstance].selectedUser = [[User alloc]initWithDict:dict];
     
+    [Data sharedInstance].selectedUser.eventsArray = [NSMutableArray new];
+
+    [Data sharedInstance].selectedUser = [[User alloc]initWithDict:[dict valueForKey:@"user"]];
+    [Data sharedInstance].selectedUser.university = [University new];
+    [Data sharedInstance].selectedUser.university.universityName = [[[dict  valueForKey:@"user" ] valueForKey:@"university"]valueForKey:@"name"];
+    [Data sharedInstance].selectedUser.residence = [Residence new];
+    [Data sharedInstance].selectedUser.residence.residenceName = [[[dict  valueForKey:@"user"  ]valueForKey:@"residence"]valueForKey:@"name"];
+    
+    
+    NSLog(@"USER DICT xxxxxxxxxxeeee = %@", [dict valueForKey:@"their_events"]);
+
+    NSMutableArray *tempArray = [NSMutableArray new];
+    for (NSDictionary *ed in [dict valueForKey:@"their_events"])
+    {
+        NSLog(@"ed = %@", ed);
+        Event *e = [[Event alloc]initWithDict:ed];
+        [tempArray addObject:e];
+        
+         NSLog(@"ed ------ = %@", e.eventDescription);
+       
+    }
+    NSLog(@"TEMP ARRAY = %@", tempArray);
+    
+    [Data sharedInstance].selectedUser.eventsArray = tempArray;
+    NSLog(@"XXXXXXXX D = %@", [Data sharedInstance].selectedUser.eventsArray);
     if (_delegate && [_delegate respondsToSelector:@selector(userParsedSuccessfully)])
     {
         [self.delegate userParsedSuccessfully];

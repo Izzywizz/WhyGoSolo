@@ -9,6 +9,7 @@
 #import "CreateCollectionViewCell.h"
 #import "Data.h"
 #import "Event.h"
+#import "RREmojiParser.h"
 @implementation CreateCollectionViewCell
 
 -(void)awakeFromNib {
@@ -55,7 +56,10 @@
         [self.describeEventTextView resignFirstResponder];
     }
     
-    [Data sharedInstance].createdEvent.eventDescription = _describeEventTextView.text;
+    NSString *emojiUTF8 = [NSString stringWithUTF8String:[self.describeEventTextView.text UTF8String]];
+    NSData *emojiData = [emojiUTF8 dataUsingEncoding:NSNonLossyASCIIStringEncoding];
+    NSString *emojiString = [[NSString alloc] initWithData:emojiData encoding:NSUTF8StringEncoding];
+    [Data sharedInstance].createdEvent.eventDescription = emojiString;
 }
 
 /** creates the placeholder effect*/

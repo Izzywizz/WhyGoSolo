@@ -14,6 +14,7 @@
 #import "WebService.h"
 #import "Data.h"
 #import "Event.h"
+#import "RREmojiParser.h"
 #define METERS_PER_MILE 1609.344
 
 @import MapKit;
@@ -151,7 +152,6 @@
 }
 
 -(void) zoomToUserLocation: (CLLocation *) userLocation  {
-    
     
     if ([Data sharedInstance].createdEvent.longitude > 0)
     {
@@ -440,7 +440,7 @@ else
        // NSLog(@"EVENTS CREATE DICT aa= %@", EVENT_API_CREATE_DICT);
 
         NSLog(@"POST EVENT4");
-        [self setupAlertBox];
+     //   [self setupAlertBox];
         [[WebService sharedInstance]eventsApiRequest:EVENT_API_CREATE];
 
     }

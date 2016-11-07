@@ -29,8 +29,16 @@
 - (IBAction)cellPressed:(id)sender {
     
     [Data sharedInstance].selectedEvent = _event;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"People Event" object:self.event];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"People Event" object:nil];
 
+}
+- (IBAction)profileButtonPressed:(id)sender
+{
+    NSLog(@"PRESSED");
+    [Data sharedInstance].selectedUserID = _user.userID;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Profile Found" object:nil];
+
+       
 }
 
 @end

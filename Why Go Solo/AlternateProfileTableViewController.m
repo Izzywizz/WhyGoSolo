@@ -18,6 +18,7 @@
 #import "WebService.h"
 #import "User.h"
 #import "Data.h"
+#import "Event.h"
 @interface AlternateProfileTableViewController () <DataDelegate>
 
 @property NSDictionary *tableData;
@@ -26,7 +27,7 @@
 @property BOOL isUserBlocked;
 @property BOOL isFriend;
 @property (nonatomic) UIView *overlayView;
-
+@property NSArray *eventsArray;
 @property User *user;
 
 @end
@@ -36,12 +37,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [Data sharedInstance].delegate = self;
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [[WebService sharedInstance]eventsApiRequest:USER_API_SINGLE];
 
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [Data sharedInstance].selectedUser = nil;
+
     [Data sharedInstance].delegate = nil;
 }
 
@@ -82,15 +86,15 @@
 
 -(void)userParsedSuccessfully
 {
+     _user = [Data sharedInstance].selectedUser;
+    _eventsArray = _user.eventsArray;
     [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:YES];
 }
 
 -(void)handleUpdates
 {
-    _user = [Data sharedInstance].selectedUser;
-    
     [self updateFreindButtonStatus];
-
+    [self.tableView reloadData];
 }
 #pragma mark - Table view data source
 
@@ -99,7 +103,7 @@
     if (section == 0) {
         return 1;
     } else  {
-        return _tableData.count;
+        return [_eventsArray count];// _tableData.count;
     }
 }
 
@@ -174,20 +178,9 @@
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:resuseID];
     HeaderEventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:resuseID];
     
-    NSString *sectionTitle = [_sectionTitles objectAtIndex:section];
-    
-    if (_isUserBlocked == YES) {
-        cell.numberOfEventsLabel.text = @"(0)";
-        NSLog(@"Zero Events");
-    } else  {
-        cell.numberOfEventsLabel.text = @"(2)"; //Needs to be set to count with real data
-    }
-    if ([sectionTitle  isEqual: @"My Events"]) {
-        [cell.filterButton setHidden:YES];
-        
-        
-    }
-    cell.MyEventsLabel.text = sectionTitle;
+   // NSString *sectionTitle = @"EVENTS";
+      [cell.filterButton setHidden:YES];
+    cell.MyEventsLabel.text = [NSString stringWithFormat:@"EVENTS (%lu)", (unsigned long)[_eventsArray count]];
     
     return cell;
 }
@@ -204,6 +197,9 @@
     return cell;
 }
 
+
+
+
 -(EventsTableViewCell *) eventCellAtIndex: (NSIndexPath *) indexPath {
     
     NSString *reuseID = @"EventsTableViewCell";
@@ -212,13 +208,29 @@
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
     EventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
     
+    [cell configureCellWithEvent:[_user.eventsArray objectAtIndex:indexPath.row]];
+  //  [cell configureCellWithEventForTableView:self.tableView atIndexPath:indexPath];
+    
+    return cell;
+}
+/*
+
+-(EventsTableViewCell *) eventCellAtIndex: (NSIndexPath *) indexPath {
+    
+    NSString *reuseID = @"EventsTableViewCell";
+    NSString *nibName = @"Events";
+    
+    [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:reuseID];
+    EventsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseID forIndexPath:indexPath];
+    
+    Event *event = [_eventsArray objectAtIndex:indexPath.row];
     //Setup cell using data pull down from the server, this is using dummy data
-    NSString *sectionTitle = [_sectionTitles objectAtIndex:indexPath.section];
+    NSString *sectionTitle = event.eventDescription; [_sectionTitles objectAtIndex:indexPath.section];
     NSArray *sectionEvents = [_tableData objectForKey:sectionTitle];
     NSString *eventName = [sectionEvents objectAtIndex:indexPath.row];
     
     //Basic logic to ensure that the correct join/ edit are displayed for events
-    if ([sectionTitle isEqualToString:@"My Events"]) {
+    if ([sectionTitle isEqualToString:@"EVENTS"]) {
         [cell viewWithTag:EDIT].alpha = 0;
     }
     if (_isUserBlocked) {
@@ -230,7 +242,7 @@
     
     return cell;
 }
-
+*/
 -(FooterEventsTableViewCell *) footerCellAtIndex:(NSInteger) section    {
     
     NSString *resuseID = @"FooterEventsCell";

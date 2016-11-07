@@ -16,6 +16,7 @@
 @property Event *event;
 
 -(EventsTableViewCell*)configureCellWithEventForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath;
+-(EventsTableViewCell*)configureCellWithEvent:(Event*)event;
 
 /*
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;

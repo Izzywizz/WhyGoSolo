@@ -18,5 +18,6 @@
 
 -(EventCollectionViewCell*) configureCellWithEventForTableView:(UICollectionView*)collectionView atIndexPath:(NSIndexPath*)indexPath;
 
+@property (strong, nonatomic) IBOutlet UIView *outerView;
 
 @end

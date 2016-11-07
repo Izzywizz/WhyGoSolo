@@ -17,6 +17,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "AFHTTPRequestOperation.h"
 #import "UIImageView+AFNetworking.h"
+#import "WebService.h"
 @implementation RRDownloadImage
 
 
@@ -36,7 +37,7 @@
 
 -(void)downloadAvatarImageForUserID:(NSString*)userID
 {
-    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"http://139.59.180.166/storage/%@@3x.png",userID]];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@@3x.png",IMAGE_BASE_URL, userID]];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     

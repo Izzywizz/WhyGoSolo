@@ -10,6 +10,9 @@
 #import "WebService.h"
 #import "Data.h"
 #import "Event.h"
+#import "User.h"
+#import "EventCellView.h"
+
 @interface PeopleEventCollectionViewController () <DataDelegate>
 @property NSArray *dummyData;
 @property NSArray *sectionTitles;
@@ -18,8 +21,10 @@
 
 @property NSArray *friendsArray;
 @property NSArray *otherPeopleArray;
-
 @property BOOL hasJoinedEvent;
+
+
+@property EventCollectionViewCell* currentCell;
 @end
 
 @implementation PeopleEventCollectionViewController
@@ -52,6 +57,8 @@
     _otherPeopleArray = @[];
     
     [Data sharedInstance].delegate = self;
+    
+  //  [Data sharedInstance].selectedEventID = [NSString stringWithFormat:@"%i",[Data sharedInstance].selectedEvent.eventID ];
     [[WebService sharedInstance]eventsApiRequest:EVENT_API_SINGLE];
     
     
@@ -62,6 +69,9 @@
 {
     [Data sharedInstance].delegate = nil;
 }
+
+
+
 
 -(void)joinedStatusUpdatedSuccessfully
 {
@@ -148,6 +158,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 0) {
+        
         return [self eventCell:indexPath];
     } else  {
         return [self friendOtherCell:indexPath];
@@ -172,6 +183,9 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath    {
     if (indexPath.section == 0) {
         //        return self.view.frame.size;
+        
+        return CGSizeMake(self.collectionView.bounds.size.width, _currentCell.outerView.bounds.size.height);
+
         return CGSizeMake(self.collectionView.bounds.size.width, 200);
     } else  {
         return CGSizeMake(60, 90); //Height for the images
@@ -192,6 +206,35 @@
     }
     
     return reusableview;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+      
+        NSLog(@"EVENT COL SELECTED =");
+
+    } else  {
+        
+        if (indexPath.section == 1)
+        {
+            User *u = [_friendsArray objectAtIndex:indexPath.row];
+
+            [Data sharedInstance].selectedUserID = u.userID;
+        }
+        else
+        {
+            User *u = [_otherPeopleArray objectAtIndex:indexPath.row];
+            
+            [Data sharedInstance].selectedUserID = u.userID;
+
+        }
+        
+        NSLog(@"SELECTED USER = %@",  [Data sharedInstance].selectedUserID);
+        
+        
+    }
+
 }
 
 
@@ -223,9 +266,13 @@
     static NSString *identifier = @"EventCollectionCell";
     
     EventCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    
+
     [cell configureCellWithEventForTableView:self.collectionView atIndexPath:indexPath];
     
+    NSLog(@"Cell Height = %f", cell.frame.size.height);
+    
+    _currentCell = cell;
+    [self reloadInputViews];
     return cell;
 }
 

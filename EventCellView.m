@@ -57,7 +57,7 @@
     self.avatarImageView.image = [[RRDownloadImage sharedInstance]avatarImageForUserID:[NSString stringWithFormat:@"%i",_event.userID]];
 
     
-    NSLog(@"EVENT JPIOED STATUS = %i / %i", _event.userID, [Data sharedInstance].loggedInUser.userID);
+    NSLog(@"EVENT JPIOED STATUS = %i / %@", _event.userID, [Data sharedInstance].userID);
     if (_event.joined)
     {
         self.joined = YES;
@@ -102,15 +102,13 @@
 
 -(void)configureEventCollectionViewCell:(EventCollectionViewCell*)cell
 {
-    [self configureCellWithEvent:cell.event];
+    [self configureCellWithEvent:[Data sharedInstance].selectedEvent];
 }
 
 
 - (IBAction)joinButtonPressed:(UIButton *)sender
 {
-    [Data sharedInstance].selectedEvent = _event;
-    [Data sharedInstance].selectedEventID = [NSString stringWithFormat:@"%i",_event.eventID];
-    
+    [self updateSelectedEvent];
     
     switch (sender.tag) {
         case JOIN: NSLog(@"Join Button Pressed");
@@ -154,12 +152,19 @@
 }
 - (IBAction)peopleEventButtonPressed:(UIButton *)sender {
     NSLog(@"People Event Button Pressed");
+    [self updateSelectedEvent];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"People Event" object:self.event];
 }
 - (IBAction)commentsButtonPressed:(UIButton *)sender {
     NSLog(@"Comments button pressed");
+    [self updateSelectedEvent];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Comments" object:self.event];
 }
 
-
+-(void)updateSelectedEvent
+{
+    [Data sharedInstance].selectedEvent = self.event;
+    [Data sharedInstance].selectedEventID  = [NSString stringWithFormat:@"%i", self.event.eventID];
+}
 @end

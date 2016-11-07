@@ -22,6 +22,16 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29V-SN-lv7">
                         <rect key="frame" x="12" y="14" width="421" height="82"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4DT-5q-w76">
+                                <rect key="frame" x="0.0" y="0.0" width="62" height="82"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="4E5-Ib-WO6"/>
+                                    <constraint firstAttribute="height" constant="82" id="ehB-PT-qet"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="profileButtonPressed:" destination="OXs-jg-M0b" eventType="touchUpInside" id="eyj-Nq-BWV"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hua-00-SDx" userLabel="Profile Button">
                                 <rect key="frame" x="62" y="0.0" width="359" height="82"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -106,6 +116,7 @@
                             <constraint firstItem="hua-00-SDx" firstAttribute="leading" secondItem="wCd-Qg-3Mu" secondAttribute="trailing" constant="7" id="3Eb-kc-a9U"/>
                             <constraint firstItem="7nt-Nj-lrc" firstAttribute="leading" secondItem="wCd-Qg-3Mu" secondAttribute="trailing" constant="8" id="3q3-8L-Nq1"/>
                             <constraint firstItem="hua-00-SDx" firstAttribute="top" secondItem="29V-SN-lv7" secondAttribute="top" id="5cx-jJ-VIa"/>
+                            <constraint firstItem="4DT-5q-w76" firstAttribute="leading" secondItem="29V-SN-lv7" secondAttribute="leading" id="62x-Wz-uH2"/>
                             <constraint firstItem="w2E-oP-9Zi" firstAttribute="leading" secondItem="Fuv-lV-jqu" secondAttribute="leading" id="7T3-Mi-STz"/>
                             <constraint firstItem="w2E-oP-9Zi" firstAttribute="top" secondItem="7nt-Nj-lrc" secondAttribute="bottom" constant="8" id="8KT-5w-QhL"/>
                             <constraint firstItem="w2E-oP-9Zi" firstAttribute="leading" secondItem="29V-SN-lv7" secondAttribute="leading" constant="83" id="921-RK-78B"/>
@@ -135,6 +146,7 @@
                             <constraint firstAttribute="trailing" secondItem="Fuv-lV-jqu" secondAttribute="trailing" id="nsh-RX-PCd"/>
                             <constraint firstItem="w2E-oP-9Zi" firstAttribute="top" secondItem="hua-00-SDx" secondAttribute="bottom" id="vVg-wK-jCu"/>
                             <constraint firstAttribute="bottom" secondItem="7nt-Nj-lrc" secondAttribute="bottom" constant="173.5" id="wyA-pW-d2J"/>
+                            <constraint firstItem="4DT-5q-w76" firstAttribute="top" secondItem="29V-SN-lv7" secondAttribute="top" id="xPU-qR-jkq"/>
                             <constraint firstAttribute="trailing" secondItem="hua-00-SDx" secondAttribute="trailing" id="y8O-tI-HFJ"/>
                         </constraints>
                         <variation key="default">

@@ -202,7 +202,7 @@ NSArray *sectionTitles;
 -(void)moveToEvent:(NSNotification *) notification  {
     if ([[notification name] isEqualToString:@"People Event"])  {
         NSLog(@"Moving to Event related to People");
-        [Data sharedInstance].selectedEvent = notification.object;
+     //   [Data sharedInstance].selectedEvent = notification.object;
               [Data sharedInstance].selectedEventID = [NSString stringWithFormat:@"%i", [Data sharedInstance].selectedEvent.eventID];
         [self moveToEvent];
     }

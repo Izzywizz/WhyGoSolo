@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-@class Event;
+@class RRCircularImageView;
 
 @interface OtherProfileTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *profileUniversityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ProfileAccommodation;
 
-@property Event *event;
+@property (strong, nonatomic) IBOutlet RRCircularImageView *profileImage;
 
 -(OtherProfileTableViewCell * )configureCollectionForOtherProfile:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath;
 @end

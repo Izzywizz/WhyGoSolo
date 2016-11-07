@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Lato-Regular.ttf">
-            <string>Lato-Regular</string>
             <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
@@ -17,10 +16,10 @@
             <rect key="frame" x="0.0" y="0.0" width="387" height="56"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1YV-rD-dDM" id="3mg-dJ-NE8">
-                <rect key="frame" x="0.0" y="0.0" width="387" height="55.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="387" height="55"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="6b9-R2-zqc" userLabel="Background Image">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="title-bg-375-40" translatesAutoresizingMaskIntoConstraints="NO" id="6b9-R2-zqc" userLabel="Background Image">
                         <rect key="frame" x="0.0" y="0.0" width="388" height="56"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
@@ -37,26 +36,14 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(0)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Q8-nb-nkH">
-                        <rect key="frame" x="95" y="18" width="47" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="47" id="8hi-1y-kKc"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="9Q8-nb-nkH" firstAttribute="leading" secondItem="3mg-dJ-NE8" secondAttribute="leadingMargin" constant="87" id="1hL-iR-Fwn"/>
                     <constraint firstItem="6b9-R2-zqc" firstAttribute="leading" secondItem="3mg-dJ-NE8" secondAttribute="leading" id="1lt-61-Wd1"/>
-                    <constraint firstItem="9Q8-nb-nkH" firstAttribute="top" secondItem="yEJ-Ss-dvb" secondAttribute="top" id="5FZ-HG-Qkq"/>
                     <constraint firstItem="6b9-R2-zqc" firstAttribute="top" secondItem="3mg-dJ-NE8" secondAttribute="top" id="8iZ-ck-5rU"/>
                     <constraint firstAttribute="bottom" secondItem="6b9-R2-zqc" secondAttribute="bottom" id="Flq-uv-ssY"/>
                     <constraint firstAttribute="trailing" secondItem="6b9-R2-zqc" secondAttribute="trailing" constant="-1" id="Lx6-jU-tnA"/>
                     <constraint firstItem="yEJ-Ss-dvb" firstAttribute="centerY" secondItem="3mg-dJ-NE8" secondAttribute="centerY" id="NMW-Ge-Ji5"/>
                     <constraint firstItem="yEJ-Ss-dvb" firstAttribute="top" secondItem="3mg-dJ-NE8" secondAttribute="topMargin" constant="8" id="NiD-e9-VGk"/>
-                    <constraint firstItem="9Q8-nb-nkH" firstAttribute="bottom" secondItem="yEJ-Ss-dvb" secondAttribute="bottom" id="O11-kO-4bs"/>
                     <constraint firstItem="1lK-Ly-qId" firstAttribute="trailing" secondItem="3mg-dJ-NE8" secondAttribute="trailingMargin" id="S6R-CP-xLQ"/>
                     <constraint firstItem="yEJ-Ss-dvb" firstAttribute="leading" secondItem="3mg-dJ-NE8" secondAttribute="leadingMargin" id="S7g-Zg-Pys"/>
                     <constraint firstItem="yEJ-Ss-dvb" firstAttribute="trailing" secondItem="3mg-dJ-NE8" secondAttribute="trailingMargin" constant="-58" id="Sxy-ZS-dXb"/>
@@ -76,7 +63,6 @@
             <connections>
                 <outlet property="MyEventsLabel" destination="yEJ-Ss-dvb" id="FgM-A7-m3J"/>
                 <outlet property="filterButton" destination="1lK-Ly-qId" id="NB2-1j-zZ7"/>
-                <outlet property="numberOfEventsLabel" destination="9Q8-nb-nkH" id="fzl-GJ-TX4"/>
             </connections>
             <point key="canvasLocation" x="276.5" y="313"/>
         </tableViewCell>
