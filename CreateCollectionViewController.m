@@ -130,7 +130,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     CreateCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    if ([cell.describeEventTextView.text isEqualToString:@"Describe your event 140 chracters or less!"] || [cell.describeEventTextView.text isEqualToString:@""]) {
+    if ([cell.describeEventTextView.text isEqualToString:@"Describe your event 140 chracters or less!"]) {
         NSLog(@"Validate me");
         _isDescriptionBlank = YES;
     } else  {
@@ -209,12 +209,17 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
+-(void)setTheDescriptionBlankBoolean:(NSNotification *) notification   {
+    if ([[notification name] isEqualToString:@"doneCreating"]) {
+        NSLog(@"Inside");
+        _isDescriptionBlank = YES;
+    }
+}
+
 -(void) setupObservers    {
     //When the profile button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(privacyMode:)
-                                                 name:@"Privacy Mode"
-                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(privacyMode:) name:@"Privacy Mode" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setTheDescriptionBlankBoolean:) name:@"doneCreating" object:nil];
 }
 
 
@@ -228,11 +233,11 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (IBAction)nextButton:(UIBarButtonItem *)sender {
     
-    [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
+//    [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
 
     if (_isDescriptionBlank) {
         [self alertSetupandView];
-        _isDescriptionBlank = YES;
+        _isDescriptionBlank = NO;
     } else  {
         NSLog(@"Good To go");
         _isDescriptionBlank = NO;

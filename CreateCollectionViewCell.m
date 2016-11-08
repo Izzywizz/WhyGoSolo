@@ -20,7 +20,6 @@
     //create circular emoji view
     _circularView.layer.cornerRadius = _circularView.bounds.size.width/2;
     _circularView.layer.masksToBounds = YES;
-    
     [self createEmojiView];
 }
 
@@ -39,8 +38,9 @@
 {
     _charCount.text =  [NSString stringWithFormat:@"%lu", (unsigned long)textView.text.length];
     _characterCountInt = [_charCount.text intValue];
+    
     if (_characterCountInt == 0) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"nilValue" object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName: @"doneCreating" object: self];
     }
     NSLog(@"CharCount: %d", _characterCountInt);
     
@@ -48,12 +48,6 @@
         _charCount.textColor = [UIColor blueColor];
     } else {
         _charCount.textColor = [UIColor redColor];
-    }
-    
-    if(self.describeEventTextView.text.length == 0){
-        self.describeEventTextView.text = @"Describe your event 140 chracters or less!"; //load up previous description if empty
-        _characterCountInt = 0;
-        [self.describeEventTextView resignFirstResponder];
     }
     
     NSString *emojiUTF8 = [NSString stringWithUTF8String:[self.describeEventTextView.text UTF8String]];
@@ -67,21 +61,16 @@
     self.describeEventTextView.delegate = self;
     self.describeEventTextView.text = @"Describe your event 140 chracters or less!";
     self.describeEventTextView.textColor = [UIColor grayColor];
+    _characterCountInt = 0;
 }
 
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView
 {
-    if (_describeEventTextView.text.length == 0) {
-        [self placeholderEventTextView];
-        _characterCountInt = [_charCount.text intValue];
-
-    } else  {
+    if ([_describeEventTextView.text  isEqualToString: @"Describe your event 140 chracters or less!"]) {
         _describeEventTextView.text = @"";
-        _characterCountInt = [_charCount.text intValue];
+        _characterCountInt = 0;
         _describeEventTextView.textColor = [UIColor blackColor];
-        return YES;
     }
-    
     return YES;
 }
 
