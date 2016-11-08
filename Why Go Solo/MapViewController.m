@@ -204,7 +204,6 @@
             _placemark = [placemarks lastObject];
             [_resultSearchController.searchBar setText:[_locationSearchTable parseAddress:(MKPlacemark *)_placemark]];
             _customAnnotation.title = _resultSearchController.searchBar.text;
-
             
         } else {
             NSLog(@"%@", error.debugDescription);
@@ -222,7 +221,6 @@
     //if the user is not in the long press state then dont do anything
     if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
         return;
-    
     
     //Obtain the map coordinates from the user touch and store it for future use
     CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
@@ -280,18 +278,6 @@
 -(void) createPinLocations  {
     [_mapView addAnnotations:[self unpackPinData]];
 }
-
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
-{
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(calloutTapped:)];
-    [view addGestureRecognizer:tapGesture];
-}
-
--(void)calloutTapped:(UITapGestureRecognizer *) sender
-{
-    NSLog(@"Callout was tapped");
-}
-
 
 
 #pragma mark - Pin Delegate Methods

@@ -16,8 +16,7 @@
 @property NSArray *sectionTitles;
 
 @property BOOL isPublicEvent;
-@property BOOL isDescriptionBlank;
-
+@property BOOL isEmojiPresent;
 
 @end
 
@@ -28,6 +27,7 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark - UI View Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
     _isPublicEvent = YES;
     [self createDummyData];
@@ -39,6 +39,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"CreateCell" bundle:nil] forCellWithReuseIdentifier:@"CreateCell"];
     
     self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
 }
 
 
@@ -135,6 +136,7 @@ static NSString * const reuseIdentifier = @"Cell";
         [defaults setValue: @"YES" forKey: @"test"];
         [defaults synchronize];
     }
+    
     return cell;
 }
 
@@ -223,9 +225,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (IBAction)nextButton:(UIBarButtonItem *)sender {
     
-    //    [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSLog(@"TEST: %@",[defaults valueForKey:@"test"]);
+    _isEmojiPresent = [defaults boolForKey:@"emoji"];
+    NSLog(@"Emoji BOOL: %d", _isEmojiPresent);
+    
     NSString *stringCheck = [defaults valueForKey:@"test"];
     
     if ([stringCheck isEqualToString:@"YES"]) {

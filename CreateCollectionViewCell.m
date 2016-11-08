@@ -151,6 +151,13 @@
     [Data sharedInstance].createdEvent.emoji = emojiString;
 
     NSLog(@"EMOJI TEXT = %@", emojiString);
+    
+    if (emojiString != nil) {
+        NSLog(@"Liked");
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setBool:YES forKey:@"emoji"];
+        [defaults synchronize];
+    }
 }
 
 
