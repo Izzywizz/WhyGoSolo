@@ -129,6 +129,12 @@ static NSString * const reuseIdentifier = @"Cell";
     static NSString *identifier = @"CreateCell";
     
     CreateCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
+    if ([cell.describeEventTextView.text isEqualToString:@"Describe your event 140 chracters or less!"]) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue: @"YES" forKey: @"test"];
+        [defaults synchronize];
+    }
     return cell;
 }
 
@@ -201,17 +207,9 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
--(void)setTheDescriptionBlankBoolean:(NSNotification *) notification   {
-    if ([[notification name] isEqualToString:@"doneCreating"]) {
-        NSLog(@"Inside");
-        _isDescriptionBlank = YES;
-    }
-}
-
 -(void) setupObservers    {
     //When the profile button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(privacyMode:) name:@"Privacy Mode" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setTheDescriptionBlankBoolean:) name:@"doneCreating" object:nil];
 }
 
 
