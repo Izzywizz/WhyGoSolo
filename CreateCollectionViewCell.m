@@ -33,11 +33,11 @@
 - (void)textViewDidEndEditing:(UITextView *)textView    {
     if (_characterCountInt == 0) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setValue: @"YES" forKey: @"test"];
+        [defaults setBool: YES forKey: @"test"];
         [defaults synchronize];
     } else  {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setValue: @"NO" forKey: @"test"];
+        [defaults setBool: NO forKey: @"test"];
         [defaults synchronize];
     }
     [self.describeEventTextView resignFirstResponder]; // get rid of the keybaord
@@ -52,11 +52,11 @@
     
     if (_characterCountInt == 0) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setValue: @"YES" forKey: @"test"];
+        [defaults setBool: YES forKey: @"test"];
         [defaults synchronize];
     } else  {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setValue: @"NO" forKey: @"test"];
+        [defaults setBool: NO forKey: @"test"];
         [defaults synchronize];
     }
     
@@ -89,11 +89,11 @@
     }
     if (_characterCountInt == 0) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setValue: @"YES" forKey: @"test"];
+        [defaults setBool: YES forKey: @"test"];
         [defaults synchronize];
     } else  {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setValue: @"NO" forKey: @"test"];
+        [defaults setBool: NO forKey: @"test"];
         [defaults synchronize];
     }
     return YES;
@@ -109,6 +109,7 @@
 - (IBAction)eventSwitch:(UISwitch *)sender {
     if (sender.on) {
         NSLog(@"Activate Privacy: %d", sender.on);
+        
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"publicPrivate"]; //YES
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Privacy Mode" object:self];
         self.publicPrivateLabel.text = @"PRIVATE EVENT - VISABLE BY n(x)";
@@ -129,6 +130,10 @@
     // init ISEmojiView
     ISEmojiView *emojiView = [[ISEmojiView alloc] initWithTextField:self.emojiTextView delegate:self];
     self.emojiTextView.inputView = emojiView;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:NO forKey:@"emoji"];
+    [defaults synchronize];
 }
 
 -(void)emojiView:(ISEmojiView *)emojiView didSelectEmoji:(NSString *)emoji{

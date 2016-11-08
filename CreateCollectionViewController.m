@@ -28,7 +28,8 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    
+    _isEmojiPresent = [[NSUserDefaults standardUserDefaults] boolForKey:@"emoji"];
+    NSLog(@"Intial Bool: %d", _isEmojiPresent);
     _isPublicEvent = YES;
     [self createDummyData];
     [self setupObservers];
@@ -228,13 +229,12 @@ static NSString * const reuseIdentifier = @"Cell";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _isEmojiPresent = [defaults boolForKey:@"emoji"];
     NSLog(@"Emoji BOOL: %d", _isEmojiPresent);
+    BOOL isTheDecriptionBlank = [defaults boolForKey:@"test"];
     
-    NSString *stringCheck = [defaults valueForKey:@"test"];
-    
-    if ([stringCheck isEqualToString:@"YES"]) {
+    if (isTheDecriptionBlank == YES) {
         NSLog(@"WORKS");
         [self alertSetupandView];
-    } else if([stringCheck isEqualToString:@"NO"])  {
+    } else if(isTheDecriptionBlank == NO)  {
         [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
         NSLog(@"DOES Not Work");
     }
