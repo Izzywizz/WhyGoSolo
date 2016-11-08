@@ -179,11 +179,11 @@
     
     //Create an anotation from where the user had touched the location
     _customAnnotation.coordinate = placemark.coordinate;
-  //  _customAnnotation.title =[_locationSearchTable parseAddress:(MKPlacemark *)_placemark];//placemark.name;
-   // _customAnnotation.subtitle = [NSString stringWithFormat:@"%@ %@",
-        //                          (placemark.locality == nil ? @"" : placemark.locality),
-          //                        (placemark.administrativeArea == nil ? @"" : placemark.administrativeArea)
-            //                      ];
+    _customAnnotation.title =_resultSearchController.searchBar.text;//placemark.name;
+    _customAnnotation.subtitle = [NSString stringWithFormat:@"%@ %@",
+                                  (placemark.locality == nil ? @"" : placemark.locality),
+                                  (placemark.administrativeArea == nil ? @"" : placemark.administrativeArea)
+                                  ];
     [_mapView addAnnotation:_customAnnotation];
     MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
     MKCoordinateRegion region = MKCoordinateRegionMake(placemark.coordinate, span);
