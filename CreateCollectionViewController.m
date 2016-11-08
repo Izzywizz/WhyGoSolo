@@ -118,9 +118,9 @@ static NSString * const reuseIdentifier = @"Cell";
     } else  {
         cell.contentView.hidden = NO;
     }
-  //  cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
+    //  cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
     cell.profileName.text = @"IsfandyarIsfandyar";
-
+    
     return cell;
 }
 
@@ -129,14 +129,6 @@ static NSString * const reuseIdentifier = @"Cell";
     static NSString *identifier = @"CreateCell";
     
     CreateCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    
-    if ([cell.describeEventTextView.text isEqualToString:@"Describe your event 140 chracters or less!"]) {
-        NSLog(@"Validate me");
-        _isDescriptionBlank = YES;
-    } else  {
-        _isDescriptionBlank = NO;
-    }
-    
     return cell;
 }
 
@@ -233,17 +225,18 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (IBAction)nextButton:(UIBarButtonItem *)sender {
     
-//    [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
-
-    if (_isDescriptionBlank) {
-        [self alertSetupandView];
-        _isDescriptionBlank = NO;
-    } else  {
-        NSLog(@"Good To go");
-        _isDescriptionBlank = NO;
-        [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
-    }
+    //    [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"TEST: %@",[defaults valueForKey:@"test"]);
+    NSString *stringCheck = [defaults valueForKey:@"test"];
     
+    if ([stringCheck isEqualToString:@"YES"]) {
+        NSLog(@"WORKS");
+        [self alertSetupandView];
+    } else if([stringCheck isEqualToString:@"NO"])  {
+        [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
+        NSLog(@"DOES Not Work");
+    }
 }
 
 #pragma mark - Prepare Segue

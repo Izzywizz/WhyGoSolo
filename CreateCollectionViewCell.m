@@ -31,6 +31,15 @@
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView    {
+    if (_characterCountInt == 0) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue: @"YES" forKey: @"test"];
+        [defaults synchronize];
+    } else  {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue: @"NO" forKey: @"test"];
+        [defaults synchronize];
+    }
     [self.describeEventTextView resignFirstResponder]; // get rid of the keybaord
 }
 
@@ -39,10 +48,17 @@
     _charCount.text =  [NSString stringWithFormat:@"%lu", (unsigned long)textView.text.length];
     _characterCountInt = [_charCount.text intValue];
     
-    if (_characterCountInt == 0) {
-        [[NSNotificationCenter defaultCenter] postNotificationName: @"doneCreating" object: self];
-    }
     NSLog(@"CharCount: %d", _characterCountInt);
+    
+    if (_characterCountInt == 0) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue: @"YES" forKey: @"test"];
+        [defaults synchronize];
+    } else  {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue: @"NO" forKey: @"test"];
+        [defaults synchronize];
+    }
     
     if (textView.text.length != 140) {
         _charCount.textColor = [UIColor blueColor];
@@ -70,6 +86,15 @@
         _describeEventTextView.text = @"";
         _characterCountInt = 0;
         _describeEventTextView.textColor = [UIColor blackColor];
+    }
+    if (_characterCountInt == 0) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue: @"YES" forKey: @"test"];
+        [defaults synchronize];
+    } else  {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue: @"NO" forKey: @"test"];
+        [defaults synchronize];
     }
     return YES;
 }
