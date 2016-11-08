@@ -170,6 +170,10 @@
     if (self.emojiTextView.text.length > 0) {
         NSRange lastRange = [self.emojiTextView.text rangeOfComposedCharacterSequenceAtIndex:self.emojiTextView.text.length-1];
         self.emojiTextView.text = [self.emojiTextView.text substringToIndex:lastRange.location];
+        NSLog(@"Delete Emoji Pressed");
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setBool:NO forKey:@"emoji"];
+        [defaults synchronize];
     }
 }
 
