@@ -171,19 +171,19 @@
 {
     // cache the pin
     _selectedPin = placemark;
-//    if (_touchPinCount > 1) {
-//        [_mapView removeAnnotation:_customAnnotation];
-//    }
+    //    if (_touchPinCount > 1) {
+    //        [_mapView removeAnnotation:_customAnnotation];
+    //    }
     // clear existing pins
-//    [_mapView removeAnnotations:(_mapView.annotations)];
+    //    [_mapView removeAnnotations:(_mapView.annotations)];
     
     //Create an anotation from where the user had touched the location
     _customAnnotation.coordinate = placemark.coordinate;
-    _customAnnotation.title =[_locationSearchTable parseAddress:(MKPlacemark *)_placemark];//placemark.name;
-    _customAnnotation.subtitle = [NSString stringWithFormat:@"%@ %@",
-                                  (placemark.locality == nil ? @"" : placemark.locality),
-                                  (placemark.administrativeArea == nil ? @"" : placemark.administrativeArea)
-                                  ];
+  //  _customAnnotation.title =[_locationSearchTable parseAddress:(MKPlacemark *)_placemark];//placemark.name;
+   // _customAnnotation.subtitle = [NSString stringWithFormat:@"%@ %@",
+        //                          (placemark.locality == nil ? @"" : placemark.locality),
+          //                        (placemark.administrativeArea == nil ? @"" : placemark.administrativeArea)
+            //                      ];
     [_mapView addAnnotation:_customAnnotation];
     MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
     MKCoordinateRegion region = MKCoordinateRegionMake(placemark.coordinate, span);
@@ -203,6 +203,8 @@
         if (error == nil && [placemarks count] > 0) {
             _placemark = [placemarks lastObject];
             [_resultSearchController.searchBar setText:[_locationSearchTable parseAddress:(MKPlacemark *)_placemark]];
+            _customAnnotation.title = _resultSearchController.searchBar.text;
+
             
         } else {
             NSLog(@"%@", error.debugDescription);
@@ -235,7 +237,7 @@
     _touchPinCount++;
     
     if (_touchPinCount > 1) {
-//            [_mapView removeAnnotation:_customAnnotation];
+        //            [_mapView removeAnnotation:_customAnnotation];
     }
 }
 
@@ -279,6 +281,17 @@
     [_mapView addAnnotations:[self unpackPinData]];
 }
 
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(calloutTapped:)];
+    [view addGestureRecognizer:tapGesture];
+}
+
+-(void)calloutTapped:(UITapGestureRecognizer *) sender
+{
+    NSLog(@"Callout was tapped");
+}
+
 
 
 #pragma mark - Pin Delegate Methods
@@ -300,7 +313,7 @@
             pin.annotation = annotation;
         }
         
-        //        pin.canShowCallout = YES;
+        pin.canShowCallout = YES;
         pin.draggable = YES;
         pin.image = [UIImage imageNamed:@"map-pin-34-58"];
         
@@ -323,9 +336,9 @@
         CLLocationCoordinate2D droppedAt = annotationView.annotation.coordinate;
         NSLog(@"Coodiantes: longitude: %f, latitude: %f", droppedAt.longitude, droppedAt.latitude);
         [self reverseGeoCoodantes:droppedAt];
-//        annotationView.dragState = MKAnnotationViewDragStateNone;
+        //        annotationView.dragState = MKAnnotationViewDragStateNone;
         [annotationView setDragState:MKAnnotationViewDragStateNone animated:YES];
-//        _customAnnotation.title = [_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
+        //        _customAnnotation.title = [_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
     }
 }
 
@@ -335,17 +348,17 @@
     MKAnnotationView *currentUserLocation = [mapView viewForAnnotation:mapView.userLocation];
     currentUserLocation.hidden = YES;
     _customAnnotation.coordinate = mapView.userLocation.coordinate;
-
+    
 }
 
 /** This delegate method ensures that when the user taps on the flag or current location that the address in scope updated*/
 //-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
 //    id <MKAnnotation> annotation = [view annotation];
-//    
+//
 //    if ([annotation isKindOfClass:[MKUserLocation class]]) {
 //        NSLog(@"User Location Clicked");
 //    }
-//    
+//
 //    if (annotation != mapView.userLocation)
 //    {
 //        NSString *location = [annotation title];
