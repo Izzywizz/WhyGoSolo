@@ -57,21 +57,20 @@
 
 -(void)viewWillAppear:(BOOL)animated    {
     
-    
-    
     if (!_customAnnotation) {
         _customAnnotation = [[MKPointAnnotation alloc] init];
         _customAnnotation.title =[_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
+        [self.mapView addAnnotation:_customAnnotation];
     }
-
+    
     [self startCurrentUserLocation:YES];
     [self setupLongPressGesture];
     //[self createPinLocations];
     NSLog(@"userLocation xx: %d",[self.mapView showsUserLocation]);
     _mapView.showsUserLocation = YES;
-
+    
     [self.mapView setDelegate:self];
-    }
+}
 
 -(void)viewWillDisappear:(BOOL)animated {
     self.mapView.delegate = nil;
@@ -93,13 +92,6 @@
     NSLog(@"Hello");
 }
 
-//-(BOOL) readUserLocationBoolValue   {
-//
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    BOOL isUserLocationOn = [defaults integerForKey:@"isUserLocationOn"];
-//
-//    return isUserLocationOn;
-//}
 
 /** This method setups the current user location object from the CurrentUserLocation class so that location services can be activated*/
 -(void) startCurrentUserLocation: (BOOL) isUserLocation {
@@ -162,12 +154,12 @@
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(createdCoordinates.coordinate, 800, 800);
         [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
     }
-else
-{
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
-    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-}
-
+    else
+    {
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
+        [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+    }
+    
 }
 
 - (void)getDirections {
@@ -181,17 +173,19 @@ else
 {
     // cache the pin
     _selectedPin = placemark;
+    //    if (_touchPinCount > 1) {
+    //        [_mapView removeAnnotation:_customAnnotation];
+    //    }
     // clear existing pins
     //    [_mapView removeAnnotations:(_mapView.annotations)];
     
     //Create an anotation from where the user had touched the location
-
     _customAnnotation.coordinate = placemark.coordinate;
-    _customAnnotation.title =[_locationSearchTable parseAddress:(MKPlacemark *)_placemark];//placemark.name;
+    _customAnnotation.title =_resultSearchController.searchBar.text;//placemark.name;
     _customAnnotation.subtitle = [NSString stringWithFormat:@"%@ %@",
-                           (placemark.locality == nil ? @"" : placemark.locality),
-                           (placemark.administrativeArea == nil ? @"" : placemark.administrativeArea)
-                           ];
+                                  (placemark.locality == nil ? @"" : placemark.locality),
+                                  (placemark.administrativeArea == nil ? @"" : placemark.administrativeArea)
+                                  ];
     [_mapView addAnnotation:_customAnnotation];
     MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
     MKCoordinateRegion region = MKCoordinateRegionMake(placemark.coordinate, span);
@@ -211,6 +205,7 @@ else
         if (error == nil && [placemarks count] > 0) {
             _placemark = [placemarks lastObject];
             [_resultSearchController.searchBar setText:[_locationSearchTable parseAddress:(MKPlacemark *)_placemark]];
+            _customAnnotation.title = _resultSearchController.searchBar.text;
             
         } else {
             NSLog(@"%@", error.debugDescription);
@@ -224,18 +219,17 @@ else
  This is called as when the user touches the screen for period of customisable time*/
 - (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
 {
-
+    
     //if the user is not in the long press state then dont do anything
     if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
         return;
-    
     
     //Obtain the map coordinates from the user touch and store it for future use
     CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
     CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
     
     //Create an anotation from where the user had touched the location
-   // MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    // MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     _customAnnotation.coordinate = touchMapCoordinate;
     _customAnnotation.title = [_locationSearchTable parseAddress:(MKPlacemark *)_placemark]; //setup dynamically from the data model?
     [self.mapView addAnnotation:_customAnnotation];
@@ -243,7 +237,7 @@ else
     _touchPinCount++;
     
     if (_touchPinCount > 1) {
-    //    [_mapView removeAnnotation:_customAnnotation];
+        //            [_mapView removeAnnotation:_customAnnotation];
     }
 }
 
@@ -288,47 +282,21 @@ else
 }
 
 
-
 #pragma mark - Pin Delegate Methods
 /* This delegate is called when the annotation pin has beem created, it sets the image (possible emoticon) and adds it the callout for selection   */
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation   {
     
     // UserLocation Pin (blue dot)
     if ([annotation isKindOfClass:[MKUserLocation class]])  {
-        
-        //creates the blue dot
-         /*if (annotation == mapView.userLocation) {
-         self.mapView.tintColor = [UIColor blueColor];
-         return nil;
-         }*/
-        
-        
-        NSLog(@"User: %@",[annotation title]);
-        MKAnnotationView *pin = (MKAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier: @"blueDot"];
-        if (pin == nil)
-        {
-            pin = [[MKAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: @"blueDot"];
-        }
-        else
-        {
-            pin.annotation = annotation;
-        }
-        
-        [pin setImage:[UIImage imageNamed:@"map-pin-34-58"]]; //Override this to create a pin image
-        
-        pin.canShowCallout = YES;
-        //        pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure]; //creates the pin (i)
-        
-        return pin;
-        
+        return nil;
     }
     
-    if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
+    if (annotation != mapView.userLocation) {
+        
         MKAnnotationView *pin = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"myPin"];
         
         if (pin == nil) {
             pin = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myPin"];
-            
         } else {
             pin.annotation = annotation;
         }
@@ -341,7 +309,7 @@ else
     }
     
     return nil;
-
+    
 }
 
 /** Handles the different states of dragging when the user picks up the event pins, updates the coordinates and then sends them to be reversed engineered so that the address bar shows the correct addres for the pins new locaiton */
@@ -356,38 +324,35 @@ else
         CLLocationCoordinate2D droppedAt = annotationView.annotation.coordinate;
         NSLog(@"Coodiantes: longitude: %f, latitude: %f", droppedAt.longitude, droppedAt.latitude);
         [self reverseGeoCoodantes:droppedAt];
-        annotationView.dragState = MKAnnotationViewDragStateNone;
-        _customAnnotation.title = [_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
+        //        annotationView.dragState = MKAnnotationViewDragStateNone;
+        [annotationView setDragState:MKAnnotationViewDragStateNone animated:YES];
+        //        _customAnnotation.title = [_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
     }
 }
 
 /** This delegate hides the current location if the user wished it, renabling it, hs the effect of hiding the blue dot but showing the user current location anyway.*/
 -(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
 {
-    MKAnnotationView *ulv = [mapView viewForAnnotation:mapView.userLocation];
-    
-    ulv.hidden = YES;//![self readUserLocationBoolValue];
-    
+    MKAnnotationView *currentUserLocation = [mapView viewForAnnotation:mapView.userLocation];
+    currentUserLocation.hidden = YES;
     _customAnnotation.coordinate = mapView.userLocation.coordinate;
     
 }
 
 /** This delegate method ensures that when the user taps on the flag or current location that the address in scope updated*/
--(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    id <MKAnnotation> annotation = [view annotation];
-    
-    if ([annotation isKindOfClass:[MKUserLocation class]]) {
-        NSLog(@"User Location Clicked");
-        [self reverseGeoCoodantes:[annotation coordinate]];
-    }
-    
-    if ([annotation isKindOfClass:[MKPointAnnotation class]])
-    {
-        NSString *location = [annotation title];
-        NSLog(@"Clicked Flag: %@", location);
-        [self reverseGeoCoodantes:[annotation coordinate]];
-    }
-}
+//-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+//    id <MKAnnotation> annotation = [view annotation];
+//
+//    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+//        NSLog(@"User Location Clicked");
+//    }
+//
+//    if (annotation != mapView.userLocation)
+//    {
+//        NSString *location = [annotation title];
+//        NSLog(@"Clicked Flag: %@", location);
+//    }
+//}
 
 #pragma mark - AlertBox Methods
 
@@ -426,25 +391,25 @@ else
         [Data sharedInstance].createdEvent.address = _resultSearchController.searchBar.text ;
         [Data sharedInstance].createdEvent.latitude = _placemark.location.coordinate.latitude;
         [Data sharedInstance].createdEvent.longitude = _placemark.location.coordinate.longitude;
-
-
+        
+        
     } else {
         NSLog(@"POST EVENT");
         //TODO: Add logic to create the event
         [Data sharedInstance].createdEvent.address = _resultSearchController.searchBar.text ;
         NSLog(@"POST EVENT 1");
-
+        
         [Data sharedInstance].createdEvent.latitude = _placemark.location.coordinate.latitude;
         NSLog(@"POST EVENT2");
-
+        
         [Data sharedInstance].createdEvent.longitude = _placemark.location.coordinate.longitude;
         NSLog(@"POST EVENT3");
-       // NSLog(@"EVENTS CREATE DICT aa= %@", EVENT_API_CREATE_DICT);
-
+        // NSLog(@"EVENTS CREATE DICT aa= %@", EVENT_API_CREATE_DICT);
+        
         NSLog(@"POST EVENT4");
-     //   [self setupAlertBox];
+        //   [self setupAlertBox];
         [[WebService sharedInstance]eventsApiRequest:EVENT_API_CREATE];
-
+        
     }
     
 }

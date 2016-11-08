@@ -16,8 +16,7 @@
 @property NSArray *sectionTitles;
 
 @property BOOL isPublicEvent;
-@property BOOL isDescriptionBlank;
-
+@property BOOL isEmojiPresent;
 
 @end
 
@@ -28,7 +27,9 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark - UI View Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    _isEmojiPresent = [[NSUserDefaults standardUserDefaults] boolForKey:@"emoji"];
+    NSLog(@"Intial Bool: %d", _isEmojiPresent);
     _isPublicEvent = YES;
     [self createDummyData];
     [self setupObservers];
@@ -39,6 +40,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"CreateCell" bundle:nil] forCellWithReuseIdentifier:@"CreateCell"];
     
     self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
 }
 
 
@@ -118,9 +120,9 @@ static NSString * const reuseIdentifier = @"Cell";
     } else  {
         cell.contentView.hidden = NO;
     }
-  //  cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
+    //  cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
     cell.profileName.text = @"IsfandyarIsfandyar";
-
+    
     return cell;
 }
 
@@ -130,11 +132,10 @@ static NSString * const reuseIdentifier = @"Cell";
     
     CreateCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    if ([cell.describeEventTextView.text isEqualToString:@"Describe your event 140 chracters or less!"] || [cell.describeEventTextView.text isEqualToString:@""]) {
-        NSLog(@"Validate me");
-        _isDescriptionBlank = YES;
-    } else  {
-        _isDescriptionBlank = NO;
+    if ([cell.describeEventTextView.text isEqualToString:@"Describe your event 140 chracters or less!"]) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue: @"YES" forKey: @"test"];
+        [defaults synchronize];
     }
     
     return cell;
@@ -211,10 +212,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void) setupObservers    {
     //When the profile button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(privacyMode:)
-                                                 name:@"Privacy Mode"
-                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(privacyMode:) name:@"Privacy Mode" object:nil];
 }
 
 
@@ -228,17 +226,22 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (IBAction)nextButton:(UIBarButtonItem *)sender {
     
-    [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
-
-    if (_isDescriptionBlank) {
-        [self alertSetupandView];
-        _isDescriptionBlank = YES;
-    } else  {
-        NSLog(@"Good To go");
-        _isDescriptionBlank = NO;
-        [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
-    }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _isEmojiPresent = [defaults boolForKey:@"emoji"];
+    NSLog(@"Emoji BOOL: %d", _isEmojiPresent);
+    BOOL isTheDecriptionBlank = [defaults boolForKey:@"test"];
     
+    if (isTheDecriptionBlank == YES && _isEmojiPresent == NO) {
+        NSLog(@"WORKS");
+        [self setupAlertViewWithTitle:@"No description text and Emoji"  andMessage:@"Please enter some text within the descripton and add an emoji"];
+    } else if(isTheDecriptionBlank == NO && _isEmojiPresent == YES)  {
+        [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
+        NSLog(@"DOES Not Work");
+    } else if (isTheDecriptionBlank == YES && _isEmojiPresent == YES) {
+        [self setupAlertViewWithTitle:@"No description text"  andMessage:@"Please enter some text within the descripton"];
+    } else if (isTheDecriptionBlank == NO && _isEmojiPresent == NO) {
+        [self setupAlertViewWithTitle:@"No Emoji Present"  andMessage:@"Please add a emoji"];
+    }
 }
 
 #pragma mark - Prepare Segue
@@ -256,8 +259,9 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark - Alert Methods
 
--(void) alertSetupandView  {
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"No description text" message:@"Please enter some text within the descripton" preferredStyle:UIAlertControllerStyleAlert];
+-(void) setupAlertViewWithTitle: (NSString *) title andMessage: (NSString *) message{
+    
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"Dismiss");
     }];
