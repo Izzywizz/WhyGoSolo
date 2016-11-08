@@ -231,12 +231,16 @@ static NSString * const reuseIdentifier = @"Cell";
     NSLog(@"Emoji BOOL: %d", _isEmojiPresent);
     BOOL isTheDecriptionBlank = [defaults boolForKey:@"test"];
     
-    if (isTheDecriptionBlank == YES) {
+    if (isTheDecriptionBlank == YES && _isEmojiPresent == NO) {
         NSLog(@"WORKS");
-        [self alertSetupandView];
-    } else if(isTheDecriptionBlank == NO)  {
+        [self setupAlertViewWithTitle:@"No description text and Emoji"  andMessage:@"Please enter some text within the descripton and add an emoji"];
+    } else if(isTheDecriptionBlank == NO && _isEmojiPresent == YES)  {
         [self performSegueWithIdentifier:@"GoToAddMap" sender:self];
         NSLog(@"DOES Not Work");
+    } else if (isTheDecriptionBlank == YES && _isEmojiPresent == YES) {
+        [self setupAlertViewWithTitle:@"No description text"  andMessage:@"Please enter some text within the descripton"];
+    } else if (isTheDecriptionBlank == NO && _isEmojiPresent == NO) {
+        [self setupAlertViewWithTitle:@"No Emoji Present"  andMessage:@"Please add a emoji"];
     }
 }
 
@@ -255,8 +259,9 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark - Alert Methods
 
--(void) alertSetupandView  {
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"No description text" message:@"Please enter some text within the descripton" preferredStyle:UIAlertControllerStyleAlert];
+-(void) setupAlertViewWithTitle: (NSString *) title andMessage: (NSString *) message{
+    
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"Dismiss");
     }];
