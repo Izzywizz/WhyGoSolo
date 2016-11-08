@@ -11,13 +11,25 @@
 #import "UniversityLocations.h"
 #import "OverlayView.h"
 
+@class RRCircularImageView;
+
 @interface EditProfileTableViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UITableViewCell *studentAccommdationCell;
-@property (weak, nonatomic) IBOutlet UIImageView *profileView;
-@property (weak, nonatomic) IBOutlet UITextField *dateOfBirthTextField;
+
+
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
-@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
+
+@property (strong, nonatomic) IBOutlet UITextField *emailLabel;
+
+
+@property (weak, nonatomic) IBOutlet RRCircularImageView *profileImage;
+//@property (weak, nonatomic) IBOutlet UIView *profileUser;
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *studentAccommodationTextField;
+@property (weak, nonatomic) IBOutlet UITextField *dateOfBirthTextField;
 @end

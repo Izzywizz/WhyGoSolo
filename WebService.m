@@ -206,25 +206,45 @@
 
     NSString* requestURL = [NSString stringWithFormat:@"%@/users/create",API_BASE_URL];
     
+    NSDictionary *params = @{};
     
-    
- NSDictionary *params = @{
-                          @"email":[RRRegistration sharedInstance].email,
-    @"first_name":[RRRegistration sharedInstance].firstName,
-    @"last_name":[RRRegistration sharedInstance].lastName,
-                        
-    @"dob_epoch":@"00000",//[RRRegistration sharedInstance].strDateOfBirth,
+    if ([RRRegistration sharedInstance].residenceID != nil)
+    {
+        params = @{
+                                 @"email":[RRRegistration sharedInstance].email,
+                                 @"first_name":[RRRegistration sharedInstance].firstName,
+                                 @"last_name":[RRRegistration sharedInstance].lastName,
+                                 
+                                 @"dob_epoch":[RRRegistration sharedInstance].dobEpoch,
+                                 
+                                 @"latitude":[NSString stringWithFormat:@"%f",[RRRegistration sharedInstance].latitude],
+                                 @"longitude":[NSString stringWithFormat:@"%f",[RRRegistration sharedInstance].longitude],
+                                 @"password":[RRRegistration sharedInstance].password,
+                                 @"university_id":[RRRegistration sharedInstance].universityID,
+                                 @"residence_id":[RRRegistration sharedInstance].residenceID
+                                 
+                                 
+                                 };
 
-    @"latitude":@"0000",//[NSString stringWithFormat:@"%f",[RRRegistration sharedInstance].latitude],
-    @"longitude":@"00001",//[NSString stringWithFormat:@"%f",[RRRegistration sharedInstance].longitude],
-    @"password":[RRRegistration sharedInstance].password,
-    @"university_id":[RRRegistration sharedInstance].universityID,
-    @"residence_id":@"2"//[RRRegistration sharedInstance].residenceID
-                          
-    
-    };
-    
-    
+    } else
+    {
+        params = @{
+                   @"email":[RRRegistration sharedInstance].email,
+                   @"first_name":[RRRegistration sharedInstance].firstName,
+                   @"last_name":[RRRegistration sharedInstance].lastName,
+                   
+                   @"dob_epoch":[RRRegistration sharedInstance].dobEpoch,
+                   
+                   @"latitude":[NSString stringWithFormat:@"%f",[RRRegistration sharedInstance].latitude],
+                   @"longitude":[NSString stringWithFormat:@"%f",[RRRegistration sharedInstance].longitude],
+                   @"password":[RRRegistration sharedInstance].password,
+                   @"university_id":[RRRegistration sharedInstance].universityID,
+                   
+                   
+                   };
+        
+    }
+
     NSLog(@"PARAMS = %@", params);
      NSLog(@"IMAGE = %@", [RRRegistration sharedInstance].profilePhoto);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

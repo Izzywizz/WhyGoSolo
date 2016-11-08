@@ -335,18 +335,22 @@ USER_ID_KEY:USER_ID}\
 //#define FILTER_RESIDENCE_ID_ARRAY_VALUE [Data sharedInstance].residenceFilterArrayString
 
 
-#define UNIVERSITY_PARAM_ID @"university_id"
-#define RESIDENCE_PARAM_ID @"residence_id"
+#define UNIVERSITY_ID_KEY @"university_id"
+#define RESIDENCE_ID_KEY @"residence_id"
+
+#define RESIDENCE_KEY @"residence"
+
 
 #define USER_PARAM_ID @"user_id"
 #define USER_PARAM_SELECTED_ID @"user_id"
 
 #define USER_FIRST_NAME_KEY @"first_name"
 #define USER_LAST_NAME_KEY @"last_name"
-#define USER_PARAM_DOB_EPOCH @"dob_epoch"
-#define USER_PARAM_RESIDENCE_LATITUDE @"latitude"
-#define USER_PARAM_RESIDENCE_LONGITUDE @"longitude"
-#define USER_PARAM_EMAIL @"email"
+#define USER_DOB_EPOCH_KEY @"dob_epoch"
+#define USER_RESIDENCE_LATITUDE_KEY @"latitude"
+#define USER_RESIDENCE_LONGITUDE_KEY @"longitude"
+#define USER_EMAIL_KEY @"email"
+#define USER_RESIDENCE_ADDRESS_KEY @"address"
 
 
 #define USER_PARAM_PASSWORD @"password"

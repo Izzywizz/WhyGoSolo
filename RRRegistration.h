@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, textfields) {
 @property CGImageRef cgref;
 @property CIImage *cim;
 
-
+@property NSString* dobEpoch;
 -(BOOL)validateTextField:(UITextField *)textField;
 -(BOOL) validatePhotoImageRef: (CGImageRef)cgref andImageData:(CIImage *) cim;
 

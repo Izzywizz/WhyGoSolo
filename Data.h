@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "RREpochDateConverter.h"
 
 @class University;
 @class Residence;
@@ -41,7 +42,7 @@
 
 @property (nonatomic, weak) id <DataDelegate> delegate;
 
-
+@property RREpochDateConverter* epochDateConverter;
 @property NSString* userID;
 @property NSString* userToken;
 
@@ -75,6 +76,8 @@
 @property Residence *selectedResidence;
 @property Event *selectedEvent;
 @property User *selectedUser;
+
+@property User *updatedUser;
 
 @property Event *createdEvent;
 //-(void)createUserFromDict:(NSDictionary *)dict;

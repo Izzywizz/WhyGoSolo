@@ -5752,7 +5752,7 @@ Cg
                                                         <constraint firstAttribute="height" constant="1" id="P0w-4n-mix"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circleProfile.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kw3-P8-BdH" userLabel="Profile Image">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circleProfile.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kw3-P8-BdH" userLabel="Profile Image" customClass="RRCircularImageView">
                                                     <rect key="frame" x="250" y="30" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="5mA-j4-1Jx"/>
@@ -6041,6 +6041,7 @@ Cg
                     <connections>
                         <outlet property="backButton" destination="WdJ-ZG-1WB" id="d8f-Wm-zYM"/>
                         <outlet property="editButton" destination="HYE-LQ-PCx" id="yaD-Vw-8yx"/>
+                        <outlet property="emailLabel" destination="ICK-0h-WA9" id="Fin-Qz-qUf"/>
                         <outlet property="firstNameTextField" destination="9Ru-z8-7Xe" id="fKE-Qm-6gd"/>
                         <outlet property="lastNameTextField" destination="947-Lk-PT8" id="tBE-OU-XrB"/>
                         <outlet property="profileImage" destination="kw3-P8-BdH" id="mUH-k7-RNf"/>
@@ -6339,7 +6340,7 @@ Cg
                                                         <constraint firstAttribute="height" constant="0.5" id="uQs-bH-wOG"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circleProfile.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="76V-PT-gTk" userLabel="Profile Image">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circleProfile.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="76V-PT-gTk" userLabel="Profile Image" customClass="RRCircularImageView">
                                                     <rect key="frame" x="250" y="30" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="128" id="ISO-Pt-9gq"/>
@@ -6793,10 +6794,12 @@ Cg
                         <outlet property="cancelButton" destination="qYC-um-v3q" id="o4N-5v-x3v"/>
                         <outlet property="dateOfBirthTextField" destination="QYo-Db-Gtt" id="QaP-G6-RoC"/>
                         <outlet property="deleteButton" destination="Sb0-lX-JMM" id="ruA-l3-UJu"/>
-                        <outlet property="profileImageView" destination="76V-PT-gTk" id="eIw-Ph-7MY"/>
-                        <outlet property="profileView" destination="76V-PT-gTk" id="jxs-4I-Ndb"/>
+                        <outlet property="emailLabel" destination="fXA-se-8r6" id="LlL-hT-0vN"/>
+                        <outlet property="firstNameTextField" destination="Giu-oZ-CnP" id="1T8-Ht-2MO"/>
+                        <outlet property="lastNameTextField" destination="CvV-ym-2MI" id="muF-YG-R0V"/>
+                        <outlet property="profileImage" destination="76V-PT-gTk" id="TRl-DF-gwE"/>
                         <outlet property="saveButton" destination="jor-is-Zf3" id="3x5-2y-DtG"/>
-                        <outlet property="studentAccommdationCell" destination="BmN-FE-UOp" id="6mw-3z-R1F"/>
+                        <outlet property="studentAccommdationCell" destination="BmN-FE-UOp" id="BsB-Kc-37s"/>
                         <segue destination="JvF-fK-4hY" kind="show" identifier="GoToDeleteConfirmation" id="zdI-25-Tae"/>
                     </connections>
                 </tableViewController>

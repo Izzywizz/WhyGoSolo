@@ -58,6 +58,10 @@
 
 -(void)authenticationSuccessful
 {
+    if(!_epochDateConverter)
+    {
+        _epochDateConverter = [RREpochDateConverter new];
+    }
     [Data sharedInstance].filterDistance = FILTER_DEFAULT_VALUE_DISTANCE;
       [Data sharedInstance].residenceFilterArray = [NSMutableArray new];
     [Data sharedInstance].residenceFilterArrayString = FILTER_DEFAULT_VALUE_RESIDENCE_ID_ARRAY;

@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewSetupHelper.h"
+@class RRCircularImageView;
 
 @interface ProfileTableViewController : UITableViewController
-@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (weak, nonatomic) IBOutlet RRCircularImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UIView *profileUser;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;

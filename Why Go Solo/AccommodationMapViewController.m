@@ -12,7 +12,8 @@
 #import "Residence.h"
 #import "WebService.h"
 #import "RRRegistration.h";
-
+#import "User.h"
+#import "University.h"
 #define METERS_PER_MILE 1609.344
 
 
@@ -28,6 +29,8 @@
 @property (nonatomic) CLPlacemark *placemark;
 
 @property BOOL isDraggable;
+
+@property BOOL residencePinsAdded;
 @end
 
 @implementation AccommodationMapViewController
@@ -56,15 +59,32 @@
 
 -(void)viewWillAppear:(BOOL)animated   {
     [self.mapView setDelegate:self];
+    
+
+    if (![Data sharedInstance].selectedUniversity)
+    {
+        [Data sharedInstance].selectedUniversity = [University new];
+    }
+  
+
     //    self.locationSearchTable.delegate = self;
     [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
-    
-    if (!_isEditProfile) {
+    if (_isEditProfile)
+    {
+        [Data sharedInstance].selectedUniversity.universityID = [Data sharedInstance].updatedUser.universityID;
+        
+        
+        NSLog(@"USER UNI ID xxx ddd= %@",  [Data sharedInstance].selectedUniversity.universityID);
+    }
+    [[WebService sharedInstance] residences];
+    [Data sharedInstance].delegate = self; // Set Data delegate
+ /*   if (!_isEditProfile) {
         [[WebService sharedInstance] residences];
         [Data sharedInstance].delegate = self; // Set Data delegate
     } else  {
+        
         NSLog(@"Web Service Down");
-    }
+    }*/
     
 }
 
@@ -109,21 +129,25 @@
 
 -(NSMutableArray *) unpackPinData   {
     
-    
-    NSMutableArray *arrayOfPins = [[NSMutableArray alloc] init];
-    
-    for (Residence *element in [Data sharedInstance].residencesArray) {
-        MKPointAnnotation *pin = [[MKPointAnnotation alloc] init];
-        double latitude = element.latitude;
-        double longitude = element.longitude;
+  //  if (!_residencePinsAdded) {
+        NSMutableArray *arrayOfPins = [[NSMutableArray alloc] init];
         
-        //create the pin coordinates
-        pin.coordinate = CLLocationCoordinate2DMake(latitude, longitude);
-        pin.title = element.residenceName;
-        [arrayOfPins addObject:pin];
-    }
+        for (Residence *element in [Data sharedInstance].residencesArray) {
+            MKPointAnnotation *pin = [[MKPointAnnotation alloc] init];
+            double latitude = element.latitude;
+            double longitude = element.longitude;
+            
+            //create the pin coordinates
+            pin.coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+            pin.title = element.residenceName;
+            [arrayOfPins addObject:pin];
+        }
+
+        _residencePinsAdded = YES;
+        return arrayOfPins;
+   // }
     
-    return arrayOfPins;
+    return nil;
 }
 
 //add the pins to the mapView
@@ -259,7 +283,15 @@
     MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
     MKCoordinateRegion region = MKCoordinateRegionMake(placemark.coordinate, span);
     [_mapView setRegion:region animated:true];
-    [self createPinLocations]; //Called again to create the custom pins, remember that it creates the pins based on the university selected
+    
+    if (_residencePinsAdded)
+    {
+        [RRRegistration sharedInstance].longitude = annotation.coordinate.longitude;
+        [RRRegistration sharedInstance].latitude = annotation.coordinate.latitude;
+    }
+            [self createPinLocations]; //Called again to create the custom pins, remember that it creates the pins based on the university selected
+    
+
     
     
 }
@@ -267,8 +299,19 @@
 /** A method that obtains the address based on the coordiantes passed in to it */
 -(void) reverseGeoCoodantes: (CLLocationCoordinate2D) coordinates     {
     CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:coordinates.latitude longitude:coordinates.longitude];
-    [RRRegistration sharedInstance].longitude = coordinates.longitude;
-    [RRRegistration sharedInstance].latitude = coordinates.latitude;
+    
+    if (_isEditProfile)
+    {
+        [Data sharedInstance].updatedUser.longitude = [RRRegistration sharedInstance].longitude;
+        [Data sharedInstance].updatedUser.latitude = [RRRegistration sharedInstance].latitude;
+
+    }
+    else
+    {
+        [RRRegistration sharedInstance].longitude = coordinates.longitude;
+        [RRRegistration sharedInstance].latitude = coordinates.latitude;
+    }
+
     
     [_geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
@@ -296,13 +339,14 @@
     //    NSLog(@"accommodation: %@",_resultSearchController.searchBar.text);
     if (sender.tag == 1) {
         NSLog(@"SAVED");
+        
         [self.navigationController popViewControllerAnimated:YES];
     } else  {
         _AccommodationAddress = _resultSearchController.searchBar.text; //Set the address of where the user has clicked as the actual address of where they live, ready for upload!
         NSLog(@"Accommodation: %@", _AccommodationAddress);
         [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay
+        [[WebService sharedInstance]registerAccount];
     }
-    [[WebService sharedInstance]registerAccount];
     
 //    NSLog(@"accommodation: %@",_resultSearchController.searchBar.text);
     [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay

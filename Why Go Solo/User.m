@@ -25,14 +25,16 @@
         
         self.userName = [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
         
-        self.dobEpoch =   [NSString stringWithFormat:@"%i",(int)[[dict valueForKey:USER_PARAM_DOB_EPOCH]integerValue]];
-        self.dobEpoch = [dict valueForKey:USER_PARAM_EMAIL];
-        
-        self.latitude = (long)[[dict valueForKey:USER_PARAM_RESIDENCE_LATITUDE]longValue];
-        self.longitude = (long)[[dict valueForKey:USER_PARAM_RESIDENCE_LONGITUDE]longValue];
+        self.dobEpoch =   [NSString stringWithFormat:@"%i",(int)[[dict valueForKey:USER_DOB_EPOCH_KEY]integerValue]];
+        NSLog(@"USER DOB ID = %@", self.dobEpoch);
 
-        self.universityID =   [NSString stringWithFormat:@"%i",(int)[[dict valueForKey:UNIVERSITY_PARAM_ID]integerValue]];
+        self.latitude = (long)[[dict valueForKey:USER_RESIDENCE_LATITUDE_KEY]longValue];
+        self.longitude = (long)[[dict valueForKey:USER_RESIDENCE_LONGITUDE_KEY]longValue];
+
+        self.universityID =   [NSString stringWithFormat:@"%i",(int)[[dict valueForKey:UNIVERSITY_ID_KEY]integerValue]];
        
+        NSLog(@"USER UNI ID = %@", self.universityID);
+        self.email =[dict valueForKey:USER_EMAIL_KEY];
         
         if ([dict valueForKey:@"added_as_friend"]!=nil)
         {
@@ -41,13 +43,23 @@
             self.isFriend = (int)[[dict valueForKey:@"added_as_friend"]integerValue];
         }
         
-        if (![[dict valueForKey:RESIDENCE_PARAM_ID]isKindOfClass:[NSNull class]])
+        if (![[dict valueForKey:RESIDENCE_ID_KEY]isKindOfClass:[NSNull class]])
         {
-            self.residenceID =   [NSString stringWithFormat:@"%i",(int)[[dict valueForKey:RESIDENCE_PARAM_ID]integerValue]];
+            self.residenceID =   [NSString stringWithFormat:@"%i",(int)[[dict valueForKey:RESIDENCE_ID_KEY]integerValue]];
+            
+            if ([[dict allKeys]containsObject:RESIDENCE_KEY])
+            {
+                
+                NSLog(@"RES DICT = %@", [[dict valueForKey:RESIDENCE_KEY]valueForKey:USER_RESIDENCE_ADDRESS_KEY]);
+               // self.residence = [Residence new];
+                 //self.residence.address = @"xxx";//[NSString stringWithFormat:@"%@",[[dict valueForKey:RESIDENCE_KEY]valueForKey:USER_RESIDENCE_ADDRESS_KEY]];
+            }
+           
 
         }
         else
         {
+            self.residence.address = @"Not in student residence";
             NSLog(@"NULLL DETECTED!!!");
         }
 

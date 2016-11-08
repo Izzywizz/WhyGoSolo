@@ -13,9 +13,18 @@
 #import "SetupLoginDetailsViewController.h"
 
 
+#import "User.h"
+#import "Residence.h"
+#import "Data.h"
+#import "RRCircularImageView.h"
+#import "RRDownloadImage.h"
+#import "WebService.h"
+#import "RREpochDateConverter.h"
+
 @interface EditProfileTableViewController () <UITextFieldDelegate>
 @property (nonatomic) UIDatePicker *datePicker;
 @property (nonatomic) UIView *overlayView;
+@property User* updatedUser;
 
 @end
 
@@ -25,22 +34,44 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupObservers];
+//    [self setupObservers];
     NSLog(@"Edit view loaded");
-    
+   // return;
     ViewSetupHelper *fontSetup = [ViewSetupHelper new];
-    [fontSetup createCircularView:_profileView];
+    //[fontSetup createCircularView:_profileView];
     [self setNavigationButtonFontAndSize];
     _deleteButton.layer.cornerRadius = 5;
 
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (![Data sharedInstance].loggedInUser)
+    {
+          _updatedUser = [Data sharedInstance].updatedUser;
+    }
+  
+    [self setUpProfileFields];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 
+
+-(void)setUpProfileFields
+{
+    NSLog(@"LOGGED IN ADDRESS x = %@",[Data sharedInstance].selectedUser.residence.address );
+    NSLog(@"LOGGED IN ADDRESS xss = %@",[[Data sharedInstance].epochDateConverter stringFromEpochDate:_updatedUser.dobEpoch]);
+    _firstNameTextField.text = _updatedUser.firstName;
+    _lastNameTextField.text = _updatedUser.lastName;
+    _studentAccommodationTextField.text = _updatedUser.residence.address;
+    _dateOfBirthTextField.text = [[Data sharedInstance].epochDateConverter stringFromEpochDate: _updatedUser.dobEpoch];
+    _emailLabel.text = _updatedUser.email;
+        _profileImage.image = [[RRDownloadImage sharedInstance]avatarImageForUserID:[NSString stringWithFormat:@"%@",[Data sharedInstance].userID]];
+    
+}
 #pragma mark - Table view data source
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath   {
@@ -80,6 +111,8 @@
 }
 
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
+    _updatedUser = nil;
+    [Data sharedInstance].updatedUser = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -267,7 +300,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.profileImageView.image = chosenImage;
+    _profileImage.image = chosenImage;
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 

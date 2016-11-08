@@ -192,6 +192,7 @@
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     NSString *strDate = [dateFormatter stringFromDate:datePicker.date];
     self.dateOfBirthField.text = strDate;
     
@@ -199,6 +200,13 @@
     self.dateOfBirthField.textColor = [UIColor blackColor];
     self.dateOfBirthLabel.textColor = [UIColor blackColor];
     self.dateOfBirthContentView.backgroundColor = [UIColor blackColor];
+    
+    [RRRegistration sharedInstance].strDateOfBirth = strDate;
+
+    [RRRegistration sharedInstance].dobEpoch = [NSString stringWithFormat:@"%.0f",[datePicker.date  timeIntervalSince1970]];
+    
+    NSLog(@"REG DOB EPOCH = %@", [RRRegistration sharedInstance].dobEpoch);
+
 }
 
 #pragma mark - Action Methods
