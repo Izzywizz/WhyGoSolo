@@ -9,6 +9,9 @@
 #import "CreateCollectionViewController.h"
 #import "Event.h"
 #import "Data.h"
+#import "WebService.h"
+#import "User.h"
+
 
 
 @interface CreateCollectionViewController ()
@@ -18,6 +21,7 @@
 @property BOOL isPublicEvent;
 @property BOOL isEmojiPresent;
 
+@property NSMutableArray *friendsArray;
 @end
 
 @implementation CreateCollectionViewController
@@ -35,6 +39,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self setupObservers];
     [self setNavigationButtonFontAndSize];
     
+    
     //Register The Nib for the collection cell
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionCell" bundle:nil] forCellWithReuseIdentifier:@"Cell"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CreateCell" bundle:nil] forCellWithReuseIdentifier:@"CreateCell"];
@@ -46,10 +51,35 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [Data sharedInstance].delegate = self;
+    _friendsArray = [NSMutableArray new];
     if (![Data sharedInstance].createdEvent)
     {
         [Data sharedInstance].createdEvent = [Event new];
     }
+    
+    [[WebService sharedInstance]eventsApiRequest:USER_API_FRIENDS];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil;
+
+}
+-(void)friendsParsedSuccessfully
+{
+    
+    _friendsArray = [Data sharedInstance].friendsArray;
+    
+    
+    NSLog(@"F ARRRR = %@", _friendsArray);
+    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:NO];
+}
+
+-(void)handleUpdates
+{
+    NSLog(@"AAEDWQREQWRWQR");
+    [self.collectionView reloadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -77,24 +107,26 @@ static NSString * const reuseIdentifier = @"Cell";
     self.dummyData = [NSArray arrayWithObjects: blankArray, mainDishImages, drinkDessertImages, nil];
     
     _sectionTitles = [[NSArray alloc] init];
-    _sectionTitles = @[@"HELP", @"FRIENDS (n/n)", @"EVERYONE(n)"];
+    _sectionTitles = @[@"HELP", @"FRIENDS", @"EVERYONE(n)"];
 }
 
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
+    
+    
     if (section == 0) {
         return 1;
     } else  {
-        return [[self.dummyData objectAtIndex:section] count];
+        return [_friendsArray count];// [[self.dummyData objectAtIndex:section] count];
     }
     
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return [self.dummyData count]; //3
+    return 2;//[self.dummyData count]; //3
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -115,13 +147,20 @@ static NSString * const reuseIdentifier = @"Cell";
     
     FriendCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
+    
+    [cell configureCellWithUser:[_friendsArray objectAtIndex:indexPath.row]];
+    
+    cell.alpha = 0.5;
+
+    
+    return cell;
     if (_isPublicEvent) {
         cell.contentView.hidden = YES;
     } else  {
         cell.contentView.hidden = NO;
     }
     //  cell.profileImageView.image = [UIImage imageNamed:[self.dummyData[indexPath.section] objectAtIndex:indexPath.row]];
-    cell.profileName.text = @"IsfandyarIsfandyar";
+  //  cell.profileName.text = @"IsfandyarIsfandyar";
     
     return cell;
 }
@@ -137,6 +176,7 @@ static NSString * const reuseIdentifier = @"Cell";
         [defaults setValue: @"YES" forKey: @"test"];
         [defaults synchronize];
     }
+    
     
     return cell;
 }

@@ -87,11 +87,16 @@
             break;
         case EVENT_API_EDIT: return EVENT_API_EDIT_DICT;
             break;
+        case USER_API_PEOPLE_FRIENDS: return USER_API_PEOPLE_FRIENDS_DICT;
+            break;
+        case USER_API_PEOPLE_EVERYONE: return USER_API_PEOPLE_EVERYONE_DICT;
+            break;
+          
         case USER_API_FRIENDS: return USER_API_FRIENDS_DICT;
-            break;
-        case USER_API_EVERYONE: return USER_API_EVERYONE_DICT;
-            break;
+              break;
+        case LOGIN: return LOGIN_API_DICT;
             
+            break;
         default:
 
             

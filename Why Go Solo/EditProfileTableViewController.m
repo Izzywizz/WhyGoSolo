@@ -21,7 +21,8 @@
 #import "WebService.h"
 #import "RREpochDateConverter.h"
 
-@interface EditProfileTableViewController () <UITextFieldDelegate>
+#import "RRRegistration.h"
+@interface EditProfileTableViewController () <UITextFieldDelegate,UIImagePickerControllerDelegate, DataDelegate>
 @property (nonatomic) UIDatePicker *datePicker;
 @property (nonatomic) UIView *overlayView;
 @property User* updatedUser;
@@ -34,11 +35,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self setupObservers];
+    [self setupObservers];
     NSLog(@"Edit view loaded");
    // return;
     ViewSetupHelper *fontSetup = [ViewSetupHelper new];
-    //[fontSetup createCircularView:_profileView];
+//    [fontSetup createCircularView:_profileView];
     [self setNavigationButtonFontAndSize];
     _deleteButton.layer.cornerRadius = 5;
 
@@ -46,11 +47,25 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [Data sharedInstance].delegate = self;
+    
+    [Data sharedInstance].loggedInUser = [Data sharedInstance].selectedUser;
     if (![Data sharedInstance].loggedInUser)
     {
           _updatedUser = [Data sharedInstance].updatedUser;
     }
-  
+    
+    if (![RRRegistration sharedInstance].firstName)
+    {
+        [RRRegistration sharedInstance].firstName = [Data sharedInstance].loggedInUser.firstName;
+        [RRRegistration sharedInstance].lastName = [Data sharedInstance].loggedInUser.lastName;
+        [RRRegistration sharedInstance].longitude = [Data sharedInstance].loggedInUser.longitude;
+        [RRRegistration sharedInstance].latitude = [Data sharedInstance].loggedInUser.latitude;
+        [RRRegistration sharedInstance].dobEpoch = [Data sharedInstance].loggedInUser.dobEpoch;
+        [RRRegistration sharedInstance].residenceID = [Data sharedInstance].loggedInUser.residenceID;
+        [RRRegistration sharedInstance].profilePhoto =  [[RRDownloadImage sharedInstance]avatarImageForUserID:[NSString stringWithFormat:@"%@",[Data sharedInstance].userID]];
+    }
+   
     [self setUpProfileFields];
 }
 - (void)didReceiveMemoryWarning {
@@ -58,8 +73,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)setUpProfileFields
+{
+    NSLog(@"LOGGED IN ADDRESS x = %@",[Data sharedInstance].selectedUser.residence.address );
+    NSLog(@"LOGGED IN ADDRESS xss = %@",[[Data sharedInstance].epochDateConverter stringFromEpochDate:_updatedUser.dobEpoch]);
+    _firstNameTextField.text = [RRRegistration sharedInstance].firstName;
+    _lastNameTextField.text = [RRRegistration sharedInstance].lastName;
+    _studentAccommodationTextField.text = [Data sharedInstance].loggedInUser.residence.residenceName;
+    _dateOfBirthTextField.text = [[Data sharedInstance].epochDateConverter stringFromEpochDate: [RRRegistration sharedInstance].dobEpoch];
+    _emailLabel.text = [Data sharedInstance].loggedInUser.email;
+    _profileImage.image = [RRRegistration sharedInstance].profilePhoto;//[[RRDownloadImage sharedInstance]avatarImageForUserID:[NSString stringWithFormat:@"%@",[Data sharedInstance].userID]];
+}
 
+-(void)authenticationSuccessful
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil;
+}
+
+/*
 -(void)setUpProfileFields
 {
     NSLog(@"LOGGED IN ADDRESS x = %@",[Data sharedInstance].selectedUser.residence.address );
@@ -72,6 +108,7 @@
         _profileImage.image = [[RRDownloadImage sharedInstance]avatarImageForUserID:[NSString stringWithFormat:@"%@",[Data sharedInstance].userID]];
     
 }
+ */
 #pragma mark - Table view data source
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath   {
@@ -255,13 +292,86 @@
     
     [_saveButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
     [_cancelButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    
+    [_saveButton setTarget:self];
+    [_saveButton setAction:@selector(save)];
 }
 
+-(void)save
+{
+    NSLog(@"SAVEVEEEE");
+    [RRRegistration sharedInstance].firstName = _firstNameTextField.text;
+    [RRRegistration sharedInstance].lastName = _lastNameTextField.text;
+    [RRRegistration sharedInstance].strDateOfBirth = _dateOfBirthTextField.text;
+    [RRRegistration sharedInstance].profilePhoto = _profileImage.image;
+    
+    [[WebService sharedInstance]updateAccount];
+}
 -(void) ObtainEmailSuffix{
     SetupLoginDetailsViewController *email = [[SetupLoginDetailsViewController alloc] init];
     NSLog(@"EMail:",[email obtainAndSetEmailSuffix]);
-
 }
+
+
+
+
+
+
+#pragma mark - PHoto MEthods
+
+-(void) createActionSheet   {
+    UIAlertController *alertSheet = [UIAlertController alertControllerWithTitle:nil message:@"Please select photo or camera" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *album = [UIAlertAction actionWithTitle:@"Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self takePhotoOrAlbum:UIImagePickerControllerSourceTypePhotoLibrary];
+    }];
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Camera");
+        [self takePhotoOrAlbum:UIImagePickerControllerSourceTypeCamera];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Dismiss ACtion Sheet");
+    }];
+    
+    [alertSheet addAction:album];
+    [alertSheet addAction:camera];
+    [alertSheet addAction:cancel];
+    
+    [self presentViewController:alertSheet animated:YES completion:nil];
+}
+
+
+
+-(void) takePhotoOrAlbum: (UIImagePickerControllerSourceType) source   {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = source;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    
+    [RRRegistration sharedInstance].profilePhoto =chosenImage;
+    //self.profileImage.image = chosenImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+    [self.tableView reloadData];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+/*
 #pragma mark - Photo Methods
 
 -(void) createActionSheet   {
@@ -303,6 +413,6 @@
     _profileImage.image = chosenImage;
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
-
+*/
 
 @end

@@ -45,7 +45,7 @@
 [self initialButtonSetup];
   //  [self ListenOutProfileBeingPressed];
  [self setNavigationButtonFontAndSize];
-    [[WebService sharedInstance]eventsApiRequest:USER_API_FRIENDS];
+    [[WebService sharedInstance]eventsApiRequest:USER_API_PEOPLE_FRIENDS];
 
 }
 
@@ -495,7 +495,7 @@
         
         
         //[_tableView reloadData];
-    [[WebService sharedInstance]eventsApiRequest:USER_API_FRIENDS];
+    [[WebService sharedInstance]eventsApiRequest:USER_API_PEOPLE_FRIENDS];
         [_tableView reloadData];
     }
 }
@@ -509,7 +509,7 @@
         _friendsButton.tintColor = [UIColor grayColor];
         _isFriendsSelected = NO;
         
-        [[WebService sharedInstance]eventsApiRequest:USER_API_EVERYONE];
+        [[WebService sharedInstance]eventsApiRequest:USER_API_PEOPLE_EVERYONE];
         [_tableView reloadData];
      //   [_tableView reloadData];
 

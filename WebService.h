@@ -49,7 +49,7 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
     
     
     LOGIN = 3,
-    #define LOGIN_API_DICT @{ @"params":@[USER_PARAM_LOGIN_EMAIL, USER_PARAM_LOGIN_PASSWORD], @"response":@"login" }
+    #define LOGIN_API_DICT @{ @"request":@[@"users/login"], @"params":@{USER_EMAIL_KEY:[RRRegistration sharedInstance].email, USER_PARAM_PASSWORD:[RRRegistration sharedInstance].password}, @"response":@"login" }
   //  #define LOGIN_API_PARAMS @[USER_PARAM_LOGIN_EMAIL, USER_PARAM_LOGIN_PASSWORD]
    // #define LOGIN_API_RESPONSE_SELECTOR @"login"
 
@@ -90,8 +90,18 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
     EVENT_API_EDIT = 14,
 
     
-    USER_API_FRIENDS = 15,
-    USER_API_EVERYONE = 16,
+    USER_API_PEOPLE_FRIENDS = 15,
+    USER_API_PEOPLE_EVERYONE = 16,
+    
+    
+    USER_API_FRIENDS = 17,
+    
+    
+    USER_API_EDIT = 18,
+    
+    USER_API_DELETE = 19,
+    
+    USER_API_RESET_PASSWORD = 20,
     
     AUTHENTICATION,
     USER_API_CREATE,
@@ -99,8 +109,8 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
     
     
     
-    USER_API_DELETE,
-    USER_API_EDIT,
+    
+    
     
     
 
@@ -110,7 +120,7 @@ typedef NS_ENUM(NSInteger, eventsApiRequests) {
 
 
     
-    USER_API_RESET_PASSWORD,
+    
     
     
     
@@ -292,7 +302,7 @@ USER_ID_KEY:USER_ID}\
 }
 
 
-#define USER_API_FRIENDS_DICT @{\
+#define USER_API_PEOPLE_FRIENDS_DICT @{\
 @"request"  :   @[@ "users/",USER_ID,@"/people/friends"],\
 @"response" :   @   "createFriendsFromDict:",\
 @"params"   : \
@@ -301,7 +311,7 @@ USER_ID_KEY:USER_ID}\
 }
 
 
-#define USER_API_EVERYONE_DICT @{\
+#define USER_API_PEOPLE_EVERYONE_DICT @{\
 @"request"  :   @[@ "users/",USER_ID,@"/people/everyone"],\
 @"response" :   @   "createEveryoneFromDict:",\
 @"params"   : \
@@ -310,6 +320,13 @@ USER_ID_KEY:USER_ID}\
 }
 
 
+#define USER_API_FRIENDS_DICT @{\
+@"request"  :   @[@ "users/",USER_ID,@"/friends"],\
+@"response" :   @   "createFriendsFromDict:",\
+@"params"   : \
+@{\
+USER_ID_KEY:USER_ID}\
+}
 
 
 
@@ -446,6 +463,7 @@ typedef NS_ENUM(NSInteger, apiParams) {
 -(void)updateJoinedStatus;
 -(void)user:(int)userID;
 -(void)registerAccount;
+-(void)updateAccount;
 
 // EVENTS START
 

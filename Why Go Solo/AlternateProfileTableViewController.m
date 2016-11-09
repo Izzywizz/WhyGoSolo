@@ -36,6 +36,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    NSLog(@"ALTERNATIVE ");
     [Data sharedInstance].delegate = self;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [[WebService sharedInstance]eventsApiRequest:USER_API_SINGLE];
@@ -108,7 +109,12 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+   
+    if ( [_eventsArray count] > 0) {
+        return 2;
+
+    }
+    return 1;
 }
 
 /** Header View setup*/

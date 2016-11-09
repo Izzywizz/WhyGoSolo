@@ -239,7 +239,16 @@ static NSString * const reuseIdentifier = @"Cell";
     NSString *emojiString = [[NSString alloc] initWithData:emojiData encoding:NSUTF8StringEncoding];
     
     
+    
+
     [Data sharedInstance].createdEvent.emoji = emojiString;
+
+    NSString *emojiUTF82 = [NSString stringWithUTF8String:[[Data sharedInstance].selectedEvent.eventDescription UTF8String]];
+    NSData *emojiData2 = [emojiUTF82 dataUsingEncoding:NSNonLossyASCIIStringEncoding];
+    NSString *emojiString2 = [[NSString alloc] initWithData:emojiData2 encoding:NSUTF8StringEncoding];
+    
+    [Data sharedInstance].createdEvent.eventDescription = emojiString2;//[[RREmojiParser sharedInstance]parseStringontainingEmojis:[Data sharedInstance].createdEvent.eventDescription];
+    
     [[WebService sharedInstance]eventsApiRequest:EVENT_API_EDIT];
 }
 
@@ -371,6 +380,7 @@ static NSString * const reuseIdentifier = @"Cell";
     NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
     
     [_saveButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    
     [_cancelButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 

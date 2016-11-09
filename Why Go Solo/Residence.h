@@ -18,7 +18,7 @@
 @property NSString* address;
 @property NSString* city;
 @property NSString* postCode;
-
+@property int residenceID;
 -(Residence *) initWithDict: (NSDictionary *)dict;
 @end
 

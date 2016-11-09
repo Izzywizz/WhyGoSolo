@@ -37,7 +37,12 @@
     _nameLabel.text = [Data sharedInstance].selectedUser.userName;
     _profileUniversityLabel.text = [Data sharedInstance].selectedUser.university.universityName;
     
-    _ProfileAccommodation.text = [Data sharedInstance].selectedUser.residence.residenceName;
+    if ([Data sharedInstance].selectedUser.residenceID > 0)
+    {
+        _ProfileAccommodation.text = [Data sharedInstance].selectedUser.residence.residenceName;
+
+    }
+    
     
     _profileImage.image = [[RRDownloadImage sharedInstance]avatarImageForUserID:[Data sharedInstance].selectedUserID];
     return  self;

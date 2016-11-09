@@ -112,6 +112,7 @@
 -(void)createResidencesArrayFromDict:(NSDictionary *)dict
 {
     _residencesArray = [NSMutableArray new];
+    _residenceDict = [NSMutableDictionary new];
     NSLog(@"Residence Dict inside DAta: %@", [dict valueForKey:@"residences"]);
     
     for (NSDictionary *d in [dict valueForKey:@"residences"])
@@ -119,6 +120,8 @@
         Residence *res = [[Residence alloc] initWithDict:d];
         
         [_residencesArray addObject:res];
+        
+        [_residenceDict setValue:[NSString stringWithFormat:@"%i",res.residenceID] forKey:res.residenceName];
     }
         
     NSLog(@"UNI ARR = %@", _residencesArray);
@@ -242,6 +245,7 @@
     
       _friendsAttendingEventsArray = [NSMutableArray new];
     _friendsNotAttendingEventsArray = [NSMutableArray new];
+    _friendsArray = [NSMutableArray new];
     
     for (NSDictionary* d in [dict valueForKey:@"attending_events"])
     {
@@ -252,6 +256,7 @@
         u.eventsArray = [[NSMutableArray alloc]initWithObjects:e, nil];
         
         [_friendsAttendingEventsArray addObject:u];
+        
     }
    
     for (NSDictionary* d in [[dict valueForKey:@"not_attending_events"]valueForKey:@"user" ])
@@ -262,7 +267,13 @@
         [_friendsNotAttendingEventsArray addObject:u];
     }
 
-    
+    for (NSDictionary* d in [[dict valueForKey:@"friends"]valueForKey:@"user" ])
+    {
+        
+        User *u = [[User alloc]initWithDict:d];
+        
+        [_friendsArray addObject:u];
+    }
     
     
     
@@ -331,6 +342,9 @@
          NSLog(@"ed ------ = %@", e.eventDescription);
        
     }
+    
+    [Data sharedInstance].selectedUser.residence = [[Residence alloc] initWithDict:[[dict valueForKey:@"user" ]valueForKey:@"residence"]];
+    
     NSLog(@"TEMP ARRAY = %@", tempArray);
     
     [Data sharedInstance].selectedUser.eventsArray = tempArray;

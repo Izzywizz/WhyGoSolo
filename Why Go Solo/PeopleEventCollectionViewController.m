@@ -184,7 +184,7 @@
     if (indexPath.section == 0) {
         //        return self.view.frame.size;
         
-        return CGSizeMake(self.collectionView.bounds.size.width, _currentCell.outerView.bounds.size.height);
+//        return CGSizeMake(self.collectionView.bounds.size.width, _currentCell.outerView.bounds.size.height);
 
         return CGSizeMake(self.collectionView.bounds.size.width, 200);
     } else  {
@@ -269,10 +269,9 @@
 
     [cell configureCellWithEventForTableView:self.collectionView atIndexPath:indexPath];
     
-    NSLog(@"Cell Height = %f", cell.frame.size.height);
+    NSLog(@"Cell Height = %f", cell.outerView.frame.size.height);
     
     _currentCell = cell;
-    [self reloadInputViews];
     return cell;
 }
 

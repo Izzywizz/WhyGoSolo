@@ -7,7 +7,7 @@
 //
 
 #import "CurrentUserLocation.h"
-
+//#import "Data.h"
 @interface CurrentUserLocation()
 
 @property MKMapView *mapView;
@@ -51,6 +51,8 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray<CLLocation *> *)locations
 {
+
+    
     CLLocation *location = [locations firstObject];
     MKCoordinateSpan span = MKCoordinateSpanMake(0.05, 0.05);
     MKCoordinateRegion region = MKCoordinateRegionMake(location.coordinate, span);

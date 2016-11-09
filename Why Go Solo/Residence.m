@@ -21,7 +21,7 @@
         self.postCode = [dict valueForKey:@"post_code"];
         self.longitude = (double)[[dict valueForKey:@"longitude"] doubleValue];
         self.latitude = (double)[[dict valueForKey:@"latitude"]doubleValue];
-        
+        self.residenceID = (int)[[dict valueForKey:@"id"] integerValue];
     }
     return self;
     

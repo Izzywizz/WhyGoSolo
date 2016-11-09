@@ -21,7 +21,7 @@
 
 @import MapKit;
 
-@interface MapViewController ()
+@interface MapViewController () <DataDelegate>
 
 //Connected map interface with storyboard
 
@@ -57,6 +57,9 @@
 
 -(void)viewWillAppear:(BOOL)animated    {
     
+    [self.mapView setDelegate:self];
+    [Data sharedInstance].delegate = self;
+    
     if (!_customAnnotation) {
         _customAnnotation = [[MKPointAnnotation alloc] init];
         _customAnnotation.title =[_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
@@ -66,18 +69,23 @@
     [self startCurrentUserLocation:YES];
     [self setupLongPressGesture];
     //[self createPinLocations];
-    NSLog(@"userLocation xx: %d",[self.mapView showsUserLocation]);
-    _mapView.showsUserLocation = YES;
+//    NSLog(@"userLocation xx: %d",[self.mapView showsUserLocation]);
+  //  _mapView.showsUserLocation = YES;
     
-    [self.mapView setDelegate:self];
+  
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     self.mapView.delegate = nil;
     self.locationManager.delegate = nil;
-    
+    [Data sharedInstance].delegate = nil;
     self.definesPresentationContext = NO;
     
+}
+
+-(void)eventsDownloadedSuccessfully
+{
+    [self setupAlertBox];
 }
 #pragma mark - Helper Functions
 
@@ -86,6 +94,11 @@
     NSDictionary *attributes = [ViewSetupHelper setNavigationButtonFontAndSize];
     
     [_doneOrNextButton setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    
+    if ([Data sharedInstance].createdEvent != nil)
+    {
+        [_doneOrNextButton setTitle:@"Save"];
+    }
 }
 
 -(void) sayHello    {
@@ -145,14 +158,58 @@
     return [_userLocation initializeLocationServices];
 }
 
+
 -(void) zoomToUserLocation: (CLLocation *) userLocation  {
     
-    if ([Data sharedInstance].createdEvent.longitude > 0)
+    NSLog(@"CREATEED EVENT LONG = %f",[Data sharedInstance].createdEvent.longitude);
+    
+    if ([Data sharedInstance].createdEvent.longitude != 0)
     {
         
+        
+        CLLocation* createdCoordinates = [[CLLocation alloc]initWithLatitude:[Data sharedInstance].createdEvent.latitude longitude:[Data sharedInstance].createdEvent.longitude];
+        
+        userLocation = createdCoordinates;
+        
+   /*     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(createdCoordinates.coordinate, 800, 800);
+        [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+        
+        if (!_customAnnotation) {
+            _customAnnotation = [[MKPointAnnotation alloc] init];
+            [_customAnnotation setCoordinate:createdCoordinates.coordinate];
+            
+            _customAnnotation.title =[_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
+            [self.mapView addAnnotation:_customAnnotation];
+        }
+         */
+    }
+    else
+    {
+
+    }
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
+    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+}
+
+/*
+-(void) zoomToUserLocation: (CLLocation *) userLocation  {
+    
+    NSLog(@"CREATEED EVENT LONG = %f",[Data sharedInstance].createdEvent.longitude);
+    
+    if ([Data sharedInstance].createdEvent.longitude != 0)
+    {
         CLLocation* createdCoordinates = [[CLLocation alloc]initWithLatitude:[Data sharedInstance].createdEvent.latitude longitude:[Data sharedInstance].createdEvent.longitude];
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(createdCoordinates.coordinate, 800, 800);
         [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+        
+        if (!_customAnnotation) {
+            _customAnnotation = [[MKPointAnnotation alloc] init];
+            [_customAnnotation setCoordinate:createdCoordinates.coordinate];
+
+            _customAnnotation.title =[_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
+            [self.mapView addAnnotation:_customAnnotation];
+        }
+
     }
     else
     {
@@ -160,7 +217,7 @@
         [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
     }
     
-}
+}*/
 
 - (void)getDirections {
     MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:_selectedPin];
@@ -181,7 +238,7 @@
     
     //Create an anotation from where the user had touched the location
     _customAnnotation.coordinate = placemark.coordinate;
-    _customAnnotation.title =_resultSearchController.searchBar.text;//placemark.name;
+   // _customAnnotation.title =_resultSearchController.searchBar.text;//placemark.name;
     _customAnnotation.subtitle = [NSString stringWithFormat:@"%@ %@",
                                   (placemark.locality == nil ? @"" : placemark.locality),
                                   (placemark.administrativeArea == nil ? @"" : placemark.administrativeArea)
@@ -195,6 +252,14 @@
 /** A method that obtains the address based on the coordiantes passed in to it */
 -(void) reverseGeoCoodantes: (CLLocationCoordinate2D) coordinates     {
     CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:coordinates.latitude longitude:coordinates.longitude];
+    
+    
+    if ([Data sharedInstance].createdEvent.longitude != 0)
+    {
+    
+   //     currentLocation =[[CLLocation alloc] initWithLatitude:[Data sharedInstance].createdEvent.latitude longitude:[Data sharedInstance].createdEvent.longitude];
+    }
+    
     
     [_geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
@@ -232,7 +297,7 @@
     // MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     _customAnnotation.coordinate = touchMapCoordinate;
     _customAnnotation.title = [_locationSearchTable parseAddress:(MKPlacemark *)_placemark]; //setup dynamically from the data model?
-    [self.mapView addAnnotation:_customAnnotation];
+  //  [self.mapView addAnnotation:_customAnnotation];
     [self reverseGeoCoodantes:touchMapCoordinate];
     _touchPinCount++;
     
@@ -324,17 +389,24 @@
         CLLocationCoordinate2D droppedAt = annotationView.annotation.coordinate;
         NSLog(@"Coodiantes: longitude: %f, latitude: %f", droppedAt.longitude, droppedAt.latitude);
         [self reverseGeoCoodantes:droppedAt];
-        //        annotationView.dragState = MKAnnotationViewDragStateNone;
+                annotationView.dragState = MKAnnotationViewDragStateNone;
         [annotationView setDragState:MKAnnotationViewDragStateNone animated:YES];
-        //        _customAnnotation.title = [_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
+                _customAnnotation.title = [_locationSearchTable parseAddress:(MKPlacemark *)_placemark];
     }
 }
 
 /** This delegate hides the current location if the user wished it, renabling it, hs the effect of hiding the blue dot but showing the user current location anyway.*/
 -(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
 {
+    
+    if ([Data sharedInstance].createdEvent.longitude != 0)
+    {
+    _customAnnotation.coordinate = [[CLLocation alloc] initWithLatitude:[Data sharedInstance].createdEvent.latitude longitude:[Data sharedInstance].createdEvent.longitude].coordinate;
+        return;
+    }
+
     MKAnnotationView *currentUserLocation = [mapView viewForAnnotation:mapView.userLocation];
-    currentUserLocation.hidden = YES;
+ //   currentUserLocation.hidden = YES;
     _customAnnotation.coordinate = mapView.userLocation.coordinate;
     
 }
@@ -385,29 +457,40 @@
 
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
     
+    NSLog(@"POST EVENT");
+
+    [Data sharedInstance].createdEvent.address = _resultSearchController.searchBar.text ;
+    NSLog(@"POST EVENT 1");
+    
+    [Data sharedInstance].createdEvent.latitude = _placemark.location.coordinate.latitude;
+    NSLog(@"POST EVENT2");
+    
+    [Data sharedInstance].createdEvent.longitude = _placemark.location.coordinate.longitude;
+
     if (sender.tag == 0) {
         NSLog(@"DONE pressed");
         [self.navigationController popViewControllerAnimated:YES];
-        [Data sharedInstance].createdEvent.address = _resultSearchController.searchBar.text ;
-        [Data sharedInstance].createdEvent.latitude = _placemark.location.coordinate.latitude;
-        [Data sharedInstance].createdEvent.longitude = _placemark.location.coordinate.longitude;
+     //   [Data sharedInstance].createdEvent.address = _resultSearchController.searchBar.text ;
+       // [Data sharedInstance].createdEvent.latitude = _placemark.location.coordinate.latitude;
+       // [Data sharedInstance].createdEvent.longitude = _placemark.location.coordinate.longitude;
         
         
     } else {
-        NSLog(@"POST EVENT");
+  //      NSLog(@"POST EVENT");
         //TODO: Add logic to create the event
-        [Data sharedInstance].createdEvent.address = _resultSearchController.searchBar.text ;
-        NSLog(@"POST EVENT 1");
+    //    [Data sharedInstance].createdEvent.address = _resultSearchController.searchBar.text ;
+      //  NSLog(@"POST EVENT 1");
         
-        [Data sharedInstance].createdEvent.latitude = _placemark.location.coordinate.latitude;
-        NSLog(@"POST EVENT2");
+        //[Data sharedInstance].createdEvent.latitude = _placemark.location.coordinate.latitude;
+       // NSLog(@"POST EVENT2");
         
-        [Data sharedInstance].createdEvent.longitude = _placemark.location.coordinate.longitude;
-        NSLog(@"POST EVENT3");
+        //[Data sharedInstance].createdEvent.longitude = _placemark.location.coordinate.longitude;
+       // NSLog(@"POST EVENT3");
         // NSLog(@"EVENTS CREATE DICT aa= %@", EVENT_API_CREATE_DICT);
         
-        NSLog(@"POST EVENT4");
+      //  NSLog(@"POST EVENT4");
         //   [self setupAlertBox];
+
         [[WebService sharedInstance]eventsApiRequest:EVENT_API_CREATE];
         
     }
@@ -419,6 +502,7 @@
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"Return to main event screen");
+    
         [self performSegueWithIdentifier:@"GoToEvent" sender:self];
     }];
     

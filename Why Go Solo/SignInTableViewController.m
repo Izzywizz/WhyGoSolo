@@ -10,7 +10,8 @@
 #import "ViewSetupHelper.h"
 #import "RRRegistration.h"
 #import "WebService.h"
-@interface SignInTableViewController ()
+#import "Data.h"
+@interface SignInTableViewController () <DataDelegate>
 
 
 /**
@@ -37,6 +38,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = self;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil;
+}
 #pragma mark - Action Methods
 
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
@@ -54,19 +64,30 @@
     
     if(![[RRRegistration sharedInstance] validateTextField:_passwordTextField])    {
         [fontSetup setColourOf:_passwordContentView toLabel:_passwordLabel toTextField:_passwordTextField toMessage:@"Enter your Password"];
+    
     }
     
-    NSLog(@"RR L EMAIL : %@ / RR L PW : %@", [RRRegistration sharedInstance].email, [RRRegistration sharedInstance].password);
     
-    [[WebService sharedInstance]eventsApiRequest:LOGIN];
+   // NSLog(@"RR L EMAIL : %@ / RR L PW : %@", [RRRegistration sharedInstance].email, [RRRegistration sharedInstance].password);
+    
+   [[WebService sharedInstance]eventsApiRequest:LOGIN];
     
     if ([[RRRegistration sharedInstance] validateTextField:_emailAddressTextField] && [[RRRegistration sharedInstance] validateTextField:_passwordTextField]) {
+      //
         NSLog(@"Correctly signed in");
+        
     } else if (![[RRRegistration sharedInstance] validateTextField:_emailAddressTextField])    {
         [fontSetup setColourOf:_emailAddressContentView toLabel:_emailAddressLabel toTextField:_emailAddressTextField toMessage:@"Enter your email address"];
     } else  {
-        [self alertSetupandView:@"Incorrect Password/ Email" andMessage:@"Please type in your correct email/ password comibation"];
+       // [self alertSetupandView:@"Incorrect Password/ Email" andMessage:@"Please type in your correct email/ password comibation"];
     }
+}
+
+-(void)authenticationSuccessful
+{
+    [self performSegueWithIdentifier:@"GoToEvents" sender:self];
+
+    
 }
 
 - (IBAction)forgotButtonPressed:(UIButton *)sender {

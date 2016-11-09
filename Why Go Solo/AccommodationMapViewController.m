@@ -120,8 +120,18 @@
 -(void)authenticationSuccessful
 {
     NSLog(@"AUTH SUCCESS!!!");
+   // [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay
 
-    [self performSegueWithIdentifier:@"GoToEventTable" sender:self];
+    [self performSelectorOnMainThread:@selector(showSuccessOverlay) withObject:nil waitUntilDone:YES];
+ //   [self performSegueWithIdentifier:@"GoToEventTable" sender:self];
+
+}
+
+-(void)showSuccessOverlay
+{
+    [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay
+    
+   // [self performSegueWithIdentifier:@"GoToEventTable" sender:self];
 
 }
 
@@ -140,6 +150,9 @@
             //create the pin coordinates
             pin.coordinate = CLLocationCoordinate2DMake(latitude, longitude);
             pin.title = element.residenceName;
+            
+
+            
             [arrayOfPins addObject:pin];
         }
 
@@ -234,7 +247,6 @@
         } else {
             pin.annotation = annotation;
         }
-        
         pin.canShowCallout = YES;
         pin.draggable = _isDraggable;// YES;
         pin.image = [UIImage imageNamed:@"map-pin-34-58.png"];
@@ -260,7 +272,28 @@
     {
         NSString *location = [annotation title];
         NSLog(@"Clicked Flag: %@", location);
-        [self reverseGeoCoodantes:annotation.coordinate];
+        
+        
+        if([[[Data sharedInstance].residenceDict allKeys]containsObject:location])
+        {
+            [RRRegistration sharedInstance].residenceID = [[Data sharedInstance].residenceDict valueForKey:location];
+            [RRRegistration sharedInstance].longitude = annotation.coordinate.longitude;
+            [RRRegistration sharedInstance].latitude = annotation.coordinate.latitude;
+            [_resultSearchController.searchBar setText:location];
+
+        }
+        
+        else
+        {
+            [self reverseGeoCoodantes:annotation.coordinate];
+
+        }
+        
+        
+        
+     //   Residence *r = [Data sharedInstance].residencesArray objectAtIndex:[]
+        
+       // [RRRegistration sharedInstance].residenceID =
     }
 }
 
@@ -288,6 +321,7 @@
     {
         [RRRegistration sharedInstance].longitude = annotation.coordinate.longitude;
         [RRRegistration sharedInstance].latitude = annotation.coordinate.latitude;
+        [_resultSearchController.searchBar setText:annotation.title ];
     }
             [self createPinLocations]; //Called again to create the custom pins, remember that it creates the pins based on the university selected
     
@@ -300,17 +334,10 @@
 -(void) reverseGeoCoodantes: (CLLocationCoordinate2D) coordinates     {
     CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:coordinates.latitude longitude:coordinates.longitude];
     
-    if (_isEditProfile)
-    {
-        [Data sharedInstance].updatedUser.longitude = [RRRegistration sharedInstance].longitude;
-        [Data sharedInstance].updatedUser.latitude = [RRRegistration sharedInstance].latitude;
 
-    }
-    else
-    {
-        [RRRegistration sharedInstance].longitude = coordinates.longitude;
-        [RRRegistration sharedInstance].latitude = coordinates.latitude;
-    }
+//        [RRRegistration sharedInstance].longitude = coordinates.longitude;
+  //      [RRRegistration sharedInstance].latitude = coordinates.latitude;
+    
 
     
     [_geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -344,12 +371,11 @@
     } else  {
         _AccommodationAddress = _resultSearchController.searchBar.text; //Set the address of where the user has clicked as the actual address of where they live, ready for upload!
         NSLog(@"Accommodation: %@", _AccommodationAddress);
-        [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay
+    //    [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay
         [[WebService sharedInstance]registerAccount];
     }
     
 //    NSLog(@"accommodation: %@",_resultSearchController.searchBar.text);
-    [self accountCreationOverlayAlpha:1 animationDuration:0.2f]; //Show overlay
 }
 
 - (IBAction)okButtonPressed:(UIButton *)sender {

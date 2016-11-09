@@ -62,6 +62,7 @@
 
 @property NSMutableArray* universitesArray;
 @property NSMutableArray* residencesArray;
+@property NSMutableDictionary *residenceDict;
 @property NSString *residenceFilterArrayString;
 
 @property NSMutableArray* myEventsArray;
@@ -69,6 +70,7 @@
 
 @property NSMutableArray* friendsAttendingEventsArray;
 @property NSMutableArray* friendsNotAttendingEventsArray;
+@property NSMutableArray* friendsArray;
 
 @property NSMutableArray* everyoneArray;
 

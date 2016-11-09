@@ -192,9 +192,15 @@
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd-MM-yyyy"];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+   
+    
+    self.dateOfBirthField.text = [dateFormatter stringFromDate:datePicker.date];
+    
+     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     NSString *strDate = [dateFormatter stringFromDate:datePicker.date];
-    self.dateOfBirthField.text = strDate;
+   
+    
+    
     
     //Change the colour here!!!!!
     self.dateOfBirthField.textColor = [UIColor blackColor];

@@ -51,10 +51,13 @@
             {
                 
                 NSLog(@"RES DICT = %@", [[dict valueForKey:RESIDENCE_KEY]valueForKey:USER_RESIDENCE_ADDRESS_KEY]);
-               // self.residence = [Residence new];
-                 //self.residence.address = @"xxx";//[NSString stringWithFormat:@"%@",[[dict valueForKey:RESIDENCE_KEY]valueForKey:USER_RESIDENCE_ADDRESS_KEY]];
+                self.residence = [Residence new];
+                self.residence.address = [[dict valueForKey:RESIDENCE_KEY]valueForKey:USER_RESIDENCE_ADDRESS_KEY];
+                //[NSString stringWithFormat:@"%@",[[dict valueForKey:RESIDENCE_KEY]valueForKey:USER_RESIDENCE_ADDRESS_KEY]];
+         
+                NSLog(@"RES ADDRESSSSSS = %@", self.residence.address);
             }
-           
+            
 
         }
         else
