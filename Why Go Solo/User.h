@@ -31,5 +31,6 @@
 @property Residence* residence;
 
 @property int isFriend;
+@property int isBlocked;
 @property NSMutableArray *eventsArray;
 @end

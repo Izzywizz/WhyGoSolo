@@ -124,6 +124,7 @@
 		A1151F601DAA8494008222ED /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = A1151F5F1DAA8494008222ED /* Event.m */; };
 		A1217E571DD2556700C3D06B /* RREpochDateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = A1217E561DD2556700C3D06B /* RREpochDateConverter.m */; };
 		A1217EDF1DD2767500C3D06B /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1217EDE1DD2767500C3D06B /* AirshipConfig.plist */; };
+		A13F54681DD5325400B4D1EE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A13F54671DD5325400B4D1EE /* MessageUI.framework */; };
 		A1935A411DC38EBE0025711E /* EventsWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = A1935A401DC38EBE0025711E /* EventsWebService.m */; };
 		A1935A441DC3E4B20025711E /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = A1935A431DC3E4B20025711E /* Comment.m */; };
 		A1A2A9111DC53C6500B2EABB /* WebServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A2A9101DC53C6500B2EABB /* WebServiceRequest.m */; };
@@ -379,6 +380,7 @@
 		A1217E551DD2556700C3D06B /* RREpochDateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RREpochDateConverter.h; sourceTree = "<group>"; };
 		A1217E561DD2556700C3D06B /* RREpochDateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RREpochDateConverter.m; sourceTree = "<group>"; };
 		A1217EDE1DD2767500C3D06B /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		A13F54671DD5325400B4D1EE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A1935A3F1DC38EBE0025711E /* EventsWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsWebService.h; sourceTree = "<group>"; };
 		A1935A401DC38EBE0025711E /* EventsWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsWebService.m; sourceTree = "<group>"; };
 		A1935A421DC3E4B20025711E /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13F54681DD5325400B4D1EE /* MessageUI.framework in Frameworks */,
 				A1C028B01DD2844A0024DCF8 /* AirshipKit.framework in Frameworks */,
 				A1C0289A1DD27DB90024DCF8 /* libUAirship-7.2.2.a in Frameworks */,
 			);
@@ -640,6 +643,7 @@
 		438A14731D8011C2005E6AF7 = {
 			isa = PBXGroup;
 			children = (
+				A13F54671DD5325400B4D1EE /* MessageUI.framework */,
 				A1C028AA1DD284340024DCF8 /* AirshipKit.xcodeproj */,
 				A1C0282D1DD27DB90024DCF8 /* Airship */,
 				A1C0288F1DD27DB90024DCF8 /* AirshipKit */,
@@ -1499,8 +1503,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Candida Lovell-Smith (ZRH6B5MGEQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Candida Lovell-Smith (ZRH6B5MGEQ)";
+				DEVELOPMENT_TEAM = J3Z65M4E2L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AirshipKit/build/Debug-iphoneos",
@@ -1515,7 +1520,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.whygosolo.whygosolo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9594aed3-3474-4666-bf85-3e2777c2d412";
+				PROVISIONING_PROFILE_SPECIFIER = "WhyGoSolo Dev";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1525,8 +1531,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Candida Lovell-Smith (J3Z65M4E2L)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Candida Lovell-Smith (J3Z65M4E2L)";
+				DEVELOPMENT_TEAM = J3Z65M4E2L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AirshipKit/build/Debug-iphoneos",
@@ -1541,7 +1548,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.whygosolo.whygosolo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d05e659d-0ef1-4fd5-8017-48e5cc9f5a65";
+				PROVISIONING_PROFILE_SPECIFIER = "WhyGoSolo Dist";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -167,4 +167,7 @@
     [Data sharedInstance].selectedEvent = self.event;
     [Data sharedInstance].selectedEventID  = [NSString stringWithFormat:@"%i", self.event.eventID];
 }
+
+
+
 @end

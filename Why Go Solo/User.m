@@ -43,6 +43,13 @@
             self.isFriend = (int)[[dict valueForKey:@"added_as_friend"]integerValue];
         }
         
+        if ([dict valueForKey:@"is_blocked"]!=nil)
+        {
+            NSLog(@"IS Blocked = %i",(int)[ [dict valueForKey:@"is_blocked"]integerValue]);
+            
+            self.isBlocked = (int)[[dict valueForKey:@"is_blocked"]integerValue];
+        }
+        
         if (![[dict valueForKey:RESIDENCE_ID_KEY]isKindOfClass:[NSNull class]])
         {
             self.residenceID =   [NSString stringWithFormat:@"%i",(int)[[dict valueForKey:RESIDENCE_ID_KEY]integerValue]];
@@ -51,10 +58,9 @@
             {
                 
                 NSLog(@"RES DICT = %@", [[dict valueForKey:RESIDENCE_KEY]valueForKey:USER_RESIDENCE_ADDRESS_KEY]);
-                self.residence = [Residence new];
-                self.residence.address = [[dict valueForKey:RESIDENCE_KEY]valueForKey:USER_RESIDENCE_ADDRESS_KEY];
+                self.residence = [[Residence alloc]initWithDict:[dict valueForKey:RESIDENCE_KEY]];
+//                self.residence.address = [[dict valueForKey:RESIDENCE_KEY]valueForKey:USER_RESIDENCE_ADDRESS_KEY];
                 //[NSString stringWithFormat:@"%@",[[dict valueForKey:RESIDENCE_KEY]valueForKey:USER_RESIDENCE_ADDRESS_KEY]];
-         
                 NSLog(@"RES ADDRESSSSSS = %@", self.residence.address);
             }
             
@@ -62,10 +68,9 @@
         }
         else
         {
-            self.residence.address = @"Not in student residence";
-            NSLog(@"NULLL DETECTED!!!");
+                       NSLog(@"NULLL DETECTED!!!");
         }
-
+       
     }
     return self;
 }

@@ -485,14 +485,23 @@
             [Data sharedInstance].userToken = [[resDict valueForKey:@"header" ] valueForKey:@"Token"];
             [Data sharedInstance].userID = [responseObject valueForKey:@"id"];
         }
-
+        
         NSMutableDictionary *resDict = [[NSMutableDictionary alloc]initWithDictionary:responseObject];
         [resDict setObject:res.allHeaderFields forKey:@"header"];
         [[Data sharedInstance]performSelector:responseMethod withObject:resDict];
         
     } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        NSLog(@"Error -- : %@", error);
+        if ([Data sharedInstance].passwordResetEmail != nil) {
+            NSLog(@"FAILED PW RESET");
+            
+            [Data sharedInstance].passwordResetEmail = @"EMAIL NOT FOUND";
+            [[Data sharedInstance]performSelector:responseMethod withObject:nil];
+
+        }
+
     }];
+            
 
 }
 

@@ -11,9 +11,11 @@
 #import "Data.h"
 #import "Residence.h"
 #import "WebService.h"
-#import "RRRegistration.h";
+#import "RRRegistration.h"
 #import "User.h"
 #import "University.h"
+#import "Residence.h"
+
 #define METERS_PER_MILE 1609.344
 
 
@@ -71,6 +73,8 @@
     [self accountCreationOverlayAlpha:0 animationDuration:0.0f]; //Hide the overlay
     if (_isEditProfile)
     {
+        [_doneButton setEnabled:NO];
+        [_doneButton setTintColor:[UIColor clearColor]];
         [Data sharedInstance].selectedUniversity.universityID = [Data sharedInstance].updatedUser.universityID;
         
         
@@ -268,10 +272,12 @@
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     id <MKAnnotation> annotation = [view annotation];
     
+    
+    NSString *location = [annotation title];
+    NSLog(@"Clicked Flag: %@", location);
     if ([annotation isKindOfClass:[MKPointAnnotation class]])
     {
-        NSString *location = [annotation title];
-        NSLog(@"Clicked Flag: %@", location);
+
         
         
         if([[[Data sharedInstance].residenceDict allKeys]containsObject:location])
@@ -280,21 +286,30 @@
             [RRRegistration sharedInstance].longitude = annotation.coordinate.longitude;
             [RRRegistration sharedInstance].latitude = annotation.coordinate.latitude;
             [_resultSearchController.searchBar setText:location];
+            [Data sharedInstance].loggedInUser.residence.residenceName = location;
 
         }
         
         else
         {
             [self reverseGeoCoodantes:annotation.coordinate];
+         //   [Data sharedInstance].loggedInUser.residence = [Residence new];
+            [Data sharedInstance].loggedInUser.residence.residenceName = location;
+
 
         }
-        
-        
         
      //   Residence *r = [Data sharedInstance].residencesArray objectAtIndex:[]
         
        // [RRRegistration sharedInstance].residenceID =
     }
+    
+    if (_isEditProfile)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+
+    }
+
 }
 
 #pragma mark - Internal MAP Delegate Method

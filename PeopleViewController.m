@@ -177,6 +177,35 @@
   //  _sectionTitles = [[_tableData allKeys] sortedArrayUsingDescriptors:ascendingOrder];
 }
 
+-(void) setupObservers    {
+    //When the profile button is pressed the observer knows it has been pressed and this actiavted the the action assiociated with it
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(profileFound:)
+                                                 name:@"Profile Found"
+                                               object:nil];
+    //Filter button is pressed
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToFilter:) name:@"Filter Found" object:nil];
+    
+    //Edit
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToEdit) name:@"Edit Found" object:nil];
+    
+    //People Event
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToEvent:) name:@"People Event" object:nil];
+    
+    //Joined button
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(joinedButton:) name:@"Joined" object:nil];
+    
+    //comments page
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentsButton:) name:@"Comments" object:nil];
+    
+}
+
+-(void) moveToEdit  {
+    
+    NSLog(@"GOT TO EDIT");
+    [self performSegueWithIdentifier:@"GoToEdit" sender:self];
+}
+
 #pragma mark - Table View Delegate Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

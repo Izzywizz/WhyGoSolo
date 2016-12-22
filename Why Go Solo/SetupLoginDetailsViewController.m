@@ -23,6 +23,13 @@
 @implementation SetupLoginDetailsViewController
 
 #pragma mark - UI Methods
+- (IBAction)showTerms:(id)sender
+{
+
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://whygosolo.com/terms.html"]];
+    
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

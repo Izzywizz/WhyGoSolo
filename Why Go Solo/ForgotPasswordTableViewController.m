@@ -7,8 +7,9 @@
 //
 
 #import "ForgotPasswordTableViewController.h"
-
-@interface ForgotPasswordTableViewController () <UITextFieldDelegate>
+#import "WebService.h"
+#import "Data.h"
+@interface ForgotPasswordTableViewController () <UITextFieldDelegate, DataDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *resetButton;
 @property (weak, nonatomic) IBOutlet UITextField *emailAddressTextField;
 
@@ -24,6 +25,18 @@
     self.tableView.allowsSelection = NO; //becareful this may disable button interaction.    
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [Data sharedInstance].passwordResetEmail = @"";
+    [Data sharedInstance].delegate = self;
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [Data sharedInstance].delegate = nil;
+     [Data sharedInstance].passwordResetEmail = @"";
+}
 
 - (IBAction)editDidChange:(UITextField *)sender {
         if ([_emailAddressTextField.text isEqualToString:@""]) {
@@ -34,6 +47,21 @@
         }
 }
 
+-(void)passwordResetSuccessful
+{
+    [self performSelectorOnMainThread:@selector(handleUpdates) withObject:nil waitUntilDone:NO];
+}
+
+-(void)handleUpdates
+{
+    NSLog(@"EMAIL XXX - %@",[Data sharedInstance].passwordResetEmail);
+    if (![[Data sharedInstance].passwordResetEmail isEqualToString:@"EMAIL NOT FOUND"]) {
+        [Data sharedInstance].passwordResetEmail = @"PASSWORD RESET SENT TO EMAIL";
+    }
+    _emailAddressTextField.text = [Data sharedInstance].passwordResetEmail;
+    
+    [Data sharedInstance].passwordResetEmail = @"";
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -89,7 +117,10 @@
 #pragma mark - Action Methods
 - (IBAction)resetButtonPressed:(UIButton *)sender {
     NSLog(@"RESET");
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"passwordReset" object:self];
+
+    [Data sharedInstance].passwordResetEmail = _emailAddressTextField.text;
+    [[WebService sharedInstance]eventsApiRequest:USER_API_RESET_PASSWORD];
+  //  [[NSNotificationCenter defaultCenter] postNotificationName:@"passwordReset" object:self];
 
 }
 

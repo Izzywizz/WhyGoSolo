@@ -7,6 +7,8 @@
 //
 
 #import "FilterViewController.h"
+#import "Data.h"
+
 
 @interface FilterViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -28,13 +30,9 @@
     [super viewDidLoad];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    
     //test to get checkmarks working,
     NSString *path = [[NSBundle mainBundle] pathForResource:@"HallsOfResidenceMark" ofType:@"plist"];
     self.dataArray = [NSMutableArray arrayWithContentsOfFile:path];
-    
-    
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,6 +55,10 @@
 }
 #pragma mark - Helper Functions
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [_slider setValue:(float)[[NSString stringWithFormat:@"%@",[Data sharedInstance].filterDistance]floatValue]];
+}
 
 -(void) setNavigationButtonFontAndSize  {
     
@@ -197,7 +199,9 @@
 }
 
 - (IBAction)sliderMileValueChange:(UISlider *)sender {
-    self.mileLabel.text = [NSString stringWithFormat:@"%d MILES", (int) sender.value];
+    [Data sharedInstance].filterDistance = [NSString stringWithFormat:@"%.f",sender.value];
+    self.mileLabel.text = [NSString stringWithFormat:@"%@ MILES", [Data sharedInstance].filterDistance];
+    NSLog(@"Fileter distance value = %@", [Data sharedInstance].filterDistance);
 }
 
 @end

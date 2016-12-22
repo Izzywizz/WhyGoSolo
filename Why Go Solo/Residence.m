@@ -15,6 +15,7 @@
     NSLog(@"Dictionary Inside Residence: %@", dict);
     if (self)
     {
+        
         self.residenceName = [dict valueForKey:@"name"];
         self.address = [dict valueForKey:@"address"];
         self.city = [dict valueForKey:@"city"];

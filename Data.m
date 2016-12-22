@@ -36,11 +36,78 @@
     return _sharedInstance;
 }
 
+-(void)userDeleteSuccessful
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(userDeleteSuccessful)])
+    {
+        [self.delegate performSelector:@selector(userDeleteSuccessful)];
+    }
+}
 
+-(void)passwordResetSuccessful
+{
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(passwordResetSuccessful)])
+    {
+        [self.delegate performSelector:@selector(passwordResetSuccessful)];
+    }
+}
+
+-(void)resetValues
+{
+    [Data sharedInstance].selectedUser = nil;
+    [Data sharedInstance].updatedUser = nil;
+    [Data sharedInstance].eventsArray = nil;
+    [Data sharedInstance].everyoneArray = nil;
+
+  //  _RREpochDateConverter* epochDateConverter;
+ //   _userID ;
+   // _userToken;
+    
+    _selectedEventID = nil;
+    _selectedUserID = nil;
+     _selectedCommentID = nil;
+    
+    _filterDistance = nil;
+    _residenceFilterArray = nil;
+    
+    
+    _createdCommentText = nil;
+    
+    _loggedInUser = nil;
+    
+    //_universitesArray;
+  //  _residencesArray;
+ //  _residenceDict;
+ //   _residenceFilterArrayString = nil;
+    
+    _myEventsArray = nil;
+    _eventsArray = nil;
+    
+   _friendsAttendingEventsArray = nil;
+    _friendsNotAttendingEventsArray = nil;
+   _friendsArray = nil;
+    
+    _everyoneArray = nil;
+    
+   _selectedUniversity = nil;
+   _selectedResidence = nil;
+    _selectedEvent = nil;
+    _selectedUser = nil;
+    
+    _updatedUser = nil;
+    
+   _createdEvent = nil;
+    
+    _userID = nil;
+    _userToken = nil;
+
+}
 
 -(void)updateAvatarDictWithImage:(UIImage*)avatarImage forUserID:(NSString*)userID
 {
     [[Data sharedInstance].avatarDict setObject:avatarImage forKey:userID];
+    
     
     if (_delegate && [_delegate respondsToSelector:@selector(avatarDownloaded)])
     {
@@ -343,8 +410,25 @@
        
     }
     
-    [Data sharedInstance].selectedUser.residence = [[Residence alloc] initWithDict:[[dict valueForKey:@"user" ]valueForKey:@"residence"]];
+    if (![[[dict valueForKey:@"user" ]valueForKey:@"residence"]isKindOfClass:[NSNull class]]) {
+        [Data sharedInstance].selectedUser.residence = [[Residence alloc] initWithDict:[[dict valueForKey:@"user" ]valueForKey:@"residence"]];
+    }
+    else
+    {
+        [Data sharedInstance].selectedUser.residence = [Residence new];
+        [Data sharedInstance].selectedUser.residence.residenceName = @"Private Residence";
+        [Data sharedInstance].selectedUser.residence.address = @"Private Residence";
+        [Data sharedInstance].selectedUser.residence = [Residence new];
+        [Data sharedInstance].selectedUser.residence.postCode = @"";
+        [Data sharedInstance].selectedUser.residence.longitude = [Data sharedInstance].selectedUser.longitude;
+        [Data sharedInstance].selectedUser.residence.latitude = [Data sharedInstance].selectedUser.latitude;
+        [Data sharedInstance].selectedUser.residenceID = 0;
+        [Data sharedInstance].selectedUser.residence.residenceName = @"Private Residence";
+
+    }
     
+    NSLog(@"TEMP RES DICT  = %@", [Data sharedInstance].selectedUser.residence.residenceName);
+
     NSLog(@"TEMP ARRAY = %@", tempArray);
     
     [Data sharedInstance].selectedUser.eventsArray = tempArray;

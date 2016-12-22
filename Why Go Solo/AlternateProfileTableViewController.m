@@ -94,6 +94,8 @@
 
 -(void)handleUpdates
 {
+    
+    _isUserBlocked = _user.isBlocked;
     [self updateFreindButtonStatus];
     [self.tableView reloadData];
 }

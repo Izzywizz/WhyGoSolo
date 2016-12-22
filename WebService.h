@@ -329,6 +329,23 @@ USER_ID_KEY:USER_ID}\
 }
 
 
+#define USER_API_PASSWORD_RESET_DICT @{\
+@"request"  :   @[@ "users/reset_password"],\
+@"response" :   @   "passwordResetSuccessful",\
+@"params"   : \
+@{\
+USER_EMAIL_KEY:[Data sharedInstance].passwordResetEmail}\
+}
+
+
+#define USER_API_DELETE_DICT @{\
+@"request"  :   @[@ "users/",USER_ID,@"/delete"],\
+@"response" :   @   "userDeleteSuccessful",\
+@"params"   : \
+@{\
+USER_ID_KEY:USER_ID}\
+}
+
 
 
 

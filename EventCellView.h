@@ -57,5 +57,8 @@ typedef enum {
 /**/
 
 
+-(void)registerForNotifcations:(UIViewController*)currentViewController;
+
+
 @property EventsTableViewCell* eventsTableViewCell;
 @end

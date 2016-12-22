@@ -36,6 +36,9 @@
 
 -(void)friendsParsedSuccessfully;
 -(void)everyoneParsedSuccessfully;
+-(void)passwordResetSuccessful;
+
+-(void)userDeleteSuccessful;
 @end
 
 @interface Data : NSObject
@@ -73,7 +76,7 @@
 @property NSMutableArray* friendsArray;
 
 @property NSMutableArray* everyoneArray;
-
+@property NSString *passwordResetEmail;
 @property University *selectedUniversity;
 @property Residence *selectedResidence;
 @property Event *selectedEvent;
@@ -83,6 +86,7 @@
 
 @property Event *createdEvent;
 //-(void)createUserFromDict:(NSDictionary *)dict;
+-(void)resetValues;
 
 -(void)createUniversitesArrayFromDict:(NSDictionary *)dict;
 -(void)createResidencesArrayFromDict:(NSDictionary *)dict;
@@ -112,4 +116,8 @@
 
 -(void)createFriendsFromDict:(NSDictionary*)dict;
 -(void)createEveryoneFromDict:(NSDictionary*)dict;
+-(void)passwordResetSuccessful;
+
+-(void)userDeleteSuccessful;
+
 @end

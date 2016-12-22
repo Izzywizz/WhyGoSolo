@@ -91,11 +91,13 @@
             break;
         case USER_API_PEOPLE_EVERYONE: return USER_API_PEOPLE_EVERYONE_DICT;
             break;
-          
         case USER_API_FRIENDS: return USER_API_FRIENDS_DICT;
               break;
         case LOGIN: return LOGIN_API_DICT;
-            
+            break;
+             case USER_API_RESET_PASSWORD: return USER_API_PASSWORD_RESET_DICT;
+            break;
+        case USER_API_DELETE: return USER_API_DELETE_DICT;
             break;
         default:
 

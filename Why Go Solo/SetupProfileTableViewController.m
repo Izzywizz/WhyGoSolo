@@ -188,15 +188,17 @@
 }
 
 #pragma mark - Date Picker Methods
+
+/*
 - (void)datePickerChanged:(UIDatePicker *)datePicker
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd-MM-yyyy"];
    
-    
+     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     self.dateOfBirthField.text = [dateFormatter stringFromDate:datePicker.date];
     
-     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    
     NSString *strDate = [dateFormatter stringFromDate:datePicker.date];
    
     
@@ -213,6 +215,31 @@
     
     NSLog(@"REG DOB EPOCH = %@", [RRRegistration sharedInstance].dobEpoch);
 
+}
+
+*/
+
+
+
+- (void)datePickerChanged:(UIDatePicker *)datePicker
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+    
+    self.dateOfBirthField.text = [dateFormatter stringFromDate:datePicker.date];
+    
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+
+    NSString *strDate = [dateFormatter stringFromDate:datePicker.date];
+    
+    
+    
+    [RRRegistration sharedInstance].strDateOfBirth = strDate;
+    
+    [RRRegistration sharedInstance].dobEpoch = [NSString stringWithFormat:@"%.0f",[datePicker.date  timeIntervalSince1970]];
+    
+    NSLog(@"REG DOB EPOCH = %@", [RRRegistration sharedInstance].dobEpoch);
+    
 }
 
 #pragma mark - Action Methods

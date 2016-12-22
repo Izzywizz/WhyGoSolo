@@ -22,10 +22,13 @@
 #import "RREpochDateConverter.h"
 
 #import "RRRegistration.h"
+#import "PersistanceManager.h"
+
 @interface EditProfileTableViewController () <UITextFieldDelegate,UIImagePickerControllerDelegate, DataDelegate>
 @property (nonatomic) UIDatePicker *datePicker;
 @property (nonatomic) UIView *overlayView;
 @property User* updatedUser;
+@property (strong, nonatomic) IBOutlet UILabel *accomodationLabel;
 
 @end
 
@@ -43,6 +46,8 @@
     [self setNavigationButtonFontAndSize];
     _deleteButton.layer.cornerRadius = 5;
 
+    
+   
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -66,6 +71,8 @@
         [RRRegistration sharedInstance].profilePhoto =  [[RRDownloadImage sharedInstance]avatarImageForUserID:[NSString stringWithFormat:@"%@",[Data sharedInstance].userID]];
     }
    
+   
+
     [self setUpProfileFields];
 }
 - (void)didReceiveMemoryWarning {
@@ -76,14 +83,24 @@
 -(void)setUpProfileFields
 {
     NSLog(@"LOGGED IN ADDRESS x = %@",[Data sharedInstance].selectedUser.residence.address );
-    NSLog(@"LOGGED IN ADDRESS xss = %@",[[Data sharedInstance].epochDateConverter stringFromEpochDate:_updatedUser.dobEpoch]);
+    NSLog(@"LOGGED IN ADDRESS xss = %@",[Data sharedInstance].loggedInUser.residence.residenceName);
     _firstNameTextField.text = [RRRegistration sharedInstance].firstName;
     _lastNameTextField.text = [RRRegistration sharedInstance].lastName;
-    _studentAccommodationTextField.text = [Data sharedInstance].loggedInUser.residence.residenceName;
+    _accomodationLabel.text = [Data sharedInstance].loggedInUser.residence.residenceName;
     _dateOfBirthTextField.text = [[Data sharedInstance].epochDateConverter stringFromEpochDate: [RRRegistration sharedInstance].dobEpoch];
     _emailLabel.text = [Data sharedInstance].loggedInUser.email;
-    _profileImage.image = [RRRegistration sharedInstance].profilePhoto;//[[RRDownloadImage sharedInstance]avatarImageForUserID:[NSString stringWithFormat:@"%@",[Data sharedInstance].userID]];
+    _profileImage.image = [RRRegistration sharedInstance].profilePhoto;
+    
+    //[[RRDownloadImage sharedInstance]avatarImageForUserID:[NSString stringWithFormat:@"%@",[Data sharedInstance].userID]];
 }
+-(void)userDeleteSuccessful
+{
+    NSLog(@"DELETE SUCCESSFUL");
+    [[Data sharedInstance]resetValues];
+    [[PersistanceManager sharedInstance]forgetLoginDetails];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 
 -(void)authenticationSuccessful
 {
@@ -200,7 +217,8 @@
 }
 
 #pragma mark - Date Picker Methods
-- (void)datePickerChanged:(UIDatePicker *)datePicker
+
+/*- (void)datePickerChanged:(UIDatePicker *)datePicker
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd-MM-yyyy"];
@@ -210,7 +228,29 @@
     //Change the colour here!!!!!
     self.dateOfBirthTextField.textColor = [UIColor blackColor];
 }
+*/
 
+
+- (void)datePickerChanged:(UIDatePicker *)datePicker
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+    
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    self.dateOfBirthTextField.text = [dateFormatter stringFromDate:datePicker.date];
+    
+    
+    NSString *strDate = [dateFormatter stringFromDate:datePicker.date];
+    
+
+    
+    [RRRegistration sharedInstance].strDateOfBirth = strDate;
+    
+    [RRRegistration sharedInstance].dobEpoch = [NSString stringWithFormat:@"%.0f",[datePicker.date  timeIntervalSince1970]];
+    
+    NSLog(@"REG DOB EPOCH = %@", [RRRegistration sharedInstance].dobEpoch);
+    
+}
 -(void) createDatePicker    {
     
     //create the done button to remove
@@ -224,8 +264,21 @@
     [_datePicker setDatePickerMode:UIDatePickerModeDate];
     [_dateOfBirthTextField setInputView:_datePicker];
     [self.datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    
     self.dateOfBirthTextField.inputAccessoryView = toolbar;
-}
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    
+   double epochD = (double)[[NSString stringWithFormat:@"%@",[RRRegistration sharedInstance].dobEpoch]doubleValue];
+    
+    
+        [_datePicker setDate:[NSDate dateWithTimeIntervalSince1970:epochD]];
+    
+ //   [_datePicker setDate:[dateFormatter dateFromString:[NSString stringWithFormat:@"%@",[NSDate dateWithTimeIntervalSince1970:epochD]]]];
+     }
 
 #pragma mark - OverlayView Methods
 /*ensures that the view added streches properly to the screen*/
@@ -259,7 +312,9 @@
 
 -(void) deleteConfirmation: (NSNotification *) notifcation   {
     if ([[notifcation name] isEqualToString:@"deleteConfirmation"]) {
-        [self performSegueWithIdentifier:@"GoToDeleteConfirmation" sender:self];
+        
+        [[WebService sharedInstance]eventsApiRequest:USER_API_DELETE];
+     //   [self performSegueWithIdentifier:@"GoToDeleteConfirmation" sender:self];
     }
 }
 
