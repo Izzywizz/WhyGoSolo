@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <AirshipKit/AirshipKit.h>
+//#import <AirshipKit/AirshipKit.h>
 @interface AppDelegate ()
 
 @end
@@ -17,8 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-     [UAirship takeOff];
-    [UAirship push].userPushNotificationsEnabled = YES;
+//     [UAirship takeOff];
+//    [UAirship push].userPushNotificationsEnabled = YES;
 
     return YES;
 }
